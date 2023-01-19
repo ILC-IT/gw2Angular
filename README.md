@@ -1,27 +1,46 @@
 # Gw2Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.2.
+IMPORTANTE: Introducir api key del juego en `.\service\key.ts` para ver la información de cada cuenta.
+
+- Ver diarias de pve/fractales/WvW/PvP de nivel 80.
+- Heroes: tabla con los personajes de la cuenta con información básica.
+- Calculadora del bazar: para aplicar un porcentaje de reducción a un precio.
+- Buscador stats por atributos, stats por prefijo y por nombre. ESP/ENG.
+- Enlaces a determinados sitios web de ayuda.
+- Raid: seguimiento de los bosses de raid hechos de la semana.
+- Legendarios: ver los objetos necesarios que faltan para la armadura legendaria de PvE, sellos y runas, y precios de los T6.
+- Buscador en la wiki oficial.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Navigate to directory `.\gw2Angular`. Run `ng serve --open` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Imágenes
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+![Diarias PvE](./src/assets/imgapp/pve1.png)
+![Diarias Fract PvE](./src/assets/imgapp/frac1.png)
+![Diarias Fract PvE](./src/assets/imgapp/frac2.png)
+![Calculadora](./src/assets/imgapp/calc.png)
+![Buscador Stats](./src/assets/imgapp/stats.png)
+![Raid](./src/assets/imgapp/raid.png)
+![T6](./src/assets/imgapp/t6.png)
 
-## Running end-to-end tests
+## TODO
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Añadir especializaciones a los heroes en la tabla.
+
+Vista de cada heroe individual al pinchar en su nombre con información básica.
+
+Hacer un formulario para meter la api (¿y codificarla?) antes de todo.
+
+Si la diaria de PvE es moneda mística añadir algún tipo de aviso.
+
+Añadir killproof (pero creo que no es posible) o un enlace a la página.
 
 ## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+https://angular.io/cli

@@ -1,0 +1,46 @@
+<h2>
+    {{raid.length}} / 26
+</h2>
+
+<mat-grid-list cols="4" rowHeight="5:1">
+    <mat-grid-tile class="mat-elevation-z4" style="border-radius: 4px;"
+        *ngFor="let item of raidWings" 
+        [colspan]="1" 
+        [rowspan]="4">
+            <mat-list>
+                <div mat-subheader>
+                    {{item.wing}} {{item.name}}
+                </div>
+                <mat-list-item *ngFor="let raidBoss of item.bossOk; let i = index">
+                    <mat-icon mat-list-icon [ngStyle]="{'color': item.bossCompletado[i] === true ? 'rgba(11, 161, 11, 0.904)' : 'red'}">
+                        {{ item.bossCompletado[i] === true ? 'check_box' : 'cancel' }}
+                    </mat-icon>
+                    <div mat-line *ngIf="item.tokenCount[i] !== 0; else soloNombre">
+                        {{raidBoss}} ({{item.tokenCount[i]}})
+                    </div>
+                    <ng-template #soloNombre mat-line>
+                        {{raidBoss}}
+                    </ng-template>
+                </mat-list-item>
+            </mat-list>
+    </mat-grid-tile>
+    <mat-grid-tile class="mat-elevation-z4" style="border-radius: 4px;"
+        [colspan]="1" 
+        [rowspan]="4">
+        <mat-list>
+            <div mat-subheader>
+                {{liTengo + liUsada}} LI
+            </div>
+            <mat-list-item>
+                <mat-icon mat-list-icon>
+                    <img class="icon" src="../../../assets/img/Legendary_Insight.png"/>
+                </mat-icon>
+            </mat-list-item>
+            <mat-list-item>
+                <div mat-line>Sin usar: {{liTengo}}</div>
+                <div mat-line>· </div>
+                <div mat-line>Usadas: {{liUsada}}</div>
+            </mat-list-item>
+        </mat-list>
+    </mat-grid-tile>
+</mat-grid-list>

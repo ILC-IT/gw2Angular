@@ -1,0 +1,30 @@
+.mat-tab-group {
+    display: inline-block;
+    margin: 16px;
+}
+
+h2 {
+  text-align: center;
+}
+  
+.daily-menu {
+  padding: 0;
+  margin: auto;
+  max-width: 2000px;
+
+  /* flexbox */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+
+::ng-deep.mat-tab-label, ::ng-deep.mat-tab-label-content{
+  /*min-width: 1!important;*/
+  padding: 3px!important;
+  margin: 3px!important;
+  font-size: x-large;
+ }
+

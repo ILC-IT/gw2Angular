@@ -1,0 +1,54 @@
+<h2>MENÚ</h2>
+<div class="daily-menu">
+    <mat-tab-group color="primary" backgroundColor="primary">
+        <mat-tab label="DIARIAS"> 
+            <mat-selection-list #diarias [multiple]="false">
+                <mat-list-option *ngFor="let diaria of typesOfDiarias" [value]="diaria" routerLink="/diaria">
+                {{diaria}}
+                </mat-list-option>
+            </mat-selection-list>
+        </mat-tab>
+        <mat-tab label="HEROES"> 
+            <mat-selection-list #heroes [multiple]="false">
+                <mat-list-option *ngFor="let hero of typesOfHeroes" [value]="hero" routerLink="/heroes">
+                {{hero}}
+                </mat-list-option>
+            </mat-selection-list>
+        </mat-tab>
+        <mat-tab label="CALCULADORA"> 
+            <mat-selection-list #calculadora [multiple]="false">
+                <mat-list-option *ngFor="let calcu of typesOfCalculadora" [value]="calcu" routerLink="/calculadora">
+                {{calcu}}
+                </mat-list-option>
+            </mat-selection-list>
+        </mat-tab>
+        <mat-tab label="BUSCADOR STATS"> 
+            <mat-selection-list #buscadorStat [multiple]="false">
+                <mat-list-option *ngFor="let stat of typesOfStats" [value]="stat" routerLink="/stats">
+                {{stat}}
+                </mat-list-option>
+            </mat-selection-list>
+        </mat-tab>
+        <mat-tab label="ENLACES">
+            <mat-selection-list #enlaces [multiple]="false">
+                <mat-list-option *ngFor="let enlace of typesOfEnlaces" [value]="enlace" routerLink="/enlaces">
+                {{enlace}}
+                </mat-list-option>
+            </mat-selection-list>
+        </mat-tab>
+        <mat-tab label="RAID"> 
+            <mat-selection-list #raid [multiple]="false">
+                <mat-list-option *ngFor="let raid of typesOfRaid" [value]="raid" routerLink="/raid">
+                {{raid}}
+                </mat-list-option>
+            </mat-selection-list>
+        </mat-tab>
+        <mat-tab label="LEGENDARIOS"> 
+            <mat-selection-list #legendary [multiple]="false">
+                <mat-list-option *ngFor="let legen of typesOfLegendary" [value]="legen" routerLink="/legendary">
+                {{legen}}
+                </mat-list-option>
+            </mat-selection-list>
+        </mat-tab>
+    </mat-tab-group>
+</div>

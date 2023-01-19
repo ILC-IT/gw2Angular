@@ -1,0 +1,76 @@
+h2 {
+    text-align: center;
+  }
+
+/* .statForm {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.statForm-full-width {
+  width: 100%;
+} */
+
+.body{
+  margin: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.aaa{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.botones{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+}
+
+button{
+  height: 30px !important;
+  width: 80px !important;
+  font-size: 20px !important;
+}
+
+/* esto es para que no salga el scroll vertical en el panel de seleccion 
+ cambiar 50% por none o por 500px para dar un tamaño exacto */
+/* ::ng-deep .mat-select-panel {
+  max-height: 60% !important; 
+} */
+
+.resultado{
+  margin: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+
+.res1{
+  margin: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px
+}
+
+::ng-deep.mat-tab-label, ::ng-deep.mat-tab-label-content{
+  /*min-width: 1!important;*/
+  padding: 3px!important;
+  margin: 3px!important;
+  font-size: x-large;
+ }

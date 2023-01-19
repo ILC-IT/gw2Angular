@@ -1,0 +1,251 @@
+<h2>Armadura legendaria, runas, sellos  y  Precios T6</h2>
+<mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4" backgroundColor="primary" color="primary">
+
+    <mat-tab label="Armadura legendaria">
+        <table mat-table [dataSource]="dataSourceLegen" class="mat-elevation-z8"> 
+            
+            <!-- nombre Column -->
+            <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                <td mat-cell *matCellDef="let element; let i = index" [ngClass]="{'negrita': i == 10}"> 
+                    <ng-container *ngIf="element.nombre !== 0; else defaultValue"> 
+                        {{element.nombre}} 
+                        <a *ngIf="i <= 2" href="https://wiki.guildwars2.com/wiki/Legendary_armor#PvE_armor_set" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+                             <button mat-button>W</button>
+                        </a>
+                        <a *ngIf="i == 3" href="https://wiki.guildwars2.com/wiki/Coalescence" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+                            <button mat-button>W</button>
+                        </a>
+                        <a *ngIf="i == 4" href="https://wiki.guildwars2.com/wiki/Legendary_Rune" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+                            <button mat-button>W</button>
+                        </a>
+                        <a *ngIf="i == 5" href="https://wiki.guildwars2.com/wiki/Legendary_Sigil" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+                            <button mat-button>W</button>
+                        </a>
+                    </ng-container>
+                    <ng-template #defaultValue></ng-template>
+                </td>
+            </ng-container>
+
+            <!-- cantidad Column -->
+            <ng-container matColumnDef="cantidad">
+                <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+                <td mat-cell *matCellDef="let element; let i = index" [ngClass]="{'negrita': i == 10}"> 
+                    <ng-container *ngIf="element.cantidad !== 0; else defaultValue"> {{element.cantidad}} </ng-container>
+                    <ng-template #defaultValue></ng-template>
+                </td>
+            </ng-container>
+
+            <!-- tengo Column -->
+            <ng-container matColumnDef="tengo">
+                <th mat-header-cell *matHeaderCellDef> Tengo </th>
+                <td mat-cell *matCellDef="let element; let i = index" [ngClass]="{'negrita': i == 10}"> 
+                    <ng-container *ngIf="i <= 5 || i == 7; else defaultValue"> {{element.tengo}} </ng-container>
+                    <ng-template #defaultValue></ng-template>
+                </td>
+            </ng-container>
+
+            <!-- totalVales Column -->
+            <ng-container matColumnDef="totalVales">
+                <th mat-header-cell *matHeaderCellDef> Total Vales </th>
+                <td mat-cell *matCellDef="let element; let i = index" [ngClass]="{'greenBackGround': element.totalVales < 0 && i == 10, 'redBackGround': element.totalVales > 0 && i == 10}"> 
+                    <ng-container *ngIf="element.totalVales !== 0; else defaultValue"> {{element.totalVales}} </ng-container>
+                    <ng-template #defaultValue></ng-template>
+                </td>
+            </ng-container>
+
+            <!-- totalTreboles Column -->
+            <ng-container matColumnDef="totalTreboles">
+                <th mat-header-cell *matHeaderCellDef> Total Treboles </th>
+                <td mat-cell *matCellDef="let element; let i = index" [ngClass]="{'greenBackGround': element.totalTreboles < 0 && i == 10, 'redBackGround': element.totalTreboles > 0 && i == 10}"> 
+                    <ng-container *ngIf="element.totalTreboles !== 0; else defaultValue"> {{element.totalTreboles}} </ng-container>
+                    <ng-template #defaultValue></ng-template>
+                </td>
+            </ng-container>
+
+            <!-- totalLi Column -->
+            <ng-container matColumnDef="totalLi">
+                <th mat-header-cell *matHeaderCellDef> Total LI </th>
+                <td mat-cell *matCellDef="let element; let i = index" [ngClass]="{'greenBackGround': element.totalLi < 0 && i == 10, 'redBackGround': element.totalLi > 0 && i == 10}"> 
+                    <ng-container *ngIf="element.totalLi !== 0; else defaultValue"> {{element.totalLi}} </ng-container>
+                    <ng-template #defaultValue></ng-template>
+                </td>
+            </ng-container>
+
+            <!-- totalT6 Column -->
+            <ng-container matColumnDef="totalT6">
+                <th mat-header-cell *matHeaderCellDef> Total T6 </th>
+                <td mat-cell *matCellDef="let element; let i = index" [ngClass]="{'greenBackGround': element.totalT6 < 0 && i == 10, 'redBackGround': element.totalT6 > 0 && i == 10}"> 
+                    <ng-container *ngIf="element.totalT6 !== 0 && i != 8 && i != 10; else defaultValue"> {{element.totalT6}} </ng-container>
+                    <ng-template #defaultValue>
+                        <ng-container *ngIf="element.totalT6 !== 0; else defaultValue1"> *min {{element.totalT6}} </ng-container>
+                    </ng-template>
+                    <ng-template #defaultValue1></ng-template>
+                </td>
+            </ng-container>
+
+            <!-- totalEctoplasma Column -->
+            <ng-container matColumnDef="totalEctoplasma">
+                <th mat-header-cell *matHeaderCellDef> Total Ectoplasma </th>
+                <td mat-cell *matCellDef="let element; let i = index" [ngClass]="{'greenBackGround': element.totalEctoplasma < 0 && i == 10, 'redBackGround': element.totalEctoplasma > 0 && i == 10}"> 
+                    <ng-container *ngIf="element.totalEctoplasma !== 0 || i == 9; else defaultValue"> {{element.totalEctoplasma}} </ng-container>
+                    <ng-template #defaultValue></ng-template>
+                </td>
+            </ng-container>
+
+            <!-- totalObsidiana Column -->
+            <ng-container matColumnDef="totalObsidiana">
+                <th mat-header-cell *matHeaderCellDef> Total Obsidiana </th>
+                <td mat-cell *matCellDef="let element; let i = index" [ngClass]="{'greenBackGround': element.totalObsidiana < 0 && i == 10, 'redBackGround': element.totalObsidiana > 0 && i == 10}"> 
+                    <ng-container *ngIf="element.totalObsidiana !== 0; else defaultValue"> {{element.totalObsidiana}} </ng-container>
+                    <ng-template #defaultValue></ng-template>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsLegen; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumnsLegen;" [ngClass]="{'greenBackGround': ((row.cantidad == row.tengo) && (row.cantidad != 0))}"></tr>
+        </table>
+    </mat-tab>
+
+    <mat-tab label="Otros componentes">
+        <table mat-table [dataSource]="dataSourceOtros" class="mat-elevation-z8"> 
+            
+            <!-- nombre Column -->
+            <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+            </ng-container>
+
+            <!-- id Column -->
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> ID </th>
+                <td mat-cell *matCellDef="let element; let i = index">
+                    <ng-container *ngIf="(i != 6) && (i != 11) && (i != 15); else defaultValue"> {{element.id}} </ng-container>
+                    <ng-template #defaultValue></ng-template>
+                </td>
+                <td mat-footer-cell *matFooterCellDef></td>
+            </ng-container>
+
+            <!-- cantidad Column -->
+            <ng-container matColumnDef="cantidad">
+                <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+                <td mat-cell *matCellDef="let element; let i = index"> 
+                    <ng-container *ngIf="(i != 6) && (i != 11) && (i != 15) && (i != 16); else defaultValue"> {{element.cantidad}} </ng-container>
+                    <ng-template #defaultValue></ng-template>
+                </td>
+            </ng-container>
+
+            <!-- tengo Column -->
+            <ng-container matColumnDef="tengo">
+                <th mat-header-cell *matHeaderCellDef> Tengo </th>
+                <td mat-cell *matCellDef="let element; let i = index"> 
+                    <ng-container *ngIf="(i != 6) && (i != 11) && (i != 15); else defaultValue"> {{element.tengo}} </ng-container>
+                    <ng-template #defaultValue></ng-template>
+                </td>
+            </ng-container>
+
+            <!-- gaste Column -->
+            <ng-container matColumnDef="gaste">
+                <th mat-header-cell *matHeaderCellDef> Gasté </th>
+                <td mat-cell *matCellDef="let element; let i = index"> 
+                    <ng-container *ngIf="(i != 6) && (i != 11) && (i != 15) && (i != 16); else defaultValue"> {{element.gaste}} </ng-container>
+                    <ng-template #defaultValue></ng-template>
+                </td>
+            </ng-container>
+
+            <!-- necesito Column -->
+            <ng-container matColumnDef="necesito">
+                <th mat-header-cell *matHeaderCellDef> Necesito </th>
+                <td mat-cell *matCellDef="let element; let i = index" [ngClass]="{'greenBackGround': element.necesito < 0, 'redBackGround': element.necesito > 0}">
+                    <ng-container *ngIf="(i != 6) && (i != 11) && (i != 15) && (i != 16); else defaultValue"> {{element.necesito}} </ng-container>
+                    <ng-template #defaultValue></ng-template>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsOtros; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumnsOtros;"></tr>
+        </table>
+    </mat-tab>
+
+    <mat-tab label="Precios T6">
+        <table mat-table [dataSource]="dataSourceT6" class="mat-elevation-z8"> 
+            
+            <!-- nombre Column -->
+            <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+                <td mat-footer-cell *matFooterCellDef>Total</td>
+            </ng-container>
+
+            <!-- id Column -->
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> ID </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                <td mat-footer-cell *matFooterCellDef></td>
+            </ng-container>
+
+            <!-- cantidad Column -->
+            <ng-container matColumnDef="cantidad">
+                <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+                <td mat-cell *matCellDef="let element"> {{element.cantidad}} </td>
+                <td mat-footer-cell *matFooterCellDef></td>
+            </ng-container>
+
+            <!-- tengo Column -->
+            <ng-container matColumnDef="tengo">
+                <th mat-header-cell *matHeaderCellDef> Tengo </th>
+                <td mat-cell *matCellDef="let element"> {{element.tengo}} </td>
+                <td mat-footer-cell *matFooterCellDef></td>
+            </ng-container>
+
+            <!-- necesito Column -->
+            <ng-container matColumnDef="necesito">
+                <th mat-header-cell *matHeaderCellDef> Necesito </th>
+                <td mat-cell *matCellDef="let element" [ngClass]="{'redBackGround': element.necesito > 0}"> {{element.necesito}} </td>
+                <td mat-footer-cell *matFooterCellDef></td>
+            </ng-container>
+
+            <!-- precioTpCompraS Column -->
+            <ng-container matColumnDef="precioTpCompraS">
+                <th mat-header-cell *matHeaderCellDef> Precio TP Compra </th>
+                <td mat-cell *matCellDef="let element"> {{element.precioTpCompraS}} </td>
+                <td mat-footer-cell *matFooterCellDef></td>
+            </ng-container>
+
+            <!-- precioTpVentaS Column -->
+            <ng-container matColumnDef="precioTpVentaS">
+                <th mat-header-cell *matHeaderCellDef> Precio TP Venta </th>
+                <td mat-cell *matCellDef="let element"> {{element.precioTpVentaS}} </td>
+                <td mat-footer-cell *matFooterCellDef></td>
+            </ng-container>
+
+            <!-- precioStackCompraS Column -->
+            <ng-container matColumnDef="precioStackCompraS">
+                <th mat-header-cell *matHeaderCellDef> Precio Stack Compra </th>
+                <td mat-cell *matCellDef="let element"> {{element.precioStackCompraS}} </td>
+                <td mat-footer-cell *matFooterCellDef> {{getTotalPrecioStackCompraS()}} </td>
+            </ng-container>
+
+            <!-- precioStackVentaS Column -->
+            <ng-container matColumnDef="precioStackVentaS">
+                <th mat-header-cell *matHeaderCellDef> Precio Stack Venta </th>
+                <td mat-cell *matCellDef="let element"> {{element.precioStackVentaS}} </td>
+                <td mat-footer-cell *matFooterCellDef> {{getTotalPrecioStackVentaS()}} </td>
+            </ng-container>
+
+            <!-- precioStackVentaS90 Column -->
+            <ng-container matColumnDef="precioStackVentaS90">
+                <th mat-header-cell *matHeaderCellDef> Precio Stack Venta 90% </th>
+                <td mat-cell *matCellDef="let element"> {{element.precioStackVentaS90}} </td>
+                <td mat-footer-cell *matFooterCellDef> {{getTotalPrecioStackVentaS90()}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsT6; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumnsT6;"></tr>
+            <tr mat-footer-row *matFooterRowDef="displayedColumnsT6"></tr>
+        </table>
+        <a href="https://wiki.guildwars2.com/wiki/Map_bonus_reward#Central_Tyria_reward_track_rotation" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+            <button  mat-button class="boton">Map bonus reward</button>
+        </a>
+    </mat-tab>
+</mat-tab-group>

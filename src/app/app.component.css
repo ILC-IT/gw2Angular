@@ -1,0 +1,18 @@
+/* https://stackoverflow.com/questions/47145113/angular-material-2-how-to-lock-mat-toolbar-and-mat-tabs-to-the-top */
+
+.app-body {
+    overflow: auto;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 150px;
+}
+
+.app-container {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    right: 20px;
+    bottom: 0;
+}

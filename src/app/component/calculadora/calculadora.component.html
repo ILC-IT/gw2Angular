@@ -1,0 +1,103 @@
+<a href="https://www.gw2tp.com/calculator" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+    <button mat-button>GW2TP Calculator</button>
+</a>
+
+<div class="example-container">
+    <form [formGroup]="formularioCalc" (ngSubmit)="sendForm()">
+        <div class="datos" style="font-size: 18px">
+            <p>Calcular porcentaje:</p>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Cantidad</mat-label>
+                <input type="number"
+                placeholder="Cantidad"
+                formControlName="cantidad" matInput>
+            </mat-form-field>
+
+            <div class="box">
+                <img mat-card-image src="../../../assets/img/oro.png">
+            </div>
+            <mat-form-field appearance="fill">
+                <mat-label>Oro</mat-label>
+                <input type="number"
+                placeholder="Oro"
+                formControlName="oro" matInput>
+            </mat-form-field>
+
+            <div class="box">
+                <img mat-card-image src="../../../assets/img/plata.png">
+            </div>
+            <mat-form-field appearance="fill">
+                <mat-label>Plata</mat-label>
+                <input type="number"
+                placeholder="Plata"
+                formControlName="plata" matInput>
+            </mat-form-field>
+
+            <div class="box">
+                <img mat-card-image src="../../../assets/img/cobre.png">
+            </div>
+            <mat-form-field appearance="fill">
+                <mat-label>Cobre</mat-label>
+                <input type="number"
+                placeholder="Cobre"
+                formControlName="cobre" matInput>
+            </mat-form-field>
+
+            <div class="box">
+                Porcentaje
+            </div>
+            <mat-form-field appearance="fill">
+                <mat-label>%</mat-label>
+                <input type="number"
+                placeholder="Porcentaje"
+                formControlName="porcentaje" matInput>
+            </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary" type="submit">Calcular</button>
+        <button mat-raised-button color="secondary" (click)="resetForm()" type="button">Reset</button>
+    </form>
+
+    <div class="resultado" *ngIf="loading" style="font-size: 18px">
+        <div>
+            <div class="res">
+                ({{formularioCalc.value.porcentaje}}%)
+                <p></p>
+                <mat-card-title-group>
+                    <img mat-card-sm-image src="../../../assets/img/oro.png">
+                    <mat-card-title> {{resultado.resOro}} </mat-card-title>
+                </mat-card-title-group>
+                <p></p>
+                <mat-card-title-group>
+                    <img mat-card-sm-image src="../../../assets/img/plata.png">
+                    <mat-card-title>{{resultado.resPlata}}</mat-card-title>
+                </mat-card-title-group>
+                <p></p>
+                <mat-card-title-group>
+                    <img mat-card-sm-image src="../../../assets/img/cobre.png">
+                    <mat-card-title>{{resultado.resCobre}}</mat-card-title>
+                </mat-card-title-group>
+            </div>
+        </div>
+        <div>
+            <div class="res">
+                Resultado:
+                <p></p>
+                <mat-card-title-group>
+                    <img mat-card-sm-image src="../../../assets/img/oro.png">
+                    <mat-card-title>{{resultado.difOro}}</mat-card-title>
+                </mat-card-title-group>
+                <p></p>
+                <mat-card-title-group>
+                    <img mat-card-sm-image src="../../../assets/img/plata.png">
+                    <mat-card-title>{{resultado.difPlata}}</mat-card-title>
+                </mat-card-title-group>
+                <p></p>
+                <mat-card-title-group>
+                    <img mat-card-sm-image src="../../../assets/img/cobre.png">
+                    <mat-card-title>{{resultado.difCobre}}</mat-card-title>
+                </mat-card-title-group>
+            </div>
+        </div>
+    </div>
+</div>

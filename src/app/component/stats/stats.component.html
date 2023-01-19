@@ -1,0 +1,318 @@
+<h2>Buscador de stats(atributos) de armas/armaduras (esp/eng)</h2>
+<mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4" backgroundColor="primary" color="primary">
+
+    <mat-tab label="Buscar por stats (atributos)">
+        <!-- <form class="statForm">
+            <mat-form-field class="statForm-full-width" appearance="fill">
+                <mat-label>Stat 1º</mat-label>
+                <input type="text"
+                    placeholder=""
+                    aria-label="stat1"
+                    matInput
+                    [formControl]="stat1"
+                    [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete"
+                (optionSelected)="OnStat1Selected($event.option)">
+                    <mat-option *ngFor="let option of options" [value]="option">
+                    {{option}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </form> -->
+        <div class="body">
+            <a href="https://wiki.guildwars2.com/wiki/Attribute_combinations" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+                <button mat-button>WIKI</button>
+            </a>
+            <button mat-raised-button #tooltip="matTooltip"
+                matTooltip="Si 3 stats: seleccionar 2ª atrib mayor -"
+                matTooltipHideDelay="3000"
+                aria-label="Button that displays a tooltip for 'matTooltipHideDelay' seconds">
+                Info
+            </button>
+            <form [formGroup]="formularioStats" (ngSubmit)="sendFormStat()"> 
+                <div class="aaa">
+
+                    <mat-chip-list aria-label="Lengua">
+                        <mat-chip color="primary" selected>ESPAÑOL</mat-chip>
+                    </mat-chip-list>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>1º Atributo Mayor</mat-label>
+                        <mat-select formControlName="stat1Mayor">
+                            <mat-option *ngFor="let stat of atributos" [value]="stat">
+                                {{ stat }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>2º Atributo Mayor</mat-label>
+                        <mat-select formControlName="stat2Mayor">
+                            <mat-option *ngFor="let stat of atributos2" [value]="stat">
+                                {{ stat }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>1º Atributo Menor</mat-label>
+                        <mat-select formControlName="stat1Menor">
+                            <mat-option *ngFor="let stat of atributos" [value]="stat">
+                                {{ stat }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>2º Atributo Menor</mat-label>
+                        <mat-select formControlName="stat2Menor">
+                            <mat-option *ngFor="let stat of atributos" [value]="stat">
+                                {{ stat }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="botones">
+                    <button mat-raised-button color="primary" type="submit">Buscar</button>
+                    <button mat-raised-button color="secondary" (click)="resetFormS()" type="button">Reset</button>
+                </div>
+            </form>
+            <div class="resultado" *ngIf="loadingS">
+                <div class="res1">
+                    <!-- <mat-card>Nombre</mat-card> -->
+                    <mat-card>{{resultado.nombreStat}} ({{resultado.nombreStatEng}})</mat-card>
+                </div>
+                <div class="res1">
+                    <!-- <mat-card>Armadura</mat-card> -->
+                    <mat-card>{{resultado.armadura}}</mat-card>
+                </div>
+                <div class="res1">
+                    <!-- <mat-card>Versión Juego</mat-card> -->
+                    <mat-card>{{resultado.juego}}</mat-card>
+                </div>
+            </div>
+            <form [formGroup]="formularioStatsEng" (ngSubmit)="sendFormStatEng()"> 
+                <div class="aaa">
+
+                    <mat-chip-list aria-label="Lengua">
+                        <mat-chip color="primary" selected>ENGLISH</mat-chip>
+                    </mat-chip-list>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>1º Mayor Stat</mat-label>
+                        <mat-select formControlName="stat1Mayor">
+                            <mat-option *ngFor="let stat of atributosEng" [value]="stat">
+                                {{ stat }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>2º Mayor Stat</mat-label>
+                        <mat-select formControlName="stat2Mayor">
+                            <mat-option *ngFor="let stat of atributos2Eng" [value]="stat">
+                                {{ stat }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>1º Minor Stat</mat-label>
+                        <mat-select formControlName="stat1Menor">
+                            <mat-option *ngFor="let stat of atributosEng" [value]="stat">
+                                {{ stat }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>2º Minor Stat</mat-label>
+                        <mat-select formControlName="stat2Menor">
+                            <mat-option *ngFor="let stat of atributosEng" [value]="stat">
+                                {{ stat }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="botones">
+                    <button mat-raised-button color="primary" type="submit">Search</button>
+                    <button mat-raised-button color="secondary" (click)="resetFormSEng()" type="button">Reset</button>
+                </div>
+            </form>
+            <div class="resultado" *ngIf="loadingSEng">
+                <div class="res1">
+                    <mat-card>{{resultadoEng.nombreStat}} ({{resultadoEng.nombreStatEsp}})</mat-card>
+                </div>
+                <div class="res1">
+                    <mat-card>{{resultadoEng.armadura}}</mat-card>
+                </div>
+                <div class="res1">
+                    <mat-card>{{resultadoEng.juego}}</mat-card>
+                </div>
+            </div>
+        </div>
+
+    </mat-tab>
+
+    <mat-tab label="Buscar por prefijo">
+
+        <div class="body">
+            <a href="https://wiki.guildwars2.com/wiki/Attribute_combinations" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+                <button mat-button>WIKI</button>
+            </a>
+            <form [formGroup]="formularioPrefijo" (ngSubmit)="sendFormPrefijo()"> 
+                <div class="aaa">
+
+                    <mat-chip-list aria-label="Lengua">
+                        <mat-chip color="primary" selected>ESPAÑOL</mat-chip>
+                    </mat-chip-list>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Prefijo</mat-label>
+                        <mat-select formControlName="prefijo">
+                            <mat-option *ngFor="let prefijo of prefijos" [value]="prefijo">
+                                {{ prefijo }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="botones">
+                    <button mat-raised-button color="primary" type="submit">Buscar</button>
+                    <button mat-raised-button color="secondary" (click)="resetFormP()" type="button">Reset</button>
+                </div>
+            </form>
+            <div class="resultado" *ngIf="loadingP">
+                <div class="res1">
+                    <mat-card>{{resultadoPrefijo.nombreStatEng}}</mat-card>
+                </div>
+                <div class="res1">
+                    <mat-card *ngFor="let stat of resultadoPrefijo.stats">
+                        {{stat}}
+                    </mat-card>
+                </div>
+                <div class="res1">
+                    <mat-card>{{resultadoPrefijo.armadura}}</mat-card>
+                </div>
+                <div class="res1">
+                    <mat-card>{{resultadoPrefijo.juego}}</mat-card>
+                </div>
+            </div>
+            <form [formGroup]="formularioPrefijoEng" (ngSubmit)="sendFormPrefijoEng()"> 
+                <div class="aaa">
+
+                    <mat-chip-list aria-label="Lengua">
+                        <mat-chip color="primary" selected>ENGLISH</mat-chip>
+                    </mat-chip-list>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Prefix</mat-label>
+                        <mat-select formControlName="prefijo">
+                            <mat-option *ngFor="let prefijo of prefijosEng" [value]="prefijo">
+                                {{ prefijo }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="botones">
+                    <button mat-raised-button color="primary" type="submit">Search</button>
+                    <button mat-raised-button color="secondary" (click)="resetFormPEng()" type="button">Reset</button>
+                </div>
+            </form>
+            <div class="resultado" *ngIf="loadingPEng">
+                <div class="res1">
+                    <mat-card>{{resultadoPrefijoEng.nombreStatEsp}}</mat-card>
+                </div>
+                <div class="res1">
+                    <mat-card *ngFor="let stat of resultadoPrefijoEng.stats">
+                        {{stat}}
+                    </mat-card>
+                </div>
+                <div class="res1">
+                    <mat-card>{{resultadoPrefijoEng.armadura}}</mat-card>
+                </div>
+                <div class="res1">
+                    <mat-card>{{resultadoPrefijoEng.juego}}</mat-card>
+                </div>
+            </div>
+        </div>
+
+    </mat-tab>
+
+    <mat-tab label="Buscar por nombre arma/armadura">
+
+        <div class="body">
+            <a href="https://wiki.guildwars2.com/wiki/Attribute_combinations" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+                <button mat-button>WIKI</button>
+            </a>
+            <form [formGroup]="formularioArmadura" (ngSubmit)="sendFormArmadura()"> 
+                <div class="aaa">
+
+                    <mat-chip-list aria-label="Lengua">
+                        <mat-chip color="primary" selected>ESPAÑOL</mat-chip>
+                    </mat-chip-list>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Arma / Armadura</mat-label>
+                        <mat-select formControlName="armadura">
+                            <mat-option *ngFor="let armadura of armaduras" [value]="armadura">
+                                {{ armadura }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="botones">
+                    <button mat-raised-button color="primary" type="submit">Buscar</button>
+                    <button mat-raised-button color="secondary" (click)="resetFormA()" type="button">Reset</button>
+                </div>
+            </form>
+            <div class="resultado" *ngIf="loadingA">
+                <div class="res1">
+                    <mat-card>{{resultadoArmadura.nombreStat}} ({{resultadoArmadura.nombreStatEng}})</mat-card>
+                </div>
+                <div class="res1">
+                    <mat-card *ngFor="let stat of resultadoArmadura.stats">
+                        {{stat}}
+                    </mat-card>
+                </div>
+                <div class="res1">
+                    <mat-card>{{resultadoArmadura.juego}}</mat-card>
+                </div>
+            </div>
+            <form [formGroup]="formularioArmaduraEng" (ngSubmit)="sendFormArmaduraEng()"> 
+                <div class="aaa">
+
+                    <mat-chip-list aria-label="Lengua">
+                        <mat-chip color="primary" selected>ENGLISH</mat-chip>
+                    </mat-chip-list>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Weapon / Armor</mat-label>
+                        <mat-select formControlName="armadura">
+                            <mat-option *ngFor="let armadura of armadurasEng" [value]="armadura">
+                                {{ armadura }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="botones">
+                    <button mat-raised-button color="primary" type="submit">Search</button>
+                    <button mat-raised-button color="secondary" (click)="resetFormAEng()" type="button">Reset</button>
+                </div>
+            </form>
+            <div class="resultado" *ngIf="loadingAEng">
+                <div class="res1">
+                    <mat-card>{{resultadoArmaduraEng.nombreStat}} ({{resultadoArmaduraEng.nombreStatEsp}})</mat-card>
+                </div>
+                <div class="res1">
+                    <mat-card *ngFor="let stat of resultadoArmaduraEng.stats">
+                        {{stat}}
+                    </mat-card>
+                </div>
+                <div class="res1">
+                    <mat-card>{{resultadoArmaduraEng.juego}}</mat-card>
+                </div>
+            </div>
+        </div>
+    </mat-tab>
+    
+</mat-tab-group>

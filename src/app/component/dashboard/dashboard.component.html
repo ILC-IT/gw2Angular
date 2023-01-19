@@ -1,0 +1,32 @@
+<div class="titulo">
+    <h1>{{title}}</h1>
+</div>
+
+<mat-toolbar-row>
+    <div>
+        <nav>
+            <a routerLink="/">Menú</a>
+            <a routerLink="/diaria">Diarias</a>
+            <a routerLink="/heroes">Heroes</a>
+            <a routerLink="/calculadora">Calculadora</a>
+            <a routerLink="/stats">Buscador Stats</a>
+            <a routerLink="/enlaces">Enlaces</a>
+            <a routerLink="/raid">Raid</a>
+            <a routerLink="/legendary">Legendarios</a>
+        </nav>
+    </div>
+    <div class="search" color="primary">
+        <mat-form-field class="example-form-field">
+            <input matInput type="text" placeholder="Buscar en Wiki" [(ngModel)]="value">
+            <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Borrar" (click)="value=''">
+            <mat-icon>x</mat-icon>
+            </button>
+        </mat-form-field>
+        <a href="https://wiki-en.guildwars2.com/index.php?title=Special%3ASearch&search={{value}}&go=Go" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+            <button mat-raised-button color="primary">EN</button>
+        </a>
+        <a href="https://wiki-es.guildwars2.com/index.php?title=Special%3ASearch&search={{value}}&go=Go" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+            <button mat-raised-button color="primary">ES</button>
+        </a>
+    </div>
+</mat-toolbar-row>
