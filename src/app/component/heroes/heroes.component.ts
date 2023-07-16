@@ -12,7 +12,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class HeroesComponent implements OnInit {
 
   heroes: any = [];
-  displayedColumns: string[] = ['name', 'race', 'profession', 'crafting', 'diasCumple'];
+  displayedColumns: string[] = ['name', 'race', 'profession', 'espec', 'crafting', 'diasCumple'];
   dataSource!: MatTableDataSource<any>;
   loading = true;
 
@@ -28,21 +28,13 @@ export class HeroesComponent implements OnInit {
   getHeroes(){
     this.heroService.getHeroes().subscribe((heroes: any) => {
       this.heroes = heroes;
-      // console.log(this.heroes);
-      //this.addSpec(this.heroes);
+      this.addSpec(this.heroes);
       this.addBirthday(this.heroes);
       this.dataSource = new MatTableDataSource(this.heroes);
       this.dataSource.sort = this.sort;
       this.loading = false;
-      console.log(this.heroes);
     })
   }
-
-  // getSpecHeroes(){
-  //   for (let i = 0; i < this.heroes.length; i++){
-
-  //   }
-  // }
 
   addBirthday(tabla: any){
     //añado campo 'dias hasta cumpleaños' a los datos
@@ -91,7 +83,26 @@ export class HeroesComponent implements OnInit {
 
   addSpec(tabla: any){
     //añado columna de especializacion a cada heroe
-
+    for (let i = 0; i < tabla.length; i++){
+      tabla[i].espec = [];
+      //Busco ids y name de las especializaciones de cada profesion
+      this.heroService.getProfession(tabla[i].profession).subscribe((profesion: any) => {
+        //Busco los datos de cada personaje
+        this.heroService.getInfoHero(tabla[i].name).subscribe((infoHero: any) => {
+          for (let j = 0; j < profesion.length; j++){
+            for (let k = 0; k < infoHero.training.length; k++){
+              //comparo y si existe y done  = true escribo la espec
+              if ((profesion[j].id === infoHero.training[k].id) && (infoHero.training[k].done)){
+                // console.log("name: " + infoHero.name + " espec: " + profesion[j].name);
+                tabla[i].espec.push(profesion[j].name)
+                break;
+              }
+            }
+          }
+        })
+      })
+    }
+    return this.heroes = tabla;
   }
 
   viewHero(hero: any) {

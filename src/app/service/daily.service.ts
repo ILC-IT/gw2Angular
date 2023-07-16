@@ -38,7 +38,7 @@ export class DailyService {
     "Cataratas: [&BEwCAAA=]"  //Timberline Falls
   ];
 
-  llaveSemanal = "RECORDATORIO";
+  recordatorio = "Llave semanal \n Vetustas + Treboles \n Cofre Strikes";
 
   iron = [3, 4, 9, 10, 15, 16, 21, 22];
   ironInvierno = [2, 3, 8, 9, 14, 15, 20, 21];
@@ -94,7 +94,7 @@ export class DailyService {
     return this.httpClient.get(url);
   }
 
-  getPactSupply(){
+  getPactSupply(){ //el dia empieza a las 10am utc+2
     let d = new Date();
     let n = d.getDay(); //Sunday is 0, Monday is 1, and so on.
     return this.plactSupply[n];
@@ -106,13 +106,13 @@ export class DailyService {
     return this.dailyActivity[n];
   }
 
-  getLlaveSemanal(){
+  getRecordatorio(){
     let d = new Date();
     let n = d.getDay();
     if (n === 1){ //Si es lunes
       return {
         ok: true,
-        message: this.llaveSemanal
+        message: this.recordatorio
       };
     }
     else{
@@ -250,6 +250,12 @@ export class DailyService {
     }else{
       return true; //Estamos en horario de invierno
     }
+  }
+
+  getInestabilidadCm(){
+    // devuelve json con "instabilities" diarias de un año de fractal 76 a 100 y "instability_names" con los nombres
+    const url = "https://raw.githubusercontent.com/Invisi/gw2-fotm-instabilities/master/data-for-humans.json";
+    return this.httpClient.get(url);
   }
 
 }

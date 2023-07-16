@@ -33,7 +33,8 @@ export class HeroService {
   }
 
   getInfoHero(nombre: string){
-    const url = `${this.apiUrl}characters/${nombre}?access_token=${this.apiKey}`;
+    let nombreSinEspacios = nombre.replace(/ /g, '%20'); //reemplaza los espacios por %20
+    const url = `${this.apiUrl}characters/${nombreSinEspacios}?access_token=${this.apiKey}`;
     return this.httpClient.get(url);
   }
 
@@ -62,17 +63,11 @@ export class HeroService {
     return this.httpClient.get(url);
   }
 
-  getCommercePrices(ids: string){
-    const url = `${this.apiUrl}commerce/prices?ids=${ids}`;
-    return this.httpClient.get(url);
-  }
-
   getProfession(profession: string){
-    const url = `${this.apiUrl}professions/{$profession}`;
-    return this.httpClient.get(url).pipe(map( (res: any) => {
-      return res.training;
+    const url = `${this.apiUrl}professions/${profession}`;
+    return this.httpClient.get(url).pipe(map((res: any) => {
+      return res.training.filter((eliteEspec: any) => eliteEspec.category === "EliteSpecializations");
     }));
-
   }
 
     /**

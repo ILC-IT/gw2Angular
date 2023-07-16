@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HeroService } from 'src/app/service/hero.service';
+import { LegendaryService } from 'src/app/service/legendary.service';
 import { legendarios, armaduraLigera, armaduraMedia, armaduraPesada, runa, sello, anilloRaid, t6, idsT6, vales, cantidadArmadura, cantidadRunas, cantidadSellos, valeId, trebolId, liId, ectoplasmaId, liArmadura, trebolArmadura, trebolRuna, trebolSello, trebolAnilloRaid, t6ArmaduraSelloRuna, ectoplasmaRuna, ectoplasmaSello, liAnilloRaid, t6AnilloRaid, obsidianaArmadura, obsidianaRuna, obsidianaSello, obsidianaId, otrosComponentes, lingoteAurico, placaReclamada, huevoChak, piezaAeronave, trozoAurilio, cristalLineaLey, montonCristalLuminoso, aspectoMistico, talismanBrillantez, talismanPotencia, talismanHabilidad, motaMistica, simboloControl, simboloMejora, simboloDolor, monedaMistica} from './legendary';
 
 @Component({
@@ -472,12 +473,15 @@ export class LegendaryComponent implements OnInit {
   displayedColumnsOtros: string[] = ['nombre', 'id', 'cantidad', 'tengo', 'gaste', 'necesito'];
   dataSourceOtros = this.otros;
 
-  constructor(private heroService: HeroService) { }
+  mapBonusRewardweekNumber = 1;
+
+  constructor(private heroService: HeroService, private legendaryService: LegendaryService) { }
 
   ngOnInit(): void {
     this.getT6Tengo(); //cuantos t6 tengo de cada tipo y otros tengo
     this.getLegendaryTengo(); //cuantas piezas de armadura, anillo, sellos, runas tengo
     this.getT6Prices(); //el precio del bazar de cada t6
+    this.mapBonusRewardweekNumber = this.getMapBonusRewardWeekNumber(); //numero de semana de map bonus reward entre 1-8
   }
 
   getT6Tengo(){
@@ -654,7 +658,7 @@ export class LegendaryComponent implements OnInit {
 
   getMatsGaste(){
     let valesGastados = vales * (this.armaduraLigeraCount + this.armaduraMediaCount + this.armaduraPesadaCount + this.selloCount + this.runaCount);
-    let trebolesGastados = trebolArmadura * (this.armaduraLigeraCount + this.armaduraMediaCount + this.armaduraPesadaCount) + trebolAnilloRaid * this.anilloRaidCount + trebolRuna * this.runaCount + trebolArmadura * this.selloCount;
+    let trebolesGastados = trebolArmadura * (this.armaduraLigeraCount + this.armaduraMediaCount + this.armaduraPesadaCount) + trebolAnilloRaid * this.anilloRaidCount + trebolRuna * this.runaCount + trebolSello * this.selloCount;
     let liGastados = liArmadura * (this.armaduraLigeraCount + this.armaduraMediaCount + this.armaduraPesadaCount) + liAnilloRaid * this.anilloRaidCount;
     let t6Gastados = t6ArmaduraSelloRuna * (this.armaduraLigeraCount + this.armaduraMediaCount + this.armaduraPesadaCount + this.selloCount + this.runaCount) + t6AnilloRaid * this.anilloRaidCount;
     let ectoplasmaGastados = ectoplasmaRuna * this.runaCount + ectoplasmaSello * this.selloCount;
@@ -719,12 +723,12 @@ export class LegendaryComponent implements OnInit {
     this.talismanHabilidad.necesito = this.talismanHabilidad.cantidad - this.talismanHabilidad.tengo - this.talismanHabilidad.gaste - this.aspectoMistico.tengo * talismanHabilidad[0] .cantidad;
     //this.motaMistica.necesito = this.motaMistica.cantidad - this.motaMistica.tengo - this.motaMistica.gaste;
     this.simboloControl.necesito = this.simboloControl.cantidad - this.simboloControl.tengo - this.simboloControl.gaste - this.motaMistica.tengo * simboloControl[0] .cantidad;
-    this.simboloMejora.necesito = this.simboloMejora.cantidad - this.simboloMejora.tengo - this.motaMistica.tengo * simboloMejora[0] .cantidad;
-    this.simboloDolor.necesito = this.simboloDolor.cantidad - this.simboloDolor.tengo - this.motaMistica.tengo * simboloDolor[0] .cantidad;
+    this.simboloMejora.necesito = this.simboloMejora.cantidad - this.simboloMejora.tengo - this.simboloMejora.gaste - this.motaMistica.tengo * simboloMejora[0] .cantidad;
+    this.simboloDolor.necesito = this.simboloDolor.cantidad - this.simboloDolor.tengo - this.simboloDolor.gaste - this.motaMistica.tengo * simboloDolor[0] .cantidad;
   }
 
   getT6Prices(){
-    this.heroService.getCommercePrices(idsT6).subscribe((prices: any) => {
+    this.legendaryService.getCommercePrices(idsT6).subscribe((prices: any) => {
       for(let i = 0; i < prices.length; i++){
         if (prices[i].id == 24295){
           this.vialDeSangrePoderosa.precioTpCompra = prices[i].buys.unit_price;
@@ -930,6 +934,10 @@ export class LegendaryComponent implements OnInit {
 
   getTotalTotalEctoplasma(){
     return this.dataSourceLegen.reduce((acc, value) => acc + value.totalEctoplasma, 0);
+  }
+
+  getMapBonusRewardWeekNumber(){
+    return this.legendaryService.getMapBonusRewardWeekNumber();
   }
 
 }

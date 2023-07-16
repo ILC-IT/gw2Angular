@@ -114,6 +114,74 @@
     </mat-accordion>
 
     <mat-accordion>
+      <mat-expansion-panel  (opened)="panelOpenStateCm = true"
+                            (closed)="panelOpenStateCm = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Lista de fractales CM
+          </mat-panel-title>
+          <mat-panel-description>
+            {{panelOpenState ? 'Contraer' : 'Desplegar'}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+          <table mat-table #sort4="matSort" [dataSource]="dataSourceCm" matSort matSortActive="level" matSortDirection="desc" class="mat-elevation-z8">            
+            <!-- level Column -->
+            <ng-container matColumnDef="level">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Level </th>
+              <td mat-cell *matCellDef="let element"> {{element.level}} </td>
+            </ng-container>
+
+            <!-- tier Column -->
+            <ng-container matColumnDef="tier">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Tier </th>
+              <td mat-cell *matCellDef="let element"> {{element.tier}} </td>
+            </ng-container>
+          
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+          
+            <!-- NameEs Column -->
+            <ng-container matColumnDef="nameEs">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre ES </th>
+              <td mat-cell *matCellDef="let element"> {{element.nameEs}} </td>
+            </ng-container>
+          
+            <!-- ar Column -->
+            <ng-container matColumnDef="ar">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> AR </th>
+              <td mat-cell *matCellDef="let element"> {{element.ar}} </td>
+            </ng-container>
+
+            <!-- inestabilidad1 Column -->
+            <ng-container matColumnDef="inestab1">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Inestab_1  </th>
+              <td mat-cell *matCellDef="let element" [ngClass]="{'red': element.inestab1 == 'Recompensa bien merecida'}"> {{element.inestab1}} </td>
+            </ng-container>
+
+            <!-- inestabilidad2 Column -->
+            <ng-container matColumnDef="inestab2">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Inestab_2  </th>
+              <td mat-cell *matCellDef="let element" [ngClass]="{'red': element.inestab2 == 'Recompensa bien merecida'}"> {{element.inestab2}} </td>
+            </ng-container>
+
+            <!-- inestabilidad3 Column -->
+            <ng-container matColumnDef="inestab3">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Inestab_3  </th>
+              <td mat-cell *matCellDef="let element" [ngClass]="{'red': element.inestab3 == 'Recompensa bien merecida'}"> {{element.inestab3}} </td>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsCm; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumnsCm;"></tr>
+
+          </table>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion>
       <mat-expansion-panel  (opened)="panelOpenStateR = true"
                             (closed)="panelOpenStateR = false">
         <mat-expansion-panel-header>
@@ -286,6 +354,7 @@
                   [(ngModel)]="pactSupply[0]">
         </textarea>
         <button mat-raised-button color="accent" [cdkCopyToClipboard]="pactSupply[0]">Copiar</button>
+        <p>*Updates every day at 10.00 UTC+2</p>
       </a>
       <a>
         <h3>Token Supply</h3>
@@ -360,9 +429,10 @@
         <p> {{dailyActivity}} </p>
         <button mat-raised-button color="accent" [cdkCopyToClipboard]="dailyActivity">Copiar</button>
       </a>
-      <a *ngIf="llaveSemanal.ok">
-        <h3>Llave Semanal</h3>
-        <p> {{llaveSemanal.message}} </p>
+      <a *ngIf="recordatorio.ok">
+        <h3>RECORDATORIO</h3>
+        <!-- <p> {{recordatorio.message}} </p> -->
+        <div [innerText]='recordatorio.message'></div>
       </a>
     </div>
   </mat-tab>

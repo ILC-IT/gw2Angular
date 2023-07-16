@@ -23,6 +23,8 @@ import { HerodetailComponent } from './component/herodetail/herodetail.component
 import { MessageService } from './service/message.service';
 import { RaidService } from './service/raid.service';
 import { LegendaryComponent } from './component/legendary/legendary.component';
+import { NgxAwesomePopupModule, DialogConfigModule, ConfirmBoxConfigModule, ToastNotificationConfigModule } from '@costlydeveloper/ngx-awesome-popup';
+import { LegendaryService } from './service/legendary.service';
 
 @NgModule({
   declarations: [
@@ -47,11 +49,29 @@ import { LegendaryComponent } from './component/legendary/legendary.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    NgxAwesomePopupModule.forRoot({
+      colorList: {
+        success: '#3caea3', // optional
+        info: '#2f8ee5', // optional
+        warning: '#ffc107', // optional
+        danger: '#e46464', // optional
+        customOne: '#3ebb1a', // optional
+        customTwo: '#bd47fa', // optional (up to custom five)
+      },
+    }), // Essential, mandatory main module.
+    ToastNotificationConfigModule.forRoot({
+      globalSettings: {
+        allowedNotificationsAtOnce: 1
+      },
+    }), // Needed for instantiating toast notifications.
+    DialogConfigModule.forRoot(), // Needed for instantiating dynamic components.
+    ConfirmBoxConfigModule.forRoot(), // Needed for instantiating confirm boxes.
   ],
   providers: [
     DailyService,
     HeroService,
+    LegendaryService,
     MessageService,
     RaidService
   ],

@@ -129,6 +129,10 @@ table {
   background-color:rgb(195, 248, 195);
 }
 
+.red{
+  color:rgb(255, 0, 0);
+}
+
 button {
   height: 30px;
   font-size: 16px;

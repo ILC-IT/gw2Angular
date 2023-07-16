@@ -1,8 +1,10 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { DailyService } from "../../service/daily.service";
-import { Fractales } from "./fractales";
+import { Fractales, FractalesCm, InestabCm } from "./fractales";
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
+import { ToastNotificationInitializer, DialogLayoutDisplay, ToastUserViewTypeEnum, ToastProgressBarEnum, DisappearanceAnimation, 
+  AppearanceAnimation, ToastPositionEnum } from '@costlydeveloper/ngx-awesome-popup';
 
 @Component({
   selector: 'app-daily',
@@ -28,7 +30,7 @@ export class DailyComponent implements OnInit, AfterViewInit  {
   tokenProviders: string = "Arco.[&BAwEAAA=] Ciudadela.[&BKgDAAA=] VB.[&BN4HAAA=] AB.[&BNYHAAA=] TD.[&BMwHAAA=]";
   anomalia: string = '';
   dailyActivity: string = "";
-  llaveSemanal = {
+  recordatorio = {
     ok: false,
     message: ""
   };
@@ -67,8 +69,11 @@ export class DailyComponent implements OnInit, AfterViewInit  {
   panelOpenState = false;
   panelOpenStateR = false;
   panelOpenStateD = false;
+  panelOpenStateCm = false;
   //Para buscar los fractales segun la escala
   fractales = Fractales;
+  fractalesCm = FractalesCm;
+  inestabCm = InestabCm;
   fractRec: any = [];
   fractDaily1: any = [];
   fractDaily2: any = [];
@@ -77,9 +82,13 @@ export class DailyComponent implements OnInit, AfterViewInit  {
   fractDailys: any = [];
   merged: any = [];
   fractalesRecDailyString: string = "";
+  fractDailyInestabilidadCmEng: string[] = [];
+  fractDailyInestabilidadCmEsp: string[] = [];
   //tablas fractales
   displayedColumns: string[] = ['level', 'tier', 'ar', 'name', 'nameEs', 'idDaily', 'idRec'];
+  displayedColumnsCm: string[] = ['level', 'tier', 'ar', 'name', 'nameEs', 'inestab1', 'inestab2', 'inestab3'];
   dataSource = new MatTableDataSource(Fractales);
+  dataSourceCm = new MatTableDataSource(this.fractalesCm);
   dataSourceRec = new MatTableDataSource(this.fractRec);
   dataSourceDaily = new MatTableDataSource(this.merged);
   //Para filtrar en las tablas https://www.freakyjolly.com/angular-material-table-custom-filter-using-select-box/
@@ -89,6 +98,7 @@ export class DailyComponent implements OnInit, AfterViewInit  {
   @ViewChild(MatSort, { static: false }) sort!: MatSort;
   @ViewChild("sort2", { static: false }) sort2!: MatSort;
   @ViewChild("sort3", { static: false }) sort3!: MatSort;
+  @ViewChild("sort4", { static: false }) sort4!: MatSort;
 
   constructor(private dailyService: DailyService) { 
 
@@ -154,7 +164,7 @@ export class DailyComponent implements OnInit, AfterViewInit  {
         this.anomalia = this.getAnomaly();
       }, 1 * 60 * 1000)
     this.dailyActivity = this.getDailyActivity();
-    this.llaveSemanal = this.getLlaveSemanal();
+    this.recordatorio = this.getRecordatorio();
     console.log(this.dailyInfoF)
     this.dailyStrike = await this.getDailyStrikeId();
     this.getDailyStrike();
@@ -178,6 +188,7 @@ export class DailyComponent implements OnInit, AfterViewInit  {
     this.dataSource.sort = this.sort;
     this.dataSourceRec.sort = this.sort2;
     this.dataSourceDaily.sort = this.sort3;
+    this.dataSourceCm.sort = this.sort4;
   }
 
   // getDaily(){
@@ -249,10 +260,16 @@ export class DailyComponent implements OnInit, AfterViewInit  {
       //console.log(dailyInfo)
       if (tipo === "pve"){
         this.dailyInfoF.pve = dailyInfo;
+        for (let i = 0; i < dailyInfo.length; i++){
+          if(dailyInfo[i].id === 500){
+            this.toastNotificationMonedaMistica();
+          }
+        }
       }
       else if (tipo === "fractals"){
         this.dailyInfoF.fractals = dailyInfo;
         this.searchFractalIds();
+        this.getDailyInestabilidadCm();
       }
       else if (tipo === "wvw"){
         this.dailyInfoF.wvw = dailyInfo;
@@ -409,8 +426,8 @@ export class DailyComponent implements OnInit, AfterViewInit  {
     return this.dailyService.getDailyActivity();
   }
 
-  getLlaveSemanal(){
-    return this.dailyService.getLlaveSemanal();
+  getRecordatorio(){
+    return this.dailyService.getRecordatorio();
   }
 
   searchFractalIds(){
@@ -422,15 +439,15 @@ export class DailyComponent implements OnInit, AfterViewInit  {
         this.fractRec.push(obj);
       }
       else if(this.dailyInfoF.fractals[i].name.includes("rango 1")){
-        obj = this.fractales.find(o => o.idDaily === this.dailyInfoF.fractals[i].id);
+        obj = this.fractales.filter(o => o.idDaily === this.dailyInfoF.fractals[i].id);
         this.fractDaily1.push(obj);
       }
       else if(this.dailyInfoF.fractals[i].name.includes("rango 2")){
-        obj = this.fractales.find(o => o.idDaily === this.dailyInfoF.fractals[i].id);
+        obj = this.fractales.filter(o => o.idDaily === this.dailyInfoF.fractals[i].id);
         this.fractDaily2.push(obj);
       }
       else if(this.dailyInfoF.fractals[i].name.includes("rango 3")){
-        obj = this.fractales.find(o => o.idDaily === this.dailyInfoF.fractals[i].id);
+        obj = this.fractales.filter(o => o.idDaily === this.dailyInfoF.fractals[i].id);
         this.fractDaily3.push(obj);
       }
       else if(this.dailyInfoF.fractals[i].name.includes("rango 4")){
@@ -486,6 +503,87 @@ export class DailyComponent implements OnInit, AfterViewInit  {
     // console.log(this.fractDaily2)
     // console.log(this.fractDaily3)
     // console.log(this.fractDailys)
+  }
+
+  getDailyInestabilidadCm(){
+    // busco las inestabilidades diarias de los cms
+    this.dailyService.getInestabilidadCm().subscribe((inestabilidadCm: any) => {
+      let hoy = new Date();
+      let diaNum = this.diaNumeroAño(hoy);
+      // cojo info de 97 98 99 100
+      let pesadilla = inestabilidadCm["instabilities"]["97"][diaNum];
+      let observatorio = inestabilidadCm["instabilities"]["98"][diaNum];
+      let sunqua = inestabilidadCm["instabilities"]["99"][diaNum];
+      let oleaje = inestabilidadCm["instabilities"]["100"][diaNum];
+      let nombres = inestabilidadCm["instability_names"];
+      //devuelve array de 3 x numero_de_cms posiciones
+      this.fractDailyInestabilidadCmEng = this.buscarInestabilidadCmNombre(nombres, pesadilla, observatorio, sunqua, oleaje);
+      this.getFractalesCm();
+    })
+  }
+
+  getFractalesCm(){
+    // Traduccion inestabilidades
+    this.traduccionInestabCm(this.fractDailyInestabilidadCmEng);
+
+    // Actualizo la info de cms con las inestabilidades diarias traducidas
+    this.actualizofractalesCmInestabCmEsp();
+    // // Actualizo la info de cms con las inestabilidades diarias en ingles
+    // this.actualizofractalesCmInestabCmEng();
+
+    //SIN ESTAS DOS LINEAS NO FUNCIONA LA TABLA DE CMs
+    this.dataSourceCm = new MatTableDataSource(this.fractalesCm);
+    this.dataSourceCm.sort = this.sort4;
+  }
+
+  traduccionInestabCm(inestabCmEng: string[]){
+    // Busco la traduccion de las inestabilidades
+    let obj: any = {}
+    for (let i = 0; i < inestabCmEng.length; i++){
+      obj = this.inestabCm.find(o => o.nameEng === inestabCmEng[i]);
+      this.fractDailyInestabilidadCmEsp[i] = obj.nameEsp;
+    }
+  }
+
+  actualizofractalesCmInestabCmEsp(){
+    // Actualizo la info de cms con las inestabilidades diarias traducidas
+    let j = 0;
+    for(let i = 0; i < this.fractalesCm.length; i++){
+      this.fractalesCm[i].inestab1 = this.fractDailyInestabilidadCmEsp[j];
+      j++
+      this.fractalesCm[i].inestab2 = this.fractDailyInestabilidadCmEsp[j];
+      j++
+      this.fractalesCm[i].inestab3 = this.fractDailyInestabilidadCmEsp[j];
+      j++
+    }
+  }
+
+  actualizofractalesCmInestabCmEng(){
+    // Actualizo la info de cms con las inestabilidades diarias en ingles
+    let j = 0;
+    for(let i = 0; i < this.fractalesCm.length; i++){
+      this.fractalesCm[i].inestab1 = this.fractDailyInestabilidadCmEng[j];
+      j++
+      this.fractalesCm[i].inestab2 = this.fractDailyInestabilidadCmEng[j];
+      j++
+      this.fractalesCm[i].inestab3 = this.fractDailyInestabilidadCmEng[j];
+      j++
+    }
+  }
+
+  diaNumeroAño(date: Date){
+    // Devuelve el numero del dia (1 - 366) del año
+    const msDiff = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) - Date.UTC(date.getFullYear(), 0, 0);
+    const dayMilliseconds = 1000 * 60 * 60 * 24;
+    return msDiff / dayMilliseconds;
+  }
+
+  buscarInestabilidadCmNombre(nombres: string[], fractal97: number[], fractal98: number[], fractal99: number[], fractal100: number[]){
+    let fractalInest = [nombres[fractal97[0]], nombres[fractal97[1]], nombres[fractal97[2]],
+                        nombres[fractal98[0]], nombres[fractal98[1]], nombres[fractal98[2]], 
+                        nombres[fractal99[0]], nombres[fractal99[1]], nombres[fractal99[2]],
+                        nombres[fractal100[0]], nombres[fractal100[1]], nombres[fractal100[2]]];
+    return fractalInest;
   }
 
   applyFilter(event: Event) {
@@ -564,6 +662,33 @@ export class DailyComponent implements OnInit, AfterViewInit  {
       value.modelValue = undefined;
     })
     this.dataSource.filter = "";
+  }
+
+  // Toast notification (para enseñar mensaje de la moneda mistica diaria)
+  toastNotificationMonedaMistica() {
+    const newToastNotification = new ToastNotificationInitializer();
+
+    newToastNotification.setTitle('Diaria PvE');
+    newToastNotification.setMessage('MONEDA MÍSTICA');
+
+    // Choose layout color type
+    newToastNotification.setConfig({
+      // autoCloseDelay: 5000, // optional
+      textPosition: 'center', // optional
+      layoutType: DialogLayoutDisplay.WARNING, // SUCCESS | INFO | NONE | DANGER | WARNING
+      progressBar: ToastProgressBarEnum.INCREASE, // INCREASE | DECREASE | NONE
+      toastUserViewType: ToastUserViewTypeEnum.SIMPLE, // STANDARD | SIMPLE
+      animationIn: AppearanceAnimation.BOUNCE_IN, // BOUNCE_IN | SWING | ZOOM_IN | ZOOM_IN_ROTATE | ELASTIC | JELLO | FADE_IN | SLIDE_IN_UP | SLIDE_IN_DOWN | SLIDE_IN_LEFT | SLIDE_IN_RIGHT | NONE
+      animationOut: DisappearanceAnimation.BOUNCE_OUT, // BOUNCE_OUT | ZOOM_OUT | ZOOM_OUT_WIND | ZOOM_OUT_ROTATE | FLIP_OUT | SLIDE_OUT_UP | SLIDE_OUT_DOWN | SLIDE_OUT_LEFT | SLIDE_OUT_RIGHT | NONE
+      // TOP_LEFT | TOP_CENTER | TOP_RIGHT | TOP_FULL_WIDTH | BOTTOM_LEFT | BOTTOM_CENTER | BOTTOM_RIGHT | BOTTOM_FULL_WIDTH
+      toastPosition: ToastPositionEnum.TOP_RIGHT,
+      // buttonPosition: 'right', // optional 
+    });
+
+    newToastNotification.setButtonLabels('ok', '');
+
+    // Simply open the toast
+    newToastNotification.openToastNotification$();
   }
 
 }

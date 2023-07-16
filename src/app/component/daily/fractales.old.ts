@@ -34,8 +34,8 @@ const FractalesInfo = [
         idDaily: [2911, 2908, 2890, 2989]
     },
     {
-        level: "2, 36, 62, 79, 91",
-        ar: "0, 36, 83, 113, 134",
+        level: "2, 36, 44, 62, 79, 91",
+        ar: "0, 36, 50, 83, 113, 134",
         name: "Uncategorized",
         nameEs: "Sin Clasificar",
         idDaily: [2940, 2902, 2925, 2939],
@@ -44,12 +44,13 @@ const FractalesInfo = [
         idRec0: 2477
     },
     {
-        level: "3, 27, 51, 86, 93",
-        ar: "0, 20, 63, 125, 138",
+        level: "3, 27, 51, 68, 86, 93",
+        ar: "0, 20, 63, 93, 125, 138",
         name: "Snowblind",
         nameEs: "Ceguera de la Nieve",
         idDaily: [2916, 2949, 2918, 2952],
-        idRec1: 2239
+        idRec1: 2239,
+        idRec2: 3187
     },
     {
         level: "4, 31, 57, 66, 85",
@@ -62,8 +63,8 @@ const FractalesInfo = [
         idRec0: 2405
     },
     {
-        level: "5, 32, 56, 77, 89",
-        ar: "0, 29, 72, 109, 131",
+        level: "5, 17, 32, 56, 77, 89",
+        ar: "0, 0, 29, 72, 109, 131",
         name: "Swampland",
         nameEs: "Cenagal",
         idRec1: 2363,
@@ -71,13 +72,13 @@ const FractalesInfo = [
         idRec0: 2316
     },
     {
-        level: "6, 21, 46, 68, 94",
-        ar: "0, 10, 54, 93, 139",
+        level: "6, 21, 47, 69, 94",
+        ar: "0, 10, 56, 95, 139",
         name: "Cliffside",
         nameEs: "Despeñadero",
         idRec0: 2229,
         idDaily: [2977, 2958, 2926, 2930],
-        idRec2: 3187
+        idRec2: 3219
     },
     {
         level: "7, 26, 61, 76",
@@ -97,8 +98,8 @@ const FractalesInfo = [
         idRec0: 2422
     },
     {
-        level: "9, 17, 39, 58, 83",
-        ar: "0, 0, 42, 75, 120",
+        level: "9, 22, 39, 58, 83",
+        ar: "0, 11, 42, 75, 120",
         name: "Molten Furnace",
         nameEs: "Fragua Fundida",
         idRec2: 3192,
@@ -106,12 +107,11 @@ const FractalesInfo = [
         idRec1: 2591
     },
     {
-        level: "10, 40, 69, 90",
-        ar: "0, 43, 95, 132",
+        level: "10, 40, 70, 90",
+        ar: "0, 43, 97, 132",
         name: "Molten Boss",
         nameEs: "Jefes Fundidos",
         idRec0: 2560,
-        idRec2: 3219,
         idDaily: [2979, 2985, 2934, 2966]
     },
     {
@@ -133,20 +133,19 @@ const FractalesInfo = [
         idRec2: 3185
     },
     {
-        level: "13, 30, 38, 63, 88",
-        ar: "0, 26, 40, 84, 129",
+        level: "13, 30, 38, 63, 88, 97",
+        ar: "0, 26, 40, 84, 129, 145",
         name: "Chaos",
         nameEs: "Caos",
         idDaily: [3063, 3044, 3045, 3038],
         idRec1: 2330,
     },
     {
-        level: "14, 45, 65, 70, 96",
-        ar: "0, 52, 88, 97, 143",
+        level: "14, 46, 65, 71, 96",
+        ar: "0, 54, 88, 99, 143",
         name: "Aetherblade",
         nameEs: "Filoetéreo",
         idDaily: [2927, 2909, 2928, 2948],
-        idRec0: 2327,
         idRec2: 3189
     },
     {
@@ -156,7 +155,6 @@ const FractalesInfo = [
         nameEs: "Reactor Taumanova",
         idDaily: [2981, 2991, 2895, 2967],
         idRec0: 2238,
-        idRec1: 2592,
         idRec2: 3215
     },
     {
@@ -170,8 +168,8 @@ const FractalesInfo = [
         idRec0: 2308
     },
     {
-        level: "18, 42, 71, 95",
-        ar: "0, 47, 99, 141",
+        level: "18, 42, 72, 95",
+        ar: "0, 47, 100, 141",
         name: "Captain Mai Trin Boss",
         nameEs: "Mai Trin",
         idRec0: 2467,
@@ -179,8 +177,8 @@ const FractalesInfo = [
         idDaily: [2978, 2899, 2962, 2932]
     },
     {
-        level: "20, 35, 44, 60, 80",
-        ar: "8, 34, 50, 79, 115",
+        level: "20, 35, 45, 60, 80",
+        ar: "8, 34, 52, 79, 115",
         name: "Solid Ocean",
         nameEs: "Océano Sólido",
         idDaily: [2954, 2971, 2986, 2923],
@@ -188,37 +186,28 @@ const FractalesInfo = [
         idRec1: 2266
     },
     {
-        level: "22, 47, 72, 97",
-        ar: "11, 56, 100, 145",
+        level: "23, 48, 73, 98",
+        ar: "13, 58, 102, 147",
         name: "Nightmare",
         nameEs: "Pesadilla",
         idDaily: [3229, 3196, 3175, 3177],
-        idRec1: 2463
-    },
-    {
-        level: "23, 48, 73, 98",
-        ar: "13, 58, 102, 147",
-        name: "Shattered Observatory",
-        nameEs: "Observatorio Asolado",
-        idDaily: [3509, 3478, 3464, 3458]
+        idRec1: 2337
     },
     {
         level: "24, 49, 74, 99",
         ar: "15, 59, 104, 148",
-        name: "Sunqua Peak",
-        nameEs: "Pico de Sunqua",
+        name: "Shattered Observatory",
+        nameEs: "Observatorio Asolado",
         idRec0: 2245,
-        idRec2: 3204,
-        idDaily: [5447, 5449, 5437, 5446]
+        idDaily: [3509, 3478, 3464, 3458]
     },
     {
         level: "25, 50, 75, 100",
         ar: "17, 61, 106, 150",
-        name: "Silent Surf",
-        nameEs: "Oleaje Silencioso",
+        name: "Sunqua Peak",
+        nameEs: "Pico de Sunqua",
         idRec0: 2473,
-        idRec2: 3238,
-        idDaily: [6953, 6943, 6945, 6935]
+        idDaily: [5447, 5449, 5437, 5446]
     }
 ]
 
@@ -289,6 +278,15 @@ export const Fractales = [
         tier: "T2"
     },
     {
+        level: 44,
+        ar: 50,
+        name: "Uncategorized",
+        nameEs: "Sin Clasificar",
+        idDaily: 2902,
+        idRec: 0,
+        tier: "T2"
+    },
+    {
         level: 62,
         ar: 83,
         name: "Uncategorized",
@@ -341,6 +339,15 @@ export const Fractales = [
         nameEs: "Ceguera de la Nieve",
         idDaily: 2918,
         idRec: 0,
+        tier: "T3"
+    },
+    {
+        level: 68,
+        ar: 93,
+        name: "Snowblind",
+        nameEs: "Ceguera de la Nieve",
+        idDaily: 2918,
+        idRec: 3187,
         tier: "T3"
     },
     {
@@ -418,6 +425,15 @@ export const Fractales = [
         tier: "T1"
     },
     {
+        level: 17,
+        ar: 0,
+        name: "Swampland",
+        nameEs: "Cenagal",
+        idDaily: 2935,
+        idRec: 0,
+        tier: "T1"
+    },
+    {
         level: 32,
         ar: 29,
         name: "Swampland",
@@ -474,8 +490,8 @@ export const Fractales = [
         tier: "T1"
     },
     {
-        level: 46,
-        ar: 54,
+        level: 47,
+        ar: 56,
         name: "Cliffside",
         nameEs: "Despeñadero",
         idDaily: 2958,
@@ -483,12 +499,12 @@ export const Fractales = [
         tier: "T2"
     },
     {
-        level: 68,
-        ar: 93,
+        level: 69,
+        ar: 95,
         name: "Cliffside",
         nameEs: "Despeñadero",
         idDaily: 2926,
-        idRec: 3187,
+        idRec: 3219,
         tier: "T3"
     },
     {
@@ -585,8 +601,8 @@ export const Fractales = [
         tier: "T1"
     },
     {
-        level: 17,
-        ar: 0,
+        level: 22,
+        ar: 11,
         name: "Molten Furnace",
         nameEs: "Fragua Fundida",
         idDaily: 2976,
@@ -640,12 +656,12 @@ export const Fractales = [
         tier: "T2"
     },
     {
-        level: 69,
-        ar: 95,
+        level: 70,
+        ar: 97,
         name: "Molten Boss",
         nameEs: "Jefes Fundidos",
         idDaily: 2934,
-        idRec: 3219,
+        idRec: 0,
         tier: "T3"
     },
     {
@@ -777,6 +793,15 @@ export const Fractales = [
         idRec: 0,
         tier: "T4"
     },
+    {
+        level: 97,
+        ar: 145,
+        name: "Chaos",
+        nameEs: "Caos",
+        idDaily: 3038,
+        idRec: 0,
+        tier: "T4"
+    },
     //Filoetereo
     {
         level: 14,
@@ -788,8 +813,8 @@ export const Fractales = [
         tier: "T1"
     },
     {
-        level: 45,
-        ar: 52,
+        level: 46,
+        ar: 54,
         name: "Aetherblade",
         nameEs: "Filoetéreo",
         idDaily: 2909,
@@ -806,8 +831,8 @@ export const Fractales = [
         tier: "T3"
     },
     {
-        level: 70,
-        ar: 97,
+        level: 71,
+        ar: 99,
         name: "Aetherblade",
         nameEs: "Filoetéreo",
         idDaily: 2928,
@@ -935,8 +960,8 @@ export const Fractales = [
         tier: "T2"
     },
     {
-        level: 71,
-        ar: 99,
+        level: 72,
+        ar: 100,
         name: "Captain Mai Trin Boss",
         nameEs: "Mai Trin",
         idRec: 0,
@@ -972,8 +997,8 @@ export const Fractales = [
         tier: "T2"
     },
     {
-        level: 44,
-        ar: 50,
+        level: 45,
+        ar: 52,
         name: "Solid Ocean",
         nameEs: "Océano Sólido",
         idDaily: 2971,
@@ -1000,8 +1025,8 @@ export const Fractales = [
     },
     //Pesadilla
     {
-        level: 22,
-        ar: 11,
+        level: 23,
+        ar: 13,
         name: "Nightmare",
         nameEs: "Pesadilla",
         idDaily: 3229,
@@ -1009,17 +1034,17 @@ export const Fractales = [
         tier: "T1"
     },
     {
-        level: 47,
-        ar: 56,
+        level: 48,
+        ar: 58,
         name: "Nightmare",
         nameEs: "Pesadilla",
         idDaily: 3196,
-        idRec: 2463,
+        idRec: 2337,
         tier: "T2"
     },
     {
-        level: 72,
-        ar: 100,
+        level: 73,
+        ar: 102,
         name: "Nightmare",
         nameEs: "Pesadilla",
         idDaily: 3175,
@@ -1027,8 +1052,8 @@ export const Fractales = [
         tier: "T3"
     },
     {
-        level: 97,
-        ar: 145,
+        level: 98,
+        ar: 147,
         name: "Nightmare",
         nameEs: "Pesadilla",
         idDaily: 3177,
@@ -1037,17 +1062,17 @@ export const Fractales = [
     },
     //Observatorio
     {
-        level: 23,
-        ar: 13,
+        level: 24,
+        ar: 15,
         name: "Shattered Observatory",
         nameEs: "Observatorio Asolado",
+        idRec: 2245,
         idDaily: 3509,
-        idRec: 0,
         tier: "T1"
     },
     {
-        level: 48,
-        ar: 58,
+        level: 49,
+        ar: 59,
         name: "Shattered Observatory",
         nameEs: "Observatorio Asolado",
         idDaily: 3478,
@@ -1055,8 +1080,8 @@ export const Fractales = [
         tier: "T2"
     },
     {
-        level: 73,
-        ar: 102,
+        level: 74,
+        ar: 104,
         name: "Shattered Observatory",
         nameEs: "Observatorio Asolado",
         idDaily: 3464,
@@ -1064,8 +1089,8 @@ export const Fractales = [
         tier: "T3"
     },
     {
-        level: 98,
-        ar: 147,
+        level: 99,
+        ar: 148,
         name: "Shattered Observatory",
         nameEs: "Observatorio Asolado",
         idDaily: 3458,
@@ -1074,17 +1099,17 @@ export const Fractales = [
     },
     //Sunqua
     {
-        level: 24,
-        ar: 15,
+        level: 25,
+        ar: 17,
         name: "Sunqua Peak",
         nameEs: "Pico de Sunqua",
-        idRec: 2245,
+        idRec: 2473,
         idDaily: 5447,
         tier: "T1"
     },
     {
-        level: 49,
-        ar: 59,
+        level: 50,
+        ar: 61,
         name: "Sunqua Peak",
         nameEs: "Pico de Sunqua",
         idDaily: 5449,
@@ -1092,57 +1117,20 @@ export const Fractales = [
         tier: "T2"
     },
     {
-        level: 74,
-        ar: 104,
-        name: "Sunqua Peak",
-        nameEs: "Pico de Sunqua",
-        idRec: 3204,
-        idDaily: 5437,
-        tier: "T3"
-    },
-    {
-        level: 99,
-        ar: 148,
-        name: "Sunqua Peak",
-        nameEs: "Pico de Sunqua",
-        idDaily: 5446,
-        idRec: 0,
-        tier: "T4"
-    },
-    //Oleaje
-    {
-        level: 25,
-        ar: 17,
-        name: "Silent Surf",
-        nameEs: "Oleaje Silencioso",
-        idRec: 2473,
-        idDaily: 6953,
-        tier: "T1"
-    },
-    {
-        level: 50,
-        ar: 61,
-        name: "Silent Surf",
-        nameEs: "Oleaje Silencioso",
-        idDaily: 6943,
-        idRec: 0,
-        tier: "T2"
-    },
-    {
         level: 75,
         ar: 106,
-        name: "Silent Surf",
-        nameEs: "Oleaje Silencioso",
+        name: "Sunqua Peak",
+        nameEs: "Pico de Sunqua",
         idRec: 3238,
-        idDaily: 6945,
+        idDaily: 5437,
         tier: "T3"
     },
     {
         level: 100,
         ar: 150,
-        name: "Silent Surf",
-        nameEs: "Oleaje Silencioso",
-        idDaily: 6935,
+        name: "Sunqua Peak",
+        nameEs: "Pico de Sunqua",
+        idDaily: 5446,
         idRec: 0,
         tier: "T4"
     }
@@ -1151,8 +1139,8 @@ export const Fractales = [
 export const FractalesCm = [
     //Pesadilla
     {
-        level: 97,
-        ar: 145,
+        level: 98,
+        ar: 147,
         name: "Nightmare",
         nameEs: "Pesadilla",
         inestab1: "",
@@ -1162,8 +1150,8 @@ export const FractalesCm = [
     },
     //Observatorio
     {
-        level: 98,
-        ar: 147,
+        level: 99,
+        ar: 148,
         name: "Shattered Observatory",
         nameEs: "Observatorio Asolado",
         inestab1: "",
@@ -1173,99 +1161,13 @@ export const FractalesCm = [
     },
     //Sunqua
     {
-        level: 99,
-        ar: 148,
+        level: 100,
+        ar: 150,
         name: "Sunqua Peak",
         nameEs: "Pico de Sunqua",
         inestab1: "",
         inestab2: "",
         inestab3: "",
         tier: "T4"
-    },
-    //Oleaje
-    {
-        level: 100,
-        ar: 150,
-        name: "Silent Surf",
-        nameEs: "Oleaje Silencioso",
-        inestab1: "",
-        inestab2: "",
-        inestab3: "",
-        tier: "T4"
-    }
-]
-
-export const InestabCm = [
-    {
-        nameEng: "Adrenaline Rush",
-        nameEsp: "Descarga de adrenalina"
-    },
-    {
-        nameEng: "Afflicted",
-        nameEsp: "Aflicción"
-    },
-    {
-        nameEng: "Boon Overload",
-        nameEsp: "Sobrecarga de bendiciones"
-    },
-    {
-        nameEng: "Flux Bomb",
-        nameEsp: "Bomba de flujo"
-    },
-    {
-        nameEng: "Fractal Vindicators",
-        nameEsp: "Vindicadores de los fractales"
-    },
-    {
-        nameEng: "Frailty",
-        nameEsp: "Flaqueza"
-    },
-    {
-        nameEng: "Hamstrung",
-        nameEsp: "Tullido"
-    },
-    {
-        nameEng: "Last Laugh",
-        nameEsp: "Última risa"
-    },
-    {
-        nameEng: "Mists Convergence",
-        nameEsp: "Convergencia de la Niebla"
-    },
-    {
-        nameEng: "No Pain, No Gain",
-        nameEsp: "Recompensa bien merecida"
-    },
-    {
-        nameEng: "Outflanked",
-        nameEsp: "Flanco"
-    },
-    {
-        nameEng: "Social Awkwardness",
-        nameEsp: "Ineptitud social"
-    },
-    {
-        nameEng: "Stick Together",
-        nameEsp: "Vamos juntos"
-    },
-    {
-        nameEng: "Sugar Rush",
-        nameEsp: "Subida de azúcar"
-    },
-    {
-        nameEng: "Toxic Trail",
-        nameEsp: "Rastro tóxico"
-    },
-    {
-        nameEng: "Vengeance",
-        nameEsp: "Venganza"
-    },
-    {
-        nameEng: "We Bleed Fire",
-        nameEsp: "Fuego en la sangre"
-    },
-    {
-        nameEng: "Toxic Sickness",
-        nameEsp: "Vómitos"
     }
 ]

@@ -245,7 +245,10 @@
             <tr mat-footer-row *matFooterRowDef="displayedColumnsT6"></tr>
         </table>
         <a href="https://wiki.guildwars2.com/wiki/Map_bonus_reward#Central_Tyria_reward_track_rotation" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
-            <button  mat-button class="boton">Map bonus reward</button>
+            <button  mat-button class="boton" title="Best week is 8 (updates every friday)" [ngClass]="{'green': mapBonusRewardweekNumber == 8}">Map bonus reward, current week is {{mapBonusRewardweekNumber}}</button>
+        </a>
+        <a href="https://www.gw2lunchbox.com/MaterialUpgrades.html" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+            <button  mat-button class="boton">T5 to T6</button>
         </a>
     </mat-tab>
 </mat-tab-group>

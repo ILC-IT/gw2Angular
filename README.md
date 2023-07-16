@@ -31,15 +31,9 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## TODO
 
-Añadir especializaciones a los heroes en la tabla.
-
 Vista de cada heroe individual al pinchar en su nombre con información básica.
 
 Hacer un formulario para meter la api (¿y codificarla?) antes de todo.
-
-Si la diaria de PvE es moneda mística añadir algún tipo de aviso.
-
-Añadir killproof (pero creo que no es posible) o un enlace a la página.
 
 ## Further help
 
