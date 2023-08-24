@@ -2,6 +2,10 @@
     <h1>{{title}}</h1>
 </div>
 
+<div class="reloj">
+    {{ time | async | date: 'hh:mm:ss a' }}
+</div>
+
 <mat-toolbar-row>
     <div>
         <nav>

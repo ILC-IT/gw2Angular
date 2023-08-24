@@ -29,7 +29,7 @@ a {
   color: #fff;
   text-align: center;
   /* width: 100%; */
-  min-width: 70px;
+  min-width: 400px;
   margin: 2.5rem auto;
   box-sizing: border-box;
 
@@ -79,8 +79,8 @@ a:hover {
  .mat-card-image{
   /*object-fit: fill; /*this makes the image in src fit to the size specified below*/
   object-fit: contain;
-  width: 40%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
-  height: 40%;
+  width: 25%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
+  height: 25%;
 }
 
 textarea {

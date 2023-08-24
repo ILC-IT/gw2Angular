@@ -27,7 +27,8 @@ export class DailyComponent implements OnInit, AfterViewInit  {
   loading: boolean = true;
   loading2: boolean = true;
   pactSupply: string[] = [];
-  tokenProviders: string = "Arco.[&BAwEAAA=] Ciudadela.[&BKgDAAA=] VB.[&BN4HAAA=] AB.[&BNYHAAA=] TD.[&BMwHAAA=]";
+  pactSupplyUpdate: string = "";
+  tokenSupply: string[][] = [];
   anomalia: string = '';
   dailyActivity: string = "";
   recordatorio = {
@@ -143,13 +144,16 @@ export class DailyComponent implements OnInit, AfterViewInit  {
   }
 
   async ngOnInit() {
-    this.daily = await this.getDaily();
-    //console.log(this.daily)
-    this.getDailyPve();
-    this.getDailyFractals();
-    this.getDailyMundo();
-    this.getDailyPvP();
+    this.tokenSupply = this.getTokenSupply();
     this.pactSupply = this.getPactSupply();
+    this.dailyActivity = this.getDailyActivity();
+    this.recordatorio = this.getRecordatorio();
+    this.anomalia = this.getAnomaly();
+      setInterval(() => {
+        this.anomalia = this.getAnomaly();
+      }, 1 * 60 * 1000)
+    this.dailyStrike = await this.getDailyStrikeId();
+    this.getDailyStrike();
     this.getMaterials();
     this.getDailyCraft();
       setInterval(() => {
@@ -159,15 +163,15 @@ export class DailyComponent implements OnInit, AfterViewInit  {
       setInterval(() => {
         this.getDailyHeroChoiceChest();
       }, 10 * 60 * 1000)
-    this.anomalia = this.getAnomaly();
-      setInterval(() => {
-        this.anomalia = this.getAnomaly();
-      }, 1 * 60 * 1000)
-    this.dailyActivity = this.getDailyActivity();
-    this.recordatorio = this.getRecordatorio();
+
+    this.daily = await this.getDaily();
+    //console.log(this.daily)
+    this.getDailyPve();
+    this.getDailyFractals();
+    this.getDailyMundo();
+    this.getDailyPvP();
+
     console.log(this.dailyInfoF)
-    this.dailyStrike = await this.getDailyStrikeId();
-    this.getDailyStrike();
 
     // console.log(this.dailyInfoF)
     //this.searchFractal()
@@ -293,7 +297,17 @@ export class DailyComponent implements OnInit, AfterViewInit  {
   }
 
   getPactSupply(){
+    if (!this.dailyService.esHorarioInvierno()){
+      this.pactSupplyUpdate = "*They change every day at 10.00 UTC+2.\nPlease check the hour and refresh the page manually.";
+    }
+    else{
+      this.pactSupplyUpdate = "*They change every day at 9.00 UTC+1.\nPlease check the hour and refresh the page manually.";
+    }
     return this.dailyService.getPactSupply();
+  }
+
+  getTokenSupply(){
+    return this.dailyService.getTokenSupply();
   }
 
   getDailyCraft(){

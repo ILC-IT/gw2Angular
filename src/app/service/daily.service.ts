@@ -12,14 +12,19 @@ export class DailyService {
 
   apiKey = apiKey;
 
-  plactSupply = [
-    ["1.[&BIsHAAA=]  2.[&BDoBAAA=]  3.[&BC0AAAA=]  4.[&BP8DAAA=]  5.[&BIUCAAA=]  6.[&BCECAAA=]"], //Domingo
-    ["1.[&BA8CAAA=]  2.[&BKYBAAA=]  3.[&BEwDAAA=]  4.[&BIcHAAA=]  5.[&BNIEAAA=]  6.[&BIMCAAA=]"], //Lunes
-    ["1.[&BH8HAAA=]  2.[&BEgAAAA=]  3.[&BBkAAAA=]  4.[&BKgCAAA=]  5.[&BGQCAAA=]  6.[&BIMBAAA=]"], //Martes
-    ["1.[&BH4HAAA=]  2.[&BMIBAAA=]  3.[&BKEAAAA=]  4.[&BP0CAAA=]  5.[&BDgDAAA=]  6.[&BPEBAAA=]"], //Miercoles
-    ["1.[&BKsHAAA=]  2.[&BF0AAAA=]  3.[&BIMAAAA=]  4.[&BO4CAAA=]  5.[&BF0GAAA=]  6.[&BOQBAAA=]"], //Jueves
-    ["1.[&BJQHAAA=]  2.[&BMMCAAA=]  3.[&BNUGAAA=]  4.[&BJsCAAA=]  5.[&BHsBAAA=]  6.[&BNMAAAA=]"], //Viernes
-    ["1.[&BH8HAAA=]  2.[&BNMCAAA=]  3.[&BJIBAAA=]  4.[&BBEDAAA=]  5.[&BEICAAA=]  6.[&BBABAAA=]"]  //Sabado
+  pactSupply = [
+    ["1.[&BIsHAAA=]  \n2.[&BDoBAAA=]  \n3.[&BC0AAAA=]  \n4.[&BP8DAAA=]  \n5.[&BIUCAAA=]  \n6.[&BCECAAA=]"], //Domingo
+    ["1.[&BA8CAAA=]  \n2.[&BKYBAAA=]  \n3.[&BEwDAAA=]  \n4.[&BIcHAAA=]  \n5.[&BNIEAAA=]  \n6.[&BIMCAAA=]"], //Lunes
+    ["1.[&BH8HAAA=]  \n2.[&BEgAAAA=]  \n3.[&BBkAAAA=]  \n4.[&BKgCAAA=]  \n5.[&BGQCAAA=]  \n6.[&BIMBAAA=]"], //Martes
+    ["1.[&BH4HAAA=]  \n2.[&BMIBAAA=]  \n3.[&BKEAAAA=]  \n4.[&BP0CAAA=]  \n5.[&BDgDAAA=]  \n6.[&BPEBAAA=]"], //Miercoles
+    ["1.[&BKsHAAA=]  \n2.[&BF0AAAA=]  \n3.[&BIMAAAA=]  \n4.[&BO4CAAA=]  \n5.[&BF0GAAA=]  \n6.[&BOQBAAA=]"], //Jueves
+    ["1.[&BJQHAAA=]  \n2.[&BMMCAAA=]  \n3.[&BNUGAAA=]  \n4.[&BJsCAAA=]  \n5.[&BHsBAAA=]  \n6.[&BNMAAAA=]"], //Viernes
+    ["1.[&BH8HAAA=]  \n2.[&BNMCAAA=]  \n3.[&BJIBAAA=]  \n4.[&BBEDAAA=]  \n5.[&BEICAAA=]  \n6.[&BBABAAA=]"]  //Sabado
+  ];
+
+  tokenSupply = [
+    ["Arco del León [&BAwEAAA=]  <p>Ciudadela negra [&BKgDAAA=]</p>  <p>Umbral verdeante [&BN4HAAA=]</p>  <p>Valle áurico [&BNYHAAA=]</p>  <p>Profundidades Ogro [&BMwHAAA=]</p>"],
+    ["Arco.[&BAwEAAA=] Ciudadela.[&BKgDAAA=] VB.[&BN4HAAA=] AB.[&BNYHAAA=] TD.[&BMwHAAA=]"]
   ];
 
   dailyActivity = [
@@ -94,10 +99,43 @@ export class DailyService {
     return this.httpClient.get(url);
   }
 
-  getPactSupply(){ //el dia empieza a las 10am utc+2
+  getPactSupply(){ //el dia empieza a las 10am UTC+2 o 9am UTC+1
     let d = new Date();
     let n = d.getDay(); //Sunday is 0, Monday is 1, and so on.
-    return this.plactSupply[n];
+    let h = d.getHours();
+    let fechaCambiaVerano = new Date(d.getFullYear(), d.getMonth(), d.getDay(), 10, 0, 0); //10am
+    let fechaCambiaInvierno = new Date(d.getFullYear(), d.getMonth(), d.getDay(), 9, 0, 0); //9am
+
+    if (!this.esHorarioInvierno()){ //es verano
+      if ( h >= fechaCambiaVerano.getHours()){ //h cambia a las 10am (UTC + 2)
+        return this.pactSupply[n];
+      }
+      else{
+        if(n !== 0){
+          return this.pactSupply[n-1];
+        }
+        else{
+          return this.pactSupply[this.pactSupply.length - 1];
+        }
+      }
+    }
+    else{ //es invierno
+      if ( h >= fechaCambiaInvierno.getHours()){ //h cambia a las 9am (UTC + 1)
+        return this.pactSupply[n];
+      }
+      else{
+        if(n !== 0){
+          return this.pactSupply[n-1];
+        }
+        else{
+          return this.pactSupply[this.pactSupply.length - 1];
+        }
+      }
+    }
+  }
+
+  getTokenSupply(){
+    return this.tokenSupply;
   }
 
   getDailyActivity(){

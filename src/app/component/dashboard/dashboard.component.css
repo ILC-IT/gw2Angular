@@ -51,6 +51,11 @@ button{
   justify-content: center;
 }
 
+.reloj {
+  display: flex;
+  justify-content: center;
+}
+
 .example-form-field {
     font-size: 24px;
 }

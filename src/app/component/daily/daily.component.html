@@ -354,19 +354,15 @@
                   [(ngModel)]="pactSupply[0]">
         </textarea>
         <button mat-raised-button color="accent" [cdkCopyToClipboard]="pactSupply[0]">Copiar</button>
-        <p>*Updates every day at 10.00 UTC+2</p>
+        <div [innerText]='pactSupplyUpdate'></div>
       </a>
       <a>
         <h3>Token Supply</h3>
         <div class="waypoint">
           <!-- <div class="wp-icon" style="background-image: url(../../../assets/img/wp-icon.png)">
           </div> -->
-          <p>Arco del León [&BAwEAAA=]</p>
-          <p>Ciudadela negra [&BKgDAAA=]</p>
-          <p>Umbral verdeante [&BN4HAAA=]</p>
-          <p>Valle áurico [&BNYHAAA=]</p>
-          <p>Profundidades Ogro [&BMwHAAA=]</p>
-          <button mat-raised-button color="accent" [cdkCopyToClipboard]="tokenProviders">Copiar</button>
+          <div [innerHtml]='tokenSupply[0][0]'></div>
+          <button mat-raised-button color="accent" [cdkCopyToClipboard]="tokenSupply[1][0]">Copiar</button>
         </div>
       </a>
       <a>
