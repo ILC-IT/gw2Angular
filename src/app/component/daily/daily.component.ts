@@ -13,16 +13,17 @@ import { ToastNotificationInitializer, DialogLayoutDisplay, ToastUserViewTypeEnu
 })
 export class DailyComponent implements OnInit, AfterViewInit  {
 
-  daily: any; //contiene los ids de las diarias de pve, fractals, mvm, pvp
-  //dailyPve: any; //contiene los ids de las diarias de pve
-  dailyIds: String = ''; //contiene los ids de las diarias de pve
+  // daily: any; //contiene los ids de las diarias de pve, fractals, mvm, pvp
+  // dailyIds: String = ''; //contiene los ids de las diarias de pve
+  // dailyIdsM: String = ''; //contiene los ids de las diarias de wvw
+  // dailyIdsP: String = ''; //contiene los ids de las diarias de pvp
   dailyIdsF: String = ''; //contiene los ids de las diarias de fractales
-  dailyIdsM: String = ''; //contiene los ids de las diarias de wvw
-  dailyIdsP: String = ''; //contiene los ids de las diarias de pvp
+  dailyIdsW: String = ''; //contiene los ids de las diarias de la camara del brujo
   dailyIdsS: String = ''; //contiene el id de la diaria de strikes
   dailyStrike: any; //contiene el id de la strike diaria buscando en achievements/categories/250
+  dailyFractalsId: any; //contiene los ids de los fractales diarios buscando en achievements/categories/88
+  dailyWizardVaultId: any; //contiene los ids de wizardvault diaria buscando en achievements/categories/367
   dailyStrikeIcon: string = "";
-  //dailyInfo: any; //contiene info de las diarias de pve
   dailyInfoF: any = {}; //contiene toda la info de las diarias de pve, fractals, mvm, pvp, strike
   loading: boolean = true;
   loading2: boolean = true;
@@ -95,7 +96,6 @@ export class DailyComponent implements OnInit, AfterViewInit  {
   //Para filtrar en las tablas https://www.freakyjolly.com/angular-material-table-custom-filter-using-select-box/
   filterValues: any = {};
   filterSelectObj: any = [];
-  //@ViewChild(MatSort, { static: true }) sort: MatSort = new MatSort();
   @ViewChild(MatSort, { static: false }) sort!: MatSort;
   @ViewChild("sort2", { static: false }) sort2!: MatSort;
   @ViewChild("sort3", { static: false }) sort3!: MatSort;
@@ -163,24 +163,17 @@ export class DailyComponent implements OnInit, AfterViewInit  {
       setInterval(() => {
         this.getDailyHeroChoiceChest();
       }, 10 * 60 * 1000)
-
-    this.daily = await this.getDaily();
-    //console.log(this.daily)
-    this.getDailyPve();
+    this.dailyFractalsId = await this.getDailyFractalsId();
     this.getDailyFractals();
-    this.getDailyMundo();
-    this.getDailyPvP();
+    this.dailyWizardVaultId = await this.getDailyWizardVaultId();
+    this.getDailyWizardVault();
+    // this.daily = await this.getDaily();
+    // this.getDailyPve();
+    // this.getDailyMundo();
+    // this.getDailyPvP();
 
     console.log(this.dailyInfoF)
 
-    // console.log(this.dailyInfoF)
-    //this.searchFractal()
-    //console.log(this.pactSupply)
-
-    // this.dataSource.sort = this.sort;
-    // this.dataSourceRec.sort = this.sort2;
-    // console.log(this.dataSource)
-    // console.log(this.dataSourceRec)
     this.filterSelectObj.filter((o: any) => {
       o.options = this.getFilterObject(Fractales, o.columnProp);
       o.options.sort((a: any, b: any) => a> b? 1 : -1);
@@ -195,92 +188,96 @@ export class DailyComponent implements OnInit, AfterViewInit  {
     this.dataSourceCm.sort = this.sort4;
   }
 
-  // getDaily(){
-  //   this.dailyService.getDaily().subscribe((daily: any) => {
-  //     this.daily = daily;
-  //   })
+  // async getDaily(){
+  //   let response: any;
+  //   return response = await this.dailyService.getDaily().toPromise();
   // }
 
-  async getDaily(){
+  // getDailyPve(){
+  //     let dailyPve = this.daily.pve;
+  //     for (let i = 0; i < dailyPve.length; i++){
+  //       if (dailyPve[i].level.max == 80){
+  //         if (dailyPve[i].hasOwnProperty("required_access")){
+  //           if (dailyPve[i].required_access.condition == "HasAccess"){
+  //             this.dailyIds = this.dailyIds + dailyPve[i].id + ',';
+  //             this.dailyIdsChecked.push(false);
+  //           }
+  //         }else{
+  //           this.dailyIds = this.dailyIds + dailyPve[i].id + ',';
+  //           this.dailyIdsChecked.push(false)
+  //         }
+  //       }
+  //     }
+  //     this.getDailyInfoF(this.dailyIds, "pve");
+  // }
+
+  // getDailyMundo(){
+  //   let dailyMundo = this.daily.wvw;
+  //   for (let i = 0; i < dailyMundo.length; i++){
+  //     this.dailyIdsM = this.dailyIdsM + dailyMundo[i].id + ',';
+  //   }
+  //   this.getDailyInfoF(this.dailyIdsM, "wvw");
+  // }
+
+  // getDailyPvP(){
+  //   let dailyPvP = this.daily.pvp;
+  //   for (let i = 0; i < dailyPvP.length; i++){
+  //     this.dailyIdsP = this.dailyIdsP + dailyPvP[i].id + ',';
+  //   }
+  //   this.getDailyInfoF(this.dailyIdsP, "pvp");
+  // }
+  
+  async getDailyFractalsId(){
     let response: any;
-    return response = await this.dailyService.getDaily().toPromise();
+    return response = await this.dailyService.getDailyFractalsId().toPromise();
   }
-
-  getDailyPve(){
-    // this.dailyService.getDaily().subscribe((dailyPve: any) => {
-    //   this.dailyPve = dailyPve.pve;
-      let dailyPve = this.daily.pve;
-      for (let i = 0; i < dailyPve.length; i++){
-        if (dailyPve[i].level.max == 80){
-          if (dailyPve[i].hasOwnProperty("required_access")){
-            if (dailyPve[i].required_access.condition == "HasAccess"){
-              this.dailyIds = this.dailyIds + dailyPve[i].id + ',';
-              this.dailyIdsChecked.push(false);
-            }
-          }else{
-            this.dailyIds = this.dailyIds + dailyPve[i].id + ',';
-            this.dailyIdsChecked.push(false)
-          }
-        }
-      }
-      this.getDailyInfoF(this.dailyIds, "pve");
-    //})
-  }
-
-  // getDailyInfo(){
-  //   this.dailyService.getDailyInfo(this.dailyIds).subscribe((dailyInfo: any) => {
-  //     this.dailyInfo = dailyInfo;
-  //     //console.log(this.dailyInfo)
-  //     this.loading = false;
-  //   })
-  // }
 
   getDailyFractals(){
-      let dailyFractals = this.daily.fractals;
-      for (let i = 0; i < dailyFractals.length; i++){
-        this.dailyIdsF = this.dailyIdsF + dailyFractals[i].id + ',';
-      }
-      this.getDailyInfoF(this.dailyIdsF, "fractals");
+    let dailyFractals = this.dailyFractalsId.achievements;
+    for (let i = 0; i < dailyFractals.length; i++){
+      this.dailyIdsF = this.dailyIdsF + dailyFractals[i] + ',';
+    }
+    this.getDailyInfoF(this.dailyIdsF, "fractals");
   }
 
-  getDailyMundo(){
-    let dailyMundo = this.daily.wvw;
-    for (let i = 0; i < dailyMundo.length; i++){
-      this.dailyIdsM = this.dailyIdsM + dailyMundo[i].id + ',';
-    }
-    this.getDailyInfoF(this.dailyIdsM, "wvw");
+  async getDailyWizardVaultId(){
+    let response: any;
+    return response = await this.dailyService.getDailyWizardVaultId().toPromise();
   }
 
-  getDailyPvP(){
-    let dailyPvP = this.daily.pvp;
-    for (let i = 0; i < dailyPvP.length; i++){
-      this.dailyIdsP = this.dailyIdsP + dailyPvP[i].id + ',';
+  getDailyWizardVault(){
+    let dailyWizardVault = this.dailyWizardVaultId.achievements;
+    for (let i = 0; i < dailyWizardVault.length; i++){
+      this.dailyIdsW = this.dailyIdsW + dailyWizardVault[i] + ',';
     }
-    this.getDailyInfoF(this.dailyIdsP, "pvp");
+    this.getDailyInfoF(this.dailyIdsW, "wizard");
   }
 
   getDailyInfoF(ids: String, tipo: String){
     this.dailyService.getDailyInfo(ids).subscribe((dailyInfo: any) => {
       //console.log(dailyInfo)
-      if (tipo === "pve"){
-        this.dailyInfoF.pve = dailyInfo;
-        for (let i = 0; i < dailyInfo.length; i++){
-          if(dailyInfo[i].id === 500){
-            this.toastNotificationMonedaMistica();
-          }
-        }
+      if (tipo === "wizard"){
+        this.dailyInfoF.wizard = dailyInfo;
       }
       else if (tipo === "fractals"){
         this.dailyInfoF.fractals = dailyInfo;
         this.searchFractalIds();
         this.getDailyInestabilidadCm();
       }
-      else if (tipo === "wvw"){
-        this.dailyInfoF.wvw = dailyInfo;
-      }
-      else if (tipo === "pvp"){
-        this.dailyInfoF.pvp = dailyInfo;
-      }
+      // else if (tipo === "pve"){
+      //   this.dailyInfoF.pve = dailyInfo;
+      //   for (let i = 0; i < dailyInfo.length; i++){
+      //     if(dailyInfo[i].id === 500){
+      //       this.toastNotificationMonedaMistica();
+      //     }
+      //   }
+      // }
+      // else if (tipo === "wvw"){
+      //   this.dailyInfoF.wvw = dailyInfo;
+      // }
+      // else if (tipo === "pvp"){
+      //   this.dailyInfoF.pvp = dailyInfo;
+      // }
       else if (tipo === "strike"){
         this.dailyInfoF.strike = dailyInfo;
         //metemos en una variable el icono de la strike porque solo lo lleva la de IBS y no la de EoD

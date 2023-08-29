@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map } from "rxjs/operators";
 import { apiKey } from './key'
 
 @Injectable({
@@ -95,6 +94,8 @@ export class DailyService {
     //?ids=6327 mirador
     //?ids=6457 chatarreria
     //?ids=5577 semanales eod
+    //?ids=7154 febe/cerus
+    //?ids=7130 observatorio/dagda
     const url = `${this.apiUrl}achievements?ids=${dailyIds}`;
     return this.httpClient.get(url);
   }
@@ -168,6 +169,26 @@ export class DailyService {
 
   getDailyStrikeId(){ //para sacar el id de la strike diaria
     const url = `${this.apiUrl}achievements/categories/250`;
+    return this.httpClient.get(url);
+  }
+
+  getDailyFractalsId(){ //para sacar el id de los fractales diarios
+    const url = `${this.apiUrl}achievements/categories/88`;
+    return this.httpClient.get(url);
+  }
+
+  getDailyWizardVaultId(){
+    const url = `${this.apiUrl}achievements/categories/367`;
+    return this.httpClient.get(url);
+  }
+
+  getWeeklyWizardVaultId(){
+    const url = `${this.apiUrl}achievements/categories/363`;
+    return this.httpClient.get(url);
+  }
+
+  getSeasonalWizardVaultId(){
+    const url = `${this.apiUrl}achievements/categories/359`;
     return this.httpClient.get(url);
   }
 

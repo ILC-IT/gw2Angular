@@ -8,7 +8,7 @@
                 </mat-list-option>
             </mat-selection-list>
         </mat-tab>
-        <mat-tab label="HEROES"> 
+        <mat-tab label="HÉROES"> 
             <mat-selection-list #heroes [multiple]="false">
                 <mat-list-option *ngFor="let hero of typesOfHeroes" [value]="hero" routerLink="/heroes">
                 {{hero}}

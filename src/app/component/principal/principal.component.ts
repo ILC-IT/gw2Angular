@@ -9,8 +9,8 @@ export class PrincipalComponent implements OnInit {
 
   constructor() { }
 
-  typesOfDiarias: string[] = ['Pve', 'Fractales', 'McM / WvW', 'PvP', '+Diarias'];
-  typesOfHeroes: string[] = ['Heroes'];
+  typesOfDiarias: string[] = ['Cámara del brujo', 'Fractales', '+Diarias'];
+  typesOfHeroes: string[] = ['Héroes'];
   typesOfCalculadora: string[] = ['Calculadora'];
   typesOfEnlaces: string[] = ['Enlaces'];
   typesOfStats: string[] = ['Buscador Stats'];

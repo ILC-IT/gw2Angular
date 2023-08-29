@@ -83,6 +83,13 @@ a:hover {
   height: 25%;
 }
 
+.mat-card-image-f{
+  /*object-fit: fill; /*this makes the image in src fit to the size specified below*/
+  object-fit: contain;
+  width: 40%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
+  height: 40%;
+}
+
 textarea {
   display: block;
   margin: auto

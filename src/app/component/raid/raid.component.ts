@@ -107,31 +107,44 @@ export class RaidComponent implements OnInit {
       // console.log(RaidsInfo[6]['bossCompletado'])
   }
 
+  sumCountById(arr: { id: number; count: number }[], idBossRaid: number): number {
+    // devuelve la suma de count de todas las ocurrencias de idBossRaid en el array del banco (token)
+    return arr.reduce((sum, obj) => {
+      if (obj !== null){ // porque token tiene valores null y asi los evitamos
+        if (obj.id === idBossRaid) {
+          return sum + obj.count;
+        }
+      }
+      return sum;
+    }, 0);
+  }
+
   getToken(){
     this.heroService.getBank().subscribe((token: any) => {
+      //Devuelve los materiales del banco en stacks de maximo 250, si supera esa cantidad habra varias ids iguales
       for (let i = 0; i < TokenId.length; i++){
-        this.raidWings[0].tokenCount[0] = token.find((o: { id: number; count: number}) => o.id === TokenId[0].vale_guardian).count;
-        this.raidWings[0].tokenCount[2] = token.find((o: { id: number; count: number}) => o.id === TokenId[0].gorseval).count;
-        this.raidWings[0].tokenCount[3] = token.find((o: { id: number; count: number}) => o.id === TokenId[0].sabetha).count;
-        this.raidWings[1].tokenCount[0] = token.find((o: { id: number; count: number}) => o.id === TokenId[0].slothasor).count;
-        this.raidWings[1].tokenCount[2] = token.find((o: { id: number; count: number}) => o.id === TokenId[0].matthias).count;
-        this.raidWings[2].tokenCount[0] = token.find((o: { id: number; count: number}) => o.id === TokenId[0].escort).count;
-        this.raidWings[2].tokenCount[1] = token.find((o: { id: number; count: number}) => o.id === TokenId[0].keep_construct).count;
-        this.raidWings[2].tokenCount[3] = token.find((o: { id: number; count: number}) => o.id === TokenId[0].xera).count;
-        this.raidWings[3].tokenCount[0] = token.find((o: { id: number; count: number}) => o.id === TokenId[0].cairn).count;
-        this.raidWings[3].tokenCount[1] = token.find((o: { id: number; count: number}) => o.id === TokenId[0].mursaat_overseer).count;
-        this.raidWings[3].tokenCount[2] = token.find((o: { id: number; count: number}) => o.id === TokenId[0].samarog).count;
-        this.raidWings[3].tokenCount[3] = token.find((o: { id: number; count: number}) => o.id === TokenId[0].deimos).count;
-        this.raidWings[4].tokenCount[0] = token.find((o: { id: number; count: number}) => o.id === TokenId[0].soulless_horror).count;
-        this.raidWings[4].tokenCount[1] = token.find((o: { id: number; count: number}) => o.id === TokenId[0].river_of_souls).count;
-        this.raidWings[4].tokenCount[2] = token.find((o: { id: number; count: number}) => o.id === TokenId[0].statues_of_grenth).count;
-        this.raidWings[4].tokenCount[3] = token.find((o: { id: number; count: number}) => o.id === TokenId[0].voice_in_the_void).count;
-        this.raidWings[5].tokenCount[0] = token.find((o: { id: number; count: number}) => o.id === TokenId[0].conjured_amalgamate).count;
-        this.raidWings[5].tokenCount[1] = token.find((o: { id: number; count: number}) => o.id === TokenId[0].twin_largos).count;
-        this.raidWings[5].tokenCount[2] = token.find((o: { id: number; count: number}) => o.id === TokenId[0].qadim).count;
-        this.raidWings[6].tokenCount[1] = token.find((o: { id: number; count: number}) => o.id === TokenId[0].adina).count;
-        this.raidWings[6].tokenCount[2] = token.find((o: { id: number; count: number}) => o.id === TokenId[0].sabir).count;
-        this.raidWings[6].tokenCount[3] = token.find((o: { id: number; count: number}) => o.id === TokenId[0].qadim_the_peerless).count;
+        this.raidWings[0].tokenCount[0] = this.sumCountById(token, TokenId[0].vale_guardian);
+        this.raidWings[0].tokenCount[2] = this.sumCountById(token, TokenId[0].gorseval);
+        this.raidWings[0].tokenCount[3] = this.sumCountById(token, TokenId[0].sabetha);
+        this.raidWings[1].tokenCount[0] = this.sumCountById(token, TokenId[0].slothasor);
+        this.raidWings[1].tokenCount[2] = this.sumCountById(token, TokenId[0].matthias);
+        this.raidWings[2].tokenCount[0] = this.sumCountById(token, TokenId[0].escort);
+        this.raidWings[2].tokenCount[1] = this.sumCountById(token, TokenId[0].keep_construct);
+        this.raidWings[2].tokenCount[3] = this.sumCountById(token, TokenId[0].xera);
+        this.raidWings[3].tokenCount[0] = this.sumCountById(token, TokenId[0].cairn);
+        this.raidWings[3].tokenCount[1] = this.sumCountById(token, TokenId[0].mursaat_overseer);
+        this.raidWings[3].tokenCount[2] = this.sumCountById(token, TokenId[0].samarog);
+        this.raidWings[3].tokenCount[3] = this.sumCountById(token, TokenId[0].deimos);
+        this.raidWings[4].tokenCount[0] = this.sumCountById(token, TokenId[0].soulless_horror);
+        this.raidWings[4].tokenCount[1] = this.sumCountById(token, TokenId[0].river_of_souls);
+        this.raidWings[4].tokenCount[2] = this.sumCountById(token, TokenId[0].statues_of_grenth);
+        this.raidWings[4].tokenCount[3] = this.sumCountById(token, TokenId[0].voice_in_the_void);
+        this.raidWings[5].tokenCount[0] = this.sumCountById(token, TokenId[0].conjured_amalgamate);
+        this.raidWings[5].tokenCount[1] = this.sumCountById(token, TokenId[0].twin_largos);
+        this.raidWings[5].tokenCount[2] = this.sumCountById(token, TokenId[0].qadim);
+        this.raidWings[6].tokenCount[1] = this.sumCountById(token, TokenId[0].adina);
+        this.raidWings[6].tokenCount[2] = this.sumCountById(token, TokenId[0].sabir);
+        this.raidWings[6].tokenCount[3] = this.sumCountById(token, TokenId[0].qadim_the_peerless);
       }
     })
   }

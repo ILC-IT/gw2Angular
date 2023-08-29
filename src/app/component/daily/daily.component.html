@@ -1,32 +1,20 @@
 <h2>Diarias</h2>
 <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4" backgroundColor="primary" color="primary">
-  <mat-tab label="Pve">
+
+  <mat-tab label="Cámara del brujo">
     <div class="daily-menu" *ngIf="!loading">
-      <a  *ngFor="let pve of dailyInfoF.pve; let i = index">
+      <a  *ngFor="let wizard of dailyInfoF.wizard; let i = index">
         <img mat-card-image src="https://render.guildwars2.com/file/483E3939D1A7010BDEA2970FB27703CAAD5FBB0F/42684.png">
         <p></p>
-        <!-- <mat-card class="result">
-            <mat-card-content>
-              <section class="example-section">
-                <mat-checkbox
-                    class="example-margin"
-                    [(ngModel)]="dailyIdsChecked[i]"
-                    [(indeterminate)]="indeterminate"
-                    [labelPosition]="labelPosition"
-                    [disabled]="disabled">
-                  Completada
-                </mat-checkbox>
-              </section>
-            </mat-card-content>
-        </mat-card> -->
-        id = {{pve.id}}
+        id = {{wizard.id}}
         <p></p>
-        {{pve.name}}
+        {{wizard.name}}
         <p></p>
-        {{pve.requirement}}
+        {{wizard.requirement}}
       </a>
     </div>
   </mat-tab>
+
   <mat-tab label="Fractales">
     <button mat-raised-button color="accent" [cdkCopyToClipboard]="fractalesRecDailyString">Copiar Diarios y Recomendados</button>
     <mat-accordion>
@@ -40,11 +28,6 @@
             {{panelOpenState ? 'Contraer' : 'Desplegar'}}
           </mat-panel-description>
         </mat-expansion-panel-header>
-
-          <!-- <mat-form-field appearance="standard">
-            <mat-label>Filtrar</mat-label>
-            <input matInput (keyup)="applyFilter($event)" placeholder="Volcanic" #input>
-          </mat-form-field> -->
 
           <div>
             <mat-form-field *ngFor="let filter of filterSelectObj" style="margin-left: 15px;">
@@ -105,10 +88,6 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
-            <!-- Row shown when there is no matching data. -->
-            <!-- <tr class="mat-row" *matNoDataRow>
-              <td class="mat-cell" colspan="6">No hay coincidencias buscando "{{input.value}}"</td>
-            </tr> -->
           </table>
       </mat-expansion-panel>
     </mat-accordion>
@@ -303,7 +282,7 @@
 
     <div class="daily-menu" *ngIf="!loading">
       <a  *ngFor="let fractal of dailyInfoF.fractals; let i = index">
-        <img mat-card-image src={{fractal.icon}}>
+        <img mat-card-image-f src={{fractal.icon}}>
         <p></p>
         id = {{fractal.id}}
         <p></p>
@@ -311,36 +290,7 @@
       </a>
     </div>
   </mat-tab>
-  <mat-tab label="McM / WvW">
-    <div class="daily-menu" *ngIf="!loading">
-      <a  *ngFor="let mundo of dailyInfoF.wvw; let i = index">
-        <img mat-card-image src={{mundo.icon}}>
-        <p></p>
-        id = {{mundo.id}}
-        <p></p>
-        {{mundo.name}}
-        <p></p>
-        {{mundo.requirement}}
-        <p></p>
-        Cantidad: {{mundo.tiers[0].count}}
-      </a>
-    </div>
-  </mat-tab>
-  <mat-tab label="PvP">
-    <div class="daily-menu" *ngIf="!loading">
-      <a  *ngFor="let pvp of dailyInfoF.pvp; let i = index">
-        <img mat-card-image src={{pvp.icon}}>
-        <p></p>
-        id = {{pvp.id}}
-        <p></p>
-        {{pvp.name}}
-        <p></p>
-        {{pvp.requirement}}
-        <p></p>
-        Cantidad: {{pvp.tiers[0].count}}
-      </a>
-    </div>
-  </mat-tab>
+
   <mat-tab label="+Diarias">
     <div class="daily-menu">
       <a>
