@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { DailyService } from "../../service/daily.service";
+import { LegendaryService } from 'src/app/service/legendary.service';
 import { Fractales, FractalesCm, InestabCm } from "./fractales";
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
@@ -29,6 +30,7 @@ export class DailyComponent implements OnInit, AfterViewInit  {
   loading2: boolean = true;
   pactSupply: string[] = [];
   pactSupplyUpdate: string = "";
+  mapBonusRewardweekNumber = 1;
   tokenSupply: string[][] = [];
   anomalia: string = '';
   dailyActivity: string = "";
@@ -101,7 +103,7 @@ export class DailyComponent implements OnInit, AfterViewInit  {
   @ViewChild("sort3", { static: false }) sort3!: MatSort;
   @ViewChild("sort4", { static: false }) sort4!: MatSort;
 
-  constructor(private dailyService: DailyService) { 
+  constructor(private dailyService: DailyService, private legendaryService: LegendaryService) { 
 
     this.filterSelectObj = [
       {
@@ -146,6 +148,7 @@ export class DailyComponent implements OnInit, AfterViewInit  {
   async ngOnInit() {
     this.tokenSupply = this.getTokenSupply();
     this.pactSupply = this.getPactSupply();
+    this.mapBonusRewardweekNumber = this.getMapBonusRewardWeekNumber(); //numero de semana de map bonus reward entre 1-8
     this.dailyActivity = this.getDailyActivity();
     this.recordatorio = this.getRecordatorio();
     this.anomalia = this.getAnomaly();
@@ -595,6 +598,10 @@ export class DailyComponent implements OnInit, AfterViewInit  {
                         nombres[fractal99[0]], nombres[fractal99[1]], nombres[fractal99[2]],
                         nombres[fractal100[0]], nombres[fractal100[1]], nombres[fractal100[2]]];
     return fractalInest;
+  }
+
+  getMapBonusRewardWeekNumber(){
+    return this.legendaryService.getMapBonusRewardWeekNumber();
   }
 
   applyFilter(event: Event) {

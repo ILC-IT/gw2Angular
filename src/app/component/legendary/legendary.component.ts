@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { HeroService } from 'src/app/service/hero.service';
 import { LegendaryService } from 'src/app/service/legendary.service';
-import { legendarios, armaduraLigera, armaduraMedia, armaduraPesada, runa, sello, anilloRaid, t6, idsT6, vales, cantidadArmadura, cantidadRunas, cantidadSellos, valeId, trebolId, liId, ectoplasmaId, liArmadura, trebolArmadura, trebolRuna, trebolSello, trebolAnilloRaid, t6ArmaduraSelloRuna, ectoplasmaRuna, ectoplasmaSello, liAnilloRaid, t6AnilloRaid, obsidianaArmadura, obsidianaRuna, obsidianaSello, obsidianaId, otrosComponentes, lingoteAurico, placaReclamada, huevoChak, piezaAeronave, trozoAurilio, cristalLineaLey, montonCristalLuminoso, aspectoMistico, talismanBrillantez, talismanPotencia, talismanHabilidad, motaMistica, simboloControl, simboloMejora, simboloDolor, monedaMistica} from './legendary';
+import { legendarios, armaduraLigera, armaduraMedia, armaduraPesada, runa, sello, anilloRaid, t6, idsT6, vales, cantidadArmadura, cantidadRunas, cantidadSellos, valeId, trebolId, liId, ectoplasmaId, liArmadura, trebolArmadura, trebolRuna, trebolSello, trebolAnilloRaid, t6ArmaduraSelloRuna, ectoplasmaRuna, ectoplasmaSello, liAnilloRaid, t6AnilloRaid, obsidianaArmadura, obsidianaRuna, obsidianaSello, obsidianaId, otrosComponentes, lingoteAurico, placaReclamada, huevoChak, piezaAeronave, trozoAurilio, cristalLineaLey, montonCristalLuminoso, aspectoMistico, talismanBrillantez, talismanPotencia, talismanHabilidad, motaMistica, simboloControl, simboloMejora, simboloDolor, monedaMistica, preciosVarios, idsPreciosVarios, legendaryWeapons1, legendaryWeapons3, donExploracion} from './legendary';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-legendary',
   templateUrl: './legendary.component.html',
   styleUrls: ['./legendary.component.css']
 })
-export class LegendaryComponent implements OnInit {
+export class LegendaryComponent implements OnInit, AfterViewInit {
 
   //////////////////// T6 ////////////////////
   vialDeSangrePoderosa: t6 = {
@@ -17,6 +19,7 @@ export class LegendaryComponent implements OnInit {
     cantidad: 0,
     tengo: 0,
     necesito: 0,
+    icon: "https://render.guildwars2.com/file/1A930A6A7B5B01EAB4CB36E79014C12B500BF6B3/66950.png",
     precioTpCompra: 0,
     precioTpCompraS: "",
     precioTpVenta: 0,
@@ -34,6 +37,7 @@ export class LegendaryComponent implements OnInit {
     cantidad: 0,
     tengo: 0,
     necesito: 0,
+    icon: "https://render.guildwars2.com/file/0EE45FBB1E1A004600E9BAA7097830B2DE08587D/66828.png",
     precioTpCompra: 0,
     precioTpCompraS: "",
     precioTpVenta: 0,
@@ -51,6 +55,7 @@ export class LegendaryComponent implements OnInit {
     cantidad: 0,
     tengo: 0,
     necesito: 0,
+    icon: "https://render.guildwars2.com/file/043E2BBA270F381870F1B45E7C09C098CAFE3D14/66996.png",
     precioTpCompra: 0,
     precioTpCompraS: "",
     precioTpVenta: 0,
@@ -68,6 +73,7 @@ export class LegendaryComponent implements OnInit {
     cantidad: 0,
     tengo: 0,
     necesito: 0,
+    icon: "https://render.guildwars2.com/file/080D00670558CD9E580D5662030394B2206E92A6/434537.png",
     precioTpCompra: 0,
     precioTpCompraS: "",
     precioTpVenta: 0,
@@ -85,6 +91,7 @@ export class LegendaryComponent implements OnInit {
     cantidad: 0,
     tengo: 0,
     necesito: 0,
+    icon: "https://render.guildwars2.com/file/F2050EE1A7A43EDCDCB1E971FDA608AD0566E4DA/66998.png",
     precioTpCompra: 0,
     precioTpCompraS: "",
     precioTpVenta: 0,
@@ -102,6 +109,7 @@ export class LegendaryComponent implements OnInit {
     cantidad: 0,
     tengo: 0,
     necesito: 0,
+    icon: "https://render.guildwars2.com/file/7061C82F4F9D0C585742F545C40A0F06BE0154DC/66527.png",
     precioTpCompra: 0,
     precioTpCompraS: "",
     precioTpVenta: 0,
@@ -119,6 +127,7 @@ export class LegendaryComponent implements OnInit {
     cantidad: 0,
     tengo: 0,
     necesito: 0,
+    icon: "https://render.guildwars2.com/file/C1ABF9082901FC3CEABC3138CBCCA1DAD5D41812/66955.png",
     precioTpCompra: 0,
     precioTpCompraS: "",
     precioTpVenta: 0,
@@ -136,6 +145,7 @@ export class LegendaryComponent implements OnInit {
     cantidad: 0,
     tengo: 0,
     necesito: 0,
+    icon: "https://render.guildwars2.com/file/543EC37900EA2A57E77FA891193A48D66AA224AB/66939.png",
     precioTpCompra: 0,
     precioTpCompraS: "",
     precioTpVenta: 0,
@@ -158,7 +168,7 @@ export class LegendaryComponent implements OnInit {
     this.vesiculaDeVenenoPoderoso
   ];
   // tabla t6 compra-venta TP
-  displayedColumnsT6: string[] = ['nombre', 'id', 'cantidad', 'tengo', 'necesito', 'precioTpCompraS', 'precioTpVentaS', 'precioStackCompraS', 'precioStackVentaS', 'precioStackVentaS90'];
+  displayedColumnsT6: string[] = ['nombre', 'id', 'cantidad', 'tengo', 'necesito', 'icon', 'precioTpCompraS', 'precioTpVentaS', 'precioStackCompraS', 'precioStackVentaS', 'precioStackVentaS90'];
   dataSourceT6 = this.materialesT6;
 
   //////////////////// Armaduras, sellos, runas ////////////////////
@@ -174,9 +184,10 @@ export class LegendaryComponent implements OnInit {
   ectoplasmaCount: number = 0;
   obsidianaCount: number = 0;
   armaduraLigeraDatos: legendarios = {
-    nombre: "Armadura Ligera",
+    nombre: "Raid Armadura Ligera",
     cantidad: cantidadArmadura,
     tengo: 0,
+    wiki: "https://wiki.guildwars2.com/wiki/Legendary_armor#Raid_set",
     totalVales: vales * cantidadArmadura,
     totalTreboles: trebolArmadura * cantidadArmadura,
     totalLi:  liArmadura * cantidadArmadura,
@@ -185,9 +196,10 @@ export class LegendaryComponent implements OnInit {
     totalObsidiana: obsidianaArmadura * cantidadArmadura
   };
   armaduraMediaDatos: legendarios = {
-    nombre: "Armadura Media",
+    nombre: "Raid Armadura Media",
     cantidad: cantidadArmadura,
     tengo: 0,
+    wiki: "https://wiki.guildwars2.com/wiki/Legendary_armor#Raid_set",
     totalVales: vales * cantidadArmadura,
     totalTreboles: trebolArmadura * cantidadArmadura,
     totalLi:  liArmadura * cantidadArmadura,
@@ -196,9 +208,10 @@ export class LegendaryComponent implements OnInit {
     totalObsidiana: obsidianaArmadura * cantidadArmadura
   };
   armaduraPesadaDatos: legendarios = {
-    nombre: "Armadura Pesada",
+    nombre: "Raid Armadura Pesada",
     cantidad: cantidadArmadura,
     tengo: 0,
+    wiki: "https://wiki.guildwars2.com/wiki/Legendary_armor#Raid_set",
     totalVales: vales * cantidadArmadura,
     totalTreboles: trebolArmadura * cantidadArmadura,
     totalLi:  liArmadura * cantidadArmadura,
@@ -210,6 +223,7 @@ export class LegendaryComponent implements OnInit {
     nombre: "Coalescencia anillo",
     cantidad: 1,
     tengo: 0,
+    wiki: "https://wiki.guildwars2.com/wiki/Coalescence",
     totalVales: 0,
     totalTreboles: trebolAnilloRaid,
     totalLi:  liAnilloRaid,
@@ -221,6 +235,7 @@ export class LegendaryComponent implements OnInit {
     nombre: "Runas",
     cantidad: cantidadRunas,
     tengo: 0,
+    wiki: "https://wiki.guildwars2.com/wiki/Legendary_Rune",
     totalVales: vales * cantidadRunas,
     totalTreboles: trebolRuna * cantidadRunas,
     totalLi:  0,
@@ -232,6 +247,7 @@ export class LegendaryComponent implements OnInit {
     nombre: "Sellos",
     cantidad: cantidadSellos,
     tengo: 0,
+    wiki: "https://wiki.guildwars2.com/wiki/Legendary_Sigil",
     totalVales: vales * cantidadSellos,
     totalTreboles: trebolSello * cantidadSellos,
     totalLi:  0,
@@ -243,6 +259,7 @@ export class LegendaryComponent implements OnInit {
     nombre: "Total",
     cantidad: this.armaduraLigeraDatos.cantidad + this.armaduraMediaDatos.cantidad + this.armaduraPesadaDatos.cantidad + this.anilloRaidDatos.cantidad + this.runaDatos.cantidad + this.selloDatos.cantidad,
     tengo: this.armaduraLigeraDatos.tengo + this.armaduraMediaDatos.tengo + this.armaduraPesadaDatos.tengo + this.anilloRaidDatos.tengo + this.runaDatos.tengo+ this.selloDatos.tengo,
+    wiki: "",
     totalVales: this.armaduraLigeraDatos.totalVales + this.armaduraMediaDatos.totalVales + this.armaduraPesadaDatos.totalVales + this.anilloRaidDatos.totalVales + this.runaDatos.totalVales + this.selloDatos.totalVales,
     totalTreboles: this.armaduraLigeraDatos.totalTreboles + this.armaduraMediaDatos.totalTreboles + this.armaduraPesadaDatos.totalTreboles + this.anilloRaidDatos.totalTreboles + this.runaDatos.totalTreboles+ this.selloDatos.totalTreboles,
     totalLi: this.armaduraLigeraDatos.totalLi + this.armaduraMediaDatos.totalLi + this.armaduraPesadaDatos.totalLi + this.anilloRaidDatos.totalLi + this.runaDatos.totalLi + this.selloDatos.totalLi,
@@ -254,6 +271,7 @@ export class LegendaryComponent implements OnInit {
     nombre: "Tengo",
     cantidad: 0,
     tengo: 0,
+    wiki: "",
     totalVales: this.armaduraLigeraDatos.totalVales + this.armaduraMediaDatos.totalVales + this.armaduraPesadaDatos.totalVales + this.anilloRaidDatos.totalVales + this.runaDatos.totalVales + this.selloDatos.totalVales,
     totalTreboles: this.armaduraLigeraDatos.totalTreboles + this.armaduraMediaDatos.totalTreboles + this.armaduraPesadaDatos.totalTreboles + this.anilloRaidDatos.totalTreboles + this.runaDatos.totalTreboles+ this.selloDatos.totalTreboles,
     totalLi: this.armaduraLigeraDatos.totalLi + this.armaduraMediaDatos.totalLi + this.armaduraPesadaDatos.totalLi + this.anilloRaidDatos.totalLi + this.runaDatos.totalLi + this.selloDatos.totalLi,
@@ -265,6 +283,7 @@ export class LegendaryComponent implements OnInit {
     nombre: "Gasté",
     cantidad: 0,
     tengo: 0,
+    wiki: "",
     totalVales: this.armaduraLigeraDatos.totalVales + this.armaduraMediaDatos.totalVales + this.armaduraPesadaDatos.totalVales + this.anilloRaidDatos.totalVales + this.runaDatos.totalVales+ this.selloDatos.totalVales,
     totalTreboles: this.armaduraLigeraDatos.totalTreboles + this.armaduraMediaDatos.totalTreboles + this.armaduraPesadaDatos.totalTreboles + this.anilloRaidDatos.totalTreboles + this.runaDatos.totalTreboles+ this.selloDatos.totalTreboles,
     totalLi: this.armaduraLigeraDatos.totalLi + this.armaduraMediaDatos.totalLi + this.armaduraPesadaDatos.totalLi + this.anilloRaidDatos.totalLi + this.runaDatos.totalLi + this.selloDatos.totalLi,
@@ -276,6 +295,7 @@ export class LegendaryComponent implements OnInit {
     nombre: "Necesito",
     cantidad: 0,
     tengo: 0,
+    wiki: "",
     totalVales: this.armaduraLigeraDatos.totalVales + this.armaduraMediaDatos.totalVales + this.armaduraPesadaDatos.totalVales + this.anilloRaidDatos.totalVales + this.runaDatos.totalVales + this.selloDatos.totalVales,
     totalTreboles: this.armaduraLigeraDatos.totalTreboles + this.armaduraMediaDatos.totalTreboles + this.armaduraPesadaDatos.totalTreboles + this.anilloRaidDatos.totalTreboles + this.runaDatos.totalTreboles+ this.selloDatos.totalTreboles,
     totalLi: this.armaduraLigeraDatos.totalLi + this.armaduraMediaDatos.totalLi + this.armaduraPesadaDatos.totalLi + this.anilloRaidDatos.totalLi + this.runaDatos.totalLi + this.selloDatos.totalLi,
@@ -287,6 +307,7 @@ export class LegendaryComponent implements OnInit {
     nombre: "",
     cantidad: 0,
     tengo: 0,
+    wiki: "",
     totalVales: 0,
     totalTreboles: 0,
     totalLi: 0,
@@ -315,6 +336,7 @@ export class LegendaryComponent implements OnInit {
   lingoteAurico: otrosComponentes = {
     nombre: "Lingote Áurico",
     id: lingoteAurico[0].id,
+    icon: lingoteAurico[0].icon,
     cantidad: lingoteAurico[0].cantidad * (this.armaduraLigeraDatos.cantidad + this.armaduraMediaDatos.cantidad + this.armaduraPesadaDatos.cantidad),
     tengo: 0,
     gaste: 0,
@@ -323,6 +345,7 @@ export class LegendaryComponent implements OnInit {
   placaReclamada: otrosComponentes = {
     nombre: "Placa reclamada",
     id: placaReclamada[0].id,
+    icon: placaReclamada[0].icon,
     cantidad: placaReclamada[0].cantidad * (this.armaduraLigeraDatos.cantidad + this.armaduraMediaDatos.cantidad + this.armaduraPesadaDatos.cantidad),
     tengo: 0,
     gaste: 0,
@@ -331,6 +354,7 @@ export class LegendaryComponent implements OnInit {
   huevoChak: otrosComponentes = {
     nombre: "Huevo de Chak",
     id: huevoChak[0].id,
+    icon: huevoChak[0].icon,
     cantidad: huevoChak[0].cantidad * (this.armaduraLigeraDatos.cantidad + this.armaduraMediaDatos.cantidad + this.armaduraPesadaDatos.cantidad),
     tengo: 0,
     gaste: 0,
@@ -339,6 +363,7 @@ export class LegendaryComponent implements OnInit {
   trozoAurilio: otrosComponentes = {
     nombre: "Trozo de aurilio",
     id: trozoAurilio[0].idWallet,
+    icon: trozoAurilio[0].icon,
     cantidad: trozoAurilio[0].cantidad * (this.armaduraLigeraDatos.cantidad + this.armaduraMediaDatos.cantidad + this.armaduraPesadaDatos.cantidad),
     tengo: 0,
     gaste: 0,
@@ -347,6 +372,7 @@ export class LegendaryComponent implements OnInit {
   piezaAeronave: otrosComponentes = {
     nombre: "Pieza de aeronave",
     id: piezaAeronave[0].idWallet,
+    icon: piezaAeronave[0].icon,
     cantidad: piezaAeronave[0].cantidad * (this.armaduraLigeraDatos.cantidad + this.armaduraMediaDatos.cantidad + this.armaduraPesadaDatos.cantidad),
     tengo: 0,
     gaste: 0,
@@ -355,6 +381,7 @@ export class LegendaryComponent implements OnInit {
   cristalLineaLey: otrosComponentes = {
     nombre: "Cristal de línea ley",
     id: cristalLineaLey[0].idWallet,
+    icon: cristalLineaLey[0].icon,
     cantidad: cristalLineaLey[0].cantidad * (this.armaduraLigeraDatos.cantidad + this.armaduraMediaDatos.cantidad + this.armaduraPesadaDatos.cantidad),
     tengo: 0,
     gaste: 0,
@@ -363,6 +390,7 @@ export class LegendaryComponent implements OnInit {
   montonCristalLuminoso: otrosComponentes = {
     nombre: "Montón de cristal luminoso",
     id: montonCristalLuminoso[0].id,
+    icon: montonCristalLuminoso[0].icon,
     cantidad: montonCristalLuminoso[0].cantidadRuna * this.runaDatos.cantidad + montonCristalLuminoso[0].cantidadSello * this.selloDatos.cantidad,
     tengo: 0,
     gaste: 0,
@@ -371,6 +399,7 @@ export class LegendaryComponent implements OnInit {
   aspectoMistico: otrosComponentes = {
     nombre: "Aspecto místico",
     id: aspectoMistico[0].id,
+    icon: aspectoMistico[0].icon,
     cantidad: aspectoMistico[0].cantidad * this.runaDatos.cantidad,
     tengo: 0,
     gaste: 0,
@@ -379,6 +408,7 @@ export class LegendaryComponent implements OnInit {
   talismanBrillantez: otrosComponentes = {
     nombre: "Talismán de brillantez",
     id: talismanBrillantez[0].id,
+    icon: talismanBrillantez[0].icon,
     cantidad: talismanBrillantez[0].cantidad * this.runaDatos.cantidad,
     tengo: 0,
     gaste: 0,
@@ -387,6 +417,7 @@ export class LegendaryComponent implements OnInit {
   talismanPotencia: otrosComponentes = {
     nombre: "Talismán de potencia",
     id: talismanPotencia[0].id,
+    icon: talismanPotencia[0].icon,
     cantidad: talismanPotencia[0].cantidad * this.runaDatos.cantidad,
     tengo: 0,
     gaste: 0,
@@ -395,6 +426,7 @@ export class LegendaryComponent implements OnInit {
   talismanHabilidad: otrosComponentes = {
     nombre: "Talismán de habilidad",
     id: talismanHabilidad[0].id,
+    icon: talismanHabilidad[0].icon,
     cantidad: talismanHabilidad[0].cantidad * this.runaDatos.cantidad,
     tengo: 0,
     gaste: 0,
@@ -403,6 +435,7 @@ export class LegendaryComponent implements OnInit {
   motaMistica: otrosComponentes = {
     nombre: "Mota mística",
     id: motaMistica[0].id,
+    icon: motaMistica[0].icon,
     cantidad: motaMistica[0].cantidad * this.selloDatos.cantidad,
     tengo: 0,
     gaste: 0,
@@ -411,6 +444,7 @@ export class LegendaryComponent implements OnInit {
   simboloControl: otrosComponentes = {
     nombre: "Símbolo de control",
     id: simboloControl[0].id,
+    icon: simboloControl[0].icon,
     cantidad: simboloControl[0].cantidad * this.selloDatos.cantidad,
     tengo: 0,
     gaste: 0,
@@ -419,6 +453,7 @@ export class LegendaryComponent implements OnInit {
   simboloMejora: otrosComponentes = {
     nombre: "Símbolo de mejora",
     id: simboloMejora[0].id,
+    icon: simboloMejora[0].icon,
     cantidad: simboloMejora[0].cantidad * this.selloDatos.cantidad,
     tengo: 0,
     gaste: 0,
@@ -427,6 +462,7 @@ export class LegendaryComponent implements OnInit {
   simboloDolor: otrosComponentes = {
     nombre: "Símbolo de dolor",
     id: simboloDolor[0].id,
+    icon: simboloDolor[0].icon,
     cantidad: simboloDolor[0].cantidad * this.selloDatos.cantidad,
     tengo: 0,
     gaste: 0,
@@ -434,7 +470,8 @@ export class LegendaryComponent implements OnInit {
   }
   monedaMistica: otrosComponentes = {
     nombre: "Moneda Mística",
-    id: monedaMistica,
+    id: monedaMistica[0].id,
+    icon: monedaMistica[0].icon,
     cantidad: 0,
     tengo: 0,
     gaste: 0,
@@ -443,6 +480,7 @@ export class LegendaryComponent implements OnInit {
   filaEnBlancoOtros: otrosComponentes = {
     nombre: "",
     id: 0,
+    icon: "",
     cantidad: 0,
     tengo: 0,
     gaste: 0,
@@ -461,7 +499,6 @@ export class LegendaryComponent implements OnInit {
     this.talismanBrillantez,
     this.talismanPotencia,
     this.talismanHabilidad,
-    this.filaEnBlancoOtros,
     // this.motaMistica,
     this.simboloControl,
     this.simboloMejora,
@@ -470,18 +507,80 @@ export class LegendaryComponent implements OnInit {
     this.monedaMistica
   ]
     // tabla otros componentes
-  displayedColumnsOtros: string[] = ['nombre', 'id', 'cantidad', 'tengo', 'gaste', 'necesito'];
+  displayedColumnsOtros: string[] = ['nombre', 'id', 'icon', 'cantidad', 'tengo', 'gaste', 'necesito'];
   dataSourceOtros = this.otros;
 
-  mapBonusRewardweekNumber = 1;
+  ///////////////////// Precios Varios ////////////////////
+  monedaMisticaPV: preciosVarios = {
+    icon: monedaMistica[0].icon,
+    id: monedaMistica[0].id,
+    nombre: "Moneda Mística",
+    tengo: 0,
+    precioTpCompra: 0,
+    precioTpCompraS: "",
+    precioTpVenta: 0,
+    precioTpVentaS: "",
+    precioStackCompra: 0,
+    precioStackCompraS: "",
+    precioStackVenta: 0,
+    precioStackVentaS: "",
+    precioStackVenta90: 0,
+    precioStackVentaS90: ""
+  };
+
+  ectoplasmaPV: preciosVarios = {
+    icon: ectoplasmaId[0].icon,
+    id: ectoplasmaId[0].id,
+    nombre: "Ectoplasma",
+    tengo: 0,
+    precioTpCompra: 0,
+    precioTpCompraS: "",
+    precioTpVenta: 0,
+    precioTpVentaS: "",
+    precioStackCompra: 0,
+    precioStackCompraS: "",
+    precioStackVenta: 0,
+    precioStackVentaS: "",
+    precioStackVenta90: 0,
+    precioStackVentaS90: ""
+  }
+
+  preciosVarios: preciosVarios[] = [
+    this.monedaMisticaPV,
+    this.ectoplasmaPV,
+  ]
+  // tabla precios varios
+  displayedColumnsPreciosVarios: string[] = ['nombre', 'id', 'tengo', 'icon', 'precioTpCompraS', 'precioTpVentaS', 'precioStackCompraS', 'precioStackVentaS', 'precioStackVentaS90'];
+  dataSourcePreciosVarios = this.preciosVarios;
+
+  ///////////////////// Armas legendarias /////////////////
+  armasLegendarias1 = new MatTableDataSource(legendaryWeapons1);
+  armasLegendarias3 = new MatTableDataSource(legendaryWeapons3);
+  donExploracion = donExploracion;
+  // tabla armas legendarias 1 y 3
+  displayedColumnsArmasLegendarias1: string[] = ['icon', 'tengo', 'nombre', 'tipo', 'precioTpVentaS', 'pre', 'precioTpVentaSPre'];
+  displayedColumnsArmasLegendarias3: string[] = ['icon', 'tengo', 'nombre', 'tipo', 'precioTpVentaS', 'pre', 'precioTpVentaSPre'];
+  dataSourceArmasLegendarias1 = this.armasLegendarias1;
+  dataSourceArmasLegendarias3 = this.armasLegendarias3;
+  @ViewChild("sort1", { static: false }) sort1!: MatSort;
+  @ViewChild("sort3", { static: false }) sort3!: MatSort;
+  /////////////////////////////////////////////////////////
 
   constructor(private heroService: HeroService, private legendaryService: LegendaryService) { }
 
   ngOnInit(): void {
     this.getT6Tengo(); //cuantos t6 tengo de cada tipo y otros tengo
-    this.getLegendaryTengo(); //cuantas piezas de armadura, anillo, sellos, runas tengo
+    this.getLegendaryTengo(); //cuantas piezas de armadura, anillo, sellos, runas, armas tengo
     this.getT6Prices(); //el precio del bazar de cada t6
-    this.mapBonusRewardweekNumber = this.getMapBonusRewardWeekNumber(); //numero de semana de map bonus reward entre 1-8
+    this.getPreciosVariosPrices(); //el precio del bazar de otras cosas
+    this.getArmasLegendariasPrices(); //el precio del bazar de las armas legendarias
+  }
+
+  ngAfterViewInit() {
+    this.sort1.disableClear = true; //para que solo haga ascendente o descendente
+    this.dataSourceArmasLegendarias1.sort = this.sort1;
+    this.sort3.disableClear = true; //para que solo haga ascendente o descendente
+    this.dataSourceArmasLegendarias3.sort = this.sort3;
   }
 
   getT6Tengo(){
@@ -558,8 +657,9 @@ export class LegendaryComponent implements OnInit {
         if (materials[i].id === simboloDolor[0].id){
           this.simboloDolor.tengo = materials[i].count;
         }
-        if (materials[i].id === monedaMistica){
+        if (materials[i].id === monedaMistica[0].id){
           this.monedaMistica.tengo = materials[i].count;
+          this.monedaMisticaPV.tengo = materials[i].count;
         }
       }
       //Actualizo totales t6 para armaduras, anillo, runas y sellos
@@ -601,6 +701,16 @@ export class LegendaryComponent implements OnInit {
         if (legendary[i].id === sello[0].id){
           this.selloCount = legendary[i].count;
         }
+        for (let j = 0; j < legendaryWeapons1.length; j++){
+          if (legendary[i].id === legendaryWeapons1[j].id){
+            legendaryWeapons1[j].tengo = legendary[i].count;
+          }
+        }
+        for (let j = 0; j < legendaryWeapons3.length; j++){
+          if (legendary[i].id === legendaryWeapons3[j].id){
+            legendaryWeapons3[j].tengo = legendary[i].count;
+          }
+        }
       }
 
       //Actualizo datos con los valores encontrados
@@ -626,6 +736,7 @@ export class LegendaryComponent implements OnInit {
         }
         if (mats[i].id === ectoplasmaId[0].id){
           this.tengoDatos.totalEctoplasma = mats[i].count;
+          this.ectoplasmaPV.tengo = mats[i].count;
           this.ectoplasmaCount++;
         }
         if (mats[i].id === obsidianaId[0].id){
@@ -730,7 +841,7 @@ export class LegendaryComponent implements OnInit {
   getT6Prices(){
     this.legendaryService.getCommercePrices(idsT6).subscribe((prices: any) => {
       for(let i = 0; i < prices.length; i++){
-        if (prices[i].id == 24295){
+        if (prices[i].id == this.vialDeSangrePoderosa.id){
           this.vialDeSangrePoderosa.precioTpCompra = prices[i].buys.unit_price;
           this.vialDeSangrePoderosa.precioTpVenta = prices[i].sells.unit_price;
           this.vialDeSangrePoderosa.precioStackCompra = prices[i].buys.unit_price * 250;
@@ -742,7 +853,7 @@ export class LegendaryComponent implements OnInit {
           this.vialDeSangrePoderosa.precioStackVentaS = this.getPriceSplit(this.vialDeSangrePoderosa.precioStackVenta);
           this.vialDeSangrePoderosa.precioStackVentaS90 = this.getPriceSplit(this.vialDeSangrePoderosa.precioStackVenta90);
         }
-        if (prices[i].id == 24358){
+        if (prices[i].id == this.huesoAntiguo.id){
           this.huesoAntiguo.precioTpCompra = prices[i].buys.unit_price;
           this.huesoAntiguo.precioTpVenta = prices[i].sells.unit_price;
           this.huesoAntiguo.precioStackCompra = prices[i].buys.unit_price * 250;
@@ -754,7 +865,7 @@ export class LegendaryComponent implements OnInit {
           this.huesoAntiguo.precioStackVentaS = this.getPriceSplit(this.huesoAntiguo.precioStackVenta);
           this.huesoAntiguo.precioStackVentaS90 = this.getPriceSplit(this.huesoAntiguo.precioStackVenta90);
         }
-        if (prices[i].id == 24351){
+        if (prices[i].id == this.garraDespiadada.id){
           this.garraDespiadada.precioTpCompra = prices[i].buys.unit_price;
           this.garraDespiadada.precioTpVenta = prices[i].sells.unit_price;
           this.garraDespiadada.precioStackCompra = prices[i].buys.unit_price * 250;
@@ -766,7 +877,7 @@ export class LegendaryComponent implements OnInit {
           this.garraDespiadada.precioStackVentaS = this.getPriceSplit(this.garraDespiadada.precioStackVenta);
           this.garraDespiadada.precioStackVentaS90 = this.getPriceSplit(this.garraDespiadada.precioStackVenta90);
         }
-        if (prices[i].id == 24277){
+        if (prices[i].id == this.montonDePolvoCristalino.id){
           this.montonDePolvoCristalino.precioTpCompra = prices[i].buys.unit_price;
           this.montonDePolvoCristalino.precioTpVenta = prices[i].sells.unit_price;
           this.montonDePolvoCristalino.precioStackCompra = prices[i].buys.unit_price * 250;
@@ -778,7 +889,7 @@ export class LegendaryComponent implements OnInit {
           this.montonDePolvoCristalino.precioStackVentaS = this.getPriceSplit(this.montonDePolvoCristalino.precioStackVenta);
           this.montonDePolvoCristalino.precioStackVentaS90 = this.getPriceSplit(this.montonDePolvoCristalino.precioStackVenta90);
         }
-        if (prices[i].id == 24357){
+        if (prices[i].id == this.colmilloFeroz.id){
           this.colmilloFeroz.precioTpCompra = prices[i].buys.unit_price;
           this.colmilloFeroz.precioTpVenta = prices[i].sells.unit_price;
           this.colmilloFeroz.precioStackCompra = prices[i].buys.unit_price * 250;
@@ -790,7 +901,7 @@ export class LegendaryComponent implements OnInit {
           this.colmilloFeroz.precioStackVentaS = this.getPriceSplit(this.colmilloFeroz.precioStackVenta);
           this.colmilloFeroz.precioStackVentaS90 = this.getPriceSplit(this.colmilloFeroz.precioStackVenta90);
         }
-        if (prices[i].id == 24289){
+        if (prices[i].id == this.escamaBlindada.id){
           this.escamaBlindada.precioTpCompra = prices[i].buys.unit_price;
           this.escamaBlindada.precioTpVenta = prices[i].sells.unit_price;
           this.escamaBlindada.precioStackCompra = prices[i].buys.unit_price * 250;
@@ -802,7 +913,7 @@ export class LegendaryComponent implements OnInit {
           this.escamaBlindada.precioStackVentaS = this.getPriceSplit(this.escamaBlindada.precioStackVenta);
           this.escamaBlindada.precioStackVentaS90 = this.getPriceSplit(this.escamaBlindada.precioStackVenta90);
         }
-        if (prices[i].id == 24300){
+        if (prices[i].id == this.totemElaborado.id){
           this.totemElaborado.precioTpCompra = prices[i].buys.unit_price;
           this.totemElaborado.precioTpVenta = prices[i].sells.unit_price;
           this.totemElaborado.precioStackCompra = prices[i].buys.unit_price * 250;
@@ -814,7 +925,7 @@ export class LegendaryComponent implements OnInit {
           this.totemElaborado.precioStackVentaS = this.getPriceSplit(this.totemElaborado.precioStackVenta);
           this.totemElaborado.precioStackVentaS90 = this.getPriceSplit(this.totemElaborado.precioStackVenta90);
         }
-        if (prices[i].id == 24283){
+        if (prices[i].id == this.vesiculaDeVenenoPoderoso.id){
           this.vesiculaDeVenenoPoderoso.precioTpCompra = prices[i].buys.unit_price;
           this.vesiculaDeVenenoPoderoso.precioTpVenta = prices[i].sells.unit_price;
           this.vesiculaDeVenenoPoderoso.precioStackCompra = prices[i].buys.unit_price * 250;
@@ -849,6 +960,133 @@ export class LegendaryComponent implements OnInit {
     this.escamaBlindada.necesito = this.totalesDatos.totalT6 - this.escamaBlindada.tengo - this.gasteDatos.totalT6;
     this.totemElaborado.necesito = this.totalesDatos.totalT6 - this.totemElaborado.tengo - this.gasteDatos.totalT6;
     this.vesiculaDeVenenoPoderoso.necesito = this.totalesDatos.totalT6 - this.vesiculaDeVenenoPoderoso.tengo - this.gasteDatos.totalT6;
+  }
+
+  getPreciosVariosPrices(){
+    this.legendaryService.getCommercePrices(idsPreciosVarios).subscribe((prices: any) => {
+      for(let i = 0; i < prices.length; i++){
+        if (prices[i].id == this.monedaMisticaPV.id){
+          this.monedaMisticaPV.precioTpCompra = prices[i].buys.unit_price;
+          this.monedaMisticaPV.precioTpVenta = prices[i].sells.unit_price;
+          this.monedaMisticaPV.precioStackCompra = prices[i].buys.unit_price * 250;
+          this.monedaMisticaPV.precioStackVenta = prices[i].sells.unit_price * 250;
+          this.monedaMisticaPV.precioStackVenta90 = prices[i].sells.unit_price * 250 * 0.9;
+          this.monedaMisticaPV.precioTpCompraS = this.getPriceSplit(this.monedaMisticaPV.precioTpCompra);
+          this.monedaMisticaPV.precioTpVentaS = this.getPriceSplit(this.monedaMisticaPV.precioTpVenta);
+          this.monedaMisticaPV.precioStackCompraS = this.getPriceSplit(this.monedaMisticaPV.precioStackCompra);
+          this.monedaMisticaPV.precioStackVentaS = this.getPriceSplit(this.monedaMisticaPV.precioStackVenta);
+          this.monedaMisticaPV.precioStackVentaS90 = this.getPriceSplit(this.monedaMisticaPV.precioStackVenta90);
+        }
+        if (prices[i].id == this.ectoplasmaPV.id){
+          this.ectoplasmaPV.precioTpCompra = prices[i].buys.unit_price;
+          this.ectoplasmaPV.precioTpVenta = prices[i].sells.unit_price;
+          this.ectoplasmaPV.precioStackCompra = prices[i].buys.unit_price * 250;
+          this.ectoplasmaPV.precioStackVenta = prices[i].sells.unit_price * 250;
+          this.ectoplasmaPV.precioStackVenta90 = prices[i].sells.unit_price * 250 * 0.9;
+          this.ectoplasmaPV.precioTpCompraS = this.getPriceSplit(this.ectoplasmaPV.precioTpCompra);
+          this.ectoplasmaPV.precioTpVentaS = this.getPriceSplit(this.ectoplasmaPV.precioTpVenta);
+          this.ectoplasmaPV.precioStackCompraS = this.getPriceSplit(this.ectoplasmaPV.precioStackCompra);
+          this.ectoplasmaPV.precioStackVentaS = this.getPriceSplit(this.ectoplasmaPV.precioStackVenta);
+          this.ectoplasmaPV.precioStackVentaS90 = this.getPriceSplit(this.ectoplasmaPV.precioStackVenta90);
+        }
+      }
+      // console.log(this.monedaMisticaPV)
+      // console.log(this.ectoplasmaPV)
+      this.dataSourcePreciosVarios = this.preciosVarios;
+
+    })
+  }
+
+  getArmasLegendariasPrices(){
+    //saco los ids de las armas y sus pres de primera gen
+    let idsArmasLegendarias = "";
+    let idsArmasLegendariasPre = "";
+    for(let i = 0; i < legendaryWeapons1.length; i++){
+      idsArmasLegendarias = idsArmasLegendarias.concat(legendaryWeapons1[i].id.toString(), ", ");
+      idsArmasLegendariasPre = idsArmasLegendariasPre.concat(legendaryWeapons1[i].preId.toString(), ", ");
+    }
+    //consulto precios en el bazar de las armas de primera gen
+    this.legendaryService.getCommercePrices(idsArmasLegendarias).subscribe((prices: any) => {
+      for(let j = 0; j < legendaryWeapons1.length; j++){
+        for(let i = 0; i < prices.length; i++){
+          if (prices[i].id == legendaryWeapons1[j].id){
+            legendaryWeapons1[j].precioTpVenta = prices[i].sells.unit_price;
+            legendaryWeapons1[j].precioTpVentaS = this.getPriceSplit(legendaryWeapons1[j].precioTpVenta);
+            break;
+          }
+        }
+      }
+      this.dataSourceArmasLegendarias1 = new MatTableDataSource(legendaryWeapons1);
+      this.dataSourceArmasLegendarias1.sort = this.sort1;
+    });
+    //consulto precios en el bazar de las pres de primera gen
+    this.legendaryService.getCommercePrices(idsArmasLegendariasPre).subscribe((prices: any) => {
+      for(let j = 0; j < legendaryWeapons1.length; j++){
+        for(let i = 0; i < prices.length; i++){
+          if (prices[i].id == legendaryWeapons1[j].preId){
+            legendaryWeapons1[j].precioTpVentaPre = prices[i].sells.unit_price;
+            legendaryWeapons1[j].precioTpVentaSPre = this.getPriceSplit(legendaryWeapons1[j].precioTpVentaPre);
+            //para que ordene la columna bien, le agrego un espacio antes si es menor a "99g 99s 99c" que son 11 caracteres
+            if (legendaryWeapons1[j].precioTpVentaSPre.length === 11){ 
+              legendaryWeapons1[j].precioTpVentaSPre = " " + legendaryWeapons1[j].precioTpVentaSPre;
+            }
+            break;
+          }
+        }
+      }
+      this.dataSourceArmasLegendarias1 = new MatTableDataSource(legendaryWeapons1);
+      this.dataSourceArmasLegendarias1.sort = this.sort1;
+    });
+
+    //saco los ids de las armas y sus pres de tercera gen
+    let idsArmasLegendarias3 = "";
+    let idsArmasLegendarias3Pre = "";
+    for(let i = 0; i < legendaryWeapons3.length; i++){
+      idsArmasLegendarias3 = idsArmasLegendarias3.concat(legendaryWeapons3[i].id.toString(), ", ");
+      idsArmasLegendarias3Pre = idsArmasLegendarias3Pre.concat(legendaryWeapons3[i].preId.toString(), ", ");
+    }
+    //consulto precios en el bazar de las armas de tercera gen
+    this.legendaryService.getCommercePrices(idsArmasLegendarias3).subscribe((prices: any) => {
+      for(let j = 0; j < legendaryWeapons3.length; j++){
+        for(let i = 0; i < prices.length; i++){
+          if (prices[i].id == legendaryWeapons3[j].id){
+            legendaryWeapons3[j].precioTpVenta = prices[i].sells.unit_price;
+            legendaryWeapons3[j].precioTpVentaS = this.getPriceSplit(legendaryWeapons3[j].precioTpVenta);
+            break;
+          }
+        }
+      }
+      this.dataSourceArmasLegendarias3 = new MatTableDataSource(legendaryWeapons3);
+      this.dataSourceArmasLegendarias3.sort = this.sort3;
+    });
+    //consulto precios en el bazar de las pres de tercera gen
+    this.legendaryService.getCommercePrices(idsArmasLegendarias3Pre).subscribe((prices: any) => {
+      for(let j = 0; j < legendaryWeapons3.length; j++){
+        for(let i = 0; i < prices.length; i++){
+          if (prices[i].id == legendaryWeapons3[j].preId){
+            legendaryWeapons3[j].precioTpVentaPre = prices[i].sells.unit_price;
+            legendaryWeapons3[j].precioTpVentaSPre = this.getPriceSplit(legendaryWeapons3[j].precioTpVentaPre);
+            //para que ordene la columna bien, le agrego un espacio antes si es menor a "99g 99s 99c" que son 11 caracteres
+            if (legendaryWeapons3[j].precioTpVentaSPre.length === 11){ 
+              legendaryWeapons3[j].precioTpVentaSPre = " " + legendaryWeapons3[j].precioTpVentaSPre;
+            }
+            break;
+          }
+        }
+      }
+      this.dataSourceArmasLegendarias3 = new MatTableDataSource(legendaryWeapons3);
+      this.dataSourceArmasLegendarias3.sort = this.sort3;
+    });
+
+    //Saco la cantidad de don de exploracion del banco
+    this.heroService.getBank().subscribe((banco: any) => {
+      for (let i = 0; i < banco.length; i++){
+        if (banco[i].id === donExploracion[0].id){
+          donExploracion[0].tengoEnBanco = banco[i].count;
+          break;
+        }
+      }
+    })
   }
 
   getPriceSplit(cantidad: number){
@@ -888,6 +1126,7 @@ export class LegendaryComponent implements OnInit {
     return resFinal
   }
 
+  //-------------- T6 TOTAL PRICES ------------------------------------------------------------------------
   getTotalPrecioStackCompra() {
     // return this.dataSourceT6.map(t => t.precioStackCompra).reduce((acc, value) => acc + value, 0);
     return this.dataSourceT6.reduce((acc, value) => acc + value.precioStackCompra, 0);
@@ -915,7 +1154,8 @@ export class LegendaryComponent implements OnInit {
   getTotalPrecioStackVentaS90(){
     return this.getPriceSplit(this.dataSourceT6.reduce((acc, value) => acc + value.precioStackVenta90, 0));
   }
-
+  
+  //------------------------------------
   getTotalTotalVales(){
     return this.dataSourceLegen.reduce((acc, value) => acc + value.totalVales, 0);
   }
@@ -934,10 +1174,6 @@ export class LegendaryComponent implements OnInit {
 
   getTotalTotalEctoplasma(){
     return this.dataSourceLegen.reduce((acc, value) => acc + value.totalEctoplasma, 0);
-  }
-
-  getMapBonusRewardWeekNumber(){
-    return this.legendaryService.getMapBonusRewardWeekNumber();
   }
 
 }

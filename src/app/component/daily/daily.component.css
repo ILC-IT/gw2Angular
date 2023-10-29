@@ -142,5 +142,15 @@ table {
 
 button {
   height: 30px;
-  font-size: 16px;
+  font-size: large;
+  /* font-size: 16px; */
+}
+
+.boton{
+  height: 40px;
+  font-size: large;
+}
+
+.green{
+  background-color:rgb(195, 248, 195);
 }

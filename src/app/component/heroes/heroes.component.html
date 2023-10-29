@@ -6,19 +6,25 @@
     <!-- name Column -->
     <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
-        <td mat-cell *matCellDef="let character"> {{character.name}} </td>
+        <td mat-cell *matCellDef="let character"> 
+            {{character.name}} 
+        </td>
     </ng-container>
 
     <!-- race Column -->
     <ng-container matColumnDef="race">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Raza </th>
-        <td mat-cell *matCellDef="let character"> {{character.race}} </td>
+        <td mat-cell *matCellDef="let character"> 
+            {{character.race}} 
+        </td>
     </ng-container>
 
     <!-- profession Column -->
     <ng-container matColumnDef="profession">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Profesión </th>
-        <td mat-cell *matCellDef="let character"> {{character.profession}} </td>
+        <td mat-cell *matCellDef="let character"> 
+            {{character.profession}} 
+        </td>
     </ng-container>
 
     <!-- espec Column -->
@@ -43,11 +49,21 @@
         </td>
     </ng-container>
 
-        <!-- diasCumple Column -->
-        <ng-container matColumnDef="diasCumple">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Sig. Cumpleaños (días) </th>
-            <td mat-cell *matCellDef="let character"> {{character.diasCumple}} ({{character.numeroAnosCumple}}º)</td>
-        </ng-container>
+    <!-- robotJade Column -->
+    <ng-container matColumnDef="robotJade">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Robot Jade </th>
+        <td mat-cell *matCellDef="let character"> 
+            {{character.robotJade}}  
+        </td>
+    </ng-container>
+
+    <!-- diasCumple Column -->
+    <ng-container matColumnDef="diasCumple">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Dias Sig. Cumpleaños </th>
+        <td mat-cell *matCellDef="let character"> 
+            {{character.diasCumple}} ({{character.numeroAnosCumple}}º)
+        </td>
+    </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="viewHero(row)"></tr>

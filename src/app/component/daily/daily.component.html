@@ -2,6 +2,10 @@
 <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4" backgroundColor="primary" color="primary">
 
   <mat-tab label="Cámara del brujo">
+    <p> </p>
+    <a href="https://wiki.guildwars2.com/wiki/Wizard%27s_Vault/Easy_objectives" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+      Objetivos fáciles (enlace a wiki)
+    </a>
     <div class="daily-menu" *ngIf="!loading">
       <a  *ngFor="let wizard of dailyInfoF.wizard; let i = index">
         <img mat-card-image src="https://render.guildwars2.com/file/483E3939D1A7010BDEA2970FB27703CAAD5FBB0F/42684.png">
@@ -305,6 +309,12 @@
         </textarea>
         <button mat-raised-button color="accent" [cdkCopyToClipboard]="pactSupply[0]">Copiar</button>
         <div [innerText]='pactSupplyUpdate'></div>
+        <p></p>
+        <div>
+          <a href="https://wiki.guildwars2.com/wiki/Map_bonus_reward#Central_Tyria_reward_track_rotation" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+            <button  mat-button class="boton" title="Best week is 8 (updates every friday)" [ngClass]="{'green': mapBonusRewardweekNumber == 8}">Map bonus reward, current week is {{mapBonusRewardweekNumber}}</button>
+          </a>
+        </div>
       </a>
       <a>
         <h3>Token Supply</h3>

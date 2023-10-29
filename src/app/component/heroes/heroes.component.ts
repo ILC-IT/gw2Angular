@@ -12,7 +12,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class HeroesComponent implements OnInit {
 
   heroes: any = [];
-  displayedColumns: string[] = ['name', 'race', 'profession', 'espec', 'crafting', 'diasCumple'];
+  displayedColumns: string[] = ['name', 'race', 'profession', 'espec', 'crafting', 'robotJade', 'diasCumple'];
   dataSource!: MatTableDataSource<any>;
   loading = true;
 
@@ -29,6 +29,7 @@ export class HeroesComponent implements OnInit {
     this.heroService.getHeroes().subscribe((heroes: any) => {
       this.heroes = heroes;
       this.addSpec(this.heroes);
+      this.addRobotJade(this.heroes);
       this.addBirthday(this.heroes);
       this.dataSource = new MatTableDataSource(this.heroes);
       this.dataSource.sort = this.sort;
@@ -67,6 +68,9 @@ export class HeroesComponent implements OnInit {
     }
     let dias = Math.round((next - today)/8.64e7);
     let numeroAnosCumple = y-year;
+    if (numeroAnosCumple === 0) {
+      numeroAnosCumple = 1;
+    }
     // console.log('ddddddddd ', dias)
     // if ((year < 2021) && (month < 2)){ //si 2020 && (enero o febrero)
     //   dias--;
@@ -101,6 +105,26 @@ export class HeroesComponent implements OnInit {
           }
         })
       })
+    }
+    return this.heroes = tabla;
+  }
+
+  addRobotJade(tabla: any){
+    //añado columna de robot de jade a cada heroe
+    for (let i = 0; i < tabla.length; i++){
+      //Busco id del robot de jade de cada heroe
+      for (let j = 0; j < tabla[i].equipment.length; j++){
+        if (tabla[i].equipment[j].slot === "PowerCore"){
+          let robotJade = "a";
+          //Busco el id en /v2/items?id= para ver su informacion
+          this.heroService.getItem(tabla[i].equipment[j].id).subscribe((robot: any) => {
+            // Ej: "name": "Núcleo de robot de jade: Rango 10",
+            robotJade = robot.name.replace(/^\D+/g, "") //me quedo con el numero
+            tabla[i].robotJade = robotJade;
+          })
+          break;
+        }
+      }
     }
     return this.heroes = tabla;
   }

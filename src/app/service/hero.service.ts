@@ -70,6 +70,11 @@ export class HeroService {
     }));
   }
 
+  getItem(id: number){
+    const url = `${this.apiUrl}items?id=${id}`;
+    return this.httpClient.get(url);
+  }
+
     /**
    * Handle Http operation that failed.
    * Let the app continue.
