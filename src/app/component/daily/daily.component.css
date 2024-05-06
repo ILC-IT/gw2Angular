@@ -154,3 +154,12 @@ button {
 .green{
   background-color:rgb(195, 248, 195);
 }
+
+.completadas{
+  display: flex;
+  justify-content: center;
+}
+
+.mat-accordion>.mat-expansion-panel-spacing {
+  overflow: inherit;
+}

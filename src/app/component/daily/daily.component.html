@@ -2,21 +2,99 @@
 <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4" backgroundColor="primary" color="primary">
 
   <mat-tab label="Cámara del brujo">
-    <p> </p>
-    <a href="https://wiki.guildwars2.com/wiki/Wizard%27s_Vault/Easy_objectives" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
-      Objetivos fáciles (enlace a wiki)
-    </a>
-    <div class="daily-menu" *ngIf="!loading">
-      <a  *ngFor="let wizard of dailyInfoF.wizard; let i = index">
-        <img mat-card-image src="https://render.guildwars2.com/file/483E3939D1A7010BDEA2970FB27703CAAD5FBB0F/42684.png">
-        <p></p>
-        id = {{wizard.id}}
-        <p></p>
-        {{wizard.name}}
-        <p></p>
-        {{wizard.requirement}}
+
+      <p> </p>
+      <a href="https://wiki.guildwars2.com/wiki/Wizard%27s_Vault/Easy_objectives" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+        Easy objectives (wiki link)
       </a>
-    </div>
+      &nbsp;
+      <a type="color" value="C" [ngStyle]="{'background-color':'#237507'}">Claimed</a>
+      <a type="color" value="DNC" [ngStyle]="{'background-color':'#E67E22'}">Done but not claimed</a>
+      <a type="color" value="U" [ngStyle]="{'background-color':'#8E2610'}">Undone</a>
+      <p> </p>
+
+    <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4" backgroundColor="accent" color="primary">
+
+      <mat-tab label="Daily">
+        <h4> *You must login first into the game to refresh daily wizard tasks.</h4>
+
+        <div class="completadas" *ngIf="!loadingDailyWizard">
+          <a [ngStyle]="{'background-color': dailyWizardVault.meta_reward_claimed === true ? '#237507' : dailyWizardVault.meta_progress_current >= dailyWizardVault.meta_progress_complete ? '#E67E22' : '#8E2610'}">
+            Daily Reward: {{dailyWizardVault.meta_progress_current}} / {{dailyWizardVault.meta_progress_complete}}
+            <p></p>
+            Claimed: {{dailyWizardVault.meta_reward_claimed}} ({{dailyWizardVault.meta_reward_astral}})
+            <p></p>
+            Refresh (F5) this page to see changes based on API values.
+          </a>
+        </div>
+
+        <div class="daily-menu" *ngIf="!loadingDailyWizard">
+          <a  *ngFor="let dailyWizard of dailyWizardVault.objectives; let i = index" [ngStyle]="{'background-color': dailyWizard.claimed === true ? '#237507' : dailyWizard.progress_current >= dailyWizard.progress_complete ? '#E67E22' : '#8E2610'}">
+            <img mat-card-image src="https://wiki.guildwars2.com/images/a/a7/Astral_Acclaim.png">
+            <p></p>
+            id = {{dailyWizard.id}}
+            <p></p>
+            {{dailyWizard.track}}
+            <p></p>
+            {{dailyWizard.title}}
+            <p></p>
+            Progress: {{dailyWizard.progress_current}} / {{dailyWizard.progress_complete}}
+            <p></p>
+            Claimed: {{dailyWizard.claimed}} ({{dailyWizard.acclaim}})
+          </a>
+        </div>
+      </mat-tab>
+
+      <mat-tab label="Weekly">
+
+        <div class="completadas" *ngIf="!loadingWeeklyWizard">
+          <a [ngStyle]="{'background-color': weeklyWizardVault.meta_reward_claimed === true ? '#237507' : weeklyWizardVault.meta_progress_current >= weeklyWizardVault.meta_progress_complete ? '#E67E22' : '#8E2610'}">
+            Weekly Reward: {{weeklyWizardVault.meta_progress_current}} / {{weeklyWizardVault.meta_progress_complete}}
+            <p></p>
+            Claimed: {{weeklyWizardVault.meta_reward_claimed}} ({{weeklyWizardVault.meta_reward_astral}})
+            <p></p>
+            Refresh (F5) this page to see changes based on API values.
+          </a>
+        </div>
+
+        <div class="daily-menu" *ngIf="!loadingWeeklyWizard">
+          <a  *ngFor="let weeklyWizard of weeklyWizardVault.objectives; let i = index" [ngStyle]="{'background-color': weeklyWizard.claimed === true ? '#237507' : weeklyWizard.progress_current >= weeklyWizard.progress_complete ? '#E67E22' : '#8E2610'}">
+            <img mat-card-image src="https://wiki.guildwars2.com/images/a/a7/Astral_Acclaim.png">
+            <p></p>
+            id = {{weeklyWizard.id}}
+            <p></p>
+            {{weeklyWizard.track}}
+            <p></p>
+            {{weeklyWizard.title}}
+            <p></p>
+            Progress: {{weeklyWizard.progress_current}} / {{weeklyWizard.progress_complete}}
+            <p></p>
+            Claimed: {{weeklyWizard.claimed}} ({{weeklyWizard.acclaim}})
+          </a>
+        </div>
+      </mat-tab>
+
+      <mat-tab label="Special">
+        <p> </p>
+        <div class="daily-menu" *ngIf="!loadingSpecialWizard">
+          <a  *ngFor="let specialWizard of specialWizardVault.objectives; let i = index" [ngStyle]="{'background-color': specialWizard.claimed === true ? '#237507' : specialWizard.progress_current >= specialWizard.progress_complete ? '#E67E22' : '#8E2610'}">
+            <img mat-card-image src="https://wiki.guildwars2.com/images/a/a7/Astral_Acclaim.png">
+            <p></p>
+            id = {{specialWizard.id}}
+            <p></p>
+            {{specialWizard.track}}
+            <p></p>
+            {{specialWizard.title}}
+            <p></p>
+            Progress: {{specialWizard.progress_current}} / {{specialWizard.progress_complete}}
+            <p></p>
+            Claimed: {{specialWizard.claimed}} ({{specialWizard.acclaim}})
+          </a>
+        </div>
+      </mat-tab>
+
+    </mat-tab-group>
+
   </mat-tab>
 
   <mat-tab label="Fractales">
@@ -314,6 +392,10 @@
           <a href="https://wiki.guildwars2.com/wiki/Map_bonus_reward#Central_Tyria_reward_track_rotation" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
             <button  mat-button class="boton" title="Best week is 8 (updates every friday)" [ngClass]="{'green': mapBonusRewardweekNumber == 8}">Map bonus reward, current week is {{mapBonusRewardweekNumber}}</button>
           </a>
+          <p></p>
+          <a href="https://fast.farming-community.eu/conversions/karma" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+            <button  mat-button class="boton" title="Gw2 Fast Farming Data">Fast Farming</button>
+          </a>
         </div>
       </a>
       <a>
@@ -379,6 +461,11 @@
         <h3>Anomalía de Ley</h3>
         <p> {{anomalia}} </p>
         <button mat-raised-button color="accent" [cdkCopyToClipboard]="anomalia">Copiar</button>
+      </a>
+      <a>
+        <h3>Convergencia Pública</h3>
+        <p> {{convergencia}} </p>
+        <button mat-raised-button color="accent" [cdkCopyToClipboard]="convergencia">Copiar</button>
       </a>
       <a>
         <h3>Actividad diaria</h3>

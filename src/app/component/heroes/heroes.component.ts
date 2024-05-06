@@ -12,7 +12,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class HeroesComponent implements OnInit {
 
   heroes: any = [];
-  displayedColumns: string[] = ['name', 'race', 'profession', 'espec', 'crafting', 'robotJade', 'diasCumple'];
+  displayedColumns: string[] = ['name', 'race', 'profession', 'espec', 'crafting', 'robotJade', 'trophyProtocol', 'diasCumple'];
   dataSource!: MatTableDataSource<any>;
   loading = true;
 
@@ -30,6 +30,7 @@ export class HeroesComponent implements OnInit {
       this.heroes = heroes;
       this.addSpec(this.heroes);
       this.addRobotJade(this.heroes);
+      this.addTrophyProtocol(this.heroes);
       this.addBirthday(this.heroes);
       this.dataSource = new MatTableDataSource(this.heroes);
       this.dataSource.sort = this.sort;
@@ -119,8 +120,29 @@ export class HeroesComponent implements OnInit {
           //Busco el id en /v2/items?id= para ver su informacion
           this.heroService.getItem(tabla[i].equipment[j].id).subscribe((robot: any) => {
             // Ej: "name": "Núcleo de robot de jade: Rango 10",
-            robotJade = robot.name.replace(/^\D+/g, "") //me quedo con el numero
+            robotJade = robot.name.replace(/^\D+/g, ""); //me quedo con el numero
             tabla[i].robotJade = robotJade;
+          })
+          break;
+        }
+      }
+    }
+    return this.heroes = tabla;
+  }
+
+  addTrophyProtocol(tabla: any){
+    //añado columna de protocolo de carroñero a cada heroe
+    for (let i = 0; i < tabla.length; i++){
+      //Busco id del Protocolo de carroñero de cada heroe
+      for (let j = 0; j < tabla[i].equipment.length; j++){
+        if (tabla[i].equipment[j].slot === "SensoryArray"){
+          let trophyProtocol = "a";
+          //Busco el id en /v2/items?id= para ver su informacion
+          this.heroService.getItem(tabla[i].equipment[j].id).subscribe((trophy: any) => {
+            // Ej: "name": "Núcleo de robot de jade: Rango 10",
+            // trophyProtocol = trophy.name.replace("Scavenger Protocol: ", "");
+            trophyProtocol = trophy.name.replace("Protocolo de carroñero: ", "");
+            tabla[i].trophyProtocol = trophyProtocol;
           })
           break;
         }

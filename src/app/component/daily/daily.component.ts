@@ -23,16 +23,22 @@ export class DailyComponent implements OnInit, AfterViewInit  {
   dailyIdsS: String = ''; //contiene el id de la diaria de strikes
   dailyStrike: any; //contiene el id de la strike diaria buscando en achievements/categories/250
   dailyFractalsId: any; //contiene los ids de los fractales diarios buscando en achievements/categories/88
-  dailyWizardVaultId: any; //contiene los ids de wizardvault diaria buscando en achievements/categories/367
+  dailyWizardVault: any; //contiene wizardvault diaria buscando en account/wizardsvault/daily
+  weeklyWizardVault: any; //contiene wizardvault semanal buscando en account/wizardsvault/weekly
+  specialWizardVault: any; //contiene wizardvault especial buscando en account/wizardsvault/special
   dailyStrikeIcon: string = "";
   dailyInfoF: any = {}; //contiene toda la info de las diarias de pve, fractals, mvm, pvp, strike
   loading: boolean = true;
   loading2: boolean = true;
+  loadingDailyWizard: boolean = true;
+  loadingWeeklyWizard: boolean = true;
+  loadingSpecialWizard: boolean = true;
   pactSupply: string[] = [];
   pactSupplyUpdate: string = "";
   mapBonusRewardweekNumber = 1;
   tokenSupply: string[][] = [];
   anomalia: string = '';
+  convergencia: string = '';
   dailyActivity: string = "";
   recordatorio = {
     ok: false,
@@ -155,6 +161,10 @@ export class DailyComponent implements OnInit, AfterViewInit  {
       setInterval(() => {
         this.anomalia = this.getAnomaly();
       }, 1 * 60 * 1000)
+    this.convergencia = this.getConvergencia();
+      setInterval(() => {
+        this.convergencia = this.getConvergencia();
+      }, 1 * 60 * 1000)
     this.dailyStrike = await this.getDailyStrikeId();
     this.getDailyStrike();
     this.getMaterials();
@@ -168,14 +178,17 @@ export class DailyComponent implements OnInit, AfterViewInit  {
       }, 10 * 60 * 1000)
     this.dailyFractalsId = await this.getDailyFractalsId();
     this.getDailyFractals();
-    this.dailyWizardVaultId = await this.getDailyWizardVaultId();
-    this.getDailyWizardVault();
-    // this.daily = await this.getDaily();
-    // this.getDailyPve();
-    // this.getDailyMundo();
-    // this.getDailyPvP();
-
+    this.dailyWizardVault = await this.getDailyWizardVault();
+    this.loadingDailyWizard = false;
+    this.weeklyWizardVault = await this.getWeeklyWizardVault();
+    this.loadingWeeklyWizard = false;
+    this.specialWizardVault = await this.getSpecialWizardVault();
+    this.loadingSpecialWizard = false;
     console.log(this.dailyInfoF)
+    console.log(this.dailyWizardVault)
+    console.log(this.weeklyWizardVault)
+    console.log(this.specialWizardVault)
+    // this.daily = await this.getDaily();
 
     this.filterSelectObj.filter((o: any) => {
       o.options = this.getFilterObject(Fractales, o.columnProp);
@@ -195,40 +208,6 @@ export class DailyComponent implements OnInit, AfterViewInit  {
   //   let response: any;
   //   return response = await this.dailyService.getDaily().toPromise();
   // }
-
-  // getDailyPve(){
-  //     let dailyPve = this.daily.pve;
-  //     for (let i = 0; i < dailyPve.length; i++){
-  //       if (dailyPve[i].level.max == 80){
-  //         if (dailyPve[i].hasOwnProperty("required_access")){
-  //           if (dailyPve[i].required_access.condition == "HasAccess"){
-  //             this.dailyIds = this.dailyIds + dailyPve[i].id + ',';
-  //             this.dailyIdsChecked.push(false);
-  //           }
-  //         }else{
-  //           this.dailyIds = this.dailyIds + dailyPve[i].id + ',';
-  //           this.dailyIdsChecked.push(false)
-  //         }
-  //       }
-  //     }
-  //     this.getDailyInfoF(this.dailyIds, "pve");
-  // }
-
-  // getDailyMundo(){
-  //   let dailyMundo = this.daily.wvw;
-  //   for (let i = 0; i < dailyMundo.length; i++){
-  //     this.dailyIdsM = this.dailyIdsM + dailyMundo[i].id + ',';
-  //   }
-  //   this.getDailyInfoF(this.dailyIdsM, "wvw");
-  // }
-
-  // getDailyPvP(){
-  //   let dailyPvP = this.daily.pvp;
-  //   for (let i = 0; i < dailyPvP.length; i++){
-  //     this.dailyIdsP = this.dailyIdsP + dailyPvP[i].id + ',';
-  //   }
-  //   this.getDailyInfoF(this.dailyIdsP, "pvp");
-  // }
   
   async getDailyFractalsId(){
     let response: any;
@@ -243,44 +222,29 @@ export class DailyComponent implements OnInit, AfterViewInit  {
     this.getDailyInfoF(this.dailyIdsF, "fractals");
   }
 
-  async getDailyWizardVaultId(){
+  async getDailyWizardVault(){
     let response: any;
-    return response = await this.dailyService.getDailyWizardVaultId().toPromise();
+    return response = await this.dailyService.getDailyWizardVault().toPromise();
   }
 
-  getDailyWizardVault(){
-    let dailyWizardVault = this.dailyWizardVaultId.achievements;
-    for (let i = 0; i < dailyWizardVault.length; i++){
-      this.dailyIdsW = this.dailyIdsW + dailyWizardVault[i] + ',';
-    }
-    this.getDailyInfoF(this.dailyIdsW, "wizard");
+  async getWeeklyWizardVault(){
+    let response: any;
+    return response = await this.dailyService.getWeeklyWizardVault().toPromise();
+  }
+
+  async getSpecialWizardVault(){
+    let response: any;
+    return response = await this.dailyService.getSpecialWizardVault().toPromise();
   }
 
   getDailyInfoF(ids: String, tipo: String){
     this.dailyService.getDailyInfo(ids).subscribe((dailyInfo: any) => {
       //console.log(dailyInfo)
-      if (tipo === "wizard"){
-        this.dailyInfoF.wizard = dailyInfo;
-      }
-      else if (tipo === "fractals"){
+      if (tipo === "fractals"){
         this.dailyInfoF.fractals = dailyInfo;
         this.searchFractalIds();
         this.getDailyInestabilidadCm();
       }
-      // else if (tipo === "pve"){
-      //   this.dailyInfoF.pve = dailyInfo;
-      //   for (let i = 0; i < dailyInfo.length; i++){
-      //     if(dailyInfo[i].id === 500){
-      //       this.toastNotificationMonedaMistica();
-      //     }
-      //   }
-      // }
-      // else if (tipo === "wvw"){
-      //   this.dailyInfoF.wvw = dailyInfo;
-      // }
-      // else if (tipo === "pvp"){
-      //   this.dailyInfoF.pvp = dailyInfo;
-      // }
       else if (tipo === "strike"){
         this.dailyInfoF.strike = dailyInfo;
         //metemos en una variable el icono de la strike porque solo lo lleva la de IBS y no la de EoD
@@ -436,6 +400,10 @@ export class DailyComponent implements OnInit, AfterViewInit  {
     return this.dailyService.getAnomaliaLey();
   }
 
+  getConvergencia(){
+    return this.dailyService.getConvergencia();
+  }
+
   getDailyActivity(){
     return this.dailyService.getDailyActivity();
   }
@@ -524,6 +492,9 @@ export class DailyComponent implements OnInit, AfterViewInit  {
     this.dailyService.getInestabilidadCm().subscribe((inestabilidadCm: any) => {
       let hoy = new Date();
       let diaNum = this.diaNumeroAño(hoy);
+      if (this.leapYear(hoy.getFullYear())){
+        diaNum--; //esto es porque inestabilidadCm ya incluye el dia extra si es bisiesto
+      }
       // cojo info de 97 98 99 100
       let pesadilla = inestabilidadCm["instabilities"]["97"][diaNum];
       let observatorio = inestabilidadCm["instabilities"]["98"][diaNum];
@@ -590,6 +561,11 @@ export class DailyComponent implements OnInit, AfterViewInit  {
     const msDiff = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) - Date.UTC(date.getFullYear(), 0, 0);
     const dayMilliseconds = 1000 * 60 * 60 * 24;
     return msDiff / dayMilliseconds;
+  }
+
+  leapYear(year: number){
+    // devuelve si year es año bisiesto o no
+    return ((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0);
   }
 
   buscarInestabilidadCmNombre(nombres: string[], fractal97: number[], fractal98: number[], fractal99: number[], fractal100: number[]){

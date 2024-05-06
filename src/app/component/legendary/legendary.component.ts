@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { HeroService } from 'src/app/service/hero.service';
 import { LegendaryService } from 'src/app/service/legendary.service';
-import { legendarios, armaduraLigera, armaduraMedia, armaduraPesada, runa, sello, anilloRaid, t6, idsT6, vales, cantidadArmadura, cantidadRunas, cantidadSellos, valeId, trebolId, liId, ectoplasmaId, liArmadura, trebolArmadura, trebolRuna, trebolSello, trebolAnilloRaid, t6ArmaduraSelloRuna, ectoplasmaRuna, ectoplasmaSello, liAnilloRaid, t6AnilloRaid, obsidianaArmadura, obsidianaRuna, obsidianaSello, obsidianaId, otrosComponentes, lingoteAurico, placaReclamada, huevoChak, piezaAeronave, trozoAurilio, cristalLineaLey, montonCristalLuminoso, aspectoMistico, talismanBrillantez, talismanPotencia, talismanHabilidad, motaMistica, simboloControl, simboloMejora, simboloDolor, monedaMistica, preciosVarios, idsPreciosVarios, legendaryWeapons1, legendaryWeapons3, donExploracion} from './legendary';
+import { legendarios, armaduraLigera, armaduraMedia, armaduraPesada, runa, sello, anilloRaid, t6, idsT6, vales, cantidadArmadura, cantidadRunas, cantidadSellos, valeId, trebolId, liId, ectoplasmaId, liArmadura, trebolArmadura, trebolRuna, trebolSello, trebolAnilloRaid, t6ArmaduraSelloRuna, ectoplasmaRuna, ectoplasmaSello, liAnilloRaid, t6AnilloRaid, obsidianaArmadura, obsidianaRuna, obsidianaSello, obsidianaId, otrosComponentes, lingoteAurico, placaReclamada, huevoChak, piezaAeronave, trozoAurilio, cristalLineaLey, montonCristalLuminoso, aspectoMistico, talismanBrillantez, talismanPotencia, talismanHabilidad, motaMistica, simboloControl, simboloMejora, simboloDolor, monedaMistica, preciosVarios, idsPreciosVarios, legendaryWeapons1, legendaryWeapons2, legendaryWeapons3, donExploracion} from './legendary';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -555,14 +555,18 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
 
   ///////////////////// Armas legendarias /////////////////
   armasLegendarias1 = new MatTableDataSource(legendaryWeapons1);
+  armasLegendarias2 = new MatTableDataSource(legendaryWeapons2);
   armasLegendarias3 = new MatTableDataSource(legendaryWeapons3);
   donExploracion = donExploracion;
   // tabla armas legendarias 1 y 3
   displayedColumnsArmasLegendarias1: string[] = ['icon', 'tengo', 'nombre', 'tipo', 'precioTpVentaS', 'pre', 'precioTpVentaSPre'];
+  displayedColumnsArmasLegendarias2: string[] = ['icon', 'tengo', 'nombre', 'tipo', 'pre'];
   displayedColumnsArmasLegendarias3: string[] = ['icon', 'tengo', 'nombre', 'tipo', 'precioTpVentaS', 'pre', 'precioTpVentaSPre'];
   dataSourceArmasLegendarias1 = this.armasLegendarias1;
+  dataSourceArmasLegendarias2 = this.armasLegendarias2;
   dataSourceArmasLegendarias3 = this.armasLegendarias3;
   @ViewChild("sort1", { static: false }) sort1!: MatSort;
+  @ViewChild("sort2", { static: false }) sort2!: MatSort;
   @ViewChild("sort3", { static: false }) sort3!: MatSort;
   /////////////////////////////////////////////////////////
 
@@ -579,6 +583,8 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.sort1.disableClear = true; //para que solo haga ascendente o descendente
     this.dataSourceArmasLegendarias1.sort = this.sort1;
+    this.sort2.disableClear = true; //para que solo haga ascendente o descendente
+    this.dataSourceArmasLegendarias2.sort = this.sort2;
     this.sort3.disableClear = true; //para que solo haga ascendente o descendente
     this.dataSourceArmasLegendarias3.sort = this.sort3;
   }
@@ -704,6 +710,11 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
         for (let j = 0; j < legendaryWeapons1.length; j++){
           if (legendary[i].id === legendaryWeapons1[j].id){
             legendaryWeapons1[j].tengo = legendary[i].count;
+          }
+        }
+        for (let j = 0; j < legendaryWeapons2.length; j++){
+          if (legendary[i].id === legendaryWeapons2[j].id){
+            legendaryWeapons2[j].tengo = legendary[i].count;
           }
         }
         for (let j = 0; j < legendaryWeapons3.length; j++){
@@ -1081,12 +1092,18 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     //Saco la cantidad de don de exploracion del banco
     this.heroService.getBank().subscribe((banco: any) => {
       for (let i = 0; i < banco.length; i++){
-        if (banco[i].id === donExploracion[0].id){
-          donExploracion[0].tengoEnBanco = banco[i].count;
-          break;
+        if (banco[i] !== null){
+          if (banco[i].id === donExploracion[0].id){
+            donExploracion[0].tengoEnBanco = banco[i].count;
+            break;
+          }
         }
       }
     })
+
+    //Hago tabla de armas de segunda gen
+    this.dataSourceArmasLegendarias2 = new MatTableDataSource(legendaryWeapons2);
+    this.dataSourceArmasLegendarias2.sort = this.sort2;
   }
 
   getPriceSplit(cantidad: number){

@@ -53,6 +53,10 @@ export class DailyService {
 
   strike: any;
 
+  convergenciaWp = ["Torre del brujo: [&BB8OAAA=]"];
+  convergencia = [0, 3, 6, 9, 12, 15, 18, 21, 24];
+  convergenciaInvierno = [2, 5, 8, 11, 14, 17, 20, 23];
+
   constructor(private httpClient: HttpClient) { }
 
   /*
@@ -177,18 +181,21 @@ export class DailyService {
     return this.httpClient.get(url);
   }
 
-  getDailyWizardVaultId(){
-    const url = `${this.apiUrl}achievements/categories/367`;
+  getDailyWizardVault(){
+    // const url = `${this.apiUrl}achievements/categories/367`;
+    const url = `${this.apiUrl}account/wizardsvault/daily?access_token=${this.apiKey}`;
     return this.httpClient.get(url);
   }
 
-  getWeeklyWizardVaultId(){
-    const url = `${this.apiUrl}achievements/categories/363`;
+  getWeeklyWizardVault(){
+    // const url = `${this.apiUrl}achievements/categories/363`;
+    const url = `${this.apiUrl}account/wizardsvault/weekly?access_token=${this.apiKey}`;
     return this.httpClient.get(url);
   }
 
-  getSeasonalWizardVaultId(){
-    const url = `${this.apiUrl}achievements/categories/359`;
+  getSpecialWizardVault(){
+    // const url = `${this.apiUrl}achievements/categories/359`;
+    const url = `${this.apiUrl}account/wizardsvault/special?access_token=${this.apiKey}`;
     return this.httpClient.get(url);
   }
 
@@ -287,6 +294,49 @@ export class DailyService {
           return `${(h + 1) % 24}:20 ` + this.anomaliaLey[2];
         }
       }      
+    }
+    return "0"; //para que no dé un warning
+  }
+
+  getConvergencia(){
+    let d = new Date();
+    let h = d.getHours(); //Get the hour (0-23)
+    let m = d.getMinutes(); //Get the minute (0-59)
+    //Compruebo el intervalo de horas y minutos y devuelvo la convergencia que va a pasar
+    if (this.esHorarioInvierno()){
+      if (this.convergenciaInvierno.includes(h)){
+        if (m <= 39){ //10 min para entrar
+          return `${h % 24}:30 ` + this.convergenciaWp[0];
+        }else{
+          return `${(h + 3)% 24}:30 ` + this.convergenciaWp[0];
+        }
+      }else{
+        let horaMasCercana = this.convergenciaInvierno.reduce(function(prev, curr) {
+          return (Math.abs(curr - h) < Math.abs(prev - h) ? curr : prev);
+        });
+        if (horaMasCercana <= h){
+          return `${(horaMasCercana + 3) % 24}:30 ` + this.convergenciaWp[0];
+        }else{
+          return `${(horaMasCercana) % 24}:30 ` + this.convergenciaWp[0];
+        }
+      }
+    }else{ 
+      if (this.convergencia.includes(h)){
+        if (m <= 39){ //10 min para entrar
+          return `${h % 24}:30 ` + this.convergenciaWp[0];
+        }else{
+          return `${(h + 3)% 24}:30 ` + this.convergenciaWp[0];
+        }
+      }else{
+        let horaMasCercana = this.convergencia.reduce(function(prev, curr) {
+          return (Math.abs(curr - h) < Math.abs(prev - h) ? curr : prev);
+        });
+        if (horaMasCercana <= h){
+          return `${(horaMasCercana + 3) % 24}:30 ` + this.convergenciaWp[0];
+        }else{
+          return `${(horaMasCercana) % 24}:30 ` + this.convergenciaWp[0];
+        }
+      }
     }
     return "0"; //para que no dé un warning
   }

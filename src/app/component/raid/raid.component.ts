@@ -12,6 +12,8 @@ import { Raid, RaidsInfo, LegendariaRaidId, TokenId} from './raid'
 export class RaidComponent implements OnInit {
 
   raid: any = [];
+  raidDoble = 1;
+  raidEnvalentonado = 1;
   liTengo: number = 0;
   liUsada: number = 0;
   armaduraRaidCount = 0;
@@ -24,7 +26,9 @@ export class RaidComponent implements OnInit {
       boss: RaidsInfo[0]['boss'],
       bossOk: RaidsInfo[0]['bossOk'],
       bossCompletado: RaidsInfo[0]['bossCompletado'],
-      tokenCount: RaidsInfo[0]['tokenCount']
+      tokenCount: RaidsInfo[0]['tokenCount'],
+      callOfTheMists: RaidsInfo[0]['callOfTheMists'],
+      emboldened: RaidsInfo[0]['emboldened']
     },
     {
       name: RaidsInfo[1]['name'],
@@ -32,7 +36,9 @@ export class RaidComponent implements OnInit {
       boss: RaidsInfo[1]['boss'],
       bossOk: RaidsInfo[1]['bossOk'],
       bossCompletado: RaidsInfo[1]['bossCompletado'],
-      tokenCount: RaidsInfo[1]['tokenCount']
+      tokenCount: RaidsInfo[1]['tokenCount'],
+      callOfTheMists: RaidsInfo[1]['callOfTheMists'],
+      emboldened: RaidsInfo[1]['emboldened']
     },
     {
       name: RaidsInfo[2]['name'],
@@ -40,7 +46,9 @@ export class RaidComponent implements OnInit {
       boss: RaidsInfo[2]['boss'],
       bossOk: RaidsInfo[2]['bossOk'],
       bossCompletado: RaidsInfo[2]['bossCompletado'],
-      tokenCount: RaidsInfo[2]['tokenCount']
+      tokenCount: RaidsInfo[2]['tokenCount'],
+      callOfTheMists: RaidsInfo[2]['callOfTheMists'],
+      emboldened: RaidsInfo[2]['emboldened']
     },
     {
       name: RaidsInfo[3]['name'],
@@ -48,7 +56,9 @@ export class RaidComponent implements OnInit {
       boss: RaidsInfo[3]['boss'],
       bossOk: RaidsInfo[3]['bossOk'],
       bossCompletado: RaidsInfo[3]['bossCompletado'],
-      tokenCount: RaidsInfo[3]['tokenCount']
+      tokenCount: RaidsInfo[3]['tokenCount'],
+      callOfTheMists: RaidsInfo[3]['callOfTheMists'],
+      emboldened: RaidsInfo[3]['emboldened']
     },
     {
       name: RaidsInfo[4]['name'],
@@ -56,7 +66,9 @@ export class RaidComponent implements OnInit {
       boss: RaidsInfo[4]['boss'],
       bossOk: RaidsInfo[4]['bossOk'],
       bossCompletado: RaidsInfo[4]['bossCompletado'],
-      tokenCount: RaidsInfo[4]['tokenCount']
+      tokenCount: RaidsInfo[4]['tokenCount'],
+      callOfTheMists: RaidsInfo[4]['callOfTheMists'],
+      emboldened: RaidsInfo[4]['emboldened']
     },
     {
       name: RaidsInfo[5]['name'],
@@ -64,7 +76,9 @@ export class RaidComponent implements OnInit {
       boss: RaidsInfo[5]['boss'],
       bossOk: RaidsInfo[5]['bossOk'],
       bossCompletado: RaidsInfo[5]['bossCompletado'],
-      tokenCount: RaidsInfo[5]['tokenCount']
+      tokenCount: RaidsInfo[5]['tokenCount'],
+      callOfTheMists: RaidsInfo[5]['callOfTheMists'],
+      emboldened: RaidsInfo[5]['emboldened']
     },
     {
       name: RaidsInfo[6]['name'],
@@ -72,7 +86,9 @@ export class RaidComponent implements OnInit {
       boss: RaidsInfo[6]['boss'],
       bossOk: RaidsInfo[6]['bossOk'],
       bossCompletado: RaidsInfo[6]['bossCompletado'],
-      tokenCount: RaidsInfo[6]['tokenCount']
+      tokenCount: RaidsInfo[6]['tokenCount'],
+      callOfTheMists: RaidsInfo[6]['callOfTheMists'],
+      emboldened: RaidsInfo[6]['emboldened']
     },
   ];
 
@@ -80,6 +96,8 @@ export class RaidComponent implements OnInit {
 
   ngOnInit(): void {
     this.getRaid();
+    this.getCallOfTheMists();
+    this.getEmboldened();
   }
 
   getRaid(){
@@ -91,6 +109,16 @@ export class RaidComponent implements OnInit {
       this.getToken();
       this.getLiLd();
     })
+  }
+
+  getCallOfTheMists(){
+    this.raidDoble = this.raidService.getCallOfTheMists();
+    this.raidWings[this.raidDoble-1]['callOfTheMists'] = "dobleestasemana";
+  }
+
+  getEmboldened(){
+    this.raidEnvalentonado = this.raidService.getEmboldened();
+    this.raidWings[this.raidEnvalentonado-1]['emboldened'] = "envalentonado";
   }
 
   checkBossDone(){

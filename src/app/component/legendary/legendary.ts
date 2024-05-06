@@ -376,6 +376,19 @@ export const armaduraAstral = [
     }
 ];
 
+export const armaduraOneiros = [
+    {   
+        // se fabrica un peso cualquiera y desbloquea todos los demas pesos
+        id: [101129, 101208, 101149, 101258, 101165, 101286],
+        idSkin: [11922, 11876, 11875, 11900, 11917, 11898],
+        // cada una de las 6 piezas:
+        cantidadTrebol: 1,
+        cantidadEsenciaAmalgamadaKryptis: 1,
+        cantidadNotasInvestigacion: 500,
+        cantidadCoaguloGritosCongelados: 1,
+    }
+];
+
 export const notasInvestigacionArmaduraPve = [
     {
         idWallet: 61,
@@ -394,6 +407,13 @@ export const MorralPolvoEstrellasArmaduraPve = [
     {
         id: 99964,
         cantidad: 5 //por pieza de armadura pve
+    }
+];
+
+export const CoaguloGritosCongeladosArmaduraPve = [
+    {
+        id: 100098,
+        // cantidad: 5 //por pieza de armadura pve
     }
 ];
 
@@ -740,7 +760,202 @@ export const donExploracion = [
         tengoEnBanco: 0,
         icon: "https://render.guildwars2.com/file/B0051EB5FF730C9EF7C2A3781D3F9B732D4D1A55/455857.png"
     }
-]
+];
+
+export const legendaryWeapons2 = [
+    {
+        nombre: "Astralaria",
+        id: 76158,
+        idWardrobe: 6506,
+        tipo: "Hacha",
+        tengo: 0,
+        pre: "El Mecanismo",
+        preId: 71426,
+        icon: "https://wiki.guildwars2.com/images/d/df/Astralaria.png",
+        wiki: "https://wiki.guildwars2.com/wiki/Astralaria",
+        wikiPre: "https://wiki.guildwars2.com/wiki/The_Mechanism",
+    },
+    {
+        nombre: "Chuka y Champawat",
+        id: 78556,
+        idWardrobe: 6717,
+        tipo: "Arco corto",
+        tengo: 0,
+        pre: "Tigris",
+        preId: 78425,
+        icon: "https://wiki.guildwars2.com/images/7/74/Chuka_and_Champawat.png",
+        wiki: "https://wiki.guildwars2.com/wiki/Chuka_and_Champawat",
+        wikiPre: "https://wiki.guildwars2.com/wiki/Tigris",
+    },
+    {
+        nombre: "Garra del Khan-Ur",
+        id: 87109,
+        idWardrobe: 8051,
+        tipo: "Daga",
+        tengo: 0,
+        pre: "Garra de Resolución",
+        preId: 87037,
+        icon: "https://wiki.guildwars2.com/images/0/05/Claw_of_the_Khan-Ur.png",
+        wiki: "https://wiki.guildwars2.com/wiki/Claw_of_the_Khan-Ur",
+        wikiPre: "https://wiki.guildwars2.com/wiki/Claw_of_Resolution",
+    },
+    {
+        nombre: "Eureka",
+        id: 79562,
+        idWardrobe: 6966,
+        tipo: "Maza",
+        tengo: 0,
+        pre: "Esfuerzo",
+        preId: 79570,
+        icon: "https://wiki.guildwars2.com/images/b/b2/Eureka.png",
+        wiki: "https://wiki.guildwars2.com/wiki/Eureka",
+        wikiPre: "https://wiki.guildwars2.com/wiki/Endeavor",
+    },
+    {
+        nombre: "Exordium",
+        id: 90551,
+        idWardrobe: 8748,
+        tipo: "Mandoble",
+        tengo: 0,
+        pre: "Exitare",
+        preId: 90883,
+        icon: "https://wiki.guildwars2.com/images/5/54/Exordium.png",
+        wiki: "https://wiki.guildwars2.com/wiki/Exordium",
+        wikiPre: "https://wiki.guildwars2.com/wiki/Exitare",
+    },
+    {
+        nombre: "Llamas de Guerra",
+        id: 81206,
+        idWardrobe: 7206,
+        tipo: "Antorcha",
+        tengo: 0,
+        pre: "Liturgia",
+        preId: 81022,
+        icon: "https://wiki.guildwars2.com/images/2/26/Flames_of_War.png",
+        wiki: "https://wiki.guildwars2.com/wiki/Flames_of_War",
+        wikiPre: "https://wiki.guildwars2.com/wiki/Liturgy",
+    },
+    {
+        nombre: "Esperanza",
+        id: 72713,
+        idWardrobe: 6276,
+        tipo: "Pistola",
+        tengo: 0,
+        pre: "Prototipo",
+        preId: 76399,
+        icon: "https://wiki.guildwars2.com/images/3/31/HOPE.png",
+        wiki: "https://wiki.guildwars2.com/wiki/HOPE",
+        wikiPre: "https://wiki.guildwars2.com/wiki/Prototype",
+    },
+    {
+        nombre: "Nunca Más",
+        id: 71383,
+        idWardrobe: 6466,
+        tipo: "Báculo",
+        tengo: 0,
+        pre: "Báculo del cuervo",
+        preId: 74068,
+        icon: "https://wiki.guildwars2.com/images/2/21/Nevermore.png",
+        wiki: "https://wiki.guildwars2.com/wiki/Nevermore",
+        wikiPre: "https://wiki.guildwars2.com/wiki/The_Raven_Staff",
+    },
+    {
+        nombre: "Pharus",
+        id: 89854,
+        idWardrobe: 8576,
+        tipo: "Arco largo",
+        tengo: 0,
+        pre: "Spero",
+        preId: 89886,
+        icon: "https://wiki.guildwars2.com/images/3/30/Pharus.png",
+        wiki: "https://wiki.guildwars2.com/wiki/Pharus",
+        wikiPre: "https://wiki.guildwars2.com/wiki/Spero",
+    },
+    {
+        nombre: "Sharur",
+        id: 76158,
+        idWardrobe: 7337,
+        tipo: "Martillo",
+        tengo: 0,
+        pre: "Poder de Arah",
+        preId: 81634,
+        icon: "https://wiki.guildwars2.com/images/0/08/Sharur.png",
+        wiki: "https://wiki.guildwars2.com/wiki/Sharur",
+        wikiPre: "https://wiki.guildwars2.com/wiki/Might_of_Arah",
+    },
+    {
+        nombre: "Shooshadoo",
+        id: 79802,
+        idWardrobe: 7024,
+        tipo: "Escudo",
+        tengo: 0,
+        pre: "Amistad",
+        preId: 79836,
+        icon: "https://wiki.guildwars2.com/images/3/35/Shooshadoo.png",
+        wiki: "https://wiki.guildwars2.com/wiki/Shooshadoo",
+        wikiPre: "https://wiki.guildwars2.com/wiki/Friendship",
+    },
+    {
+        nombre: "La Atadura de Ipos",
+        id: 86098,
+        idWardrobe: 7907,
+        tipo: "Foco",
+        tengo: 0,
+        pre: "Ars Goetia",
+        preId: 86097,
+        icon: "https://wiki.guildwars2.com/images/9/9e/The_Binding_of_Ipos.png",
+        wiki: "https://wiki.guildwars2.com/wiki/The_Binding_of_Ipos",
+        wikiPre: "https://wiki.guildwars2.com/wiki/Ars_Goetia",
+    },
+    {
+        nombre: "El Buque de Su Majestad Divinidad",
+        id: 76158,
+        idWardrobe: 7078,
+        tipo: "Rifle",
+        tengo: 0,
+        pre: "El Galeón",
+        preId: 80135,
+        icon: "https://wiki.guildwars2.com/images/c/cc/The_HMS_Divinity.png",
+        wiki: "https://wiki.guildwars2.com/wiki/The_HMS_Divinity",
+        wikiPre: "https://wiki.guildwars2.com/wiki/Man_o%27_War",
+    },
+    {
+        nombre: "La Hoja Brillante",
+        id: 81957,
+        idWardrobe: 7300,
+        tipo: "Espada",
+        tengo: 0,
+        pre: "Salve a la Reina",
+        preId: 81812,
+        icon: "https://wiki.guildwars2.com/images/5/5d/The_Shining_Blade.png",
+        wiki: "https://wiki.guildwars2.com/wiki/The_Shining_Blade",
+        wikiPre: "https://wiki.guildwars2.com/wiki/Save_the_Queen",
+    },
+    {
+        nombre: "Verdarach",
+        id: 87687,
+        idWardrobe: 8145,
+        tipo: "Cuerno de guerra",
+        tengo: 0,
+        pre: "Llamada del Vacío",
+        preId: 87764,
+        icon: "https://wiki.guildwars2.com/images/3/30/Verdarach.png",
+        wiki: "https://wiki.guildwars2.com/wiki/Verdarach",
+        wikiPre: "https://wiki.guildwars2.com/wiki/Call_of_the_Void",
+    },
+    {
+        nombre: "Xiuquatl",
+        id: 88576,
+        idWardrobe: 8389,
+        tipo: "Cetro",
+        tengo: 0,
+        pre: "Tlehco",
+        preId: 88851,
+        icon: "https://wiki.guildwars2.com/images/2/20/Xiuquatl.png",
+        wiki: "https://wiki.guildwars2.com/wiki/Xiuquatl",
+        wikiPre: "https://wiki.guildwars2.com/wiki/Tlehco",
+    }
+];
 
 export const legendaryWeapons3 = [
     {

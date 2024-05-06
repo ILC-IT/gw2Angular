@@ -9,7 +9,17 @@
         [rowspan]="4">
             <mat-list>
                 <div mat-subheader>
-                    {{item.wing}} {{item.name}}
+                    <ng-container *ngIf="item.callOfTheMists !== ''; else envalentonado">
+                        <img class="icon" title="Doble oro" src="../../../assets/img/Call_of_the_Mists_(raid_effect).png"/> &nbsp; {{item.wing}} {{item.name}}
+                    </ng-container>
+                    <ng-template #envalentonado>
+                        <ng-container *ngIf="item.emboldened !== ''; else soloTitulos">
+                            <img class="icon" title="Envalentonado" src="../../../assets/img/Emboldened_(raid_effect).png"/> &nbsp; {{item.wing}} {{item.name}}
+                        </ng-container>
+                    </ng-template>
+                    <ng-template #soloTitulos>
+                        {{item.wing}} {{item.name}}
+                    </ng-template>
                 </div>
                 <mat-list-item *ngFor="let raidBoss of item.bossOk; let i = index">
                     <mat-icon mat-list-icon [ngStyle]="{'color': item.bossCompletado[i] === true ? 'rgba(11, 161, 11, 0.904)' : 'red'}">

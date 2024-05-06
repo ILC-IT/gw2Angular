@@ -5,6 +5,8 @@ export interface Raid {
     bossOk: string[];
     bossCompletado: boolean[];
     tokenCount: number[];
+    callOfTheMists: string,
+    emboldened: string
 };
 
 export const LegendariaRaidId = [
@@ -52,7 +54,9 @@ export const RaidsInfo = [
         boss: ['vale_guardian', 'spirit_woods', 'gorseval', 'sabetha'],
         bossOk: ['Vale Guardian', 'Spirit Woods', 'Gorseval', 'Sabetha'],
         bossCompletado: [false, false, false, false],
-        tokenCount: [0, 0, 0, 0]
+        tokenCount: [0, 0, 0, 0],
+        callOfTheMists: "",
+        emboldened: ""
     },
     {
         name: 'Salvation Pass', //salvation_pass
@@ -60,7 +64,9 @@ export const RaidsInfo = [
         boss: ['slothasor', 'bandit_trio', 'matthias'],
         bossOk: ['Slothasor', 'Bandit Trio', 'Matthias Gabrel'],
         bossCompletado: [false, false, false],
-        tokenCount: [0, 0, 0]
+        tokenCount: [0, 0, 0],
+        callOfTheMists: "",
+        emboldened: ""
     },
     {
         name: 'Stronghold of the Faithful', //stronghold_of_the_faithful
@@ -68,7 +74,9 @@ export const RaidsInfo = [
         boss: ['escort', 'keep_construct', 'twisted_castle', 'xera'],
         bossOk: ['Escort Glenna', 'Keep Construct', 'Twisted Castle', 'Xera'],
         bossCompletado: [false, false, false, false],
-        tokenCount: [0, 0, 0, 0]
+        tokenCount: [0, 0, 0, 0],
+        callOfTheMists: "",
+        emboldened: ""
     },
     
     // https://api.guildwars2.com/v2/raids/bastion_of_the_penitent
@@ -78,7 +86,9 @@ export const RaidsInfo = [
         boss: ['cairn', 'mursaat_overseer', 'samarog', 'deimos'],
         bossOk: ['Cairn', 'Mursaat Overseer', 'Samarog', 'Deimos'],
         bossCompletado: [false, false, false, false],
-        tokenCount: [0, 0, 0, 0]
+        tokenCount: [0, 0, 0, 0],
+        callOfTheMists: "",
+        emboldened: ""
     },
 
     // https://api.guildwars2.com/v2/raids/hall_of_chains
@@ -88,7 +98,9 @@ export const RaidsInfo = [
         boss: ['soulless_horror', 'river_of_souls', 'statues_of_grenth', 'voice_in_the_void'],
         bossOk: ['Soulless Horror', 'River of Souls', 'Statues of Grenth', 'Dhuum'],
         bossCompletado: [false, false, false, false],
-        tokenCount: [0, 0, 0, 0]
+        tokenCount: [0, 0, 0, 0],
+        callOfTheMists: "",
+        emboldened: ""
     },
 
     // https://api.guildwars2.com/v2/raids/mythwright_gambit
@@ -98,7 +110,9 @@ export const RaidsInfo = [
         boss: ['conjured_amalgamate', 'twin_largos', 'qadim'],
         bossOk: ['Conjured Amalgamate', 'Twin Largos', 'Q1 Qadim'],
         bossCompletado: [false, false, false],
-        tokenCount: [0, 0, 0]
+        tokenCount: [0, 0, 0],
+        callOfTheMists: "",
+        emboldened: ""
     },
 
     // https://api.guildwars2.com/v2/raids/the_key_of_ahdashim
@@ -108,6 +122,8 @@ export const RaidsInfo = [
         boss: ['gate', 'adina', 'sabir', 'qadim_the_peerless'],
         bossOk: ['Gate', 'Adina', 'Sabir', 'Q2 Qadim The Peerless'],
         bossCompletado: [false, false, false, false],
-        tokenCount: [0, 0, 0, 0]
+        tokenCount: [0, 0, 0, 0],
+        callOfTheMists: "",
+        emboldened: ""
     }
 ]

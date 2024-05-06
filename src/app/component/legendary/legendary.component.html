@@ -334,7 +334,7 @@
                     <!-- tengo Column -->
                     <ng-container matColumnDef="tengo">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header> Tengo </th>
-                        <td mat-cell *matCellDef="let element"> {{element.tengo}} </td>
+                        <td mat-cell *matCellDef="let element" [ngClass]="{'greenBackGround': element.tengo > 0, 'redBackGround': element.tengo === 0}"> {{element.tengo}} </td>
                     </ng-container>
 
                     <!-- nombre Column -->
@@ -380,6 +380,52 @@
                 </table>
             </mat-tab>
 
+            <mat-tab label="2ª Gen">
+                <table mat-table #sort2="matSort" [dataSource]="dataSourceArmasLegendarias2" matSort matSortActive="nombre" matSortDirection="asc" class="mat-elevation-z8"> 
+                    
+                    <!-- icon Column -->
+                    <ng-container matColumnDef="icon">
+                        <th mat-header-cell *matHeaderCellDef> Icono </th>
+                        <td mat-cell *matCellDef="let element"> <img src="{{element.icon}}" /> </td>
+                    </ng-container>
+
+                    <!-- tengo Column -->
+                    <ng-container matColumnDef="tengo">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Tengo </th>
+                        <td mat-cell *matCellDef="let element" [ngClass]="{'greenBackGround': element.tengo > 0, 'redBackGround': element.tengo === 0}"> {{element.tengo}} </td>
+                    </ng-container>
+
+                    <!-- nombre Column -->
+                    <ng-container matColumnDef="nombre">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+                        <td mat-cell *matCellDef="let element"> 
+                            <a href={{element.wiki}} target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+                                {{element.nombre}} 
+                            </a>
+                        </td>
+                    </ng-container>
+
+                    <!-- tipo Column -->
+                    <ng-container matColumnDef="tipo">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo </th>
+                        <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
+                    </ng-container>
+
+                    <!-- pre Column -->
+                    <ng-container matColumnDef="pre">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Pre </th>
+                        <td mat-cell *matCellDef="let element">
+                            <a href={{element.wikiPre}} target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+                                {{element.pre}} 
+                            </a>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumnsArmasLegendarias2; sticky: true"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumnsArmasLegendarias2;"></tr>
+                </table>
+            </mat-tab>
+
             <mat-tab label="3ª Gen">
                 <table mat-table #sort3="matSort" [dataSource]="dataSourceArmasLegendarias3" matSort matSortActive="precioTpVentaS" matSortDirection="desc" class="mat-elevation-z8"> 
                     
@@ -392,7 +438,7 @@
                     <!-- tengo Column -->
                     <ng-container matColumnDef="tengo">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header> Tengo </th>
-                        <td mat-cell *matCellDef="let element"> {{element.tengo}} </td>
+                        <td mat-cell *matCellDef="let element" [ngClass]="{'greenBackGround': element.tengo > 0, 'redBackGround': element.tengo === 0}"> {{element.tengo}} </td>
                     </ng-container>
 
                     <!-- nombre Column -->

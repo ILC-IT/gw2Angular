@@ -10,7 +10,7 @@ import { HeroService } from 'src/app/service/hero.service';
 })
 export class HerodetailComponent implements OnInit {
 
-  hero: any = [];
+  hero: any = {};
 
   constructor(private route: ActivatedRoute, private heroService: HeroService, private location: Location) { }
 
@@ -21,9 +21,8 @@ export class HerodetailComponent implements OnInit {
   getHero(): void {
     let id = this.route.snapshot.paramMap.get('name');
     this.heroService.getHero(id).subscribe((hero: any) => {
-      this.hero = hero
+      this.hero = hero;
     });
-    console.log(this.hero.name)
   }
 
   goBack(): void {
