@@ -75,6 +75,11 @@ export class HeroService {
     return this.httpClient.get(url);
   }
 
+  getSkins(){
+    const url = `${this.apiUrl}account/skins?access_token=${this.apiKey}`;
+    return this.httpClient.get(url);
+  }
+
     /**
    * Handle Http operation that failed.
    * Let the app continue.

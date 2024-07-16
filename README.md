@@ -2,14 +2,14 @@
 
 IMPORTANTE: Introducir api key del juego en `.\service\key.ts` para ver la información de cada cuenta.
 
-- Ver diarias de pve/fractales/WvW/PvP de nivel 80.
+- Ver diarias de camara del brujo / fractales de nivel 80.
 - Heroes: tabla con los personajes de la cuenta con información básica.
 - Calculadora del bazar: para aplicar un porcentaje de reducción a un precio.
 - Buscador stats por atributos, stats por prefijo y por nombre. ESP/ENG.
 - Enlaces a determinados sitios web de ayuda.
 - Raid: seguimiento de los bosses de raid hechos de la semana.
-- Legendarios: ver los objetos necesarios que faltan para la armadura legendaria de PvE, sellos y runas, y precios de los T6.
-- Buscador en la wiki oficial.
+- Legendarios: ver los objetos necesarios que faltan para la armadura legendaria de PvE, sellos y runas, precios de los T6, precios de items varios y precios de armas legendarias.
+- Buscador en la wiki oficial ESP/ENG.
 
 ## Development server
 
@@ -23,7 +23,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Imágenes
 
-![Diarias PvE](./src/assets/imgapp/pve1.png)
+![Diarias Wizard](./src/assets/imgapp/wizard1.png)
 ![Diarias Fract PvE](./src/assets/imgapp/frac1.png)
 ![Diarias Fract PvE](./src/assets/imgapp/frac2.png)
 ![Calculadora](./src/assets/imgapp/calc.png)

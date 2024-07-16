@@ -415,7 +415,7 @@ export class DailyComponent implements OnInit, AfterViewInit  {
   searchFractalIds(){
     let obj: any = {}
     //Recomendados
-    for (let i = 0; i <= 14; i++){
+    for (let i = 0; i < this.dailyInfoF.fractals.length; i++){
       if (this.dailyInfoF.fractals[i].name.includes("recomendado")){
         obj = this.fractales.find(o => o.idRec === this.dailyInfoF.fractals[i].id);
         this.fractRec.push(obj);
@@ -495,14 +495,15 @@ export class DailyComponent implements OnInit, AfterViewInit  {
       if (this.leapYear(hoy.getFullYear())){
         diaNum--; //esto es porque inestabilidadCm ya incluye el dia extra si es bisiesto
       }
-      // cojo info de 97 98 99 100
-      let pesadilla = inestabilidadCm["instabilities"]["97"][diaNum];
-      let observatorio = inestabilidadCm["instabilities"]["98"][diaNum];
-      let sunqua = inestabilidadCm["instabilities"]["99"][diaNum];
-      let oleaje = inestabilidadCm["instabilities"]["100"][diaNum];
+      // cojo info de 96 97 98 99 100
+      let pesadilla = inestabilidadCm["instabilities"]["96"][diaNum];
+      let observatorio = inestabilidadCm["instabilities"]["97"][diaNum];
+      let sunqua = inestabilidadCm["instabilities"]["98"][diaNum];
+      let oleaje = inestabilidadCm["instabilities"]["99"][diaNum];
+      let torre = inestabilidadCm["instabilities"]["100"][diaNum];
       let nombres = inestabilidadCm["instability_names"];
       //devuelve array de 3 x numero_de_cms posiciones
-      this.fractDailyInestabilidadCmEng = this.buscarInestabilidadCmNombre(nombres, pesadilla, observatorio, sunqua, oleaje);
+      this.fractDailyInestabilidadCmEng = this.buscarInestabilidadCmNombre(nombres, pesadilla, observatorio, sunqua, oleaje, torre);
       this.getFractalesCm();
     })
   }
@@ -568,11 +569,14 @@ export class DailyComponent implements OnInit, AfterViewInit  {
     return ((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0);
   }
 
-  buscarInestabilidadCmNombre(nombres: string[], fractal97: number[], fractal98: number[], fractal99: number[], fractal100: number[]){
-    let fractalInest = [nombres[fractal97[0]], nombres[fractal97[1]], nombres[fractal97[2]],
-                        nombres[fractal98[0]], nombres[fractal98[1]], nombres[fractal98[2]], 
-                        nombres[fractal99[0]], nombres[fractal99[1]], nombres[fractal99[2]],
-                        nombres[fractal100[0]], nombres[fractal100[1]], nombres[fractal100[2]]];
+  buscarInestabilidadCmNombre(nombres: string[], fractal96: number[], fractal97: number[], fractal98: number[], fractal99: number[], fractal100: number[]){
+    let fractalInest = [
+      nombres[fractal96[0]], nombres[fractal96[1]], nombres[fractal96[2]],
+      nombres[fractal97[0]], nombres[fractal97[1]], nombres[fractal97[2]], 
+      nombres[fractal98[0]], nombres[fractal98[1]], nombres[fractal98[2]],
+      nombres[fractal99[0]], nombres[fractal99[1]], nombres[fractal99[2]],
+      nombres[fractal100[0]], nombres[fractal100[1]], nombres[fractal100[2]]
+    ];
     return fractalInest;
   }
 

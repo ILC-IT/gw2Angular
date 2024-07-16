@@ -18,7 +18,7 @@
       <mat-tab label="Daily">
         <h4> *You must login first into the game to refresh daily wizard tasks.</h4>
 
-        <div class="completadas" *ngIf="!loadingDailyWizard">
+        <div class="completadas" *ngIf="!loadingDailyWizard && dailyWizardVault.objectives.length > 0; else vacioDailyWizard">
           <a [ngStyle]="{'background-color': dailyWizardVault.meta_reward_claimed === true ? '#237507' : dailyWizardVault.meta_progress_current >= dailyWizardVault.meta_progress_complete ? '#E67E22' : '#8E2610'}">
             Daily Reward: {{dailyWizardVault.meta_progress_current}} / {{dailyWizardVault.meta_progress_complete}}
             <p></p>
@@ -28,7 +28,7 @@
           </a>
         </div>
 
-        <div class="daily-menu" *ngIf="!loadingDailyWizard">
+        <div class="daily-menu" *ngIf="!loadingDailyWizard && dailyWizardVault.objectives.length > 0; else vacioDailyWizard">
           <a  *ngFor="let dailyWizard of dailyWizardVault.objectives; let i = index" [ngStyle]="{'background-color': dailyWizard.claimed === true ? '#237507' : dailyWizard.progress_current >= dailyWizard.progress_complete ? '#E67E22' : '#8E2610'}">
             <img mat-card-image src="https://wiki.guildwars2.com/images/a/a7/Astral_Acclaim.png">
             <p></p>
@@ -43,11 +43,16 @@
             Claimed: {{dailyWizard.claimed}} ({{dailyWizard.acclaim}})
           </a>
         </div>
+        <ng-template #vacioDailyWizard>
+          <a>
+            Empty response from API.
+          </a>
+        </ng-template>
       </mat-tab>
 
       <mat-tab label="Weekly">
 
-        <div class="completadas" *ngIf="!loadingWeeklyWizard">
+        <div class="completadas" *ngIf="!loadingWeeklyWizard && weeklyWizardVault.objectives.length > 0; else vacioWeeklyWizard">
           <a [ngStyle]="{'background-color': weeklyWizardVault.meta_reward_claimed === true ? '#237507' : weeklyWizardVault.meta_progress_current >= weeklyWizardVault.meta_progress_complete ? '#E67E22' : '#8E2610'}">
             Weekly Reward: {{weeklyWizardVault.meta_progress_current}} / {{weeklyWizardVault.meta_progress_complete}}
             <p></p>
@@ -57,7 +62,7 @@
           </a>
         </div>
 
-        <div class="daily-menu" *ngIf="!loadingWeeklyWizard">
+        <div class="daily-menu" *ngIf="!loadingWeeklyWizard && weeklyWizardVault.objectives.length > 0; else vacioWeeklyWizard">
           <a  *ngFor="let weeklyWizard of weeklyWizardVault.objectives; let i = index" [ngStyle]="{'background-color': weeklyWizard.claimed === true ? '#237507' : weeklyWizard.progress_current >= weeklyWizard.progress_complete ? '#E67E22' : '#8E2610'}">
             <img mat-card-image src="https://wiki.guildwars2.com/images/a/a7/Astral_Acclaim.png">
             <p></p>
@@ -72,11 +77,16 @@
             Claimed: {{weeklyWizard.claimed}} ({{weeklyWizard.acclaim}})
           </a>
         </div>
+        <ng-template #vacioWeeklyWizard>
+          <a>
+            Empty response from API.
+          </a>
+        </ng-template>
       </mat-tab>
 
       <mat-tab label="Special">
         <p> </p>
-        <div class="daily-menu" *ngIf="!loadingSpecialWizard">
+        <div class="daily-menu" *ngIf="!loadingSpecialWizard && specialWizardVault.objectives.length > 0; else vacioSpecialWizard">
           <a  *ngFor="let specialWizard of specialWizardVault.objectives; let i = index" [ngStyle]="{'background-color': specialWizard.claimed === true ? '#237507' : specialWizard.progress_current >= specialWizard.progress_complete ? '#E67E22' : '#8E2610'}">
             <img mat-card-image src="https://wiki.guildwars2.com/images/a/a7/Astral_Acclaim.png">
             <p></p>
@@ -91,6 +101,11 @@
             Claimed: {{specialWizard.claimed}} ({{specialWizard.acclaim}})
           </a>
         </div>
+        <ng-template #vacioSpecialWizard>
+          <a>
+            Empty response from API.
+          </a>
+        </ng-template>
       </mat-tab>
 
     </mat-tab-group>

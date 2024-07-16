@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { HeroService } from 'src/app/service/hero.service';
 import { LegendaryService } from 'src/app/service/legendary.service';
-import { legendarios, armaduraLigera, armaduraMedia, armaduraPesada, runa, sello, anilloRaid, t6, idsT6, vales, cantidadArmadura, cantidadRunas, cantidadSellos, valeId, trebolId, liId, ectoplasmaId, liArmadura, trebolArmadura, trebolRuna, trebolSello, trebolAnilloRaid, t6ArmaduraSelloRuna, ectoplasmaRuna, ectoplasmaSello, liAnilloRaid, t6AnilloRaid, obsidianaArmadura, obsidianaRuna, obsidianaSello, obsidianaId, otrosComponentes, lingoteAurico, placaReclamada, huevoChak, piezaAeronave, trozoAurilio, cristalLineaLey, montonCristalLuminoso, aspectoMistico, talismanBrillantez, talismanPotencia, talismanHabilidad, motaMistica, simboloControl, simboloMejora, simboloDolor, monedaMistica, preciosVarios, idsPreciosVarios, legendaryWeapons1, legendaryWeapons2, legendaryWeapons3, donExploracion} from './legendary';
+import { legendarios, armaduraLigera, armaduraMedia, armaduraPesada, runa, sello, anilloRaid, t6, idsT6, vales, cantidadArmadura, cantidadRunas, cantidadSellos, valeId, trebolId, liId, ectoplasmaId, liArmadura, trebolArmadura, trebolRuna, trebolSello, trebolAnilloRaid, t6ArmaduraSelloRuna, ectoplasmaRuna, ectoplasmaSello, liAnilloRaid, t6AnilloRaid, obsidianaArmadura, obsidianaRuna, obsidianaSello, obsidianaId, otrosComponentes, lingoteAurico, placaReclamada, huevoChak, piezaAeronave, trozoAurilio, cristalLineaLey, montonCristalLuminoso, aspectoMistico, talismanBrillantez, talismanPotencia, talismanHabilidad, motaMistica, simboloControl, simboloMejora, simboloDolor, monedaMistica, preciosVarios, idsPreciosVarios, legendaryWeapons1, legendaryWeapons2, legendaryWeapons3, legendaryWeapons3Variants, donExploracion} from './legendary';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -557,17 +557,21 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
   armasLegendarias1 = new MatTableDataSource(legendaryWeapons1);
   armasLegendarias2 = new MatTableDataSource(legendaryWeapons2);
   armasLegendarias3 = new MatTableDataSource(legendaryWeapons3);
+  armasLegendarias3Variants = new MatTableDataSource(legendaryWeapons3Variants);
   donExploracion = donExploracion;
   // tabla armas legendarias 1 y 3
   displayedColumnsArmasLegendarias1: string[] = ['icon', 'tengo', 'nombre', 'tipo', 'precioTpVentaS', 'pre', 'precioTpVentaSPre'];
   displayedColumnsArmasLegendarias2: string[] = ['icon', 'tengo', 'nombre', 'tipo', 'pre'];
   displayedColumnsArmasLegendarias3: string[] = ['icon', 'tengo', 'nombre', 'tipo', 'precioTpVentaS', 'pre', 'precioTpVentaSPre'];
+  displayedColumnsArmasLegendarias3Variants: string[] = ['nombre', 'tipo', 'zhaitan', 'mordremoth', 'kralkatorrik', 'primordus', 'jormag', 'soowon'];
   dataSourceArmasLegendarias1 = this.armasLegendarias1;
   dataSourceArmasLegendarias2 = this.armasLegendarias2;
   dataSourceArmasLegendarias3 = this.armasLegendarias3;
+  dataSourceArmasLegendarias3Variants = this.armasLegendarias3Variants;
   @ViewChild("sort1", { static: false }) sort1!: MatSort;
   @ViewChild("sort2", { static: false }) sort2!: MatSort;
   @ViewChild("sort3", { static: false }) sort3!: MatSort;
+  @ViewChild("sort4", { static: false }) sort4!: MatSort;
   /////////////////////////////////////////////////////////
 
   constructor(private heroService: HeroService, private legendaryService: LegendaryService) { }
@@ -587,6 +591,8 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     this.dataSourceArmasLegendarias2.sort = this.sort2;
     this.sort3.disableClear = true; //para que solo haga ascendente o descendente
     this.dataSourceArmasLegendarias3.sort = this.sort3;
+    this.sort4.disableClear = true; //para que solo haga ascendente o descendente
+    this.dataSourceArmasLegendarias3Variants.sort = this.sort4;
   }
 
   getT6Tengo(){
@@ -735,6 +741,63 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
       this.tengoDatos.cantidad =  this.armaduraLigeraDatos.tengo + this.armaduraMediaDatos.tengo + this.armaduraPesadaDatos.tengo + this.anilloRaidDatos.tengo + this.runaDatos.tengo + this.selloDatos.tengo;
 
       this.getMatsTengo(); //cuantos vales, treboles, lis, ectoplasma tengo
+    });
+
+    //Consulto las skins desbloqueadas de la cuenta
+    this.heroService.getSkins().subscribe((skins: any) => {
+      // let startTime = Date.now();
+
+      // for (let i = 0; i < skins.length; i++){
+      //   for (let j = 0; j < legendaryWeapons3Variants.length; j++){
+      //     if (skins[i] === legendaryWeapons3Variants[j].zhaitanSkinId){
+      //       legendaryWeapons3Variants[j].zhaitanTengo = 1;
+      //     }
+      //     else if (skins[i] === legendaryWeapons3Variants[j].mordremothSkinId){
+      //       legendaryWeapons3Variants[j].mordremothTengo = 1;
+      //     }
+      //     else if (skins[i] === legendaryWeapons3Variants[j].kralkatorrikSkinId){
+      //       legendaryWeapons3Variants[j].kralkatorrikTengo = 1;
+      //     }
+      //     else if (skins[i] === legendaryWeapons3Variants[j].primordusSkinId){
+      //       legendaryWeapons3Variants[j].primordusTengo = 1;
+      //     }
+      //     else if (skins[i] === legendaryWeapons3Variants[j].jormagSkinId){
+      //       legendaryWeapons3Variants[j].jormagTengo = 1;
+      //     }
+      //     else if (skins[i] === legendaryWeapons3Variants[j].soowonSkinId){
+      //       legendaryWeapons3Variants[j].soowonTengo = 1;
+      //     }
+      //   }
+      // }
+      
+      // "forEach" parece más rápido que el "for"
+      skins.forEach((element: number) => {
+        legendaryWeapons3Variants.forEach(diseño => {
+          if (element === diseño.zhaitanSkinId){
+            diseño.zhaitanTengo = 1;
+          }
+          else if (element === diseño.mordremothSkinId){
+            diseño.mordremothTengo = 1;
+          }
+          else if (element === diseño.kralkatorrikSkinId){
+            diseño.kralkatorrikTengo = 1;
+          }
+          else if (element === diseño.primordusSkinId){
+            diseño.primordusTengo = 1;
+          }
+          else if (element === diseño.jormagSkinId){
+            diseño.jormagTengo = 1;
+          }
+          else if (element === diseño.soowonSkinId){
+            diseño.soowonTengo = 1;
+          }
+        })
+      });
+
+      // let ms = Date.now() - startTime;
+      // console.log(ms)
+      this.dataSourceArmasLegendarias3Variants = new MatTableDataSource(legendaryWeapons3Variants);
+      this.dataSourceArmasLegendarias3Variants.sort = this.sort4;
     })
   }
 
