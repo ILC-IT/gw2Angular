@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
 import { atributos, atributosEng, atributos2, atributos2Eng, prefijos, prefijosEng, armaduras, armadurasEng, statsEsp, statsEng } from "./statsDefinition";
-import * as _ from 'lodash';
+// import * as _ from 'lodash';
+import { isEqual } from 'lodash';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-stats',
@@ -73,17 +75,49 @@ export class StatsComponent implements OnInit {
   armaduras = armaduras;
   armadurasEng = armadurasEng;
 
-  constructor(private formBuilder: FormBuilder) { 
+  // Para las rutas a las pestañas de diarias
+  selectedTabIndex: number = 0;
+  tabs: string[] = ['Buscar por stats (atributos)', 'Buscar por prefijo', 'Buscar por nombre arma/armadura'];
+  routeMap: { [key: string]: string } = {
+    'buscarporstats': 'Buscar por stats (atributos)',
+    'buscarporprefijo': 'Buscar por prefijo',
+    'buscarporarma': 'Buscar por nombre arma/armadura'
+  };
+
+  constructor(private formBuilder: FormBuilder,  private route: ActivatedRoute,  private router: Router) { 
     this.initForm();
   }
 
   ngOnInit(): void {
+    // Para hacer el routing a las pestañas de la tabla
+    this.route.paramMap.subscribe(params => {
+      const tab = params.get('tab');
+      if (tab) {
+        this.selectedTabIndex = this.getTabIndex(tab);
+      }
+    });
   }
 
   // stat1 = new FormControl();
   // OnStat1Selected(option: { value: any; }) {
   //   console.log("1 ", option.value);
   // }
+
+  // devuelve el index de la pestaña de la tabla
+  getTabIndex(tab: string): number {
+    const tabName = this.routeMap[tab] || tab;
+    return this.tabs.indexOf(tabName);
+  }
+
+  sanitizeRoute(name: string): string {
+    return name.replace(/[^\w-]+/g, '').toLowerCase();
+  }
+
+  onTabChange(event: any) {
+    const selectedTab = this.tabs[event.index];
+    const routeName = Object.keys(this.routeMap).find(key => this.routeMap[key] === selectedTab) || this.sanitizeRoute(selectedTab);
+    this.router.navigate(['/stats', routeName]);
+  }
 
   initForm(){
     this.formularioStats = this.formBuilder.group({
@@ -233,7 +267,7 @@ export class StatsComponent implements OnInit {
     // console.log(arrayBuscar)
 
     for (let i = 0; i < statsEsp.length; i++){
-      if ( _.isEqual(statsEsp[i].stats, arrayBuscar) ){
+      if (isEqual(statsEsp[i].stats, arrayBuscar) ){
         //console.log('encontrado')
         return resultadoo = statsEsp[i];
       }
@@ -254,7 +288,7 @@ export class StatsComponent implements OnInit {
     // console.log(valor.prefijo)
 
     for (let i = 0; i < statsEsp.length; i++){
-      if ( _.isEqual(statsEsp[i].nombreStat, valor.prefijo) ){
+      if (isEqual(statsEsp[i].nombreStat, valor.prefijo) ){
         // console.log('encontrado')
         return resultadoo = statsEsp[i];
       }
@@ -275,7 +309,7 @@ export class StatsComponent implements OnInit {
     // console.log(valor.armadura)
 
     for (let i = 0; i < statsEsp.length; i++){
-      if ( _.isEqual(statsEsp[i].armadura, valor.armadura) ){
+      if (isEqual(statsEsp[i].armadura, valor.armadura) ){
         // console.log('encontrado')
         return resultadoo = statsEsp[i];
       }
@@ -304,7 +338,7 @@ export class StatsComponent implements OnInit {
     // console.log(arrayBuscar)
 
     for (let i = 0; i < statsEng.length; i++){
-      if ( _.isEqual(statsEng[i].stats, arrayBuscar) ){
+      if (isEqual(statsEng[i].stats, arrayBuscar) ){
         // console.log('encontrado')
         return resultadoo = statsEng[i];
       }
@@ -325,7 +359,7 @@ export class StatsComponent implements OnInit {
     // console.log(valor.prefijo)
 
     for (let i = 0; i < statsEng.length; i++){
-      if ( _.isEqual(statsEng[i].nombreStat, valor.prefijo) ){
+      if (isEqual(statsEng[i].nombreStat, valor.prefijo) ){
         // console.log('encontrado')
         return resultadoo = statsEng[i];
       }
@@ -346,7 +380,7 @@ export class StatsComponent implements OnInit {
     // console.log(valor.armadura)
 
     for (let i = 0; i < statsEng.length; i++){
-      if ( _.isEqual(statsEng[i].armadura, valor.armadura) ){
+      if (isEqual(statsEng[i].armadura, valor.armadura) ){
         // console.log('encontrado')
         return resultadoo = statsEng[i];
       }

@@ -3,7 +3,7 @@
     <mat-tab-group color="primary" backgroundColor="primary">
         <mat-tab label="DIARIAS"> 
             <mat-selection-list #diarias [multiple]="false">
-                <mat-list-option *ngFor="let diaria of typesOfDiarias" [value]="diaria" routerLink="/diaria">
+                <mat-list-option *ngFor="let diaria of typesOfDiarias" [value]="diaria" [routerLink]="['/diaria', sanitizeRoute(diaria)]">
                 {{diaria}}
                 </mat-list-option>
             </mat-selection-list>
@@ -24,7 +24,7 @@
         </mat-tab>
         <mat-tab label="BUSCADOR STATS"> 
             <mat-selection-list #buscadorStat [multiple]="false">
-                <mat-list-option *ngFor="let stat of typesOfStats" [value]="stat" routerLink="/stats">
+                <mat-list-option *ngFor="let stat of typesOfStats" [value]="stat" [routerLink]="['/stats', sanitizeRoute(stat)]">
                 {{stat}}
                 </mat-list-option>
             </mat-selection-list>
@@ -45,7 +45,7 @@
         </mat-tab>
         <mat-tab label="LEGENDARIOS"> 
             <mat-selection-list #legendary [multiple]="false">
-                <mat-list-option *ngFor="let legen of typesOfLegendary" [value]="legen" routerLink="/legendary">
+                <mat-list-option *ngFor="let legen of typesOfLegendary" [value]="legen" [routerLink]="['/legendary', sanitizeRoute(legen)]">
                 {{legen}}
                 </mat-list-option>
             </mat-selection-list>

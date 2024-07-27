@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { ToastNotificationInitializer, DialogLayoutDisplay, ToastUserViewTypeEnum, ToastProgressBarEnum, DisappearanceAnimation, 
   AppearanceAnimation, ToastPositionEnum } from '@costlydeveloper/ngx-awesome-popup';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-daily',
@@ -108,8 +109,17 @@ export class DailyComponent implements OnInit, AfterViewInit  {
   @ViewChild("sort2", { static: false }) sort2!: MatSort;
   @ViewChild("sort3", { static: false }) sort3!: MatSort;
   @ViewChild("sort4", { static: false }) sort4!: MatSort;
+  
+  // Para las rutas a las pestañas de diarias
+  selectedTabIndex: number = 0;
+  tabs: string[] = ['Cámara del brujo', 'Fractales', 'Más diarias'];
+  routeMap: { [key: string]: string } = {
+    'wizardvault': 'Cámara del brujo',
+    'fractales': 'Fractales',
+    'otros': 'Más diarias'
+  };
 
-  constructor(private dailyService: DailyService, private legendaryService: LegendaryService) { 
+  constructor(private dailyService: DailyService, private legendaryService: LegendaryService, private route: ActivatedRoute,  private router: Router) { 
 
     this.filterSelectObj = [
       {
@@ -152,6 +162,15 @@ export class DailyComponent implements OnInit, AfterViewInit  {
   }
 
   async ngOnInit() {
+
+    // Para hacer el routing a las pestañas de la tabla
+    this.route.paramMap.subscribe(params => {
+      const tab = params.get('tab');
+      if (tab) {
+        this.selectedTabIndex = this.getTabIndex(tab);
+      }
+    });
+
     this.tokenSupply = this.getTokenSupply();
     this.pactSupply = this.getPactSupply();
     this.mapBonusRewardweekNumber = this.getMapBonusRewardWeekNumber(); //numero de semana de map bonus reward entre 1-8
@@ -208,6 +227,22 @@ export class DailyComponent implements OnInit, AfterViewInit  {
   //   let response: any;
   //   return response = await this.dailyService.getDaily().toPromise();
   // }
+
+  // devuelve el index de la pestaña de la tabla
+  getTabIndex(tab: string): number {
+    const tabName = this.routeMap[tab] || tab;
+    return this.tabs.indexOf(tabName);
+  }
+
+  sanitizeRoute(name: string): string {
+    return name.replace(/[^\w-]+/g, '').toLowerCase();
+  }
+
+  onTabChange(event: any) {
+    const selectedTab = this.tabs[event.index];
+    const routeName = Object.keys(this.routeMap).find(key => this.routeMap[key] === selectedTab) || this.sanitizeRoute(selectedTab);
+    this.router.navigate(['/diaria', routeName]);
+  }
   
   async getDailyFractalsId(){
     let response: any;

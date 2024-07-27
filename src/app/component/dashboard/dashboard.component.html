@@ -10,13 +10,63 @@
     <div>
         <nav>
             <a routerLink="/">Menú</a>
-            <a routerLink="/diaria">Diarias</a>
+
+            <a [matMenuTriggerFor]="diariasMenu"
+                #diariasTrigger="matMenuTrigger"
+                (mouseenter)="openMenu(diariasTrigger)"
+                (mouseleave)="closeMenu(diariasTrigger)"
+                routerLink="/diaria">
+                Diarias
+            </a>
+            <mat-menu [hasBackdrop]="false" #diariasMenu="matMenu" [overlapTrigger]="false">
+                <div (mouseenter)="cancelCloseMenu(diariasTrigger)"
+                    (mouseleave)="closeMenu(diariasTrigger)">
+                <a mat-menu-item [routerLink]="'/diaria/wizardvault'">Cámara del brujo</a>
+                <a mat-menu-item [routerLink]="'/diaria/fractales'">Fractales</a>
+                <a mat-menu-item [routerLink]="'/diaria/otros'">Más diarias</a>
+                </div>
+            </mat-menu>
+
             <a routerLink="/heroes">Héroes</a>
             <a routerLink="/calculadora">Calculadora</a>
-            <a routerLink="/stats">Buscador Stats</a>
+
+            <a [matMenuTriggerFor]="buscadorStatsMenu"
+                #buscadorStatsTrigger="matMenuTrigger"
+                (mouseenter)="openMenu(buscadorStatsTrigger)"
+                (mouseleave)="closeMenu(buscadorStatsTrigger)"
+                routerLink="/stats">
+                Buscador Stats
+            </a>
+            <mat-menu [hasBackdrop]="false" #buscadorStatsMenu="matMenu" [overlapTrigger]="false">
+                <div (mouseenter)="cancelCloseMenu(buscadorStatsTrigger)"
+                    (mouseleave)="closeMenu(buscadorStatsTrigger)">
+                <a mat-menu-item [routerLink]="'/stats/buscarporstats'">Atributos</a>
+                <a mat-menu-item [routerLink]="'/stats/buscarporprefijo'">Prefijo</a>
+                <a mat-menu-item [routerLink]="'/stats/buscarporarma'">Nombre arma</a>
+                </div>
+            </mat-menu>
+
             <a routerLink="/enlaces">Enlaces</a>
             <a routerLink="/raid">Raid</a>
-            <a routerLink="/legendary">Legendarios</a>
+
+            <a [matMenuTriggerFor]="legendariosMenu"
+                #legendariosTrigger="matMenuTrigger"
+                (mouseenter)="openMenu(legendariosTrigger)"
+                (mouseleave)="closeMenu(legendariosTrigger)"
+                routerLink="/legendary">
+                Legendarios
+            </a>
+            <mat-menu [hasBackdrop]="false" #legendariosMenu="matMenu" [overlapTrigger]="false">
+                <div (mouseenter)="cancelCloseMenu(legendariosTrigger)"
+                    (mouseleave)="closeMenu(legendariosTrigger)">
+                <a mat-menu-item [routerLink]="'/legendary/armaduraraid'">Armadura Raid</a>
+                <a mat-menu-item [routerLink]="'/legendary/otros'">Otros componentes</a>
+                <a mat-menu-item [routerLink]="'/legendary/preciost6'">Precios T6</a>
+                <a mat-menu-item [routerLink]="'/legendary/preciosvarios'">Precios varios</a>
+                <a mat-menu-item [routerLink]="'/legendary/preciosarmas'">Precios armas</a>
+                </div>
+            </mat-menu>
+
             &nbsp;
             <a href="https://killproof.me/account/gw2accounts" target="_blank" rel="noopener noreferrer" style="text-decoration: none">KP</a>
         </nav>

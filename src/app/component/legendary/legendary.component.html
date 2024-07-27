@@ -1,5 +1,5 @@
 <h2>Armadura legendaria, runas, sellos, armas, T6 y Precios</h2>
-<mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4" backgroundColor="primary" color="primary">
+<mat-tab-group mat-stretch-tabs [(selectedIndex)]="selectedTabIndex" (selectedTabChange)="onTabChange($event)" class="example-stretched-tabs mat-elevation-z4" backgroundColor="primary" color="primary">
 
     <mat-tab label="Armadura legendaria Raid/PvE">
         <table mat-table [dataSource]="dataSourceLegen" class="mat-elevation-z8"> 

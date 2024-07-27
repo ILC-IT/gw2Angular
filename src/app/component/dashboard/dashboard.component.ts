@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatMenuTrigger } from '@angular/material/menu';
 import { Observable, timer } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
@@ -20,6 +21,31 @@ export class DashboardComponent implements OnInit {
 
   get time() {
     return this._time$;
+  }
+
+  @ViewChild('diariasTrigger') diariasTrigger!: MatMenuTrigger;
+  @ViewChild('buscadorStatsTrigger') buscadorStatsTrigger!: MatMenuTrigger;
+  @ViewChild('legendariosTrigger') legendariosTrigger!: MatMenuTrigger;
+
+  private openMenuTimeout: any;
+  private closeMenuTimeout: any;
+
+  openMenu(trigger: MatMenuTrigger) {
+    clearTimeout(this.closeMenuTimeout);
+    this.openMenuTimeout = setTimeout(() => {
+      trigger.openMenu();
+    }, 50); // Ajusta el tiempo según sea necesario
+  }
+
+  cancelCloseMenu(trigger: MatMenuTrigger) {
+    clearTimeout(this.closeMenuTimeout);
+  }
+
+  closeMenu(trigger: MatMenuTrigger) {
+    clearTimeout(this.openMenuTimeout);
+    this.closeMenuTimeout = setTimeout(() => {
+      trigger.closeMenu();
+    }, 50); // Ajusta el tiempo según sea necesario
   }
   
   constructor() { }

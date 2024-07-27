@@ -14,14 +14,16 @@ import { LegendaryComponent } from './component/legendary/legendary.component';
 const routes: Routes = [
   { path: '', component: PrincipalComponent },
   { path: 'diaria', component: DailyComponent },
-  //{ path: 'menu', component: DashboardComponent },
+  { path: 'diaria/:tab', component: DailyComponent },
   { path: 'heroes', component: HeroesComponent },
   { path: 'enlaces', component: EnlacesComponent },
   { path: 'calculadora', component: CalculadoraComponent },
   { path: 'stats', component: StatsComponent },
+  { path: 'stats/:tab', component: StatsComponent },
   { path: 'raid', component: RaidComponent },
   { path: 'heroes/detail/:name', component: HerodetailComponent},
   { path: 'legendary', component: LegendaryComponent},
+  { path: 'legendary/:tab', component: LegendaryComponent},
   { path:'**', pathMatch: 'full', redirectTo:'' }
 ];
 

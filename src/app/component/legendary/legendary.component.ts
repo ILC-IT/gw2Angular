@@ -4,6 +4,7 @@ import { LegendaryService } from 'src/app/service/legendary.service';
 import { legendarios, armaduraLigera, armaduraMedia, armaduraPesada, runa, sello, anilloRaid, t6, idsT6, vales, cantidadArmadura, cantidadRunas, cantidadSellos, valeId, trebolId, liId, ectoplasmaId, liArmadura, trebolArmadura, trebolRuna, trebolSello, trebolAnilloRaid, t6ArmaduraSelloRuna, ectoplasmaRuna, ectoplasmaSello, liAnilloRaid, t6AnilloRaid, obsidianaArmadura, obsidianaRuna, obsidianaSello, obsidianaId, otrosComponentes, lingoteAurico, placaReclamada, huevoChak, piezaAeronave, trozoAurilio, cristalLineaLey, montonCristalLuminoso, aspectoMistico, talismanBrillantez, talismanPotencia, talismanHabilidad, motaMistica, simboloControl, simboloMejora, simboloDolor, monedaMistica, preciosVarios, idsPreciosVarios, legendaryWeapons1, legendaryWeapons2, legendaryWeapons3, legendaryWeapons3Variants, donExploracion} from './legendary';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-legendary',
@@ -574,9 +575,28 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
   @ViewChild("sort4", { static: false }) sort4!: MatSort;
   /////////////////////////////////////////////////////////
 
-  constructor(private heroService: HeroService, private legendaryService: LegendaryService) { }
+  // Para las rutas a las pestañas de diarias
+  selectedTabIndex: number = 0;
+  tabs: string[] = ['Armadura legendaria Raid/PvE', 'Otros componentes', 'Precios T6', 'Precios Varios', 'Precios Armas Legendarias'];
+  routeMap: { [key: string]: string } = {
+    'armaduraraid': 'Armadura legendaria Raid/PvE',
+    'otros': 'Otros componentes',
+    'preciost6': 'Precios T6',
+    'preciosvarios': 'Precios Varios',
+    'preciosarmas': 'Precios Armas Legendarias'
+  };
+  /////////////////////////////////////////////////////////
+
+  constructor(private heroService: HeroService, private legendaryService: LegendaryService, private route: ActivatedRoute,  private router: Router) { }
 
   ngOnInit(): void {
+    // Para hacer el routing a las pestañas de la tabla
+    this.route.paramMap.subscribe(params => {
+      const tab = params.get('tab');
+      if (tab) {
+        this.selectedTabIndex = this.getTabIndex(tab);
+      }
+    });
     this.getT6Tengo(); //cuantos t6 tengo de cada tipo y otros tengo
     this.getLegendaryTengo(); //cuantas piezas de armadura, anillo, sellos, runas, armas tengo
     this.getT6Prices(); //el precio del bazar de cada t6
@@ -593,6 +613,22 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     this.dataSourceArmasLegendarias3.sort = this.sort3;
     this.sort4.disableClear = true; //para que solo haga ascendente o descendente
     this.dataSourceArmasLegendarias3Variants.sort = this.sort4;
+  }
+
+  // devuelve el index de la pestaña de la tabla
+  getTabIndex(tab: string): number {
+    const tabName = this.routeMap[tab] || tab;
+    return this.tabs.indexOf(tabName);
+  }
+
+  sanitizeRoute(name: string): string {
+    return name.replace(/[^\w-]+/g, '').toLowerCase();
+  }
+
+  onTabChange(event: any) {
+    const selectedTab = this.tabs[event.index];
+    const routeName = Object.keys(this.routeMap).find(key => this.routeMap[key] === selectedTab) || this.sanitizeRoute(selectedTab);
+    this.router.navigate(['/legendary', routeName]);
   }
 
   getT6Tengo(){

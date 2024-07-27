@@ -1,5 +1,5 @@
 <h2>Diarias</h2>
-<mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4" backgroundColor="primary" color="primary">
+<mat-tab-group mat-stretch-tabs [(selectedIndex)]="selectedTabIndex" (selectedTabChange)="onTabChange($event)" class="example-stretched-tabs mat-elevation-z4" backgroundColor="primary" color="primary">
 
   <mat-tab label="Cámara del brujo">
 
@@ -388,7 +388,7 @@
     </div>
   </mat-tab>
 
-  <mat-tab label="+Diarias">
+  <mat-tab label="Más diarias">
     <div class="daily-menu">
       <a>
         <h3>Pact Supply</h3>
