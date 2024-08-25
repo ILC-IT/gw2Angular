@@ -40,6 +40,10 @@ export class DailyComponent implements OnInit, AfterViewInit  {
   tokenSupply: string[][] = [];
   anomalia: string = '';
   convergencia: string = '';
+  convergencia100: any = [];
+  loadingConvergencia100: boolean = true;
+  convergencia150: any = [];
+  loadingConvergencia150: boolean = true;
   dailyActivity: string = "";
   recordatorio = {
     ok: false,
@@ -181,9 +185,13 @@ export class DailyComponent implements OnInit, AfterViewInit  {
         this.anomalia = this.getAnomaly();
       }, 1 * 60 * 1000)
     this.convergencia = this.getConvergencia();
+    this.convergencia100 = await this.getConvergencia100();
+    this.loadingConvergencia100 = false;
+    this.convergencia150 = await this.getConvergencia150();
+    this.loadingConvergencia150 = false;
       setInterval(() => {
         this.convergencia = this.getConvergencia();
-      }, 1 * 60 * 1000)
+      }, 2 * 60 * 1000)
     this.dailyStrike = await this.getDailyStrikeId();
     this.getDailyStrike();
     this.getMaterials();
@@ -433,6 +441,17 @@ export class DailyComponent implements OnInit, AfterViewInit  {
 
   getAnomaly(){
     return this.dailyService.getAnomaliaLey();
+  }
+
+
+  async getConvergencia100(){
+    let response: any;
+    return response = await this.dailyService.getConvergencia100().toPromise();
+  }
+
+  async getConvergencia150(){
+    let response: any;
+    return response = await this.dailyService.getConvergencia150().toPromise();
   }
 
   getConvergencia(){

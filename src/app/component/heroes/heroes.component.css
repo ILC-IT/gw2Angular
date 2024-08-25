@@ -31,3 +31,7 @@ th, td {
 table th {
   background-color: rgb(150, 173, 221);
 }
+
+h2 {
+  text-align: center;
+}

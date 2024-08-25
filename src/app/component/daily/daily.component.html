@@ -45,6 +45,7 @@
         </div>
         <ng-template #vacioDailyWizard>
           <a>
+            <img mat-card-image src="https://static.staticwars.com/quaggans/404.jpg">
             Empty response from API.
           </a>
         </ng-template>
@@ -79,6 +80,7 @@
         </div>
         <ng-template #vacioWeeklyWizard>
           <a>
+            <img mat-card-image src="https://static.staticwars.com/quaggans/404.jpg">
             Empty response from API.
           </a>
         </ng-template>
@@ -103,6 +105,7 @@
         </div>
         <ng-template #vacioSpecialWizard>
           <a>
+            <img mat-card-image src="https://static.staticwars.com/quaggans/404.jpg">
             Empty response from API.
           </a>
         </ng-template>
@@ -479,6 +482,7 @@
       </a>
       <a>
         <h3>Convergencia Pública</h3>
+        <p *ngIf="!loadingConvergencia100 && !loadingConvergencia150"> {{convergencia100[0].current}}/{{convergencia100[0].max}}    -   {{convergencia150[0].current}}/{{convergencia150[0].max}} </p>
         <p> {{convergencia}} </p>
         <button mat-raised-button color="accent" [cdkCopyToClipboard]="convergencia">Copiar</button>
       </a>

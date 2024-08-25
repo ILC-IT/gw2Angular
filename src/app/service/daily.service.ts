@@ -367,4 +367,22 @@ export class DailyService {
     return this.httpClient.get(url);
   }
 
+  getQuaggans(name: string){
+    // devuelve imagenes de quaggans con valores {id, url}
+    // EJ. https://api.guildwars2.com/v2/quaggans/404
+    const url = `${this.apiUrl}quaggans/${name}`;
+    return this.httpClient.get(url);
+  }
+
+  getConvergencia100(){
+    // devuelve logro de hacer 100 convergencias
+    const url = `${this.apiUrl}account/achievements?ids=7668&access_token=${this.apiKey}`;
+    return this.httpClient.get(url);
+  }
+
+  getConvergencia150(){
+    // devuelve logro de hacer 150 convergencias repetible
+    const url = `${this.apiUrl}account/achievements?ids=7720&access_token=${this.apiKey}`;
+    return this.httpClient.get(url);
+  }
 }
