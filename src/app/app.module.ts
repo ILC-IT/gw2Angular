@@ -25,6 +25,8 @@ import { RaidService } from './service/raid.service';
 import { LegendaryComponent } from './component/legendary/legendary.component';
 import { NgxAwesomePopupModule, DialogConfigModule, ConfirmBoxConfigModule, ToastNotificationConfigModule } from '@costlydeveloper/ngx-awesome-popup';
 import { LegendaryService } from './service/legendary.service';
+import { HomesteadComponent } from './component/homestead/homestead.component';
+import { HomesteadService } from './service/homestead.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { LegendaryService } from './service/legendary.service';
     StatsComponent,
     RaidComponent,
     HerodetailComponent,
-    LegendaryComponent
+    LegendaryComponent,
+    HomesteadComponent
   ],
   imports: [
     BrowserModule,
@@ -71,6 +74,7 @@ import { LegendaryService } from './service/legendary.service';
   providers: [
     DailyService,
     HeroService,
+    HomesteadService,
     LegendaryService,
     MessageService,
     RaidService

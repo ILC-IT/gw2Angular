@@ -50,5 +50,12 @@
                 </mat-list-option>
             </mat-selection-list>
         </mat-tab>
+        <mat-tab label="HOMESTEAD"> 
+            <mat-selection-list #homestead [multiple]="false">
+                <mat-list-option *ngFor="let home of typesOfHomestead" [value]="home" routerLink="/homestead">
+                {{home}}
+                </mat-list-option>
+            </mat-selection-list>
+        </mat-tab>
     </mat-tab-group>
 </div>

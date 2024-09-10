@@ -1,0 +1,20 @@
+<h2>Glifos</h2>
+
+<table mat-table [dataSource]="dataSourceGlyphs" class="mat-elevation-z8">
+  
+    <!-- Category Column -->
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef> Category </th>
+      <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsGlyphs"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumnsGlyphs;"></tr>
+    
+</table>

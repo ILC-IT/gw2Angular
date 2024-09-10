@@ -10,6 +10,7 @@ import { StatsComponent } from './component/stats/stats.component';
 import { RaidComponent } from './component/raid/raid.component';
 import { HerodetailComponent } from './component/herodetail/herodetail.component';
 import { LegendaryComponent } from './component/legendary/legendary.component';
+import { HomesteadComponent } from './component/homestead/homestead.component';
 
 const routes: Routes = [
   { path: '', component: PrincipalComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'heroes/detail/:name', component: HerodetailComponent},
   { path: 'legendary', component: LegendaryComponent},
   { path: 'legendary/:tab', component: LegendaryComponent},
+  { path: 'homestead', component: HomesteadComponent },
   { path:'**', pathMatch: 'full', redirectTo:'' }
 ];
 

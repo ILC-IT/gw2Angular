@@ -1,0 +1,18 @@
+h2 {
+    text-align: center;
+}
+
+table {
+    width: 25%;
+    margin-left:auto; 
+    margin-right:auto; 
+}
+
+td, th {
+    text-align: center !important;
+    vertical-align: middle !important;
+}
+
+.mat-sort-header-container {
+    justify-content: center !important;
+}

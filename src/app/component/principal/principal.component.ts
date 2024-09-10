@@ -16,6 +16,7 @@ export class PrincipalComponent implements OnInit {
   typesOfStats: string[] = ['Buscar por stats (atributos)', 'Buscar por prefijo', 'Buscar por nombre arma/armadura'];
   typesOfRaid: string[] = ['Raid'];
   typesOfLegendary: string[] = ['Armadura legendaria Raid/PvE', 'Otros componentes', 'Precios T6', 'Precios Varios', 'Precios Armas Legendarias'];
+  typesOfHomestead: string[] = ['Glifos']
 
   ngOnInit(): void {
   }
