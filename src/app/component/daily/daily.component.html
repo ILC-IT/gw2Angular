@@ -482,6 +482,21 @@
       </a>
       <a>
         <h3>Convergencia Pública</h3>
+        <mat-card class="result">
+          <mat-card-content>
+            <section class="example-section">
+              <mat-checkbox
+                  class="example-margin"
+                  [(ngModel)]="dailyIdsHeroChoiceChestConvergenceChecked"
+                  [(indeterminate)]="indeterminate"
+                  [labelPosition]="labelPosition"
+                  [class.mat-checkbox-disabled]="false"
+                  disabled>
+                  {{dailyHeroChoiceConvergenceChesting}}
+              </mat-checkbox>
+            </section>
+          </mat-card-content>
+        </mat-card>
         <p *ngIf="!loadingConvergencia100 && !loadingConvergencia150"> {{convergencia100[0].current}}/{{convergencia100[0].max}}    -   {{convergencia150[0].current}}/{{convergencia150[0].max}} </p>
         <p> {{convergencia}} </p>
         <button mat-raised-button color="accent" [cdkCopyToClipboard]="convergencia">Copiar</button>

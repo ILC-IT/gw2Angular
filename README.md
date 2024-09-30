@@ -22,7 +22,7 @@ Tested and works on node <= v16.20.1 & angular cli v >= 12.2.0
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Imágenes
+## Screenshots
 
 ![Diarias Wizard](./src/assets/imgapp/wizard1.png)
 ![Diarias Fract PvE](./src/assets/imgapp/frac1.png)
@@ -32,11 +32,9 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ![Raid](./src/assets/imgapp/raid.png)
 ![T6](./src/assets/imgapp/t6.png)
 
-## TODO
-
-Vista de cada heroe individual al pinchar en su nombre con información básica.
-
-Hacer un formulario para meter la api (¿y codificarla?) antes de todo.
+## Thanks to
+- Arenanet's [API](https://wiki.guildwars2.com/wiki/API:2)
+- [Invisi](https://github.com/Invisi) for his [instabilities fractal repo]([https://github.com/Invisi/gw2-fotm-instabilities])
 
 ## Further help
 

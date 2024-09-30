@@ -71,12 +71,20 @@ export class DailyComponent implements OnInit, AfterViewInit  {
     "Seitung (Filoetereo)",
     "Nueva Kaineng (Apagón)",
     "Echovald Selva (War)",
-    "Dragon's End (Soo-Won Mar de Jade)"
+    "Dragon's End (Soo-Won Mar de Jade)",
+    "Gyala Delve",
+    "Archipielago Vistacielo (Skywatch)",
+    "Amnytas",
+    "Inner Nayos (Ignaxious/Knaebelag)",
+    "Citadel of Zakiros Nayos (Charybda)",
+    "Janthir Syntri (Titans)"
   ]
+  dailyHeroChoiceConvergenceChesting = "Convergencia diaria"
   //Para completada:
   dailyIdsChecked: boolean[] = [];
   dailyIdsCraftChecked: boolean[] = [];
   dailyIdsHeroChoiceChestChecked: boolean[] = [];
+  dailyIdsHeroChoiceChestConvergenceChecked: boolean = false;
   indeterminate = false;
   labelPosition: 'before' | 'after' = 'after';
   //disabled = true;
@@ -377,50 +385,73 @@ export class DailyComponent implements OnInit, AfterViewInit  {
       //console.log(this.dailyHeroChoiceChest)
 
         //Inicializo a false el array
-        for(let i = 0; i < 12; i++){
+        for(let i = 0; i < this.dailyHeroChoiceChesting.length; i++){
           this.dailyIdsHeroChoiceChestChecked[i] = false;
         }
+        this.dailyIdsHeroChoiceChestConvergenceChecked = false;
 
-      if(this.dailyHeroChoiceChest.includes("verdant_brink_heros_choice_chest")){
-        this.dailyIdsHeroChoiceChestChecked[0] = true;
-      }
-      if (this.dailyHeroChoiceChest.includes("tangled_depths_heros_choice_chest")){
-        this.dailyIdsHeroChoiceChestChecked[1] = true;
-      }
-      if(this.dailyHeroChoiceChest.includes("auric_basin_heros_choice_chest")){
-        this.dailyIdsHeroChoiceChestChecked[2] = true;
-      }
-      if(this.dailyHeroChoiceChest.includes("dragons_stand_heros_choice_chest")){
-        this.dailyIdsHeroChoiceChestChecked[3] = true;
-      }
-      if(this.dailyHeroChoiceChest.includes("crystal_oasis_heros_choice_chest")){
-        this.dailyIdsHeroChoiceChestChecked[4] = true;
-      }
-      if(this.dailyHeroChoiceChest.includes("elon_riverlands_heros_choice_chest")){
-        this.dailyIdsHeroChoiceChestChecked[5] = true;
-      }
-      if(this.dailyHeroChoiceChest.includes("the_desolation_heros_choice_chest")){
-        this.dailyIdsHeroChoiceChestChecked[6] = true;
-      }
-      if(this.dailyHeroChoiceChest.includes("domain_of_vabbi_heros_choice_chest")){
-        this.dailyIdsHeroChoiceChestChecked[7] = true;
-      }
-      if(this.dailyHeroChoiceChest.includes("seitung_province_heros_choice_chest")){
-        this.dailyIdsHeroChoiceChestChecked[8] = true;
-      }
-      if(this.dailyHeroChoiceChest.includes("new_kaineng_city_heros_choice_chest")){
-        this.dailyIdsHeroChoiceChestChecked[9] = true;
-      }
-      if(this.dailyHeroChoiceChest.includes("echovald_wilds_heros_choice_chest")){
-        this.dailyIdsHeroChoiceChestChecked[10] = true;
-      }
-      if(this.dailyHeroChoiceChest.includes("dragons_end_heros_choice_chest")){
-        this.dailyIdsHeroChoiceChestChecked[11] = true;
-      }
-      // console.log(this.dailyHeroChoiceChest)
-      // for (let i = 0; i < this.dailyIdsHeroChoiceChestChecked.length; i++){
-      //   console.log(this.dailyIdsHeroChoiceChestChecked[i])
-      // }
+        // Compruebo si los cofres estan hechos
+        if(this.dailyHeroChoiceChest.includes("verdant_brink_heros_choice_chest")){
+          this.dailyIdsHeroChoiceChestChecked[0] = true;
+        }
+        if (this.dailyHeroChoiceChest.includes("tangled_depths_heros_choice_chest")){
+          this.dailyIdsHeroChoiceChestChecked[1] = true;
+        }
+        if(this.dailyHeroChoiceChest.includes("auric_basin_heros_choice_chest")){
+          this.dailyIdsHeroChoiceChestChecked[2] = true;
+        }
+        if(this.dailyHeroChoiceChest.includes("dragons_stand_heros_choice_chest")){
+          this.dailyIdsHeroChoiceChestChecked[3] = true;
+        }
+        if(this.dailyHeroChoiceChest.includes("crystal_oasis_heros_choice_chest")){
+          this.dailyIdsHeroChoiceChestChecked[4] = true;
+        }
+        if(this.dailyHeroChoiceChest.includes("elon_riverlands_heros_choice_chest")){
+          this.dailyIdsHeroChoiceChestChecked[5] = true;
+        }
+        if(this.dailyHeroChoiceChest.includes("the_desolation_heros_choice_chest")){
+          this.dailyIdsHeroChoiceChestChecked[6] = true;
+        }
+        if(this.dailyHeroChoiceChest.includes("domain_of_vabbi_heros_choice_chest")){
+          this.dailyIdsHeroChoiceChestChecked[7] = true;
+        }
+        if(this.dailyHeroChoiceChest.includes("seitung_province_heros_choice_chest")){
+          this.dailyIdsHeroChoiceChestChecked[8] = true;
+        }
+        if(this.dailyHeroChoiceChest.includes("new_kaineng_city_heros_choice_chest")){
+          this.dailyIdsHeroChoiceChestChecked[9] = true;
+        }
+        if(this.dailyHeroChoiceChest.includes("echovald_wilds_heros_choice_chest")){
+          this.dailyIdsHeroChoiceChestChecked[10] = true;
+        }
+        if(this.dailyHeroChoiceChest.includes("dragons_end_heros_choice_chest")){
+          this.dailyIdsHeroChoiceChestChecked[11] = true;
+        }
+        if(this.dailyHeroChoiceChest.includes("gyala_delve_heros_choice_chest")){
+          this.dailyIdsHeroChoiceChestChecked[12] = true;
+        }
+        if(this.dailyHeroChoiceChest.includes("skywatch_archipelago_heros_choice_chest")){
+          this.dailyIdsHeroChoiceChestChecked[13] = true;
+        }
+        if(this.dailyHeroChoiceChest.includes("amnytas_heros_choice_chest")){
+          this.dailyIdsHeroChoiceChestChecked[14] = true;
+        }
+        if(this.dailyHeroChoiceChest.includes("inner_nayos_heros_choice_chest")){
+          this.dailyIdsHeroChoiceChestChecked[15] = true;
+        }
+        if(this.dailyHeroChoiceChest.includes("citadel_of_zakiros_heros_choice_chest")){
+          this.dailyIdsHeroChoiceChestChecked[16] = true;
+        }
+        if(this.dailyHeroChoiceChest.includes("wild_island_heros_choice_chest")){
+          this.dailyIdsHeroChoiceChestChecked[17] = true;
+        }
+        if(this.dailyHeroChoiceChest.includes("convergence_heros_choice_chest")){
+          this.dailyIdsHeroChoiceChestConvergenceChecked = true;
+        }
+        // console.log(this.dailyHeroChoiceChest)
+        // for (let i = 0; i < this.dailyIdsHeroChoiceChestChecked.length; i++){
+        //   console.log(this.dailyIdsHeroChoiceChestChecked[i])
+        // }
     })
   }
 
