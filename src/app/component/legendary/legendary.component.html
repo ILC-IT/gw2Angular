@@ -321,7 +321,7 @@
         <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4" backgroundColor="accent" color="primary">
             <mat-tab label="1ª Gen">
                 <p>
-                    Don de exploración en el banco: {{ donExploracion[0].tengoEnBanco }}
+                    <img title="Gift of Exploration" src="{{donExploracion[0].icon}}"/> {{ donExploracion[0].tengoEnBanco }} in Bank &nbsp; &nbsp; &nbsp; &nbsp; <img title="Gift of Battle" src="{{donBatalla[0].icon}}"/> {{ donBatalla[0].tengoEnBanco }} in Bank
                 </p>
                 <table mat-table #sort1="matSort" [dataSource]="dataSourceArmasLegendarias1" matSort matSortActive="precioTpVentaS" matSortDirection="desc" class="mat-elevation-z8"> 
                     
@@ -381,6 +381,9 @@
             </mat-tab>
 
             <mat-tab label="2ª Gen">
+                <p>
+                    <img title="Gift of Battle" src="{{donBatalla[0].icon}}"/> {{ donBatalla[0].tengoEnBanco }} in Bank
+                </p>
                 <table mat-table #sort2="matSort" [dataSource]="dataSourceArmasLegendarias2" matSort matSortActive="nombre" matSortDirection="asc" class="mat-elevation-z8"> 
                     
                     <!-- icon Column -->
@@ -427,6 +430,9 @@
             </mat-tab>
 
             <mat-tab label="3ª Gen">
+                <p>
+                    <img title="Gift of Battle" src="{{donBatalla[0].icon}}"/> {{ donBatalla[0].tengoEnBanco }} in Bank
+                </p>
                 <table mat-table #sort3="matSort" [dataSource]="dataSourceArmasLegendarias3" matSort matSortActive="precioTpVentaS" matSortDirection="desc" class="mat-elevation-z8"> 
                     
                     <!-- icon Column -->

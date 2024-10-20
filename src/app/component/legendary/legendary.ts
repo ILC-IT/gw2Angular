@@ -762,6 +762,14 @@ export const donExploracion = [
     }
 ];
 
+export const donBatalla = [
+    {
+        id: 19678,
+        tengoEnBanco: 0,
+        icon: "https://wiki.guildwars2.com/images/2/25/Gift_of_Battle.png"
+    }
+];
+
 export const legendaryWeapons2 = [
     {
         nombre: "Astralaria",
@@ -1441,22 +1449,22 @@ export const legendaryWeapons3Variants = [
         nombre: "Mordisco de Aurene",
         tipo: "Mandoble",
         zhaitan: "Diseño de Mordisco de Zhaitan",
-        zhaitanSkinId: 10347,
+        zhaitanSkinId: 10739,
         zhaitanTengo: 0,
         mordremoth: "Diseño de Mordisco de Mordremoth",
-        mordremothSkinId: 10712,
+        mordremothSkinId: 10347,
         mordremothTengo: 0,
         kralkatorrik: "Diseño de Mordisco de Kralkatorrik",
-        kralkatorrikSkinId: 10345,
+        kralkatorrikSkinId: 10712,
         kralkatorrikTengo: 0,
         primordus: "Diseño de Mordisco de Primordus",
-        primordusSkinId: 10525,
+        primordusSkinId: 10345,
         primordusTengo: 0,
         jormag: "Diseño de Mordisco de Jormag",
-        jormagSkinId: 10309,
+        jormagSkinId: 10525,
         jormagTengo: 0,
         soowon: "Diseño de Mordisco de Soo-Won",
-        soowonSkinId: 10623,
+        soowonSkinId: 10309,
         soowonTengo: 0
     },
     {
