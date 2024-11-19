@@ -42,7 +42,7 @@ export class DailyService {
     "Cataratas: [&BEwCAAA=]"  //Timberline Falls
   ];
 
-  recordatorio = "Llave semanal \n Vetustas + Treboles \n Cofre Strikes";
+  recordatorio = "Llave semanal \n Vetustas \n Tréboles (raid + fract) \n Mon Mistica (EoD) \n Cofre Strikes";
 
   iron = [3, 4, 9, 10, 15, 16, 21, 22];
   ironInvierno = [2, 3, 8, 9, 14, 15, 20, 21];
