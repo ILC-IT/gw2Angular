@@ -18,6 +18,8 @@ export class RaidComponent implements OnInit {
   liUsada: number = 0;
   armaduraRaidCount = 0;
   anilloRaidCount = 0;
+  magnetitas: number = 0;
+  gaets: number = 0;
 
   raidWings: Raid[] = [
     {
@@ -90,6 +92,16 @@ export class RaidComponent implements OnInit {
       callOfTheMists: RaidsInfo[6]['callOfTheMists'],
       emboldened: RaidsInfo[6]['emboldened']
     },
+    {
+      name: RaidsInfo[7]['name'],
+      wing: RaidsInfo[7]['wing'],
+      boss: RaidsInfo[7]['boss'],
+      bossOk: RaidsInfo[7]['bossOk'],
+      bossCompletado: RaidsInfo[7]['bossCompletado'],
+      tokenCount: RaidsInfo[7]['tokenCount'],
+      callOfTheMists: RaidsInfo[7]['callOfTheMists'],
+      emboldened: RaidsInfo[7]['emboldened']
+    }
   ];
 
   constructor(private raidService: RaidService, private heroService: HeroService) { }
@@ -114,6 +126,7 @@ export class RaidComponent implements OnInit {
   getCallOfTheMists(){
     this.raidDoble = this.raidService.getCallOfTheMists();
     this.raidWings[this.raidDoble-1]['callOfTheMists'] = "dobleestasemana";
+    this.raidWings[7]['callOfTheMists'] = "dobleestasemana"; // La 8 nueva estará doble un tiempo aparte de la otra
   }
 
   getEmboldened(){
@@ -173,6 +186,9 @@ export class RaidComponent implements OnInit {
         this.raidWings[6].tokenCount[1] = this.sumCountById(token, TokenId[0].adina);
         this.raidWings[6].tokenCount[2] = this.sumCountById(token, TokenId[0].sabir);
         this.raidWings[6].tokenCount[3] = this.sumCountById(token, TokenId[0].qadim_the_peerless);
+        this.raidWings[7].tokenCount[1] = this.sumCountById(token, TokenId[0].decima);
+        this.raidWings[7].tokenCount[2] = this.sumCountById(token, TokenId[0].greer);
+        this.raidWings[7].tokenCount[3] = this.sumCountById(token, TokenId[0].ura);
       }
     })
   }
@@ -211,6 +227,8 @@ export class RaidComponent implements OnInit {
         this.liUsada += 150 * this.anilloRaidCount;
         // console.log('liUsada ', this.liUsada);
       })
+      this.magnetitas = wallet.find((o: { id: number; value: number}) => o.id === 28).value;
+      this.gaets = wallet.find((o: { id: number; value: number}) => o.id === 77).value;
     })
   }
 }

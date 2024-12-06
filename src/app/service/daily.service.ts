@@ -42,7 +42,7 @@ export class DailyService {
     "Cataratas: [&BEwCAAA=]"  //Timberline Falls
   ];
 
-  recordatorio = "Llave semanal \n Vetustas \n Tréboles (raid + fract) \n Mon Mistica (EoD) \n Cofre Strikes";
+  recordatorio = "Llave semanal \n Vetustas \n Tréboles (raid + fract) \n Moneda Mística (Soto) \n Cofre Strikes";
 
   iron = [3, 4, 9, 10, 15, 16, 21, 22];
   ironInvierno = [2, 3, 8, 9, 14, 15, 20, 21];
@@ -53,9 +53,12 @@ export class DailyService {
 
   strike: any;
 
-  convergenciaWp = ["Torre del brujo: [&BB8OAAA=]"];
-  convergencia = [0, 3, 6, 9, 12, 15, 18, 21, 24];
-  convergenciaInvierno = [2, 5, 8, 11, 14, 17, 20, 23];
+  convergenciaSotoWp = ["Torre del brujo: [&BB8OAAA=]"];
+  convergenciaSoto = [0, 3, 6, 9, 12, 15, 18, 21, 24];
+  convergenciaSotoInvierno = [2, 5, 8, 11, 14, 17, 20, 23];
+  convergenciaJwWp = ["Costas bajas: [&BK4OAAA=]"];
+  convergenciaJw = [2, 5, 8, 11, 14, 17, 20, 23];
+  convergenciaJwInvierno = [1, 4, 7, 10, 13, 16, 19, 22];
 
   constructor(private httpClient: HttpClient) { }
 
@@ -298,47 +301,88 @@ export class DailyService {
     return "0"; //para que no dé un warning
   }
 
-  getConvergencia(){
+  getConvergenciaSoto(){
     let d = new Date();
     let h = d.getHours(); //Get the hour (0-23)
     let m = d.getMinutes(); //Get the minute (0-59)
     //Compruebo el intervalo de horas y minutos y devuelvo la convergencia que va a pasar
     if (this.esHorarioInvierno()){
-      if (this.convergenciaInvierno.includes(h)){
+      if (this.convergenciaSotoInvierno.includes(h)){
         if (m <= 39){ //10 min para entrar
-          return `${h % 24}:30 ` + this.convergenciaWp[0];
+          return `${h % 24}:30 ` + this.convergenciaSotoWp[0];
         }else{
-          return `${(h + 3)% 24}:30 ` + this.convergenciaWp[0];
+          return `${(h + 3)% 24}:30 ` + this.convergenciaSotoWp[0];
         }
       }else{
-        let horaMasCercana = this.convergenciaInvierno.reduce(function(prev, curr) {
+        let horaMasCercana = this.convergenciaSotoInvierno.reduce(function(prev, curr) {
           return (Math.abs(curr - h) < Math.abs(prev - h) ? curr : prev);
         });
         if (horaMasCercana <= h){
-          return `${(horaMasCercana + 3) % 24}:30 ` + this.convergenciaWp[0];
+          return `${(horaMasCercana + 3) % 24}:30 ` + this.convergenciaSotoWp[0];
         }else{
-          return `${(horaMasCercana) % 24}:30 ` + this.convergenciaWp[0];
+          return `${(horaMasCercana) % 24}:30 ` + this.convergenciaSotoWp[0];
         }
       }
     }else{ 
-      if (this.convergencia.includes(h)){
+      if (this.convergenciaSoto.includes(h)){
         if (m <= 39){ //10 min para entrar
-          return `${h % 24}:30 ` + this.convergenciaWp[0];
+          return `${h % 24}:30 ` + this.convergenciaSotoWp[0];
         }else{
-          return `${(h + 3)% 24}:30 ` + this.convergenciaWp[0];
+          return `${(h + 3)% 24}:30 ` + this.convergenciaSotoWp[0];
         }
       }else{
-        let horaMasCercana = this.convergencia.reduce(function(prev, curr) {
+        let horaMasCercana = this.convergenciaSoto.reduce(function(prev, curr) {
           return (Math.abs(curr - h) < Math.abs(prev - h) ? curr : prev);
         });
         if (horaMasCercana <= h){
-          return `${(horaMasCercana + 3) % 24}:30 ` + this.convergenciaWp[0];
+          return `${(horaMasCercana + 3) % 24}:30 ` + this.convergenciaSotoWp[0];
         }else{
-          return `${(horaMasCercana) % 24}:30 ` + this.convergenciaWp[0];
+          return `${(horaMasCercana) % 24}:30 ` + this.convergenciaSotoWp[0];
         }
       }
     }
-    return "0"; //para que no dé un warning
+  }
+
+  getConvergenciaJw(){
+    let d = new Date();
+    let h = d.getHours(); //Get the hour (0-23)
+    let m = d.getMinutes(); //Get the minute (0-59)
+    //Compruebo el intervalo de horas y minutos y devuelvo la convergencia que va a pasar
+    if (this.esHorarioInvierno()){
+      if (this.convergenciaJwInvierno.includes(h)){
+        if (m <= 9){ //10 min para entrar
+          return `${h % 24}:00 ` + this.convergenciaJwWp[0];
+        }else{
+          return `${(h + 3)% 24}:00 ` + this.convergenciaJwWp[0];
+        }
+      }else{
+        let horaMasCercana = this.convergenciaJwInvierno.reduce(function(prev, curr) {
+          return (Math.abs(curr - h) < Math.abs(prev - h) ? curr : prev);
+        });
+        if (horaMasCercana <= h){
+          return `${(horaMasCercana + 3) % 24}:00 ` + this.convergenciaJwWp[0];
+        }else{
+          return `${(horaMasCercana) % 24}:00 ` + this.convergenciaJwWp[0];
+        }
+      }
+    }else{ 
+      if (this.convergenciaJw.includes(h)){
+        if (m <= 9){ //10 min para entrar
+          return `${h % 24}:00 ` + this.convergenciaJwWp[0];
+        }else{
+          return `${(h + 3)% 24}:00 ` + this.convergenciaJwWp[0];
+        }
+      }else{
+        let horaMasCercana = this.convergenciaJw.reduce(function(prev, curr) {
+          return (Math.abs(curr - h) < Math.abs(prev - h) ? curr : prev);
+        });
+        if (horaMasCercana <= h){
+          return `${(horaMasCercana + 3) % 24}:00 ` + this.convergenciaJwWp[0];
+        }else{
+          return `${(horaMasCercana) % 24}:00 ` + this.convergenciaJwWp[0];
+        }
+      }
+    }
   }
 
   esHorarioInvierno(){
@@ -374,15 +418,22 @@ export class DailyService {
     return this.httpClient.get(url);
   }
 
-  getConvergencia100(){
+  getConvergenciaSoto100(){
     // devuelve logro de hacer 100 convergencias
     const url = `${this.apiUrl}account/achievements?ids=7668&access_token=${this.apiKey}`;
     return this.httpClient.get(url);
   }
 
-  getConvergencia150(){
+  getConvergenciaSoto150(){
     // devuelve logro de hacer 150 convergencias repetible
     const url = `${this.apiUrl}account/achievements?ids=7720&access_token=${this.apiKey}`;
     return this.httpClient.get(url);
   }
+
+  getConvergenciaJw50(){
+    // devuelve logro de hacer 50 convergencias
+    const url = `${this.apiUrl}account/achievements?ids=8456&access_token=${this.apiKey}`;
+    return this.httpClient.get(url);
+  }
+
 }

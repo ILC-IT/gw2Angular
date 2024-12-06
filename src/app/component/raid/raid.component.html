@@ -1,5 +1,5 @@
 <h2>
-    {{raid.length}} / 26
+    {{raid.length}} / 29
 </h2>
 
 <mat-grid-list cols="4" rowHeight="5:1">
@@ -43,13 +43,33 @@
             </div>
             <mat-list-item>
                 <mat-icon mat-list-icon>
-                    <img class="icon" src="../../../assets/img/Legendary_Insight.png"/>
+                    <img class="icon" title="Legendary Insight" src="../../../assets/img/Legendary_Insight.png"/>
                 </mat-icon>
             </mat-list-item>
             <mat-list-item>
                 <div mat-line>Sin usar: {{liTengo}}</div>
                 <div mat-line>· </div>
                 <div mat-line>Usadas: {{liUsada}}</div>
+            </mat-list-item>
+        </mat-list>
+        <mat-list>
+            <div mat-subheader>
+                {{magnetitas}}
+            </div>
+            <mat-list-item>
+                <mat-icon mat-list-icon>
+                    <img class="icon" title="Esquirla de magnetita" src="https://render.guildwars2.com/file/95F8F70D97186780CE45B54600B90BE356D8EA7C/1302741.png"/>
+                </mat-icon>
+            </mat-list-item>
+        </mat-list>
+        <mat-list>
+            <div mat-subheader>
+                {{gaets}}
+            </div>
+            <mat-list-item>
+                <mat-icon mat-list-icon>
+                    <img class="icon" title="Cristal de Gaets" src="https://render.guildwars2.com/file/0C05B2E6F012B209C3095CDD6AF5F84B0BA9CC3A/3442797.png"/>
+                </mat-icon>
             </mat-list-item>
         </mat-list>
     </mat-grid-tile>

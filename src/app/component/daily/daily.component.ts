@@ -39,11 +39,15 @@ export class DailyComponent implements OnInit, AfterViewInit  {
   mapBonusRewardweekNumber = 1;
   tokenSupply: string[][] = [];
   anomalia: string = '';
-  convergencia: string = '';
-  convergencia100: any = [];
-  loadingConvergencia100: boolean = true;
-  convergencia150: any = [];
-  loadingConvergencia150: boolean = true;
+  convergenciaSoto: string = '';
+  convergenciaJw: string = '';
+  convergenciaCopy: string = '';
+  convergenciaSoto100: any = [];
+  convergenciaJw50: any = [];
+  loadingConvergenciaSoto100: boolean = true;
+  loadingConvergenciaJw50: boolean = true;
+  convergenciaSoto150: any = [];
+  loadingConvergenciaSoto150: boolean = true;
   dailyActivity: string = "";
   recordatorio = {
     ok: false,
@@ -192,13 +196,19 @@ export class DailyComponent implements OnInit, AfterViewInit  {
       setInterval(() => {
         this.anomalia = this.getAnomaly();
       }, 1 * 60 * 1000)
-    this.convergencia = this.getConvergencia();
-    this.convergencia100 = await this.getConvergencia100();
-    this.loadingConvergencia100 = false;
-    this.convergencia150 = await this.getConvergencia150();
-    this.loadingConvergencia150 = false;
+    this.convergenciaSoto = this.getConvergenciaSoto();
+    this.convergenciaJw = this.getConvergenciaJw();
+    this.convergenciaCopy = this.convergenciaSoto + "\n" + this.convergenciaJw;
+    this.convergenciaSoto100 = await this.getConvergenciaSoto100();
+    this.loadingConvergenciaSoto100 = false;
+    this.convergenciaSoto150 = await this.getConvergenciaSoto150();
+    this.loadingConvergenciaSoto150 = false;
+    this.convergenciaJw50 = await this.getConvergenciaJw50();
+    this.loadingConvergenciaJw50 = false;
       setInterval(() => {
-        this.convergencia = this.getConvergencia();
+        this.convergenciaSoto = this.getConvergenciaSoto();
+        this.convergenciaJw = this.getConvergenciaJw();
+        this.convergenciaCopy = this.convergenciaSoto + "\n" + this.convergenciaJw;
       }, 2 * 60 * 1000)
     this.dailyStrike = await this.getDailyStrikeId();
     this.getDailyStrike();
@@ -475,18 +485,27 @@ export class DailyComponent implements OnInit, AfterViewInit  {
   }
 
 
-  async getConvergencia100(){
+  async getConvergenciaSoto100(){
     let response: any;
-    return response = await this.dailyService.getConvergencia100().toPromise();
+    return response = await this.dailyService.getConvergenciaSoto100().toPromise();
   }
 
-  async getConvergencia150(){
+  async getConvergenciaJw50(){
     let response: any;
-    return response = await this.dailyService.getConvergencia150().toPromise();
+    return response = await this.dailyService.getConvergenciaJw50().toPromise();
   }
 
-  getConvergencia(){
-    return this.dailyService.getConvergencia();
+  async getConvergenciaSoto150(){
+    let response: any;
+    return response = await this.dailyService.getConvergenciaSoto150().toPromise();
+  }
+
+  getConvergenciaSoto(){
+    return this.dailyService.getConvergenciaSoto();
+  }
+
+  getConvergenciaJw(){
+    return this.dailyService.getConvergenciaJw();
   }
 
   getDailyActivity(){

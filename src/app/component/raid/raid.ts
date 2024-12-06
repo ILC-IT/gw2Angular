@@ -42,7 +42,10 @@ export const TokenId = [
         qadim: 88645,
         adina: 91246,
         sabir: 91270,
-        qadim_the_peerless: 91175
+        qadim_the_peerless: 91175,
+        decima: 103754,
+        greer: 104047,
+        ura: 103996
     }
 ]
 
@@ -121,6 +124,18 @@ export const RaidsInfo = [
         wing: 'W7',
         boss: ['gate', 'adina', 'sabir', 'qadim_the_peerless'],
         bossOk: ['Gate', 'Adina', 'Sabir', 'Q2 Qadim The Peerless'],
+        bossCompletado: [false, false, false, false],
+        tokenCount: [0, 0, 0, 0],
+        callOfTheMists: "",
+        emboldened: ""
+    },
+
+    // https://api.guildwars2.com/v2/raids/mount_balrior
+    {
+        name: 'Mount Balrior', //mount_balrior
+        wing: 'W8',
+        boss: ['camp', 'decima', 'greer', 'ura'],
+        bossOk: ['Camp', 'Decima', 'Greer', 'Ura'],
         bossCompletado: [false, false, false, false],
         tokenCount: [0, 0, 0, 0],
         callOfTheMists: "",
