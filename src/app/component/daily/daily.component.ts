@@ -595,10 +595,10 @@ export class DailyComponent implements OnInit, AfterViewInit  {
     // busco las inestabilidades diarias de los cms
     this.dailyService.getInestabilidadCm().subscribe((inestabilidadCm: any) => {
       let hoy = new Date();
-      let diaNum = this.diaNumeroAño(hoy);
-      if (this.leapYear(hoy.getFullYear())){
-        diaNum--; //esto es porque inestabilidadCm ya incluye el dia extra si es bisiesto
-      }
+      let diaNum = this.diaNumeroAño(hoy) - 1;
+      // if (this.leapYear(hoy.getFullYear())){
+      //   diaNum--; //esto es porque inestabilidadCm ya incluye el dia extra si es bisiesto
+      // }
       // cojo info de 96 97 98 99 100
       let pesadilla = inestabilidadCm["instabilities"]["96"][diaNum];
       let observatorio = inestabilidadCm["instabilities"]["97"][diaNum];

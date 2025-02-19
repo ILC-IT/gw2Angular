@@ -111,7 +111,10 @@ export const armaduraLigera = [
 
 export const armaduraLigeraPve = [
     {
-        id: []
+        id: [101516, 101462, 101499, 101536, 101501, 101535],
+        idSkin: [12063, 12022, 12031, 12056, 12067, 12098],
+        idSuffused: [12171, 12136, 12143, 12145, 12162, 12201],
+        idSuffusedSkin: [101887, 101929, 101745, 101733, 101747, 101892]
     }
 ];
 
@@ -123,7 +126,10 @@ export const armaduraMedia = [
 
 export const armaduraMediaPve = [
     {
-        id: []
+        id: [101614, 101645, 101556, 101570, 101579, 101602],
+        idSkin: [12068, 12082, 12086, 12093, 12078, 12071],
+        idSuffused: [12167, 12202, 12168, 12154, 12196, 12186],
+        idSuffusedSkin: [101879, 101744, 101899, 101783, 101918, 101815]
     }
 ];
 
@@ -135,7 +141,10 @@ export const armaduraPesada = [
 
 export const armaduraPesadaPve = [
     {
-        id: []
+        id: [101544, 101551, 101521, 101609, 101568, 101460],
+        idSkin: [12030, 12064, 12060, 12090, 12049, 12048],
+        idSuffused: [12200, 12155, 12182, 12214, 12212, 12190],
+        idSuffusedSkin: [101716, 101884, 101809, 101763, 101825, 101831]
     }
 ];
 
@@ -153,13 +162,54 @@ export const sello = [
 
 export const anilloMundo = [
     {
-        id: 93105
+        id: 93105,
+        nombre: "Confluencia",
+        tengo: 0
     }
 ];
 
 export const anilloRaid = [
     {
-        id: 91234
+        id: 91234,
+        nombre: "Coalescencia",
+        tengo: 0
+    }
+];
+
+export const amuletoPvP = [
+    {
+        id: 92991,
+        nombre: "Transcendencia",
+        tengo: 0
+    }
+];
+
+export const legendaryAccessory = [
+    {
+        id: 81908,
+        nombre: "Aurora",
+        tengo: 0
+    },
+    {
+        id: 91048,
+        nombre: "Vision",
+        tengo: 0
+    }
+];
+
+export const amuletoPvE = [
+    {
+        id: 95380,
+        nombre: "Prismatic Champion's Regalia",
+        tengo: 0
+    }
+];
+
+export const legendaryRelic = [
+    {
+        id: 101582,
+        nombre: "Legendary Relic",
+        tengo: 0
     }
 ];
 
@@ -202,7 +252,7 @@ export const lingoteAurico = [
         cantidad: 5,
         icon: "https://render.guildwars2.com/file/19D0522B1EEF07A6FD94285167F14CD1AC6FCE6B/1202988.png"
     }
-]
+];
 
 export const placaReclamada = [
     {
@@ -210,7 +260,7 @@ export const placaReclamada = [
         cantidad: 5,
         icon: "https://render.guildwars2.com/file/AC2729C25DE5C2A3E925083570C2161F52280163/1203052.png"
     }
-]
+];
 
 export const huevoChak = [
     {
@@ -218,7 +268,7 @@ export const huevoChak = [
         cantidad: 5,
         icon: "https://render.guildwars2.com/file/4A58480BE6669B605E909F44EAE64896DB030CDD/62389.png"
     }
-]
+];
 
 export const montonCristalLuminoso = [
     {
@@ -227,7 +277,7 @@ export const montonCristalLuminoso = [
         cantidadSello: 750,
         icon: "https://render.guildwars2.com/file/607AA1A4574FA66006FFB57C0B2DDBAAFDE50CD6/2063471.png"
     }
-]
+];
 
 export const talismanBrillantez = [
     {
@@ -235,7 +285,7 @@ export const talismanBrillantez = [
         cantidad: 50,
         icon: "https://render.guildwars2.com/file/E4B016CDF70960156803FD04C425BF9A4C382D95/2063466.png"
     }
-]
+];
 
 export const talismanPotencia = [
     {
@@ -243,7 +293,7 @@ export const talismanPotencia = [
         cantidad: 50,
         icon: "https://render.guildwars2.com/file/2949679FC79B6808EB437A0434B59D5642D86BCC/2063465.png"
     }
-]
+];
 
 export const talismanHabilidad = [
     {
@@ -251,7 +301,7 @@ export const talismanHabilidad = [
         cantidad: 50,
         icon: "https://render.guildwars2.com/file/F99BAAD3C841D8AC4E5C621972454E400E3CD85D/2063467.png"
     }
-]
+];
 
 export const simboloControl = [
     {
@@ -259,7 +309,7 @@ export const simboloControl = [
         cantidad: 75,
         icon: "https://render.guildwars2.com/file/BF26E2BE4C6F3F0F24194A0B0209800DB9E8D118/2063469.png"
     }
-]
+];
 
 export const simboloMejora = [
     {
@@ -267,7 +317,7 @@ export const simboloMejora = [
         cantidad: 75,
         icon: "https://render.guildwars2.com/file/2B7554FA80CC0279F807BB66DD15F1D66FDDB6D5/2063468.png"
     }
-]
+];
 
 export const simboloDolor = [
     {
@@ -275,14 +325,14 @@ export const simboloDolor = [
         cantidad: 75,
         icon: "https://render.guildwars2.com/file/ED0DC52CEEB4A22263EB25EAFDCF570E177F161C/2063464.png"
     }
-]
+];
 
 export const monedaMistica = [
     {
         id: 19976,
         icon: "https://render.guildwars2.com/file/AB0317DF5B0E1BA47436A5420248660765154C08/62864.png"
     }
-]
+];
 
 export const aspectoMistico = [
     {
@@ -290,7 +340,7 @@ export const aspectoMistico = [
         cantidad: 50,
         icon: "https://render.guildwars2.com/file/24FD0F0BF29208A1404702FF0D09BE9B0E762578/2063473.png"
     }
-]
+];
 
 export const motaMistica = [
     {
@@ -298,7 +348,7 @@ export const motaMistica = [
         cantidad: 75,
         icon: "https://render.guildwars2.com/file/069CC52BA2E635EEF6D115C90F19660B34324B1F/2063472.png"
     }
-]
+];
 
 export const piezaAeronave = [
     {
@@ -307,7 +357,7 @@ export const piezaAeronave = [
         cantidad: 250,
         icon: "https://render.guildwars2.com/file/524C1CF964A3349003095F17DF4B3A476F073755/1029832.png"
     }
-]
+];
 
 export const trozoAurilio = [
     {
@@ -316,7 +366,7 @@ export const trozoAurilio = [
         cantidad: 250,
         icon: "https://render.guildwars2.com/file/5D74D6D3D8179FC49D572975CC5E0CC701025508/1206836.png"
     }
-]
+];
 
 export const cristalLineaLey = [
     {
@@ -389,10 +439,10 @@ export const armaduraOneiros = [
     }
 ];
 
-export const notasInvestigacionArmaduraPve = [
+export const notasInvestigacion = [
     {
         idWallet: 61,
-        cantidad: 2500 //por pieza de armadura pve
+        cantidadArmaduraPve: 2500 //por pieza de armadura pve
     }
 ];
 
@@ -1577,4 +1627,65 @@ export const legendaryWeapons3Variants = [
         soowonSkinId: 10521,
         soowonTengo: 0
     }
-]
+];
+
+export const legendaryWeaponsOther = [
+    {
+        nombre: "Klobjarne_Geirr",
+        id: 103815,
+        idWardrobe: 12703,
+        tipo: "Lanza",
+        tengo: 0,
+        pre: "Nyr_Hrammr",
+        preId: 103973,
+        icon: "https://wiki.guildwars2.com/images/1/13/Klobjarne_Geirr.png",
+        wiki: "https://wiki.guildwars2.com/wiki/Klobjarne_Geirr",
+        wikiPre: "https://wiki.guildwars2.com/wiki/Nyr_Hrammr",
+        precioTpVenta: 0,
+        precioTpVentaS: "",
+        precioTpVentaPre: 0,
+        precioTpVentaSPre: ""
+    }
+];
+
+export const legendaryBack = [
+    {
+        nombre: "Warbringer",
+        id: 81462,
+        idWardrobe: 7272,
+        tipo: "Mochila",
+        tengo: 0,
+        pre: "Warcry",
+        preId: 81467,
+        icon: "https://wiki.guildwars2.com/images/2/20/Warbringer.png",
+        wiki: "https://wiki.guildwars2.com/wiki/Warbringer",
+        wikiPre: "https://wiki.guildwars2.com/wiki/Warcry",
+        modo: "WvW"
+    },
+    {
+        nombre: "Ad Infinitum",
+        id: 74155,
+        idWardrobe: 6344,
+        tipo: "Mochila",
+        tengo: 0,
+        pre: "Unbound",
+        preId: 72309,
+        icon: "https://wiki.guildwars2.com/images/4/4a/Ad_Infinitum.png",
+        wiki: "https://wiki.guildwars2.com/wiki/Ad_Infinitum",
+        wikiPre: "https://wiki.guildwars2.com/wiki/Unbound",
+        modo: "Fractal"
+    },
+    {
+        nombre: "The Ascension",
+        id: 77474,
+        idWardrobe: 6561,
+        tipo: "Mochila",
+        tengo: 0,
+        pre: "Wings of Ascension",
+        preId: 77536,
+        icon: "https://wiki.guildwars2.com/images/d/d7/The_Ascension.png",
+        wiki: "https://wiki.guildwars2.com/wiki/The_Ascension",
+        wikiPre: "https://wiki.guildwars2.com/wiki/Wings_of_Ascension",
+        modo: "PvP"
+    }
+];

@@ -84,7 +84,7 @@ const FractalesInfo = [
         nameEs: "Instalación Subterránea",
         idDaily: [2929, 2889, 2950, 2947],
         idRec0: 2422,
-        idRec2: 3277 //no existe?
+        idRec2: 3237
     },
     {
         level: "9, 17, 39, 58, 83",
@@ -215,8 +215,8 @@ const FractalesInfo = [
         ar: "17, 61, 105, 150",
         name: "Lonely Tower",
         nameEs: "Torre Solitaria",
-        idDaily: [8055, 7992, 8000, 7950], //no existe?
-        idRec0: 2473,
+        idDaily: [8055, 7992, 8000, 7950],
+        idRec1: 8037,
         idRec2: 3238
     }
 ]
@@ -1125,7 +1125,7 @@ export const Fractales = [
         name: "Lonely Tower",
         nameEs: "Torre Solitaria",
         idDaily: 7992,
-        idRec: 0,
+        idRec: 8037,
         tier: "T2"
     },
     {

@@ -394,7 +394,7 @@
   <mat-tab label="Más diarias">
     <div class="daily-menu">
       <a>
-        <h3>Pact Supply</h3>
+        <h2>Pact Supply</h2>
         <!-- <mat-label for="clipboard-example-textarea">Pact Supply</mat-label> -->
         <!-- <textarea id="clipboard-example-textarea" cols="45" rows="2" [(ngModel)]="pactSupply[0]"></textarea> -->
         <textarea id="clipboard-example-textarea" 
@@ -417,7 +417,7 @@
         </div>
       </a>
       <a>
-        <h3>Token Supply</h3>
+        <h2>Token Supply</h2>
         <div class="waypoint">
           <!-- <div class="wp-icon" style="background-image: url(../../../assets/img/wp-icon.png)">
           </div> -->
@@ -426,7 +426,7 @@
         </div>
       </a>
       <a>
-        <h3>Crafting</h3>
+        <h2>Crafting</h2>
         <p></p>
         <mat-card class="result" *ngFor="let dailyCrafts of dailyCrafting; let i = index">
           <mat-card-content>
@@ -445,43 +445,12 @@
         </mat-card>
       </a>
       <a>
-        <h3>Cofres META</h3>
-        <p></p>
-        <mat-card class="result" *ngFor="let dailyChest of dailyHeroChoiceChesting; let i = index">
-          <mat-card-content>
-            <section class="example-section">
-              <mat-checkbox
-                  class="example-margin"
-                  [(ngModel)]="dailyIdsHeroChoiceChestChecked[i]"
-                  [(indeterminate)]="indeterminate"
-                  [labelPosition]="labelPosition"
-                  [class.mat-checkbox-disabled]="false"
-                  disabled>
-                  {{dailyChest}}
-              </mat-checkbox>
-            </section>
-          </mat-card-content>
-        </mat-card>
-      </a>
-      <a *ngIf="!loading2">
-        <h3>Misión de ataque</h3>
-        <!-- <img mat-card-image src={{dailyInfoF.strike[0].icon}}> -->
-        <img mat-card-image src={{dailyStrikeIcon}}>
-        <p *ngFor="let strike of dailyInfoF.strike; let i = index">
-          id = {{strike.id}}
-          <br>
-          {{strike.name}}
-          <!-- <br>
-          {{strike.requirement}} -->
-        </p>
-      </a>
-      <a>
-        <h3>Anomalía de Ley</h3>
+        <h2>Anomalía de Ley</h2>
         <p> {{anomalia}} </p>
         <button mat-raised-button color="accent" [cdkCopyToClipboard]="anomalia">Copiar</button>
       </a>
       <a>
-        <h3>Convergencia Pública</h3>
+        <h2>Convergencia Pública</h2>
         <mat-card class="result">
           <mat-card-content>
             <section class="example-section">
@@ -504,12 +473,43 @@
         <button mat-raised-button color="accent" [cdkCopyToClipboard]="convergenciaCopy">Copiar</button>
       </a>
       <a>
-        <h3>Actividad diaria</h3>
+        <h2>Cofres META</h2>
+        <p></p>
+        <mat-card class="result" *ngFor="let dailyChest of dailyHeroChoiceChesting; let i = index">
+          <mat-card-content>
+            <section class="example-section">
+              <mat-checkbox
+                  class="example-margin"
+                  [(ngModel)]="dailyIdsHeroChoiceChestChecked[i]"
+                  [(indeterminate)]="indeterminate"
+                  [labelPosition]="labelPosition"
+                  [class.mat-checkbox-disabled]="false"
+                  disabled>
+                  {{dailyChest}}
+              </mat-checkbox>
+            </section>
+          </mat-card-content>
+        </mat-card>
+      </a>
+      <a *ngIf="!loading2">
+        <h2>Misión de ataque</h2>
+        <p *ngFor="let strike of dailyInfoF.strike; let i = index">
+          id = {{strike.id}}
+          <br>
+          {{strike.name}}
+          <!-- <br>
+          {{strike.requirement}} -->
+        </p>
+        <!-- <img mat-card-image src={{dailyInfoF.strike[0].icon}}> -->
+        <img mat-card-image src={{dailyStrikeIcon}}>
+      </a>
+      <a>
+        <h2>Actividad diaria</h2>
         <p> {{dailyActivity}} </p>
         <button mat-raised-button color="accent" [cdkCopyToClipboard]="dailyActivity">Copiar</button>
       </a>
       <a *ngIf="recordatorio.ok">
-        <h3>RECORDATORIO</h3>
+        <h2>RECORDATORIO</h2>
         <!-- <p> {{recordatorio.message}} </p> -->
         <div [innerText]='recordatorio.message'></div>
       </a>
