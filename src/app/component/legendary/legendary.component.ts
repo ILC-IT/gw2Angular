@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { HeroService } from 'src/app/service/hero.service';
 import { LegendaryService } from 'src/app/service/legendary.service';
-import { legendarios, armaduraLigera, armaduraMedia, armaduraPesada, runa, sello, anilloRaid, t6, idsT6, vales, cantidadArmadura, cantidadRunas, cantidadSellos, valeId, trebolId, liId, ectoplasmaId, liArmadura, trebolArmadura, trebolRuna, trebolSello, trebolAnilloRaid, t6ArmaduraSelloRuna, ectoplasmaRuna, ectoplasmaSello, liAnilloRaid, t6AnilloRaid, obsidianaArmadura, obsidianaRuna, obsidianaSello, obsidianaId, otrosComponentes, lingoteAurico, placaReclamada, huevoChak, piezaAeronave, trozoAurilio, cristalLineaLey, montonCristalLuminoso, aspectoMistico, talismanBrillantez, talismanPotencia, talismanHabilidad, motaMistica, simboloControl, simboloMejora, simboloDolor, monedaMistica, preciosVarios, idsPreciosVarios, legendaryWeapons1, legendaryWeapons2, legendaryWeapons3, legendaryWeapons3Variants, donExploracion, donBatalla} from './legendary';
+import { legendarios, armaduraLigera, armaduraMedia, armaduraPesada, runa, sello, anilloRaid, t6, idsT6, vales, cantidadArmadura, cantidadRunas, cantidadSellos, valeId, trebolId, liId, ectoplasmaId, liArmadura, trebolArmadura, trebolRuna, trebolSello, trebolAnilloRaid, t6ArmaduraSelloRuna, ectoplasmaRuna, ectoplasmaSello, liAnilloRaid, t6AnilloRaid, obsidianaArmadura, obsidianaRuna, obsidianaSello, obsidianaId, otrosComponentes, lingoteAurico, placaReclamada, huevoChak, piezaAeronave, trozoAurilio, cristalLineaLey, montonCristalLuminoso, aspectoMistico, talismanBrillantez, talismanPotencia, talismanHabilidad, motaMistica, simboloControl, simboloMejora, simboloDolor, monedaMistica, preciosVarios, idsPreciosVarios, legendaryWeapons1, legendaryWeapons2, legendaryWeapons3, legendaryWeapons3Variants, donExploracion, donBatalla, notasInvestigacion, otrosLegendarios, anilloMundo, legendaryAccessory, amuletoPvE, amuletoPvP, legendaryRelic, legendaryWeaponsOther, legendaryBack, armaduraLigeraPve, armaduraMediaPve, armaduraPesadaPve} from './legendary';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -511,6 +511,153 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
   displayedColumnsOtros: string[] = ['nombre', 'id', 'icon', 'cantidad', 'tengo', 'gaste', 'necesito'];
   dataSourceOtros = this.otros;
 
+  ///////////////////// Otros Legendarios ////////////////////
+  anilloPvE: otrosLegendarios = {
+    id: anilloRaid[0].id,
+    nombre: anilloRaid[0].nombre,
+    tengo: anilloRaid[0].tengo,
+    tipo: anilloRaid[0].tipo,
+    modo: anilloRaid[0].modo,
+    icon: anilloRaid[0].icon,
+    wiki: anilloRaid[0].wiki
+  }
+  anilloWvW: otrosLegendarios = {
+    id: anilloMundo[0].id,
+    nombre: anilloMundo[0].nombre,
+    tengo: anilloMundo[0].tengo,
+    tipo: anilloMundo[0].tipo,
+    modo: anilloMundo[0].modo,
+    icon: anilloMundo[0].icon,
+    wiki: anilloMundo[0].wiki
+  }
+  accesorioPvE0: otrosLegendarios = {
+    id: legendaryAccessory[0].id,
+    nombre: legendaryAccessory[0].nombre,
+    tengo: legendaryAccessory[0].tengo,
+    tipo: legendaryAccessory[0].tipo,
+    modo: legendaryAccessory[0].modo,
+    icon: legendaryAccessory[0].icon,
+    wiki: legendaryAccessory[0].wiki
+  }
+  accesorioPvE1: otrosLegendarios = {
+    id: legendaryAccessory[1].id,
+    nombre: legendaryAccessory[1].nombre,
+    tengo: legendaryAccessory[1].tengo,
+    tipo: legendaryAccessory[1].tipo,
+    modo: legendaryAccessory[1].modo,
+    icon: legendaryAccessory[1].icon,
+    wiki: legendaryAccessory[1].wiki
+  }
+  amuletoPvE: otrosLegendarios = {
+    id: amuletoPvE[0].id,
+    nombre: amuletoPvE[0].nombre,
+    tengo: amuletoPvE[0].tengo,
+    tipo: amuletoPvE[0].tipo,
+    modo: amuletoPvE[0].modo,
+    icon: amuletoPvE[0].icon,
+    wiki: amuletoPvE[0].wiki
+  }
+  amuletoPvP: otrosLegendarios = {
+    id: amuletoPvP[0].id,
+    nombre: amuletoPvP[0].nombre,
+    tengo: amuletoPvP[0].tengo,
+    tipo: amuletoPvP[0].tipo,
+    modo: amuletoPvP[0].modo,
+    icon: amuletoPvP[0].icon,
+    wiki: amuletoPvP[0].wiki
+  }
+  reliquiaLegendaria: otrosLegendarios = {
+    id: legendaryRelic[0].id,
+    nombre: legendaryRelic[0].nombre,
+    tengo: legendaryRelic[0].tengo,
+    tipo: legendaryRelic[0].tipo,
+    modo: legendaryRelic[0].modo,
+    icon: legendaryRelic[0].icon,
+    wiki: legendaryRelic[0].wiki
+  }
+  lanzaJanthirLegendaria: otrosLegendarios = {
+    id: legendaryWeaponsOther[0].id,
+    nombre: legendaryWeaponsOther[0].nombre,
+    tengo: legendaryWeaponsOther[0].tengo,
+    tipo: legendaryWeaponsOther[0].tipo,
+    modo: legendaryWeaponsOther[0].modo,
+    icon: legendaryWeaponsOther[0].icon,
+    wiki: legendaryWeaponsOther[0].wiki
+  }
+  mochilaWvW: otrosLegendarios = {
+    id: legendaryBack[0].id,
+    nombre: legendaryBack[0].nombre,
+    tengo: legendaryBack[0].tengo,
+    tipo: legendaryBack[0].tipo,
+    modo: legendaryBack[0].modo,
+    icon: legendaryBack[0].icon,
+    wiki: legendaryBack[0].wiki
+  }
+  mochilaPvE: otrosLegendarios = {
+    id: legendaryBack[1].id,
+    nombre: legendaryBack[1].nombre,
+    tengo: legendaryBack[1].tengo,
+    tipo: legendaryBack[1].tipo,
+    modo: legendaryBack[1].modo,
+    icon: legendaryBack[1].icon,
+    wiki: legendaryBack[1].wiki
+  }
+  mochilaPvP: otrosLegendarios = {
+    id: legendaryBack[2].id,
+    nombre: legendaryBack[2].nombre,
+    tengo: legendaryBack[2].tengo,
+    tipo: legendaryBack[2].tipo,
+    modo: legendaryBack[2].modo,
+    icon: legendaryBack[2].icon,
+    wiki: legendaryBack[2].wiki
+  }
+  obsidianaLigera: otrosLegendarios = {
+    id: armaduraLigeraPve[0].id,
+    nombre: armaduraLigeraPve[0].nombre,
+    tengo: armaduraLigeraPve[0].tengo,
+    tipo: armaduraLigeraPve[0].tipo,
+    modo: armaduraLigeraPve[0].modo,
+    icon: armaduraLigeraPve[0].icon,
+    wiki: armaduraLigeraPve[0].wiki
+  }
+  obsidianaMedia: otrosLegendarios = {
+    id: armaduraMediaPve[0].id,
+    nombre: armaduraMediaPve[0].nombre,
+    tengo: armaduraMediaPve[0].tengo,
+    tipo: armaduraMediaPve[0].tipo,
+    modo: armaduraMediaPve[0].modo,
+    icon: armaduraMediaPve[0].icon,
+    wiki: armaduraMediaPve[0].wiki
+  }
+  obsidianaPesada: otrosLegendarios = {
+    id: armaduraPesadaPve[0].id,
+    nombre: armaduraPesadaPve[0].nombre,
+    tengo: armaduraPesadaPve[0].tengo,
+    tipo: armaduraPesadaPve[0].tipo,
+    modo: armaduraPesadaPve[0].modo,
+    icon: armaduraPesadaPve[0].icon,
+    wiki: armaduraPesadaPve[0].wiki
+  }
+  otrosLegendarios: otrosLegendarios[] = [
+    this.anilloPvE,
+    this.anilloWvW,
+    this.accesorioPvE0,
+    this.accesorioPvE1,
+    this.amuletoPvE,
+    this.amuletoPvP,
+    this.reliquiaLegendaria,
+    this.mochilaPvE,
+    this.mochilaPvP,
+    this.mochilaWvW,
+    this.lanzaJanthirLegendaria,
+    this.obsidianaLigera,
+    this.obsidianaMedia,
+    this.obsidianaPesada
+  ]
+  // tabla otros legendarios
+  displayedColumnsOtrosLegendarios: string[] = ['nombre', 'icon', 'modo', 'tipo', 'tengo'];
+  dataSourceOtrosLegendarios = this.otrosLegendarios;
+
   ///////////////////// Precios Varios ////////////////////
   monedaMisticaPV: preciosVarios = {
     icon: monedaMistica[0].icon,
@@ -561,6 +708,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
   armasLegendarias3Variants = new MatTableDataSource(legendaryWeapons3Variants);
   donExploracion = donExploracion;
   donBatalla = donBatalla;
+  notasInvestigacion = notasInvestigacion;
   // tabla armas legendarias 1 y 3
   displayedColumnsArmasLegendarias1: string[] = ['icon', 'tengo', 'nombre', 'tipo', 'precioTpVentaS', 'pre', 'precioTpVentaSPre'];
   displayedColumnsArmasLegendarias2: string[] = ['icon', 'tengo', 'nombre', 'tipo', 'pre'];
@@ -578,9 +726,10 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
 
   // Para las rutas a las pestañas de diarias
   selectedTabIndex: number = 0;
-  tabs: string[] = ['Armadura legendaria Raid/PvE', 'Otros componentes', 'Precios T6', 'Precios Varios', 'Precios Armas Legendarias'];
+  tabs: string[] = ['Armadura legendaria Raid', 'Otros legendarios', 'Otros componentes', 'Precios T6', 'Precios Varios', 'Precios Armas Legendarias'];
   routeMap: { [key: string]: string } = {
-    'armaduraraid': 'Armadura legendaria Raid/PvE',
+    'armaduraraid': 'Armadura legendaria Raid',
+    'otroslegendarios': 'Otros legendarios',
     'otros': 'Otros componentes',
     'preciost6': 'Precios T6',
     'preciosvarios': 'Precios Varios',
@@ -743,12 +892,58 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
         }
         if (legendary[i].id === anilloRaid[0].id){
           this.anilloRaidCount++;
+          this.anilloPvE.tengo = legendary[i].count;
         }
         if (legendary[i].id === runa[0].id){
           this.runaCount = legendary[i].count;
         }
         if (legendary[i].id === sello[0].id){
           this.selloCount = legendary[i].count;
+        }
+        if (legendary[i].id === this.anilloWvW.id){
+          this.anilloWvW.tengo = legendary[i].count;
+        }
+        if (legendary[i].id === this.accesorioPvE0.id){
+          this.accesorioPvE0.tengo = legendary[i].count;
+        }
+        if (legendary[i].id === this.accesorioPvE1.id){
+          this.accesorioPvE1.tengo = legendary[i].count;
+        }
+        if (legendary[i].id === this.amuletoPvE.id){
+          this.amuletoPvE.tengo = legendary[i].count;
+        }
+        if (legendary[i].id === this.amuletoPvP.id){
+          this.amuletoPvP.tengo = legendary[i].count;
+        }
+        if (legendary[i].id === this.mochilaPvE.id){
+          this.mochilaPvE.tengo = legendary[i].count;
+        }
+        if (legendary[i].id === this.mochilaPvP.id){
+          this.mochilaPvP.tengo = legendary[i].count;
+        }
+        if (legendary[i].id === this.mochilaWvW.id){
+          this.mochilaWvW.tengo = legendary[i].count;
+        }
+        if (legendary[i].id === this.reliquiaLegendaria.id){
+          this.reliquiaLegendaria.tengo = legendary[i].count;
+        }
+        if (legendary[i].id === this.lanzaJanthirLegendaria.id){
+          this.lanzaJanthirLegendaria.tengo = legendary[i].count;
+        }
+        for (let j = 0; j < armaduraLigeraPve[0].id.length; j++){
+          if (legendary[i].id === armaduraLigeraPve[0].id[j]){
+            this.obsidianaLigera.tengo++;
+          }
+        }
+        for (let j = 0; j < armaduraMediaPve[0].id.length; j++){
+          if (legendary[i].id === armaduraMediaPve[0].id[j]){
+            this.obsidianaMedia.tengo++;
+          }
+        }
+        for (let j = 0; j < armaduraPesadaPve[0].id.length; j++){
+          if (legendary[i].id === armaduraPesadaPve[0].id[j]){
+            this.obsidianaPesada.tengo++;
+          }
         }
         for (let j = 0; j < legendaryWeapons1.length; j++){
           if (legendary[i].id === legendaryWeapons1[j].id){
@@ -1211,6 +1406,11 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
           }
         }
       }
+    })
+
+    //Saco la cantidad de notas de investigacion de la cartera
+    this.heroService.getWallet().subscribe((wallet: any) => {
+      notasInvestigacion[0].tengoEnCartera = wallet.find((o: { id: number; value: number}) => o.id === notasInvestigacion[0].idWallet).value;
     })
 
     //Hago tabla de armas de segunda gen

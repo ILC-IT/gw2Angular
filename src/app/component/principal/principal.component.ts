@@ -15,7 +15,7 @@ export class PrincipalComponent implements OnInit {
   typesOfEnlaces: string[] = ['Enlaces'];
   typesOfStats: string[] = ['Buscar por stats (atributos)', 'Buscar por prefijo', 'Buscar por nombre arma/armadura'];
   typesOfRaid: string[] = ['Raid'];
-  typesOfLegendary: string[] = ['Armadura legendaria Raid/PvE', 'Otros componentes', 'Precios T6', 'Precios Varios', 'Precios Armas Legendarias'];
+  typesOfLegendary: string[] = ['Armadura legendaria Raid', 'Otros legendarios', 'Otros componentes', 'Precios T6', 'Precios Varios', 'Precios Armas Legendarias'];
   typesOfHomestead: string[] = ['Glifos']
 
   ngOnInit(): void {
@@ -28,7 +28,8 @@ export class PrincipalComponent implements OnInit {
     'Buscar por stats (atributos)': 'buscarporstats',
     'Buscar por prefijo': 'buscarporprefijo',
     'Buscar por nombre arma/armadura': 'buscarporarma',
-    'Armadura legendaria Raid/PvE': 'armaduraraid',
+    'Armadura legendaria Raid': 'armaduraraid',
+    'Otros legendarios': 'otroslegendarios',
     'Otros componentes': 'otros',
     'Precios T6': 'preciost6',
     'Precios Varios': 'preciosvarios',

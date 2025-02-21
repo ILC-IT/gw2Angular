@@ -40,6 +40,16 @@ export interface otrosComponentes {
     necesito: number
 }
 
+export interface otrosLegendarios {
+    id: number | number[],
+    nombre: string,
+    tengo: number
+    tipo: string,
+    modo: string,
+    icon: string,
+    wiki: string
+}
+
 export interface preciosVarios {
     id: number,
     nombre: string,
@@ -114,7 +124,13 @@ export const armaduraLigeraPve = [
         id: [101516, 101462, 101499, 101536, 101501, 101535],
         idSkin: [12063, 12022, 12031, 12056, 12067, 12098],
         idSuffused: [12171, 12136, 12143, 12145, 12162, 12201],
-        idSuffusedSkin: [101887, 101929, 101745, 101733, 101747, 101892]
+        idSuffusedSkin: [101887, 101929, 101745, 101733, 101747, 101892],
+        nombre: "Armadura Obsidiana Ligera",
+        tengo: 0,
+        tipo: "Armadura",
+        modo: "PvE",
+        icon: "https://wiki.guildwars2.com/images/b/bc/Obsidian_Light_Crown.png",
+        wiki: "https://wiki.guildwars2.com/wiki/Obsidian_armor"
     }
 ];
 
@@ -129,7 +145,13 @@ export const armaduraMediaPve = [
         id: [101614, 101645, 101556, 101570, 101579, 101602],
         idSkin: [12068, 12082, 12086, 12093, 12078, 12071],
         idSuffused: [12167, 12202, 12168, 12154, 12196, 12186],
-        idSuffusedSkin: [101879, 101744, 101899, 101783, 101918, 101815]
+        idSuffusedSkin: [101879, 101744, 101899, 101783, 101918, 101815],
+        nombre: "Armadura Obsidiana Media",
+        tengo: 0,
+        tipo: "Armadura",
+        modo: "PvE",
+        icon: "https://wiki.guildwars2.com/images/5/56/Obsidian_Medium_Mask.png",
+        wiki: "https://wiki.guildwars2.com/wiki/Obsidian_armor"
     }
 ];
 
@@ -144,7 +166,13 @@ export const armaduraPesadaPve = [
         id: [101544, 101551, 101521, 101609, 101568, 101460],
         idSkin: [12030, 12064, 12060, 12090, 12049, 12048],
         idSuffused: [12200, 12155, 12182, 12214, 12212, 12190],
-        idSuffusedSkin: [101716, 101884, 101809, 101763, 101825, 101831]
+        idSuffusedSkin: [101716, 101884, 101809, 101763, 101825, 101831],
+        nombre: "Armadura Obsidiana Pesada",
+        tengo: 0,
+        tipo: "Armadura",
+        modo: "PvE",
+        icon: "https://wiki.guildwars2.com/images/e/ee/Obsidian_Heavy_Helmet.png",
+        wiki: "https://wiki.guildwars2.com/wiki/Obsidian_armor"
     }
 ];
 
@@ -164,7 +192,11 @@ export const anilloMundo = [
     {
         id: 93105,
         nombre: "Confluencia",
-        tengo: 0
+        tengo: 0,
+        tipo: "Anillo",
+        modo: "WvW",
+        icon: "https://wiki.guildwars2.com/images/8/85/Conflux.png",
+        wiki: "https://wiki.guildwars2.com/wiki/Conflux"
     }
 ];
 
@@ -172,15 +204,11 @@ export const anilloRaid = [
     {
         id: 91234,
         nombre: "Coalescencia",
-        tengo: 0
-    }
-];
-
-export const amuletoPvP = [
-    {
-        id: 92991,
-        nombre: "Transcendencia",
-        tengo: 0
+        tengo: 0,
+        tipo: "Anillo",
+        modo: "PvE",
+        icon: "https://wiki.guildwars2.com/images/d/d9/Gift_of_Prescience.png",
+        wiki: "https://wiki.guildwars2.com/wiki/Coalescence"
     }
 ];
 
@@ -188,28 +216,56 @@ export const legendaryAccessory = [
     {
         id: 81908,
         nombre: "Aurora",
-        tengo: 0
+        tengo: 0,
+        tipo: "Accesorio",
+        modo: "PvE",
+        icon: "https://wiki.guildwars2.com/images/8/89/Aurora.png",
+        wiki: "https://wiki.guildwars2.com/wiki/Aurora"
     },
     {
         id: 91048,
         nombre: "Vision",
-        tengo: 0
+        tengo: 0,
+        tipo: "Accesorio",
+        modo: "PvE",
+        icon: "https://wiki.guildwars2.com/images/1/18/Vision.png",
+        wiki: "https://wiki.guildwars2.com/wiki/Vision"
     }
 ];
 
 export const amuletoPvE = [
     {
         id: 95380,
-        nombre: "Prismatic Champion's Regalia",
-        tengo: 0
+        nombre: "Insignia de Campeón Prismático",
+        tengo: 0,
+        tipo: "Amuleto",
+        modo: "PvE",
+        icon: "https://wiki.guildwars2.com/images/7/70/Prismatic_Champion%27s_Regalia.png",
+        wiki: "https://wiki.guildwars2.com/wiki/Prismatic_Champion%27s_Regalia"
+    }
+];
+
+export const amuletoPvP = [
+    {
+        id: 92991,
+        nombre: "Transcendencia",
+        tengo: 0,
+        tipo: "Amuleto",
+        modo: "PvP",
+        icon: "https://wiki.guildwars2.com/images/8/85/Transcendence.png",
+        wiki: "https://wiki.guildwars2.com/wiki/Transcendence"
     }
 ];
 
 export const legendaryRelic = [
     {
         id: 101582,
-        nombre: "Legendary Relic",
-        tengo: 0
+        nombre: "Reliquia Legendaria",
+        tengo: 0,
+        tipo: "Reliquia",
+        modo: "PvE",
+        icon: "https://wiki.guildwars2.com/images/c/ce/Legendary_Relic.png",
+        wiki: "https://wiki.guildwars2.com/wiki/Legendary_Relic"
     }
 ];
 
@@ -442,7 +498,9 @@ export const armaduraOneiros = [
 export const notasInvestigacion = [
     {
         idWallet: 61,
-        cantidadArmaduraPve: 2500 //por pieza de armadura pve
+        cantidadArmaduraPve: 2500, //por pieza de armadura pve
+        tengoEnCartera: 0,
+        icon: "https://wiki.guildwars2.com/images/a/a1/Research_Note.png"
     }
 ];
 
@@ -1631,7 +1689,7 @@ export const legendaryWeapons3Variants = [
 
 export const legendaryWeaponsOther = [
     {
-        nombre: "Klobjarne_Geirr",
+        nombre: "Klobjarne Geirr",
         id: 103815,
         idWardrobe: 12703,
         tipo: "Lanza",
@@ -1644,13 +1702,14 @@ export const legendaryWeaponsOther = [
         precioTpVenta: 0,
         precioTpVentaS: "",
         precioTpVentaPre: 0,
-        precioTpVentaSPre: ""
+        precioTpVentaSPre: "",
+        modo: "PvE"
     }
 ];
 
 export const legendaryBack = [
     {
-        nombre: "Warbringer",
+        nombre: "Vientos de Guerra",
         id: 81462,
         idWardrobe: 7272,
         tipo: "Mochila",
@@ -1660,7 +1719,7 @@ export const legendaryBack = [
         icon: "https://wiki.guildwars2.com/images/2/20/Warbringer.png",
         wiki: "https://wiki.guildwars2.com/wiki/Warbringer",
         wikiPre: "https://wiki.guildwars2.com/wiki/Warcry",
-        modo: "WvW"
+        modo: "WvW",
     },
     {
         nombre: "Ad Infinitum",
