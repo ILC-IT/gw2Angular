@@ -44,8 +44,10 @@ export class DailyComponent implements OnInit, AfterViewInit  {
   convergenciaCopy: string = '';
   convergenciaSoto100: any = [];
   convergenciaJw50: any = [];
+  convergenciaJw50Rep: any = [];
   loadingConvergenciaSoto100: boolean = true;
   loadingConvergenciaJw50: boolean = true;
+  loadingConvergenciaJw50Rep: boolean = true;
   convergenciaSoto150: any = [];
   loadingConvergenciaSoto150: boolean = true;
   dailyActivity: string = "";
@@ -205,6 +207,8 @@ export class DailyComponent implements OnInit, AfterViewInit  {
     this.loadingConvergenciaSoto150 = false;
     this.convergenciaJw50 = await this.getConvergenciaJw50();
     this.loadingConvergenciaJw50 = false;
+    this.convergenciaJw50Rep = await this.getConvergenciaJw50Rep();
+    this.loadingConvergenciaJw50Rep = false;
       setInterval(() => {
         this.convergenciaSoto = this.getConvergenciaSoto();
         this.convergenciaJw = this.getConvergenciaJw();
@@ -484,7 +488,6 @@ export class DailyComponent implements OnInit, AfterViewInit  {
     return this.dailyService.getAnomaliaLey();
   }
 
-
   async getConvergenciaSoto100(){
     let response: any;
     return response = await this.dailyService.getConvergenciaSoto100().toPromise();
@@ -497,7 +500,36 @@ export class DailyComponent implements OnInit, AfterViewInit  {
 
   async getConvergenciaSoto150(){
     let response: any;
-    return response = await this.dailyService.getConvergenciaSoto150().toPromise();
+    try{
+      return response = await this.dailyService.getConvergenciaSoto150().toPromise();
+    } catch(error){
+      return response = [
+        {
+          "id": 7720,
+          "current": 0,
+          "max": 150,
+          "done": false,
+          "repeated": 0
+        }
+      ]
+    }
+  }
+
+  async getConvergenciaJw50Rep(){
+    let response: any;
+    try{
+      return response = await this.dailyService.getConvergenciaJw50Rep().toPromise();
+    } catch(error){
+      return response = [
+        {
+          "id": 8440,
+          "current": 0,
+          "max": 50,
+          "done": false
+          // "repeated": 0
+        }
+      ]
+    }
   }
 
   getConvergenciaSoto(){

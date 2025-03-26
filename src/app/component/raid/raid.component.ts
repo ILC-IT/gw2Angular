@@ -20,6 +20,7 @@ export class RaidComponent implements OnInit {
   anilloRaidCount = 0;
   magnetitas: number = 0;
   gaets: number = 0;
+  numberOfBossesRaids = 0;
 
   raidWings: Raid[] = [
     {
@@ -126,7 +127,6 @@ export class RaidComponent implements OnInit {
   getCallOfTheMists(){
     this.raidDoble = this.raidService.getCallOfTheMists();
     this.raidWings[this.raidDoble-1]['callOfTheMists'] = "dobleestasemana";
-    this.raidWings[7]['callOfTheMists'] = "dobleestasemana"; // La 8 nueva estará doble un tiempo aparte de la otra
   }
 
   getEmboldened(){
@@ -140,6 +140,7 @@ export class RaidComponent implements OnInit {
         for (let j = 0; j < this.raidWings[i]['boss'].length; j++){
           let nombre = this.raidWings[i]['boss'][j];
           // console.log('nombre ', nombre)
+          this.numberOfBossesRaids++;
           if (this.raid.includes(nombre)){
             this.raidWings[i]['bossCompletado'][j] = true;
           }

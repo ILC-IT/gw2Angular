@@ -466,8 +466,8 @@
             </section>
           </mat-card-content>
         </mat-card>
-        <p *ngIf="!loadingConvergenciaSoto100 && !loadingConvergenciaSoto150">SOTO: {{convergenciaSoto100[0].current}}/{{convergenciaSoto100[0].max}}    -   {{convergenciaSoto150[0].current}}/{{convergenciaSoto150[0].max}} </p>
-        <p *ngIf="!loadingConvergenciaJw50">JW: {{convergenciaJw50[0].current}}/{{convergenciaJw50[0].max}}</p>
+        <p *ngIf="!loadingConvergenciaSoto100 && !loadingConvergenciaSoto150">SOTO: {{convergenciaSoto100[0].current}}/{{convergenciaSoto100[0].max}}    -   {{convergenciaSoto150[0].current}}/{{convergenciaSoto150[0].max}} ({{convergenciaSoto150[0].repeated}}) </p>
+        <p *ngIf="!loadingConvergenciaJw50 && !loadingConvergenciaJw50Rep">JW: {{convergenciaJw50[0].current}}/{{convergenciaJw50[0].max}}   -   {{convergenciaJw50Rep[0].current}}/{{convergenciaJw50Rep[0].max}}</p>
         <p> {{convergenciaSoto}} </p>
         <p> {{convergenciaJw}} </p>
         <button mat-raised-button color="accent" [cdkCopyToClipboard]="convergenciaCopy">Copiar</button>

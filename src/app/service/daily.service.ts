@@ -436,4 +436,10 @@ export class DailyService {
     return this.httpClient.get(url);
   }
 
+  getConvergenciaJw50Rep(){
+    // devuelve logro de hacer 50 convergencias repetible
+    const url = `${this.apiUrl}account/achievements?ids=8440&access_token=${this.apiKey}`;
+    return this.httpClient.get(url);
+  }
+
 }
