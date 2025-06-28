@@ -53,12 +53,112 @@
 <router-outlet></router-outlet> -->
 
 <!-- Para que quede siempre arriba al hacer scroll -->
-<div class="app-container"> 
 
-  <app-dashboard></app-dashboard>
-  
-  <div class="app-body">
-    <router-outlet></router-outlet>
+
+<mat-sidenav-container class="sidenav-container" *ngIf="isSmallScreen | async; else desktopView">
+  <mat-sidenav #sidenav mode="over" class="mobile-sidenav" (closedStart)="onSidenavClose()">
+    <nav>
+      <a routerLink="/" (click)="sidenav.close()">Menú</a>
+
+      <!-- Diarias con submenú -->
+      <a mat-button [matMenuTriggerFor]="diariasMenu" (click)="$event.preventDefault()">Diarias</a>
+      <mat-menu #diariasMenu="matMenu">
+        <a mat-menu-item [routerLink]="'/diaria/wizardvault'" (click)="sidenav.close()">Cámara del brujo</a>
+        <a mat-menu-item [routerLink]="'/diaria/fractales'" (click)="sidenav.close()">Fractales</a>
+        <a mat-menu-item [routerLink]="'/diaria/semanales'" (click)="sidenav.close()">Semanales</a>
+        <a mat-menu-item [routerLink]="'/diaria/otros'" (click)="sidenav.close()">Más diarias</a>
+      </mat-menu>
+
+      <a routerLink="/heroes" (click)="sidenav.close()">Héroes</a>
+      <a routerLink="/calculadora" (click)="sidenav.close()">Calculadora</a>
+
+      <!-- Buscador Stats con submenú -->
+      <a mat-button [matMenuTriggerFor]="statsMenu" (click)="$event.preventDefault()">Buscador Stats</a>
+      <mat-menu #statsMenu="matMenu">
+        <a mat-menu-item [routerLink]="'/stats/buscarporstats'" (click)="sidenav.close()">Atributos</a>
+        <a mat-menu-item [routerLink]="'/stats/buscarporprefijo'" (click)="sidenav.close()">Prefijo</a>
+        <a mat-menu-item [routerLink]="'/stats/buscarporarma'" (click)="sidenav.close()">Nombre arma</a>
+      </mat-menu>
+
+      <a routerLink="/enlaces" (click)="sidenav.close()">Enlaces</a>
+      <a routerLink="/raid" (click)="sidenav.close()">Raid</a>
+
+      <!-- Legendarios con submenú -->
+      <a mat-button [matMenuTriggerFor]="legendariosMenu" (click)="$event.preventDefault()">Legendarios</a>
+      <mat-menu #legendariosMenu="matMenu">
+        <a mat-menu-item [routerLink]="'/legendary/armaduraraid'" (click)="sidenav.close()">Armadura Raid</a>
+        <a mat-menu-item [routerLink]="'/legendary/otroslegendarios'" (click)="sidenav.close()">Otros legendarios</a>
+        <a mat-menu-item [routerLink]="'/legendary/otros'" (click)="sidenav.close()">Otros componentes</a>
+        <a mat-menu-item [routerLink]="'/legendary/preciost6'" (click)="sidenav.close()">Precios T6</a>
+        <a mat-menu-item [routerLink]="'/legendary/preciosvarios'" (click)="sidenav.close()">Precios varios</a>
+        <a mat-menu-item [routerLink]="'/legendary/preciosarmas'" (click)="sidenav.close()">Precios armas</a>
+      </mat-menu>
+
+      <a routerLink="/homestead" (click)="sidenav.close()">Homestead</a>
+
+      <a href="https://dps.report/" target="_blank" rel="noopener noreferrer">LOGS</a>
+      <a href="https://gw2efficiency.com/" target="_blank" rel="noopener noreferrer">GW2Eff</a>
+      <a href="https://killproof.me/account/gw2accounts" target="_blank" rel="noopener noreferrer">KP</a>
+      <a [cdkCopyToClipboard]="account.name" matTooltip="Copiar" style="cursor: pointer;">User: {{account.name}}</a>
+    </nav>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="mobile-header">
+      <mat-toolbar color="primary">
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span style="color: #369;">Menú</span>
+      </mat-toolbar>
+
+      <div class="search-container">
+        <div class="search" color="primary">
+          <mat-form-field class="example-form-field">
+              <input matInput type="text" placeholder="Buscar en Wiki" [(ngModel)]="value">
+              <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Borrar" (click)="value=''">
+              <mat-icon>x</mat-icon>
+              </button>
+          </mat-form-field>
+          <a href="https://wiki-en.guildwars2.com/index.php?title=Special%3ASearch&search={{value}}&go=Go" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+              <button mat-raised-button color="primary">EN</button>
+          </a>
+          <a href="https://wiki-es.guildwars2.com/index.php?title=Special%3ASearch&search={{value}}&go=Go" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+              <button mat-raised-button color="primary">ES</button>
+          </a>
+        </div>
+      </div>
+
+      <div class="titulo">
+        <h1>{{title}}</h1>
+      </div>
+
+      <div class="reloj">
+        {{ time | async | date: 'hh:mm:ss a' }}
+      </div>
+    </div>
+    <div class="mobile-content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<ng-template #desktopView>
+  <div class="app-container"> 
+
+    <div class="titulo">
+        <h1>{{title}}</h1>
+    </div>
+
+    <div class="reloj">
+      {{ time | async | date: 'hh:mm:ss a' }}
+    </div>
+
+    <app-dashboard></app-dashboard>
+    
+    <div class="app-body">
+      <router-outlet></router-outlet>
+    </div>
+
   </div>
-
-</div>
+</ng-template>

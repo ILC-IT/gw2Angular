@@ -25,11 +25,11 @@ h2 {
   /*min-width: 1!important;*/
   padding: 3px!important;
   margin: 3px!important;
-  font-size: x-large;
+  font-size: large;
  }
 
 .mat-list-base .mat-list-item, .mat-list-base .mat-list-option {
   text-align: center;
   height: 80px;
-  font-size: 25px;
+  font-size: 20px;
 }

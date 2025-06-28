@@ -80,6 +80,11 @@ export class HeroService {
     return this.httpClient.get(url);
   }
 
+  getAccount(){
+    const url = `${this.apiUrl}account?access_token=${this.apiKey}`;
+    return this.httpClient.get(url);
+  }
+
     /**
    * Handle Http operation that failed.
    * Let the app continue.

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { RaidService } from 'src/app/service/raid.service';
 import { HeroService } from 'src/app/service/hero.service';
 import { Raid, RaidsInfo, LegendariaRaidId, TokenId} from './raid'
@@ -21,6 +21,8 @@ export class RaidComponent implements OnInit {
   magnetitas: number = 0;
   gaets: number = 0;
   numberOfBossesRaids = 0;
+  cols: number = 4;
+  rowHeight: string = '5:1';
 
   raidWings: Raid[] = [
     {
@@ -111,6 +113,7 @@ export class RaidComponent implements OnInit {
     this.getRaid();
     this.getCallOfTheMists();
     this.getEmboldened();
+    this.updateGridCols();
   }
 
   getRaid(){
@@ -201,7 +204,7 @@ export class RaidComponent implements OnInit {
       //     this.liTengo = wallet[i].value;
       //   }
       // }
-      this.liTengo = wallet.find((o: { id: number; value: number}) => o.id === 70).value;
+      this.liTengo = wallet.find((o: { id: number; value: number}) => o.id === 70)?.value ?? 0;
       // console.log('liTengo ', this.liTengo);
 
       // Busco si se tiene armadura legendaria fabricada
@@ -228,8 +231,27 @@ export class RaidComponent implements OnInit {
         this.liUsada += 150 * this.anilloRaidCount;
         // console.log('liUsada ', this.liUsada);
       })
-      this.magnetitas = wallet.find((o: { id: number; value: number}) => o.id === 28).value;
-      this.gaets = wallet.find((o: { id: number; value: number}) => o.id === 77).value;
+      this.magnetitas = wallet.find((o: { id: number; value: number}) => o.id === 28)?.value ?? 0;
+      this.gaets = wallet.find((o: { id: number; value: number}) => o.id === 77)?.value ?? 0;
     })
+  }
+
+  @HostListener('window:resize')
+  onResize() {
+      this.updateGridCols();
+  }
+
+  private updateGridCols(): void {
+    const width = window.innerWidth;
+    if (width < 768) {
+      this.cols = 1;
+      this.rowHeight = '3:1';
+    } else if (width < 1366){
+      this.cols = 2;
+      this.rowHeight = '4:1';
+    } else {
+      this.cols = 4;
+      this.rowHeight = '5:1';
+    }
   }
 }

@@ -9,7 +9,7 @@ export class PrincipalComponent implements OnInit {
 
   constructor() { }
 
-  typesOfDiarias: string[] = ['Cámara del brujo', 'Fractales', 'Más diarias'];
+  typesOfDiarias: string[] = ['Cámara del brujo', 'Fractales', 'Semanales', 'Más diarias'];
   typesOfHeroes: string[] = ['Héroes'];
   typesOfCalculadora: string[] = ['Calculadora'];
   typesOfEnlaces: string[] = ['Enlaces'];
@@ -24,6 +24,7 @@ export class PrincipalComponent implements OnInit {
   routeMap: { [key: string]: string } = {
     'Cámara del brujo': 'wizardvault',
     'Fractales': 'fractales',
+    'Semanales': 'semanales',
     'Más diarias': 'otros',
     'Buscar por stats (atributos)': 'buscarporstats',
     'Buscar por prefijo': 'buscarporprefijo',

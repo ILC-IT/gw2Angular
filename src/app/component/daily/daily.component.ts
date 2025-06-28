@@ -1,7 +1,7 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, OnDestroy } from '@angular/core';
 import { DailyService } from "../../service/daily.service";
 import { LegendaryService } from 'src/app/service/legendary.service';
-import { Fractales, FractalesCm, InestabCm } from "./fractales";
+import { Fractales, FractalesCm, InestabCm, InstabilityDetail } from "./fractales";
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { ToastNotificationInitializer, DialogLayoutDisplay, ToastUserViewTypeEnum, ToastProgressBarEnum, DisappearanceAnimation, 
@@ -13,21 +13,22 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './daily.component.html',
   styleUrls: ['./daily.component.css']
 })
-export class DailyComponent implements OnInit, AfterViewInit  {
+export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
 
   // daily: any; //contiene los ids de las diarias de pve, fractals, mvm, pvp
-  // dailyIds: String = ''; //contiene los ids de las diarias de pve
-  // dailyIdsM: String = ''; //contiene los ids de las diarias de wvw
-  // dailyIdsP: String = ''; //contiene los ids de las diarias de pvp
-  dailyIdsF: String = ''; //contiene los ids de las diarias de fractales
-  dailyIdsW: String = ''; //contiene los ids de las diarias de la camara del brujo
-  dailyIdsS: String = ''; //contiene el id de la diaria de strikes
-  dailyStrike: any; //contiene el id de la strike diaria buscando en achievements/categories/250
+  // dailyIds: string = ''; //contiene los ids de las diarias de pve
+  // dailyIdsM: string = ''; //contiene los ids de las diarias de wvw
+  // dailyIdsP: string = ''; //contiene los ids de las diarias de pvp
+  dailyIdsF: string = ''; //contiene los ids de las diarias de fractales
+  dailyIdsW: string = ''; //contiene los ids de las diarias de la camara del brujo
+  dailyIdsS: string = ''; //contiene el id de la diaria de strikes
+  dailyStrike: any; //contiene el id de las strikes diarias buscando en achievements/categories/250
   dailyFractalsId: any; //contiene los ids de los fractales diarios buscando en achievements/categories/88
   dailyWizardVault: any; //contiene wizardvault diaria buscando en account/wizardsvault/daily
   weeklyWizardVault: any; //contiene wizardvault semanal buscando en account/wizardsvault/weekly
   specialWizardVault: any; //contiene wizardvault especial buscando en account/wizardsvault/special
   dailyStrikeIcon: string = "";
+  dailyStrikeDoneIds: Set<number> = new Set();
   dailyInfoF: any = {}; //contiene toda la info de las diarias de pve, fractals, mvm, pvp, strike
   loading: boolean = true;
   loading2: boolean = true;
@@ -41,6 +42,8 @@ export class DailyComponent implements OnInit, AfterViewInit  {
   anomalia: string = '';
   convergenciaSoto: string = '';
   convergenciaJw: string = '';
+  convergenciaSotoWeekly: any = [];
+  convergenciaJwWeekly: any = [];
   convergenciaCopy: string = '';
   convergenciaSoto100: any = [];
   convergenciaJw50: any = [];
@@ -114,7 +117,7 @@ export class DailyComponent implements OnInit, AfterViewInit  {
   fractDailyInestabilidadCmEng: string[] = [];
   fractDailyInestabilidadCmEsp: string[] = [];
   //tablas fractales
-  displayedColumns: string[] = ['level', 'tier', 'ar', 'name', 'nameEs', 'idDaily', 'idRec'];
+  displayedColumns: string[] = ['level', 'done', 'tier', 'ar', 'name', 'nameEs', 'idDaily', 'idRec'];
   displayedColumnsCm: string[] = ['level', 'tier', 'ar', 'name', 'nameEs', 'inestab1', 'inestab2', 'inestab3'];
   dataSource = new MatTableDataSource(Fractales);
   dataSourceCm = new MatTableDataSource(this.fractalesCm);
@@ -130,12 +133,27 @@ export class DailyComponent implements OnInit, AfterViewInit  {
   
   // Para las rutas a las pestañas de diarias
   selectedTabIndex: number = 0;
-  tabs: string[] = ['Cámara del brujo', 'Fractales', 'Más diarias'];
+  tabs: string[] = ['Cámara del brujo', 'Fractales', 'Semanales', 'Más diarias'];
   routeMap: { [key: string]: string } = {
     'wizardvault': 'Cámara del brujo',
     'fractales': 'Fractales',
+    'semanales': 'Semanales',
     'otros': 'Más diarias'
   };
+
+  // Para declarar los setIntervals y borrarlos
+  intervalIds: any[] = [];
+
+  // Weekly
+  STRIKE_NAMES_EOD = ['AH', 'XJJ', 'KO', 'HT', 'OLC'];
+  STRIKE_NAMES_SOTO = ['CO', 'Febe'];
+  weeklyEoDStrikes: { index: number, name: string }[] = [];
+  weeklyEoDStrikesDoneIds: Set<number> = new Set();
+  weeklySotoStrikes: { index: number, name: string }[] = [];
+  weeklySotoStrikesDoneIds: Set<number> = new Set();
+  weeklyWvW: { id: number, name: string; current: number; max: number; done: boolean }[] = [];
+  weeklyRiftHuntingSoto: { id: number, name: string; current: number; max: number; done: boolean }[] = [];
+  weeklyRiftHuntingJw: { id: number, name: string; current: number; max: number; done: boolean }[] = [];
 
   constructor(private dailyService: DailyService, private legendaryService: LegendaryService, private route: ActivatedRoute,  private router: Router) { 
 
@@ -194,12 +212,50 @@ export class DailyComponent implements OnInit, AfterViewInit  {
     this.mapBonusRewardweekNumber = this.getMapBonusRewardWeekNumber(); //numero de semana de map bonus reward entre 1-8
     this.dailyActivity = this.getDailyActivity();
     this.recordatorio = this.getRecordatorio();
+
     this.anomalia = this.getAnomaly();
-      setInterval(() => {
+      const id1 = setInterval(() => {
         this.anomalia = this.getAnomaly();
       }, 1 * 60 * 1000)
+    this.intervalIds.push(id1);
+
+    this.dailyStrike = await this.getDailyStrikeId();
+    this.getDailyStrike();
+    this.getWeeklyEoDStrikes();
+    this.getWeeklySotoStrikes();
+
+    this.getMaterials();
+
+    this.getDailyCraft();
+      const id2 = setInterval(() => {
+        this.getDailyCraft();
+      }, 10 * 60 * 1000)
+    this.intervalIds.push(id2);
+
+    this.getDailyHeroChoiceChest();
+      const id3 = setInterval(() => {
+        this.getDailyHeroChoiceChest();
+      }, 10 * 60 * 1000)
+    this.intervalIds.push(id3);
+
+    this.dailyFractalsId = await this.getDailyFractalsId();
+    this.getDailyFractals();
+
+    this.dailyWizardVault = await this.getDailyWizardVault();
+    this.loadingDailyWizard = false;
+    this.weeklyWizardVault = await this.getWeeklyWizardVault();
+    this.loadingWeeklyWizard = false;
+    this.specialWizardVault = await this.getSpecialWizardVault();
+    this.loadingSpecialWizard = false;
+
+    this.loadWeeklyWvW();
+    this.loadWeeklyRiftHuntingSoto();
+    this.loadWeeklyRiftHuntingJw();
+
     this.convergenciaSoto = this.getConvergenciaSoto();
     this.convergenciaJw = this.getConvergenciaJw();
+    this.convergenciaSotoWeekly = await this.getConvergenciaSotoWeekly();
+    this.convergenciaJwWeekly = await this.getConvergenciaJwWeekly();
     this.convergenciaCopy = this.convergenciaSoto + "\n" + this.convergenciaJw;
     this.convergenciaSoto100 = await this.getConvergenciaSoto100();
     this.loadingConvergenciaSoto100 = false;
@@ -209,30 +265,13 @@ export class DailyComponent implements OnInit, AfterViewInit  {
     this.loadingConvergenciaJw50 = false;
     this.convergenciaJw50Rep = await this.getConvergenciaJw50Rep();
     this.loadingConvergenciaJw50Rep = false;
-      setInterval(() => {
+      const id4 = setInterval(() => {
         this.convergenciaSoto = this.getConvergenciaSoto();
         this.convergenciaJw = this.getConvergenciaJw();
         this.convergenciaCopy = this.convergenciaSoto + "\n" + this.convergenciaJw;
       }, 2 * 60 * 1000)
-    this.dailyStrike = await this.getDailyStrikeId();
-    this.getDailyStrike();
-    this.getMaterials();
-    this.getDailyCraft();
-      setInterval(() => {
-        this.getDailyCraft();
-      }, 10 * 60 * 1000)
-    this.getDailyHeroChoiceChest();
-      setInterval(() => {
-        this.getDailyHeroChoiceChest();
-      }, 10 * 60 * 1000)
-    this.dailyFractalsId = await this.getDailyFractalsId();
-    this.getDailyFractals();
-    this.dailyWizardVault = await this.getDailyWizardVault();
-    this.loadingDailyWizard = false;
-    this.weeklyWizardVault = await this.getWeeklyWizardVault();
-    this.loadingWeeklyWizard = false;
-    this.specialWizardVault = await this.getSpecialWizardVault();
-    this.loadingSpecialWizard = false;
+    this.intervalIds.push(id4);
+
     console.log(this.dailyInfoF)
     console.log(this.dailyWizardVault)
     console.log(this.weeklyWizardVault)
@@ -251,6 +290,10 @@ export class DailyComponent implements OnInit, AfterViewInit  {
     this.dataSourceRec.sort = this.sort2;
     this.dataSourceDaily.sort = this.sort3;
     this.dataSourceCm.sort = this.sort4;
+  }
+
+  ngOnDestroy() {
+    this.intervalIds.forEach(id => clearInterval(id));
   }
 
   // async getDaily(){
@@ -275,8 +318,7 @@ export class DailyComponent implements OnInit, AfterViewInit  {
   }
   
   async getDailyFractalsId(){
-    let response: any;
-    return response = await this.dailyService.getDailyFractalsId().toPromise();
+    return await this.dailyService.getDailyFractalsId().toPromise();
   }
 
   getDailyFractals(){
@@ -288,27 +330,29 @@ export class DailyComponent implements OnInit, AfterViewInit  {
   }
 
   async getDailyWizardVault(){
-    let response: any;
-    return response = await this.dailyService.getDailyWizardVault().toPromise();
+    return await this.dailyService.getDailyWizardVault().toPromise();
   }
 
   async getWeeklyWizardVault(){
-    let response: any;
-    return response = await this.dailyService.getWeeklyWizardVault().toPromise();
+    return await this.dailyService.getWeeklyWizardVault().toPromise();
   }
 
   async getSpecialWizardVault(){
-    let response: any;
-    return response = await this.dailyService.getSpecialWizardVault().toPromise();
+    return await this.dailyService.getSpecialWizardVault().toPromise();
   }
 
-  getDailyInfoF(ids: String, tipo: String){
+  getDailyInfoF(ids: string, tipo: string){
     this.dailyService.getDailyInfo(ids).subscribe((dailyInfo: any) => {
       //console.log(dailyInfo)
       if (tipo === "fractals"){
         this.dailyInfoF.fractals = dailyInfo;
         this.searchFractalIds();
         this.getDailyInestabilidadCm();
+        // FIX para cuando fractal 95 no esta en API y es diario
+        // if (this.dailyInfoF.fractals.length === 11){
+        //   ids = ids + "8784,8736,8729,8739";
+        // }
+        // this.getFractalsDone(ids);
       }
       else if (tipo === "strike"){
         this.dailyInfoF.strike = dailyInfo;
@@ -319,6 +363,7 @@ export class DailyComponent implements OnInit, AfterViewInit  {
             break;
           }
         }
+        this.dailyInfoF.strike = this.dailyInfoF.strike.sort((a: any, b: any) => a.id - b.id); //ordeno por id
         this.loading2 = false;
       }
       this.loading = false;
@@ -470,10 +515,24 @@ export class DailyComponent implements OnInit, AfterViewInit  {
   }
 
   async getDailyStrikeId(){
-    let response: any;
-    return response = await this.dailyService.getDailyStrikeId().toPromise();
+    return await this.dailyService.getDailyStrikeId().toPromise();
   }
 
+  getDailyStrikeDone(allStrikeIds: string){
+    this.dailyService.getDailyStrikeDone(allStrikeIds).subscribe({
+      next: data => {
+        // Guardamos solo los IDs que están completados (done: true)
+        const doneIds = data.filter(ach => ach.done).map(ach => ach.id);
+        this.dailyStrikeDoneIds = new Set(doneIds); // más rápido para buscar
+      },
+      error: err => {
+        // Fallback: lista vacía (nadie marcado)
+        console.warn('Strikes diarias sin hacer')
+        this.dailyStrikeDoneIds = new Set();
+      }
+    });
+  }
+  
   getDailyStrike(){
     // this.dailyIdsS = this.dailyStrike.achievements[0];
     // this.getDailyInfoF(this.dailyIdsS, "strike");
@@ -482,6 +541,7 @@ export class DailyComponent implements OnInit, AfterViewInit  {
       this.dailyIdsS = this.dailyIdsS + dailyStrike[i] + ',';
     }
     this.getDailyInfoF(this.dailyIdsS, "strike");
+    this.getDailyStrikeDone(this.dailyIdsS);
   }
 
   getAnomaly(){
@@ -489,47 +549,19 @@ export class DailyComponent implements OnInit, AfterViewInit  {
   }
 
   async getConvergenciaSoto100(){
-    let response: any;
-    return response = await this.dailyService.getConvergenciaSoto100().toPromise();
+    return await this.dailyService.getConvergenciaSoto100();
   }
 
   async getConvergenciaJw50(){
-    let response: any;
-    return response = await this.dailyService.getConvergenciaJw50().toPromise();
+    return await this.dailyService.getConvergenciaJw50();
   }
 
   async getConvergenciaSoto150(){
-    let response: any;
-    try{
-      return response = await this.dailyService.getConvergenciaSoto150().toPromise();
-    } catch(error){
-      return response = [
-        {
-          "id": 7720,
-          "current": 0,
-          "max": 150,
-          "done": false,
-          "repeated": 0
-        }
-      ]
-    }
+    return await this.dailyService.getConvergenciaSoto150();
   }
 
   async getConvergenciaJw50Rep(){
-    let response: any;
-    try{
-      return response = await this.dailyService.getConvergenciaJw50Rep().toPromise();
-    } catch(error){
-      return response = [
-        {
-          "id": 8440,
-          "current": 0,
-          "max": 50,
-          "done": false
-          // "repeated": 0
-        }
-      ]
-    }
+    return await this.dailyService.getConvergenciaJw50Rep();
   }
 
   getConvergenciaSoto(){
@@ -538,6 +570,14 @@ export class DailyComponent implements OnInit, AfterViewInit  {
 
   getConvergenciaJw(){
     return this.dailyService.getConvergenciaJw();
+  }
+
+  async getConvergenciaSotoWeekly(){
+    return await this.dailyService.getConvergenciaSotoWeekly();
+  }
+
+  async getConvergenciaJwWeekly(){
+    return await this.dailyService.getConvergenciaJwWeekly();
   }
 
   getDailyActivity(){
@@ -574,6 +614,19 @@ export class DailyComponent implements OnInit, AfterViewInit  {
         this.fractDaily4.push(obj);
       }
     }
+
+    // FIX para cuando fractal 95 no esta en API y es diario
+    // if (this.dailyInfoF.fractals.length === 11){
+    //   obj = this.fractales.filter(o => o.idDaily === 8784);
+    //   this.fractDaily1.push(obj);
+    //   obj = this.fractales.filter(o => o.idDaily === 8736);
+    //   this.fractDaily2.push(obj);
+    //   obj = this.fractales.filter(o => o.idDaily === 8729);
+    //   this.fractDaily3.push(obj);
+    //   obj = this.fractales.filter(o => o.idDaily === 8739);
+    //   this.fractDaily4.push(obj);
+    // }
+
     // for (let i = 0; i <= 2; i++){
     //   obj = this.fractales.find(o => o.idRec === this.dailyInfoF.fractals[i].id);
     // //   console.log('id ', this.dailyInfoF.fractals[i].id)
@@ -596,6 +649,7 @@ export class DailyComponent implements OnInit, AfterViewInit  {
     //   obj = this.fractales.filter(o => o.idDaily === this.dailyInfoF.fractals[i].id);
     //   this.fractDaily3.push(obj)
     // }
+
     //SIN ESTAS DOS LINEAS NO FUNCIONA LA TABLA DE RECOMENDADOS
     this.dataSourceRec = new MatTableDataSource(this.fractRec);
     this.dataSourceRec.sort = this.sort2;
@@ -627,30 +681,34 @@ export class DailyComponent implements OnInit, AfterViewInit  {
     // busco las inestabilidades diarias de los cms
     this.dailyService.getInestabilidadCm().subscribe((inestabilidadCm: any) => {
       let hoy = new Date();
-      let diaNum = this.diaNumeroAño(hoy) - 1;
+      let diaNum = this.diaNumeroAño(hoy);
       // if (this.leapYear(hoy.getFullYear())){
       //   diaNum--; //esto es porque inestabilidadCm ya incluye el dia extra si es bisiesto
       // }
-      // cojo info de 96 97 98 99 100
+      // cojo info de 95 96 97 98 99 100
+      let hecatombe = inestabilidadCm["instabilities"]["95"][diaNum];
       let pesadilla = inestabilidadCm["instabilities"]["96"][diaNum];
       let observatorio = inestabilidadCm["instabilities"]["97"][diaNum];
       let sunqua = inestabilidadCm["instabilities"]["98"][diaNum];
       let oleaje = inestabilidadCm["instabilities"]["99"][diaNum];
       let torre = inestabilidadCm["instabilities"]["100"][diaNum];
-      let nombres = inestabilidadCm["instability_names"];
-      //devuelve array de 3 x numero_de_cms posiciones
-      this.fractDailyInestabilidadCmEng = this.buscarInestabilidadCmNombre(nombres, pesadilla, observatorio, sunqua, oleaje, torre);
+      let nombres: InstabilityDetail[] = inestabilidadCm["instability_details"];
+      //devuelve array de (numero_de_cms x 3) posiciones
+      this.fractDailyInestabilidadCmEng = this.buscarInestabilidadCmNombre(nombres, hecatombe, pesadilla, observatorio, sunqua, oleaje, torre, 'en');
+      this.fractDailyInestabilidadCmEsp = this.buscarInestabilidadCmNombre(nombres, hecatombe, pesadilla, observatorio, sunqua, oleaje, torre, 'es');
       this.getFractalesCm();
+    },
+    (error) => {
+      console.error("Error al obtener inestabilidad cm: ", error);
     })
   }
 
   getFractalesCm(){
-    // Traduccion inestabilidades
-    this.traduccionInestabCm(this.fractDailyInestabilidadCmEng);
+    // Traduccion inestabilidades (ya no hace falta)
+    // this.traduccionInestabCm(this.fractDailyInestabilidadCmEng);
 
-    // Actualizo la info de cms con las inestabilidades diarias traducidas
+    // Actualizo la info de cms con las inestabilidades diarias del idioma requerido
     this.actualizofractalesCmInestabCmEsp();
-    // // Actualizo la info de cms con las inestabilidades diarias en ingles
     // this.actualizofractalesCmInestabCmEng();
 
     //SIN ESTAS DOS LINEAS NO FUNCIONA LA TABLA DE CMs
@@ -668,7 +726,7 @@ export class DailyComponent implements OnInit, AfterViewInit  {
   }
 
   actualizofractalesCmInestabCmEsp(){
-    // Actualizo la info de cms con las inestabilidades diarias traducidas
+    // Actualizo la info de cms con las inestabilidades diarias en español
     let j = 0;
     for(let i = 0; i < this.fractalesCm.length; i++){
       this.fractalesCm[i].inestab1 = this.fractDailyInestabilidadCmEsp[j];
@@ -693,6 +751,64 @@ export class DailyComponent implements OnInit, AfterViewInit  {
     }
   }
 
+  getFractalsDone(ids: string){
+    // Devuelve si el fractal esta done = true/false
+    this.dailyService.getFractalsDone(ids).subscribe({
+      next: (apiResults: any[]) =>{
+        // Crear un Map para acceder rápidamente por id
+        const doneMap = new Map(apiResults.map(d => [d.id, d.done]));
+
+        // Actualizar el done del array de fractales recomendados
+        this.fractRec = this.fractRec.map((fractal: { idRec: any; done: any; }) => {
+          // Si el ID viene en la respuesta, actualiza done, si no, deja false
+          const done = doneMap.get(fractal.idRec);
+          return {
+            ...fractal,
+            done: done !== undefined ? done : false
+          };
+        });
+
+        // Actualizar el done del array de fractales diarios
+        this.merged = this.merged.map((fractal: { idDaily: any; done: any; }) => {
+          // Si el ID viene en la respuesta, actualiza done, si no, deja false
+          const done = doneMap.get(fractal.idDaily);
+          return {
+            ...fractal,
+            done: done !== undefined ? done : false
+          };
+        });
+
+        // Actualizar el done del array de fractales todos
+        this.fractales = this.fractales.map(fractal => {
+          const id = fractal.idDaily ?? fractal.idRec; // usar el que exista
+          const done = doneMap.get(id);
+          return {
+            ...fractal,
+            done: done !== undefined ? done : false
+          };
+        });
+
+        // Actualizar datasources para las tablas
+        this.dataSourceRec = new MatTableDataSource(this.fractRec);
+        this.dataSourceRec.sort = this.sort2;
+        this.dataSourceDaily = new MatTableDataSource(this.merged);
+        this.dataSourceDaily.sort = this.sort3;
+        this.dataSource = new MatTableDataSource(this.fractales);
+        this.dataSource.sort = this.sort;
+      },
+      error: (err) => {
+        console.warn('Fractales diarios sin hacer');
+        // Si falla, deja el estado actual (done = false por defecto)
+        this.dataSourceRec = new MatTableDataSource(this.fractRec);
+        this.dataSourceRec.sort = this.sort2;
+        this.dataSourceDaily = new MatTableDataSource(this.merged);
+        this.dataSourceDaily.sort = this.sort3;
+        this.dataSource = new MatTableDataSource(this.fractales);
+        this.dataSource.sort = this.sort;
+      }
+    })
+  }
+
   diaNumeroAño(date: Date){
     // Devuelve el numero del dia (1 - 366) del año
     const msDiff = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) - Date.UTC(date.getFullYear(), 0, 0);
@@ -705,13 +821,14 @@ export class DailyComponent implements OnInit, AfterViewInit  {
     return ((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0);
   }
 
-  buscarInestabilidadCmNombre(nombres: string[], fractal96: number[], fractal97: number[], fractal98: number[], fractal99: number[], fractal100: number[]){
+  buscarInestabilidadCmNombre(nombres: InstabilityDetail[], fractal95: number[], fractal96: number[], fractal97: number[], fractal98: number[], fractal99: number[], fractal100: number[], idioma: 'en' | 'es' | 'fr' | 'de'){
     let fractalInest = [
-      nombres[fractal96[0]], nombres[fractal96[1]], nombres[fractal96[2]],
-      nombres[fractal97[0]], nombres[fractal97[1]], nombres[fractal97[2]], 
-      nombres[fractal98[0]], nombres[fractal98[1]], nombres[fractal98[2]],
-      nombres[fractal99[0]], nombres[fractal99[1]], nombres[fractal99[2]],
-      nombres[fractal100[0]], nombres[fractal100[1]], nombres[fractal100[2]]
+      nombres[fractal95[0]].name[idioma], nombres[fractal95[1]].name[idioma], nombres[fractal95[2]].name[idioma],
+      nombres[fractal96[0]].name[idioma], nombres[fractal96[1]].name[idioma], nombres[fractal96[2]].name[idioma],
+      nombres[fractal97[0]].name[idioma], nombres[fractal97[1]].name[idioma], nombres[fractal97[2]].name[idioma], 
+      nombres[fractal98[0]].name[idioma], nombres[fractal98[1]].name[idioma], nombres[fractal98[2]].name[idioma],
+      nombres[fractal99[0]].name[idioma], nombres[fractal99[1]].name[idioma], nombres[fractal99[2]].name[idioma],
+      nombres[fractal100[0]].name[idioma], nombres[fractal100[1]].name[idioma], nombres[fractal100[2]].name[idioma]
     ];
     return fractalInest;
   }
@@ -719,6 +836,291 @@ export class DailyComponent implements OnInit, AfterViewInit  {
   getMapBonusRewardWeekNumber(){
     return this.legendaryService.getMapBonusRewardWeekNumber();
   }
+
+  ////////////////////////////////////// WEEKLY
+  getWeeklyEoDStrikes(){
+    this.dailyService.getWeeklyEoDStrikes().subscribe({
+      next: (data: any) => {
+        // Prepara lista visual
+        this.weeklyEoDStrikes = this.STRIKE_NAMES_EOD.map((name, index) => ({
+          index: index,
+          name: name
+        }));
+
+        // Si no hay data, considera como no hechos
+        if (!data || data.length === 0) {
+          this.weeklyEoDStrikesDoneIds = new Set(); // todos como no hechos
+          return;
+        }
+
+        const result = data[0];
+
+        if (result.done === true) {
+          // Todos hechos: incluir todos los índices en el Set
+          this.weeklyEoDStrikesDoneIds = new Set(this.weeklyEoDStrikes.map(s => s.index));
+        } else {
+          // Solo los que estén en bits
+          this.weeklyEoDStrikesDoneIds = new Set(result.bits || []);
+        }
+      },
+      error: (err) => {
+        this.weeklyEoDStrikes = this.STRIKE_NAMES_EOD.map((name, index) => ({
+          index: index,
+          name: name
+        }));
+        this.weeklyEoDStrikesDoneIds = new Set(); // todos no hechos
+        console.warn('Weekly EoD strikes sin hacer');
+      }
+    });
+  }
+
+  getWeeklySotoStrikes(){
+    this.dailyService.getWeeklySotoStrikes().subscribe({
+      next: (data: any) => {
+        // Prepara lista visual
+        this.weeklySotoStrikes = this.STRIKE_NAMES_SOTO.map((name, index) => ({
+          index: index,
+          name: name
+        }));
+
+        // Si no hay data, considera como no hechos
+        if (!data || data.length === 0) {
+          this.weeklySotoStrikesDoneIds = new Set(); // todos como no hechos
+          return;
+        }
+
+        const result = data[0];
+
+        if (result.done === true) {
+          // Todos hechos: incluir todos los índices en el Set
+          this.weeklySotoStrikesDoneIds = new Set(this.weeklySotoStrikes.map(s => s.index));
+        } else {
+          // Solo los que estén en bits
+          this.weeklySotoStrikesDoneIds = new Set(result.bits || []);
+        }
+      },
+      error: (err) => {
+        this.weeklySotoStrikes = this.STRIKE_NAMES_SOTO.map((name, index) => ({
+          index: index,
+          name: name
+        }));
+        this.weeklySotoStrikesDoneIds = new Set(); // todos no hechos
+        console.warn('Weekly soto strikes sin hacer');
+      }
+    });
+  }
+
+  loadWeeklyWvW() {
+    // Paso 1: Obtener los IDs de los logros de la categoría "Weekly WvW"
+    this.dailyService.getWeeklyWvWId().subscribe({
+      next: (categoryData: any) => {
+        const idsArray: number[] = categoryData.achievements || [];
+        // Si no hay logros, salir y dejar la lista vacía
+        if (idsArray.length === 0) {
+          this.weeklyWvW = [];
+          return;
+        }
+
+        const ids = idsArray.join(','); // Convertir a string separados por coma para la API
+
+        // Paso 2: Obtener información básica de los logros (nombre, tiers, etc.)
+        this.dailyService.getAchievementsByIds(ids).subscribe({
+          next: (basicAchievements: any[]) => {
+
+            // Paso 3: Obtener el progreso del jugador para esos logros
+            this.dailyService.getWeeklyWvW(ids).subscribe({
+              next: (progressData: any[]) => {
+                // Mapeamos los datos de progreso por id para fácil acceso
+                const progressMap = new Map<number, any>();
+                progressData.forEach(p => progressMap.set(p.id, p));
+
+                // Combinamos datos básicos y de progreso en un solo objeto
+                this.weeklyWvW = basicAchievements.map(b => {
+                  const progress = progressMap.get(b.id);
+                  return {
+                    id: b.id,
+                    name: this.removePrefix(b.name),
+                    current: progress?.current ?? 0,
+                    max: progress?.max ?? (b.tiers?.[0]?.count ?? 0),
+                    done: progress?.done ?? false
+                  };
+                });
+              },
+              error: (err) => {
+                // Si la API devuelve 404 (no hay progreso del jugador para esos logros),
+                // mostramos la info básica con progreso = 0
+                if (err.status === 404) {
+                  console.warn('Weekly WvW sin hacer');
+                  this.weeklyWvW = basicAchievements.map(b => ({
+                    id: b.id,
+                    name: this.removePrefix(b.name),
+                    current: 0,
+                    max: b.tiers?.[0]?.count ?? 0,
+                    done: false
+                  }));
+                } else {
+                  console.error('Error obteniendo progreso WvW:', err);
+                  this.weeklyWvW = [];
+                }
+              }
+            });
+
+          },
+          error: (err) => {
+            // Error al obtener info básica de los logros
+            console.error('Error al obtener info básica WvW:', err);
+            this.weeklyWvW = [];
+          }
+        });
+      },
+      error: (err) => {
+        // Error al obtener los IDs de los logros de la categoría
+        console.error('Error al obtener ids WvW:', err);
+        this.weeklyWvW = [];
+      }
+    });
+  }
+
+  loadWeeklyRiftHuntingSoto() {
+    this.dailyService.getWeeklyRiftHuntingSotoId().subscribe({
+      next: (categoryData: any) => {
+        const idsArray: number[] = categoryData.achievements || [];
+
+        if (idsArray.length === 0) {
+          this.weeklyRiftHuntingSoto = [];
+          return;
+        }
+
+        const ids = idsArray.join(',');
+
+        this.dailyService.getAchievementsByIds(ids).subscribe({
+          next: (basicAchievements: any[]) => {
+
+            this.dailyService.getWeeklyRiftHuntingSoto(ids).subscribe({
+              next: (progressData: any[]) => {
+                const progressMap = new Map<number, any>();
+                progressData.forEach(p => progressMap.set(p.id, p));
+
+                this.weeklyRiftHuntingSoto = basicAchievements.map(b => {
+                  const progress = progressMap.get(b.id);
+                  return {
+                    id: b.id,
+                    name: this.cleanName(b.name),
+                    current: progress?.current ?? 0,
+                    max: progress?.max ?? (b.tiers?.[b.tiers.length - 1]?.count ?? 5),
+                    done: progress?.done ?? false
+                  };
+                });
+              },
+              error: (err) => {
+                if (err.status === 404) {
+                  console.warn('Weekly rift soto sin hacer');
+                  this.weeklyRiftHuntingSoto = basicAchievements.map(b => ({
+                    id: b.id,
+                    name: this.cleanName(b.name),
+                    current: 0,
+                    max: (b.tiers?.[b.tiers.length - 1]?.count ?? 5),
+                    done: false
+                  }));
+                } else {
+                  console.error('Error obteniendo progreso soto:', err);
+                  this.weeklyRiftHuntingSoto = [];
+                }
+              }
+            });
+
+          },
+          error: (err) => {
+            console.error('Error obteniendo info básica soto:', err);
+            this.weeklyRiftHuntingSoto = [];
+          }
+        });
+      },
+      error: (err) => {
+        console.error('Error obteniendo ids soto:', err);
+        this.weeklyRiftHuntingSoto = [];
+      }
+    });
+  }
+
+  loadWeeklyRiftHuntingJw() {
+    this.dailyService.getWeeklyRiftHuntingJWId().subscribe({
+      next: (categoryData: any) => {
+        const idsArray: number[] = categoryData.achievements || [];
+
+        if (idsArray.length === 0) {
+          this.weeklyRiftHuntingJw = [];
+          return;
+        }
+
+        const ids = idsArray.join(',');
+
+        this.dailyService.getAchievementsByIds(ids).subscribe({
+          next: (basicAchievements: any[]) => {
+
+            this.dailyService.getWeeklyRiftHuntingJW(ids).subscribe({
+              next: (progressData: any[]) => {
+                const progressMap = new Map<number, any>();
+                progressData.forEach(p => progressMap.set(p.id, p));
+
+                this.weeklyRiftHuntingJw = basicAchievements.map(b => {
+                  const progress = progressMap.get(b.id);
+                  return {
+                    id: b.id,
+                    name: this.cleanName(b.name),
+                    current: progress?.current ?? 0,
+                    max: progress?.max ?? (b.tiers?.[b.tiers.length - 1]?.count ?? 5),
+                    done: progress?.done ?? false
+                  };
+                });
+              },
+              error: (err) => {
+                if (err.status === 404) {
+                  console.warn('Weekly rift jw sin hacer');
+                  this.weeklyRiftHuntingJw = basicAchievements.map(b => ({
+                    id: b.id,
+                    name: this.cleanName(b.name),
+                    current: 0,
+                    max: (b.tiers?.[b.tiers.length - 1]?.count ?? 5),
+                    done: false
+                  }));
+                } else {
+                  console.error('Error obteniendo progreso jw:', err);
+                  this.weeklyRiftHuntingJw = [];
+                }
+              }
+            });
+
+          },
+          error: (err) => {
+            console.error('Error obteniendo info básica jw:', err);
+            this.weeklyRiftHuntingJw = [];
+          }
+        });
+      },
+      error: (err) => {
+        console.error('Error obteniendo ids jw:', err);
+        this.weeklyRiftHuntingJw = [];
+      }
+    });
+  }
+
+  removePrefix(name: string): string {
+    return name.replace(/^\([^)]*\)\s*/, '');
+  }
+
+  cleanName(name: string): string {
+    // Español - remover prefijos al inicio
+    name = name.replace(/^Incursiones (a la|a las|a los|al|a|en la|en los) /i, '');
+
+    // Inglés - remover "Incursions" al final
+    name = name.replace(/ Incursions$/i, '');
+
+    // Capitalizar primera letra (solo si hay texto)
+    return name.charAt(0).toUpperCase() + name.slice(1).trim();
+  }
+
+  ///////////////////////////////// FILTER
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

@@ -1,11 +1,3 @@
-<div class="titulo">
-    <h1>{{title}}</h1>
-</div>
-
-<div class="reloj">
-    {{ time | async | date: 'hh:mm:ss a' }}
-</div>
-
 <mat-toolbar-row>
     <div>
         <nav>
@@ -23,6 +15,7 @@
                     (mouseleave)="closeMenu(diariasTrigger)">
                 <a mat-menu-item [routerLink]="'/diaria/wizardvault'">Cámara del brujo</a>
                 <a mat-menu-item [routerLink]="'/diaria/fractales'">Fractales</a>
+                <a mat-menu-item [routerLink]="'/diaria/semanales'">Semanales</a>
                 <a mat-menu-item [routerLink]="'/diaria/otros'">Más diarias</a>
                 </div>
             </mat-menu>
@@ -74,7 +67,13 @@
             <a href="https://dps.report/" target="_blank" rel="noopener noreferrer" style="text-decoration: none">LOGS</a>
             
             &nbsp;
+            <a href="https://gw2efficiency.com/" target="_blank" rel="noopener noreferrer" style="text-decoration: none">GW2Eff</a>
+
+            &nbsp;
             <a href="https://killproof.me/account/gw2accounts" target="_blank" rel="noopener noreferrer" style="text-decoration: none">KP</a>
+
+            &nbsp;
+            <a [cdkCopyToClipboard]="account.name" matTooltip="Copiar" style="cursor: pointer;">{{account.name}}</a>
         </nav>
     </div>
     <div class="search" color="primary">

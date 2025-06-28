@@ -69,7 +69,7 @@ export interface preciosVarios {
 
 export const idsT6 = "24295,24358,24351,24277,24357,24289,24300,24283";
 
-export const idsPreciosVarios = "19976, 19721";
+export const idsPreciosVarios = "19976, 19721, 97790, 96347, 96978, 68063, 96088, 96722";
 
 export const vales = 50;
 
@@ -278,7 +278,9 @@ export const valeId = [
 
 export const trebolId = [
     {
-        id: 19675
+        id: 19675,
+        tengo: 0,
+        icon: "https://wiki.guildwars2.com/images/7/7c/Mystic_Clover.png"
     }
 ];
 
@@ -390,6 +392,48 @@ export const monedaMistica = [
     }
 ];
 
+export const insigniaFarolero = [
+    {
+        id: 97790,
+        icon: "https://render.guildwars2.com/file/461D091230BAC7A857D77FABD54C3E45685ADCFB/2595114.png"
+    }
+];
+
+export const ambarGris = [
+    {
+        id: 96347,
+        icon: "https://render.guildwars2.com/file/C113C406281D94BB560701DF350BCA9AF592AFE9/2597025.png"
+    }
+];
+
+export const vetusta = [
+    {
+        id: 96978,
+        icon: "https://render.guildwars2.com/file/04DDE41E0EF34E2962E9A44CAE609FAA05283A08/2595107.png"
+    }
+];
+
+export const amalgamada = [
+    {
+        id: 68063,
+        icon: "https://wiki.guildwars2.com/images/c/c3/Amalgamated_Gemstone.png"
+    }
+];
+
+export const recuerdoAurene = [
+    {
+        id: 96088,
+        icon: "https://wiki.guildwars2.com/images/a/ab/Memory_of_Aurene.png"
+    }
+];
+
+export const piedraJade = [
+    {
+        id: 96722,
+        icon: "https://wiki.guildwars2.com/images/f/f8/Jade_Runestone.png"
+    }
+];
+
 export const aspectoMistico = [
     {
         id: 89105,
@@ -433,9 +477,27 @@ export const cristalLineaLey = [
     }
 ];
 
+export const magiaLiberada = [
+    {
+        idWallet: 32,
+        tengoEnCartera: 0,
+        icon: "https://wiki.guildwars2.com/images/f/f5/Unbound_Magic.png"
+    }
+];
+
+export const magiaVolatil = [
+    {
+        idWallet: 45,
+        tengoEnCartera: 0,
+        icon: "https://wiki.guildwars2.com/images/5/54/Volatile_Magic.png"
+    }
+];
+
 export const esenciaDesesperacionT1 = [
     {
         id: 100078,
+        idWallet: 78,
+        icon: "https://render.guildwars2.com/file/3607B5800CD5F9C279E54E1B2E545FF06717E143/3123731.png",
         tier: 1,
         cantidad: 3000 //por pieza de armadura pve
     }
@@ -444,6 +506,8 @@ export const esenciaDesesperacionT1 = [
 export const esenciaAvariciaT2 = [
     {
         id: 100414,
+        idWallet: 80,
+        icon: "https://render.guildwars2.com/file/437B00D7059E4B9AFF2EF732B01F6C1F6B34A0F1/3123732.png",
         tier: 2,
         cantidad: 1200 //por pieza de armadura pve
     }
@@ -452,6 +516,8 @@ export const esenciaAvariciaT2 = [
 export const esenciaTriunfoT3 = [
     {
         id: 100055,
+        idWallet: 79,
+        icon: "https://render.guildwars2.com/file/67B869ABAF74E20CB5652068F3DB0B060ED3C3E4/3123734.png",
         tier: 3,
         cantidad: 600 //por pieza de armadura pve
     }
@@ -460,6 +526,7 @@ export const esenciaTriunfoT3 = [
 export const esenciaAmalgamadaKryptis = [
     {
         id: 100930,
+        icon: "https://wiki.guildwars2.com/images/c/c0/Amalgamated_Rift_Essence.png",
         cantidad: 12, //por pieza de armadura pve
         cantidadt1: 250,
         cantidadt2: 100,
@@ -554,7 +621,8 @@ export const legendaryWeapons1 = [
         precioTpVenta: 0,
         precioTpVentaS: "",
         precioTpVentaPre: 0,
-        precioTpVentaSPre: ""
+        precioTpVentaSPre: "",
+        precioOrdenable: ""
     },
     {
         nombre: "Incineradora",
@@ -570,7 +638,8 @@ export const legendaryWeapons1 = [
         precioTpVenta: 0,
         precioTpVentaS: "",
         precioTpVentaPre: 0,
-        precioTpVentaSPre: ""
+        precioTpVentaSPre: "",
+        precioOrdenable: ""
     },
     {
         nombre: "El Festín",
@@ -586,7 +655,8 @@ export const legendaryWeapons1 = [
         precioTpVenta: 0,
         precioTpVentaS: "",
         precioTpVentaPre: 0,
-        precioTpVentaSPre: ""
+        precioTpVentaSPre: "",
+        precioOrdenable: ""
     },
     {
         nombre: "Gracia",
@@ -602,7 +672,8 @@ export const legendaryWeapons1 = [
         precioTpVenta: 0,
         precioTpVentaS: "",
         precioTpVentaPre: 0,
-        precioTpVentaSPre: ""
+        precioTpVentaSPre: "",
+        precioOrdenable: ""
     },
     {
         nombre: "Meteorlógico",
@@ -618,7 +689,8 @@ export const legendaryWeapons1 = [
         precioTpVenta: 0,
         precioTpVentaS: "",
         precioTpVentaPre: 0,
-        precioTpVentaSPre: ""
+        precioTpVentaSPre: "",
+        precioOrdenable: ""
     },
     {
         nombre: "Haz",
@@ -634,7 +706,8 @@ export const legendaryWeapons1 = [
         precioTpVenta: 0,
         precioTpVentaS: "",
         precioTpVentaPre: 0,
-        precioTpVentaSPre: ""
+        precioTpVentaSPre: "",
+        precioOrdenable: ""
     },
     {
         nombre: "El Juglar",
@@ -650,7 +723,8 @@ export const legendaryWeapons1 = [
         precioTpVenta: 0,
         precioTpVentaS: "",
         precioTpVentaPre: 0,
-        precioTpVentaSPre: ""
+        precioTpVentaSPre: "",
+        precioOrdenable: ""
     },
     {
         nombre: "Las Profecías del Buscador de la Llama",
@@ -666,7 +740,8 @@ export const legendaryWeapons1 = [
         precioTpVenta: 0,
         precioTpVentaS: "",
         precioTpVentaPre: 0,
-        precioTpVentaSPre: ""
+        precioTpVentaSPre: "",
+        precioOrdenable: ""
     },
     {
         nombre: "Rodgort",
@@ -682,7 +757,8 @@ export const legendaryWeapons1 = [
         precioTpVenta: 0,
         precioTpVentaS: "",
         precioTpVentaPre: 0,
-        precioTpVentaSPre: ""
+        precioTpVentaSPre: "",
+        precioOrdenable: ""
     },
     {
         nombre: "Aullador",
@@ -698,7 +774,8 @@ export const legendaryWeapons1 = [
         precioTpVenta: 0,
         precioTpVentaS: "",
         precioTpVentaPre: 0,
-        precioTpVentaSPre: ""
+        precioTpVentaSPre: "",
+        precioOrdenable: ""
     },
     {
         nombre: "Amanecer",
@@ -714,7 +791,8 @@ export const legendaryWeapons1 = [
         precioTpVenta: 0,
         precioTpVentaS: "",
         precioTpVentaPre: 0,
-        precioTpVentaSPre: ""
+        precioTpVentaSPre: "",
+        precioOrdenable: ""
     },
     {
         nombre: "Crepúsculo",
@@ -730,7 +808,8 @@ export const legendaryWeapons1 = [
         precioTpVenta: 0,
         precioTpVentaS: "",
         precioTpVentaPre: 0,
-        precioTpVentaSPre: ""
+        precioTpVentaSPre: "",
+        precioOrdenable: ""
     },
     {
         nombre: "El Juggernaut",
@@ -746,7 +825,8 @@ export const legendaryWeapons1 = [
         precioTpVenta: 0,
         precioTpVentaS: "",
         precioTpVentaPre: 0,
-        precioTpVentaSPre: ""
+        precioTpVentaSPre: "",
+        precioOrdenable: ""
     },
     {
         nombre: "Kudzu",
@@ -762,7 +842,8 @@ export const legendaryWeapons1 = [
         precioTpVenta: 0,
         precioTpVentaS: "",
         precioTpVentaPre: 0,
-        precioTpVentaSPre: ""
+        precioTpVentaSPre: "",
+        precioOrdenable: ""
     },
     {
         nombre: "El Depredador",
@@ -778,7 +859,8 @@ export const legendaryWeapons1 = [
         precioTpVenta: 0,
         precioTpVentaS: "",
         precioTpVentaPre: 0,
-        precioTpVentaSPre: ""
+        precioTpVentaSPre: "",
+        precioOrdenable: ""
     },
     {
         nombre: "El Soñador",
@@ -794,7 +876,8 @@ export const legendaryWeapons1 = [
         precioTpVenta: 0,
         precioTpVentaS: "",
         precioTpVentaPre: 0,
-        precioTpVentaSPre: ""
+        precioTpVentaSPre: "",
+        precioOrdenable: ""
     },
     {
         nombre: "El Bifrost",
@@ -810,7 +893,8 @@ export const legendaryWeapons1 = [
         precioTpVenta: 0,
         precioTpVentaS: "",
         precioTpVentaPre: 0,
-        precioTpVentaSPre: ""
+        precioTpVentaSPre: "",
+        precioOrdenable: ""
     },
     {
         nombre: "Frenesí",
@@ -826,7 +910,8 @@ export const legendaryWeapons1 = [
         precioTpVenta: 0,
         precioTpVentaS: "",
         precioTpVentaPre: 0,
-        precioTpVentaSPre: ""
+        precioTpVentaSPre: "",
+        precioOrdenable: ""
     },
     {
         nombre: "Kamohoali'i Kotaki",
@@ -842,7 +927,8 @@ export const legendaryWeapons1 = [
         precioTpVenta: 0,
         precioTpVentaS: "",
         precioTpVentaPre: 0,
-        precioTpVentaSPre: ""
+        precioTpVentaSPre: "",
+        precioOrdenable: ""
     },
     {
         nombre: "Kraitkin",
@@ -858,8 +944,26 @@ export const legendaryWeapons1 = [
         precioTpVenta: 0,
         precioTpVentaS: "",
         precioTpVentaPre: 0,
-        precioTpVentaSPre: ""
+        precioTpVentaSPre: "",
+        precioOrdenable: ""
     },
+    {
+        nombre: "Eternidad",
+        id: 30689,
+        idWardrobe: 4678,
+        tipo: "Mandoble",
+        tengo: 0,
+        pre: "Amanecer, Crepúsculo",
+        preId: 30703, //30704
+        icon: "https://wiki-es.guildwars2.com/images/3/31/Eternidad.png",
+        wiki: "https://wiki-es.guildwars2.com/wiki/Eternidad",
+        wikiPre: "https://wiki.guildwars2.com/wiki/Sunrise",
+        precioTpVenta: 0,
+        precioTpVentaS: "",
+        precioTpVentaPre: 0,
+        precioTpVentaSPre: "",
+        precioOrdenable: ""
+    }
 ];
 
 export const donExploracion = [
@@ -1088,7 +1192,8 @@ export const legendaryWeapons3 = [
         precioTpVenta: 0,
         precioTpVentaS: "",
         precioTpVentaPre: 0,
-        precioTpVentaSPre: ""
+        precioTpVentaSPre: "",
+        precioOrdenable: ""
     },
     {
         nombre: "Mirada de Aurene",
@@ -1104,7 +1209,8 @@ export const legendaryWeapons3 = [
         precioTpVenta: 0,
         precioTpVentaS: "",
         precioTpVentaPre: 0,
-        precioTpVentaSPre: ""
+        precioTpVentaSPre: "",
+        precioOrdenable: ""
     },
     {
         nombre: "Desgarro de Aurene",
@@ -1120,7 +1226,8 @@ export const legendaryWeapons3 = [
         precioTpVenta: 0,
         precioTpVentaS: "",
         precioTpVentaPre: 0,
-        precioTpVentaSPre: ""
+        precioTpVentaSPre: "",
+        precioOrdenable: ""
     },
     {
         nombre: "Garra de Aurene",
@@ -1136,7 +1243,8 @@ export const legendaryWeapons3 = [
         precioTpVenta: 0,
         precioTpVentaS: "",
         precioTpVentaPre: 0,
-        precioTpVentaSPre: ""
+        precioTpVentaSPre: "",
+        precioOrdenable: ""
     },
     {
         nombre: "Cola de Aurene",
@@ -1152,7 +1260,8 @@ export const legendaryWeapons3 = [
         precioTpVenta: 0,
         precioTpVentaS: "",
         precioTpVentaPre: 0,
-        precioTpVentaSPre: ""
+        precioTpVentaSPre: "",
+        precioOrdenable: ""
     },
     {
         nombre: "Razonamiento de Aurene",
@@ -1168,7 +1277,8 @@ export const legendaryWeapons3 = [
         precioTpVenta: 0,
         precioTpVentaS: "",
         precioTpVentaPre: 0,
-        precioTpVentaSPre: ""
+        precioTpVentaSPre: "",
+        precioOrdenable: ""
     },
     {
         nombre: "Sabiduría de Aurene",
@@ -1184,7 +1294,8 @@ export const legendaryWeapons3 = [
         precioTpVenta: 0,
         precioTpVentaS: "",
         precioTpVentaPre: 0,
-        precioTpVentaSPre: ""
+        precioTpVentaSPre: "",
+        precioOrdenable: ""
     },
     {
         nombre: "Colmillo de Aurene",
@@ -1200,7 +1311,8 @@ export const legendaryWeapons3 = [
         precioTpVenta: 0,
         precioTpVentaS: "",
         precioTpVentaPre: 0,
-        precioTpVentaSPre: ""
+        precioTpVentaSPre: "",
+        precioOrdenable: ""
     },
     {
         nombre: "Escama de Aurene",
@@ -1216,7 +1328,8 @@ export const legendaryWeapons3 = [
         precioTpVenta: 0,
         precioTpVentaS: "",
         precioTpVentaPre: 0,
-        precioTpVentaSPre: ""
+        precioTpVentaSPre: "",
+        precioOrdenable: ""
     },
     {
         nombre: "Aliento de Aurene",
@@ -1232,7 +1345,8 @@ export const legendaryWeapons3 = [
         precioTpVenta: 0,
         precioTpVentaS: "",
         precioTpVentaPre: 0,
-        precioTpVentaSPre: ""
+        precioTpVentaSPre: "",
+        precioOrdenable: ""
     },
     {
         nombre: "Mordisco de Aurene",
@@ -1248,7 +1362,8 @@ export const legendaryWeapons3 = [
         precioTpVenta: 0,
         precioTpVentaS: "",
         precioTpVentaPre: 0,
-        precioTpVentaSPre: ""
+        precioTpVentaSPre: "",
+        precioOrdenable: ""
     },
     {
         nombre: "Peso de Aurene",
@@ -1264,7 +1379,8 @@ export const legendaryWeapons3 = [
         precioTpVenta: 0,
         precioTpVentaS: "",
         precioTpVentaPre: 0,
-        precioTpVentaSPre: ""
+        precioTpVentaSPre: "",
+        precioOrdenable: ""
     },
     {
         nombre: "Vuelo de Aurene",
@@ -1280,7 +1396,8 @@ export const legendaryWeapons3 = [
         precioTpVenta: 0,
         precioTpVentaS: "",
         precioTpVentaPre: 0,
-        precioTpVentaSPre: ""
+        precioTpVentaSPre: "",
+        precioOrdenable: ""
     },
     {
         nombre: "Persuasión de Aurene",
@@ -1296,7 +1413,8 @@ export const legendaryWeapons3 = [
         precioTpVenta: 0,
         precioTpVentaS: "",
         precioTpVentaPre: 0,
-        precioTpVentaSPre: ""
+        precioTpVentaSPre: "",
+        precioOrdenable: ""
     },
     {
         nombre: "Ala de Aurene",
@@ -1312,7 +1430,8 @@ export const legendaryWeapons3 = [
         precioTpVenta: 0,
         precioTpVentaS: "",
         precioTpVentaPre: 0,
-        precioTpVentaSPre: ""
+        precioTpVentaSPre: "",
+        precioOrdenable: ""
     },
     {
         nombre: "Reflexión de Aurene",
@@ -1328,7 +1447,8 @@ export const legendaryWeapons3 = [
         precioTpVenta: 0,
         precioTpVentaS: "",
         precioTpVentaPre: 0,
-        precioTpVentaSPre: ""
+        precioTpVentaSPre: "",
+        precioOrdenable: ""
     },
 ];
 
@@ -1746,5 +1866,18 @@ export const legendaryBack = [
         wiki: "https://wiki.guildwars2.com/wiki/The_Ascension",
         wikiPre: "https://wiki.guildwars2.com/wiki/Wings_of_Ascension",
         modo: "PvP"
+    },
+    {
+        nombre: "Orrax Manifested",
+        id: 104857,
+        idWardrobe: 13090,
+        tipo: "Mochila",
+        tengo: 0,
+        pre: "Orrax Contained",
+        preId: 104690,
+        icon: "https://render.guildwars2.com/file/9C5948587832ACA31FD01298DE081BDE626CC607/3629149.png",
+        wiki: "https://wiki.guildwars2.com/wiki/Orrax_Manifested",
+        wikiPre: "https://wiki.guildwars2.com/wiki/Orrax_Contained",
+        modo: "PvE"
     }
 ];

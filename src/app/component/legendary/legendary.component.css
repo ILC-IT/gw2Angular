@@ -18,7 +18,7 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
 th.mat-header-cell {
     /* color: red; */
     background-color: rgb(150, 217, 248);
-    font-size: 16px;
+    font-size: 14px;
 }
 
 tr.mat-footer-row {
@@ -62,5 +62,86 @@ img {
 }
   
 ::ng-deep .mat-sort-header-arrow {
-color: red; /*change color of arrow*/
+    color: red; /*change color of arrow*/
+}
+
+.centrado {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.centrado .item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.gap-grande {
+    gap: 30px;
+}
+
+.responsive-container {
+    flex-wrap: wrap; /* 👈 permite que los ítems bajen de línea */
+    row-gap: 16px; /* espacio vertical entre filas */
+    text-align: center;
+    padding: 8px;
+    overflow-x: auto; /* opcional: agrega scroll horizontal si no cabe */
+}
+
+.enlace-sin-subrayado {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.enlace-boton {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 8px 16px; /* Botón con padding */
+    background-color: #007BFF; /* Fondo azul */
+    color: white; /* Texto blanco */
+    border-radius: 4px; /* Bordes redondeados */
+    font-weight: bold;
+    transition: all 0.3s ease; /* Transición suave */
+}
+
+.enlace-boton img {
+    margin-right: 8px; /* Espaciado entre la imagen y el texto */
+}
+
+.enlace-boton:hover {
+    background-color: #0056b3; /* Cambio de fondo al pasar el mouse */
+    cursor: pointer; /* Cambia el cursor */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra al pasar el mouse */
+}
+
+.contenedor-materiales {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem; /* espacio entre botón y spans */
+    flex-wrap: wrap;
+}
+
+.enlace-material {
+    text-decoration: none;
+}
+
+.material-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 1rem;
+}
+
+.icono-material {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.big-button {
+    font-size: 16px;
+    padding: 10px 10px;
+    border-radius: 12px; /* Esquinas redondeadas */
 }

@@ -21,6 +21,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+
 
 @NgModule({
   declarations: [],
@@ -48,7 +50,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatDividerModule,
     MatTooltipModule,
     MatProgressBarModule,
-    MatGridListModule
+    MatGridListModule,
+    MatSidenavModule
   ]
 })
 export class MaterialModule { }

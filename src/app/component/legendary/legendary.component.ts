@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { HeroService } from 'src/app/service/hero.service';
 import { LegendaryService } from 'src/app/service/legendary.service';
-import { legendarios, armaduraLigera, armaduraMedia, armaduraPesada, runa, sello, anilloRaid, t6, idsT6, vales, cantidadArmadura, cantidadRunas, cantidadSellos, valeId, trebolId, liId, ectoplasmaId, liArmadura, trebolArmadura, trebolRuna, trebolSello, trebolAnilloRaid, t6ArmaduraSelloRuna, ectoplasmaRuna, ectoplasmaSello, liAnilloRaid, t6AnilloRaid, obsidianaArmadura, obsidianaRuna, obsidianaSello, obsidianaId, otrosComponentes, lingoteAurico, placaReclamada, huevoChak, piezaAeronave, trozoAurilio, cristalLineaLey, montonCristalLuminoso, aspectoMistico, talismanBrillantez, talismanPotencia, talismanHabilidad, motaMistica, simboloControl, simboloMejora, simboloDolor, monedaMistica, preciosVarios, idsPreciosVarios, legendaryWeapons1, legendaryWeapons2, legendaryWeapons3, legendaryWeapons3Variants, donExploracion, donBatalla, notasInvestigacion, otrosLegendarios, anilloMundo, legendaryAccessory, amuletoPvE, amuletoPvP, legendaryRelic, legendaryWeaponsOther, legendaryBack, armaduraLigeraPve, armaduraMediaPve, armaduraPesadaPve} from './legendary';
+import { legendarios, armaduraLigera, armaduraMedia, armaduraPesada, runa, sello, anilloRaid, t6, idsT6, vales, cantidadArmadura, cantidadRunas, cantidadSellos, valeId, trebolId, liId, ectoplasmaId, liArmadura, trebolArmadura, trebolRuna, trebolSello, trebolAnilloRaid, t6ArmaduraSelloRuna, ectoplasmaRuna, ectoplasmaSello, liAnilloRaid, t6AnilloRaid, obsidianaArmadura, obsidianaRuna, obsidianaSello, obsidianaId, otrosComponentes, lingoteAurico, placaReclamada, huevoChak, piezaAeronave, trozoAurilio, cristalLineaLey, montonCristalLuminoso, aspectoMistico, talismanBrillantez, talismanPotencia, talismanHabilidad, motaMistica, simboloControl, simboloMejora, simboloDolor, monedaMistica, preciosVarios, idsPreciosVarios, legendaryWeapons1, legendaryWeapons2, legendaryWeapons3, legendaryWeapons3Variants, donExploracion, donBatalla, notasInvestigacion, otrosLegendarios, anilloMundo, legendaryAccessory, amuletoPvE, amuletoPvP, legendaryRelic, legendaryWeaponsOther, legendaryBack, armaduraLigeraPve, armaduraMediaPve, armaduraPesadaPve, insigniaFarolero, ambarGris, vetusta, amalgamada, recuerdoAurene, piedraJade, esenciaDesesperacionT1, esenciaAvariciaT2, esenciaTriunfoT3, magiaLiberada, magiaVolatil} from './legendary';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -180,10 +180,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
   runaCount: number = 0;
   selloCount: number = 0;
   valeCount: number = 0;
-  trebolCount: number = 0;
   liCount: number = 0;
-  ectoplasmaCount: number = 0;
-  obsidianaCount: number = 0;
   armaduraLigeraDatos: legendarios = {
     nombre: "Raid Armadura Ligera",
     cantidad: cantidadArmadura,
@@ -478,6 +475,33 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     gaste: 0,
     necesito: 0
   }
+  esenciat1: otrosComponentes = {
+    nombre: "Esencia T1",
+    id: esenciaDesesperacionT1[0].idWallet,
+    icon: esenciaDesesperacionT1[0].icon,
+    cantidad: 0,
+    tengo: 0,
+    gaste: 0,
+    necesito: 0
+  }
+  esenciat2: otrosComponentes = {
+    nombre: "Esencia T2",
+    id: esenciaAvariciaT2[0].idWallet,
+    icon: esenciaAvariciaT2[0].icon,
+    cantidad: 0,
+    tengo: 0,
+    gaste: 0,
+    necesito: 0
+  }
+  esenciat3: otrosComponentes = {
+    nombre: "Esencia T3",
+    id: esenciaTriunfoT3[0].idWallet,
+    icon: esenciaTriunfoT3[0].icon,
+    cantidad: 0,
+    tengo: 0,
+    gaste: 0,
+    necesito: 0
+  }
   filaEnBlancoOtros: otrosComponentes = {
     nombre: "",
     id: 0,
@@ -504,6 +528,10 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     this.simboloControl,
     this.simboloMejora,
     this.simboloDolor,
+    this.filaEnBlancoOtros,
+    this.esenciat1,
+    this.esenciat2,
+    this.esenciat3,
     this.filaEnBlancoOtros,
     this.monedaMistica
   ]
@@ -593,7 +621,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     icon: legendaryBack[0].icon,
     wiki: legendaryBack[0].wiki
   }
-  mochilaPvE: otrosLegendarios = {
+  mochilaFractal: otrosLegendarios = {
     id: legendaryBack[1].id,
     nombre: legendaryBack[1].nombre,
     tengo: legendaryBack[1].tengo,
@@ -610,6 +638,15 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     modo: legendaryBack[2].modo,
     icon: legendaryBack[2].icon,
     wiki: legendaryBack[2].wiki
+  }
+  mochilaPvE: otrosLegendarios = {
+    id: legendaryBack[3].id,
+    nombre: legendaryBack[3].nombre,
+    tengo: legendaryBack[3].tengo,
+    tipo: legendaryBack[3].tipo,
+    modo: legendaryBack[3].modo,
+    icon: legendaryBack[3].icon,
+    wiki: legendaryBack[3].wiki
   }
   obsidianaLigera: otrosLegendarios = {
     id: armaduraLigeraPve[0].id,
@@ -647,6 +684,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     this.amuletoPvP,
     this.reliquiaLegendaria,
     this.mochilaPvE,
+    this.mochilaFractal,
     this.mochilaPvP,
     this.mochilaWvW,
     this.lanzaJanthirLegendaria,
@@ -693,9 +731,117 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     precioStackVentaS90: ""
   }
 
+  insigniaFarolero: preciosVarios = {
+    icon: insigniaFarolero[0].icon,
+    id: insigniaFarolero[0].id,
+    nombre: "Insignia de farolero",
+    tengo: 0,
+    precioTpCompra: 0,
+    precioTpCompraS: "",
+    precioTpVenta: 0,
+    precioTpVentaS: "",
+    precioStackCompra: 0,
+    precioStackCompraS: "",
+    precioStackVenta: 0,
+    precioStackVentaS: "",
+    precioStackVenta90: 0,
+    precioStackVentaS90: ""
+  }
+
+  ambarGris: preciosVarios = {
+    icon: ambarGris[0].icon,
+    id: ambarGris[0].id,
+    nombre: "Ámbar gris",
+    tengo: 0,
+    precioTpCompra: 0,
+    precioTpCompraS: "",
+    precioTpVenta: 0,
+    precioTpVentaS: "",
+    precioStackCompra: 0,
+    precioStackCompraS: "",
+    precioStackVenta: 0,
+    precioStackVentaS: "",
+    precioStackVenta90: 0,
+    precioStackVentaS90: ""
+  }
+
+  vetusta: preciosVarios = {
+    icon: vetusta[0].icon,
+    id: vetusta[0].id,
+    nombre: "Vetusta",
+    tengo: 0,
+    precioTpCompra: 0,
+    precioTpCompraS: "",
+    precioTpVenta: 0,
+    precioTpVentaS: "",
+    precioStackCompra: 0,
+    precioStackCompraS: "",
+    precioStackVenta: 0,
+    precioStackVentaS: "",
+    precioStackVenta90: 0,
+    precioStackVentaS90: ""
+  }
+
+  amalgamada: preciosVarios = {
+    icon: amalgamada[0].icon,
+    id: amalgamada[0].id,
+    nombre: "Gema amalgamada",
+    tengo: 0,
+    precioTpCompra: 0,
+    precioTpCompraS: "",
+    precioTpVenta: 0,
+    precioTpVentaS: "",
+    precioStackCompra: 0,
+    precioStackCompraS: "",
+    precioStackVenta: 0,
+    precioStackVentaS: "",
+    precioStackVenta90: 0,
+    precioStackVentaS90: ""
+  }
+
+  recuerdoAurene: preciosVarios = {
+    icon: recuerdoAurene[0].icon,
+    id: recuerdoAurene[0].id,
+    nombre: "Recuerdo de Aurene",
+    tengo: 0,
+    precioTpCompra: 0,
+    precioTpCompraS: "",
+    precioTpVenta: 0,
+    precioTpVentaS: "",
+    precioStackCompra: 0,
+    precioStackCompraS: "",
+    precioStackVenta: 0,
+    precioStackVentaS: "",
+    precioStackVenta90: 0,
+    precioStackVentaS90: ""
+  }
+
+  piedraJade: preciosVarios = {
+    icon: piedraJade[0].icon,
+    id: piedraJade[0].id,
+    nombre: "Piedra de Jade",
+    tengo: 0,
+    precioTpCompra: 0,
+    precioTpCompraS: "",
+    precioTpVenta: 0,
+    precioTpVentaS: "",
+    precioStackCompra: 0,
+    precioStackCompraS: "",
+    precioStackVenta: 0,
+    precioStackVentaS: "",
+    precioStackVenta90: 0,
+    precioStackVentaS90: ""
+  }
+
   preciosVarios: preciosVarios[] = [
     this.monedaMisticaPV,
     this.ectoplasmaPV,
+    this.insigniaFarolero,
+    this.ambarGris,
+    this.vetusta,
+    this.amalgamada,
+    this.recuerdoAurene,
+    this.piedraJade
   ]
   // tabla precios varios
   displayedColumnsPreciosVarios: string[] = ['nombre', 'id', 'tengo', 'icon', 'precioTpCompraS', 'precioTpVentaS', 'precioStackCompraS', 'precioStackVentaS', 'precioStackVentaS90'];
@@ -709,6 +855,9 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
   donExploracion = donExploracion;
   donBatalla = donBatalla;
   notasInvestigacion = notasInvestigacion;
+  trebol = trebolId;
+  magiaLiberada = magiaLiberada;
+  magiaVolatil = magiaVolatil;
   // tabla armas legendarias 1 y 3
   displayedColumnsArmasLegendarias1: string[] = ['icon', 'tengo', 'nombre', 'tipo', 'precioTpVentaS', 'pre', 'precioTpVentaSPre'];
   displayedColumnsArmasLegendarias2: string[] = ['icon', 'tengo', 'nombre', 'tipo', 'pre'];
@@ -859,6 +1008,25 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
           this.monedaMistica.tengo = materials[i].count;
           this.monedaMisticaPV.tengo = materials[i].count;
         }
+        //Varios
+        if (materials[i].id === insigniaFarolero[0].id){
+          this.insigniaFarolero.tengo = materials[i].count;
+        }
+        if (materials[i].id === ambarGris[0].id){
+          this.ambarGris.tengo = materials[i].count;
+        }
+        if (materials[i].id === vetusta[0].id){
+          this.vetusta.tengo = materials[i].count;
+        }
+        if (materials[i].id === amalgamada[0].id){
+          this.amalgamada.tengo = materials[i].count;
+        }
+        if (materials[i].id === recuerdoAurene[0].id){
+          this.recuerdoAurene.tengo = materials[i].count;
+        }
+        if (materials[i].id === piedraJade[0].id){
+          this.piedraJade.tengo = materials[i].count;
+        }
       }
       //Actualizo totales t6 para armaduras, anillo, runas y sellos
       this.vialDeSangrePoderosa.cantidad = this.totalesDatos.totalT6;
@@ -917,6 +1085,9 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
         }
         if (legendary[i].id === this.mochilaPvE.id){
           this.mochilaPvE.tengo = legendary[i].count;
+        }
+        if (legendary[i].id === this.mochilaFractal.id){
+          this.mochilaFractal.tengo = legendary[i].count;
         }
         if (legendary[i].id === this.mochilaPvP.id){
           this.mochilaPvP.tengo = legendary[i].count;
@@ -1038,16 +1209,14 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
       for (let i = 0; i < mats.length; i++){
         if (mats[i].id === trebolId[0].id){
           this.tengoDatos.totalTreboles = mats[i].count;
-          this.trebolCount++;
+          this.trebol[0].tengo = mats[i].count;
         }
         if (mats[i].id === ectoplasmaId[0].id){
           this.tengoDatos.totalEctoplasma = mats[i].count;
           this.ectoplasmaPV.tengo = mats[i].count;
-          this.ectoplasmaCount++;
         }
         if (mats[i].id === obsidianaId[0].id){
           this.tengoDatos.totalObsidiana = mats[i].count;
-          this.obsidianaCount++;
         }
       }
 
@@ -1057,14 +1226,19 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
       this.tengoDatos.totalT6 = minimo;
 
       this.heroService.getWallet().subscribe((wallet: any) => {
-        this.valeCount = wallet.find((o: { id: number; value: number}) => o.id === valeId[0].idWallet).value;
-        this.liCount = wallet.find((o: { id: number; value: number}) => o.id === liId[0].idWallet).value;
+        this.valeCount = wallet.find((o: { id: number; value: number}) => o.id === valeId[0].idWallet)?.value ?? 0;
+        this.liCount = wallet.find((o: { id: number; value: number}) => o.id === liId[0].idWallet)?.value ?? 0;
         this.tengoDatos.totalVales = this.valeCount;
         this.tengoDatos.totalLi = this.liCount;
         //otros
-        this.trozoAurilio.tengo = wallet.find((o: { id: number; value: number}) => o.id === trozoAurilio[0].idWallet).value;
-        this.piezaAeronave.tengo = wallet.find((o: { id: number; value: number}) => o.id === piezaAeronave[0].idWallet).value;
-        this.cristalLineaLey.tengo = wallet.find((o: { id: number; value: number}) => o.id === cristalLineaLey[0].idWallet).value;
+        this.trozoAurilio.tengo = wallet.find((o: { id: number; value: number}) => o.id === trozoAurilio[0].idWallet)?.value ?? 0;
+        this.piezaAeronave.tengo = wallet.find((o: { id: number; value: number}) => o.id === piezaAeronave[0].idWallet)?.value ?? 0;
+        this.cristalLineaLey.tengo = wallet.find((o: { id: number; value: number}) => o.id === cristalLineaLey[0].idWallet)?.value ?? 0;
+        this.esenciat1.tengo = wallet.find((o: { id: number; value: number}) => o.id === esenciaDesesperacionT1[0].idWallet)?.value ?? 0;
+        this.esenciat2.tengo = wallet.find((o: { id: number; value: number}) => o.id === esenciaAvariciaT2[0].idWallet)?.value ?? 0;
+        this.esenciat3.tengo = wallet.find((o: { id: number; value: number}) => o.id === esenciaTriunfoT3[0].idWallet)?.value ?? 0;
+        this.magiaLiberada[0].tengoEnCartera = wallet.find((o: { id: number; value: number}) => o.id === magiaLiberada[0].idWallet)?.value ?? 0;
+        this.magiaVolatil[0].tengoEnCartera = wallet.find((o: { id: number; value: number}) => o.id === magiaVolatil[0].idWallet)?.value ?? 0;
 
         this.getMatsGaste(); //cuantos vales, treboles, lis, ectoplasma gasté ya
         this.getOtrosGaste(); //cuantos otros gasté ya
@@ -1295,6 +1469,78 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
           this.ectoplasmaPV.precioStackVentaS = this.getPriceSplit(this.ectoplasmaPV.precioStackVenta);
           this.ectoplasmaPV.precioStackVentaS90 = this.getPriceSplit(this.ectoplasmaPV.precioStackVenta90);
         }
+        if (prices[i].id == this.insigniaFarolero.id){
+          this.insigniaFarolero.precioTpCompra = prices[i].buys.unit_price;
+          this.insigniaFarolero.precioTpVenta = prices[i].sells.unit_price;
+          this.insigniaFarolero.precioStackCompra = prices[i].buys.unit_price * 250;
+          this.insigniaFarolero.precioStackVenta = prices[i].sells.unit_price * 250;
+          this.insigniaFarolero.precioStackVenta90 = prices[i].sells.unit_price * 250 * 0.9;
+          this.insigniaFarolero.precioTpCompraS = this.getPriceSplit(this.insigniaFarolero.precioTpCompra);
+          this.insigniaFarolero.precioTpVentaS = this.getPriceSplit(this.insigniaFarolero.precioTpVenta);
+          this.insigniaFarolero.precioStackCompraS = this.getPriceSplit(this.insigniaFarolero.precioStackCompra);
+          this.insigniaFarolero.precioStackVentaS = this.getPriceSplit(this.insigniaFarolero.precioStackVenta);
+          this.insigniaFarolero.precioStackVentaS90 = this.getPriceSplit(this.insigniaFarolero.precioStackVenta90);
+        }
+        if (prices[i].id == this.ambarGris.id){
+          this.ambarGris.precioTpCompra = prices[i].buys.unit_price;
+          this.ambarGris.precioTpVenta = prices[i].sells.unit_price;
+          this.ambarGris.precioStackCompra = prices[i].buys.unit_price * 250;
+          this.ambarGris.precioStackVenta = prices[i].sells.unit_price * 250;
+          this.ambarGris.precioStackVenta90 = prices[i].sells.unit_price * 250 * 0.9;
+          this.ambarGris.precioTpCompraS = this.getPriceSplit(this.ambarGris.precioTpCompra);
+          this.ambarGris.precioTpVentaS = this.getPriceSplit(this.ambarGris.precioTpVenta);
+          this.ambarGris.precioStackCompraS = this.getPriceSplit(this.ambarGris.precioStackCompra);
+          this.ambarGris.precioStackVentaS = this.getPriceSplit(this.ambarGris.precioStackVenta);
+          this.ambarGris.precioStackVentaS90 = this.getPriceSplit(this.ambarGris.precioStackVenta90);
+        }
+        if (prices[i].id == this.vetusta.id){
+          this.vetusta.precioTpCompra = prices[i].buys.unit_price;
+          this.vetusta.precioTpVenta = prices[i].sells.unit_price;
+          this.vetusta.precioStackCompra = prices[i].buys.unit_price * 250;
+          this.vetusta.precioStackVenta = prices[i].sells.unit_price * 250;
+          this.vetusta.precioStackVenta90 = prices[i].sells.unit_price * 250 * 0.9;
+          this.vetusta.precioTpCompraS = this.getPriceSplit(this.vetusta.precioTpCompra);
+          this.vetusta.precioTpVentaS = this.getPriceSplit(this.vetusta.precioTpVenta);
+          this.vetusta.precioStackCompraS = this.getPriceSplit(this.vetusta.precioStackCompra);
+          this.vetusta.precioStackVentaS = this.getPriceSplit(this.vetusta.precioStackVenta);
+          this.vetusta.precioStackVentaS90 = this.getPriceSplit(this.vetusta.precioStackVenta90);
+        }
+        if (prices[i].id == this.amalgamada.id){
+          this.amalgamada.precioTpCompra = prices[i].buys.unit_price;
+          this.amalgamada.precioTpVenta = prices[i].sells.unit_price;
+          this.amalgamada.precioStackCompra = prices[i].buys.unit_price * 250;
+          this.amalgamada.precioStackVenta = prices[i].sells.unit_price * 250;
+          this.amalgamada.precioStackVenta90 = prices[i].sells.unit_price * 250 * 0.9;
+          this.amalgamada.precioTpCompraS = this.getPriceSplit(this.amalgamada.precioTpCompra);
+          this.amalgamada.precioTpVentaS = this.getPriceSplit(this.amalgamada.precioTpVenta);
+          this.amalgamada.precioStackCompraS = this.getPriceSplit(this.amalgamada.precioStackCompra);
+          this.amalgamada.precioStackVentaS = this.getPriceSplit(this.amalgamada.precioStackVenta);
+          this.amalgamada.precioStackVentaS90 = this.getPriceSplit(this.amalgamada.precioStackVenta90);
+        }
+        if (prices[i].id == this.recuerdoAurene.id){
+          this.recuerdoAurene.precioTpCompra = prices[i].buys.unit_price;
+          this.recuerdoAurene.precioTpVenta = prices[i].sells.unit_price;
+          this.recuerdoAurene.precioStackCompra = prices[i].buys.unit_price * 250;
+          this.recuerdoAurene.precioStackVenta = prices[i].sells.unit_price * 250;
+          this.recuerdoAurene.precioStackVenta90 = prices[i].sells.unit_price * 250 * 0.9;
+          this.recuerdoAurene.precioTpCompraS = this.getPriceSplit(this.recuerdoAurene.precioTpCompra);
+          this.recuerdoAurene.precioTpVentaS = this.getPriceSplit(this.recuerdoAurene.precioTpVenta);
+          this.recuerdoAurene.precioStackCompraS = this.getPriceSplit(this.recuerdoAurene.precioStackCompra);
+          this.recuerdoAurene.precioStackVentaS = this.getPriceSplit(this.recuerdoAurene.precioStackVenta);
+          this.recuerdoAurene.precioStackVentaS90 = this.getPriceSplit(this.recuerdoAurene.precioStackVenta90);
+        }
+        if (prices[i].id == this.piedraJade.id){
+          this.piedraJade.precioTpCompra = prices[i].buys.unit_price;
+          this.piedraJade.precioTpVenta = prices[i].sells.unit_price;
+          this.piedraJade.precioStackCompra = prices[i].buys.unit_price * 250;
+          this.piedraJade.precioStackVenta = prices[i].sells.unit_price * 250;
+          this.piedraJade.precioStackVenta90 = prices[i].sells.unit_price * 250 * 0.9;
+          this.piedraJade.precioTpCompraS = this.getPriceSplit(this.piedraJade.precioTpCompra);
+          this.piedraJade.precioTpVentaS = this.getPriceSplit(this.piedraJade.precioTpVenta);
+          this.piedraJade.precioStackCompraS = this.getPriceSplit(this.piedraJade.precioStackCompra);
+          this.piedraJade.precioStackVentaS = this.getPriceSplit(this.piedraJade.precioStackVenta);
+          this.piedraJade.precioStackVentaS90 = this.getPriceSplit(this.piedraJade.precioStackVenta90);
+        }
       }
       // console.log(this.monedaMisticaPV)
       // console.log(this.ectoplasmaPV)
@@ -1332,10 +1578,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
           if (prices[i].id == legendaryWeapons1[j].preId){
             legendaryWeapons1[j].precioTpVentaPre = prices[i].sells.unit_price;
             legendaryWeapons1[j].precioTpVentaSPre = this.getPriceSplit(legendaryWeapons1[j].precioTpVentaPre);
-            //para que ordene la columna bien, le agrego un espacio antes si es menor a "99g 99s 99c" que son 11 caracteres
-            if (legendaryWeapons1[j].precioTpVentaSPre.length === 11){ 
-              legendaryWeapons1[j].precioTpVentaSPre = " " + legendaryWeapons1[j].precioTpVentaSPre;
-            }
+            legendaryWeapons1[j].precioOrdenable = this.padPrecio(legendaryWeapons1[j].precioTpVentaSPre);
             break;
           }
         }
@@ -1372,10 +1615,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
           if (prices[i].id == legendaryWeapons3[j].preId){
             legendaryWeapons3[j].precioTpVentaPre = prices[i].sells.unit_price;
             legendaryWeapons3[j].precioTpVentaSPre = this.getPriceSplit(legendaryWeapons3[j].precioTpVentaPre);
-            //para que ordene la columna bien, le agrego un espacio antes si es menor a "99g 99s 99c" que son 11 caracteres
-            if (legendaryWeapons3[j].precioTpVentaSPre.length === 11){ 
-              legendaryWeapons3[j].precioTpVentaSPre = " " + legendaryWeapons3[j].precioTpVentaSPre;
-            }
+            legendaryWeapons3[j].precioOrdenable = this.padPrecio(legendaryWeapons3[j].precioTpVentaSPre);
             break;
           }
         }
@@ -1410,13 +1650,22 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
 
     //Saco la cantidad de notas de investigacion de la cartera
     this.heroService.getWallet().subscribe((wallet: any) => {
-      notasInvestigacion[0].tengoEnCartera = wallet.find((o: { id: number; value: number}) => o.id === notasInvestigacion[0].idWallet).value;
+      notasInvestigacion[0].tengoEnCartera = wallet.find((o: { id: number; value: number}) => o.id === notasInvestigacion[0].idWallet)?.value ?? 0;
     })
 
     //Hago tabla de armas de segunda gen
     this.dataSourceArmasLegendarias2 = new MatTableDataSource(legendaryWeapons2);
     this.dataSourceArmasLegendarias2.sort = this.sort2;
   }
+
+  padPrecio(precioStr: string): string {
+    // convierte la cadena del precio en [5 dígitos]g [2 dígitos]s [2 dígitos]c. Si por ej. es 99g 8p 5c lo convierte en 00099g 08p 05c para ordenar bien
+    const match = precioStr.match(/(\d+)g\s+(\d+)s\s+(\d+)c/);
+    if (!match) return '';
+    const [, g, s, c] = match;
+    return `${g.padStart(5, '0')}g ${s.padStart(2, '0')}s ${c.padStart(2, '0')}c`;
+  }
+
 
   getPriceSplit(cantidad: number){
     // Le paso el numero y me devuelve una string en oro, plata, cobre

@@ -2,6 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { apiKey } from './key'
 
+interface Achievement {
+  id: number;
+  current: number;
+  max: number;
+  done: boolean;
+  repeated?: number;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -88,7 +96,7 @@ export class DailyService {
     return this.httpClient.get(url);
   }
 
-  getDailyInfo(dailyIds: String){
+  getDailyInfo(dailyIds: string){
     //https://api.guildwars2.com/v2/achievements?ids=1840,910,2258
     //?ids=5328 guerra fria 5299
     //?ids=5207 voz y garra caidos
@@ -174,7 +182,7 @@ export class DailyService {
     return this.httpClient.get(url);
   }
 
-  getDailyStrikeId(){ //para sacar el id de la strike diaria
+  getDailyStrikeId(){ //para sacar el id de las strikes diarias
     const url = `${this.apiUrl}achievements/categories/250`;
     return this.httpClient.get(url);
   }
@@ -406,8 +414,8 @@ export class DailyService {
   }
 
   getInestabilidadCm(){
-    // devuelve json con "instabilities" diarias de un año de fractal 76 a 100 y "instability_names" con los nombres
-    const url = "https://raw.githubusercontent.com/Invisi/gw2-fotm-instabilities/master/data-for-humans.json";
+    // devuelve json con "instabilities" diarias de un año de fractal 76 a 100 y "instability_details" con su info
+    const url = "https://raw.githubusercontent.com/Invisi/gw2-fotm-instabilities/refs/heads/master/instabilities.json";
     return this.httpClient.get(url);
   }
 
@@ -418,28 +426,123 @@ export class DailyService {
     return this.httpClient.get(url);
   }
 
-  getConvergenciaSoto100(){
-    // devuelve logro de hacer 100 convergencias
-    const url = `${this.apiUrl}account/achievements?ids=7668&access_token=${this.apiKey}`;
+  async getConvergenciaSoto100(): Promise<Achievement[]>{
+    // devuelve logro de hacer 100 convergencias de soto
+    return this.getAchievement(7668, 100);
+  }
+
+  async getConvergenciaSoto150(): Promise<Achievement[]>{
+    // devuelve logro de hacer 150 convergencias de soto repetible
+    return this.getAchievement(7720, 150, 0);
+  }
+
+  async getConvergenciaSotoWeekly(): Promise<Achievement[]> {
+    // devuelve logro semanal de hacer 3 convergencias de soto
+    return this.getAchievement(7706, 3);
+  }
+
+  async getConvergenciaJw50(){
+    // devuelve logro de hacer 50 convergencias de jw
+    return this.getAchievement(8456, 50);
+  }
+
+  // async getConvergenciaJw50Rep(): Promise<any> {
+  //   // devuelve logro de hacer 50 convergencias repetible
+  //   const url = `${this.apiUrl}account/achievements?ids=8440&access_token=${this.apiKey}`;
+  //   try {
+  //     return await this.httpClient.get(url).toPromise();
+  //   } catch (error) {
+  //     return [
+  //       {
+  //         id: 8440,
+  //         current: 0,
+  //         max: 50,
+  //         done: false
+  //         // "repeated": 0
+  //       }
+  //     ];
+  //   }
+  // }
+
+  async getConvergenciaJw50Rep(): Promise<Achievement[]> {
+    // devuelve logro de hacer 50 convergencias de jw repetible
+    return this.getAchievement(8440, 50, 0);
+  }
+
+  async getConvergenciaJwWeekly(): Promise<Achievement[]> {
+    // devuelve logro semanal de hacer 3 convergencias de jw
+    return this.getAchievement(8448, 3);
+  }
+
+  async getAchievement(id: number, max: number, repeated?: number): Promise<Achievement[]> {
+    const url = `${this.apiUrl}account/achievements?ids=${id}&access_token=${this.apiKey}`;
+    try {
+      return await this.httpClient.get<Achievement[]>(url).toPromise();
+    } catch (error) {
+        const fallback: Achievement = {
+          id,
+          current: 0,
+          max,
+          done: false,
+          ...(repeated !== undefined && { repeated })
+      };
+      return [fallback];
+    }
+  }
+
+  getDailyStrikeDone(dailyIdsS: string){
+    const url = `${this.apiUrl}account/achievements?ids=${dailyIdsS}&access_token=${this.apiKey}`;
+    return this.httpClient.get<Achievement[]>(url);
+  }
+
+  getAchievementsByIds(ids: string) {
+    const url = `${this.apiUrl}achievements?ids=${ids}`;
+    return this.httpClient.get<any[]>(url);
+  }
+
+  getWeeklyWvWId(){
+    const url = `${this.apiUrl}achievements/categories/346`;
+    return this.httpClient.get<any>(url);
+  }
+
+  getWeeklyWvW(ids: string) {
+    const url = `${this.apiUrl}account/achievements?ids=${ids}&access_token=${this.apiKey}`;
+    return this.httpClient.get<any[]>(url);
+  }
+
+  getWeeklyRiftHuntingJWId(){
+    const url = `${this.apiUrl}achievements/categories/423`;
+    return this.httpClient.get<any>(url);
+  }
+
+  getWeeklyRiftHuntingJW(ids: string){
+    const url = `${this.apiUrl}account/achievements?ids=${ids}&access_token=${this.apiKey}`;
+    return this.httpClient.get<any[]>(url);
+  }
+
+  getWeeklyRiftHuntingSotoId(){
+    const url = `${this.apiUrl}achievements/categories/365`;
+    return this.httpClient.get<any>(url);
+  }
+
+  getWeeklyRiftHuntingSoto(ids: string){
+    const url = `${this.apiUrl}account/achievements?ids=${ids}&access_token=${this.apiKey}`;
+    return this.httpClient.get<any[]>(url);
+  }
+
+  getWeeklyEoDStrikes(){ // para sacar el id de las strikes semanales de EoD
+    const url = `${this.apiUrl}account/achievements?ids=5577&access_token=${this.apiKey}`;
     return this.httpClient.get(url);
   }
 
-  getConvergenciaSoto150(){
-    // devuelve logro de hacer 150 convergencias repetible
-    const url = `${this.apiUrl}account/achievements?ids=7720&access_token=${this.apiKey}`;
+  getWeeklySotoStrikes(){ //para sacar el id de las strikes semanales de Soto
+    const url = `${this.apiUrl}account/achievements?ids=7155&access_token=${this.apiKey}`;
     return this.httpClient.get(url);
   }
 
-  getConvergenciaJw50(){
-    // devuelve logro de hacer 50 convergencias
-    const url = `${this.apiUrl}account/achievements?ids=8456&access_token=${this.apiKey}`;
-    return this.httpClient.get(url);
-  }
-
-  getConvergenciaJw50Rep(){
-    // devuelve logro de hacer 50 convergencias repetible
-    const url = `${this.apiUrl}account/achievements?ids=8440&access_token=${this.apiKey}`;
-    return this.httpClient.get(url);
+  getFractalsDone(ids: string){
+    const url = `${this.apiUrl}account/achievements?ids=${ids}&access_token=${this.apiKey}`;
+    return this.httpClient.get<any[]>(url);
   }
 
 }

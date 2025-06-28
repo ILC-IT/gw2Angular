@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { Observable, timer } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { HeroService } from "../../service/hero.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -10,18 +11,18 @@ import { map, shareReplay } from 'rxjs/operators';
 })
 export class DashboardComponent implements OnInit {
 
-  title = 'Proyecto de GW2 en Angular';
+  title = 'GW2 Angular';
   value: string = '';
   
   //reloj
-  private _time$: Observable<Date> = timer(0, 1000).pipe(
-    map(tick => new Date()),
-    shareReplay(1)
-  );
+  // private _time$: Observable<Date> = timer(0, 1000).pipe(
+  //   map(tick => new Date()),
+  //   shareReplay(1)
+  // );
 
-  get time() {
-    return this._time$;
-  }
+  // get time() {
+  //   return this._time$;
+  // }
 
   @ViewChild('diariasTrigger') diariasTrigger!: MatMenuTrigger;
   @ViewChild('buscadorStatsTrigger') buscadorStatsTrigger!: MatMenuTrigger;
@@ -48,9 +49,21 @@ export class DashboardComponent implements OnInit {
     }, 50); // Ajusta el tiempo según sea necesario
   }
   
-  constructor() { }
+  account: any = [];
 
-  ngOnInit(): void {
+  constructor(private heroService: HeroService) { }
+
+  ngOnInit() {
+    this.getAccount();
   }
+
+  getAccount(){
+    this.heroService.getAccount().subscribe((acc: any) => {
+        this.account = acc;
+      },
+      (err) => {
+        console.error('Error al obtener la cuenta:', err);
+      }
+  )}
 
 }

@@ -24,8 +24,8 @@ const FractalesInfo = [
         idRec2: 0
     },
     {
-        level: "2, 36, 62, 79, 91",
-        ar: "0, 36, 83, 113, 134",
+        level: "2, 36, 62, 79",
+        ar: "0, 36, 83, 113",
         name: "Uncategorized",
         nameEs: "Sin Clasificar",
         idDaily: [2940, 2902, 2925, 2939],
@@ -75,6 +75,7 @@ const FractalesInfo = [
         name: "Aquatic Ruins",
         nameEs: "Ruinas Acuáticas",
         idDaily: [2900, 2898, 2964, 2956],
+        idRec0: 2329,
         idRec2: 3198
     },
     {
@@ -87,8 +88,8 @@ const FractalesInfo = [
         idRec2: 3237
     },
     {
-        level: "9, 17, 39, 58, 83",
-        ar: "0, 0, 42, 75, 120",
+        level: "9, 39, 58, 83",
+        ar: "0, 42, 75, 120",
         name: "Molten Furnace",
         nameEs: "Fragua Fundida",
         idDaily: [2976, 2955, 2944, 2903],
@@ -123,16 +124,16 @@ const FractalesInfo = [
         idRec2: 3185
     },
     {
-        level: "13, 30, 38, 63, 88",
-        ar: "0, 26, 40, 84, 129",
+        level: "13, 30, 63, 88",
+        ar: "0, 26, 84, 129",
         name: "Chaos",
         nameEs: "Caos",
         idDaily: [3063, 3044, 3045, 3038],
         idRec1: 2330,
     },
     {
-        level: "14, 45, 65, 70, 93",
-        ar: "0, 52, 88, 97, 138",
+        level: "14, 45, 65, 93",
+        ar: "0, 52, 88, 138",
         name: "Aetherblade",
         nameEs: "Filoetéreo",
         idDaily: [2927, 2909, 2928, 2948],
@@ -160,8 +161,8 @@ const FractalesInfo = [
         idRec2: 3228
     },
     {
-        level: "18, 42, 71, 95",
-        ar: "0, 47, 99, 141",
+        level: "18, 42, 71, 91",
+        ar: "0, 47, 99, 134",
         name: "Captain Mai Trin Boss",
         nameEs: "Mai Trin",
         idDaily: [2978, 2899, 2962, 2932],
@@ -190,7 +191,8 @@ const FractalesInfo = [
         ar: "13, 58, 102, 145",
         name: "Shattered Observatory",
         nameEs: "Observatorio Asolado",
-        idDaily: [3509, 3478, 3464, 3458]
+        idDaily: [3509, 3478, 3464, 3458],
+        idRec1: 2337
     },
     {
         level: "24, 49, 74, 98",
@@ -218,6 +220,14 @@ const FractalesInfo = [
         idDaily: [8055, 7992, 8000, 7950],
         idRec1: 8037,
         idRec2: 3238
+    },
+    {
+        level: "17, 38, 70, 95",
+        ar: "0, 40, 97, 141",
+        name: "Kinfall",
+        nameEs: "Hecatombe Allegada",
+        idDaily: [8784, 8736, 8729, 8739],
+        idRec2: 3203
     }
 ]
 
@@ -230,7 +240,8 @@ export const Fractales = [
         nameEs: "Volcánico",
         idDaily: 2911,
         idRec: 0,
-        tier: "T1"
+        tier: "T1",
+        done: false
     },
     {
         level: 19,
@@ -239,7 +250,8 @@ export const Fractales = [
         nameEs: "Volcánico",
         idDaily: 2911,
         idRec: 2492,
-        tier: "T1"
+        tier: "T1",
+        done: false
     },
     {
         level: 28,
@@ -248,7 +260,8 @@ export const Fractales = [
         nameEs: "Volcánico",
         idDaily: 2908,
         idRec: 2297,
-        tier: "T2"
+        tier: "T2",
+        done: false
     },
     {
         level: 52,
@@ -257,7 +270,8 @@ export const Fractales = [
         nameEs: "Volcánico",
         idDaily: 2890,
         idRec: 0,
-        tier: "T3"
+        tier: "T3",
+        done: false
     },
     {
         level: 92,
@@ -266,7 +280,8 @@ export const Fractales = [
         nameEs: "Volcánico",
         idDaily: 2989,
         idRec: 0,
-        tier: "T4"
+        tier: "T4",
+        done: false
     },
     //Sin clasificar
     {
@@ -276,7 +291,8 @@ export const Fractales = [
         nameEs: "Sin Clasificar",
         idDaily: 2940,
         idRec: 2477,
-        tier: "T1"
+        tier: "T1",
+        done: false
     },
     {
         level: 36,
@@ -285,7 +301,8 @@ export const Fractales = [
         nameEs: "Sin Clasificar",
         idDaily: 2902,
         idRec: 2309,
-        tier: "T2"
+        tier: "T2",
+        done: false
     },
     {
         level: 62,
@@ -294,7 +311,8 @@ export const Fractales = [
         nameEs: "Sin Clasificar",
         idDaily: 2925,
         idRec: 3213,
-        tier: "T3"
+        tier: "T3",
+        done: false
     },
     {
         level: 79,
@@ -303,16 +321,8 @@ export const Fractales = [
         nameEs: "Sin Clasificar",
         idDaily: 2939,
         idRec: 0,
-        tier: "T4"
-    },
-    {
-        level: 91,
-        ar: 134,
-        name: "Uncategorized",
-        nameEs: "Sin Clasificar",
-        idDaily: 2939,
-        idRec: 0,
-        tier: "T4"
+        tier: "T4",
+        done: false
     },
     //Ceguera
     {
@@ -322,7 +332,8 @@ export const Fractales = [
         nameEs: "Ceguera de la Nieve",
         idDaily: 2916,
         idRec: 0,
-        tier: "T1"
+        tier: "T1",
+        done: false
     },
     {
         level: 27,
@@ -331,7 +342,8 @@ export const Fractales = [
         nameEs: "Ceguera de la Nieve",
         idDaily: 2949,
         idRec: 2239,
-        tier: "T2"
+        tier: "T2",
+        done: false
     },
     {
         level: 51,
@@ -340,7 +352,8 @@ export const Fractales = [
         nameEs: "Ceguera de la Nieve",
         idDaily: 2918,
         idRec: 0,
-        tier: "T3"
+        tier: "T3",
+        done: false
     },
     {
         level: 86,
@@ -349,7 +362,8 @@ export const Fractales = [
         nameEs: "Ceguera de la Nieve",
         idDaily: 2952,
         idRec: 0,
-        tier: "T4"
+        tier: "T4",
+        done: false
     },
     //Campo batalla urbano
     {
@@ -359,7 +373,8 @@ export const Fractales = [
         nameEs: "Campo de Batalla Urbano",
         idDaily: 2896,
         idRec: 2405,
-        tier: "T1"
+        tier: "T1",
+        done: false
     },
     {
         level: 31,
@@ -368,7 +383,8 @@ export const Fractales = [
         nameEs: "Campo de Batalla Urbano",
         idDaily: 2907,
         idRec: 2533,
-        tier: "T2"
+        tier: "T2",
+        done: false
     },
     {
         level: 57,
@@ -377,7 +393,8 @@ export const Fractales = [
         nameEs: "Campo de Batalla Urbano",
         idDaily: 2907,
         idRec: 3202,
-        tier: "T3"
+        tier: "T3",
+        done: false
     },
     {
         level: 85,
@@ -386,7 +403,8 @@ export const Fractales = [
         nameEs: "Campo de Batalla Urbano",
         idDaily: 2941,
         idRec: 0,
-        tier: "T4"
+        tier: "T4",
+        done: false
     },
     //Cenagal
     {
@@ -396,7 +414,8 @@ export const Fractales = [
         nameEs: "Cenagal",
         idDaily: 2935,
         idRec: 2316,
-        tier: "T1"
+        tier: "T1",
+        done: false
     },
     {
         level: 32,
@@ -405,7 +424,8 @@ export const Fractales = [
         nameEs: "Cenagal",
         idDaily: 2961,
         idRec: 2363,
-        tier: "T2"
+        tier: "T2",
+        done: false
     },
     {
         level: 56,
@@ -414,7 +434,8 @@ export const Fractales = [
         nameEs: "Cenagal",
         idDaily: 2972,
         idRec: 0,
-        tier: "T3"
+        tier: "T3",
+        done: false
 
     },
     {
@@ -424,7 +445,8 @@ export const Fractales = [
         nameEs: "Cenagal",
         idDaily: 2892,
         idRec: 0,
-        tier: "T4"
+        tier: "T4",
+        done: false
     },
     {
         level: 89,
@@ -433,7 +455,8 @@ export const Fractales = [
         nameEs: "Cenagal",
         idDaily: 2892,
         idRec: 0,
-        tier: "T4"
+        tier: "T4",
+        done: false
     },
     //Despeñadero
     {
@@ -443,7 +466,8 @@ export const Fractales = [
         nameEs: "Despeñadero",
         idDaily: 2977,
         idRec: 2229,
-        tier: "T1"
+        tier: "T1",
+        done: false
     },
     {
         level: 46,
@@ -452,7 +476,8 @@ export const Fractales = [
         nameEs: "Despeñadero",
         idDaily: 2958,
         idRec: 0,
-        tier: "T2"
+        tier: "T2",
+        done: false
     },
     {
         level: 68,
@@ -461,7 +486,8 @@ export const Fractales = [
         nameEs: "Despeñadero",
         idDaily: 2926,
         idRec: 3187,
-        tier: "T3"
+        tier: "T3",
+        done: false
     },
     {
         level: 94,
@@ -470,7 +496,8 @@ export const Fractales = [
         nameEs: "Despeñadero",
         idDaily: 2930,
         idRec: 0,
-        tier: "T4"
+        tier: "T4",
+        done: false
     },
     //Ruinas acuaticas
     {
@@ -479,8 +506,9 @@ export const Fractales = [
         name: "Aquatic Ruins",
         nameEs: "Ruinas Acuáticas",
         idDaily: 2900,
-        idRec: 0,
-        tier: "T1"
+        idRec: 2329,
+        tier: "T1",
+        done: false
     },
     {
         level: 26,
@@ -489,7 +517,8 @@ export const Fractales = [
         nameEs: "Ruinas Acuáticas",
         idDaily: 2898,
         idRec: 0,
-        tier: "T2"
+        tier: "T2",
+        done: false
     },
     {
         level: 61,
@@ -498,7 +527,8 @@ export const Fractales = [
         nameEs: "Ruinas Acuáticas",
         idDaily: 2964,
         idRec: 3198,
-        tier: "T3"
+        tier: "T3",
+        done: false
     },
     {
         level: 76,
@@ -507,7 +537,8 @@ export const Fractales = [
         nameEs: "Ruinas Acuáticas",
         idDaily: 2956,
         idRec: 0,
-        tier: "T4"
+        tier: "T4",
+        done: false
     },
     //Instalacion sub
     {
@@ -517,7 +548,8 @@ export const Fractales = [
         nameEs: "Instalación Subterránea",
         idDaily: 2929,
         idRec: 2422,
-        tier: "T1"
+        tier: "T1",
+        done: false
     },
     {
         level: 29,
@@ -526,7 +558,8 @@ export const Fractales = [
         nameEs: "Instalación Subterránea",
         idDaily: 2889,
         idRec: 0,
-        tier: "T2"
+        tier: "T2",
+        done: false
     },
     {
         level: 53,
@@ -535,7 +568,8 @@ export const Fractales = [
         nameEs: "Instalación Subterránea",
         idDaily: 2950,
         idRec: 3237,
-        tier: "T3"
+        tier: "T3",
+        done: false
     },
     {
         level: 81,
@@ -544,7 +578,8 @@ export const Fractales = [
         nameEs: "Instalación Subterránea",
         idDaily: 2947,
         idRec: 0,
-        tier: "T4"
+        tier: "T4",
+        done: false
     },
     //Fragua
     {
@@ -554,16 +589,8 @@ export const Fractales = [
         nameEs: "Fragua Fundida",
         idDaily: 2976,
         idRec: 0,
-        tier: "T1"
-    },
-    {
-        level: 17,
-        ar: 0,
-        name: "Molten Furnace",
-        nameEs: "Fragua Fundida",
-        idDaily: 2976,
-        idRec: 0,
-        tier: "T1"
+        tier: "T1",
+        done: false
     },
     {
         level: 39,
@@ -572,7 +599,8 @@ export const Fractales = [
         nameEs: "Fragua Fundida",
         idDaily: 2955,
         idRec: 2591,
-        tier: "T2"
+        tier: "T2",
+        done: false
     },
     {
         level: 58,
@@ -581,7 +609,8 @@ export const Fractales = [
         nameEs: "Fragua Fundida",
         idDaily: 2944,
         idRec: 3192,
-        tier: "T3"
+        tier: "T3",
+        done: false
     },
     {
         level: 83,
@@ -590,7 +619,8 @@ export const Fractales = [
         nameEs: "Fragua Fundida",
         idDaily: 2903,
         idRec: 0,
-        tier: "T4"
+        tier: "T4",
+        done: false
     },
     //Jefes
     {
@@ -600,7 +630,8 @@ export const Fractales = [
         nameEs: "Jefes Fundidos",
         idDaily: 2979,
         idRec: 2560,
-        tier: "T1"
+        tier: "T1",
+        done: false
     },
     {
         level: 40,
@@ -609,7 +640,8 @@ export const Fractales = [
         nameEs: "Jefes Fundidos",
         idDaily: 2985,
         idRec: 2171,
-        tier: "T2"
+        tier: "T2",
+        done: false
     },
     {
         level: 69,
@@ -618,7 +650,8 @@ export const Fractales = [
         nameEs: "Jefes Fundidos",
         idDaily: 2934,
         idRec: 3219,
-        tier: "T3"
+        tier: "T3",
+        done: false
     },
     {
         level: 90,
@@ -627,7 +660,8 @@ export const Fractales = [
         nameEs: "Jefes Fundidos",
         idDaily: 2966,
         idRec: 0,
-        tier: "T4"
+        tier: "T4",
+        done: false
     },
     //Rocahonda
     {
@@ -637,7 +671,8 @@ export const Fractales = [
         nameEs: "Rocahonda",
         idDaily: 4244,
         idRec: 2153,
-        tier: "T1"
+        tier: "T1",
+        done: false
     },
     {
         level: 33,
@@ -646,7 +681,8 @@ export const Fractales = [
         nameEs: "Rocahonda",
         idDaily: 4218,
         idRec: 0,
-        tier: "T2"
+        tier: "T2",
+        done: false
     },
     {
         level: 67,
@@ -655,7 +691,8 @@ export const Fractales = [
         nameEs: "Rocahonda",
         idDaily: 4210,
         idRec: 3201,
-        tier: "T3"
+        tier: "T3",
+        done: false
     },
     {
         level: 84,
@@ -664,7 +701,8 @@ export const Fractales = [
         nameEs: "Rocahonda",
         idDaily: 4224,
         idRec: 0,
-        tier: "T4"
+        tier: "T4",
+        done: false
     },
     //Arrecife
     {
@@ -674,7 +712,8 @@ export const Fractales = [
         nameEs: "Arrecife de la Sirena",
         idDaily: 4551,
         idRec: 2597,
-        tier: "T1"
+        tier: "T1",
+        done: false
     },
     {
         level: 37,
@@ -683,7 +722,8 @@ export const Fractales = [
         nameEs: "Arrecife de la Sirena",
         idDaily: 4496,
         idRec: 2377,
-        tier: "T2"
+        tier: "T2",
+        done: false
     },
     {
         level: 54,
@@ -692,7 +732,8 @@ export const Fractales = [
         nameEs: "Arrecife de la Sirena",
         idDaily: 4526,
         idRec: 3185,
-        tier: "T3"
+        tier: "T3",
+        done: false
     },
     {
         level: 78,
@@ -701,7 +742,8 @@ export const Fractales = [
         nameEs: "Arrecife de la Sirena",
         idDaily: 4494,
         idRec: 0,
-        tier: "T4"
+        tier: "T4",
+        done: false
     },
     //Caos
     {
@@ -711,7 +753,8 @@ export const Fractales = [
         nameEs: "Caos",
         idDaily: 3063,
         idRec: 0,
-        tier: "T1"
+        tier: "T1",
+        done: false
     },
     {
         level: 30,
@@ -720,16 +763,8 @@ export const Fractales = [
         nameEs: "Caos",
         idDaily: 3044,
         idRec: 2330,
-        tier: "T2"
-    },
-    {
-        level: 38,
-        ar: 40,
-        name: "Chaos",
-        nameEs: "Caos",
-        idDaily: 3044,
-        idRec: 0,
-        tier: "T2"
+        tier: "T2",
+        done: false
     },
     {
         level: 63,
@@ -738,7 +773,8 @@ export const Fractales = [
         nameEs: "Caos",
         idDaily: 3045,
         idRec: 0,
-        tier: "T3"
+        tier: "T3",
+        done: false
     },
     {
         level: 88,
@@ -747,7 +783,8 @@ export const Fractales = [
         nameEs: "Caos",
         idDaily: 3038,
         idRec: 0,
-        tier: "T4"
+        tier: "T4",
+        done: false
     },
     //Filoetereo
     {
@@ -757,7 +794,8 @@ export const Fractales = [
         nameEs: "Filoetéreo",
         idDaily: 2927,
         idRec: 2327,
-        tier: "T1"
+        tier: "T1",
+        done: false
     },
     {
         level: 45,
@@ -766,7 +804,8 @@ export const Fractales = [
         nameEs: "Filoetéreo",
         idDaily: 2909,
         idRec: 0,
-        tier: "T2"
+        tier: "T2",
+        done: false
     },
     {
         level: 65,
@@ -775,16 +814,8 @@ export const Fractales = [
         nameEs: "Filoetéreo",
         idDaily: 2928,
         idRec: 3189,
-        tier: "T3"
-    },
-    {
-        level: 70,
-        ar: 97,
-        name: "Aetherblade",
-        nameEs: "Filoetéreo",
-        idDaily: 2928,
-        idRec: 0,
-        tier: "T3"
+        tier: "T3",
+        done: false
     },
     {
         level: 93,
@@ -793,7 +824,8 @@ export const Fractales = [
         nameEs: "Filoetéreo",
         idDaily: 2948,
         idRec: 0,
-        tier: "T4"
+        tier: "T4",
+        done: false
     },
     //Taumanova
     {
@@ -803,7 +835,8 @@ export const Fractales = [
         nameEs: "Reactor Taumanova",
         idDaily: 2981,
         idRec: 2238,
-        tier: "T1"
+        tier: "T1",
+        done: false
     },
     {
         level: 34,
@@ -812,7 +845,8 @@ export const Fractales = [
         nameEs: "Reactor Taumanova",
         idDaily: 2991,
         idRec: 2592,
-        tier: "T2"
+        tier: "T2",
+        done: false
     },
     {
         level: 55,
@@ -821,7 +855,8 @@ export const Fractales = [
         nameEs: "Reactor Taumanova",
         idDaily: 2895,
         idRec: 0,
-        tier: "T3"
+        tier: "T3",
+        done: false
     },
     {
         level: 64,
@@ -830,7 +865,8 @@ export const Fractales = [
         nameEs: "Reactor Taumanova",
         idDaily: 2895,
         idRec: 3215,
-        tier: "T3"
+        tier: "T3",
+        done: false
     },
     {
         level: 82,
@@ -839,7 +875,8 @@ export const Fractales = [
         nameEs: "Reactor Taumanova",
         idDaily: 2967,
         idRec: 0,
-        tier: "T4"
+        tier: "T4",
+        done: false
     },
     //Oasis
     {
@@ -849,7 +886,8 @@ export const Fractales = [
         nameEs: "Oasis del Crepúsculo",
         idDaily: 4028,
         idRec: 2308,
-        tier: "T1"
+        tier: "T1",
+        done: false
     },
     {
         level: 41,
@@ -858,7 +896,8 @@ export const Fractales = [
         nameEs: "Oasis del Crepúsculo",
         idDaily: 4006,
         idRec: 2598,
-        tier: "T2"
+        tier: "T2",
+        done: false
     },
     {
         level: 59,
@@ -867,7 +906,8 @@ export const Fractales = [
         nameEs: "Oasis del Crepúsculo",
         idDaily: 4030,
         idRec: 3228,
-        tier: "T3"
+        tier: "T3",
+        done: false
     },
     {
         level: 87,
@@ -876,7 +916,8 @@ export const Fractales = [
         nameEs: "Oasis del Crepúsculo",
         idDaily: 3973,
         idRec: 0,
-        tier: "T4"
+        tier: "T4",
+        done: false
     },
     //Mai Trin
     {
@@ -886,7 +927,8 @@ export const Fractales = [
         nameEs: "Mai Trin",
         idDaily: 2978,
         idRec: 2467,
-        tier: "T1"
+        tier: "T1",
+        done: false
     },
     {
         level: 42,
@@ -895,7 +937,8 @@ export const Fractales = [
         nameEs: "Mai Trin",
         idDaily: 2899,
         idRec: 2394,
-        tier: "T2"
+        tier: "T2",
+        done: false
     },
     {
         level: 71,
@@ -904,16 +947,18 @@ export const Fractales = [
         nameEs: "Mai Trin",
         idDaily: 2962,
         idRec: 0,
-        tier: "T3"
+        tier: "T3",
+        done: false
     },
     {
-        level: 95,
-        ar: 141,
+        level: 91,
+        ar: 134,
         name: "Captain Mai Trin Boss",
         nameEs: "Mai Trin",
         idDaily: 2932,
         idRec: 0,
-        tier: "T4"
+        tier: "T4",
+        done: false
     },
     //Oceano
     {
@@ -923,7 +968,8 @@ export const Fractales = [
         nameEs: "Océano Sólido",
         idDaily: 2954,
         idRec: 0,
-        tier: "T1"
+        tier: "T1",
+        done: false
     },
     {
         level: 35,
@@ -932,7 +978,8 @@ export const Fractales = [
         nameEs: "Océano Sólido",
         idDaily: 2971,
         idRec: 2266,
-        tier: "T2"
+        tier: "T2",
+        done: false
     },
     {
         level: 44,
@@ -941,7 +988,8 @@ export const Fractales = [
         nameEs: "Océano Sólido",
         idDaily: 2971,
         idRec: 0,
-        tier: "T2"
+        tier: "T2",
+        done: false
     },
     {
         level: 60,
@@ -950,7 +998,8 @@ export const Fractales = [
         nameEs: "Océano Sólido",
         idDaily: 2986,
         idRec: 3172,
-        tier: "T3"
+        tier: "T3",
+        done: false
     },
     {
         level: 80,
@@ -959,7 +1008,8 @@ export const Fractales = [
         nameEs: "Océano Sólido",
         idDaily: 2923,
         idRec: 0,
-        tier: "T4"
+        tier: "T4",
+        done: false
     },
     //Pesadilla
     {
@@ -969,7 +1019,8 @@ export const Fractales = [
         nameEs: "Pesadilla",
         idDaily: 3229,
         idRec: 0,
-        tier: "T1"
+        tier: "T1",
+        done: false
     },
     {
         level: 47,
@@ -978,7 +1029,8 @@ export const Fractales = [
         nameEs: "Pesadilla",
         idDaily: 3196,
         idRec: 2463,
-        tier: "T2"
+        tier: "T2",
+        done: false
     },
     {
         level: 72,
@@ -987,7 +1039,8 @@ export const Fractales = [
         nameEs: "Pesadilla",
         idDaily: 3175,
         idRec: 0,
-        tier: "T3"
+        tier: "T3",
+        done: false
     },
     {
         level: 96,
@@ -996,7 +1049,8 @@ export const Fractales = [
         nameEs: "Pesadilla",
         idDaily: 3177,
         idRec: 0,
-        tier: "T4"
+        tier: "T4",
+        done: false
     },
     //Observatorio
     {
@@ -1006,7 +1060,8 @@ export const Fractales = [
         nameEs: "Observatorio Asolado",
         idDaily: 3509,
         idRec: 0,
-        tier: "T1"
+        tier: "T1",
+        done: false
     },
     {
         level: 48,
@@ -1014,8 +1069,9 @@ export const Fractales = [
         name: "Shattered Observatory",
         nameEs: "Observatorio Asolado",
         idDaily: 3478,
-        idRec: 0,
-        tier: "T2"
+        idRec: 2337,
+        tier: "T2",
+        done: false
     },
     {
         level: 73,
@@ -1024,7 +1080,8 @@ export const Fractales = [
         nameEs: "Observatorio Asolado",
         idDaily: 3464,
         idRec: 0,
-        tier: "T3"
+        tier: "T3",
+        done: false
     },
     {
         level: 97,
@@ -1033,7 +1090,8 @@ export const Fractales = [
         nameEs: "Observatorio Asolado",
         idDaily: 3458,
         idRec: 0,
-        tier: "T4"
+        tier: "T4",
+        done: false
     },
     //Sunqua
     {
@@ -1043,7 +1101,8 @@ export const Fractales = [
         nameEs: "Pico de Sunqua",
         idDaily: 5447,
         idRec: 2245,
-        tier: "T1"
+        tier: "T1",
+        done: false
     },
     {
         level: 49,
@@ -1052,7 +1111,8 @@ export const Fractales = [
         nameEs: "Pico de Sunqua",
         idDaily: 5449,
         idRec: 0,
-        tier: "T2"
+        tier: "T2",
+        done: false
     },
     {
         level: 74,
@@ -1061,7 +1121,8 @@ export const Fractales = [
         nameEs: "Pico de Sunqua",
         idDaily: 5437,
         idRec: 3204,
-        tier: "T3"
+        tier: "T3",
+        done: false
     },
     {
         level: 98,
@@ -1070,7 +1131,8 @@ export const Fractales = [
         nameEs: "Pico de Sunqua",
         idDaily: 5446,
         idRec: 0,
-        tier: "T4"
+        tier: "T4",
+        done: false
     },
     //Oleaje
     {
@@ -1080,7 +1142,8 @@ export const Fractales = [
         nameEs: "Oleaje Silencioso",
         idDaily: 6953,
         idRec: 2189,
-        tier: "T1"
+        tier: "T1",
+        done: false
     },
     {
         level: 43,
@@ -1089,7 +1152,8 @@ export const Fractales = [
         nameEs: "Oleaje Silencioso",
         idDaily: 6943,
         idRec: 0,
-        tier: "T2"
+        tier: "T2",
+        done: false
     },
     {
         level: 66,
@@ -1098,7 +1162,8 @@ export const Fractales = [
         nameEs: "Oleaje Silencioso",
         idDaily: 6945,
         idRec: 3184,
-        tier: "T3"
+        tier: "T3",
+        done: false
     },
     {
         level: 99,
@@ -1107,7 +1172,8 @@ export const Fractales = [
         nameEs: "Oleaje Silencioso",
         idDaily: 6935,
         idRec: 0,
-        tier: "T4"
+        tier: "T4",
+        done: false
     },
     //Torre
     {
@@ -1117,7 +1183,8 @@ export const Fractales = [
         nameEs: "Torre Solitaria",
         idDaily: 8055,
         idRec: 2473,
-        tier: "T1"
+        tier: "T1",
+        done: false
     },
     {
         level: 50,
@@ -1126,7 +1193,8 @@ export const Fractales = [
         nameEs: "Torre Solitaria",
         idDaily: 7992,
         idRec: 8037,
-        tier: "T2"
+        tier: "T2",
+        done: false
     },
     {
         level: 75,
@@ -1135,7 +1203,8 @@ export const Fractales = [
         nameEs: "Torre Solitaria",
         idDaily: 8000,
         idRec: 3238,
-        tier: "T3"
+        tier: "T3",
+        done: false
     },
     {
         level: 100,
@@ -1144,11 +1213,64 @@ export const Fractales = [
         nameEs: "Torre Solitaria",
         idDaily: 7950,
         idRec: 0,
-        tier: "T4"
+        tier: "T4",
+        done: false
+    },
+    //Hecatombe
+    {
+        level: 17,
+        ar: 0,
+        name: "Kinfall",
+        nameEs: "Hecatombe Allegada",
+        idDaily: 8784,
+        idRec: 0,
+        tier: "T1",
+        done: false
+    },
+    {
+        level: 38,
+        ar: 40,
+        name: "Kinfall",
+        nameEs: "Hecatombe Allegada",
+        idDaily: 8736,
+        idRec: 0,
+        tier: "T2",
+        done: false
+    },
+    {
+        level: 70,
+        ar: 97,
+        name: "Kinfall",
+        nameEs: "Hecatombe Allegada",
+        idDaily: 8729,
+        idRec: 3203,
+        tier: "T3",
+        done: false
+    },
+    {
+        level: 95,
+        ar: 141,
+        name: "Kinfall",
+        nameEs: "Hecatombe Allegada",
+        idDaily: 8739,
+        idRec: 0,
+        tier: "T4",
+        done: false
     }
 ];
 
 export const FractalesCm = [
+    //Hecatombe
+    {
+        level: 95,
+        ar: 141,
+        name: "Kinfall",
+        nameEs: "Hecatombe",
+        inestab1: "",
+        inestab2: "",
+        inestab3: "",
+        tier: "T4"
+    },
     //Pesadilla
     {
         level: 96,
@@ -1280,3 +1402,13 @@ export const InestabCm = [
         nameEsp: "Vómitos"
     }
 ]
+
+export interface InstabilityDetail {
+    icon_id: number;
+    name: {
+    de: string;
+    en: string;
+    es: string;
+    fr: string;
+    };
+}

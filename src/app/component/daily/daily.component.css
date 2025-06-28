@@ -1,165 +1,189 @@
-/* DashboardComponent's private CSS styles */
-
 h2 {
     text-align: center;
   }
   
 .daily-menu {
-  padding: 0;
-  margin: auto;
-  /* max-width: 1000px; */
-
-  /* flexbox */
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-content: flex-start;
-  align-items: flex-start;
-  margin-right: auto;
+    padding: 0;
+    margin: auto;
+    /* max-width: 1000px; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: flex-start;
+    align-items: flex-start;
+    margin-right: auto;
 }
 
 a {
-  background-color: #3f525c;
-  border-radius: 2px;
-  padding: 1rem;
-  font-size: 1.2rem;
-  text-decoration: none;
-  /* display: inline-block; */
-  color: #fff;
-  text-align: center;
-  /* width: 100%; */
-  min-width: 400px;
-  margin: 2.5rem auto;
-  box-sizing: border-box;
+    background-color: #3f525c;
+    border-radius: 2px;
+    padding: 1rem;
+    font-size: 1.1rem;
+    text-decoration: none;
+    /* display: inline-block; */
+    color: #fff;
+    text-align: center;
+    /* width: 100%; */
+    min-width: 400px;
+    margin: 2.5rem auto;
+    box-sizing: border-box;
 
-  /* flexbox */
-  order: 0;
-  flex: 0 1 auto;
-  align-self: stretch;
+    order: 0;
+    flex: 0 1 auto;
+    align-self: stretch;
 }
 
 @media (min-width: 600px) {
-  a {
-    width: 18%;
-    box-sizing: content-box;
-  }
+    a {
+        width: 18%;
+        box-sizing: content-box;
+    }
 }
 
 a:hover {
-  background-color: #000;
+    background-color: #000;
 }
 
 .example-section {
-  display: flex;
-  align-content: center;
-  align-items: center;
-  height: 5px;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 5px;
 }
 
 .example-margin {
-  margin: 0 10px;
+    margin: 0 10px;
 }
 
 .result{
-  object-fit: cover;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 2px;
+    object-fit: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2px;
 }
 
 ::ng-deep.mat-tab-label, ::ng-deep.mat-tab-label-content{
-  /*min-width: 1!important;*/
-  padding: 3px!important;
-  margin: 3px!important;
-  font-size: x-large;
+    /*min-width: 1!important;*/
+    padding: 3px!important;
+    margin: 3px!important;
+    font-size: large;
  }
 
  .mat-card-image{
-  /*object-fit: fill; /*this makes the image in src fit to the size specified below*/
-  object-fit: contain;
-  width: 25%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
-  height: 25%;
+    /*object-fit: fill; */
+    object-fit: contain;
+    width: 25%;
+    height: 25%;
 }
 
 .mat-card-image-f{
-  /*object-fit: fill; /*this makes the image in src fit to the size specified below*/
-  object-fit: contain;
-  width: 40%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
-  height: 40%;
+    /*object-fit: fill;*/
+    object-fit: contain;
+    width: 40%;
+    height: 40%;
 }
 
 textarea {
-  display: block;
-  margin: auto
-  /* margin: 4px 0 8px; */
+    display: block;
+    margin: auto
+    /* margin: 4px 0 8px; */
 }
 
 .mat-form-field + .mat-form-field {
-  margin-left: 8px;
+    margin-left: 8px;
 }
 
 table {
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.021)
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.021)
 }
 
 .mat-form-field {
-  font-size: 14px;
-  width: 12%;
+    font-size: 14px;
+    width: 12%;
 }
 
 ::ng-deep .mat-sort-header-sorted {
-  color: rgb(255, 0, 0);
+    color: rgb(255, 0, 0);
 }
 
 ::ng-deep .mat-sort-header-arrow {
-  color: red; /*change color of arrow*/
+    color: red; /*change color of arrow*/
 }
 
 .waypoint{
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
-  background-color: #005691;
+    background-color: #005691;
 }
 
 .mat-expansion-panel-header-description {
-  display: flex;
-  justify-content: flex-end;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .green{
-  background-color:rgb(195, 248, 195);
+    background-color:rgb(195, 248, 195);
 }
 
 .red{
-  color:rgb(255, 0, 0);
+    color:rgb(255, 0, 0);
 }
 
 button {
-  height: 30px;
-  font-size: large;
-  /* font-size: 16px; */
+    height: 30px;
+    font-size: large;
+    /* font-size: 16px; */
 }
 
 .boton{
-  height: 40px;
-  font-size: large;
-}
-
-.green{
-  background-color:rgb(195, 248, 195);
+    height: 40px;
+    font-size: large;
 }
 
 .completadas{
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 .mat-accordion>.mat-expansion-panel-spacing {
-  overflow: inherit;
+    overflow: inherit;
+}
+
+.legend-container {
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    line-height: 1.2;
+    text-align: left;
+}
+
+.legend-item {
+    color: white;
+    padding: 10px 12px;
+    border-radius: 6px;
+    margin: 4px 4px 0 0;
+    display: inline-block;
+    min-width: 130px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+@media (max-width: 1569.99px) {
+    .legend-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .legend-item {
+        width: 100%;
+        margin-right: 0;
+    }
 }

@@ -16,3 +16,31 @@ h2 {
 .icon {
     width: 40px;
 }
+
+@media (max-width: 768px) {
+  h2 {
+    font-size: 18px;
+  }
+
+  .mat-subheader {
+    font-size: 18px;
+  }
+
+  .icon {
+    width: 30px;
+  }
+
+  mat-list-item div[mat-line] {
+    font-size: 14px;
+  }
+
+  mat-grid-tile {
+    margin-bottom: 16px;
+    min-height: auto !important;
+    height: auto !important;
+  }
+
+  mat-list {
+    padding: 12px;
+  }
+}
