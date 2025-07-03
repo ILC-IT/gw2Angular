@@ -441,7 +441,13 @@ export class DailyService {
     return this.getAchievement(7706, 3);
   }
 
-  async getConvergenciaJw50(){
+  getConvergenciaSotoWeeklyCM() {
+    // devuelve logro semanal de hacer 5 convergencias cm de soto
+    const url = `${this.apiUrl}account/achievements?ids=8464&access_token=${this.apiKey}`;
+    return this.httpClient.get(url);
+  }
+
+  async getConvergenciaJw50(): Promise<Achievement[]>{
     // devuelve logro de hacer 50 convergencias de jw
     return this.getAchievement(8456, 50);
   }
@@ -472,6 +478,12 @@ export class DailyService {
   async getConvergenciaJwWeekly(): Promise<Achievement[]> {
     // devuelve logro semanal de hacer 3 convergencias de jw
     return this.getAchievement(8448, 3);
+  }
+
+  getConvergenciaJwWeeklyCM() {
+    // devuelve logro semanal de hacer 3 convergencias cm de jw
+    const url = `${this.apiUrl}account/achievements?ids=8776&access_token=${this.apiKey}`;
+    return this.httpClient.get(url);
   }
 
   async getAchievement(id: number, max: number, repeated?: number): Promise<Achievement[]> {

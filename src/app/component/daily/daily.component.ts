@@ -147,10 +147,16 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
   // Weekly
   STRIKE_NAMES_EOD = ['AH', 'XJJ', 'KO', 'HT', 'OLC'];
   STRIKE_NAMES_SOTO = ['CO', 'Febe'];
+  SOTO_CONVERGENCIA = ['Caballero demonio / Demon Knight', 'Tristeza / Sorrow', 'Hermana del infierno / Hell Sister', 'Alaterrible / Dreadwing', 'Umbriel'];
+  JW_CONVERGENCIA = ['Decima', 'Greer', 'Ura'];
   weeklyEoDStrikes: { index: number, name: string }[] = [];
   weeklyEoDStrikesDoneIds: Set<number> = new Set();
   weeklySotoStrikes: { index: number, name: string }[] = [];
   weeklySotoStrikesDoneIds: Set<number> = new Set();
+  weeklySotoCMConvergencia: { index: number, name: string }[] = [];
+  weeklySotoCMConvergenciaDoneIds: Set<number> = new Set();
+  weeklyJWCMConvergencia: { index: number, name: string }[] = [];
+  weeklyJWCMConvergenciaDoneIds: Set<number> = new Set();
   weeklyWvW: { id: number, name: string; current: number; max: number; done: boolean }[] = [];
   weeklyRiftHuntingSoto: { id: number, name: string; current: number; max: number; done: boolean }[] = [];
   weeklyRiftHuntingJw: { id: number, name: string; current: number; max: number; done: boolean }[] = [];
@@ -251,6 +257,8 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
     this.loadWeeklyWvW();
     this.loadWeeklyRiftHuntingSoto();
     this.loadWeeklyRiftHuntingJw();
+    this.loadWeeklyConvergenciaSoto();
+    this.loadWeeklyConvergenciaJW();
 
     this.convergenciaSoto = this.getConvergenciaSoto();
     this.convergenciaJw = this.getConvergenciaJw();
@@ -352,7 +360,7 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
         // if (this.dailyInfoF.fractals.length === 11){
         //   ids = ids + "8784,8736,8729,8739";
         // }
-        // this.getFractalsDone(ids);
+        this.getFractalsDone(ids);
       }
       else if (tipo === "strike"){
         this.dailyInfoF.strike = dailyInfo;
@@ -795,6 +803,7 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
         this.dataSourceDaily.sort = this.sort3;
         this.dataSource = new MatTableDataSource(this.fractales);
         this.dataSource.sort = this.sort;
+        this.dataSource.filterPredicate = this.createFilter();
       },
       error: (err) => {
         console.warn('Fractales diarios sin hacer');
@@ -805,6 +814,7 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
         this.dataSourceDaily.sort = this.sort3;
         this.dataSource = new MatTableDataSource(this.fractales);
         this.dataSource.sort = this.sort;
+        this.dataSource.filterPredicate = this.createFilter();
       }
     })
   }
@@ -1101,6 +1111,78 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
       error: (err) => {
         console.error('Error obteniendo ids jw:', err);
         this.weeklyRiftHuntingJw = [];
+      }
+    });
+  }
+
+  loadWeeklyConvergenciaSoto(){
+    this.dailyService.getConvergenciaSotoWeeklyCM().subscribe({
+      next: (data: any) => {
+        // Prepara lista visual
+        this.weeklySotoCMConvergencia = this.SOTO_CONVERGENCIA.map((name, index) => ({
+          index: index,
+          name: name
+        }));
+
+        // Si no hay data, considera como no hechos
+        if (!data || data.length === 0) {
+          this.weeklySotoCMConvergenciaDoneIds = new Set(); // todos como no hechos
+          return;
+        }
+
+        const result = data[0];
+
+        if (result.done === true) {
+          // Todos hechos: incluir todos los índices en el Set
+          this.weeklySotoCMConvergenciaDoneIds = new Set(this.weeklySotoCMConvergencia.map(s => s.index));
+        } else {
+          // Solo los que estén en bits
+          this.weeklySotoCMConvergenciaDoneIds = new Set(result.bits || []);
+        }
+      },
+      error: (err) => {
+        this.weeklySotoCMConvergencia = this.SOTO_CONVERGENCIA.map((name, index) => ({
+          index: index,
+          name: name
+        }));
+        this.weeklySotoCMConvergenciaDoneIds = new Set(); // todos no hechos
+        console.warn('Weekly SOTO CM convergencias sin hacer');
+      }
+    });
+  }
+
+  loadWeeklyConvergenciaJW(){
+    this.dailyService.getConvergenciaJwWeeklyCM().subscribe({
+      next: (data: any) => {
+        // Prepara lista visual
+        this.weeklyJWCMConvergencia = this.JW_CONVERGENCIA.map((name, index) => ({
+          index: index,
+          name: name
+        }));
+
+        // Si no hay data, considera como no hechos
+        if (!data || data.length === 0) {
+          this.weeklyJWCMConvergenciaDoneIds = new Set(); // todos como no hechos
+          return;
+        }
+
+        const result = data[0];
+
+        if (result.done === true) {
+          // Todos hechos: incluir todos los índices en el Set
+          this.weeklyJWCMConvergenciaDoneIds = new Set(this.weeklyJWCMConvergencia.map(s => s.index));
+        } else {
+          // Solo los que estén en bits
+          this.weeklyJWCMConvergenciaDoneIds = new Set(result.bits || []);
+        }
+      },
+      error: (err) => {
+        this.weeklyJWCMConvergencia = this.JW_CONVERGENCIA.map((name, index) => ({
+          index: index,
+          name: name
+        }));
+        this.weeklyJWCMConvergenciaDoneIds = new Set(); // todos no hechos
+        console.warn('Weekly JW CM convergencias sin hacer');
       }
     });
   }
