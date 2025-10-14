@@ -8,7 +8,7 @@
 //     idDaily: Number[];
 //     idRec0: Number;
 //     idRec1: Number;
-//     idRec2: Number
+//     idRec2: Number;
 // }
 
 // export const Fractales: Test[] = [

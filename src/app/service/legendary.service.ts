@@ -8,6 +8,8 @@ export class LegendaryService {
 
   apiUrl = "https://api.guildwars2.com/v2/";
 
+  public readonly bestMapBonusRewardWeekNumber: number = 5; // Variable a cambiar segun cambie la mejor zona
+
   constructor(private httpClient: HttpClient) { }
 
   getCommercePrices(ids: string){

@@ -38,8 +38,12 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
   pactSupply: string[] = [];
   pactSupplyUpdate: string = "";
   mapBonusRewardweekNumber = 1;
+  bestWeek = 1;
   tokenSupply: string[][] = [];
   anomalia: string = '';
+  fractalIncursion: string = '';
+  weeklyFractalQuickplay: any = [];
+  fractalInfiniteRecursion: any = [];
   convergenciaSoto: string = '';
   convergenciaJw: string = '';
   convergenciaSotoWeekly: any = [];
@@ -215,13 +219,16 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
 
     this.tokenSupply = this.getTokenSupply();
     this.pactSupply = this.getPactSupply();
+    this.bestWeek = this.legendaryService.bestMapBonusRewardWeekNumber;
     this.mapBonusRewardweekNumber = this.getMapBonusRewardWeekNumber(); //numero de semana de map bonus reward entre 1-8
     this.dailyActivity = this.getDailyActivity();
     this.recordatorio = this.getRecordatorio();
 
     this.anomalia = this.getAnomaly();
+    this.fractalIncursion = this.getFractalIncursion();
       const id1 = setInterval(() => {
         this.anomalia = this.getAnomaly();
+        this.fractalIncursion = this.getFractalIncursion();
       }, 1 * 60 * 1000)
     this.intervalIds.push(id1);
 
@@ -259,6 +266,8 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
     this.loadWeeklyRiftHuntingJw();
     this.loadWeeklyConvergenciaSoto();
     this.loadWeeklyConvergenciaJW();
+    this.weeklyFractalQuickplay = await this.getWeeklyFractalQuickplay();
+    this.fractalInfiniteRecursion = await this.getFractalInfiniteRecursion();
 
     this.convergenciaSoto = this.getConvergenciaSoto();
     this.convergenciaJw = this.getConvergenciaJw();
@@ -556,6 +565,10 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
     return this.dailyService.getAnomaliaLey();
   }
 
+  getFractalIncursion(){
+    return this.dailyService.getFractalIncursion();
+  }
+
   async getConvergenciaSoto100(){
     return await this.dailyService.getConvergenciaSoto100();
   }
@@ -586,6 +599,13 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
 
   async getConvergenciaJwWeekly(){
     return await this.dailyService.getConvergenciaJwWeekly();
+  }
+
+  async getWeeklyFractalQuickplay(){
+    return await this.dailyService.getWeeklyFractalQuickplay();
+  }
+  async getFractalInfiniteRecursion(){
+    return await this.dailyService.getFractalInfiniteRecursion();
   }
 
   getDailyActivity(){

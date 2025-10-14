@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { HeroService } from 'src/app/service/hero.service';
 import { LegendaryService } from 'src/app/service/legendary.service';
-import { legendarios, armaduraLigera, armaduraMedia, armaduraPesada, runa, sello, anilloRaid, t6, idsT6, vales, cantidadArmadura, cantidadRunas, cantidadSellos, valeId, trebolId, liId, ectoplasmaId, liArmadura, trebolArmadura, trebolRuna, trebolSello, trebolAnilloRaid, t6ArmaduraSelloRuna, ectoplasmaRuna, ectoplasmaSello, liAnilloRaid, t6AnilloRaid, obsidianaArmadura, obsidianaRuna, obsidianaSello, obsidianaId, otrosComponentes, lingoteAurico, placaReclamada, huevoChak, piezaAeronave, trozoAurilio, cristalLineaLey, montonCristalLuminoso, aspectoMistico, talismanBrillantez, talismanPotencia, talismanHabilidad, motaMistica, simboloControl, simboloMejora, simboloDolor, monedaMistica, preciosVarios, idsPreciosVarios, legendaryWeapons1, legendaryWeapons2, legendaryWeapons3, legendaryWeapons3Variants, donExploracion, donBatalla, notasInvestigacion, otrosLegendarios, anilloMundo, legendaryAccessory, amuletoPvE, amuletoPvP, legendaryRelic, legendaryWeaponsOther, legendaryBack, armaduraLigeraPve, armaduraMediaPve, armaduraPesadaPve, insigniaFarolero, ambarGris, vetusta, amalgamada, recuerdoAurene, piedraJade, esenciaDesesperacionT1, esenciaAvariciaT2, esenciaTriunfoT3, magiaLiberada, magiaVolatil} from './legendary';
+import { legendarios, armaduraLigera, armaduraMedia, armaduraPesada, runa, sello, anilloRaid, t6, idsT6, vales, cantidadArmadura, cantidadRunas, cantidadSellos, valeId, trebolId, liId, ectoplasmaId, liArmadura, trebolArmadura, trebolRuna, trebolSello, trebolAnilloRaid, t6ArmaduraSelloRuna, ectoplasmaRuna, ectoplasmaSello, liAnilloRaid, t6AnilloRaid, obsidianaArmadura, obsidianaRuna, obsidianaSello, obsidianaId, otrosComponentes, lingoteAurico, placaReclamada, huevoChak, piezaAeronave, trozoAurilio, cristalLineaLey, montonCristalLuminoso, aspectoMistico, talismanBrillantez, talismanPotencia, talismanHabilidad, motaMistica, simboloControl, simboloMejora, simboloDolor, monedaMistica, preciosVarios, idsPreciosVarios, legendaryWeapons1, legendaryWeapons2, legendaryWeapons3, legendaryWeapons3Variants, donExploracion, donBatalla, notasInvestigacion, otrosLegendarios, anilloMundo, legendaryAccessory, amuletoPvE, amuletoPvP, legendaryRelic, legendaryWeaponsOther, legendaryBack, armaduraLigeraPve, armaduraMediaPve, armaduraPesadaPve, insigniaFarolero, ambarGris, vetusta, amalgamada, recuerdoAurene, piedraJade, esenciaDesesperacionT1, esenciaAvariciaT2, esenciaTriunfoT3, magiaLiberada, magiaVolatil, esquirlaEspiritual, legendaryGlovesFractal, ColorRule} from './legendary';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './legendary.component.html',
   styleUrls: ['./legendary.component.css']
 })
+
 export class LegendaryComponent implements OnInit, AfterViewInit {
 
   //////////////////// T6 ////////////////////
@@ -655,7 +656,9 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     tipo: armaduraLigeraPve[0].tipo,
     modo: armaduraLigeraPve[0].modo,
     icon: armaduraLigeraPve[0].icon,
-    wiki: armaduraLigeraPve[0].wiki
+    wiki: armaduraLigeraPve[0].wiki,
+    tengoPartes: armaduraLigeraPve[0].tengoPartes,
+    partes: armaduraLigeraPve[0].partes
   }
   obsidianaMedia: otrosLegendarios = {
     id: armaduraMediaPve[0].id,
@@ -664,7 +667,9 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     tipo: armaduraMediaPve[0].tipo,
     modo: armaduraMediaPve[0].modo,
     icon: armaduraMediaPve[0].icon,
-    wiki: armaduraMediaPve[0].wiki
+    wiki: armaduraMediaPve[0].wiki,
+    tengoPartes: armaduraMediaPve[0].tengoPartes,
+    partes: armaduraMediaPve[0].partes
   }
   obsidianaPesada: otrosLegendarios = {
     id: armaduraPesadaPve[0].id,
@@ -673,7 +678,20 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     tipo: armaduraPesadaPve[0].tipo,
     modo: armaduraPesadaPve[0].modo,
     icon: armaduraPesadaPve[0].icon,
-    wiki: armaduraPesadaPve[0].wiki
+    wiki: armaduraPesadaPve[0].wiki,
+    tengoPartes: armaduraPesadaPve[0].tengoPartes,
+    partes: armaduraPesadaPve[0].partes
+  }
+  guantesFractal: otrosLegendarios = {
+    id: legendaryGlovesFractal[0].id,
+    nombre: legendaryGlovesFractal[0].nombre,
+    tengo: legendaryGlovesFractal[0].tengo,
+    tipo: legendaryGlovesFractal[0].tipo,
+    modo: legendaryGlovesFractal[0].modo,
+    icon: legendaryGlovesFractal[0].icon,
+    wiki: legendaryGlovesFractal[0].wiki,
+    tengoPartes: legendaryGlovesFractal[0].tengoPartes,
+    partes: legendaryGlovesFractal[0].partes
   }
   otrosLegendarios: otrosLegendarios[] = [
     this.anilloPvE,
@@ -690,9 +708,82 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     this.lanzaJanthirLegendaria,
     this.obsidianaLigera,
     this.obsidianaMedia,
-    this.obsidianaPesada
+    this.obsidianaPesada,
+    this.guantesFractal
   ]
+
+  colorRules: ColorRule[] = [
+    {
+      nombre: [this.anilloPvE.nombre, this.anilloWvW.nombre, this.accesorioPvE0.nombre, this.accesorioPvE1.nombre, this.amuletoPvE.nombre, this.amuletoPvP.nombre, this.reliquiaLegendaria.nombre, this.mochilaPvE.nombre, this.mochilaFractal.nombre, this.mochilaPvP.nombre, this.mochilaWvW.nombre, this.lanzaJanthirLegendaria.nombre, this.obsidianaLigera.nombre, this.obsidianaMedia.nombre, this.obsidianaPesada.nombre, this.guantesFractal.nombre],
+      condition: (t) => t === 0,
+      className: 'redBackGround'
+    },
+    {
+      nombre: [this.anilloPvE.nombre, this.anilloWvW.nombre, this.accesorioPvE0.nombre, this.accesorioPvE1.nombre, this.amuletoPvE.nombre, this.amuletoPvP.nombre, this.reliquiaLegendaria.nombre, this.mochilaPvE.nombre, this.mochilaFractal.nombre, this.mochilaPvP.nombre, this.mochilaWvW.nombre, this.lanzaJanthirLegendaria.nombre],
+      condition: (t) => t > 0,
+      className: 'greenBackGround'
+    },
+    {
+      nombre: [this.obsidianaLigera.nombre, this.obsidianaMedia.nombre, this.obsidianaPesada.nombre],
+      condition: (t) => (t >= 1 && t < 6),
+      className: 'yellowBackGround'
+    },
+    {
+      nombre: [this.guantesFractal.nombre],
+      condition: (t) => (t >= 1 && t < 3),
+      className: 'yellowBackGround'
+    },
+    {
+      nombre: [this.obsidianaLigera.nombre, this.obsidianaMedia.nombre, this.obsidianaPesada.nombre],
+      condition: (t) => t === 6,
+      className: 'greenBackGround'
+    },
+    {
+      nombre: [this.guantesFractal.nombre],
+      condition: (t) => t === 3,
+      className: 'greenBackGround'
+    },
+    {
+      nombre: null, // regla global
+      condition: (t) => t === 0,
+      className: 'redBackGround'
+    },
+    {
+      nombre: null, // regla global
+      condition: (t) => t > 0,
+      className: 'defaultBackGround'
+    }
+  ];
+
   // tabla otros legendarios
+  expandedElement: otrosLegendarios | null = null;
+  toggleRow(element: otrosLegendarios) {
+    if (this.isArrayId(element)){
+      this.expandedElement = this.expandedElement === element ? null : element;
+    } else{
+      this.expandedElement = null;
+    }
+    
+  }
+  isArrayId(element: otrosLegendarios): boolean {
+    return Array.isArray(element.id);
+  }
+
+  // Para controlar qué fila es cuál
+  isDetailRow = (index: number, row: any) => row.isExpansionDetailRow === true;
+  isNotDetailRow = (index: number, row: any) => !row.isExpansionDetailRow;
+  // Genera filas intercaladas: normales + detalle si esta expandido
+  getDataWithExpandedRow(): any[] {
+    const data: any[] = [];
+    for (let item of this.otrosLegendarios) {
+      data.push(item);
+      if (this.expandedElement === item) {
+        data.push({ isExpansionDetailRow: true, element: item });
+      }
+    }
+    return data;
+  }
+
   displayedColumnsOtrosLegendarios: string[] = ['nombre', 'icon', 'modo', 'tipo', 'tengo'];
   dataSourceOtrosLegendarios = this.otrosLegendarios;
 
@@ -858,6 +949,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
   trebol = trebolId;
   magiaLiberada = magiaLiberada;
   magiaVolatil = magiaVolatil;
+  esquirlaEspiritual = esquirlaEspiritual;
   // tabla armas legendarias 1 y 3
   displayedColumnsArmasLegendarias1: string[] = ['icon', 'tengo', 'nombre', 'tipo', 'precioTpVentaS', 'pre', 'precioTpVentaSPre'];
   displayedColumnsArmasLegendarias2: string[] = ['icon', 'tengo', 'nombre', 'tipo', 'pre'];
@@ -885,6 +977,8 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     'preciosarmas': 'Precios Armas Legendarias'
   };
   /////////////////////////////////////////////////////////
+
+  imagePath = '../../../assets/img/aurene_variants.png';
 
   constructor(private heroService: HeroService, private legendaryService: LegendaryService, private route: ActivatedRoute,  private router: Router) { }
 
@@ -1040,8 +1134,20 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     })
   }
 
+  getIdLength(id: number | number[]): number {
+    // Si id es un array devuelve length, si no devuelve 1
+    return Array.isArray(id) ? id.length : 1;
+  }
+
   getLegendaryTengo(){
     this.heroService.getLegendaryArmory().subscribe((legendary: any) => {
+      
+      // Inicializo a cero el array tengoPartes segun su longitud definida en legendary.ts
+      this.guantesFractal.tengoPartes = Array(this.getIdLength(this.guantesFractal.id)).fill(0);
+      this.obsidianaLigera.tengoPartes = Array(this.getIdLength(this.obsidianaLigera.id)).fill(0);
+      this.obsidianaMedia.tengoPartes = Array(this.getIdLength(this.obsidianaMedia.id)).fill(0);
+      this.obsidianaPesada.tengoPartes = Array(this.getIdLength(this.obsidianaPesada.id)).fill(0);
+
       for (let i = 0; i < legendary.length; i++){
         for (let j = 0; j < armaduraLigera[0].id.length; j++){
           if (legendary[i].id === armaduraLigera[0].id[j]){
@@ -1101,19 +1207,28 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
         if (legendary[i].id === this.lanzaJanthirLegendaria.id){
           this.lanzaJanthirLegendaria.tengo = legendary[i].count;
         }
+        for (let j = 0; j < legendaryGlovesFractal[0].id.length; j++){
+          if (legendary[i].id === legendaryGlovesFractal[0].id[j]){
+            this.guantesFractal.tengo++;
+            this.guantesFractal.tengoPartes[j]++;
+          }
+        }       
         for (let j = 0; j < armaduraLigeraPve[0].id.length; j++){
           if (legendary[i].id === armaduraLigeraPve[0].id[j]){
             this.obsidianaLigera.tengo++;
+            this.obsidianaLigera.tengoPartes[j]++;
           }
         }
         for (let j = 0; j < armaduraMediaPve[0].id.length; j++){
           if (legendary[i].id === armaduraMediaPve[0].id[j]){
             this.obsidianaMedia.tengo++;
+            this.obsidianaMedia.tengoPartes[j]++;
           }
         }
         for (let j = 0; j < armaduraPesadaPve[0].id.length; j++){
           if (legendary[i].id === armaduraPesadaPve[0].id[j]){
             this.obsidianaPesada.tengo++;
+            this.obsidianaPesada.tengoPartes[j]++;
           }
         }
         for (let j = 0; j < legendaryWeapons1.length; j++){
@@ -1239,6 +1354,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
         this.esenciat3.tengo = wallet.find((o: { id: number; value: number}) => o.id === esenciaTriunfoT3[0].idWallet)?.value ?? 0;
         this.magiaLiberada[0].tengoEnCartera = wallet.find((o: { id: number; value: number}) => o.id === magiaLiberada[0].idWallet)?.value ?? 0;
         this.magiaVolatil[0].tengoEnCartera = wallet.find((o: { id: number; value: number}) => o.id === magiaVolatil[0].idWallet)?.value ?? 0;
+        this.esquirlaEspiritual[0].tengoEnCartera = wallet.find((o: { id: number; value: number}) => o.id === esquirlaEspiritual[0].idWallet)?.value ?? 0;
 
         this.getMatsGaste(); //cuantos vales, treboles, lis, ectoplasma gasté ya
         this.getOtrosGaste(); //cuantos otros gasté ya
@@ -1752,6 +1868,23 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
 
   getTotalTotalEctoplasma(){
     return this.dataSourceLegen.reduce((acc, value) => acc + value.totalEctoplasma, 0);
+  }
+  //------------------------------------
+
+  getTengoClass(element: any): string {
+    const nombre = element.nombre;
+    const tengo = element.tengo;
+
+    for (const rule of this.colorRules) {
+      const matchesName = !rule.nombre || rule.nombre.includes(nombre);
+      const matchesCondition = rule.condition(tengo);
+
+      if (matchesName && matchesCondition) {
+        return rule.className;
+      }
+    }
+
+    return '';
   }
 
 }

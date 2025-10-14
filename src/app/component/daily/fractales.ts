@@ -8,7 +8,7 @@
 //     idDaily: Number[];
 //     idRec0: Number;
 //     idRec1: Number;
-//     idRec2: Number
+//     idRec2: Number;
 // }
 
 // export const Fractales: Test[] = [
@@ -1406,9 +1406,31 @@ export const InestabCm = [
 export interface InstabilityDetail {
     icon_id: number;
     name: {
-    de: string;
-    en: string;
-    es: string;
-    fr: string;
+        de: string;
+        en: string;
+        es: string;
+        fr: string;
     };
+}
+
+export interface Fractal {
+  level: number;
+  done: boolean;
+  tier: string;
+  ar: number;
+  name: string;
+  nameEs: string;
+  idDaily: string;
+  idRec: string;
+}
+
+export interface FractalCm {
+  level: number;
+  ar: number;
+  name: string;
+  nameEs: string;
+  inestab1: string;
+  inestab2: string;
+  inestab3: string;
+  tier: string;
 }

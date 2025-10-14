@@ -50,7 +50,14 @@ export class DailyService {
     "Cataratas: [&BEwCAAA=]"  //Timberline Falls
   ];
 
-  recordatorio = "Llave semanal \n Vetustas \n Tréboles (raid + fract) \n Moneda Mística (Soto) \n Cofre Strikes";
+  fractalIncursion = [
+    "Diessa: [&BN0AAAA=]", //Diessa Plateau
+    "Selvas: [&BHUAAAA=]", //Brisban Wildlands
+    "Cúmulos: [&BLQAAAA=]", //Snowden Drifts
+    "Kessex: [&BBIAAAA=]"  //Kessex Hills
+  ];
+
+  recordatorio = "Llave semanal \n Vetustas \n Tréboles (raid + fract) \n Moneda Mística (Soto) \n Cofre Strikes \n Corazones, esquirlas JW";
 
   iron = [3, 4, 9, 10, 15, 16, 21, 22];
   ironInvierno = [2, 3, 8, 9, 14, 15, 20, 21];
@@ -58,6 +65,15 @@ export class DailyService {
   genInvierno = [22, 23, 4, 5, 10, 11, 16, 17];
   timber = [1, 2, 7, 8, 13, 14, 19, 20];
   timberInvierno = [0, 1, 6, 7, 12, 13, 18, 19];
+
+  diessa = [3, 7, 11, 15, 19, 23];
+  diessaInvierno = [2, 6, 10, 14, 18, 22];
+  brisban = [0, 4, 8, 12, 16, 20];
+  brisbanInvierno = [3, 7, 11, 15, 19, 23];
+  snowden = [1, 5, 9, 13, 17, 21];
+  snowdenInvierno = [0, 4, 8, 12, 16, 20];
+  kessex = [2, 6, 10, 14, 18, 22];
+  kessexInvierno = [1, 5, 9, 13, 17, 21];
 
   strike: any;
 
@@ -309,6 +325,44 @@ export class DailyService {
     return "0"; //para que no dé un warning
   }
 
+  getFractalIncursion(){
+    let d = new Date();
+    let h = d.getHours(); //Get the hour (0-23)
+    let m = d.getMinutes(); //Get the minute (0-59)
+
+    const esInvierno = this.esHorarioInvierno();
+
+    const diessa = esInvierno ? this.diessaInvierno : this.diessa;
+    const brisban = esInvierno ? this.brisbanInvierno : this.brisban;
+    const snowden = esInvierno ? this.snowdenInvierno : this.snowden;
+    const kessex = esInvierno ? this.kessexInvierno : this.kessex;
+
+    const zonas = [
+      { nombre: this.fractalIncursion[0], horas: diessa },
+      { nombre: this.fractalIncursion[1], horas: brisban },
+      { nombre: this.fractalIncursion[2], horas: snowden },
+      { nombre: this.fractalIncursion[3], horas: kessex }
+    ];
+
+    // Compruebo el intervalo de horas y minutos y devuelvo la incursion de fractal que va a pasar
+    for (const zona of zonas) {
+      if (zona.horas.includes(h) && m <= 1) {
+        return `${h % 24}:00 ${zona.nombre}`;
+      }
+    }
+
+    // Buscar la próxima incursion en la siguiente hora
+    const nextHour = (h + 1) % 24;
+    for (const zona of zonas) {
+      if (zona.horas.includes(nextHour)) {
+        return `${nextHour}:00 ${zona.nombre}`;
+      }
+    }
+
+    // Si no encuentra ninguna coincidencia
+    return "0";
+  }
+
   getConvergenciaSoto(){
     let d = new Date();
     let h = d.getHours(); //Get the hour (0-23)
@@ -542,12 +596,14 @@ export class DailyService {
     return this.httpClient.get<any[]>(url);
   }
 
-  getWeeklyEoDStrikes(){ // para sacar el id de las strikes semanales de EoD
+  getWeeklyEoDStrikes(){ 
+    // para sacar el id de las strikes semanales de EoD
     const url = `${this.apiUrl}account/achievements?ids=5577&access_token=${this.apiKey}`;
     return this.httpClient.get(url);
   }
 
-  getWeeklySotoStrikes(){ //para sacar el id de las strikes semanales de Soto
+  getWeeklySotoStrikes(){ 
+    // para sacar el id de las strikes semanales de Soto
     const url = `${this.apiUrl}account/achievements?ids=7155&access_token=${this.apiKey}`;
     return this.httpClient.get(url);
   }
@@ -555,6 +611,16 @@ export class DailyService {
   getFractalsDone(ids: string){
     const url = `${this.apiUrl}account/achievements?ids=${ids}&access_token=${this.apiKey}`;
     return this.httpClient.get<any[]>(url);
+  }
+
+  async getWeeklyFractalQuickplay(): Promise<Achievement[]> {
+    // devuelve logro de hacer 5 fractales quickplay semanales
+    return this.getAchievement(8815, 5);
+  }
+
+  async getFractalInfiniteRecursion(): Promise<Achievement[]> {
+    // devuelve logro de hacer 150 polvo fractalino en fractal quickplay repetible
+    return this.getAchievement(8814, 150, 0);
   }
 
 }

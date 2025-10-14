@@ -85,6 +85,12 @@ export class HeroService {
     return this.httpClient.get(url);
   }
 
+  getInventory(){
+    // Devuelve inventario compartido
+    const url = `${this.apiUrl}inventory?access_token=${this.apiKey}`;
+    return this.httpClient.get(url);
+  }
+
     /**
    * Handle Http operation that failed.
    * Let the app continue.

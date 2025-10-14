@@ -98,12 +98,29 @@
     </mat-tab>
 
     <mat-tab label="Otros legendarios">
-        <table mat-table [dataSource]="dataSourceOtrosLegendarios" class="mat-elevation-z8"> 
+        <table mat-table [dataSource]="getDataWithExpandedRow()" class="mat-elevation-z8" multiTemplateDataRows> 
             
+            <!-- expand Column (flecha) -->
+            <ng-container matColumnDef="expand">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-icon
+                        *ngIf="isArrayId(element)"
+                        [class.rotated]="expandedElement === element"
+                        class="expand-icon">expand_more
+                    </mat-icon>
+                </td>
+            </ng-container>
+
             <!-- nombre Column -->
             <ng-container matColumnDef="nombre">
                 <th mat-header-cell *matHeaderCellDef> Nombre </th>
-                <td mat-cell *matCellDef="let element"> 
+                <td mat-cell *matCellDef="let element">
+                    <mat-icon
+                        *ngIf="isArrayId(element)"
+                        [class.rotated]="expandedElement === element"
+                        class="expand-icon">expand_more
+                    </mat-icon> 
                     <a href={{element.wiki}} target="_blank" rel="noopener noreferrer" style="text-decoration: none">
                         {{element.nombre}} 
                     </a> 
@@ -113,7 +130,7 @@
             <!-- icon Column -->
             <ng-container matColumnDef="icon">
                 <th mat-header-cell *matHeaderCellDef> Icono </th>
-                <td mat-cell *matCellDef="let element"> <img src="{{element.icon}}" /> </td>
+                <td mat-cell *matCellDef="let element"> <img src="{{element.icon[0]}}" /> </td>
             </ng-container>
 
             <!-- modo Column -->
@@ -131,15 +148,53 @@
             <!-- tengo Column -->
             <ng-container matColumnDef="tengo">
                 <th mat-header-cell *matHeaderCellDef> Tengo </th>
-                <td mat-cell *matCellDef="let element" [ngClass]="{
-                    'greenBackGround': ((element.nombre?.toLowerCase().includes('obsidian') && element.tengo === 6) || 
-                                        (!element.nombre?.toLowerCase().includes('obsidian') && element.tengo > 0)),
-                    'redBackGround': element.tengo === 0
-                  }"> {{element.tengo}} </td>
+                <td mat-cell *matCellDef="let element" [ngClass]="getTengoClass(element)"> {{ element.tengo }} </td>
+            </ng-container>
+
+            <!-- Fila expandida -->
+            <ng-container matColumnDef="expandedDetail">
+                <td mat-cell *matCellDef="let row" [attr.colspan]="displayedColumnsOtrosLegendarios.length">
+                <ng-container *ngIf="row.element && isArrayId(row.element)">
+                    <strong>Partes de {{ row.element.nombre }}</strong>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Icono</th>
+                                <th>Nombre</th>
+                                <th>Tengo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let parte of row.element.partes; let i = index">
+                                <td><img src="{{row.element.icon[i]}}"></td>
+                                <td>{{ parte }}</td>
+                                <td [ngClass]="{
+                                        'greenBackGround': row.element.tengoPartes[i] === 1, 
+                                        'redBackGround': row.element.tengoPartes[i] === 0
+                                    }">
+                                    {{row.element.tengoPartes[i]}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </ng-container>
+                </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumnsOtrosLegendarios; sticky: true"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumnsOtrosLegendarios;"></tr>
+            
+             <!-- Fila normal (clickable) -->
+            <tr 
+                mat-row 
+                *matRowDef="let row; 
+                columns: displayedColumnsOtrosLegendarios; when: isNotDetailRow" 
+                class="clickable"
+                (click)="toggleRow(row)">
+            </tr>
+
+            <!-- Fila detalle -->
+            <tr mat-row *matRowDef="let row; columns: ['expandedDetail']; when: isDetailRow"></tr>
+
         </table>
     </mat-tab>
 
@@ -310,6 +365,10 @@
             <span class="material-item">
                 <img title="Magia Volatil" [src]="magiaVolatil[0].icon" class="icono-material" />
                 {{ magiaVolatil[0].tengoEnCartera | number}}
+            </span>
+            <span class="material-item">
+                <img title="Esquirla espiritual" [src]="esquirlaEspiritual[0].icon" class="icono-material" />
+                {{ esquirlaEspiritual[0].tengoEnCartera | number}}
             </span>
         </div>
 
@@ -590,14 +649,21 @@
             </mat-tab>
 
             <mat-tab label="3ª Gen Variants">
-                <p class="centrado">
-                    <a href="https://wiki.guildwars2.com/wiki/The_Legendary_Facets_of_Aurene" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        class="enlace-boton"> 
-                            <img title="Link logro" src="https://wiki.guildwars2.com/images/a/a9/Legendary_Weapons_%28achievements%29.png"/> The Legendary Facets of Aurene
-                    </a>
-                </p>
+                <div class="centrado gap-grande responsive-container">
+                    <span class="item">
+                        <a href="https://wiki.guildwars2.com/wiki/The_Legendary_Facets_of_Aurene" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            class="enlace-boton"> 
+                                <img title="Link logro" src="https://wiki.guildwars2.com/images/a/a9/Legendary_Weapons_%28achievements%29.png"/> The Legendary Facets of Aurene
+                        </a>
+                    </span>
+                    <span class="item">
+                        <a [href]="imagePath" target="_blank" rel="noopener">
+                            <button mat-raised-button color="primary" class="big-button">Guide (click)</button>
+                        </a>
+                    </span>
+                </div>
                 <table mat-table #sort4="matSort" [dataSource]="dataSourceArmasLegendarias3Variants" matSort matSortActive="nombre" matSortDirection="asc" class="mat-elevation-z8"> 
 
                     <!-- nombre Column -->

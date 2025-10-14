@@ -1,71 +1,79 @@
 export interface t6 {
-    id: number,
-    nombre: string,
-    cantidad: number,
-    tengo: number,
-    necesito: number,
-    icon: string,
-    precioTpCompra: number,
-    precioTpCompraS: string,
-    precioTpVenta: number,
-    precioTpVentaS: string,
-    precioStackCompra: number,
-    precioStackCompraS: string,
-    precioStackVenta: number
-    precioStackVentaS: string,
-    precioStackVenta90: number,
-    precioStackVentaS90: string
+    id: number;
+    nombre: string;
+    cantidad: number;
+    tengo: number;
+    necesito: number;
+    icon: string;
+    precioTpCompra: number;
+    precioTpCompraS: string;
+    precioTpVenta: number;
+    precioTpVentaS: string;
+    precioStackCompra: number;
+    precioStackCompraS: string;
+    precioStackVenta: number;
+    precioStackVentaS: string;
+    precioStackVenta90: number;
+    precioStackVentaS90: string;
 };
 
 export interface legendarios {
-    nombre: string,
-    cantidad: number,
-    tengo: number,
-    wiki: string,
-    totalVales: number,
-    totalTreboles: number,
-    totalLi: number,
-    totalT6: number,
-    totalEctoplasma: number,
-    totalObsidiana: number
+    nombre: string;
+    cantidad: number;
+    tengo: number;
+    wiki: string;
+    totalVales: number;
+    totalTreboles: number;
+    totalLi: number;
+    totalT6: number;
+    totalEctoplasma: number;
+    totalObsidiana: number;
 };
 
 export interface otrosComponentes {
-    nombre: string,
-    id: number,
-    icon: string,
-    cantidad: number,
-    tengo: number,
-    gaste: number,
-    necesito: number
+    nombre: string;
+    id: number;
+    icon: string;
+    cantidad: number;
+    tengo: number;
+    gaste: number;
+    necesito: number;
 }
 
 export interface otrosLegendarios {
-    id: number | number[],
-    nombre: string,
-    tengo: number
-    tipo: string,
-    modo: string,
-    icon: string,
-    wiki: string
+    id: number | number[];
+    nombre: string;
+    tengo: number;
+    tipo: string;
+    modo: string;
+    icon: string[];
+    wiki: string;
+    tengoPartes?: number[];
+    partes?: string[];
 }
 
 export interface preciosVarios {
-    id: number,
-    nombre: string,
-    tengo: number,
-    icon: string,
-    precioTpCompra: number,
-    precioTpCompraS: string,
-    precioTpVenta: number,
-    precioTpVentaS: string,
-    precioStackCompra: number,
-    precioStackCompraS: string,
-    precioStackVenta: number
-    precioStackVentaS: string,
-    precioStackVenta90: number,
-    precioStackVentaS90: string
+    id: number;
+    nombre: string;
+    tengo: number;
+    icon: string;
+    precioTpCompra: number;
+    precioTpCompraS: string;
+    precioTpVenta: number;
+    precioTpVentaS: string;
+    precioStackCompra: number;
+    precioStackCompraS: string;
+    precioStackVenta: number;
+    precioStackVentaS: string;
+    precioStackVenta90: number;
+    precioStackVentaS90: string;
 };
+
+export interface ColorRule {
+  nombre: string[] | null;
+  condition: (tengo: number) => boolean;
+  className: string;
+}
 
 export const idsT6 = "24295,24358,24351,24277,24357,24289,24300,24283";
 
@@ -129,8 +137,17 @@ export const armaduraLigeraPve = [
         tengo: 0,
         tipo: "Armadura",
         modo: "PvE",
-        icon: "https://wiki.guildwars2.com/images/b/bc/Obsidian_Light_Crown.png",
-        wiki: "https://wiki.guildwars2.com/wiki/Obsidian_armor"
+        icon: [
+            "https://wiki.guildwars2.com/images/b/bc/Obsidian_Light_Crown.png",
+            "https://wiki.guildwars2.com/images/4/40/Obsidian_Light_Mantle.png",
+            "https://wiki.guildwars2.com/images/c/cf/Obsidian_Light_Regalia.png",
+            "https://wiki.guildwars2.com/images/e/ee/Obsidian_Light_Gloves.png",
+            "https://wiki.guildwars2.com/images/0/08/Obsidian_Light_Pants.png",
+            "https://wiki.guildwars2.com/images/5/59/Obsidian_Light_Shoes.png"
+        ],
+        wiki: "https://wiki.guildwars2.com/wiki/Obsidian_armor",
+        tengoPartes: [0, 0, 0, 0, 0, 0],
+        partes: ["Corona", "Manto", "Ropajes", "Guantes", "Pantalones", "Zapatos"]
     }
 ];
 
@@ -150,8 +167,17 @@ export const armaduraMediaPve = [
         tengo: 0,
         tipo: "Armadura",
         modo: "PvE",
-        icon: "https://wiki.guildwars2.com/images/5/56/Obsidian_Medium_Mask.png",
-        wiki: "https://wiki.guildwars2.com/wiki/Obsidian_armor"
+        icon: [
+            "https://wiki.guildwars2.com/images/5/56/Obsidian_Medium_Mask.png",
+            "https://wiki.guildwars2.com/images/6/6f/Obsidian_Medium_Shoulders.png",
+            "https://wiki.guildwars2.com/images/3/33/Obsidian_Medium_Jacket.png",
+            "https://wiki.guildwars2.com/images/4/4c/Obsidian_Medium_Gloves.png",
+            "https://wiki.guildwars2.com/images/8/85/Obsidian_Medium_Leggings.png",
+            "https://wiki.guildwars2.com/images/4/47/Obsidian_Medium_Boots.png"
+        ],
+        tengoPartes: [0, 0, 0, 0, 0, 0],
+        wiki: "https://wiki.guildwars2.com/wiki/Obsidian_armor",
+        partes: ["Mascara", "Hombreras", "Chaqueta", "Guantes", "Calzas", "Botas"]
     }
 ];
 
@@ -171,8 +197,17 @@ export const armaduraPesadaPve = [
         tengo: 0,
         tipo: "Armadura",
         modo: "PvE",
-        icon: "https://wiki.guildwars2.com/images/e/ee/Obsidian_Heavy_Helmet.png",
-        wiki: "https://wiki.guildwars2.com/wiki/Obsidian_armor"
+        icon: [
+            "https://wiki.guildwars2.com/images/e/ee/Obsidian_Heavy_Helmet.png",
+            "https://wiki.guildwars2.com/images/3/39/Obsidian_Heavy_Pauldrons.png",
+            "https://wiki.guildwars2.com/images/2/2f/Obsidian_Heavy_Breastplate.png",
+            "https://wiki.guildwars2.com/images/d/d2/Obsidian_Heavy_Gauntlets.png",
+            "https://wiki.guildwars2.com/images/5/55/Obsidian_Heavy_Cuisses.png",
+            "https://wiki.guildwars2.com/images/0/0a/Obsidian_Heavy_Greaves.png"
+        ],
+        tengoPartes: [0, 0, 0, 0, 0, 0],
+        wiki: "https://wiki.guildwars2.com/wiki/Obsidian_armor",
+        partes: ["Casco", "Hombreras", "Peto", "Guanteletes", "Quijotes", "Grebas"]
     }
 ];
 
@@ -195,7 +230,7 @@ export const anilloMundo = [
         tengo: 0,
         tipo: "Anillo",
         modo: "WvW",
-        icon: "https://wiki.guildwars2.com/images/8/85/Conflux.png",
+        icon: ["https://wiki.guildwars2.com/images/8/85/Conflux.png"],
         wiki: "https://wiki.guildwars2.com/wiki/Conflux"
     }
 ];
@@ -207,7 +242,7 @@ export const anilloRaid = [
         tengo: 0,
         tipo: "Anillo",
         modo: "PvE",
-        icon: "https://wiki.guildwars2.com/images/d/d9/Gift_of_Prescience.png",
+        icon: ["https://wiki.guildwars2.com/images/d/d9/Gift_of_Prescience.png"],
         wiki: "https://wiki.guildwars2.com/wiki/Coalescence"
     }
 ];
@@ -219,7 +254,7 @@ export const legendaryAccessory = [
         tengo: 0,
         tipo: "Accesorio",
         modo: "PvE",
-        icon: "https://wiki.guildwars2.com/images/8/89/Aurora.png",
+        icon: ["https://wiki.guildwars2.com/images/8/89/Aurora.png"],
         wiki: "https://wiki.guildwars2.com/wiki/Aurora"
     },
     {
@@ -228,7 +263,7 @@ export const legendaryAccessory = [
         tengo: 0,
         tipo: "Accesorio",
         modo: "PvE",
-        icon: "https://wiki.guildwars2.com/images/1/18/Vision.png",
+        icon: ["https://wiki.guildwars2.com/images/1/18/Vision.png"],
         wiki: "https://wiki.guildwars2.com/wiki/Vision"
     }
 ];
@@ -240,7 +275,7 @@ export const amuletoPvE = [
         tengo: 0,
         tipo: "Amuleto",
         modo: "PvE",
-        icon: "https://wiki.guildwars2.com/images/7/70/Prismatic_Champion%27s_Regalia.png",
+        icon: ["https://wiki.guildwars2.com/images/7/70/Prismatic_Champion%27s_Regalia.png"],
         wiki: "https://wiki.guildwars2.com/wiki/Prismatic_Champion%27s_Regalia"
     }
 ];
@@ -252,7 +287,7 @@ export const amuletoPvP = [
         tengo: 0,
         tipo: "Amuleto",
         modo: "PvP",
-        icon: "https://wiki.guildwars2.com/images/8/85/Transcendence.png",
+        icon: ["https://wiki.guildwars2.com/images/8/85/Transcendence.png"],
         wiki: "https://wiki.guildwars2.com/wiki/Transcendence"
     }
 ];
@@ -264,7 +299,7 @@ export const legendaryRelic = [
         tengo: 0,
         tipo: "Reliquia",
         modo: "PvE",
-        icon: "https://wiki.guildwars2.com/images/c/ce/Legendary_Relic.png",
+        icon: ["https://wiki.guildwars2.com/images/c/ce/Legendary_Relic.png"],
         wiki: "https://wiki.guildwars2.com/wiki/Legendary_Relic"
     }
 ];
@@ -490,6 +525,14 @@ export const magiaVolatil = [
         idWallet: 45,
         tengoEnCartera: 0,
         icon: "https://wiki.guildwars2.com/images/5/54/Volatile_Magic.png"
+    }
+];
+
+export const esquirlaEspiritual = [
+    {
+        idWallet: 23,
+        tengoEnCartera: 0,
+        icon: "https://wiki.guildwars2.com/images/6/63/Spirit_Shard.png"
     }
 ];
 
@@ -1816,7 +1859,7 @@ export const legendaryWeaponsOther = [
         tengo: 0,
         pre: "Nyr_Hrammr",
         preId: 103973,
-        icon: "https://wiki.guildwars2.com/images/1/13/Klobjarne_Geirr.png",
+        icon: ["https://wiki.guildwars2.com/images/1/13/Klobjarne_Geirr.png"],
         wiki: "https://wiki.guildwars2.com/wiki/Klobjarne_Geirr",
         wikiPre: "https://wiki.guildwars2.com/wiki/Nyr_Hrammr",
         precioTpVenta: 0,
@@ -1836,7 +1879,7 @@ export const legendaryBack = [
         tengo: 0,
         pre: "Warcry",
         preId: 81467,
-        icon: "https://wiki.guildwars2.com/images/2/20/Warbringer.png",
+        icon: ["https://wiki.guildwars2.com/images/2/20/Warbringer.png"],
         wiki: "https://wiki.guildwars2.com/wiki/Warbringer",
         wikiPre: "https://wiki.guildwars2.com/wiki/Warcry",
         modo: "WvW",
@@ -1849,7 +1892,7 @@ export const legendaryBack = [
         tengo: 0,
         pre: "Unbound",
         preId: 72309,
-        icon: "https://wiki.guildwars2.com/images/4/4a/Ad_Infinitum.png",
+        icon: ["https://wiki.guildwars2.com/images/4/4a/Ad_Infinitum.png"],
         wiki: "https://wiki.guildwars2.com/wiki/Ad_Infinitum",
         wikiPre: "https://wiki.guildwars2.com/wiki/Unbound",
         modo: "Fractal"
@@ -1862,7 +1905,7 @@ export const legendaryBack = [
         tengo: 0,
         pre: "Wings of Ascension",
         preId: 77536,
-        icon: "https://wiki.guildwars2.com/images/d/d7/The_Ascension.png",
+        icon: ["https://wiki.guildwars2.com/images/d/d7/The_Ascension.png"],
         wiki: "https://wiki.guildwars2.com/wiki/The_Ascension",
         wikiPre: "https://wiki.guildwars2.com/wiki/Wings_of_Ascension",
         modo: "PvP"
@@ -1875,9 +1918,28 @@ export const legendaryBack = [
         tengo: 0,
         pre: "Orrax Contained",
         preId: 104690,
-        icon: "https://render.guildwars2.com/file/9C5948587832ACA31FD01298DE081BDE626CC607/3629149.png",
+        icon: ["https://render.guildwars2.com/file/9C5948587832ACA31FD01298DE081BDE626CC607/3629149.png"],
         wiki: "https://wiki.guildwars2.com/wiki/Orrax_Manifested",
         wikiPre: "https://wiki.guildwars2.com/wiki/Orrax_Contained",
         modo: "PvE"
+    }
+];
+
+export const legendaryGlovesFractal = [
+    {
+        id: [105317, 105293, 105171],
+        idWardrobe: [13224, 13222, 13230],
+        nombre: "Eikasia, aferranieblas",
+        tengo: 0,
+        tipo: "Guantes",
+        modo: "Fractal",
+        icon: [
+            "https://render.guildwars2.com/file/809ECF06F7FEE271DF0E064FB46070293236F508/3691044.png",
+            "https://render.guildwars2.com/file/809ECF06F7FEE271DF0E064FB46070293236F508/3691044.png",
+            "https://render.guildwars2.com/file/809ECF06F7FEE271DF0E064FB46070293236F508/3691044.png"
+        ],
+        tengoPartes: [0, 0, 0],
+        wiki: "https://wiki.guildwars2.com/wiki/Eikasia,_Mists-Grasper_(heavy)",
+        partes: ["Ligero", "Medio", "Pesado"]
     }
 ];

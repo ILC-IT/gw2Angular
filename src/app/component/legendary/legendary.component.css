@@ -25,16 +25,6 @@ tr.mat-footer-row {
     font-weight: bold;
 }
 
-.greenBackGround {
-    background-color:rgb(195, 248, 195);
-    font-weight: bold;
-}
-
-.redBackGround {
-    background-color: rgb(247, 175, 199);
-    font-weight: bold;
-}
-
 .negrita {
     font-weight: bold;
 }
@@ -46,10 +36,6 @@ tr.mat-footer-row {
 .boton{
     height: 40px;
     font-size: large;
-}
-
-.green{
-    background-color:rgb(195, 248, 195);
 }
 
 img { 
@@ -82,7 +68,7 @@ img {
 }
 
 .responsive-container {
-    flex-wrap: wrap; /* 👈 permite que los ítems bajen de línea */
+    flex-wrap: wrap; /* permite que los ítems bajen de línea */
     row-gap: 16px; /* espacio vertical entre filas */
     text-align: center;
     padding: 8px;
@@ -111,9 +97,9 @@ img {
 }
 
 .enlace-boton:hover {
-    background-color: #0056b3; /* Cambio de fondo al pasar el mouse */
+    background-color: #0056b3; /* Cambio de fondo al pasar el ratón */
     cursor: pointer; /* Cambia el cursor */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra al pasar el mouse */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra al pasar el ratón */
 }
 
 .contenedor-materiales {
@@ -144,4 +130,42 @@ img {
     font-size: 16px;
     padding: 10px 10px;
     border-radius: 12px; /* Esquinas redondeadas */
+}
+
+.greenBackGround {
+    background-color:rgb(195, 248, 195);
+    font-weight: bold;
+}
+
+.redBackGround {
+    background-color: rgb(247, 175, 199);
+    font-weight: bold;
+}
+
+.yellowBackGround {
+    background-color: yellow;
+    font-weight: bold;
+}
+
+.defaultBackGround {
+    background-color: lightgray;
+    color: black;
+    font-weight: bold;
+}
+
+.clickable {
+    cursor: pointer
+}
+
+.clickable:hover {
+    background-color: #f5f5f5;
+}
+
+.expand-icon {
+    transition: transform 0.2s ease-in-out;
+    vertical-align: middle;
+}
+
+.expand-icon.rotated {
+    transform: rotate(180deg);
 }

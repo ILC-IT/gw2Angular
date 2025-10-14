@@ -5,8 +5,8 @@ export interface Raid {
     bossOk: string[];
     bossCompletado: boolean[];
     tokenCount: number[];
-    callOfTheMists: string,
-    emboldened: string
+    callOfTheMists: string;
+    emboldened: string;
 };
 
 export const LegendariaRaidId = [
