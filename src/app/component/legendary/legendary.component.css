@@ -132,6 +132,10 @@ img {
     border-radius: 12px; /* Esquinas redondeadas */
 }
 
+.big-button:hover {
+    cursor: pointer;
+}
+
 .greenBackGround {
     background-color:rgb(195, 248, 195);
     font-weight: bold;

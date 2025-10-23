@@ -78,3 +78,8 @@ button{
 .menu-item:hover {
     color: #3f51b5; /* Color del tema principal */
 }
+
+a.error-account {
+  background-color: #e53935 !important;;
+  color: white !important;
+}

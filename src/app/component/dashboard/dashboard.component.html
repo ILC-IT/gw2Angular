@@ -60,8 +60,23 @@
                 <a mat-menu-item [routerLink]="'/legendary/preciosarmas'">Precios armas</a>
                 </div>
             </mat-menu>
+            
+            <a routerLink="/festival">Festival</a>
 
-            <a routerLink="/homestead">Homestead</a>
+            <a [matMenuTriggerFor]="homesteadMenu"
+                #homesteadTrigger="matMenuTrigger"
+                (mouseenter)="openMenu(homesteadTrigger)"
+                (mouseleave)="closeMenu(homesteadTrigger)"
+                routerLink="/homestead">
+                Homestead
+            </a>
+            <mat-menu [hasBackdrop]="false" #homesteadMenu="matMenu" [overlapTrigger]="false">
+                <div (mouseenter)="cancelCloseMenu(homesteadTrigger)"
+                    (mouseleave)="closeMenu(homesteadTrigger)">
+                <a mat-menu-item [routerLink]="'/homestead/precioshuerto'">Precios Huerto</a>
+                <a mat-menu-item [routerLink]="'/homestead/glifos'">Glifos</a>
+                </div>
+            </mat-menu>
 
             &nbsp;
             <a href="https://dps.report/" target="_blank" rel="noopener noreferrer" style="text-decoration: none">LOGS</a>
@@ -73,7 +88,7 @@
             <a href="https://killproof.me/account/gw2accounts" target="_blank" rel="noopener noreferrer" style="text-decoration: none">KP</a>
 
             &nbsp;
-            <a [cdkCopyToClipboard]="account.name" matTooltip="Copiar" style="cursor: pointer;">{{account.name}}</a>
+            <a [cdkCopyToClipboard]="account.name" matTooltip="Copiar" style="cursor: pointer;" [ngClass]="{ 'error-account': account?.error }">{{account.name}}</a>
         </nav>
     </div>
     <div class="search" color="primary">

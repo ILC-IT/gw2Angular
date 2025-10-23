@@ -39,10 +39,18 @@ export class AppComponent {
 
   getAccount(){
     this.heroService.getAccount().subscribe((acc: any) => {
-        this.account = acc;
+        this.account = { 
+          ...acc, 
+          error: false 
+        };
       },
       (err) => {
         console.error('Error al obtener la cuenta:', err);
+        console.warn('Problema en la API');
+        this.account = { 
+          name: 'API ERROR',
+          error: true
+        };
       }
   )}
 

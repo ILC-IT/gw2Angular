@@ -75,7 +75,7 @@ export class StatsComponent implements OnInit {
   armaduras = armaduras;
   armadurasEng = armadurasEng;
 
-  // Para las rutas a las pestañas de diarias
+  // Para las rutas a las pestañas de stats
   selectedTabIndex: number = 0;
   tabs: string[] = ['Buscar por stats (atributos)', 'Buscar por prefijo', 'Buscar por nombre arma/armadura'];
   routeMap: { [key: string]: string } = {

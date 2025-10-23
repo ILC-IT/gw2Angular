@@ -469,6 +469,14 @@ export const piedraJade = [
     }
 ];
 
+export const favorImperial = [
+    {
+        idWallet: 68,
+        tengoEnCartera: 0,
+        icon: "https://wiki.guildwars2.com/images/1/1c/Imperial_Favor.png"
+    }
+];
+
 export const aspectoMistico = [
     {
         id: 89105,

@@ -172,3 +172,8 @@ button{
 .mobile-content {
   padding-top: 10px;
 }
+
+a.error-account {
+  background-color: #e53935 !important;;
+  color: white !important;
+}

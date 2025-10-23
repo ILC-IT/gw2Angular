@@ -28,4 +28,14 @@ export class HomesteadService {
     return this.httpClient.get(url);
   }
 
+  getMaterials(){
+    const url = `${this.apiUrl}account/materials?access_token=${this.apiKey}`;
+    return this.httpClient.get(url);
+  }
+
+  getCommercePrices(ids: string){
+    const url = `${this.apiUrl}commerce/prices?ids=${ids}`;
+    return this.httpClient.get(url);
+  }
+
 }

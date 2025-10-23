@@ -27,6 +27,8 @@ import { NgxAwesomePopupModule, DialogConfigModule, ConfirmBoxConfigModule, Toas
 import { LegendaryService } from './service/legendary.service';
 import { HomesteadComponent } from './component/homestead/homestead.component';
 import { HomesteadService } from './service/homestead.service';
+import { FestivalComponent } from './component/festival/festival.component';
+import { FestivalService } from './service/festival.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import { HomesteadService } from './service/homestead.service';
     RaidComponent,
     HerodetailComponent,
     LegendaryComponent,
-    HomesteadComponent
+    HomesteadComponent,
+    FestivalComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +80,8 @@ import { HomesteadService } from './service/homestead.service';
     HomesteadService,
     LegendaryService,
     MessageService,
-    RaidService
+    RaidService,
+    FestivalService
   ],
   bootstrap: [AppComponent]
 })

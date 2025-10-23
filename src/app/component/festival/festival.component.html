@@ -1,0 +1,209 @@
+<mat-card class="festival-card">
+    <mat-card-title class="titulo-tabla lunar">Lunar New Year</mat-card-title>
+    <mat-card-content>
+        <table label="Lunar New Year" mat-table id="tablaLunar" [dataSource]="dataSourceLunar" class="mat-elevation-z8"> 
+            <ng-container matColumnDef="icon">
+                <th mat-header-cell *matHeaderCellDef> Icono </th>
+                <td mat-cell *matCellDef="let element"><img src="{{element.icon}}" /></td>
+            </ng-container>
+
+            <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                <td mat-cell *matCellDef="let element">{{element.nombre}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="precioTpCompraS">
+                <th mat-header-cell *matHeaderCellDef> Precio TP Compra </th>
+                <td mat-cell *matCellDef="let element">{{element.precioTpCompraS}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="precioTpVentaS">
+                <th mat-header-cell *matHeaderCellDef> Precio TP Venta </th>
+                <td mat-cell *matCellDef="let element">{{element.precioTpVentaS}}</td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsLunar; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumnsLunar;"></tr>
+        </table>
+    </mat-card-content>
+</mat-card>
+
+<mat-card class="festival-card">
+    <mat-card-title class="titulo-tabla sab">Super Adventure Festival</mat-card-title>
+    <mat-card-content>
+        <table label="Super Adventure Festival" mat-table id="tablaSab" [dataSource]="dataSourceSab" class="mat-elevation-z8"> 
+            <ng-container matColumnDef="icon">
+                <th mat-header-cell *matHeaderCellDef> Icono </th>
+                <td mat-cell *matCellDef="let element"><img src="{{element.icon}}" /></td>
+            </ng-container>
+
+            <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                <td mat-cell *matCellDef="let element">{{element.nombre}}</td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsSab; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumnsSab;"></tr>
+        </table>
+    </mat-card-content>
+</mat-card>
+
+<mat-card class="festival-card">
+    <mat-card-title class="titulo-tabla dragonBash">Dragon Bash</mat-card-title>
+    <mat-card-content>
+        <table label="Dragon Bash" mat-table id="tablaDragonBash" [dataSource]="dataSourceDragonBash" class="mat-elevation-z8"> 
+            <ng-container matColumnDef="icon">
+                <th mat-header-cell *matHeaderCellDef> Icono </th>
+                <td mat-cell *matCellDef="let element"><img src="{{element.icon}}" /></td>
+            </ng-container>
+
+            <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                <td mat-cell *matCellDef="let element">{{element.nombre}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="tengo">
+                <th mat-header-cell *matHeaderCellDef> Tengo </th>
+                <td mat-cell *matCellDef="let element">{{element.tengo}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="precioTpCompraS">
+                <th mat-header-cell *matHeaderCellDef> Precio TP Compra </th>
+                <td mat-cell *matCellDef="let element" 
+                    [ngClass]="{'greenBackGround': element.isBarataCompra}" 
+                    [matTooltip]="getTooltipTextCompra(element)"
+                    [matTooltipDisabled]="!getTooltipTextCompra(element)">
+                        {{element.precioTpCompraS}}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="precioTpVentaS">
+                <th mat-header-cell *matHeaderCellDef> Precio TP Venta </th>
+                <td mat-cell *matCellDef="let element" 
+                    [ngClass]="{'greenBackGround': element.isBarataVenta}" 
+                    [matTooltip]="getTooltipTextVenta(element)"
+                    [matTooltipDisabled]="!getTooltipTextVenta(element)">
+                        {{element.precioTpVentaS}}
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsDragonBash; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumnsDragonBash;"></tr>
+        </table>
+    </mat-card-content>
+</mat-card>
+
+<mat-card class="festival-card">
+    <mat-card-title class="titulo-tabla fourWinds">Festival of the Four Winds</mat-card-title>
+    <mat-card-content>
+        <table label="Festival of the Four Winds" mat-table id="tablaFourWinds" [dataSource]="dataSourceFourWinds" class="mat-elevation-z8"> 
+            <ng-container matColumnDef="icon">
+                <th mat-header-cell *matHeaderCellDef> Icono </th>
+                <td mat-cell *matCellDef="let element"><img src="{{element.icon}}" /></td>
+            </ng-container>
+
+            <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                <td mat-cell *matCellDef="let element">{{element.nombre}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="tengo">
+                <th mat-header-cell *matHeaderCellDef> Tengo </th>
+                <td mat-cell *matCellDef="let element">{{element.tengo}}</td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsFourWinds; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumnsFourWinds;"></tr>
+        </table>
+    </mat-card-content>
+</mat-card>
+
+<mat-card class="festival-card">
+    <mat-card-title class="titulo-tabla halloween">Halloween</mat-card-title>
+    <mat-card-content>
+        <table label="Halloween" mat-table id="tablaHalloween" [dataSource]="dataSourceHalloween" class="mat-elevation-z8"> 
+            <ng-container matColumnDef="icon">
+                <th mat-header-cell *matHeaderCellDef> Icono </th>
+                <td mat-cell *matCellDef="let element"><img src="{{element.icon}}" /></td>
+            </ng-container>
+
+            <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                <td mat-cell *matCellDef="let element">{{element.nombre}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="tengo">
+                <th mat-header-cell *matHeaderCellDef> Tengo </th>
+                <td mat-cell *matCellDef="let element">{{element.tengo}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="precioTpCompraS">
+                <th mat-header-cell *matHeaderCellDef> Precio TP Compra </th>
+                <td mat-cell *matCellDef="let element" 
+                    [ngClass]="{'greenBackGround': element.isBarataCompra}" 
+                    [matTooltip]="getTooltipTextCompra(element)"
+                    [matTooltipDisabled]="!getTooltipTextCompra(element)">
+                        {{element.precioTpCompraS}}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="precioTpVentaS">
+                <th mat-header-cell *matHeaderCellDef> Precio TP Venta </th>
+                <td mat-cell *matCellDef="let element" 
+                    [ngClass]="{'greenBackGround': element.isBarataVenta}" 
+                    [matTooltip]="getTooltipTextVenta(element)"
+                    [matTooltipDisabled]="!getTooltipTextVenta(element)">
+                        {{element.precioTpVentaS}}
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsHalloween; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumnsHalloween;"></tr>
+        </table>
+    </mat-card-content>
+</mat-card>
+
+<mat-card class="festival-card">
+    <mat-card-title class="titulo-tabla wintersday">Wintersday</mat-card-title>
+    <mat-card-content>
+        <table label="Wintersday" mat-table id="tablaWintersday" [dataSource]="dataSourceWintersday" class="mat-elevation-z8"> 
+            <ng-container matColumnDef="icon">
+                <th mat-header-cell *matHeaderCellDef> Icono </th>
+                <td mat-cell *matCellDef="let element"><img src="{{element.icon}}" /></td>
+            </ng-container>
+
+            <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                <td mat-cell *matCellDef="let element">{{element.nombre}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="tengo">
+                <th mat-header-cell *matHeaderCellDef> Tengo </th>
+                <td mat-cell *matCellDef="let element">{{element.tengo}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="precioTpCompraS">
+                <th mat-header-cell *matHeaderCellDef> Precio TP Compra </th>
+                <td mat-cell *matCellDef="let element" 
+                    [ngClass]="{'greenBackGround': element.isBarataCompra}"
+                    [matTooltip]="getTooltipTextCompra(element)"
+                    [matTooltipDisabled]="!getTooltipTextCompra(element)">
+                        {{element.precioTpCompraS}}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="precioTpVentaS">
+                <th mat-header-cell *matHeaderCellDef> Precio TP Venta </th>
+                <td mat-cell *matCellDef="let element" 
+                    [ngClass]="{'greenBackGround': element.isBarataVenta}" 
+                    [matTooltip]="getTooltipTextVenta(element)"
+                    [matTooltipDisabled]="!getTooltipTextVenta(element)">
+                        {{element.precioTpVentaS}}
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsWintersday; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumnsWintersday;"></tr>
+        </table>
+    </mat-card-content>
+</mat-card>

@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { HeroService } from 'src/app/service/hero.service';
 import { LegendaryService } from 'src/app/service/legendary.service';
-import { legendarios, armaduraLigera, armaduraMedia, armaduraPesada, runa, sello, anilloRaid, t6, idsT6, vales, cantidadArmadura, cantidadRunas, cantidadSellos, valeId, trebolId, liId, ectoplasmaId, liArmadura, trebolArmadura, trebolRuna, trebolSello, trebolAnilloRaid, t6ArmaduraSelloRuna, ectoplasmaRuna, ectoplasmaSello, liAnilloRaid, t6AnilloRaid, obsidianaArmadura, obsidianaRuna, obsidianaSello, obsidianaId, otrosComponentes, lingoteAurico, placaReclamada, huevoChak, piezaAeronave, trozoAurilio, cristalLineaLey, montonCristalLuminoso, aspectoMistico, talismanBrillantez, talismanPotencia, talismanHabilidad, motaMistica, simboloControl, simboloMejora, simboloDolor, monedaMistica, preciosVarios, idsPreciosVarios, legendaryWeapons1, legendaryWeapons2, legendaryWeapons3, legendaryWeapons3Variants, donExploracion, donBatalla, notasInvestigacion, otrosLegendarios, anilloMundo, legendaryAccessory, amuletoPvE, amuletoPvP, legendaryRelic, legendaryWeaponsOther, legendaryBack, armaduraLigeraPve, armaduraMediaPve, armaduraPesadaPve, insigniaFarolero, ambarGris, vetusta, amalgamada, recuerdoAurene, piedraJade, esenciaDesesperacionT1, esenciaAvariciaT2, esenciaTriunfoT3, magiaLiberada, magiaVolatil, esquirlaEspiritual, legendaryGlovesFractal, ColorRule} from './legendary';
+import { legendarios, armaduraLigera, armaduraMedia, armaduraPesada, runa, sello, anilloRaid, t6, idsT6, vales, cantidadArmadura, cantidadRunas, cantidadSellos, valeId, trebolId, liId, ectoplasmaId, liArmadura, trebolArmadura, trebolRuna, trebolSello, trebolAnilloRaid, t6ArmaduraSelloRuna, ectoplasmaRuna, ectoplasmaSello, liAnilloRaid, t6AnilloRaid, obsidianaArmadura, obsidianaRuna, obsidianaSello, obsidianaId, favorImperial,otrosComponentes, lingoteAurico, placaReclamada, huevoChak, piezaAeronave, trozoAurilio, cristalLineaLey, montonCristalLuminoso, aspectoMistico, talismanBrillantez, talismanPotencia, talismanHabilidad, motaMistica, simboloControl, simboloMejora, simboloDolor, monedaMistica, preciosVarios, idsPreciosVarios, legendaryWeapons1, legendaryWeapons2, legendaryWeapons3, legendaryWeapons3Variants, donExploracion, donBatalla, notasInvestigacion, otrosLegendarios, anilloMundo, legendaryAccessory, amuletoPvE, amuletoPvP, legendaryRelic, legendaryWeaponsOther, legendaryBack, armaduraLigeraPve, armaduraMediaPve, armaduraPesadaPve, insigniaFarolero, ambarGris, vetusta, amalgamada, recuerdoAurene, piedraJade, esenciaDesesperacionT1, esenciaAvariciaT2, esenciaTriunfoT3, magiaLiberada, magiaVolatil, esquirlaEspiritual, legendaryGlovesFractal, ColorRule} from './legendary';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -772,6 +772,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
   // Para controlar qué fila es cuál
   isDetailRow = (index: number, row: any) => row.isExpansionDetailRow === true;
   isNotDetailRow = (index: number, row: any) => !row.isExpansionDetailRow;
+  
   // Genera filas intercaladas: normales + detalle si esta expandido
   getDataWithExpandedRow(): any[] {
     const data: any[] = [];
@@ -947,6 +948,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
   donBatalla = donBatalla;
   notasInvestigacion = notasInvestigacion;
   trebol = trebolId;
+  favorImperial = favorImperial;
   magiaLiberada = magiaLiberada;
   magiaVolatil = magiaVolatil;
   esquirlaEspiritual = esquirlaEspiritual;
@@ -965,7 +967,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
   @ViewChild("sort4", { static: false }) sort4!: MatSort;
   /////////////////////////////////////////////////////////
 
-  // Para las rutas a las pestañas de diarias
+  // Para las rutas a las pestañas de legendarias
   selectedTabIndex: number = 0;
   tabs: string[] = ['Armadura legendaria Raid', 'Otros legendarios', 'Otros componentes', 'Precios T6', 'Precios Varios', 'Precios Armas Legendarias'];
   routeMap: { [key: string]: string } = {
@@ -1355,6 +1357,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
         this.magiaLiberada[0].tengoEnCartera = wallet.find((o: { id: number; value: number}) => o.id === magiaLiberada[0].idWallet)?.value ?? 0;
         this.magiaVolatil[0].tengoEnCartera = wallet.find((o: { id: number; value: number}) => o.id === magiaVolatil[0].idWallet)?.value ?? 0;
         this.esquirlaEspiritual[0].tengoEnCartera = wallet.find((o: { id: number; value: number}) => o.id === esquirlaEspiritual[0].idWallet)?.value ?? 0;
+        this.favorImperial[0].tengoEnCartera = wallet.find((o: { id: number; value: number}) => o.id === favorImperial[0].idWallet)?.value ?? 0;
 
         this.getMatsGaste(); //cuantos vales, treboles, lis, ectoplasma gasté ya
         this.getOtrosGaste(); //cuantos otros gasté ya
@@ -1774,12 +1777,30 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     this.dataSourceArmasLegendarias2.sort = this.sort2;
   }
 
-  padPrecio(precioStr: string): string {
+  padPrecio(precioStr: string | null | undefined): string {
     // convierte la cadena del precio en [5 dígitos]g [2 dígitos]s [2 dígitos]c. Si por ej. es 99g 8p 5c lo convierte en 00099g 08p 05c para ordenar bien
-    const match = precioStr.match(/(\d+)g\s+(\d+)s\s+(\d+)c/);
-    if (!match) return '';
-    const [, g, s, c] = match;
-    return `${g.padStart(5, '0')}g ${s.padStart(2, '0')}s ${c.padStart(2, '0')}c`;
+    
+    // // Funciona solo si tiene las tres partes ( g s c)
+    // // const match = precioStr.match(/(\d+)g\s+(\d+)s\s+(\d+)c/);
+    // // if (!match) return '';
+    // // const [, g, s, c] = match;
+    // // return `${g.padStart(5, '0')}g ${s.padStart(2, '0')}s ${c.padStart(2, '0')}c`;
+
+    // Esta funcion funciona aunque falte alguna parte del precio:
+    if (!precioStr || typeof precioStr !== 'string') {
+      // Si no hay precio, lo mandamos al fondo del ordenamiento
+      return '00000g 00s 00c';
+    }
+    
+    const oroMatch = precioStr.match(/(\d+)g/);
+    const plataMatch = precioStr.match(/(\d+)s/);
+    const cobreMatch = precioStr.match(/(\d+)c/);
+
+    const g = oroMatch ? oroMatch[1].padStart(5, '0') : '00000';
+    const s = plataMatch ? plataMatch[1].padStart(2, '0') : '00';
+    const c = cobreMatch ? cobreMatch[1].padStart(2, '0') : '00';
+
+    return `${g}g ${s}s ${c}c`;
   }
 
 

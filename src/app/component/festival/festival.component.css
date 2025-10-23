@@ -1,0 +1,156 @@
+:host ::ng-deep .mat-sort-header-container { 
+    display: flex;  
+    justify-content: center; 
+}
+
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell { 
+    text-align: center; 
+}
+
+th.mat-header-cell {
+    /* color: red; */
+    background-color: rgb(150, 217, 248);
+    font-size: 14px;
+}
+
+tr.mat-footer-row {
+    font-weight: bold;
+}
+
+.mat-column-nombre{
+    width: 20% !important;
+}
+
+.titulo-tabla {
+    text-align: center;
+    margin: 30px 0 10px 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #3f51b5;
+    border-bottom: 2px solid #3f51b5;
+    padding-bottom: 5px;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+.festival-card {
+    margin: 30px auto;
+    padding: 20px;
+    max-width: 1000px;
+    background: #fafafa;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    background-color: rgb(209, 206, 202);
+}
+
+table img {
+    height: 32px;
+    width: 32px;
+    object-fit: contain;
+}
+
+.mat-elevation-z8 {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+::ng-deep .mat-tooltip {
+    font-size: 18px;
+}
+
+@media (max-width: 768px) {
+    .festival-card {
+        padding: 10px;
+    }
+
+    .titulo-tabla {
+        font-size: 1.4rem;
+    }
+
+    table.mat-elevation-z8 th.mat-header-cell,
+    table.mat-elevation-z8 td.mat-cell {
+        font-size: 0.8rem;
+    }
+
+    ::ng-deep .mat-tooltip{
+        font-size: 12px !important;
+    }
+
+}
+
+.greenBackGround {
+  background-color: rgb(195, 248, 195) !important;
+  font-weight: bold;
+}
+
+mat-card-content {
+    display: flex;
+    justify-content: center;
+}
+
+mat-card table {
+    width: 600px !important;
+    margin: 0 auto;
+    background-color: rgb(209, 206, 202);
+}
+
+#tablaSab {
+    width: 300px !important;
+    display: block;
+    margin: 0 auto;
+}
+
+#tablaFourWinds {
+    width: 300px !important;
+    display: block;
+    margin: 0 auto;
+}
+
+:host ::ng-deep .titulo-tabla::before,
+:host ::ng-deep .titulo-tabla::after {
+    content: "";
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+:host ::ng-deep .titulo-tabla::before {
+    margin-right: 2px;
+}
+
+:host ::ng-deep .titulo-tabla::after {
+    margin-left: 2px;
+}
+
+:host ::ng-deep .titulo-tabla.lunar::before,
+:host ::ng-deep .titulo-tabla.lunar::after {
+    background-image: url("https://wiki.guildwars2.com/images/5/54/Mini_Fortunate_Lantern.png");
+}
+
+:host ::ng-deep .titulo-tabla.sab::before,
+:host ::ng-deep .titulo-tabla.sab::after {
+    background-image: url("https://wiki.guildwars2.com/images/thumb/7/7d/Super_Adventure_Box.png/30px-Super_Adventure_Box.png");
+}
+
+:host ::ng-deep .titulo-tabla.dragonBash::before,
+:host ::ng-deep .titulo-tabla.dragonBash::after {
+    background-image: url("https://wiki.guildwars2.com/images/8/8c/Dragon_Bash_Hologram_Projector.png");
+}
+
+:host ::ng-deep .titulo-tabla.fourWinds::before,
+:host ::ng-deep .titulo-tabla.fourWinds::after {
+    background-image: url("https://wiki.guildwars2.com/images/thumb/0/05/Four_Winds_Customs.png/30px-Four_Winds_Customs.png");
+}
+
+:host ::ng-deep .titulo-tabla.halloween::before,
+:host ::ng-deep .titulo-tabla.halloween::after {
+    background-image: url("https://wiki.guildwars2.com/images/9/92/Event_pumpkin_%28map_icon%29.png");
+}
+
+:host ::ng-deep .titulo-tabla.wintersday::before,
+:host ::ng-deep .titulo-tabla.wintersday::after {
+    background-image: url("https://wiki.guildwars2.com/images/thumb/5/5d/Event_Wintersday.png/30px-Event_Wintersday.png");
+}

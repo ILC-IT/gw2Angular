@@ -50,9 +50,16 @@
                 </mat-list-option>
             </mat-selection-list>
         </mat-tab>
+        <mat-tab label="FESTIVAL"> 
+            <mat-selection-list #festival [multiple]="false">
+                <mat-list-option *ngFor="let festival of typesOfFestival" [value]="festival" routerLink="/festival">
+                {{festival}}
+                </mat-list-option>
+            </mat-selection-list>
+        </mat-tab>
         <mat-tab label="HOMESTEAD"> 
             <mat-selection-list #homestead [multiple]="false">
-                <mat-list-option *ngFor="let home of typesOfHomestead" [value]="home" routerLink="/homestead">
+                <mat-list-option *ngFor="let home of typesOfHomestead" [value]="home" [routerLink]="['/homestead', sanitizeRoute(home)]">
                 {{home}}
                 </mat-list-option>
             </mat-selection-list>

@@ -578,6 +578,10 @@
                         {{ donBatalla[0].tengoEnBanco }} in Bank
                     </span>
                     <span class="item">
+                        <img title="Favor imperial" src="{{favorImperial[0].icon}}" />
+                        {{ favorImperial[0].tengoEnCartera }}
+                    </span>
+                    <span class="item">
                         <img title="Research Note" src="{{notasInvestigacion[0].icon}}" />
                         {{ notasInvestigacion[0].tengoEnCartera }}
                     </span>
@@ -660,7 +664,7 @@
                     </span>
                     <span class="item">
                         <a [href]="imagePath" target="_blank" rel="noopener">
-                            <button mat-raised-button color="primary" class="big-button">Guide (click)</button>
+                            <button mat-raised-button color="primary" class="big-button">Guide</button>
                         </a>
                     </span>
                 </div>

@@ -94,12 +94,19 @@
         <a mat-menu-item [routerLink]="'/legendary/preciosarmas'" (click)="sidenav.close()">Precios armas</a>
       </mat-menu>
 
-      <a routerLink="/homestead" (click)="sidenav.close()">Homestead</a>
+      <a routerLink="/festival" (click)="sidenav.close()">Festival</a>
+      
+      <!-- Homestead con submenú -->
+      <a mat-button [matMenuTriggerFor]="homesteadMenu" (click)="$event.preventDefault()">Homestead</a>
+      <mat-menu #homesteadMenu="matMenu">
+        <a mat-menu-item [routerLink]="'/homestead/precioshuerto'" (click)="sidenav.close()">Precios Huerto</a>
+        <a mat-menu-item [routerLink]="'/homestead/glifos'" (click)="sidenav.close()">Glifos</a>
+      </mat-menu>
 
       <a href="https://dps.report/" target="_blank" rel="noopener noreferrer">LOGS</a>
       <a href="https://gw2efficiency.com/" target="_blank" rel="noopener noreferrer">GW2Eff</a>
       <a href="https://killproof.me/account/gw2accounts" target="_blank" rel="noopener noreferrer">KP</a>
-      <a [cdkCopyToClipboard]="account.name" matTooltip="Copiar" style="cursor: pointer;">User: {{account.name}}</a>
+      <a [cdkCopyToClipboard]="account.name" matTooltip="Copiar" style="cursor: pointer;" [ngClass]="{ 'error-account': account?.error }">{{account.name}}</a>
     </nav>
   </mat-sidenav>
 

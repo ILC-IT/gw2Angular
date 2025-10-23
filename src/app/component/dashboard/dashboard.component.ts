@@ -27,6 +27,7 @@ export class DashboardComponent implements OnInit {
   @ViewChild('diariasTrigger') diariasTrigger!: MatMenuTrigger;
   @ViewChild('buscadorStatsTrigger') buscadorStatsTrigger!: MatMenuTrigger;
   @ViewChild('legendariosTrigger') legendariosTrigger!: MatMenuTrigger;
+  @ViewChild('homesteadTrigger') homesteadTrigger!: MatMenuTrigger;
 
   private openMenuTimeout: any;
   private closeMenuTimeout: any;
@@ -59,10 +60,18 @@ export class DashboardComponent implements OnInit {
 
   getAccount(){
     this.heroService.getAccount().subscribe((acc: any) => {
-        this.account = acc;
+        this.account = { 
+          ...acc, 
+          error: false 
+        };
       },
       (err) => {
         console.error('Error al obtener la cuenta:', err);
+        console.warn('Problema en la API');
+        this.account = { 
+          name: 'API ERROR',
+          error: true
+        };
       }
   )}
 

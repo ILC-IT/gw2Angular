@@ -16,7 +16,8 @@ export class PrincipalComponent implements OnInit {
   typesOfStats: string[] = ['Buscar por stats (atributos)', 'Buscar por prefijo', 'Buscar por nombre arma/armadura'];
   typesOfRaid: string[] = ['Raid'];
   typesOfLegendary: string[] = ['Armadura legendaria Raid', 'Otros legendarios', 'Otros componentes', 'Precios T6', 'Precios Varios', 'Precios Armas Legendarias'];
-  typesOfHomestead: string[] = ['Glifos']
+  typesOfHomestead: string[] = ['Precios Huerto', 'Glifos']
+  typesOfFestival: string[] = ['Festival']
 
   ngOnInit(): void {
   }
@@ -34,7 +35,9 @@ export class PrincipalComponent implements OnInit {
     'Otros componentes': 'otros',
     'Precios T6': 'preciost6',
     'Precios Varios': 'preciosvarios',
-    'Precios Armas Legendarias': 'preciosarmas'
+    'Precios Armas Legendarias': 'preciosarmas',
+    'Precios Huerto': 'precioshuerto',
+    'Glifos': 'glifos'
   };
   // Helper method to convert to route format
   sanitizeRoute(name: string): string {

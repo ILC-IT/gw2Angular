@@ -588,7 +588,7 @@
                   [class.mat-checkbox-disabled]="false"
                   disabled>
                   Fractalline Dust: {{fractalInfiniteRecursion[0].current}}/{{fractalInfiniteRecursion[0].max}}
-                  <span *ngIf="fractalInfiniteRecursion[0]?.repeated !== undefined">
+                  <span *ngIf="fractalInfiniteRecursion[0]?.repeated !== undefined && fractalInfiniteRecursion[0]?.repeated !== 0">
                     ({{fractalInfiniteRecursion[0].repeated}})
                   </span>
                 </mat-checkbox>
@@ -616,12 +616,12 @@
         <div [innerText]='pactSupplyUpdate'></div>
         <p></p>
         <div>
-          <a href="https://wiki.guildwars2.com/wiki/Map_bonus_reward#Central_Tyria_reward_track_rotation" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
-            <button  mat-button class="boton" [title]="'Best week is ' + bestWeek + ' (updates every friday)'" [ngClass]="{'green': mapBonusRewardweekNumber == bestWeek}">Map bonus reward, current week is {{mapBonusRewardweekNumber}}</button>
+          <a href="https://wiki.guildwars2.com/wiki/Map_bonus_reward#Central_Tyria" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+            <button mat-button class="boton" [title]="'Best week is ' + bestWeek + ' (updates every friday)'" [ngClass]="{'green': mapBonusRewardweekNumber == bestWeek}">Map bonus reward, current week is {{mapBonusRewardweekNumber}}</button>
           </a>
           <p></p>
           <a href="https://fast.farming-community.eu/conversions/karma" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
-            <button  mat-button class="boton" title="Gw2 Fast Farming Data">Fast Farming</button>
+            <button mat-button class="boton" title="Gw2 Fast Farming Data">Fast Farming</button>
           </a>
         </div>
       </a>
@@ -693,7 +693,7 @@
         <p *ngIf="!loadingConvergenciaSoto100 && !loadingConvergenciaSoto150">
           SOTO: {{convergenciaSoto100[0].current}}/{{convergenciaSoto100[0].max}} -  
           {{convergenciaSoto150[0].current}}/{{convergenciaSoto150[0].max}} 
-          <span *ngIf="convergenciaSoto150[0].repeated !== undefined">
+          <span *ngIf="convergenciaSoto150[0].repeated !== undefined && convergenciaSoto150[0].repeated !== 0">
             ({{convergenciaSoto150[0].repeated}})
           </span> - 
           (W:{{convergenciaSotoWeekly[0].current}}/{{convergenciaSotoWeekly[0].max}})
@@ -701,7 +701,7 @@
         <p *ngIf="!loadingConvergenciaJw50 && !loadingConvergenciaJw50Rep">
           JW: {{convergenciaJw50[0].current}}/{{convergenciaJw50[0].max}} - 
           {{convergenciaJw50Rep[0].current}}/{{convergenciaJw50Rep[0].max}} 
-          <span *ngIf="convergenciaJw50Rep[0].repeated !== undefined">
+          <span *ngIf="convergenciaJw50Rep[0].repeated !== undefined && convergenciaJw50Rep[0].repeated !== 0">
             ({{convergenciaJw50Rep[0].repeated}})
           </span> - 
           (W:{{convergenciaJwWeekly[0].current}}/{{convergenciaJwWeekly[0].max}})
