@@ -121,7 +121,7 @@
                         [class.rotated]="expandedElement === element"
                         class="expand-icon">expand_more
                     </mat-icon> 
-                    <a href={{element.wiki}} target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+                    <a href={{element.wiki}} target="_blank" rel="noopener noreferrer" style="text-decoration: none" (click)="$event.stopPropagation()">
                         {{element.nombre}} 
                     </a> 
                 </td>
@@ -137,6 +137,12 @@
             <ng-container matColumnDef="modo">
                 <th mat-header-cell *matHeaderCellDef> Modo </th>
                 <td mat-cell *matCellDef="let element"> {{element.modo}} </td>
+            </ng-container>
+
+            <!-- expansion Column -->
+            <ng-container matColumnDef="expansion">
+                <th mat-header-cell *matHeaderCellDef> Expansion </th>
+                <td mat-cell *matCellDef="let element"> {{element.expansion}} </td>
             </ng-container>
 
             <!-- tipo Column -->
@@ -186,10 +192,9 @@
              <!-- Fila normal (clickable) -->
             <tr 
                 mat-row 
-                *matRowDef="let row; 
-                columns: displayedColumnsOtrosLegendarios; when: isNotDetailRow" 
-                class="clickable"
-                (click)="toggleRow(row)">
+                *matRowDef="let row; columns: displayedColumnsOtrosLegendarios; when: isNotDetailRow" 
+                [class.clickable]="isExpandable(row)"
+                (click)="isExpandable(row) && toggleRow(row)">
             </tr>
 
             <!-- Fila detalle -->
@@ -210,36 +215,27 @@
             <!-- id Column -->
             <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef> ID </th>
-                <td mat-cell *matCellDef="let element; let i = index">
-                    <ng-container *ngIf="(i != 6) && (i != 14) && (i != 18); else defaultValue"> {{element.id}} </ng-container>
-                    <ng-template #defaultValue></ng-template>
-                </td>
+                <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
                 <td mat-footer-cell *matFooterCellDef></td>
             </ng-container>
 
             <!-- icon Column -->
             <ng-container matColumnDef="icon">
                 <th mat-header-cell *matHeaderCellDef> Icono </th>
-                <td mat-cell *matCellDef="let element; let i = index"> 
-                    <ng-container *ngIf="(i != 6) && (i != 14) && (i != 18); else defaultValue"> <img src="{{element.icon}}" /> </ng-container>
-                    <ng-template #defaultValue></ng-template> 
-                </td>
+                <td mat-cell *matCellDef="let element"> <img src="{{ element.icon }}" /> </td>
+            </ng-container>
+
+            <!-- tengo Column -->
+            <ng-container matColumnDef="tengo">
+                <th mat-header-cell *matHeaderCellDef> Tengo </th>
+                <td mat-cell *matCellDef="let element"> {{ element.tengo }} </td>
             </ng-container>
 
             <!-- cantidad Column -->
             <ng-container matColumnDef="cantidad">
                 <th mat-header-cell *matHeaderCellDef> Cantidad </th>
                 <td mat-cell *matCellDef="let element; let i = index"> 
-                    <ng-container *ngIf="(i != 6) && (i != 14) && (i != 15) && (i != 16) && (i != 17) && (i != 18) && (i != 19); else defaultValue"> {{element.cantidad}} </ng-container>
-                    <ng-template #defaultValue></ng-template>
-                </td>
-            </ng-container>
-
-            <!-- tengo Column -->
-            <ng-container matColumnDef="tengo">
-                <th mat-header-cell *matHeaderCellDef> Tengo </th>
-                <td mat-cell *matCellDef="let element; let i = index"> 
-                    <ng-container *ngIf="(i != 6) && (i != 14) && (i != 18); else defaultValue"> {{element.tengo}} </ng-container>
+                    <ng-container *ngIf="(i < 13); else defaultValue"> {{element.cantidad}} </ng-container>
                     <ng-template #defaultValue></ng-template>
                 </td>
             </ng-container>
@@ -248,7 +244,7 @@
             <ng-container matColumnDef="gaste">
                 <th mat-header-cell *matHeaderCellDef> Gasté </th>
                 <td mat-cell *matCellDef="let element; let i = index"> 
-                    <ng-container *ngIf="(i != 6) && (i != 14) && (i != 15) && (i != 16) && (i != 17) && (i != 18) && (i != 19); else defaultValue"> {{element.gaste}} </ng-container>
+                    <ng-container *ngIf="(i < 13); else defaultValue"> {{element.gaste}} </ng-container>
                     <ng-template #defaultValue></ng-template>
                 </td>
             </ng-container>
@@ -257,13 +253,46 @@
             <ng-container matColumnDef="necesito">
                 <th mat-header-cell *matHeaderCellDef> Necesito </th>
                 <td mat-cell *matCellDef="let element; let i = index" [ngClass]="{'greenBackGround': element.necesito < 0, 'redBackGround': element.necesito > 0}">
-                    <ng-container *ngIf="(i != 6) && (i != 14) && (i != 15) && (i != 16) && (i != 17) && (i != 18) && (i != 19); else defaultValue"> {{element.necesito}} </ng-container>
+                    <ng-container *ngIf="(i < 13); else defaultValue"> {{element.necesito}} </ng-container>
                     <ng-template #defaultValue></ng-template>
                 </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumnsOtros; sticky: true"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumnsOtros;"></tr>
+        </table>
+    </mat-tab>
+
+    <mat-tab label="Cartera">
+        <table mat-table [dataSource]="dataSourceCartera" class="mat-elevation-z8"> 
+            
+            <!-- nombre Column -->
+            <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+            </ng-container>
+
+            <!-- id Column -->
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> ID </th>
+                <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+                <td mat-footer-cell *matFooterCellDef></td>
+            </ng-container>
+
+            <!-- icon Column -->
+            <ng-container matColumnDef="icon">
+                <th mat-header-cell *matHeaderCellDef> Icono </th>
+                <td mat-cell *matCellDef="let element"> <img src="{{ element.icon }}" /> </td>
+            </ng-container>
+
+            <!-- tengo Column -->
+            <ng-container matColumnDef="tengo">
+                <th mat-header-cell *matHeaderCellDef> Tengo </th>
+                <td mat-cell *matCellDef="let element"> {{ element.tengo }} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsCartera; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumnsCartera;"></tr>
         </table>
     </mat-tab>
 
@@ -449,7 +478,11 @@
                         {{ donBatalla[0].tengoEnBanco }} in Bank
                     </span>
                     <span class="item">
-                        <img title="Trébol Místico" [src]="trebol[0].icon" />
+                        <img title="Tale of Dungeon Delving" src="{{monedaMazmorra[0].icon}}" />
+                        {{ monedaMazmorra[0].tengoEnCartera }}
+                    </span>
+                    <span class="item">
+                        <img title="Mystic Clover" [src]="trebol[0].icon" />
                         {{ trebol[0].tengo }} in Bank
                     </span>
                     <span class="item">
@@ -522,7 +555,7 @@
                         {{ donBatalla[0].tengoEnBanco }} in Bank
                     </span>
                     <span class="item">
-                        <img title="Trébol Místico" [src]="trebol[0].icon" />
+                        <img title="Mystic Clover" [src]="trebol[0].icon" />
                         {{ trebol[0].tengo }} in Bank
                     </span>
                 </div>
@@ -578,7 +611,7 @@
                         {{ donBatalla[0].tengoEnBanco }} in Bank
                     </span>
                     <span class="item">
-                        <img title="Favor imperial" src="{{favorImperial[0].icon}}" />
+                        <img title="Imperial Favor" src="{{favorImperial[0].icon}}" />
                         {{ favorImperial[0].tengoEnCartera }}
                     </span>
                     <span class="item">
@@ -586,7 +619,7 @@
                         {{ notasInvestigacion[0].tengoEnCartera }}
                     </span>
                     <span class="item">
-                        <img title="Trébol Místico" [src]="trebol[0].icon" />
+                        <img title="Mystic Clover" [src]="trebol[0].icon" />
                         {{ trebol[0].tengo }} in Bank
                     </span>
                     <span class="item">
@@ -732,6 +765,89 @@
 
                     <tr mat-header-row *matHeaderRowDef="displayedColumnsArmasLegendarias3Variants; sticky: true"></tr>
                     <tr mat-row *matRowDef="let row; columns: displayedColumnsArmasLegendarias3Variants;"></tr>
+                </table>
+            </mat-tab>
+
+            <mat-tab label="Other Gen">
+                <div class="centrado gap-grande responsive-container">
+                    <span class="item">
+                        <img title="Gift of Battle" src="{{donBatalla[0].icon}}" />
+                        {{ donBatalla[0].tengoEnBanco }} in Bank
+                    </span>
+                    <span class="item">
+                        <img title="Research Note" src="{{notasInvestigacion[0].icon}}" />
+                        {{ notasInvestigacion[0].tengoEnCartera }}
+                    </span>
+                    <span class="item">
+                        <img title="Mystic Clover" [src]="trebol[0].icon" />
+                        {{ trebol[0].tengo }} in Bank
+                    </span>
+                    <span class="item">
+                        <a href="https://www.gw2bltc.com" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+                            <button mat-raised-button color="primary" class="big-button">gw2BLTC</button>
+                        </a>
+                    </span>
+                </div>                                
+                <table mat-table [dataSource]="dataSourceArmasLegendariasGenOther" class="mat-elevation-z8"> 
+                    
+                    <!-- icon Column -->
+                    <ng-container matColumnDef="icon">
+                        <th mat-header-cell *matHeaderCellDef> Icono </th>
+                        <td mat-cell *matCellDef="let element"> <img src="{{element.icon}}" /> </td>
+                    </ng-container>
+
+                    <!-- nombre Column -->
+                    <ng-container matColumnDef="nombre">
+                        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                        <td mat-cell *matCellDef="let element">
+                            <a href={{element.wiki}} target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+                                {{element.nombre}} 
+                            </a>
+                        </td>
+                    </ng-container>
+
+                    <!-- tipo Column -->
+                    <ng-container matColumnDef="tipo">
+                        <th mat-header-cell *matHeaderCellDef> Tipo </th>
+                        <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
+                    </ng-container>
+
+                    <!-- precioTpCompraS Column -->
+                    <ng-container matColumnDef="precioTpCompraS">
+                        <th mat-header-cell *matHeaderCellDef> Precio TP Compra </th>
+                        <td mat-cell *matCellDef="let element"> {{element.precioTpCompraS}} </td>
+                    </ng-container>
+
+                    <!-- precioTpVentaS Column -->
+                    <ng-container matColumnDef="precioTpVentaS">
+                        <th mat-header-cell *matHeaderCellDef> Precio TP Venta </th>
+                        <td mat-cell *matCellDef="let element"> {{element.precioTpVentaS}} </td>
+                    </ng-container>
+
+                    <!-- pre Column -->
+                    <ng-container matColumnDef="pre">
+                        <th mat-header-cell *matHeaderCellDef> Pre </th>
+                        <td mat-cell *matCellDef="let element">
+                            <a href={{element.wikiPre}} target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+                                {{element.pre}} 
+                            </a>
+                        </td>
+                    </ng-container>
+
+                    <!-- precioTpCompraSPre Column -->
+                    <ng-container matColumnDef="precioTpCompraSPre">
+                        <th mat-header-cell *matHeaderCellDef> Precio TP Compra </th>
+                        <td mat-cell *matCellDef="let element"> {{element.precioTpCompraSPre}} </td>
+                    </ng-container>
+
+                    <!-- precioTpVentaSPre Column -->
+                    <ng-container matColumnDef="precioTpVentaSPre">
+                        <th mat-header-cell *matHeaderCellDef> Precio TP Venta </th>
+                        <td mat-cell *matCellDef="let element"> {{element.precioTpVentaSPre}} </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumnsArmasLegendariasGenOther; sticky: true"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumnsArmasLegendariasGenOther;"></tr>
                 </table>
             </mat-tab>
         </mat-tab-group>

@@ -1,0 +1,6 @@
+.mat-card-image{
+    /*object-fit: fill; */
+    object-fit: contain;
+    width: 25%;
+    height: 25%;
+}

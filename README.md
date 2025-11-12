@@ -73,7 +73,7 @@ If we have installed the correct angular and node and we want to see that it is 
 - `nvm use 14.21.2`
 - `pm2 status`
 
-## Serve with Apache2
+## Serve with local Apache2
 Install Apache2:
 - `sudo apt install apache2 -y`
 
@@ -101,8 +101,11 @@ Then:
 - `ng build`
 
 Copy build folder to Apache2 directory and verify all files are copied (included .htaccess):
-- `cd gw2Angular/gw2Angular/dist/gw2Angular/`
+- `cd /home/user/gw2Angular/gw2Angular/dist/gw2Angular/`
 - `sudo cp -r * /var/www/html`
+- `cd /var/www/html/` and remove old files with sudo rm main.xxxx.js styles.xxxx.css
+or
+- `./copiar-a-apache2.sh`
 
 Enable mod rewrite on Apache2
 - `sudo a2enmod rewrite`
@@ -119,6 +122,10 @@ with:
 ```
 Restart Apache2 service:
 - `sudo service apache2 restart`
+
+## Serve with container Nginx
+- Two example Dockerfiles and nginx.conf are included to run the app on Nginx.
+- update-container-gw2Angular.sh script for automatically updating the container.
 
 ## Possible Errors in Rasp
 

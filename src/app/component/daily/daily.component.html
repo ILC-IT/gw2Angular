@@ -113,10 +113,25 @@
   </mat-tab>
 
   <mat-tab label="Fractales">
-    <button mat-raised-button color="accent" [cdkCopyToClipboard]="fractalesRecDailyString">Copiar Diarios y Recomendados</button>
+    <div class="centrado gap-grande responsive-container">
+      <span class="item">
+        <button mat-raised-button color="accent" [cdkCopyToClipboard]="fractalesRecDailyString">Copiar Diarios y Recomendados</button>
+      </span>
+      <span class="item">
+          <img title="Reliquia fractal" src="{{reliquiaFractal[0].icon}}" />
+          {{ reliquiaFractal[0].tengo }}
+      </span>
+      <span class="item">
+          <img title="Reliquia fractal prístina" [src]="reliquiaFractalPristina[0].icon" />
+          {{ reliquiaFractalPristina[0].tengo }}
+      </span>
+      <span class="item">
+          <img title="Ufe" [src]="ufe[0].icon" />
+          {{ ufe[0].tengo }}
+      </span>
+    </div>
     <mat-accordion>
-      <mat-expansion-panel  (opened)="panelOpenState = true"
-                            (closed)="panelOpenState = false">
+      <mat-expansion-panel class="desplegable" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
           <mat-panel-title>
             Lista de fractales
@@ -201,8 +216,7 @@
     </mat-accordion>
 
     <mat-accordion>
-      <mat-expansion-panel  (opened)="panelOpenStateCm = true"
-                            (closed)="panelOpenStateCm = false">
+      <mat-expansion-panel class="desplegable" (opened)="panelOpenStateCm = true" (closed)="panelOpenStateCm = false">
         <mat-expansion-panel-header>
           <mat-panel-title>
             Lista de fractales CM
@@ -269,8 +283,7 @@
     </mat-accordion>
 
     <mat-accordion>
-      <mat-expansion-panel  (opened)="panelOpenStateR = true"
-                            (closed)="panelOpenStateR = false">
+      <mat-expansion-panel class="desplegable" (opened)="panelOpenStateR = true" (closed)="panelOpenStateR = false">
         <mat-expansion-panel-header>
           <mat-panel-title>
             Lista de fractales recomendados
@@ -340,8 +353,7 @@
     </mat-accordion>
 
     <mat-accordion>
-      <mat-expansion-panel  (opened)="panelOpenStateD = true"
-                            (closed)="panelOpenStateD = false">
+      <mat-expansion-panel class="desplegable" (opened)="panelOpenStateD = true" (closed)="panelOpenStateD = false">
         <mat-expansion-panel-header>
           <mat-panel-title>
             Lista de fractales diarios
@@ -514,6 +526,24 @@
         </mat-card>
       </a>
       <a>
+        <h2>Rift VoE</h2>
+        <mat-card class="result" *ngFor="let achievement of weeklyRiftHuntingVoe">
+          <mat-card-content>
+            <section class="example-section">
+              <mat-checkbox
+                class="example-margin"
+                [checked]="achievement.done"
+                [(indeterminate)]="indeterminate"
+                [labelPosition]="labelPosition"
+                [class.mat-checkbox-disabled]="false"
+                disabled>
+                {{ achievement.name }} ({{ achievement.current }}/{{ achievement.max }})
+              </mat-checkbox>
+            </section>
+          </mat-card-content>
+        </mat-card>
+      </a>
+      <a>
         <h2>Convergencia Soto CM</h2>
         <mat-card class="result" *ngFor="let strike of weeklySotoCMConvergencia">
           <mat-card-content>
@@ -610,7 +640,8 @@
                   cdkTextareaAutosize 
                   cdkAutosizeMinRows="6" 
                   cdkAutosizeMaxRows="10" 
-                  [(ngModel)]="pactSupply[0]">
+                  [(ngModel)]="pactSupply[0]"
+                  style="background-color: rgb(230, 227, 227);">
         </textarea>
         <button mat-raised-button color="accent" [cdkCopyToClipboard]="pactSupply[0]">Copiar</button>
         <div [innerText]='pactSupplyUpdate'></div>
@@ -668,7 +699,7 @@
         <h2>Anomalía de Ley</h2>
         <p> {{anomalia}} </p>
         <button mat-raised-button color="accent" [cdkCopyToClipboard]="'Anomalia: ' + anomalia">Copiar</button>
-        <hr>
+        <hr class="separador">
         <h2>Incursión fractal</h2>
         <p> {{fractalIncursion}} </p>
         <button mat-raised-button color="accent" [cdkCopyToClipboard]="'Incursion fractal: ' + fractalIncursion">Copiar</button>
@@ -730,6 +761,35 @@
         </mat-card>
       </a>
       <a>
+        <h2>World Boss</h2>
+        <p></p>
+        <span class="worldboss-links">
+          <button mat-raised-button color="primary" class="link-button"
+                  (click)="openLink('https://wiki.guildwars2.com/wiki/Event_timers')">
+            Timers
+          </button>
+          <button mat-raised-button color="accent" class="link-button"
+                  (click)="openLink('https://wiki.guildwars2.com/wiki/World_boss')">
+            Info
+          </button>
+        </span>
+        <mat-card class="result" *ngFor="let wb of dailyWorldBossing; let i = index">
+          <mat-card-content>
+            <section class="example-section">
+              <mat-checkbox
+                  class="example-margin"
+                  [(ngModel)]="dailyIdsWorldBossChecked[i]"
+                  [(indeterminate)]="indeterminate"
+                  [labelPosition]="labelPosition"
+                  [class.mat-checkbox-disabled]="false"
+                  disabled>
+                  {{wb}}
+              </mat-checkbox>
+            </section>
+          </mat-card-content>
+        </mat-card>
+      </a>
+      <a>
         <h2>Token Supply</h2>
         <div class="waypoint">
           <!-- <div class="wp-icon" style="background-image: url(../../../assets/img/wp-icon.png)">
@@ -737,8 +797,7 @@
           <div [innerHtml]='tokenSupply[0][0]'></div>
           <button mat-raised-button color="accent" [cdkCopyToClipboard]="tokenSupply[1][0]">Copiar</button>
         </div>
-      </a>
-      <a>
+        <hr class="separador">
         <h2>Actividad diaria</h2>
         <p> {{dailyActivity}} </p>
         <button mat-raised-button color="accent" [cdkCopyToClipboard]="dailyActivity">Copiar</button>

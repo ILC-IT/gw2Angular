@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { apiKey } from './key'
+import { of } from 'rxjs';
 
 interface Achievement {
   id: number;
@@ -18,6 +19,67 @@ export class DailyService {
   apiUrl = "https://api.guildwars2.com/v2/";
 
   apiKey = apiKey;
+
+  public readonly bestMapBonusRewardWeekNumber: number = 5; // Variable a cambiar segun cambie la mejor zona
+
+  riftSoto = [
+    // https://wiki.guildwars2.com/wiki/Weekly_Rift_Hunting
+    [
+        {"id": 7067, "nombre": "Straits of Devastation"},
+        {"id": 7060, "nombre": "Elon Riverlands"},
+        {"id": 7028, "nombre": "Domain of Istan"}
+    ],
+    [
+        {"id": 7247, "nombre": "Sparkfly Fen"},
+        {"id": 6996, "nombre": "Tangled Depths"},
+        {"id": 7181, "nombre": "Sandswept Isles"}
+    ],
+    [
+        {"id": 7109, "nombre": "Bloodtide Coast"},
+        {"id": 7108, "nombre": "Lake Doric"},
+        {"id": 7023, "nombre": "Domain of Vabbi"}
+    ],
+    [
+        {"id": 7620, "nombre": "Frostgorge Sound"},
+        {"id": 7628, "nombre": "Ember Bay"},
+        {"id": 7634, "nombre": "Seitung Province"}
+    ],
+    [
+        {"id": 7607, "nombre": "Iron Marches"},
+        {"id": 7602, "nombre": "Verdant Brink"},
+        {"id": 7618, "nombre": "Bitterfrost Frontier"}
+    ],
+    [
+        {"id": 7061, "nombre": "Mount Maelstrom"},
+        {"id": 7704, "nombre": "Jahai Bluffs"},
+        {"id": 7662, "nombre": "New Kaineng"}
+    ],
+    [
+        {"id": 7713, "nombre": "Malchor's Leap"},
+        {"id": 7692, "nombre": "Bloodstone Fen"},
+        {"id": 7659, "nombre": "Desert Highlands"}
+    ],
+    [
+        {"id": 7660, "nombre": "Fireheart Rise"},
+        {"id": 7679, "nombre": "Dry Top"},
+        {"id": 7663, "nombre": "Auric Basin"}
+    ],
+    [
+        {"id": 7168, "nombre": "Cursed Shore"},
+        {"id": 7040, "nombre": "Southsun Cove"},
+        {"id": 7088, "nombre": "Crystal Oasis"}
+    ],
+    [
+        {"id": 7061, "nombre": "Mount Maelstrom"},
+        {"id": 7108, "nombre": "Lake Doric"},
+        {"id": 7023, "nombre": "Domain of Vabbi"}
+    ],
+    [
+        {"id": 7064, "nombre": "Timberline Falls"},
+        {"id": 7078, "nombre": "Thunderhead Peaks"},
+        {"id": 7044, "nombre": "Echovald Wilds"}
+    ]
+  ];
 
   pactSupply = [
     ["1.[&BIsHAAA=]  \n2.[&BDoBAAA=]  \n3.[&BC0AAAA=]  \n4.[&BP8DAAA=]  \n5.[&BIUCAAA=]  \n6.[&BCECAAA=]"], //Domingo
@@ -45,19 +107,19 @@ export class DailyService {
   ];
 
   anomaliaLey = [
-    "Fronteras de hierro: [&BOcBAAA=]", //Iron Marches
-    "Gendarrán: [&BOQAAAA=]", //Gendarran Fields
-    "Cataratas: [&BEwCAAA=]"  //Timberline Falls
+    "Fronteras de Hierro: [&BOcBAAA=]", //Iron Marches
+    "Campos de Gendarrán: [&BOQAAAA=]", //Gendarran Fields
+    "Cataratas de Linarbórea: [&BEwCAAA=]"  //Timberline Falls
   ];
 
   fractalIncursion = [
-    "Diessa: [&BN0AAAA=]", //Diessa Plateau
-    "Selvas: [&BHUAAAA=]", //Brisban Wildlands
-    "Cúmulos: [&BLQAAAA=]", //Snowden Drifts
-    "Kessex: [&BBIAAAA=]"  //Kessex Hills
+    "Meseta de Diessa: [&BN0AAAA=]", //Diessa Plateau
+    "Selvas Brisbanas: [&BHUAAAA=]", //Brisban Wildlands
+    "Cúmulos de Guaridanieve: [&BLQAAAA=]", //Snowden Drifts
+    "Colinas Kessex: [&BBIAAAA=]"  //Kessex Hills
   ];
 
-  recordatorio = "Llave semanal \n Vetustas \n Tréboles (raid + fract) \n Moneda Mística (Soto) \n Cofre Strikes \n Corazones, esquirlas JW";
+  recordatorio = "Llave semanal \n Vetustas \n Tréboles (raid + fract) \n Moneda Mística (Soto) \n Cofre Strikes IBS \n Corazones, esquirlas JW";
 
   iron = [3, 4, 9, 10, 15, 16, 21, 22];
   ironInvierno = [2, 3, 8, 9, 14, 15, 20, 21];
@@ -193,6 +255,51 @@ export class DailyService {
     }
   }
 
+  getMapBonusRewardWeekNumber(){
+    // returns current number week of map bonus reward between 1 and 8
+    const givenDate = new Date(); // new Date('2023-07-10'); // The date for which you want to determine the week number 'yyyy-mm-dd'
+    const mapBonusRewardWeek = this.mapBonusRewardweekNumber(givenDate);
+    return mapBonusRewardWeek;
+  }
+
+  mapBonusRewardweekNumber(date: Date){
+    const startDate = new Date('2023-07-07'); // Start date of the first week, it was week number 5
+    const millisecondsPerWeek = 7 * 24 * 60 * 60 * 1000; // Number of milliseconds in a week
+  
+    const elapsedTime = date.getTime() - startDate.getTime();
+    const weekNumber = Math.floor(elapsedTime / millisecondsPerWeek) + 5;
+    let weekNumberMod8 = weekNumber % 8;
+    if (weekNumberMod8 === 0) weekNumberMod8 = 8; //weeks are numbered from 1 to 8
+  
+    return weekNumberMod8;
+  }
+
+  getWeeklyRiftSotoInfo(){
+    // returns current array of ids of current weekly rift soto
+    const givenDate = new Date(); // new Date('2025-11-03'); // The date for which you want to determine the week number 'yyyy-mm-dd'
+    const riftSotoWeek = this.riftSotoWeekNumber(givenDate);
+    const ids = this.riftSoto[riftSotoWeek-1].map(item => item.id);
+    ids.unshift(7072, 7075, 7655); // añado al principio amnytas, skywatch, inner nayos porque siempre salen
+    return of(ids);
+  }
+
+  riftSotoWeekNumber(date: Date){
+    const startDate = new Date('2025-11-03'); // Start date of the first week, it was week number 6
+    const millisecondsPerWeek = 7 * 24 * 60 * 60 * 1000; // Number of milliseconds in a week
+  
+    const elapsedTime = date.getTime() - startDate.getTime();
+    const weekNumber = Math.floor(elapsedTime / millisecondsPerWeek) + 6;
+    let weekNumberMod11 = weekNumber % 11;
+    if (weekNumberMod11 === 0) weekNumberMod11 = 11; //weeks are numbered from 1 to 11
+  
+    return weekNumberMod11;
+  }
+
+  getWallet(){
+    const url = `${this.apiUrl}account/wallet?access_token=${this.apiKey}`;
+    return this.httpClient.get(url);
+  }
+  
   getDailyCraft(){
     const url = `${this.apiUrl}account/dailycrafting?access_token=${this.apiKey}`;
     return this.httpClient.get(url);
@@ -621,6 +728,21 @@ export class DailyService {
   async getFractalInfiniteRecursion(): Promise<Achievement[]> {
     // devuelve logro de hacer 150 polvo fractalino en fractal quickplay repetible
     return this.getAchievement(8814, 150, 0);
+  }
+
+  getWeeklyRiftHuntingVoeId(){
+    const url = `${this.apiUrl}achievements/categories/464`;
+    return this.httpClient.get<any>(url);
+  }
+
+  getWeeklyRiftHuntingVoe(ids: string){
+    const url = `${this.apiUrl}account/achievements?ids=${ids}&access_token=${this.apiKey}`;
+    return this.httpClient.get<any[]>(url);
+  }
+
+  getDailyWorldBoss(){
+    const url = `${this.apiUrl}account/worldbosses?access_token=${this.apiKey}`;
+    return this.httpClient.get(url);
   }
 
 }

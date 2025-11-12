@@ -48,8 +48,16 @@ export interface otrosLegendarios {
     modo: string;
     icon: string[];
     wiki: string;
+    expansion: string;
     tengoPartes?: number[];
     partes?: string[];
+}
+
+export interface cartera {
+    id: number;
+    nombre: string;
+    tengo: number;
+    icon: string;
 }
 
 export interface preciosVarios {
@@ -77,7 +85,7 @@ export interface ColorRule {
 
 export const idsT6 = "24295,24358,24351,24277,24357,24289,24300,24283";
 
-export const idsPreciosVarios = "19976, 19721, 97790, 96347, 96978, 68063, 96088, 96722";
+export const idsPreciosVarios = "19976,19721,97790,96347,96978,68063,92687,96088,96722,102558,102503,102255,103279,102655,103427,103351";
 
 export const vales = 50;
 
@@ -147,7 +155,8 @@ export const armaduraLigeraPve = [
         ],
         wiki: "https://wiki.guildwars2.com/wiki/Obsidian_armor",
         tengoPartes: [0, 0, 0, 0, 0, 0],
-        partes: ["Corona", "Manto", "Ropajes", "Guantes", "Pantalones", "Zapatos"]
+        partes: ["Corona", "Manto", "Ropajes", "Guantes", "Pantalones", "Zapatos"],
+        expansion: "Soto"
     }
 ];
 
@@ -177,7 +186,8 @@ export const armaduraMediaPve = [
         ],
         tengoPartes: [0, 0, 0, 0, 0, 0],
         wiki: "https://wiki.guildwars2.com/wiki/Obsidian_armor",
-        partes: ["Mascara", "Hombreras", "Chaqueta", "Guantes", "Calzas", "Botas"]
+        partes: ["Mascara", "Hombreras", "Chaqueta", "Guantes", "Calzas", "Botas"],
+        expansion: "Soto"
     }
 ];
 
@@ -207,7 +217,8 @@ export const armaduraPesadaPve = [
         ],
         tengoPartes: [0, 0, 0, 0, 0, 0],
         wiki: "https://wiki.guildwars2.com/wiki/Obsidian_armor",
-        partes: ["Casco", "Hombreras", "Peto", "Guanteletes", "Quijotes", "Grebas"]
+        partes: ["Casco", "Hombreras", "Peto", "Guanteletes", "Quijotes", "Grebas"],
+        expansion: "Soto"
     }
 ];
 
@@ -231,7 +242,8 @@ export const anilloMundo = [
         tipo: "Anillo",
         modo: "WvW",
         icon: ["https://wiki.guildwars2.com/images/8/85/Conflux.png"],
-        wiki: "https://wiki.guildwars2.com/wiki/Conflux"
+        wiki: "https://wiki.guildwars2.com/wiki/Conflux",
+        expansion: "Core"
     }
 ];
 
@@ -243,7 +255,8 @@ export const anilloRaid = [
         tipo: "Anillo",
         modo: "PvE",
         icon: ["https://wiki.guildwars2.com/images/d/d9/Gift_of_Prescience.png"],
-        wiki: "https://wiki.guildwars2.com/wiki/Coalescence"
+        wiki: "https://wiki.guildwars2.com/wiki/Coalescence",
+        expansion: "PoF"
     }
 ];
 
@@ -255,7 +268,8 @@ export const legendaryAccessory = [
         tipo: "Accesorio",
         modo: "PvE",
         icon: ["https://wiki.guildwars2.com/images/8/89/Aurora.png"],
-        wiki: "https://wiki.guildwars2.com/wiki/Aurora"
+        wiki: "https://wiki.guildwars2.com/wiki/Aurora",
+        expansion: "LW3"
     },
     {
         id: 91048,
@@ -264,7 +278,8 @@ export const legendaryAccessory = [
         tipo: "Accesorio",
         modo: "PvE",
         icon: ["https://wiki.guildwars2.com/images/1/18/Vision.png"],
-        wiki: "https://wiki.guildwars2.com/wiki/Vision"
+        wiki: "https://wiki.guildwars2.com/wiki/Vision",
+        expansion: "LW4"
     }
 ];
 
@@ -276,7 +291,8 @@ export const amuletoPvE = [
         tipo: "Amuleto",
         modo: "PvE",
         icon: ["https://wiki.guildwars2.com/images/7/70/Prismatic_Champion%27s_Regalia.png"],
-        wiki: "https://wiki.guildwars2.com/wiki/Prismatic_Champion%27s_Regalia"
+        wiki: "https://wiki.guildwars2.com/wiki/Prismatic_Champion%27s_Regalia",
+        expansion: "LW2-3-4-5"
     }
 ];
 
@@ -288,7 +304,8 @@ export const amuletoPvP = [
         tipo: "Amuleto",
         modo: "PvP",
         icon: ["https://wiki.guildwars2.com/images/8/85/Transcendence.png"],
-        wiki: "https://wiki.guildwars2.com/wiki/Transcendence"
+        wiki: "https://wiki.guildwars2.com/wiki/Transcendence",
+        expansion: "Core"
     }
 ];
 
@@ -300,7 +317,8 @@ export const legendaryRelic = [
         tipo: "Reliquia",
         modo: "PvE",
         icon: ["https://wiki.guildwars2.com/images/c/ce/Legendary_Relic.png"],
-        wiki: "https://wiki.guildwars2.com/wiki/Legendary_Relic"
+        wiki: "https://wiki.guildwars2.com/wiki/Legendary_Relic",
+        expansion: "Core"
     }
 ];
 
@@ -368,7 +386,8 @@ export const montonCristalLuminoso = [
         id: 89271,
         cantidadRuna: 500,
         cantidadSello: 750,
-        icon: "https://render.guildwars2.com/file/607AA1A4574FA66006FFB57C0B2DDBAAFDE50CD6/2063471.png"
+        // icon: "https://render.guildwars2.com/file/607AA1A4574FA66006FFB57C0B2DDBAAFDE50CD6/2063471.png"
+        icon: "https://wiki.guildwars2.com/images/1/1f/Pile_of_Lucent_Crystal.png"
     }
 ];
 
@@ -392,7 +411,8 @@ export const talismanHabilidad = [
     {
         id: 89216,
         cantidad: 50,
-        icon: "https://render.guildwars2.com/file/F99BAAD3C841D8AC4E5C621972454E400E3CD85D/2063467.png"
+        // icon: "https://render.guildwars2.com/file/F99BAAD3C841D8AC4E5C621972454E400E3CD85D/2063467.png"
+        icon: "https://wiki.guildwars2.com/images/1/18/Charm_of_Skill.png"
     }
 ];
 
@@ -400,7 +420,8 @@ export const simboloControl = [
     {
         id: 89098,
         cantidad: 75,
-        icon: "https://render.guildwars2.com/file/BF26E2BE4C6F3F0F24194A0B0209800DB9E8D118/2063469.png"
+        // icon: "https://render.guildwars2.com/file/BF26E2BE4C6F3F0F24194A0B0209800DB9E8D118/2063469.png"
+        icon: "https://wiki.guildwars2.com/images/b/bc/Symbol_of_Control.png"
     }
 ];
 
@@ -408,7 +429,8 @@ export const simboloMejora = [
     {
         id: 89141,
         cantidad: 75,
-        icon: "https://render.guildwars2.com/file/2B7554FA80CC0279F807BB66DD15F1D66FDDB6D5/2063468.png"
+        // icon: "https://render.guildwars2.com/file/2B7554FA80CC0279F807BB66DD15F1D66FDDB6D5/2063468.png"
+        icon: "https://wiki.guildwars2.com/images/7/77/Symbol_of_Enhancement.png"
     }
 ];
 
@@ -416,7 +438,8 @@ export const simboloDolor = [
     {
         id: 89182,
         cantidad: 75,
-        icon: "https://render.guildwars2.com/file/ED0DC52CEEB4A22263EB25EAFDCF570E177F161C/2063464.png"
+        // icon: "https://render.guildwars2.com/file/ED0DC52CEEB4A22263EB25EAFDCF570E177F161C/2063464.png"
+        icon: "https://wiki.guildwars2.com/images/b/bd/Symbol_of_Pain.png"
     }
 ];
 
@@ -455,6 +478,13 @@ export const amalgamada = [
     }
 ];
 
+export const amalgamadaDraconica = [
+    {
+        id: 92687,
+        icon: "https://wiki.guildwars2.com/images/2/2c/Amalgamated_Draconic_Lodestone.png"
+    }
+];
+
 export const recuerdoAurene = [
     {
         id: 96088,
@@ -466,6 +496,118 @@ export const piedraJade = [
     {
         id: 96722,
         icon: "https://wiki.guildwars2.com/images/f/f8/Jade_Runestone.png"
+    }
+];
+
+export const florMielera = [
+    {
+        id: 102558,
+        icon: "https://wiki.guildwars2.com/images/6/61/Honey_Flower.png"
+    }
+];
+
+export const troncoPinoTierrasBajas = [
+    {
+        id: 102503,
+        icon: "https://wiki-es.guildwars2.com/images/d/de/Tronco_de_pino_de_las_tierras_bajas.png"
+    }
+];
+
+export const ambarTitan = [
+    {
+        id: 102255,
+        icon: "https://wiki.guildwars2.com/images/e/ea/Rotted_Titan_Amber.png"
+    }
+];
+
+export const mineralTitan = [
+    {
+        id: 103279,
+        icon: "https://wiki.guildwars2.com/images/9/9c/Charged_Titan_Ore.png"
+    }
+];
+
+export const quemateritaTitan = [
+    {
+        id: 102655,
+        icon: "https://wiki.guildwars2.com/images/2/20/Titan_Heatstone.png"
+    }
+];
+
+export const obsidianaMursaat = [
+    {
+        id: 103427,
+        icon: "https://wiki.guildwars2.com/images/c/c8/Mursaat_Obsidian_Chunk.png"
+    }
+];
+
+export const piedraRunicaMursaat = [
+    {
+        id: 103351,
+        icon: "https://wiki.guildwars2.com/images/e/e1/Mursaat_Runestone.png"
+    }
+];
+
+export const esquirlaCuriosaMursaat = [
+    {
+        id: 104331,
+        icon: "https://wiki.guildwars2.com/images/1/13/Curious_Mursaat_Ruin_Shard.png"
+    }
+];
+
+export const restoCuriosidadMursaat = [
+    {
+        id: 104829,
+        icon: "https://wiki.guildwars2.com/images/e/eb/Curious_Mursaat_Remnants.png"
+    }
+];
+
+export const ursusObligue = [
+    {
+        id: 103372,
+        idWallet: 76,
+        icon: "https://wiki.guildwars2.com/images/1/13/Ursus_Oblige.png"
+    }
+];
+
+export const saviaRica = [
+    {
+        idWallet: 83,
+        icon: "https://render.guildwars2.com/file/79F23C52AF0AA29A976877285FF904BCA2D122FE/3710050.png"
+    }
+];
+
+export const ducadoAnticuado = [
+    {
+        idWallet: 81,
+        icon: "https://render.guildwars2.com/file/F891B355BC31BD7B4103FE5DF9ACB2FCF928F4CB/3710051.png"
+    }
+];
+
+export const reliquiaFractal = [
+    {
+        id: 38022,
+        idWallet: 7,
+        tengo: 0,
+        icon: "https://wiki.guildwars2.com/images/5/57/Fractal_Relic.png"
+    }
+];
+
+export const reliquiaFractalPristina = [
+    {
+        id: 69862, //39078
+        idWallet: 24,
+        tengo: 0,
+        icon: "https://wiki.guildwars2.com/images/e/e2/Pristine_Fractal_Relic.png"
+    }
+];
+
+export const ufe = [
+    {
+        id: 94020,
+        idWallet: 59,
+        tengo: 0,
+        icon: "https://wiki.guildwars2.com/images/b/b8/Unstable_Fractal_Essence.png"
     }
 ];
 
@@ -498,7 +640,8 @@ export const piezaAeronave = [
         id: 74494,
         idWallet: 19,
         cantidad: 250,
-        icon: "https://render.guildwars2.com/file/524C1CF964A3349003095F17DF4B3A476F073755/1029832.png"
+        // icon: "https://render.guildwars2.com/file/524C1CF964A3349003095F17DF4B3A476F073755/1029832.png"
+        icon: "https://wiki.guildwars2.com/images/1/14/Airship_Part.png"
     }
 ];
 
@@ -516,7 +659,8 @@ export const cristalLineaLey = [
         id: 0,
         idWallet: 20,
         cantidad: 250,
-        icon: "https://render.guildwars2.com/file/DD02946A3AB4076C500836533F67303EE464A6AC/1206837.png"
+        // icon: "https://render.guildwars2.com/file/DD02946A3AB4076C500836533F67303EE464A6AC/1206837.png"
+        icon: "https://wiki.guildwars2.com/images/b/b4/Ley_Line_Crystal.png"
     }
 ];
 
@@ -574,6 +718,22 @@ export const esenciaTriunfoT3 = [
     }
 ];
 
+export const monedaAntigua = [
+    {
+        id: 100477,
+        idWallet: 66,
+        icon: "https://wiki.guildwars2.com/images/8/8d/Ancient_Coin.png"
+    }
+];
+
+export const monedaInusual = [
+    {
+        id: 96046,
+        idWallet: 62,
+        icon: "https://wiki.guildwars2.com/images/5/56/Unusual_Coin.png"
+    }
+];
+
 export const esenciaAmalgamadaKryptis = [
     {
         id: 100930,
@@ -619,6 +779,14 @@ export const notasInvestigacion = [
         cantidadArmaduraPve: 2500, //por pieza de armadura pve
         tengoEnCartera: 0,
         icon: "https://wiki.guildwars2.com/images/a/a1/Research_Note.png"
+    }
+];
+
+export const monedaMazmorra = [
+    {
+        idWallet: 69,
+        tengoEnCartera: 0,
+        icon: "https://wiki.guildwars2.com/images/1/13/Tale_of_Dungeon_Delving.png"
     }
 ];
 
@@ -1006,8 +1174,8 @@ export const legendaryWeapons1 = [
         tengo: 0,
         pre: "Amanecer, Crepúsculo",
         preId: 30703, //30704
-        icon: "https://wiki-es.guildwars2.com/images/3/31/Eternidad.png",
-        wiki: "https://wiki-es.guildwars2.com/wiki/Eternidad",
+        icon: "https://wiki.guildwars2.com/images/3/38/Eternity.png",
+        wiki: "https://wiki.guildwars2.com/wiki/Eternity",
         wikiPre: "https://wiki.guildwars2.com/wiki/Sunrise",
         precioTpVenta: 0,
         precioTpVentaS: "",
@@ -1870,13 +2038,89 @@ export const legendaryWeaponsOther = [
         icon: ["https://wiki.guildwars2.com/images/1/13/Klobjarne_Geirr.png"],
         wiki: "https://wiki.guildwars2.com/wiki/Klobjarne_Geirr",
         wikiPre: "https://wiki.guildwars2.com/wiki/Nyr_Hrammr",
+        precioTpCompra: 0,
+        precioTpCompraS: "",
         precioTpVenta: 0,
         precioTpVentaS: "",
+        precioTpCompraPre: 0,
+        precioTpCompraSPre: "",
         precioTpVentaPre: 0,
         precioTpVentaSPre: "",
-        modo: "PvE"
+        modo: "PvE",
+        expansion: "JW"
+    },
+        {
+        nombre: "Ancla etérica",
+        id: 105497,
+        idWardrobe: 0,
+        tipo: "Contenedor",
+        tengo: 0,
+        pre: "-",
+        preId: 0,
+        icon: ["https://wiki.guildwars2.com/images/9/9f/Aetheric_Anchor.png"],
+        wiki: "https://wiki.guildwars2.com/wiki/Aetheric_Anchor",
+        wikiPre: "",
+        precioTpCompra: 0,
+        precioTpCompraS: "-",
+        precioTpVenta: 0,
+        precioTpVentaS: "-",
+        precioTpCompraPre: 0,
+        precioTpCompraSPre: "-",
+        precioTpVentaPre: 0,
+        precioTpVentaSPre: "-",
+        modo: "PvE",
+        expansion: "VoE"
+    },
+    {
+        nombre: "Ancora Bellum",
+        id: 106273,
+        idWardrobe: 13306,
+        tipo: "Lanza",
+        tengo: 0,
+        pre: "Ancla etérica",
+        preId: 105497,
+        icon: ["https://render.guildwars2.com/file/31290C7C3C6799515EC55B143EFE292ED00B5663/3710037.png"],
+        wiki: "https://wiki.guildwars2.com/wiki/Aetheric_Anchor",
+        wikiPre: "",
+        precioTpCompra: 0,
+        precioTpCompraS: "",
+        precioTpVenta: 0,
+        precioTpVentaS: "",
+        precioTpCompraPre: 0,
+        precioTpCompraSPre: "",
+        precioTpVentaPre: 0,
+        precioTpVentaSPre: "",
+        modo: "PvE",
+        expansion: "VoE"
+    },
+    {
+        nombre: "Ancora Pax",
+        id: 105653,
+        idWardrobe: 13334,
+        tipo: "Báculo",
+        tengo: 0,
+        pre: "Ancla etérica",
+        preId: 105497,
+        icon: ["https://render.guildwars2.com/file/062138CC40DF0A2D4195C9DAA5FDD8BF0ECC27F9/3710038.png"],
+        wiki: "https://wiki.guildwars2.com/wiki/Ancora_Pax",
+        wikiPre: "https://wiki.guildwars2.com/wiki/Aetheric_Anchor",
+        precioTpCompra: 0,
+        precioTpCompraS: "",
+        precioTpVenta: 0,
+        precioTpVentaS: "",
+        precioTpCompraPre: 0,
+        precioTpCompraSPre: "",
+        precioTpVentaPre: 0,
+        precioTpVentaSPre: "",
+        modo: "PvE",
+        expansion: "VoE"
     }
 ];
+
+export const legendaryWeaponsGenOther = [
+    legendaryWeaponsOther[0],
+    legendaryWeaponsOther[1]
+]
 
 export const legendaryBack = [
     {
@@ -1891,6 +2135,7 @@ export const legendaryBack = [
         wiki: "https://wiki.guildwars2.com/wiki/Warbringer",
         wikiPre: "https://wiki.guildwars2.com/wiki/Warcry",
         modo: "WvW",
+        expansion: "Core"
     },
     {
         nombre: "Ad Infinitum",
@@ -1903,10 +2148,11 @@ export const legendaryBack = [
         icon: ["https://wiki.guildwars2.com/images/4/4a/Ad_Infinitum.png"],
         wiki: "https://wiki.guildwars2.com/wiki/Ad_Infinitum",
         wikiPre: "https://wiki.guildwars2.com/wiki/Unbound",
-        modo: "Fractal"
+        modo: "Fractal",
+        expansion: "Core"
     },
     {
-        nombre: "The Ascension",
+        nombre: "La Ascension",
         id: 77474,
         idWardrobe: 6561,
         tipo: "Mochila",
@@ -1916,10 +2162,11 @@ export const legendaryBack = [
         icon: ["https://wiki.guildwars2.com/images/d/d7/The_Ascension.png"],
         wiki: "https://wiki.guildwars2.com/wiki/The_Ascension",
         wikiPre: "https://wiki.guildwars2.com/wiki/Wings_of_Ascension",
-        modo: "PvP"
+        modo: "PvP",
+        expansion: "Core"
     },
     {
-        nombre: "Orrax Manifested",
+        nombre: "Orrax Manifestado",
         id: 104857,
         idWardrobe: 13090,
         tipo: "Mochila",
@@ -1929,7 +2176,8 @@ export const legendaryBack = [
         icon: ["https://render.guildwars2.com/file/9C5948587832ACA31FD01298DE081BDE626CC607/3629149.png"],
         wiki: "https://wiki.guildwars2.com/wiki/Orrax_Manifested",
         wikiPre: "https://wiki.guildwars2.com/wiki/Orrax_Contained",
-        modo: "PvE"
+        modo: "PvE",
+        expansion: "JW"
     }
 ];
 
@@ -1948,6 +2196,27 @@ export const legendaryGlovesFractal = [
         ],
         tengoPartes: [0, 0, 0],
         wiki: "https://wiki.guildwars2.com/wiki/Eikasia,_Mists-Grasper_(heavy)",
-        partes: ["Ligero", "Medio", "Pesado"]
+        partes: ["Ligero", "Medio", "Pesado"],
+        expansion: "Core"
+    }
+];
+
+export const legendaryAquaticHeadgear = [
+    {
+        id: [105921, 106658, 106178],
+        idWardrobe: [13275, 13432, 13636],
+        nombre: "Selachimorpha",
+        tengo: 0,
+        tipo: "Respirador acuático",
+        modo: "PvE",
+        icon: [
+            "https://render.guildwars2.com/file/340AA29452C4AF96F8434AF323E3747AAE020B34/3710799.png",
+            "https://render.guildwars2.com/file/340AA29452C4AF96F8434AF323E3747AAE020B34/3710799.png",
+            "https://render.guildwars2.com/file/340AA29452C4AF96F8434AF323E3747AAE020B34/3710799.png"
+        ],
+        tengoPartes: [0, 0, 0],
+        wiki: "https://wiki.guildwars2.com/wiki/Selachimorpha",
+        partes: ["Ligero", "Medio", "Pesado"],
+        expansion: "VoE"
     }
 ];

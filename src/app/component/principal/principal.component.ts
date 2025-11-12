@@ -15,7 +15,7 @@ export class PrincipalComponent implements OnInit {
   typesOfEnlaces: string[] = ['Enlaces'];
   typesOfStats: string[] = ['Buscar por stats (atributos)', 'Buscar por prefijo', 'Buscar por nombre arma/armadura'];
   typesOfRaid: string[] = ['Raid'];
-  typesOfLegendary: string[] = ['Armadura legendaria Raid', 'Otros legendarios', 'Otros componentes', 'Precios T6', 'Precios Varios', 'Precios Armas Legendarias'];
+  typesOfLegendary: string[] = ['Armadura legendaria Raid', 'Otros legendarios', 'Otros componentes', 'Cartera', 'Precios T6', 'Precios Varios', 'Precios Armas Legendarias'];
   typesOfHomestead: string[] = ['Precios Huerto', 'Glifos']
   typesOfFestival: string[] = ['Festival']
 
@@ -33,6 +33,7 @@ export class PrincipalComponent implements OnInit {
     'Armadura legendaria Raid': 'armaduraraid',
     'Otros legendarios': 'otroslegendarios',
     'Otros componentes': 'otros',
+    'Cartera': 'cartera',
     'Precios T6': 'preciost6',
     'Precios Varios': 'preciosvarios',
     'Precios Armas Legendarias': 'preciosarmas',

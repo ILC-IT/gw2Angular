@@ -50,7 +50,10 @@ export class DashboardComponent implements OnInit {
     }, 50); // Ajusta el tiempo según sea necesario
   }
   
-  account: any = [];
+  account: any = {
+    name: '',
+    error: false
+  };
 
   constructor(private heroService: HeroService) { }
 
@@ -61,7 +64,8 @@ export class DashboardComponent implements OnInit {
   getAccount(){
     this.heroService.getAccount().subscribe((acc: any) => {
         this.account = { 
-          ...acc, 
+          ...acc,
+          name: acc?.name || 'Loading API...',
           error: false 
         };
       },

@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChild, OnDestroy } from '@angular/core';
 import { DailyService } from "../../service/daily.service";
 import { LegendaryService } from 'src/app/service/legendary.service';
+import { cartera, reliquiaFractal, reliquiaFractalPristina, ufe } from '../legendary/legendary';
 import { Fractales, FractalesCm, InestabCm, InstabilityDetail } from "./fractales";
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
@@ -92,11 +93,33 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
     "Citadel of Zakiros Nayos (Charybda)",
     "Janthir Syntri (Titans)"
   ]
+  dailyWorldBoss: any;
+  dailyWorldBossing = [
+    "Jefe chamán Svanir",
+    "Elemental de fuego",
+    "Behemot de las sombras",
+    "Gran sierpe de la selva",
+    "Ulgoth modniir",
+    "Taidha Covington",
+    "El asolador",
+    "Megadestructor",
+    "Gólem de la Inquisa serie II",
+    "Garra of Jormag",
+    "Problema x3",
+    "Reina karka",
+    "Tequatl el Sombrío",
+    "Drakkar",
+    "Janthir Syntri"
+  ]
   dailyHeroChoiceConvergenceChesting = "Convergencia diaria"
+  reliquiaFractal = reliquiaFractal;
+  reliquiaFractalPristina = reliquiaFractalPristina;
+  ufe = ufe;
   //Para completada:
   dailyIdsChecked: boolean[] = [];
   dailyIdsCraftChecked: boolean[] = [];
   dailyIdsHeroChoiceChestChecked: boolean[] = [];
+  dailyIdsWorldBossChecked: boolean[] = [];
   dailyIdsHeroChoiceChestConvergenceChecked: boolean = false;
   indeterminate = false;
   labelPosition: 'before' | 'after' = 'after';
@@ -164,6 +187,7 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
   weeklyWvW: { id: number, name: string; current: number; max: number; done: boolean }[] = [];
   weeklyRiftHuntingSoto: { id: number, name: string; current: number; max: number; done: boolean }[] = [];
   weeklyRiftHuntingJw: { id: number, name: string; current: number; max: number; done: boolean }[] = [];
+  weeklyRiftHuntingVoe: { id: number, name: string; current: number; max: number; done: boolean }[] = [];
 
   constructor(private dailyService: DailyService, private legendaryService: LegendaryService, private route: ActivatedRoute,  private router: Router) { 
 
@@ -219,7 +243,7 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
 
     this.tokenSupply = this.getTokenSupply();
     this.pactSupply = this.getPactSupply();
-    this.bestWeek = this.legendaryService.bestMapBonusRewardWeekNumber;
+    this.bestWeek = this.dailyService.bestMapBonusRewardWeekNumber;
     this.mapBonusRewardweekNumber = this.getMapBonusRewardWeekNumber(); //numero de semana de map bonus reward entre 1-8
     this.dailyActivity = this.getDailyActivity();
     this.recordatorio = this.getRecordatorio();
@@ -246,13 +270,16 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
     this.intervalIds.push(id2);
 
     this.getDailyHeroChoiceChest();
+    this.getDailyWorldBoss();
       const id3 = setInterval(() => {
         this.getDailyHeroChoiceChest();
+        this.getDailyWorldBoss();
       }, 10 * 60 * 1000)
     this.intervalIds.push(id3);
 
     this.dailyFractalsId = await this.getDailyFractalsId();
     this.getDailyFractals();
+    this.getWallet();
 
     this.dailyWizardVault = await this.getDailyWizardVault();
     this.loadingDailyWizard = false;
@@ -264,6 +291,7 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
     this.loadWeeklyWvW();
     this.loadWeeklyRiftHuntingSoto();
     this.loadWeeklyRiftHuntingJw();
+    this.loadWeeklyRiftHuntingVoe();
     this.loadWeeklyConvergenciaSoto();
     this.loadWeeklyConvergenciaJW();
     this.weeklyFractalQuickplay = await this.getWeeklyFractalQuickplay();
@@ -458,7 +486,6 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
   getDailyHeroChoiceChest(){
     this.dailyService.getDailyHeroChoiceChest().subscribe((dailyHeroChoiceChest: any) => {
       this.dailyHeroChoiceChest = dailyHeroChoiceChest;
-      //console.log(this.dailyHeroChoiceChest)
 
         //Inicializo a false el array
         for(let i = 0; i < this.dailyHeroChoiceChesting.length; i++){
@@ -528,6 +555,58 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
         // for (let i = 0; i < this.dailyIdsHeroChoiceChestChecked.length; i++){
         //   console.log(this.dailyIdsHeroChoiceChestChecked[i])
         // }
+    })
+  }
+
+  getDailyWorldBoss(){
+    this.dailyService.getDailyWorldBoss().subscribe((dailyWB: any) => {
+      this.dailyWorldBoss = dailyWB;
+
+      // Lista de IDs de bosses en el mismo orden que dailyWorldBossing
+      const bossIds = [
+        "svanir_shaman_chief",
+        "fire_elemental",
+        "shadow_behemoth",
+        "great_jungle_wurm",
+        "modniir_ulgoth",
+        "admiral_taidha_covington",
+        "the_shatterer",
+        "megadestroyer",
+        "inquest_golem_mark_ii",
+        "claw_of_jormag",
+        "triple_trouble_wurm",
+        "tequatl_the_sunless",
+        "karka_queen",
+        "drakkar",
+        "mists_and_monsters_titans"
+      ];
+
+      // Detectar bosses desconocidos que vengan de la api
+      const unknownBosses = this.dailyWorldBoss.filter(
+        (bossName: string) => !bossIds.includes(bossName)
+      );
+
+      // Si hay alguno, se agrega
+      unknownBosses.forEach((bossName: string) => {
+        console.warn(`World Boss desconocido detectado: ${bossName}`);
+        bossIds.push(bossName);
+        this.dailyWorldBossing.push(bossName);
+      });
+
+      //Inicializo a false el array
+      this.dailyIdsWorldBossChecked = this.dailyWorldBossing.map(() => false);
+
+      // Compruebo si los bosses estan hechos
+      bossIds.forEach((bossName, index) => {
+        if (this.dailyWorldBoss.includes(bossName)) {
+          this.dailyIdsWorldBossChecked[index] = true;
+        }
+      });
+
+      // console.log(this.dailyWorldBoss)
+      // this.dailyWorldBossing.forEach((boss, i) => {
+      //   console.log(`${boss}: ${this.dailyIdsWorldBossChecked[i]}`);
+      // });
     })
   }
 
@@ -690,11 +769,17 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
     //Meto en un string los recomendados y diarios para el boton copiar
     let fractDailyString: string = "Diarios T4: ";
     let fractRecString: string = "Recomendados: ";
-    for(let i = 0; i < this.fractDaily4.length; i++){
-      fractDailyString = fractDailyString + this.fractDaily4[i][0].level + " " + this.fractDaily4[i][0].nameEs + ", ";
+    if (this.fractDaily4.length > 0) {
+      fractDailyString += this.fractDaily4
+        .sort((a: any, b: any) => b[0].level - a[0].level) // descendente
+        .map((f: any) => `${f[0].level} ${f[0].nameEs}`)
+        .join(", ") + ". ";
     }
-    for(let i = 0; i < this.fractRec.length; i++){
-      fractRecString = fractRecString + this.fractRec[i].level + " " + this.fractRec[i].nameEs + ", ";
+    if (this.fractRec.length > 0) {
+      fractRecString += this.fractRec
+        .sort((a: any, b: any) => b.level - a.level) // descendente
+        .map((f: any) => `${f.level} ${f.nameEs}`)
+        .join(", ") + ".";
     }
     this.fractalesRecDailyString = fractDailyString + "\n" + fractRecString;
     
@@ -864,7 +949,7 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
   }
 
   getMapBonusRewardWeekNumber(){
-    return this.legendaryService.getMapBonusRewardWeekNumber();
+    return this.dailyService.getMapBonusRewardWeekNumber();
   }
 
   ////////////////////////////////////// WEEKLY
@@ -1012,24 +1097,35 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
   }
 
   loadWeeklyRiftHuntingSoto() {
-    this.dailyService.getWeeklyRiftHuntingSotoId().subscribe({
-      next: (categoryData: any) => {
-        const idsArray: number[] = categoryData.achievements || [];
+    // this.dailyService.getWeeklyRiftHuntingSotoId().subscribe({
+    //   next: (categoryData: any) => {
+    //     const idsArray: number[] = categoryData.achievements || [];
+
+    this.dailyService.getWeeklyRiftSotoInfo().subscribe({
+      next: (manualIds: any) => {
+        const idsArray: number[] = manualIds || [];
 
         if (idsArray.length === 0) {
           this.weeklyRiftHuntingSoto = [];
           return;
         }
-
         const ids = idsArray.join(',');
 
         this.dailyService.getAchievementsByIds(ids).subscribe({
           next: (basicAchievements: any[]) => {
+            // Reordeno segun el orden de idsArray para que salgan los tres de soto arriba
+            basicAchievements.sort(
+              (a, b) => idsArray.indexOf(a.id) - idsArray.indexOf(b.id)
+            );
 
             this.dailyService.getWeeklyRiftHuntingSoto(ids).subscribe({
               next: (progressData: any[]) => {
                 const progressMap = new Map<number, any>();
                 progressData.forEach(p => progressMap.set(p.id, p));
+                // Reordeno
+                progressData.sort(
+                  (a, b) => idsArray.indexOf(a.id) - idsArray.indexOf(b.id)
+                );
 
                 this.weeklyRiftHuntingSoto = basicAchievements.map(b => {
                   const progress = progressMap.get(b.id);
@@ -1135,6 +1231,68 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
     });
   }
 
+  loadWeeklyRiftHuntingVoe() {
+    this.dailyService.getWeeklyRiftHuntingVoeId().subscribe({
+      next: (categoryData: any) => {
+        const idsArray: number[] = categoryData.achievements || [];
+
+        if (idsArray.length === 0) {
+          this.weeklyRiftHuntingVoe = [];
+          return;
+        }
+
+        const ids = idsArray.join(',');
+
+        this.dailyService.getAchievementsByIds(ids).subscribe({
+          next: (basicAchievements: any[]) => {
+
+            this.dailyService.getWeeklyRiftHuntingVoe(ids).subscribe({
+              next: (progressData: any[]) => {
+                const progressMap = new Map<number, any>();
+                progressData.forEach(p => progressMap.set(p.id, p));
+
+                this.weeklyRiftHuntingVoe = basicAchievements.map(b => {
+                  const progress = progressMap.get(b.id);
+                  return {
+                    id: b.id,
+                    name: this.cleanName(b.name),
+                    current: progress?.current ?? 0,
+                    max: progress?.max ?? (b.tiers?.[b.tiers.length - 1]?.count ?? 5),
+                    done: progress?.done ?? false
+                  };
+                });
+              },
+              error: (err) => {
+                if (err.status === 404) {
+                  console.warn('Weekly rift voe sin hacer');
+                  this.weeklyRiftHuntingVoe = basicAchievements.map(b => ({
+                    id: b.id,
+                    name: this.cleanName(b.name),
+                    current: 0,
+                    max: (b.tiers?.[b.tiers.length - 1]?.count ?? 5),
+                    done: false
+                  }));
+                } else {
+                  console.error('Error obteniendo progreso voe:', err);
+                  this.weeklyRiftHuntingVoe = [];
+                }
+              }
+            });
+
+          },
+          error: (err) => {
+            console.error('Error obteniendo info básica voe:', err);
+            this.weeklyRiftHuntingVoe = [];
+          }
+        });
+      },
+      error: (err) => {
+        console.error('Error obteniendo ids voe:', err);
+        this.weeklyRiftHuntingVoe = [];
+      }
+    });
+  }
+
   loadWeeklyConvergenciaSoto(){
     this.dailyService.getConvergenciaSotoWeeklyCM().subscribe({
       next: (data: any) => {
@@ -1207,19 +1365,31 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
     });
   }
 
+  getWallet(){
+    this.dailyService.getWallet().subscribe((wallet: any) => {
+      this.reliquiaFractal[0].tengo = wallet.find((o: { id: number; value: number}) => o.id === this.reliquiaFractal[0].idWallet)?.value ?? 0;
+      this.reliquiaFractalPristina[0].tengo = wallet.find((o: { id: number; value: number}) => o.id === this.reliquiaFractalPristina[0].idWallet)?.value ?? 0;
+      this.ufe[0].tengo = wallet.find((o: { id: number; value: number}) => o.id === this.ufe[0].idWallet)?.value ?? 0;
+    })
+  }
+
   removePrefix(name: string): string {
     return name.replace(/^\([^)]*\)\s*/, '');
   }
 
   cleanName(name: string): string {
     // Español - remover prefijos al inicio
-    name = name.replace(/^Incursiones (a la|a las|a los|al|a|en la|en los) /i, '');
+    name = name.replace(/^Incursiones (a la|a las|a los|al|a|en la|en las|en los|en el|en|del) /i, '');
 
     // Inglés - remover "Incursions" al final
     name = name.replace(/ Incursions$/i, '');
 
     // Capitalizar primera letra (solo si hay texto)
     return name.charAt(0).toUpperCase() + name.slice(1).trim();
+  }
+
+  openLink(url: string): void {
+    window.open(url, '_blank', 'noopener,noreferrer');
   }
 
   ///////////////////////////////// FILTER
@@ -1248,7 +1418,7 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
     this.dataSource.filter = JSON.stringify(this.filterValues)
   }
 
-  // Custom filter method fot Angular Material Datatable
+  // Custom filter method for Angular Material Datatable
   createFilter() {
     let filterFunction = function (data: any, filter: string): boolean {
       let searchTerms = JSON.parse(filter);

@@ -135,6 +135,10 @@ export class HeroesComponent implements OnInit {
               tabla[i].espec = Specs[j].specEodName
               k = specPve.length;
               break;
+            } else if ((specPve[k].id === Specs[j].specVoe)){
+              tabla[i].espec = Specs[j].specVoeName
+              k = specPve.length;
+              break;
             }
           }
         }

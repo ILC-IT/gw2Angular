@@ -14,6 +14,11 @@ h2 {
     margin-right:auto;
 }
 
+table {
+    background-color: rgba(0, 0, 0, 0);
+    border-collapse: collapse;
+}
+
 :host ::ng-deep .mat-sort-header-container { 
     display: flex;  
     justify-content: center; 
@@ -50,12 +55,7 @@ img {
     color: red; /*change color of arrow*/
 }
 
-.greenBackGround {
-    background-color:rgb(195, 248, 195);
-    font-weight: bold;
-}
-
 .redBackGround {
-    background-color: rgb(247, 175, 199);
+    color: rgba(255, 34, 34, 0.9);
     font-weight: bold;
 }

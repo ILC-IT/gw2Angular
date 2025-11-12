@@ -10,7 +10,7 @@
                 routerLink="/diaria">
                 Diarias
             </a>
-            <mat-menu [hasBackdrop]="false" #diariasMenu="matMenu" [overlapTrigger]="false">
+            <mat-menu class="menu-diarias" [hasBackdrop]="false" #diariasMenu="matMenu" [overlapTrigger]="false">
                 <div (mouseenter)="cancelCloseMenu(diariasTrigger)"
                     (mouseleave)="closeMenu(diariasTrigger)">
                 <a mat-menu-item [routerLink]="'/diaria/wizardvault'">Cámara del brujo</a>
@@ -30,7 +30,7 @@
                 routerLink="/stats">
                 Buscador Stats
             </a>
-            <mat-menu [hasBackdrop]="false" #buscadorStatsMenu="matMenu" [overlapTrigger]="false">
+            <mat-menu class="menu-diarias" [hasBackdrop]="false" #buscadorStatsMenu="matMenu" [overlapTrigger]="false">
                 <div (mouseenter)="cancelCloseMenu(buscadorStatsTrigger)"
                     (mouseleave)="closeMenu(buscadorStatsTrigger)">
                 <a mat-menu-item [routerLink]="'/stats/buscarporstats'">Atributos</a>
@@ -49,12 +49,13 @@
                 routerLink="/legendary">
                 Legendarios
             </a>
-            <mat-menu [hasBackdrop]="false" #legendariosMenu="matMenu" [overlapTrigger]="false">
+            <mat-menu class="menu-diarias" [hasBackdrop]="false" #legendariosMenu="matMenu" [overlapTrigger]="false">
                 <div (mouseenter)="cancelCloseMenu(legendariosTrigger)"
                     (mouseleave)="closeMenu(legendariosTrigger)">
                 <a mat-menu-item [routerLink]="'/legendary/armaduraraid'">Armadura Raid</a>
                 <a mat-menu-item [routerLink]="'/legendary/otroslegendarios'">Otros legendarios</a>
                 <a mat-menu-item [routerLink]="'/legendary/otros'">Otros componentes</a>
+                <a mat-menu-item [routerLink]="'/legendary/cartera'">Cartera</a>
                 <a mat-menu-item [routerLink]="'/legendary/preciost6'">Precios T6</a>
                 <a mat-menu-item [routerLink]="'/legendary/preciosvarios'">Precios varios</a>
                 <a mat-menu-item [routerLink]="'/legendary/preciosarmas'">Precios armas</a>
@@ -70,7 +71,7 @@
                 routerLink="/homestead">
                 Homestead
             </a>
-            <mat-menu [hasBackdrop]="false" #homesteadMenu="matMenu" [overlapTrigger]="false">
+            <mat-menu class="menu-diarias" [hasBackdrop]="false" #homesteadMenu="matMenu" [overlapTrigger]="false">
                 <div (mouseenter)="cancelCloseMenu(homesteadTrigger)"
                     (mouseleave)="closeMenu(homesteadTrigger)">
                 <a mat-menu-item [routerLink]="'/homestead/precioshuerto'">Precios Huerto</a>
@@ -88,7 +89,7 @@
             <a href="https://killproof.me/account/gw2accounts" target="_blank" rel="noopener noreferrer" style="text-decoration: none">KP</a>
 
             &nbsp;
-            <a [cdkCopyToClipboard]="account.name" matTooltip="Copiar" style="cursor: pointer;" [ngClass]="{ 'error-account': account?.error }">{{account.name}}</a>
+            <a [cdkCopyToClipboard]="account.name" matTooltip="Copiar" style="cursor: pointer;" [ngClass]="{ 'error-account': account?.error }">{{account.name || 'Loading API...' }}</a>
         </nav>
     </div>
     <div class="search" color="primary">

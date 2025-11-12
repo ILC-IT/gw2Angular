@@ -14,7 +14,10 @@ export class AppComponent {
   title = 'GW2 Angular';
   value: string = '';
   isSmallScreen: Observable<boolean>;
-  account: any = [];
+  account: any = {
+    name: '',
+    error: false
+  };
 
   //reloj
   private _time$: Observable<Date> = timer(0, 1000).pipe(
@@ -40,7 +43,8 @@ export class AppComponent {
   getAccount(){
     this.heroService.getAccount().subscribe((acc: any) => {
         this.account = { 
-          ...acc, 
+          ...acc,
+          name: acc?.name || 'Loading API...',
           error: false 
         };
       },

@@ -187,3 +187,65 @@ button {
         margin-right: 0;
     }
 }
+
+.separador {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.worldboss-links {
+    display: inline-flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.link-button {
+    border-radius: 12px;
+    padding: 10px 20px;
+    font-size: large;
+    font-weight: 500;
+    line-height: 1.2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.link-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+.centrado {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.centrado .item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.gap-grande {
+    gap: 30px;
+}
+
+.responsive-container {
+    flex-wrap: wrap; 
+    row-gap: 16px;
+    text-align: center;
+    padding: 8px;
+    overflow-x: auto;
+}
+
+img { 
+    width: 25px; 
+    height: 25px; 
+}
+
+.desplegable {
+    background-color: rgb(218, 216, 216); /*(230, 227, 227)*/ 
+}

@@ -4,6 +4,12 @@ h2 {
 
 table {
     width: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    border-collapse: collapse;
+}
+
+table td {
+    font-size: 16px; /* celdas normales */
 }
 
 :host ::ng-deep .mat-sort-header-container { 
@@ -68,11 +74,11 @@ img {
 }
 
 .responsive-container {
-    flex-wrap: wrap; /* permite que los ítems bajen de línea */
-    row-gap: 16px; /* espacio vertical entre filas */
+    flex-wrap: wrap; 
+    row-gap: 16px;
     text-align: center;
     padding: 8px;
-    overflow-x: auto; /* opcional: agrega scroll horizontal si no cabe */
+    overflow-x: auto;
 }
 
 .enlace-sin-subrayado {
@@ -172,4 +178,14 @@ img {
 
 .expand-icon.rotated {
     transform: rotate(180deg);
+}
+
+@media (max-width: 768px) {
+    table td {
+        font-size: 12px; /* celdas */
+    }
+
+    table th {
+        font-size: 14px; /* encabezados */
+    }
 }

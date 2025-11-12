@@ -15,7 +15,9 @@ export const Specs = [
         specPofName: "Firebrand",
         // specEod: 466,
         specEod: 65,
-        specEodName: "Willbender"
+        specEodName: "Willbender",
+        specVoe: 81,
+        specVoeName: "Luminary"
     },
     {
         profession: "Revenant",
@@ -27,7 +29,9 @@ export const Specs = [
         specPofName: "Renegade",
         // specEod: 469,
         specEod: 69,
-        specEodName: "Vindicator"
+        specEodName: "Vindicator",
+        specVoe: 79,
+        specVoeName: "Conduit"
     },
     {
         profession: "Warrior",
@@ -39,7 +43,9 @@ export const Specs = [
         specPofName: "Spellbreaker",
         // specEod: 468,
         specEod: 68,
-        specEodName: "Bladesworn"
+        specEodName: "Bladesworn",
+        specVoe: 74,
+        specVoeName: "Paragon"
     },
     {
         profession: "Engineer",
@@ -51,7 +57,9 @@ export const Specs = [
         specPofName: "Holosmith",
         // specEod: 470,
         specEod: 70,
-        specEodName: "Mechanist"
+        specEodName: "Mechanist",
+        specVoe: 75,
+        specVoeName: "Amalgam"
     },
     {
         profession: "Ranger",
@@ -63,7 +71,9 @@ export const Specs = [
         specPofName: "Soulbeast",
         // specEod: 471,
         specEod: 72,
-        specEodName: "Untamed"
+        specEodName: "Untamed",
+        specVoe: 78,
+        specVoeName: "Galeshot"
     },
     {
         profession: "Thief",
@@ -75,7 +85,9 @@ export const Specs = [
         specPofName: "Deadeye",
         // specEod: 472,
         specEod: 71,
-        specEodName: "Specter"
+        specEodName: "Specter",
+        specVoe: 77,
+        specVoeName: "Antiquary"
     },
     {
         profession: "Elementalist",
@@ -87,7 +99,9 @@ export const Specs = [
         specPofName: "Weaver",
         // specEod: 467,
         specEod: 67,
-        specEodName: "Catalyst"
+        specEodName: "Catalyst",
+        specVoe: 80,
+        specVoeName: "Evoker"
     },
     {
         profession: "Mesmer",
@@ -99,7 +113,9 @@ export const Specs = [
         specPofName: "Mirage",
         // specEod: 464,
         specEod: 66,
-        specEodName: "Virtuoso"
+        specEodName: "Virtuoso",
+        specVoe: 73,
+        specVoeName: "Troubadour"
     },
     {
         profession: "Necromancer",
@@ -111,6 +127,8 @@ export const Specs = [
         specPofName: "Scourge",
         // specEod: 465,
         specEod: 64,
-        specEodName: "Harbinger"
+        specEodName: "Harbinger",
+        specVoe: 76,
+        specVoeName: "Ritualist"
     }
 ]
