@@ -590,7 +590,7 @@
         </mat-card>
       </a>
       <a>
-        <h2>Fractal Incursion</h2>
+        <h2>Fractal Quickplay</h2>
         <ng-container *ngIf="weeklyFractalQuickplay?.length > 0 && fractalInfiniteRecursion?.length > 0"> <!-- previene de errores cuando no hay datos -->
           <mat-card class="result">
             <mat-card-content>
@@ -610,18 +610,10 @@
           <mat-card class="result">
             <mat-card-content>
               <section class="example-section">
-                <mat-checkbox
-                  class="example-margin"
-                  [checked]="fractalInfiniteRecursion[0].current === fractalInfiniteRecursion[0].max"
-                  [(indeterminate)]="indeterminate"
-                  [labelPosition]="labelPosition"
-                  [class.mat-checkbox-disabled]="false"
-                  disabled>
                   Fractalline Dust: {{fractalInfiniteRecursion[0].current}}/{{fractalInfiniteRecursion[0].max}}
                   <span *ngIf="fractalInfiniteRecursion[0]?.repeated !== undefined && fractalInfiniteRecursion[0]?.repeated !== 0">
-                    ({{fractalInfiniteRecursion[0].repeated}})
+                    &nbsp;({{fractalInfiniteRecursion[0].repeated}})
                   </span>
-                </mat-checkbox>
               </section>
             </mat-card-content>
           </mat-card>

@@ -11,6 +11,14 @@ table {
   justify-content: center;
 }
 
+::ng-deep .mat-sort-header-sorted {
+  color: rgb(255, 0, 0);
+}
+  
+::ng-deep .mat-sort-header-arrow {
+  color: red; /*change color of arrow*/
+}
+
 tr.mat-row { 
   height: 80px; 
 }

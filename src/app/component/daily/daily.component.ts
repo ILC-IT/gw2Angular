@@ -575,8 +575,8 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
         "inquest_golem_mark_ii",
         "claw_of_jormag",
         "triple_trouble_wurm",
-        "tequatl_the_sunless",
         "karka_queen",
+        "tequatl_the_sunless",
         "drakkar",
         "mists_and_monsters_titans"
       ];
@@ -791,22 +791,48 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
   }
 
   getDailyInestabilidadCm(){
-    // busco las inestabilidades diarias de los cms
+    // Busco las inestabilidades diarias de los cms
     this.dailyService.getInestabilidadCm().subscribe((inestabilidadCm: any) => {
-      let hoy = new Date();
-      let diaNum = this.diaNumeroAño(hoy);
-      // if (this.leapYear(hoy.getFullYear())){
-      //   diaNum--; //esto es porque inestabilidadCm ya incluye el dia extra si es bisiesto
-      // }
-      // cojo info de 95 96 97 98 99 100
-      let hecatombe = inestabilidadCm["instabilities"]["95"][diaNum];
-      let pesadilla = inestabilidadCm["instabilities"]["96"][diaNum];
-      let observatorio = inestabilidadCm["instabilities"]["97"][diaNum];
-      let sunqua = inestabilidadCm["instabilities"]["98"][diaNum];
-      let oleaje = inestabilidadCm["instabilities"]["99"][diaNum];
-      let torre = inestabilidadCm["instabilities"]["100"][diaNum];
-      let nombres: InstabilityDetail[] = inestabilidadCm["instability_details"];
-      //devuelve array de (numero_de_cms x 3) posiciones
+      const ahora = new Date();
+      // Determinar el dia efectivo segun el corte horario: 1:00 en invierno, 2:00 en verano
+      // Construir un objeto `cutoff` con hora y minutos para comparar hora + minutos correctamente
+      const corteHora = this.dailyService.esHorarioInvierno() ? 1 : 2;
+      const cutoff = new Date(ahora.getFullYear(), ahora.getMonth(), ahora.getDate(), corteHora, 0, 0);
+      let fechaEfectiva = new Date(ahora);
+      // Si la hora actual (incluyendo minutos) es anterior al cutoff, usar el dia anterior
+      // Restar un dia mediante milisegundos evita ambigüedades con setDate
+      if (ahora.getTime() < cutoff.getTime()) {
+        fechaEfectiva = new Date(ahora.getTime() - 24 * 60 * 60 * 1000);
+      }
+      const diaNum = Math.floor(this.diaNumeroAño(fechaEfectiva)) - 1; // 0-based (dia del año)
+
+      const inst = inestabilidadCm["instabilities"];
+      const nombres: InstabilityDetail[] = inestabilidadCm["instability_details"];
+
+      // Segun la API: el indice es 0-365 (longitud array 366) y en años no bisiestos
+      // hay que "saltar" el indice 59 (29-feb). Por tanto:
+      const sample = inst["95"] || [];
+      // Comprobar si el año de la fecha efectiva es bisiesto
+      const isLeap = this.leapYear(fechaEfectiva.getFullYear());
+      let apiIndex = diaNum;
+      if (!isLeap && diaNum >= 59) {
+        apiIndex = diaNum + 1; // mapear la posicion tras 28-feb al indice que incluye 29-feb
+      }
+
+      // Clamp: limitar apiIndex al rango valido [0, sample.length-1]
+      // Esto evita accesos fuera de limites si la API no tiene suficientes entradas
+      // (por ejemplo datos incompletos o errores en la fuente)
+      apiIndex = Math.max(0, Math.min(sample.length - 1, apiIndex));
+
+      // Cojo info de 95 96 97 98 99 100 usando apiIndex
+      const hecatombe = inst["95"][apiIndex];
+      const pesadilla = inst["96"][apiIndex];
+      const observatorio = inst["97"][apiIndex];
+      const sunqua = inst["98"][apiIndex];
+      const oleaje = inst["99"][apiIndex];
+      const torre = inst["100"][apiIndex];
+
+      // Devuelve array de (numero_de_cms x 3) posiciones
       this.fractDailyInestabilidadCmEng = this.buscarInestabilidadCmNombre(nombres, hecatombe, pesadilla, observatorio, sunqua, oleaje, torre, 'en');
       this.fractDailyInestabilidadCmEsp = this.buscarInestabilidadCmNombre(nombres, hecatombe, pesadilla, observatorio, sunqua, oleaje, torre, 'es');
       this.getFractalesCm();

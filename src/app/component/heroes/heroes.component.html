@@ -52,10 +52,13 @@
     <ng-container matColumnDef="crafting">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Artesanía </th>
         <td mat-cell *matCellDef="let character"> 
-            <ng-container *ngFor="let art of character.crafting">
-                {{art.discipline}} {{art.rating}}
-                <br /> <!-- Use br if you want to display the roles vertically -->
+            <ng-container *ngIf="character.crafting && character.crafting.length; else noCraft">
+                <ng-container *ngFor="let art of character.crafting">
+                    {{art.discipline}} {{art.rating}}
+                    <br /> <!-- Use br if you want to display the roles vertically -->
+                </ng-container>
             </ng-container>
+            <ng-template #noCraft>-</ng-template>
         </td>
     </ng-container>
 
@@ -88,6 +91,8 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Dias Sig. Cumpleaños </th>
         <td mat-cell *matCellDef="let character"> 
             {{character.diasCumple}} ({{character.numeroAnosCumple}}º)
+            <br>
+            {{character.fechaSigCumple}} {{character.horaCreacion}}
         </td>
     </ng-container>
 

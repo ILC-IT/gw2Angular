@@ -3,6 +3,7 @@ export interface FestivalDivisas {
     nombre: string;
     tengo?: number;
     icon: string;
+    gw2bltc: string;
     precioTpCompra: number;
     precioTpCompraS: string;
     precioTpVenta: number;

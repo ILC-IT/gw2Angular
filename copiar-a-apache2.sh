@@ -20,7 +20,6 @@ echo "Copiando archivos nuevos a /var/www/html..."
 sudo cp -r * /var/www/html || { echo "Error al copiar nuevos archivos"; exit 1; }
 
 # Cambiar al directorio del servidor web
-cd /var/www/html/ || { echo "No se pudo acceder a /var/www/html"; exit 1; }
-ls
+ls /var/www/html/ || { echo "No se pudo acceder a /var/www/html"; exit 1; }
 
 echo "Despliegue completado con exito."

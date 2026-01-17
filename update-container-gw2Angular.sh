@@ -12,6 +12,15 @@ DOCKERFILE_NAME="Dockerfile-local"
 PORT="4201"
 RESTART_OPT="unless-stopped" 
 
+# Cargar nvm
+
+export NVM_DIR="$HOME/.nvm"
+
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+# Usar .nvmrc
+nvm use
+
 echo "Iniciando actualizacion de la app gw2Angular..."
 
 # 1 Build de Angular

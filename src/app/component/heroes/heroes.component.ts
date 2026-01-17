@@ -35,57 +35,78 @@ export class HeroesComponent implements OnInit {
       this.addFreeSpace(this.heroes);
       this.addBirthday(this.heroes);
       this.dataSource = new MatTableDataSource(this.heroes);
+      this.sort.disableClear = true; //para que solo haga ascendente o descendente
       this.dataSource.sort = this.sort;
       this.loading = false;
     })
   }
 
   addBirthday(tabla: any){
-    // Añado campo 'dias hasta cumpleaños' a los datos
+    // Añado campo 'dias hasta siguiente cumpleaños' a los datos
     for (let i = 0; i < tabla.length; i++){
       let cumple = tabla[i].created;
-      let days = this.daysUntilBirthday(cumple).dias;
-      let anos = this.daysUntilBirthday(cumple).numeroAnosCumple;
-      tabla[i].diasCumple = days;
-      tabla[i].numeroAnosCumple = anos;
+      const res = this.daysUntilBirthday(cumple);
+      tabla[i].diasCumple = res.dias;
+      tabla[i].numeroAnosCumple = res.numeroAnosCumple;
+      // Hora de creacion en zona local del sistema (ajustada por DST automaticamente)
+      try {
+        const createdDate = new Date(cumple);
+        tabla[i].horaCreacion = createdDate.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit', hour12: false });
+        // Fecha local en formato DD-MM-YYYY
+        const dd = String(createdDate.getDate()).padStart(2, '0');
+        const months = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+        const monthAbbrev = months[createdDate.getMonth()];
+        const yyyy = createdDate.getFullYear();
+        tabla[i].fechaCreacion = `${dd}-${monthAbbrev}-${yyyy}`;
+      } catch (e) {
+        tabla[i].horaCreacion = '';
+        tabla[i].fechaCreacion = '';
+      }
+      // Fecha del siguiente cumpleaños (local, con DST segun zona)
+      try {
+        const nextMs = res.nextTime;
+        const nextDateLocal = new Date(nextMs);
+        const ddn = String(nextDateLocal.getDate()).padStart(2, '0');
+        const months = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+        const monthAbbrev = months[nextDateLocal.getMonth()];
+        const yyn = nextDateLocal.getFullYear();
+        tabla[i].fechaSigCumple = `${ddn}-${monthAbbrev}-${yyn}`;
+      } catch (e) {
+        tabla[i].fechaSigCumple = '';
+      }
     }
     return this.heroes = tabla;
   }
 
   daysUntilBirthday(creacion: string){
-    // Calculo los dias que quedan para el cumpleaños del personaje
-    // gw2 calcula un dia menos por cada año bisiesto (2012, 2016, 2020, 2024, 2028) y antes del 1 de marzo desde la creacion del personaje
-    // Ej. si el personaje es creado en 26-02-2018 y calculo cumpleaños en 2022 me dira que cumple el 25-02
-    let d = new Date(creacion);
-    let day = d.getDate();
-    let month = d.getMonth()+1;
-    let year = d.getFullYear();
-    //console.log(day, month, year)
-    let today: any = new Date();
-    let y = today.getFullYear() 
-    let next: any = new Date(y, month - 1, day);
-    next.setHours(0, 0, 0, 0);
-    today.setHours(0, 0, 0, 0);
-    if(today > next) {
-      next.setFullYear(y + 1);
+    // Los cumpleaños se cuentan cada 365 días, es decir sin tener en cuenta años bisiestos.
+    // Por tanto, el proximo cumpleaños es la fecha de creacion + n*365 dias
+    // con n minimo estrictamente positivo tal que la fecha resultante > today.
+    const d = new Date(creacion);
+    const creationUtc = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()));
+
+    const today = new Date();
+    const todayUtc = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate()));
+
+    const millisPerDay = 24 * 60 * 60 * 1000;
+    const daysSinceCreation = Math.floor((todayUtc.getTime() - creationUtc.getTime()) / millisPerDay);
+
+    let n = Math.floor(daysSinceCreation / 365) + 1;
+    if (daysSinceCreation < 0) n = 1; // creacion en el futuro cercano
+
+    let next = new Date(creationUtc.getTime() + n * 365 * millisPerDay);
+    while (next.getTime() <= todayUtc.getTime()) {
+      n++;
+      next = new Date(creationUtc.getTime() + n * 365 * millisPerDay);
     }
-    let dias = Math.round((next - today)/8.64e7);
-    let numeroAnosCumple = y-year;
-    if (numeroAnosCumple === 0) {
-      numeroAnosCumple = 1;
-    }
-    // console.log('ddddddddd ', dias)
-    // if ((year < 2021) && (month < 2)){ // Si 2020 && (enero o febrero)
-    //   dias--;
-    //   console.log(dias)
-    //   if ((year < 2017) && (month < 2)){
-    //     dias--;
-    //     if ((year < 2013) && (month < 2)){
-    //       dias--;
-    //     }
-    //   }
-    // }
-    return {dias, numeroAnosCumple}
+
+    const dias = Math.round((next.getTime() - todayUtc.getTime()) / millisPerDay);
+    let numeroAnosCumple = n;
+
+    // Si fue creado este mismo año mostrar 1
+    if (creationUtc.getUTCFullYear() === todayUtc.getUTCFullYear()) numeroAnosCumple = 1;
+
+    return {dias, numeroAnosCumple, nextTime: next.getTime()}
   }
 
   // addSpec(tabla: any){
@@ -150,6 +171,8 @@ export class HeroesComponent implements OnInit {
   addRobotJade(tabla: any){
     // Añado columna de robot de jade a cada heroe
     for (let i = 0; i < tabla.length; i++){
+      // Valor por defecto si no tiene PowerCore
+      tabla[i].robotJade = "-";
       // Busco id del robot de jade de cada heroe
       for (let j = 0; j < tabla[i].equipment.length; j++){
         if (tabla[i].equipment[j].slot === "PowerCore"){
@@ -170,6 +193,8 @@ export class HeroesComponent implements OnInit {
   addTrophyProtocol(tabla: any){
     // Añado columna de protocolo de carroñero a cada heroe
     for (let i = 0; i < tabla.length; i++){
+      // valor por defecto si no tiene SensoryArray
+      tabla[i].trophyProtocol = "-";
       // Busco id del Protocolo de carroñero de cada heroe
       for (let j = 0; j < tabla[i].equipment.length; j++){
         if (tabla[i].equipment[j].slot === "SensoryArray"){
