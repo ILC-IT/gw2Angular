@@ -40,7 +40,21 @@
             </mat-menu>
 
             <a routerLink="/enlaces">Enlaces</a>
-            <a routerLink="/raid">Raid</a>
+
+            <a [matMenuTriggerFor]="raidMenu"
+                #raidTrigger="matMenuTrigger"
+                (mouseenter)="openMenu(raidTrigger)"
+                (mouseleave)="closeMenu(raidTrigger)"
+                routerLink="/raid">
+                Raid
+            </a>
+            <mat-menu class="menu-diarias" [hasBackdrop]="false" #raidMenu="matMenu" [overlapTrigger]="false">
+                <div (mouseenter)="cancelCloseMenu(raidTrigger)"
+                    (mouseleave)="closeMenu(raidTrigger)">
+                <a mat-menu-item [routerLink]="'/raid/limpieza'">Limpieza</a>
+                <a mat-menu-item [routerLink]="'/raid/weeklyraid'">Logro Raid Semanal</a>
+                </div>
+            </mat-menu>
 
             <a [matMenuTriggerFor]="legendariosMenu"
                 #legendariosTrigger="matMenuTrigger"

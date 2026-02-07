@@ -173,6 +173,21 @@ button {
     text-align: center;
     text-decoration: none;
     font-size: 14px;
+    vertical-align: middle;
+}
+
+.legend-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    height: 14px;
+}
+
+.legend-icon {
+    width: 28px;
+    height: 28px;
+    display: block;
 }
 
 @media (max-width: 1569.99px) {
@@ -185,6 +200,12 @@ button {
     .legend-item {
         width: 100%;
         margin-right: 0;
+    }
+    
+    .legend-icon {
+        width: 18px;
+        height: 18px;
+        display: block;
     }
 }
 

@@ -70,6 +70,7 @@
       </mat-menu>
 
       <a routerLink="/heroes" (click)="sidenav.close()">Héroes</a>
+
       <a routerLink="/calculadora" (click)="sidenav.close()">Calculadora</a>
 
       <!-- Buscador Stats con submenú -->
@@ -81,7 +82,13 @@
       </mat-menu>
 
       <a routerLink="/enlaces" (click)="sidenav.close()">Enlaces</a>
-      <a routerLink="/raid" (click)="sidenav.close()">Raid</a>
+
+      <!-- Raid con submenú -->
+      <a mat-button [matMenuTriggerFor]="raidMenu" (click)="$event.preventDefault()">Raid</a>
+      <mat-menu #raidMenu="matMenu">
+        <a mat-menu-item [routerLink]="'/raid/limpieza'" (click)="sidenav.close()">Limpieza</a>
+        <a mat-menu-item [routerLink]="'/raid/weeklyraid'" (click)="sidenav.close()">Logro Raid Semanal</a>
+      </mat-menu>
 
       <!-- Legendarios con submenú -->
       <a mat-button [matMenuTriggerFor]="legendariosMenu" (click)="$event.preventDefault()">Legendarios</a>

@@ -253,10 +253,23 @@ export const anilloRaid = [
         nombre: "Coalescencia",
         tengo: 0,
         tipo: "Anillo",
-        modo: "PvE",
+        modo: "PvE Raid",
         icon: ["https://wiki.guildwars2.com/images/d/d9/Gift_of_Prescience.png"],
         wiki: "https://wiki.guildwars2.com/wiki/Coalescence",
         expansion: "PoF"
+    }
+];
+
+export const anilloPvE = [
+    {
+        id: 107022,
+        nombre: "Verano Infinito",
+        tengo: 0,
+        tipo: "Anillo",
+        modo: "PvE",
+        icon: ["https://wiki.guildwars2.com/images/6/6e/Endless_Summer.png"],
+        wiki: "https://wiki.guildwars2.com/wiki/Endless_Summer",
+        expansion: "VoE"
     }
 ];
 
@@ -824,6 +837,14 @@ export const donAmnytas = [
         cantidad: 1 //por pieza de armadura pve
     }
 ];
+
+export const astralAcclaim = [
+    {
+        idWallet: 63,
+        tengo: 0,
+        icon: "https://wiki.guildwars2.com/images/5/53/Astral_Acclaim_%28service%29.png"
+    }
+]
 
 export const legendaryWeapons1 = [
     {

@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChild, OnDestroy } from '@angular/core';
 import { DailyService } from "../../service/daily.service";
 import { LegendaryService } from 'src/app/service/legendary.service';
-import { cartera, reliquiaFractal, reliquiaFractalPristina, ufe } from '../legendary/legendary';
+import { cartera, reliquiaFractal, reliquiaFractalPristina, ufe, astralAcclaim } from '../legendary/legendary';
 import { Fractales, FractalesCm, InestabCm, InstabilityDetail } from "./fractales";
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
@@ -25,6 +25,8 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
   dailyIdsS: string = ''; //contiene el id de la diaria de strikes
   dailyStrike: any; //contiene el id de las strikes diarias buscando en achievements/categories/250
   dailyFractalsId: any; //contiene los ids de los fractales diarios buscando en achievements/categories/88
+  wizardVault: any; //contiene wizardvault buscando en /wizardsvault
+  fechaFormateada: string = ""; //contiene la fecha formateada segun el timezone local
   dailyWizardVault: any; //contiene wizardvault diaria buscando en account/wizardsvault/daily
   weeklyWizardVault: any; //contiene wizardvault semanal buscando en account/wizardsvault/weekly
   specialWizardVault: any; //contiene wizardvault especial buscando en account/wizardsvault/special
@@ -45,6 +47,7 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
   fractalIncursion: string = '';
   weeklyFractalQuickplay: any = [];
   fractalInfiniteRecursion: any = [];
+  weeklyQuickplayRaidEncounter: any = [];
   convergenciaSoto: string = '';
   convergenciaJw: string = '';
   convergenciaSotoWeekly: any = [];
@@ -115,6 +118,7 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
   reliquiaFractal = reliquiaFractal;
   reliquiaFractalPristina = reliquiaFractalPristina;
   ufe = ufe;
+  astralAcclaim = astralAcclaim;
   //Para completada:
   dailyIdsChecked: boolean[] = [];
   dailyIdsCraftChecked: boolean[] = [];
@@ -176,6 +180,7 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
   STRIKE_NAMES_SOTO = ['CO', 'Febe'];
   SOTO_CONVERGENCIA = ['Caballero demonio / Demon Knight', 'Tristeza / Sorrow', 'Hermana del infierno / Hell Sister', 'Alaterrible / Dreadwing', 'Umbriel'];
   JW_CONVERGENCIA = ['Decima', 'Greer', 'Ura'];
+  RAID_ENCOUNTERS = ['SP', 'Fraenir', 'Twins', 'Whisper', 'Boneskinner', 'CW', 'AH', 'XJJ', 'KO', 'HT', 'CO', 'Febe', 'OLC', 'Kela'];
   weeklyEoDStrikes: { index: number, name: string }[] = [];
   weeklyEoDStrikesDoneIds: Set<number> = new Set();
   weeklySotoStrikes: { index: number, name: string }[] = [];
@@ -188,6 +193,8 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
   weeklyRiftHuntingSoto: { id: number, name: string; current: number; max: number; done: boolean }[] = [];
   weeklyRiftHuntingJw: { id: number, name: string; current: number; max: number; done: boolean }[] = [];
   weeklyRiftHuntingVoe: { id: number, name: string; current: number; max: number; done: boolean }[] = [];
+  weeklyRaidEncounters: { index: number, name: string }[] = [];
+  weeklyRaidEncountersDoneIds: Set<number> = new Set();
 
   constructor(private dailyService: DailyService, private legendaryService: LegendaryService, private route: ActivatedRoute,  private router: Router) { 
 
@@ -256,10 +263,18 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
       }, 1 * 60 * 1000)
     this.intervalIds.push(id1);
 
-    this.dailyStrike = await this.getDailyStrikeId();
-    this.getDailyStrike();
-    this.getWeeklyEoDStrikes();
-    this.getWeeklySotoStrikes();
+    // this.dailyStrike = await this.getDailyStrikeId();
+    try {
+      this.dailyStrike = await this.getDailyRaidBountiesId();
+      this.getDailyStrike();
+    } catch (err) {
+      console.warn('getDailyRaidBountiesId failed or not found:', err);
+      this.dailyStrike = null;
+      this.getDailyStrike(); // getDailyStrike() ya protege contra dailyStrike nulo
+    }
+    // this.getWeeklyEoDStrikes();
+    // this.getWeeklySotoStrikes();
+    this.getWeeklyRaidEncounters();
 
     this.getMaterials();
 
@@ -281,6 +296,8 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
     this.getDailyFractals();
     this.getWallet();
 
+    this.wizardVault = await this.getWizardVault();
+    this.fechaFormateada = this.formatFechaSegunTimezone(this.wizardVault.end, false);
     this.dailyWizardVault = await this.getDailyWizardVault();
     this.loadingDailyWizard = false;
     this.weeklyWizardVault = await this.getWeeklyWizardVault();
@@ -294,6 +311,7 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
     this.loadWeeklyRiftHuntingVoe();
     this.loadWeeklyConvergenciaSoto();
     this.loadWeeklyConvergenciaJW();
+    this.weeklyQuickplayRaidEncounter = await this.getWeeklyQuickplayRaidEncounter();
     this.weeklyFractalQuickplay = await this.getWeeklyFractalQuickplay();
     this.fractalInfiniteRecursion = await this.getFractalInfiniteRecursion();
 
@@ -374,6 +392,10 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
     this.getDailyInfoF(this.dailyIdsF, "fractals");
   }
 
+  async getWizardVault(){
+    return await this.dailyService.getWizardVault().toPromise();
+  }
+
   async getDailyWizardVault(){
     return await this.dailyService.getDailyWizardVault().toPromise();
   }
@@ -401,13 +423,13 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
       }
       else if (tipo === "strike"){
         this.dailyInfoF.strike = dailyInfo;
-        //metemos en una variable el icono de la strike porque solo lo lleva la de IBS y no la de EoD
-        for (let i = 0; i < dailyInfo.length; i++){
-          if (dailyInfo[i].hasOwnProperty('icon')){
-            this.dailyStrikeIcon = dailyInfo[i].icon;
-            break;
-          }
-        }
+        // //metemos en una variable el icono de la strike porque solo lo lleva la de IBS y no la de EoD
+        // for (let i = 0; i < dailyInfo.length; i++){
+        //   if (dailyInfo[i].hasOwnProperty('icon')){
+        //     this.dailyStrikeIcon = dailyInfo[i].icon;
+        //     break;
+        //   }
+        // }
         this.dailyInfoF.strike = this.dailyInfoF.strike.sort((a: any, b: any) => a.id - b.id); //ordeno por id
         this.loading2 = false;
       }
@@ -610,8 +632,12 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
     })
   }
 
-  async getDailyStrikeId(){
-    return await this.dailyService.getDailyStrikeId().toPromise();
+  // async getDailyStrikeId(){
+  //   return await this.dailyService.getDailyStrikeId().toPromise();
+  // }
+
+  async getDailyRaidBountiesId(){
+    return await this.dailyService.getDailyRaidBountiesId().toPromise();
   }
 
   getDailyStrikeDone(allStrikeIds: string){
@@ -630,13 +656,23 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
   }
   
   getDailyStrike(){
-    // this.dailyIdsS = this.dailyStrike.achievements[0];
-    // this.getDailyInfoF(this.dailyIdsS, "strike");
-    let dailyStrike = this.dailyStrike.achievements;
+    // Proteger contra llamadas cuando `dailyStrike` no existe (404 o error previo)
+    if (!this.dailyStrike || !Array.isArray(this.dailyStrike.achievements)) {
+      console.warn("'raid encounter' no disponible, omitiendo getDailyStrike()");
+      this.dailyIdsS = '';
+      this.dailyStrikeIcon = '';
+      this.dailyStrikeDoneIds = new Set();
+      return;
+    }
+
+    // Resetear ids antes de concatenar para evitar duplicados en reintentos
+    this.dailyIdsS = '';
+    const dailyStrike = this.dailyStrike.achievements;
     for (let i = 0; i < dailyStrike.length; i++){
       this.dailyIdsS = this.dailyIdsS + dailyStrike[i] + ',';
     }
     this.getDailyInfoF(this.dailyIdsS, "strike");
+    this.dailyStrikeIcon = this.dailyStrike.icon || '';
     this.getDailyStrikeDone(this.dailyIdsS);
   }
 
@@ -680,9 +716,14 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
     return await this.dailyService.getConvergenciaJwWeekly();
   }
 
+  async getWeeklyQuickplayRaidEncounter(){
+    return await this.dailyService.getWeeklyQuickplayRaidEncounter();
+  }
+
   async getWeeklyFractalQuickplay(){
     return await this.dailyService.getWeeklyFractalQuickplay();
   }
+
   async getFractalInfiniteRecursion(){
     return await this.dailyService.getFractalInfiniteRecursion();
   }
@@ -1391,11 +1432,48 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
     });
   }
 
+  getWeeklyRaidEncounters(){
+    this.dailyService.getWeeklyRaidEncounters().subscribe({
+      next: (data: any) => {
+        // Prepara lista visual
+        this.weeklyRaidEncounters = this.RAID_ENCOUNTERS.map((name, index) => ({
+          index: index,
+          name: name
+        }));
+
+        // Si no hay data, considera como no hechos
+        if (!data || data.length === 0) {
+          this.weeklyRaidEncountersDoneIds = new Set(); // todos como no hechos
+          return;
+        }
+
+        const result = data[0];
+
+        if (result.done === true) {
+          // Todos hechos: incluir todos los índices en el Set
+          this.weeklyRaidEncountersDoneIds = new Set(this.weeklyRaidEncounters.map(s => s.index));
+        } else {
+          // Solo los que estén en bits
+          this.weeklyRaidEncountersDoneIds = new Set(result.bits || []);
+        }
+      },
+      error: (err) => {
+        this.weeklyRaidEncounters = this.RAID_ENCOUNTERS.map((name, index) => ({
+          index: index,
+          name: name
+        }));
+        this.weeklyRaidEncountersDoneIds = new Set(); // todos no hechos
+        console.warn('Weekly Raid Encounters sin hacer');
+      }
+    });
+  }
+
   getWallet(){
     this.dailyService.getWallet().subscribe((wallet: any) => {
       this.reliquiaFractal[0].tengo = wallet.find((o: { id: number; value: number}) => o.id === this.reliquiaFractal[0].idWallet)?.value ?? 0;
       this.reliquiaFractalPristina[0].tengo = wallet.find((o: { id: number; value: number}) => o.id === this.reliquiaFractalPristina[0].idWallet)?.value ?? 0;
       this.ufe[0].tengo = wallet.find((o: { id: number; value: number}) => o.id === this.ufe[0].idWallet)?.value ?? 0;
+      this.astralAcclaim[0].tengo = wallet.find((o: { id: number; value: number}) => o.id === this.astralAcclaim[0].idWallet)?.value ?? 0;
     })
   }
 
@@ -1416,6 +1494,37 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
 
   openLink(url: string): void {
     window.open(url, '_blank', 'noopener,noreferrer');
+  }
+
+  formatFechaSegunTimezone(fechaUTC: string, mesCompleto: boolean = false): string {
+    // Devuelve la fecha segun el formato local de la maquina
+
+    if (!fechaUTC) return '';
+
+    // UTC a Date local
+    const fecha = new Date(fechaUTC);
+
+    // Idioma: español por defecto
+    const locale = navigator.language || 'es-ES';
+
+    // Texto segun idioma
+    const esEspanol = locale.startsWith('es');
+    const prefijo = esEspanol ? 'Acaba el' : 'End:';
+
+    // Formato con dia, mes en letra y año
+    const formatter = new Intl.DateTimeFormat(locale, {
+      day: '2-digit',
+      month: mesCompleto ? 'long' : 'short', // mes completo o abreviado
+      year: 'numeric'
+    });
+
+    // Devolver la fecha con guiones, eliminando puntos si los hay
+    let fechaFormateada = formatter
+      .format(fecha)
+      .replace(/\./g, '')   // elimina puntos de abreviaturas
+      .replace(/\s+/g, '-'); // reemplaza espacios por guion
+
+    return `${prefijo} ${fechaFormateada}`;
   }
 
   ///////////////////////////////// FILTER

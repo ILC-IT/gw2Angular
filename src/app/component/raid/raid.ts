@@ -4,6 +4,9 @@ export interface Raid {
     boss: string[];
     bossOk: string[];
     bossCompletado: boolean[];
+    bossWeekly: string[];
+    bossWeeklyCompletado: boolean[];
+    weeklyId: number;
     tokenCount: number[];
     callOfTheMists: string;
     emboldened: string;
@@ -57,6 +60,9 @@ export const RaidsInfo = [
         boss: ['vale_guardian', 'spirit_woods', 'gorseval', 'sabetha'],
         bossOk: ['Vale Guardian', 'Spirit Woods', 'Gorseval', 'Sabetha'],
         bossCompletado: [false, false, false, false],
+        bossWeekly: ['Vale Guardian', 'Spirit Woods', 'Gorseval', 'Cull bandits', 'Sabetha'],
+        bossWeeklyCompletado: [false, false, false, false, false],
+        weeklyId: 9128,
         tokenCount: [0, 0, 0, 0],
         callOfTheMists: "",
         emboldened: ""
@@ -67,6 +73,9 @@ export const RaidsInfo = [
         boss: ['slothasor', 'bandit_trio', 'matthias'],
         bossOk: ['Slothasor', 'Bandit Trio', 'Matthias Gabrel'],
         bossCompletado: [false, false, false],
+        bossWeekly: ['Slothasor', 'Bandit Trio', 'Cull bandits', 'Matthias Gabrel'],
+        bossWeeklyCompletado: [false, false, false, false],
+        weeklyId: 9147,
         tokenCount: [0, 0, 0],
         callOfTheMists: "",
         emboldened: ""
@@ -77,6 +86,9 @@ export const RaidsInfo = [
         boss: ['escort', 'keep_construct', 'twisted_castle', 'xera'],
         bossOk: ['Escort Glenna', 'Keep Construct', 'Twisted Castle', 'Xera'],
         bossCompletado: [false, false, false, false],
+        bossWeekly: ['Escort Glenna', 'Kill McLeod', 'Keep Construct', 'Twisted Castle', 'Xera'],
+        bossWeeklyCompletado: [false, false, false, false, false],
+        weeklyId: 9182,
         tokenCount: [0, 0, 0, 0],
         callOfTheMists: "",
         emboldened: ""
@@ -89,6 +101,9 @@ export const RaidsInfo = [
         boss: ['cairn', 'mursaat_overseer', 'samarog', 'deimos'],
         bossOk: ['Cairn', 'Mursaat Overseer', 'Samarog', 'Deimos'],
         bossCompletado: [false, false, false, false],
+        bossWeekly: ['Cairn', 'Mursaat Overseer', 'Samarog', 'Deimos'],
+        bossWeeklyCompletado: [false, false, false, false],
+        weeklyId: 9144,
         tokenCount: [0, 0, 0, 0],
         callOfTheMists: "",
         emboldened: ""
@@ -101,6 +116,9 @@ export const RaidsInfo = [
         boss: ['soulless_horror', 'river_of_souls', 'statues_of_grenth', 'voice_in_the_void'],
         bossOk: ['Soulless Horror', 'River of Souls', 'Statues of Grenth', 'Dhuum'],
         bossCompletado: [false, false, false, false],
+        bossWeekly: ['Soulless Horror', 'River of Souls', 'Statue of Ice', 'Statue of Death and Resurrection', 'Statue of Darkness (Eyes)', 'Dhuum'],
+        bossWeeklyCompletado: [false, false, false, false, false, false],
+        weeklyId: 9111,
         tokenCount: [0, 0, 0, 0],
         callOfTheMists: "",
         emboldened: ""
@@ -113,6 +131,9 @@ export const RaidsInfo = [
         boss: ['conjured_amalgamate', 'twin_largos', 'qadim'],
         bossOk: ['Conjured Amalgamate', 'Twin Largos', 'Q1 Qadim'],
         bossCompletado: [false, false, false],
+        bossWeekly: ['Conjured Amalgamate', 'Ectoplasm / Megapets, Shark', 'Twin Largos', 'Clear path to Q1', 'Q1 Qadim'],
+        bossWeeklyCompletado: [false, false, false, false, false],
+        weeklyId: 9120,
         tokenCount: [0, 0, 0],
         callOfTheMists: "",
         emboldened: ""
@@ -125,6 +146,9 @@ export const RaidsInfo = [
         boss: ['gate', 'adina', 'sabir', 'qadim_the_peerless'],
         bossOk: ['Gate', 'Adina', 'Sabir', 'Q2 Qadim The Peerless'],
         bossCompletado: [false, false, false, false],
+        bossWeekly: ['Gate', 'Adina', 'Sabir', 'Q2 Qadim The Peerless'],
+        bossWeeklyCompletado: [false, false, false, false],
+        weeklyId: 9156,
         tokenCount: [0, 0, 0, 0],
         callOfTheMists: "",
         emboldened: ""
@@ -137,6 +161,9 @@ export const RaidsInfo = [
         boss: ['camp', 'decima', 'greer', 'ura'],
         bossOk: ['Camp', 'Decima', 'Greer', 'Ura'],
         bossCompletado: [false, false, false, false],
+        bossWeekly: ['Camp', 'Pre Decima', 'Pre Greer', 'Decima', 'Greer', 'Ura'],
+        bossWeeklyCompletado: [false, false, false, false, false, false],
+        weeklyId: 9181,
         tokenCount: [0, 0, 0, 0],
         callOfTheMists: "",
         emboldened: ""

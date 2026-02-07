@@ -63,5 +63,16 @@ export class RaidService {
     // console.log("raidEnvalentonadoEstaSemana ", weekNumberMod8)
     return weekNumberMod8;
   }
+
+  getWeeklyRaidId(){
+    // para sacar el id de las raid semanales
+    const url = `${this.apiUrl}achievements/categories/477`;
+    return this.httpClient.get(url);
+  }
+
+  getWeeklyRaidDone(wekklyIdsS: string){
+    const url = `${this.apiUrl}account/achievements?ids=${wekklyIdsS}&access_token=${this.apiKey}`;
+    return this.httpClient.get<any[]>(url);
+  }
   
 }

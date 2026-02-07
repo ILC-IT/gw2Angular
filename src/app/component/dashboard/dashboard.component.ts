@@ -26,6 +26,7 @@ export class DashboardComponent implements OnInit {
 
   @ViewChild('diariasTrigger') diariasTrigger!: MatMenuTrigger;
   @ViewChild('buscadorStatsTrigger') buscadorStatsTrigger!: MatMenuTrigger;
+  @ViewChild('raidTrigger') raidTrigger!: MatMenuTrigger;
   @ViewChild('legendariosTrigger') legendariosTrigger!: MatMenuTrigger;
   @ViewChild('homesteadTrigger') homesteadTrigger!: MatMenuTrigger;
 

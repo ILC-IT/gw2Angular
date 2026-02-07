@@ -315,6 +315,11 @@ export class DailyService {
     return this.httpClient.get(url);
   }
 
+  getWizardVault(){
+    const url = `${this.apiUrl}/wizardsvault`;
+    return this.httpClient.get(url);
+  }
+
   getDailyWizardVault(){
     // const url = `${this.apiUrl}achievements/categories/367`;
     const url = `${this.apiUrl}account/wizardsvault/daily?access_token=${this.apiKey}`;
@@ -742,6 +747,23 @@ export class DailyService {
 
   getDailyWorldBoss(){
     const url = `${this.apiUrl}account/worldbosses?access_token=${this.apiKey}`;
+    return this.httpClient.get(url);
+  }
+
+  async getWeeklyQuickplayRaidEncounter(): Promise<Achievement[]> {
+    // devuelve logro de hacer 10 raid encounters quickplay semanales
+    return this.getAchievement(9123, 10);
+  }
+
+  getWeeklyRaidEncounters(){ 
+    // para sacar el id de los raid encounters semanales (antiguas strikes)
+    const url = `${this.apiUrl}account/achievements?ids=9125&access_token=${this.apiKey}`;
+    return this.httpClient.get(url);
+  }
+
+  getDailyRaidBountiesId(){
+    // para sacar el id de las raid bounties diarias
+    const url = `${this.apiUrl}achievements/categories/475`;
     return this.httpClient.get(url);
   }
 

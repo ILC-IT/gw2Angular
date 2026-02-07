@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { HeroService } from 'src/app/service/hero.service';
 import { LegendaryService } from 'src/app/service/legendary.service';
-import { legendarios, armaduraLigera, armaduraMedia, armaduraPesada, runa, sello, anilloRaid, t6, idsT6, vales, cantidadArmadura, cantidadRunas, cantidadSellos, valeId, trebolId, liId, ectoplasmaId, liArmadura, trebolArmadura, trebolRuna, trebolSello, trebolAnilloRaid, t6ArmaduraSelloRuna, ectoplasmaRuna, ectoplasmaSello, liAnilloRaid, t6AnilloRaid, obsidianaArmadura, obsidianaRuna, obsidianaSello, obsidianaId, favorImperial,otrosComponentes, lingoteAurico, placaReclamada, huevoChak, piezaAeronave, trozoAurilio, cristalLineaLey, montonCristalLuminoso, aspectoMistico, talismanBrillantez, talismanPotencia, talismanHabilidad, motaMistica, simboloControl, simboloMejora, simboloDolor, monedaMistica, preciosVarios, idsPreciosVarios, legendaryWeapons1, legendaryWeapons2, legendaryWeapons3, legendaryWeapons3Variants, donExploracion, donBatalla, notasInvestigacion, monedaMazmorra, otrosLegendarios, anilloMundo, legendaryAccessory, amuletoPvE, amuletoPvP, legendaryRelic, legendaryWeaponsOther, legendaryBack, armaduraLigeraPve, armaduraMediaPve, armaduraPesadaPve, insigniaFarolero, ambarGris, vetusta, amalgamada, amalgamadaDraconica, recuerdoAurene, piedraJade, florMielera, troncoPinoTierrasBajas, ambarTitan, mineralTitan, quemateritaTitan, obsidianaMursaat, piedraRunicaMursaat, esquirlaCuriosaMursaat, restoCuriosidadMursaat, ursusObligue, saviaRica, ducadoAnticuado, esenciaDesesperacionT1, esenciaAvariciaT2, esenciaTriunfoT3, monedaAntigua, monedaInusual, magiaLiberada, magiaVolatil, esquirlaEspiritual, legendaryGlovesFractal, ColorRule, cartera, legendaryAquaticHeadgear, legendaryWeaponsGenOther} from './legendary';
+import { legendarios, armaduraLigera, armaduraMedia, armaduraPesada, runa, sello, anilloRaid, t6, idsT6, vales, cantidadArmadura, cantidadRunas, cantidadSellos, valeId, trebolId, liId, ectoplasmaId, liArmadura, trebolArmadura, trebolRuna, trebolSello, trebolAnilloRaid, t6ArmaduraSelloRuna, ectoplasmaRuna, ectoplasmaSello, liAnilloRaid, t6AnilloRaid, obsidianaArmadura, obsidianaRuna, obsidianaSello, obsidianaId, favorImperial,otrosComponentes, lingoteAurico, placaReclamada, huevoChak, piezaAeronave, trozoAurilio, cristalLineaLey, montonCristalLuminoso, aspectoMistico, talismanBrillantez, talismanPotencia, talismanHabilidad, motaMistica, simboloControl, simboloMejora, simboloDolor, monedaMistica, preciosVarios, idsPreciosVarios, legendaryWeapons1, legendaryWeapons2, legendaryWeapons3, legendaryWeapons3Variants, donExploracion, donBatalla, notasInvestigacion, monedaMazmorra, otrosLegendarios, anilloMundo, legendaryAccessory, amuletoPvE, amuletoPvP, legendaryRelic, legendaryWeaponsOther, legendaryBack, armaduraLigeraPve, armaduraMediaPve, armaduraPesadaPve, insigniaFarolero, ambarGris, vetusta, amalgamada, amalgamadaDraconica, recuerdoAurene, piedraJade, florMielera, troncoPinoTierrasBajas, ambarTitan, mineralTitan, quemateritaTitan, obsidianaMursaat, piedraRunicaMursaat, esquirlaCuriosaMursaat, restoCuriosidadMursaat, ursusObligue, saviaRica, ducadoAnticuado, esenciaDesesperacionT1, esenciaAvariciaT2, esenciaTriunfoT3, monedaAntigua, monedaInusual, magiaLiberada, magiaVolatil, esquirlaEspiritual, legendaryGlovesFractal, ColorRule, cartera, legendaryAquaticHeadgear, legendaryWeaponsGenOther, anilloPvE} from './legendary';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -591,7 +591,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
   dataSourceOtros = this.otros;
 
   ///////////////////// Otros Legendarios ////////////////////
-  anilloPvE: otrosLegendarios = {
+  anilloPvERaid: otrosLegendarios = {
     id: anilloRaid[0].id,
     nombre: anilloRaid[0].nombre,
     tengo: anilloRaid[0].tengo,
@@ -610,6 +610,16 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     icon: anilloMundo[0].icon,
     wiki: anilloMundo[0].wiki,
     expansion: anilloMundo[0].expansion
+  }
+  anilloPve: otrosLegendarios = {
+    id: anilloPvE[0].id,
+    nombre: anilloPvE[0].nombre,
+    tengo: anilloPvE[0].tengo,
+    tipo: anilloPvE[0].tipo,
+    modo: anilloPvE[0].modo,
+    icon: anilloPvE[0].icon,
+    wiki: anilloPvE[0].wiki,
+    expansion: anilloPvE[0].expansion
   }
   accesorioPvE0: otrosLegendarios = {
     id: legendaryAccessory[0].id,
@@ -792,8 +802,9 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     expansion: legendaryAquaticHeadgear[0].expansion
   }
   otrosLegendarios: otrosLegendarios[] = [
-    this.anilloPvE,
+    this.anilloPvERaid,
     this.anilloWvW,
+    this.anilloPve,
     this.accesorioPvE0,
     this.accesorioPvE1,
     this.amuletoPvE,
@@ -815,12 +826,12 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
 
   colorRules: ColorRule[] = [
     {
-      nombre: [this.anilloPvE.nombre, this.anilloWvW.nombre, this.accesorioPvE0.nombre, this.accesorioPvE1.nombre, this.amuletoPvE.nombre, this.amuletoPvP.nombre, this.reliquiaLegendaria.nombre, this.mochilaPvE.nombre, this.mochilaFractal.nombre, this.mochilaPvP.nombre, this.mochilaWvW.nombre, this.lanzaJanthirLegendaria.nombre, this.lanzaVoELegendaria.nombre, this.baculoVoELegendario.nombre, this.obsidianaLigera.nombre, this.obsidianaMedia.nombre, this.obsidianaPesada.nombre, this.guantesFractal.nombre, this.respiradorAcuatico.nombre],
+      nombre: [this.anilloPvERaid.nombre, this.anilloWvW.nombre, this.anilloPve.nombre, this.accesorioPvE0.nombre, this.accesorioPvE1.nombre, this.amuletoPvE.nombre, this.amuletoPvP.nombre, this.reliquiaLegendaria.nombre, this.mochilaPvE.nombre, this.mochilaFractal.nombre, this.mochilaPvP.nombre, this.mochilaWvW.nombre, this.lanzaJanthirLegendaria.nombre, this.lanzaVoELegendaria.nombre, this.baculoVoELegendario.nombre, this.obsidianaLigera.nombre, this.obsidianaMedia.nombre, this.obsidianaPesada.nombre, this.guantesFractal.nombre, this.respiradorAcuatico.nombre],
       condition: (t) => t === 0,
       className: 'redBackGround'
     },
     {
-      nombre: [this.anilloPvE.nombre, this.anilloWvW.nombre, this.accesorioPvE0.nombre, this.accesorioPvE1.nombre, this.amuletoPvE.nombre, this.amuletoPvP.nombre, this.reliquiaLegendaria.nombre, this.mochilaPvE.nombre, this.mochilaFractal.nombre, this.mochilaPvP.nombre, this.mochilaWvW.nombre, this.lanzaJanthirLegendaria.nombre, this.lanzaVoELegendaria.nombre, this.baculoVoELegendario.nombre],
+      nombre: [this.anilloPvERaid.nombre, this.anilloWvW.nombre, this.anilloPve.nombre, this.accesorioPvE0.nombre, this.accesorioPvE1.nombre, this.amuletoPvE.nombre, this.amuletoPvP.nombre, this.reliquiaLegendaria.nombre, this.mochilaPvE.nombre, this.mochilaFractal.nombre, this.mochilaPvP.nombre, this.mochilaWvW.nombre, this.lanzaJanthirLegendaria.nombre, this.lanzaVoELegendaria.nombre, this.baculoVoELegendario.nombre],
       condition: (t) => t > 0,
       className: 'greenBackGround'
     },
@@ -1450,7 +1461,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
         }
         if (legendary[i].id === anilloRaid[0].id){
           this.anilloRaidCount++;
-          this.anilloPvE.tengo = legendary[i].count;
+          this.anilloPvERaid.tengo = legendary[i].count;
         }
         if (legendary[i].id === runa[0].id){
           this.runaCount = legendary[i].count;
@@ -1460,6 +1471,9 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
         }
         if (legendary[i].id === this.anilloWvW.id){
           this.anilloWvW.tengo = legendary[i].count;
+        }
+        if (legendary[i].id === this.anilloPve.id){
+          this.anilloPve.tengo = legendary[i].count;
         }
         if (legendary[i].id === this.accesorioPvE0.id){
           this.accesorioPvE0.tengo = legendary[i].count;
