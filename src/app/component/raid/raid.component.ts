@@ -22,6 +22,8 @@ export class RaidComponent implements OnInit {
   magnetitas: number = 0;
   gaets: number = 0;
   numberOfBossesRaids = 0;
+  totalWeeklyBosses = 0;
+  completedWeeklyBosses = 0;
   cols: number = 4;
   rowHeight: string = '5:1';
 
@@ -132,6 +134,11 @@ export class RaidComponent implements OnInit {
     }
   ];
 
+  isRaidLoading = false;
+  isWeeklyRaidLoading = false;
+  raidError: string | null = null;
+  weeklyRaidError: string | null = null;
+
   weeklyRaid: any; //contiene el id de las raid semanales buscando en achievements/categories/477
   weeklyRaidIdsS: string = ''; //contiene el id de las raid semanales
   weeklyRaidDone: { index: number, name: string }[] = [];
@@ -175,25 +182,41 @@ export class RaidComponent implements OnInit {
     this.getCallOfTheMists();
     this.getEmboldened();
     this.updateGridCols();
+
+    this.isWeeklyRaidLoading = true;
+    this.weeklyRaidError = null;
     try {
       this.weeklyRaid = await this.getWeeklyRaidId();
       this.getWeeklyRaid();
     } catch (err) {
       console.warn('getWeeklyRaidId failed or not found:', err);
       this.weeklyRaid = null;
+      this.weeklyRaidError = 'No se pudo cargar el logro de raid semanal.';
+      this.isWeeklyRaidLoading = false;
       this.getWeeklyRaid(); // getWeeklyRaid() ya protege contra weeklyRaid nulo
     }
   }
 
   getRaid(){
-    this.raidService.getRaid().subscribe((raid: any) => {
-      this.raid = raid;
-      // console.log(this.raid);
-      // comprobación de los bosses completados
-      this.checkBossDone();
-      this.getToken();
-      this.getLiLd();
-    })
+    this.isRaidLoading = true;
+    this.raidError = null;
+
+    this.raidService.getRaid().subscribe({
+      next: (raid: any) => {
+        this.raid = raid;
+        // console.log(this.raid);
+        // comprobación de los bosses completado
+        this.checkBossDone();
+        this.getToken();
+        this.getLiLd();
+        this.isRaidLoading = false;
+      },
+      error: (err) => {
+        console.warn('Error al cargar limpieza de raids:', err);
+        this.raidError = 'No se pudo cargar la limpieza de raids.';
+        this.isRaidLoading = false;
+      }
+    });
   }
 
   getCallOfTheMists(){
@@ -207,6 +230,7 @@ export class RaidComponent implements OnInit {
   }
 
   checkBossDone(){
+    this.numberOfBossesRaids = 0;
       for(let i = 0; i < this.raidWings.length; i++){
         // console.log('RaidsInfo ', RaidsInfo[i]['boss'].length)
         for (let j = 0; j < this.raidWings[i]['boss'].length; j++){
@@ -218,7 +242,6 @@ export class RaidComponent implements OnInit {
           }
         }
       }
-      // console.log(RaidsInfo[6]['bossCompletado'])
   }
 
   sumCountById(arr: { id: number; count: number }[], idBossRaid: number): number {
@@ -315,12 +338,16 @@ export class RaidComponent implements OnInit {
       console.warn("'weekly raid' no disponible, omitiendo getWeeklyRaid()");
       this.weeklyRaidIdsS = '';
       this.weeklyRaidDoneIds = new Set();
+      this.totalWeeklyBosses = 0;
+      this.completedWeeklyBosses = 0;
       return;
     }
 
     // Resetear ids antes de concatenar para evitar duplicados en reintentos
     this.weeklyRaidIdsS = '';
     this.weeklyRaidDone = [];
+    this.totalWeeklyBosses = 0;
+    this.completedWeeklyBosses = 0;
     const weeklyIds = this.weeklyRaid.achievements.map((id: string) => Number(id));
     this.weeklyRaidIdsS = weeklyIds.join(',');
 
@@ -340,6 +367,7 @@ export class RaidComponent implements OnInit {
           // Aplicar resultado a cada wing
           this.applyWeeklyResultToWing(data, raidWing);
         });
+        this.isWeeklyRaidLoading = false;
       },
       error: () => {
         // En caso de error, marcar todos las bosses semanales como no completados
@@ -348,6 +376,8 @@ export class RaidComponent implements OnInit {
         });
         this.weeklyRaidDone = [];
         this.weeklyRaidDoneIds = new Set();
+        this.weeklyRaidError = 'Error al consultar el progreso del logro semanal.';
+        this.isWeeklyRaidLoading = false;
         console.warn(`Weekly Raid sin hacer`);
       }
     });
@@ -361,6 +391,10 @@ export class RaidComponent implements OnInit {
       name
     }));
     this.weeklyRaidDoneIds = new Set();
+
+    // Total bosses de este wing
+    const totalBossesWing = raidWing.bossWeekly.length;
+    this.totalWeeklyBosses += totalBossesWing;
 
     // Si la api devuelve un array vacío o nulo
     if (!data || data.length === 0) {
@@ -381,6 +415,7 @@ export class RaidComponent implements OnInit {
         this.weeklyRaidDone.map(b => b.index)
       );
       raidWing.bossWeeklyCompletado = raidWing.bossWeekly.map(() => true);
+      this.completedWeeklyBosses += totalBossesWing;
       // console.log(`${raidWing.name}: TODOS los bosses semanales completados`);
     } else if (Array.isArray(result.bits)) {
       // Solo los bosses indicados en bits
@@ -388,6 +423,7 @@ export class RaidComponent implements OnInit {
       result.bits.forEach((index: number) => {
         if (raidWing.bossWeeklyCompletado[index] !== undefined) {
           raidWing.bossWeeklyCompletado[index] = true;
+          this.completedWeeklyBosses++;
         }
       });
     }
