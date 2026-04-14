@@ -15,9 +15,9 @@ export class HomesteadComponent implements OnInit, AfterViewInit {
 
   // GLIFOS
   GLIFO: Glifos[] = [
-    {category: "Harvesting", name: ''},
-    {category: "Logging", name: ''},
-    {category: "Mining", name: ''},
+    {category: "Harvesting", name: '-'},
+    {category: "Logging", name: '-'},
+    {category: "Mining", name: '-'},
   ];
 
   // Tabla glifos

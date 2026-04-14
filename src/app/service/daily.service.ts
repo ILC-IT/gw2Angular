@@ -20,7 +20,7 @@ export class DailyService {
 
   apiKey = apiKey;
 
-  public readonly bestMapBonusRewardWeekNumber: number = 5; // Variable a cambiar segun cambie la mejor zona
+  public readonly bestMapBonusRewardWeekNumber: number = 8; // Variable a cambiar segun cambie la mejor zona
 
   riftSoto = [
     // https://wiki.guildwars2.com/wiki/Weekly_Rift_Hunting
@@ -119,7 +119,13 @@ export class DailyService {
     "Colinas Kessex: [&BBIAAAA=]"  //Kessex Hills
   ];
 
-  recordatorio = "Llave semanal \n Vetustas \n Tréboles (raid + fract) \n Moneda Mística (Soto) \n Cofre Strikes IBS \n Corazones, esquirlas JW";
+  recordatorio = 
+    "Llave semanal \n" + 
+    "Vetustas \n" + 
+    "Tréboles fract \n" + 
+    "Tréboles + MC raid \n" + 
+    "Cofre Raid Encounter IBS \n" +
+    "Corazones, esquirlas JW";
 
   iron = [3, 4, 9, 10, 15, 16, 21, 22];
   ironInvierno = [2, 3, 8, 9, 14, 15, 20, 21];
@@ -764,6 +770,16 @@ export class DailyService {
   getDailyRaidBountiesId(){
     // para sacar el id de las raid bounties diarias
     const url = `${this.apiUrl}achievements/categories/475`;
+    return this.httpClient.get(url);
+  }
+
+  getWvWRank(){
+    const url = `${this.apiUrl}account?access_token=${this.apiKey}`;
+    return this.httpClient.get(url);
+  }
+
+  getFractalRank(){
+    const url = `${this.apiUrl}account?access_token=${this.apiKey}`;
     return this.httpClient.get(url);
   }
 

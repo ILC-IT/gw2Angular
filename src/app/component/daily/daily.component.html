@@ -137,6 +137,9 @@
       <span class="item">
         <button mat-raised-button color="accent" [cdkCopyToClipboard]="fractalesRecDailyString">Copiar Diarios y Recomendados</button>
       </span>
+      <span class="item" *ngIf="fractalRank">
+          Max. Level: {{ fractalRank }}
+      </span>
       <span class="item">
           <img title="Reliquia fractal" src="{{reliquiaFractal[0].icon}}" />
           {{ reliquiaFractal[0].tengo }}
@@ -525,7 +528,9 @@
         </ng-container>
       </a>
       <a>
-        <h2>WvW</h2>
+        <h2>WvW 
+          <span *ngIf="wvwRank">(Rank: {{ wvwRank }})</span>
+        </h2>
         <mat-card class="result" *ngFor="let achievement of weeklyWvW">
           <mat-card-content>
             <section class="example-section">
@@ -691,7 +696,9 @@
         </mat-card>
       </a>
       <a *ngIf="!loading2">
-        <h2>Raid Bounties</h2>
+        <h2>
+          <a href="https://wiki.guildwars2.com/wiki/Daily_Raid_Bounties" target="_blank" rel="noopener noreferrer" style="text-decoration: none">Raid Bounties</a>
+        </h2>
         <mat-card class="result" *ngFor="let strike of dailyInfoF.strike">
           <mat-card-content>
             <section class="example-section">

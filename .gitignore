@@ -1,5 +1,5 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
-/src/app/service/key.ts
+#/src/app/service/key.ts
 # compiled output
 /dist
 /tmp

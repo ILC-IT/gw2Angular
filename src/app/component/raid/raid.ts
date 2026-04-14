@@ -50,7 +50,7 @@ export const TokenId = [
         greer: 104047,
         ura: 103996
     }
-]
+];
 
 export const RaidsInfo = [
     // https://api.guildwars2.com/v2/raids/forsaken_thicket
@@ -167,5 +167,12 @@ export const RaidsInfo = [
         tokenCount: [0, 0, 0, 0],
         callOfTheMists: "",
         emboldened: ""
+    }
+];
+
+export const bsToken = [
+    {
+        id: 93781,
+        name: 'Boneskinner Token'
     }
 ]

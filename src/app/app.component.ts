@@ -3,6 +3,8 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { map, shareReplay } from 'rxjs/operators';
 import { Observable, timer } from 'rxjs';
 import { HeroService } from "./service/hero.service";
+import { ApiKeyService } from './service/api-key.service';
+import { ApiAccount } from './service/key';
 
 @Component({
   selector: 'app-root',
@@ -29,8 +31,20 @@ export class AppComponent {
     return this._time$;
   }
 
-  constructor(private heroService: HeroService, private breakpointObserver: BreakpointObserver) {
+  // selector de API key
+  accounts: ApiAccount[] = [];
+  selectedAccount!: ApiAccount | null;
+
+  constructor(private heroService: HeroService, private breakpointObserver: BreakpointObserver, private apiKeyService: ApiKeyService) {
     this.getAccount();
+
+    // inicializar cuentas y selección
+    this.accounts = this.apiKeyService.getAccounts();
+    this.selectedAccount = this.apiKeyService.getCurrentAccount() ?? this.accounts[0];
+    // suscripción para actualizar selección si cambia en otro lugar
+    this.apiKeyService.getCurrentAccount$().subscribe(account => {
+      this.selectedAccount = account ?? this.accounts[0];
+    });
 
     this.isSmallScreen = this.breakpointObserver
       .observe([Breakpoints.Handset, Breakpoints.Tablet, Breakpoints.TabletLandscape, '(max-width: 1569.99px)'])
@@ -57,6 +71,11 @@ export class AppComponent {
         };
       }
   )}
+
+  onAccountChange(account: ApiAccount) {
+    this.apiKeyService.setAccount(account);
+    window.location.reload();
+  }
 
   onSidenavClose() {
   }

@@ -87,7 +87,7 @@ export class HeroService {
 
   getInventory(){
     // Devuelve inventario compartido
-    const url = `${this.apiUrl}inventory?access_token=${this.apiKey}`;
+    const url = `${this.apiUrl}account/inventory?access_token=${this.apiKey}`;
     return this.httpClient.get(url);
   }
 

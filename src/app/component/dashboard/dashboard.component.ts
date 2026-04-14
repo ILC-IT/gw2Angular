@@ -3,6 +3,8 @@ import { MatMenuTrigger } from '@angular/material/menu';
 import { Observable, timer } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { HeroService } from "../../service/hero.service";
+import { ApiKeyService } from '../../service/api-key.service';
+import { ApiAccount } from '../../service/key';
 
 @Component({
   selector: 'app-dashboard',
@@ -56,10 +58,19 @@ export class DashboardComponent implements OnInit {
     error: false
   };
 
-  constructor(private heroService: HeroService) { }
+  // selector de API key
+  accounts: ApiAccount[] = [];
+  selectedAccount!: ApiAccount | null;
+
+  constructor(private heroService: HeroService, private apiKeyService: ApiKeyService) { }
 
   ngOnInit() {
     this.getAccount();
+    this.accounts = this.apiKeyService.getAccounts();
+    this.selectedAccount = this.apiKeyService.getCurrentAccount();
+    this.apiKeyService.getCurrentAccount$().subscribe(account => {
+      this.selectedAccount = account;
+    });
   }
 
   getAccount(){
@@ -79,5 +90,10 @@ export class DashboardComponent implements OnInit {
         };
       }
   )}
+
+  onAccountChange(account: ApiAccount) {
+    this.apiKeyService.setAccount(account);
+     window.location.reload(); 
+  }
 
 }

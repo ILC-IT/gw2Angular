@@ -147,6 +147,7 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
   fractalesRecDailyString: string = "";
   fractDailyInestabilidadCmEng: string[] = [];
   fractDailyInestabilidadCmEsp: string[] = [];
+  fractalRank: any;
   //tablas fractales
   displayedColumns: string[] = ['level', 'done', 'tier', 'ar', 'name', 'nameEs', 'idDaily', 'idRec'];
   displayedColumnsCm: string[] = ['level', 'tier', 'ar', 'name', 'nameEs', 'inestab1', 'inestab2', 'inestab3'];
@@ -190,12 +191,13 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
   weeklyJWCMConvergencia: { index: number, name: string }[] = [];
   weeklyJWCMConvergenciaDoneIds: Set<number> = new Set();
   weeklyWvW: { id: number, name: string; current: number; max: number; done: boolean }[] = [];
+  wvwRank: any;
   weeklyRiftHuntingSoto: { id: number, name: string; current: number; max: number; done: boolean }[] = [];
   weeklyRiftHuntingJw: { id: number, name: string; current: number; max: number; done: boolean }[] = [];
   weeklyRiftHuntingVoe: { id: number, name: string; current: number; max: number; done: boolean }[] = [];
   weeklyRaidEncounters: { index: number, name: string }[] = [];
   weeklyRaidEncountersDoneIds: Set<number> = new Set();
-
+  
   constructor(private dailyService: DailyService, private legendaryService: LegendaryService, private route: ActivatedRoute,  private router: Router) { 
 
     this.filterSelectObj = [
@@ -420,6 +422,7 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
         //   ids = ids + "8784,8736,8729,8739";
         // }
         this.getFractalsDone(ids);
+        this.getFractalRank();
       }
       else if (tipo === "strike"){
         this.dailyInfoF.strike = dailyInfo;
@@ -649,7 +652,7 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
       },
       error: err => {
         // Fallback: lista vacía (nadie marcado)
-        console.warn('Strikes diarias sin hacer')
+        console.warn('Raid Bounties diarios sin hacer')
         this.dailyStrikeDoneIds = new Set();
       }
     });
@@ -991,6 +994,19 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
     })
   }
 
+  getFractalRank(){
+    // Devuelve el rango del fractal maximo alcanzado por la cuenta
+    this.dailyService.getFractalRank().subscribe({
+      next: (data: any) => {
+        this.fractalRank = data?.fractal_level ?? null;        
+      },
+      error: (err) => {
+        console.warn('Rango max de fractal no disponible');
+        this.fractalRank = null;
+      }
+    });
+  }
+
   diaNumeroAño(date: Date){
     // Devuelve el numero del dia (1 - 366) del año
     const msDiff = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) - Date.UTC(date.getFullYear(), 0, 0);
@@ -1159,6 +1175,16 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
         // Error al obtener los IDs de los logros de la categoría
         console.error('Error al obtener ids WvW:', err);
         this.weeklyWvW = [];
+      }
+    });
+    this.dailyService.getWvWRank().subscribe({
+      // Devuelve el rango de WvW de la cuenta
+      next: (data: any) => {
+        this.wvwRank = data?.wvw_rank ?? null;
+      },
+      error: (err) => {
+        console.warn('Rango WvW no disponible');
+        this.wvwRank = null;
       }
     });
   }

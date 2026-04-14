@@ -115,6 +115,17 @@
       <a href="https://gw2efficiency.com/" target="_blank" rel="noopener noreferrer">GW2Eff</a>
       <a href="https://killproof.me/account/gw2accounts" target="_blank" rel="noopener noreferrer">KP</a>
       <a [cdkCopyToClipboard]="account.name" matTooltip="Copiar" style="cursor: pointer;" [ngClass]="{ 'error-account': account?.error }">{{account.name || 'Loading API...' }}</a>
+      <mat-form-field appearance="fill" style="width: 180px; margin-top: 10px;">
+        <mat-select
+            placeholder="Select account"
+            [value]="selectedAccount"
+            (selectionChange)="onAccountChange($event.value)"
+        >
+            <mat-option *ngFor="let acc of accounts" [value]="acc">
+            {{ acc.name }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
     </nav>
   </mat-sidenav>
 

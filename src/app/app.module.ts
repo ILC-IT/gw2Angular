@@ -29,6 +29,9 @@ import { HomesteadComponent } from './component/homestead/homestead.component';
 import { HomesteadService } from './service/homestead.service';
 import { FestivalComponent } from './component/festival/festival.component';
 import { FestivalService } from './service/festival.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ApiInterceptor } from './interceptor/api.interceptor';
+import { ApiKeyService } from './service/api-key.service';
 
 @NgModule({
   declarations: [
@@ -81,7 +84,9 @@ import { FestivalService } from './service/festival.service';
     LegendaryService,
     MessageService,
     RaidService,
-    FestivalService
+    FestivalService,
+    ApiKeyService,
+    { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

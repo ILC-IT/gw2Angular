@@ -104,6 +104,20 @@
 
             &nbsp;
             <a [cdkCopyToClipboard]="account.name" matTooltip="Copiar" style="cursor: pointer;" [ngClass]="{ 'error-account': account?.error }">{{account.name || 'Loading API...' }}</a>
+
+            <div class="nav-select-wrapper" (click)="accountSelect.open()">
+                <mat-select 
+                    #accountSelect
+                    class="nav-select-btn"
+                    placeholder="Select account"
+                    [value]="selectedAccount"
+                    (selectionChange)="onAccountChange($event.value)"
+                >
+                    <mat-option *ngFor="let acc of accounts" [value]="acc">
+                        {{ acc.name }}
+                    </mat-option>
+                </mat-select>
+            </div>
         </nav>
     </div>
     <div class="search" color="primary">
