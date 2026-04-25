@@ -1,7 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { RaidService } from 'src/app/service/raid.service';
 import { HeroService } from 'src/app/service/hero.service';
-import { Raid, RaidsInfo, LegendariaRaidId, TokenId} from './raid'
+import { Raid, RaidsInfo, LegendariaRaidId, TokenId, DailyRaidBounties} from './raid'
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -144,12 +144,28 @@ export class RaidComponent implements OnInit {
   weeklyRaidDone: { index: number, name: string }[] = [];
   weeklyRaidDoneIds: Set<number> = new Set();
 
+  DailyRaidBounties = DailyRaidBounties;
+  dailyRotation: any;
+  weeklyRotation: any;
+  isDailyBoss(boss: string): boolean {
+    if (!this.dailyRotation) return false;
+    return Object.values(this.dailyRotation).includes(boss);
+  }
+  isWeeklyBoss(boss: string): boolean {
+    if (!this.weeklyRotation?.week) return false;
+
+    return this.weeklyRotation.week.some((day: any) =>
+      Object.values(day.bounties).includes(boss)
+    );
+  }
+
   // Para las rutas a las pestañas de raid
   selectedTabIndex: number = 0;
-  tabs: string[] = ['Limpieza', 'Logro Raid Semanal'];
+  tabs: string[] = ['Limpieza', 'Logro Raid Semanal', 'Daily Raid Bounties'];
   routeMap: { [key: string]: string } = {
     'limpieza': 'Limpieza',
-    'weeklyraid': 'Logro Raid Semanal'
+    'weeklyraid': 'Logro Raid Semanal',
+    'dailyraidbounties': 'Daily Raid Bounties'
   };
   // devuelve el index de la pestaña de la tabla
   getTabIndex(tab: string): number {
@@ -195,6 +211,11 @@ export class RaidComponent implements OnInit {
       this.isWeeklyRaidLoading = false;
       this.getWeeklyRaid(); // getWeeklyRaid() ya protege contra weeklyRaid nulo
     }
+
+    // Para la rotacion de daily raid bounties
+    const today = new Date();
+    this.dailyRotation = this.raidService.getDailyRaidBounties(today);
+    this.weeklyRotation = this.raidService.getWeeklyRaidBounties(today);
   }
 
   getRaid(){
@@ -455,5 +476,33 @@ export class RaidComponent implements OnInit {
       this.cols = 4;
       this.rowHeight = '5:1';
     }
+  }
+
+  getDailyBossKeys(): string[] {
+    return Object.keys(this.DailyRaidBounties).filter(key => key !== 'notInWeek');
+  }
+
+  getDailyBossByKey(key: string): string[] {
+    return (this.DailyRaidBounties as Record<string, string[]>)[key] || [];
+  }
+
+  getColorForBoss(boss: string): { [key: string]: string } {
+    if (this.isDailyBoss(boss)) {
+      return { 
+        'color': 'green', // verde para boss diario
+        'background-color': 'lightgreen'
+      };
+    } else if (this.isWeeklyBoss(boss)) {
+      return { 
+        'color': 'blue' // azul para boss que salen esta semana
+      };
+    }
+    return { 
+      'color': 'black' // negro para boss que no salen esta semana
+    };
+  }
+
+  getDisplayBoss(boss: string): string {
+    return this.isDailyBoss(boss) ? boss.toUpperCase() : boss;
   }
 }

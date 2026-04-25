@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { apiKey } from './key'
+import { ApiKeyService } from './api-key.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,17 +9,19 @@ export class HomesteadService {
 
   apiUrl = "https://api.guildwars2.com/v2/";
 
-  apiKey = apiKey;
+  constructor(private httpClient: HttpClient, private apiKeyService: ApiKeyService) { }
 
-  constructor(private httpClient: HttpClient) { }
+  private getApiKey(): string | null {
+    return this.apiKeyService.getCurrentKey();
+  }
 
   getAccGlyphs(){
-    const url = `${this.apiUrl}account/homestead/glyphs?access_token=${this.apiKey}`;
+    const url = `${this.apiUrl}account/homestead/glyphs?access_token=${this.getApiKey()}`;
     return this.httpClient.get(url);
   }
 
   getAccDecoractions(){
-    const url = `${this.apiUrl}account/homestead/decorations?access_token=${this.apiKey}`;
+    const url = `${this.apiUrl}account/homestead/decorations?access_token=${this.getApiKey()}`;
     return this.httpClient.get(url);
   }
 
@@ -29,7 +31,7 @@ export class HomesteadService {
   }
 
   getMaterials(){
-    const url = `${this.apiUrl}account/materials?access_token=${this.apiKey}`;
+    const url = `${this.apiUrl}account/materials?access_token=${this.getApiKey()}`;
     return this.httpClient.get(url);
   }
 

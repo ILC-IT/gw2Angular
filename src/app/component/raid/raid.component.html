@@ -168,4 +168,79 @@
             </mat-grid-list>
         </ng-container>
     </mat-tab>
+
+    <mat-tab>
+        <ng-template mat-tab-label>
+            Daily Raid Bounties
+        </ng-template>
+
+        <!-- Mostrar bosses que NO entran en la semana actual -->
+        <div *ngIf="weeklyRotation?.notInWeek && weeklyRotation.notInWeek.length > 0" class="daily-bounties-unavailable">
+            <mat-card class="mat-elevation-z2 daily-bounties-unavailable-card">
+                <div class="header-row">
+                    <a  mat-raised-button 
+                        color="accent" 
+                        href="https://wiki.guildwars2.com/wiki/Daily_Raid_Bounties" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        class="external-btn">
+                        <mat-icon>
+                            open_in_new
+                        </mat-icon>
+                    </a>
+                    <strong>
+                        Bosses no disponibles esta semana:
+                    </strong>
+                
+                    <span class="unavailable-chips">
+                        <mat-chip *ngFor="let boss of weeklyRotation.notInWeek" class="boss-chip">
+                            {{ boss }}
+                        </mat-chip>
+                    </span>
+                </div>
+            </mat-card>
+        </div>
+
+        <!-- Grid de 4 columnas con Daily Raid Bounties -->
+        <div class="daily-bounties-container">
+            <!-- Contenedor grid con 4 columnas -->
+            <div class="daily-bounties-grid">
+                <mat-card class="mat-elevation-z4 daily-bounties-card" *ngFor="let key of getDailyBossKeys()">
+                    <!-- CABECERA -->
+                    <div class="daily-bounties-card-header">
+                        <h3>
+                            {{ key.replace('boss', 'Boss ') }}
+                        </h3>
+                    </div>
+                    <!-- BOSSES DAILY -->
+                    <mat-list class="daily-bounties-list">
+                        <mat-list-item *ngFor="let boss of getDailyBossByKey(key)" class="daily-bounties-list-item">
+                            <div mat-line [ngStyle]="getColorForBoss(boss)" class="daily-bounties-list-item-text">
+                                {{ getDisplayBoss(boss) }}
+                            </div>
+                        </mat-list-item>
+                    </mat-list>
+                </mat-card>
+            </div>
+
+            <!-- Leyenda de colores -->
+            <div class="color-legend">
+                <div class="legend-items">
+                    <div class="legend-item">
+                        <div class="legend-color legend-color-black"></div>
+                        <span>Bosses que no entran en esta semana</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color legend-color-green"></div>
+                        <span>Bosses diarios</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color legend-color-blue"></div>
+                        <span>Bosses que entran en esta semana</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-tab>
+
 </mat-tab-group>

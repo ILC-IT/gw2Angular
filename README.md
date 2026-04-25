@@ -1,7 +1,7 @@
 # Gw2Angular
 
 > [!IMPORTANT]
-> - Introducir las API key de las cuentas de GW2 en `.\service\key.ts` para ver la información.
+> - Introducir las API key de las cuentas de GW2 en `src/app/service/key.ts` para ver la información.
 > - Requisitos necesarios de la API key: `account`, `inventories`, `characters`, `wallet`, `unlocks`, `builds`, `progression`.
 
 Esta aplicación permite:
@@ -18,9 +18,11 @@ Esta aplicación permite:
 
 ## Development server
 
-Navigate to directory `.\gw2Angular`. Run `ng serve --open` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Navigate to directory `.\gw2Angular`. 
+- Run `npm ci` for the first install.
+- Run `ng serve --open` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-Tested and works on node <= v16.20.1 & angular cli v >= 12.2.0
+Tested and works on node <= v16.20.2 & angular cli v >= 12.2.0
 
 ## Build
 

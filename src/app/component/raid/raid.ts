@@ -175,4 +175,56 @@ export const bsToken = [
         id: 93781,
         name: 'Boneskinner Token'
     }
-]
+];
+
+export const DailyRaidBounties = {
+    // https://wiki.guildwars2.com/wiki/Daily_Raid_Bounties
+    boss1: [
+        "Shiverpeaks",
+        "Voice of the Fallen",
+        "Fraenir of Jormag",
+        "Gorseval",
+        "Cairn",
+        "Mursaat Overseer",
+    ],
+    boss2: [
+        "Aetherblade Hideout",
+        "Cardinal Sabir",
+        "Whisper of Jormag",
+        "Vale Guardian",
+        "Cosmic Observatory",
+        "Cold War",
+        "Boneskinner",
+        "Sabetha",
+        "Xunlai Jade Junkyard",
+        "Temple of Febe",
+        "Keep Construct",
+        "Kela"
+    ],
+    boss3: [
+        "Slothasor",
+        "Matthias",
+        "Xera",
+        "Samarog",
+        "Conjured Amalgamate",
+        "Twin Largos",
+        "Decima",
+        "Cardinal Adina",
+        "Old Lion's Court",
+        "Ura",
+        "Kaineng Overlook",
+        "Deimos"
+    ],
+    boss4: [
+        "Qadim",
+        "Qadim the Peerless",
+        "Soulless Horror",
+        "Harvest Temple",
+        "Dhuum",
+        "Greer"
+    ]
+};
+
+export const OrdenReferenciaEng = ["Vale Guardian", "Gorseval", "Sabetha", "Slothasor", "Matthias", "Keep Construct", "Xera", "Cairn", "Mursaat Overseer", "Samarog", "Deimos", "Soulless Horror", "Dhuum", "Conjured Amalgamate", "Twin Largos", "Qadim", "Cardinal Adina", "Cardinal Sabir", "Qadim The Peerless", "Decima", "Greer", "Ura", "Shiverpeaks", "Voice of the Fallen", "Fraenir of Jormag", "Whisper of Jormag", "Boneskinner", "Cold War", "Aetherblade Hideout", "Xunlai Jade Junkyard", "Kaineng Overlook", "Harvest Temple", "Old Lion's Court", "Cosmic Observatory", "Temple of Febe", "Kela"];
+
+export const OrdenReferenciaEsp = ["Guardián del valle", "Gorseval", "Sabetha", "Perezón", "Matías", "Ensamblaje de la Fortaleza", "Xera", "Cairn", "Dirigente mursaat", "Samarog", "Deimos", "Horror sin alma", "Dhuum", "Amalgamado conjurado", "Largos gemelos", "Qadim", "Cardenal Adina", "Cardenal Sabir", "Qadim el Simpar", "Decima", "Greer", "Ura", "Paso de las Picosescalofriantes", "Voz y Garra de los Caídos", "Fraenir de Jormag", "Susurro de Jormag", "Pelahuesos", "Guerra fría", "Escondite Filoetéreo", "Chatarrería de Xunlai Jade", "Mirador de Kaineng", "Templo de la Cosecha", "Vieja Corte del León", "Cosmic Observatory", "Temple de Febe", "Kela"];

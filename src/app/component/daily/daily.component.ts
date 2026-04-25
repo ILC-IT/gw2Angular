@@ -8,6 +8,7 @@ import { MatSort } from '@angular/material/sort';
 import { ToastNotificationInitializer, DialogLayoutDisplay, ToastUserViewTypeEnum, ToastProgressBarEnum, DisappearanceAnimation, 
   AppearanceAnimation, ToastPositionEnum } from '@costlydeveloper/ngx-awesome-popup';
 import { ActivatedRoute, Router } from '@angular/router';
+import { OrdenReferenciaEsp } from '../raid/raid';
 
 @Component({
   selector: 'app-daily',
@@ -433,7 +434,30 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy  {
         //     break;
         //   }
         // }
-        this.dailyInfoF.strike = this.dailyInfoF.strike.sort((a: any, b: any) => a.id - b.id); //ordeno por id
+
+        // Me quedo con el nombre de la strike quitando el prefijo
+        this.dailyInfoF.strike = this.dailyInfoF.strike.map((s: any) => ({
+          ...s,
+          name: s.name?.split(':')[1]?.trim() || ''
+        }));
+        // Ordeno por id
+        // this.dailyInfoF.strike = this.dailyInfoF.strike.sort((a: any, b: any) => a.id - b.id);
+        // Ordeno por alas
+        const normalize = (str: string) =>
+        str
+          ?.trim()
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "");
+        const orderMap = new Map(
+          OrdenReferenciaEsp.map((name, index) => [normalize(name), index])
+        );
+        this.dailyInfoF.strike = this.dailyInfoF.strike.sort((a: any, b: any) => {
+          const indexA = orderMap.get(normalize(a.name)) ?? Number.MAX_SAFE_INTEGER;
+          const indexB = orderMap.get(normalize(b.name)) ?? Number.MAX_SAFE_INTEGER;
+          return indexA - indexB;
+        });
+
         this.loading2 = false;
       }
       this.loading = false;

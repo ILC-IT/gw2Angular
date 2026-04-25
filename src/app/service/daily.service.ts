@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { apiKey } from './key'
+import { ApiKeyService } from './api-key.service';
 import { of } from 'rxjs';
 
 interface Achievement {
@@ -18,10 +18,7 @@ export class DailyService {
 
   apiUrl = "https://api.guildwars2.com/v2/";
 
-  apiKey = apiKey;
-
   public readonly bestMapBonusRewardWeekNumber: number = 8; // Variable a cambiar segun cambie la mejor zona
-
   riftSoto = [
     // https://wiki.guildwars2.com/wiki/Weekly_Rift_Hunting
     [
@@ -152,7 +149,11 @@ export class DailyService {
   convergenciaJw = [2, 5, 8, 11, 14, 17, 20, 23];
   convergenciaJwInvierno = [1, 4, 7, 10, 13, 16, 19, 22];
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private apiKeyService: ApiKeyService) { }
+
+  private getApiKey(): string | null {
+    return this.apiKeyService.getCurrentKey();
+  }
 
   /*
     DAILY:
@@ -302,12 +303,12 @@ export class DailyService {
   }
 
   getWallet(){
-    const url = `${this.apiUrl}account/wallet?access_token=${this.apiKey}`;
+    const url = `${this.apiUrl}account/wallet?access_token=${this.getApiKey()}`;
     return this.httpClient.get(url);
   }
   
   getDailyCraft(){
-    const url = `${this.apiUrl}account/dailycrafting?access_token=${this.apiKey}`;
+    const url = `${this.apiUrl}account/dailycrafting?access_token=${this.getApiKey()}`;
     return this.httpClient.get(url);
   }
 
@@ -328,29 +329,29 @@ export class DailyService {
 
   getDailyWizardVault(){
     // const url = `${this.apiUrl}achievements/categories/367`;
-    const url = `${this.apiUrl}account/wizardsvault/daily?access_token=${this.apiKey}`;
+    const url = `${this.apiUrl}account/wizardsvault/daily?access_token=${this.getApiKey()}`;
     return this.httpClient.get(url);
   }
 
   getWeeklyWizardVault(){
     // const url = `${this.apiUrl}achievements/categories/363`;
-    const url = `${this.apiUrl}account/wizardsvault/weekly?access_token=${this.apiKey}`;
+    const url = `${this.apiUrl}account/wizardsvault/weekly?access_token=${this.getApiKey()}`;
     return this.httpClient.get(url);
   }
 
   getSpecialWizardVault(){
     // const url = `${this.apiUrl}achievements/categories/359`;
-    const url = `${this.apiUrl}account/wizardsvault/special?access_token=${this.apiKey}`;
+    const url = `${this.apiUrl}account/wizardsvault/special?access_token=${this.getApiKey()}`;
     return this.httpClient.get(url);
   }
 
   getDailyHeroChoiceChest(){
-    const url = `${this.apiUrl}account/mapchests?access_token=${this.apiKey}`;
+    const url = `${this.apiUrl}account/mapchests?access_token=${this.getApiKey()}`;
     return this.httpClient.get(url);
   }
 
   getMaterials(){
-    const url = `${this.apiUrl}account/materials?access_token=${this.apiKey}`;
+    const url = `${this.apiUrl}account/materials?access_token=${this.getApiKey()}`;
     return this.httpClient.get(url);
   }
 
@@ -615,7 +616,7 @@ export class DailyService {
 
   getConvergenciaSotoWeeklyCM() {
     // devuelve logro semanal de hacer 5 convergencias cm de soto
-    const url = `${this.apiUrl}account/achievements?ids=8464&access_token=${this.apiKey}`;
+    const url = `${this.apiUrl}account/achievements?ids=8464&access_token=${this.getApiKey()}`;
     return this.httpClient.get(url);
   }
 
@@ -626,7 +627,7 @@ export class DailyService {
 
   // async getConvergenciaJw50Rep(): Promise<any> {
   //   // devuelve logro de hacer 50 convergencias repetible
-  //   const url = `${this.apiUrl}account/achievements?ids=8440&access_token=${this.apiKey}`;
+  //   const url = `${this.apiUrl}account/achievements?ids=8440&access_token=${this.getApiKey()}`;
   //   try {
   //     return await this.httpClient.get(url).toPromise();
   //   } catch (error) {
@@ -654,12 +655,12 @@ export class DailyService {
 
   getConvergenciaJwWeeklyCM() {
     // devuelve logro semanal de hacer 3 convergencias cm de jw
-    const url = `${this.apiUrl}account/achievements?ids=8776&access_token=${this.apiKey}`;
+    const url = `${this.apiUrl}account/achievements?ids=8776&access_token=${this.getApiKey()}`;
     return this.httpClient.get(url);
   }
 
   async getAchievement(id: number, max: number, repeated?: number): Promise<Achievement[]> {
-    const url = `${this.apiUrl}account/achievements?ids=${id}&access_token=${this.apiKey}`;
+    const url = `${this.apiUrl}account/achievements?ids=${id}&access_token=${this.getApiKey()}`;
     try {
       return await this.httpClient.get<Achievement[]>(url).toPromise();
     } catch (error) {
@@ -675,7 +676,7 @@ export class DailyService {
   }
 
   getDailyStrikeDone(dailyIdsS: string){
-    const url = `${this.apiUrl}account/achievements?ids=${dailyIdsS}&access_token=${this.apiKey}`;
+    const url = `${this.apiUrl}account/achievements?ids=${dailyIdsS}&access_token=${this.getApiKey()}`;
     return this.httpClient.get<Achievement[]>(url);
   }
 
@@ -690,7 +691,7 @@ export class DailyService {
   }
 
   getWeeklyWvW(ids: string) {
-    const url = `${this.apiUrl}account/achievements?ids=${ids}&access_token=${this.apiKey}`;
+    const url = `${this.apiUrl}account/achievements?ids=${ids}&access_token=${this.getApiKey()}`;
     return this.httpClient.get<any[]>(url);
   }
 
@@ -700,7 +701,7 @@ export class DailyService {
   }
 
   getWeeklyRiftHuntingJW(ids: string){
-    const url = `${this.apiUrl}account/achievements?ids=${ids}&access_token=${this.apiKey}`;
+    const url = `${this.apiUrl}account/achievements?ids=${ids}&access_token=${this.getApiKey()}`;
     return this.httpClient.get<any[]>(url);
   }
 
@@ -710,24 +711,24 @@ export class DailyService {
   }
 
   getWeeklyRiftHuntingSoto(ids: string){
-    const url = `${this.apiUrl}account/achievements?ids=${ids}&access_token=${this.apiKey}`;
+    const url = `${this.apiUrl}account/achievements?ids=${ids}&access_token=${this.getApiKey()}`;
     return this.httpClient.get<any[]>(url);
   }
 
   getWeeklyEoDStrikes(){ 
     // para sacar el id de las strikes semanales de EoD
-    const url = `${this.apiUrl}account/achievements?ids=5577&access_token=${this.apiKey}`;
+    const url = `${this.apiUrl}account/achievements?ids=5577&access_token=${this.getApiKey()}`;
     return this.httpClient.get(url);
   }
 
   getWeeklySotoStrikes(){ 
     // para sacar el id de las strikes semanales de Soto
-    const url = `${this.apiUrl}account/achievements?ids=7155&access_token=${this.apiKey}`;
+    const url = `${this.apiUrl}account/achievements?ids=7155&access_token=${this.getApiKey()}`;
     return this.httpClient.get(url);
   }
 
   getFractalsDone(ids: string){
-    const url = `${this.apiUrl}account/achievements?ids=${ids}&access_token=${this.apiKey}`;
+    const url = `${this.apiUrl}account/achievements?ids=${ids}&access_token=${this.getApiKey()}`;
     return this.httpClient.get<any[]>(url);
   }
 
@@ -747,12 +748,12 @@ export class DailyService {
   }
 
   getWeeklyRiftHuntingVoe(ids: string){
-    const url = `${this.apiUrl}account/achievements?ids=${ids}&access_token=${this.apiKey}`;
+    const url = `${this.apiUrl}account/achievements?ids=${ids}&access_token=${this.getApiKey()}`;
     return this.httpClient.get<any[]>(url);
   }
 
   getDailyWorldBoss(){
-    const url = `${this.apiUrl}account/worldbosses?access_token=${this.apiKey}`;
+    const url = `${this.apiUrl}account/worldbosses?access_token=${this.getApiKey()}`;
     return this.httpClient.get(url);
   }
 
@@ -763,7 +764,7 @@ export class DailyService {
 
   getWeeklyRaidEncounters(){ 
     // para sacar el id de los raid encounters semanales (antiguas strikes)
-    const url = `${this.apiUrl}account/achievements?ids=9125&access_token=${this.apiKey}`;
+    const url = `${this.apiUrl}account/achievements?ids=9125&access_token=${this.getApiKey()}`;
     return this.httpClient.get(url);
   }
 
@@ -774,12 +775,12 @@ export class DailyService {
   }
 
   getWvWRank(){
-    const url = `${this.apiUrl}account?access_token=${this.apiKey}`;
+    const url = `${this.apiUrl}account?access_token=${this.getApiKey()}`;
     return this.httpClient.get(url);
   }
 
   getFractalRank(){
-    const url = `${this.apiUrl}account?access_token=${this.apiKey}`;
+    const url = `${this.apiUrl}account?access_token=${this.getApiKey()}`;
     return this.httpClient.get(url);
   }
 

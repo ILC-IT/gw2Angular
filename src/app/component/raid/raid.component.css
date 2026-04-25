@@ -57,6 +57,158 @@ mat-progress-bar {
     /* opacity: 0.7; */
 }
 
+/* Daily Raid Bounties */
+.daily-bounties-container {
+    padding: 16px;
+    background-color: #dad8d8;
+}
+
+.daily-bounties-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+.daily-bounties-card {
+    border-radius: 4px;
+    padding: 0;
+    overflow: hidden;
+    background-color: #dad8d8;
+}
+
+.daily-bounties-card-header {
+    padding: 12px 16px;
+    border-bottom: 1px solid #555;
+    background-color: #2a2a2a;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.daily-bounties-card-header h3 {
+    margin: 0;
+    text-align: center;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+}
+
+.daily-bounties-list {
+    padding: 0;
+    background-color: #dad8d8;
+}
+
+.daily-bounties-list-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 4px 8px !important;
+    text-align: center;
+    background-color: #dad8d8 !important;
+    border: none !important;
+    min-height: auto !important;
+}
+
+.daily-bounties-list-item-text {
+    font-size: 14px;
+    color: black;
+}
+
+.daily-bounties-unavailable {
+    padding: 16px;
+}
+
+.daily-bounties-unavailable-card {
+    padding: 12px 16px;
+    background-color: #dad8d8;
+}
+
+.daily-bounties-unavailable-card strong {
+    margin-right: 6px;
+}
+
+.unavailable-chips {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    vertical-align: middle;
+}
+
+.boss-chip {
+    background: transparent !important;
+    border: 1px solid #999;
+    font-size: 16px;
+    padding: 4px 10px;
+    border-radius: 10px;
+    height: auto !important;
+}
+
+.header-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.external-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 12px;
+    text-decoration: none;
+}
+
+.external-btn:hover {
+    text-decoration: none;
+}
+
+/* Leyenda de colores */
+.color-legend {
+    padding: 20px 16px;
+    background-color: #dad8d8;
+    border-top: 1px solid #ddd;
+    margin-top: 16px;
+}
+
+.legend-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+
+.legend-color-black {
+    background-color: black;
+}
+
+.legend-color-green {
+    background-color: rgba(11, 161, 11, 0.904);
+}
+
+.legend-color-blue {
+    background-color: blue;
+}
+
+.legend-item span {
+    font-size: 14px;
+    color: #333;
+}
+
 @media (max-width: 768px) {
   h2 {
     font-size: 18px;
@@ -82,5 +234,27 @@ mat-progress-bar {
 
   mat-list {
     padding: 12px;
+  }
+
+  .header-row {
+    flex-wrap: wrap;
+  }
+
+  .header-row strong {
+    width: 100%;
+  }
+
+  .unavailable-chips {
+    width: 100%;
+    margin-top: 6px;
+  }
+
+  .boss-chip {
+    font-size: 14px;
+  }
+
+  .legend-items {
+    flex-direction: column;
+    gap: 12px;
   }
 }

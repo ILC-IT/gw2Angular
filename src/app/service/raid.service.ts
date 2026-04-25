@@ -1,20 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { apiKey } from './key'
+import { ApiKeyService } from './api-key.service';
+import { DailyRaidBounties, OrdenReferenciaEng } from '../component/raid/raid';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RaidService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private apiKeyService: ApiKeyService) { }
 
   apiUrl = "https://api.guildwars2.com/v2/";
 
-  apiKey = apiKey;
+  private getApiKey(): string | null {
+    return this.apiKeyService.getCurrentKey();
+  }
 
   getRaid(){
-    const url = `${this.apiUrl}account/raids?access_token=${this.apiKey}`;
+    const url = `${this.apiUrl}account/raids?access_token=${this.getApiKey()}`;
     return this.httpClient.get(url);
   }
 
@@ -65,14 +68,99 @@ export class RaidService {
   }
 
   getWeeklyRaidId(){
-    // para sacar el id de las raid semanales
+    // Para sacar el id de las raid semanales
     const url = `${this.apiUrl}achievements/categories/477`;
     return this.httpClient.get(url);
   }
 
   getWeeklyRaidDone(wekklyIdsS: string){
-    const url = `${this.apiUrl}account/achievements?ids=${wekklyIdsS}&access_token=${this.apiKey}`;
+    const url = `${this.apiUrl}account/achievements?ids=${wekklyIdsS}&access_token=${this.getApiKey()}`;
     return this.httpClient.get<any[]>(url);
+  }
+
+  getDailyRaidBounties(dia: Date) {
+    // Devuelve los dailyRaidBounties de cada dia, rotando diariamente
+    const startDate = new Date(2026, 3, 22); // 22 de abril de 2026 (mes 0-based)
+    startDate.setHours(0, 0, 0, 0);
+    
+    const millisecondsPerDay = 24 * 60 * 60 * 1000;
+
+    const daysSinceStart = Math.floor(
+      (dia.getTime() - startDate.getTime()) / millisecondsPerDay
+    );
+
+    const pick = (arr: string[], offset = 4) => {
+      const index = (daysSinceStart + offset) % arr.length;
+      return arr[index];
+    };
+
+    return {
+      boss1: pick(DailyRaidBounties.boss1),
+      boss2: pick(DailyRaidBounties.boss2),
+      boss3: pick(DailyRaidBounties.boss3),
+      boss4: pick(DailyRaidBounties.boss4),
+    };
+  }
+
+  getWeeklyRaidBounties(semana: Date) {
+    // Devuelve los dailyRaidBounties de cada semana
+    const startOfWeek = new Date(semana);
+    const day = startOfWeek.getDay(); // 0 domingo, 1 lunes...
+    
+    // Calcular cuantos dias retroceder para llegar al lunes
+    // Si es lunes (1), retroceder 0. Si es domingo (0), retroceder 6 para llegar al lunes anterior
+    const daysToSubtract = day === 0 ? 6 : (day - 1);
+
+    startOfWeek.setDate(startOfWeek.getDate() - daysToSubtract);
+    startOfWeek.setHours(0, 0, 0, 0);
+
+    const week: any[] = [];
+    const usedBosses = new Set<string>();
+
+    for (let i = 0; i < 7; i++) {
+      const d = new Date(startOfWeek);
+      d.setDate(startOfWeek.getDate() + i);
+
+      const bounties = this.getDailyRaidBounties(d);
+
+      // Calcular y guardar los bosses que aparecen en la semana
+      Object.values(bounties).forEach((boss) => usedBosses.add(boss));
+
+      week.push({
+        date: d,
+        bounties
+      });
+    }
+
+    // Calcular, ordenar y guardar los bosses que NO aparecen en la semana
+    const allBosses = Object.values(DailyRaidBounties).reduce(
+      (acc, arr) => acc.concat(arr),
+      [] as string[]
+    );
+
+    const normalize = (str: string) =>
+      str
+        ?.trim()
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+
+    const orderMap = new Map(
+      OrdenReferenciaEng.map((name, index) => [normalize(name), index])
+    );
+
+    const notInWeek = allBosses.filter(
+      (boss) => !usedBosses.has(boss)
+    ).sort((a, b) => {
+      const indexA = orderMap.get(normalize(a)) ?? Number.MAX_SAFE_INTEGER;
+      const indexB = orderMap.get(normalize(b)) ?? Number.MAX_SAFE_INTEGER;
+      return indexA - indexB;
+    });
+
+    return {
+      week,
+      notInWeek,
+    };
   }
   
 }

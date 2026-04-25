@@ -1404,6 +1404,7 @@ export const InestabCm = [
 ]
 
 export interface InstabilityDetail {
+    evtc_id: number;
     icon_id: number;
     name: {
         de: string;

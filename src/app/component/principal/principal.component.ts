@@ -14,7 +14,7 @@ export class PrincipalComponent implements OnInit {
   typesOfCalculadora: string[] = ['Calculadora'];
   typesOfStats: string[] = ['Buscar por stats (atributos)', 'Buscar por prefijo', 'Buscar por nombre arma/armadura'];
   typesOfEnlaces: string[] = ['Enlaces'];
-  typesOfRaid: string[] = ['Limpieza', 'Logro Raid Semanal'];
+  typesOfRaid: string[] = ['Limpieza', 'Logro Raid Semanal', 'Daily Raid Bounties'];
   typesOfLegendary: string[] = ['Armadura legendaria Raid', 'Otros legendarios', 'Otros componentes', 'Cartera', 'Precios T6', 'Precios Varios', 'Precios Armas Legendarias'];
   typesOfHomestead: string[] = ['Precios Huerto', 'Glifos']
   typesOfFestival: string[] = ['Festival']
@@ -32,6 +32,7 @@ export class PrincipalComponent implements OnInit {
     'Buscar por nombre arma/armadura': 'buscarporarma',
     'Limpieza': 'limpieza',
     'Logro Raid Semanal': 'weeklyraid',
+    'Daily Raid Bounties': 'dailyraidbounties',
     'Armadura legendaria Raid': 'armaduraraid',
     'Otros legendarios': 'otroslegendarios',
     'Otros componentes': 'otros',
