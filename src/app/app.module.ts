@@ -32,6 +32,9 @@ import { FestivalService } from './service/festival.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiInterceptor } from './interceptor/api.interceptor';
 import { ApiKeyService } from './service/api-key.service';
+import { DungeonComponent } from './component/dungeon/dungeon.component';
+import { RefreshService } from './service/refresh.service';
+import { DungeonService } from './service/dungeon.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +52,8 @@ import { ApiKeyService } from './service/api-key.service';
     HerodetailComponent,
     LegendaryComponent,
     HomesteadComponent,
-    FestivalComponent
+    FestivalComponent,
+    DungeonComponent
   ],
   imports: [
     BrowserModule,
@@ -79,12 +83,14 @@ import { ApiKeyService } from './service/api-key.service';
   ],
   providers: [
     DailyService,
+    DungeonService,
+    FestivalService,
     HeroService,
     HomesteadService,
     LegendaryService,
     MessageService,
     RaidService,
-    FestivalService,
+    RefreshService,
     ApiKeyService,
     { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true }
   ],

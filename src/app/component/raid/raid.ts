@@ -10,6 +10,12 @@ export interface Raid {
     tokenCount: number[];
     callOfTheMists: string;
     emboldened: string;
+    url: string;
+};
+
+export interface Strike {
+    wing: string;
+    bossOk: string[];
 };
 
 export const LegendariaRaidId = [
@@ -48,7 +54,8 @@ export const TokenId = [
         qadim_the_peerless: 91175,
         decima: 103754,
         greer: 104047,
-        ura: 103996
+        ura: 103996,
+        kela: 106994
     }
 ];
 
@@ -65,7 +72,8 @@ export const RaidsInfo = [
         weeklyId: 9128,
         tokenCount: [0, 0, 0, 0],
         callOfTheMists: "",
-        emboldened: ""
+        emboldened: "",
+        url: "https://wiki.guildwars2.com/wiki/Spirit_Vale"
     },
     {
         name: 'Salvation Pass', //salvation_pass
@@ -78,7 +86,8 @@ export const RaidsInfo = [
         weeklyId: 9147,
         tokenCount: [0, 0, 0],
         callOfTheMists: "",
-        emboldened: ""
+        emboldened: "",
+        url: "https://wiki.guildwars2.com/wiki/Salvation_Pass"
     },
     {
         name: 'Stronghold of the Faithful', //stronghold_of_the_faithful
@@ -91,9 +100,10 @@ export const RaidsInfo = [
         weeklyId: 9182,
         tokenCount: [0, 0, 0, 0],
         callOfTheMists: "",
-        emboldened: ""
+        emboldened: "",
+        url: "https://wiki.guildwars2.com/wiki/Stronghold_of_the_Faithful"
     },
-    
+
     // https://api.guildwars2.com/v2/raids/bastion_of_the_penitent
     {
         name: 'Bastion of the Penitent', //bastion_of_the_penitent
@@ -106,7 +116,8 @@ export const RaidsInfo = [
         weeklyId: 9144,
         tokenCount: [0, 0, 0, 0],
         callOfTheMists: "",
-        emboldened: ""
+        emboldened: "",
+        url: "https://wiki.guildwars2.com/wiki/Bastion_of_the_Penitent"
     },
 
     // https://api.guildwars2.com/v2/raids/hall_of_chains
@@ -121,7 +132,8 @@ export const RaidsInfo = [
         weeklyId: 9111,
         tokenCount: [0, 0, 0, 0],
         callOfTheMists: "",
-        emboldened: ""
+        emboldened: "",
+        url: "https://wiki.guildwars2.com/wiki/Hall_of_Chains"
     },
 
     // https://api.guildwars2.com/v2/raids/mythwright_gambit
@@ -136,7 +148,8 @@ export const RaidsInfo = [
         weeklyId: 9120,
         tokenCount: [0, 0, 0],
         callOfTheMists: "",
-        emboldened: ""
+        emboldened: "",
+        url: "https://wiki.guildwars2.com/wiki/Mythwright_Gambit"
     },
 
     // https://api.guildwars2.com/v2/raids/the_key_of_ahdashim
@@ -151,7 +164,8 @@ export const RaidsInfo = [
         weeklyId: 9156,
         tokenCount: [0, 0, 0, 0],
         callOfTheMists: "",
-        emboldened: ""
+        emboldened: "",
+        url: "https://wiki.guildwars2.com/wiki/The_Key_of_Ahdashim"
     },
 
     // https://api.guildwars2.com/v2/raids/mount_balrior
@@ -166,9 +180,84 @@ export const RaidsInfo = [
         weeklyId: 9181,
         tokenCount: [0, 0, 0, 0],
         callOfTheMists: "",
-        emboldened: ""
+        emboldened: "",
+        url: "https://wiki.guildwars2.com/wiki/Mount_Balrior"
     }
 ];
+
+export const StrikesInfo = [
+    {
+        wing: "IBS",
+        bossOk: ["Shiverpeaks", "Voice of the Fallen", "Fraenir of Jormag", "Whisper of Jormag", "Boneskinner", "Cold War"]
+    },
+    {
+        wing: "EoD",
+        bossOk: ["Aetherblade Hideout", "Xunlai Jade Junkyard", "Kaineng Overlook", "Harvest Temple", "Old Lion's Court"]
+    },
+    {
+        wing: "SotO",
+        bossOk: ["Cosmic Observatory", "Temple of Febe"]
+    },
+    {
+        wing: "VoE",
+        bossOk: ["Kela"]
+    }
+];
+
+export const BossBountyWing = {
+    // Raids
+    "Gorseval": "W1",
+    "Vale Guardian": "W1",
+    "Sabetha": "W1",
+
+    "Slothasor": "W2",
+    "Matthias": "W2",
+
+    "Keep Construct": "W3",
+    "Xera": "W3",
+
+    "Cairn": "W4",
+    "Mursaat Overseer": "W4",
+    "Samarog": "W4",
+    "Deimos": "W4",
+
+    "Soulless Horror": "W5",
+    "Dhuum": "W5",
+
+    "Conjured Amalgamate": "W6",
+    "Twin Largos": "W6",
+    "Qadim": "W6",
+
+    "Cardinal Adina": "W7",
+    "Cardinal Sabir": "W7",
+    "Qadim the Peerless": "W7",
+
+    "Decima": "W8",
+    "Greer": "W8",
+    "Ura": "W8",
+
+    // Strikes IBS
+    "Shiverpeaks": "IBS",
+    "Voice of the Fallen": "IBS",
+    "Fraenir of Jormag": "IBS",
+    "Whisper of Jormag": "IBS",
+    "Boneskinner": "IBS",
+    "Cold War": "IBS",
+
+    // Strikes EoD
+    "Aetherblade Hideout": "EoD",
+    "Xunlai Jade Junkyard": "EoD",
+    "Kaineng Overlook": "EoD",
+    "Harvest Temple": "EoD",
+    "Old Lion's Court": "EoD",
+
+    // Strikes SotO
+    "Cosmic Observatory": "SotO",
+    "Temple of Febe": "SotO",
+
+    // Strikes VoE
+    "Kela": "VoE"
+};
 
 export const bsToken = [
     {

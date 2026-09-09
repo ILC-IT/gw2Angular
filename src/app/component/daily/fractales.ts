@@ -1415,23 +1415,23 @@ export interface InstabilityDetail {
 }
 
 export interface Fractal {
-  level: number;
-  done: boolean;
-  tier: string;
-  ar: number;
-  name: string;
-  nameEs: string;
-  idDaily: string;
-  idRec: string;
+    level: number;
+    done: boolean;
+    tier: string;
+    ar: number;
+    name: string;
+    nameEs: string;
+    idDaily: string;
+    idRec: string;
 }
 
 export interface FractalCm {
-  level: number;
-  ar: number;
-  name: string;
-  nameEs: string;
-  inestab1: string;
-  inestab2: string;
-  inestab3: string;
-  tier: string;
+    level: number;
+    ar: number;
+    name: string;
+    nameEs: string;
+    inestab1: string;
+    inestab2: string;
+    inestab3: string;
+    tier: string;
 }

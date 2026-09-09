@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { CommercePrice } from 'src/app/component/legendary/legendary';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +11,9 @@ export class LegendaryService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getCommercePrices(ids: string){
+  getCommercePrices(ids: string) {
     const url = `${this.apiUrl}commerce/prices?ids=${ids}`;
-    return this.httpClient.get(url);
+    return this.httpClient.get<CommercePrice[]>(url);
   }
 
 }

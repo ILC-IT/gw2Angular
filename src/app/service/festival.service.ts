@@ -15,17 +15,17 @@ export class FestivalService {
     return this.apiKeyService.getCurrentKey();
   }
 
-  getWallet(){
+  getWallet() {
     const url = `${this.apiUrl}account/wallet?access_token=${this.getApiKey()}`;
     return this.httpClient.get(url);
   }
 
-  getCommercePrices(ids: string){
+  getCommercePrices(ids: string) {
     const url = `${this.apiUrl}commerce/prices?ids=${ids}`;
     return this.httpClient.get(url);
   }
 
-  getMaterials(){
+  getMaterials() {
     const url = `${this.apiUrl}account/materials?access_token=${this.getApiKey()}`;
     return this.httpClient.get(url);
   }

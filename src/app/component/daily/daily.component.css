@@ -21,7 +21,7 @@ h2 a {
 
 a {
     background-color: #3f525c;
-    border-radius: 2px;
+    border-radius: 12px;
     padding: 1rem;
     font-size: 1.1rem;
     text-decoration: none;
@@ -60,7 +60,7 @@ a:hover {
     margin: 0 10px;
 }
 
-.result{
+.result {
     object-fit: cover;
     display: flex;
     flex-direction: column;
@@ -68,21 +68,29 @@ a:hover {
     margin: 2px;
 }
 
-::ng-deep.mat-tab-label, ::ng-deep.mat-tab-label-content{
+/* Esto es para evitar que el cursor cambie a pointer al pasar por encima de los resultados, ya que no son clicables. */
+.result,
+.result *,
+mat-card.result,
+mat-card.result * {
+    cursor: default !important;
+}
+
+::ng-deep.mat-tab-label, ::ng-deep.mat-tab-label-content {
     /*min-width: 1!important;*/
     padding: 3px!important;
     margin: 3px!important;
     font-size: large;
  }
 
- .mat-card-image{
+.mat-card-image {
     /*object-fit: fill; */
     object-fit: contain;
     width: 25%;
     height: 25%;
 }
 
-.mat-card-image-f{
+.mat-card-image-f {
     /*object-fit: fill;*/
     object-fit: contain;
     width: 40%;
@@ -95,18 +103,30 @@ textarea {
     /* margin: 4px 0 8px; */
 }
 
-.mat-form-field + .mat-form-field {
+/* .mat-form-field + .mat-form-field {
     margin-left: 8px;
-}
+} */
 
 table {
     width: 100%;
     background-color: rgba(0, 0, 0, 0.021)
 }
 
+.table-container table {
+    min-width: 900px;
+}
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    padding: 4px 4px 12px 4px;
+    -webkit-overflow-scrolling: touch;
+}
+
 .mat-form-field {
     font-size: 14px;
-    width: 12%;
+    min-width: 180px;
+    flex: 1;
 }
 
 ::ng-deep .mat-sort-header-sorted {
@@ -117,7 +137,7 @@ table {
     color: red; /*change color of arrow*/
 }
 
-.waypoint{
+.waypoint {
     display: flex;
     flex-direction: column;
 }
@@ -131,28 +151,36 @@ table {
     justify-content: flex-end;
 }
 
-.green{
+.green {
     background-color:rgb(195, 248, 195);
 }
 
-.red{
+.red {
     color:rgb(255, 0, 0);
 }
 
 button {
     height: 30px;
     font-size: large;
+    border-radius: 6px;
     /* font-size: 16px; */
 }
 
-.boton{
+.boton {
     height: 40px;
     font-size: large;
+    cursor: pointer;
 }
 
-.completadas{
+.completadas {
     display: flex;
     justify-content: center;
+}
+
+.completadas > a {
+    max-width: 700px;
+    width: 90%;
+    box-sizing: border-box;
 }
 
 .mat-accordion>.mat-expansion-panel-spacing {
@@ -178,6 +206,7 @@ button {
     text-decoration: none;
     font-size: 14px;
     vertical-align: middle;
+    box-sizing: border-box;
 }
 
 .legend-content {
@@ -185,7 +214,7 @@ button {
     align-items: center;
     justify-content: center;
     gap: 6px;
-    height: 14px;
+    height: 17px;
 }
 
 .legend-icon {
@@ -194,23 +223,38 @@ button {
     display: block;
 }
 
-@media (max-width: 1569.99px) {
-    .legend-container {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
+.raid-bounties {
+    margin-bottom: 16px;
+}
 
-    .legend-item {
-        width: 100%;
-        margin-right: 0;
-    }
-    
-    .legend-icon {
-        width: 18px;
-        height: 18px;
-        display: block;
-    }
+.actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.actions button {
+    width: auto;
+    height: 30px;
+    font-size: large;
+}
+
+.actions img {
+    object-fit: contain;
+    width: 25%;
+    height: auto;
+}
+
+.filters-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+}
+
+.tier-separator td {
+  border-top: 2px solid #000;
 }
 
 .separador {
@@ -273,4 +317,138 @@ img {
 
 .desplegable {
     background-color: rgb(218, 216, 216); /*(230, 227, 227)*/ 
+}
+
+.error-api {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px;
+    padding: 20px;
+    color: #b71c1c;
+    background-color: #ffebee;
+    border: 1px solid #ef9a9a;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.error-api p {
+    margin: 8px 0 15px;
+}
+
+.loading-api {
+    padding: 30px;
+    text-align: center;
+}
+
+@media (max-width: 1569.99px) {
+    .legend-container {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .legend-item {
+        display: block;
+        width: 100%;
+        margin-right: 0;
+    }
+    
+    .legend-icon {
+        width: 18px;
+        height: 18px;
+        display: block;
+    }
+
+    mat-form-field {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .filters-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    button[mat-flat-button] {
+        width: 100%;
+    }
+}
+
+@media (max-width: 599.99px) {
+
+    .daily-menu {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        padding: 0 8px;
+    }
+
+    .daily-menu > a {
+        min-width: 0;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        margin-left: 0;
+        margin-right: 0;
+        align-self: flex-start;
+    }
+
+    .completadas {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .completadas > a {
+        min-width: 0;
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    /* El contenedor del checkbox no puede tener 5px de altura */
+    .example-section {
+        height: auto !important;
+        min-height: 0 !important;
+        align-items: center;
+    }
+
+    /* Permitir que la tarjeta crezca con el contenido */
+    .daily-menu mat-card {
+        height: auto !important;
+        min-height: 0 !important;
+        padding: 10px !important;
+    }
+
+    /* Texto largo del checkbox */
+    .daily-menu mat-checkbox {
+        display: block;
+        width: 100%;
+    }
+
+    .daily-menu mat-checkbox ::ng-deep .mat-checkbox-layout {
+        display: flex;
+        width: 100%;
+        max-width: 100%;
+        align-items: center !important;
+        white-space: normal !important;
+    }
+
+    .daily-menu mat-checkbox ::ng-deep .mat-checkbox-label {
+        white-space: normal !important;
+        overflow-wrap: break-word;
+        word-break: normal;
+        /* Controlar espacio entre lineas */
+        line-height: 1.5 !important;
+    }
+
+    .boton-copiar-fract {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
 }

@@ -133,8 +133,33 @@ mat-progress-bar {
 .unavailable-chips {
     display: inline-flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 10px 14px; /* separacion entre Wings */
     vertical-align: middle;
+    align-items: flex-start;
+}
+
+.wing-boss-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 0; /* separacion Wing - chip */
+    white-space: nowrap;
+}
+
+.wing-boss-group > strong {
+    white-space: nowrap;
+}
+
+.boss-item {
+    display: inline;
+    white-space: nowrap;
+}
+
+.boss-item:not(:last-child)::after {
+    content: ", ";
+}
+
+.boss-name {
+    white-space: nowrap;
 }
 
 .boss-chip {
@@ -144,6 +169,36 @@ mat-progress-bar {
     padding: 4px 10px;
     border-radius: 10px;
     height: auto !important;
+}
+
+.boss-chip2 {
+    background: transparent !important;
+    border: 1px solid #999;
+    font-size: 16px;
+    padding: 4px 10px;
+    border-radius: 10px;
+    height: auto !important;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+}
+
+.daily-boss {
+    /* verde para boss diario */
+    font-weight: bold;
+    background-color: lightgreen !important;
+    color: green !important;
+}
+
+.weekly-boss {
+    /* azul para boss disponible esta semana */
+    background-color: lightblue !important;
+    color: blue !important;
+}
+
+.inactive-boss {
+    /* negro para boss no disponible esta semana */
+    color: black !important;
 }
 
 .header-row {
@@ -209,52 +264,154 @@ mat-progress-bar {
     color: #333;
 }
 
-@media (max-width: 768px) {
-  h2 {
-    font-size: 18px;
-  }
+a {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
 
-  .mat-subheader {
-    font-size: 18px;
-  }
+button {
+    height: 30px;
+    font-size: large;
+    border-radius: 6px;
+    background-color: inherit;
+}
 
-  .icon {
-    width: 30px;
-  }
+@media (max-width: 767px) {
+    h2 {
+        font-size: 18px;
+    }
 
-  mat-list-item div[mat-line] {
-    font-size: 14px;
-  }
+    .mat-subheader {
+        font-size: 18px;
+    }
 
-  mat-grid-tile {
-    margin-bottom: 16px;
-    min-height: auto !important;
-    height: auto !important;
-  }
+    .icon {
+        width: 30px;
+        height: 30px;
+        object-fit: contain;
+    }
 
-  mat-list {
-    padding: 12px;
-  }
+    mat-list-item div[mat-line] {
+        font-size: 14px;
+    }
 
-  .header-row {
-    flex-wrap: wrap;
-  }
+    mat-grid-tile {
+        margin-bottom: 16px;
+        min-height: auto !important;
+        height: auto !important;
+    }
 
-  .header-row strong {
-    width: 100%;
-  }
+    mat-list {
+        padding: 12px;
+    }
 
-  .unavailable-chips {
-    width: 100%;
-    margin-top: 6px;
-  }
+    .header-row {
+        flex-wrap: wrap;
+    }
 
-  .boss-chip {
-    font-size: 14px;
-  }
+    .header-row strong {
+        width: 100%;
+    }
 
-  .legend-items {
-    flex-direction: column;
-    gap: 12px;
-  }
+    .unavailable-chips {
+        width: 100%;
+        margin-top: 6px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .wing-boss-group {
+        display: inline-flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 4px;
+        width: auto;
+        max-width: 100%;
+    }
+
+    .wing-boss-group > strong {
+        display: inline-block;
+        flex: 0 0 auto;
+        width: auto;
+        line-height: 28px; /* ajustar segun la altura visual del chip */
+    }
+
+    .wing-boss-group .boss-chip {
+        display: inline-flex;
+        flex: 0 0 auto;
+        width: auto;
+        margin: 0;
+        min-width: 0;
+        max-width: calc(100vw - 60px);
+        height: auto;
+        white-space: normal;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .boss-item {
+        display: block;
+        white-space: nowrap;
+        max-width: 100%;
+    }
+
+    .boss-chip {
+        font-size: 14px;
+    }
+
+    .legend-items {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .daily-bounties-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 12px;
+        width: 100%;
+    }
+
+    .daily-bounties-card {
+        min-width: 0;
+        width: 100%;
+        box-sizing: border-box;
+        overflow-x: auto;
+    }
+
+    .daily-bounties-list-item-text {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .boss-chip2 {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1196px) {
+    .daily-bounties-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    .boss-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0;
+        min-width: 0;
+    }
+    .boss-item {
+        display: inline;
+        white-space: nowrap;
+    }
+    .boss-item:not(:last-child)::after {
+        content: ", ";
+    }
 }

@@ -1,10 +1,16 @@
-:host ::ng-deep .mat-sort-header-container { 
-    display: flex;  
-    justify-content: center; 
+h2 {
+    text-align: center;
 }
 
-th.mat-header-cell, td.mat-cell, td.mat-footer-cell { 
-    text-align: center; 
+:host ::ng-deep .mat-sort-header-container {
+    display: flex;
+    justify-content: center;
+}
+
+th.mat-header-cell,
+td.mat-cell,
+td.mat-footer-cell {
+    text-align: center;
 }
 
 th.mat-header-cell {
@@ -17,7 +23,7 @@ tr.mat-footer-row {
     font-weight: bold;
 }
 
-.mat-column-nombre{
+.mat-column-nombre {
     width: 20% !important;
 }
 
@@ -38,7 +44,7 @@ tr.mat-footer-row {
     max-width: 1000px;
     background: #fafafa;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     background-color: rgb(209, 206, 202);
 }
 
@@ -71,20 +77,28 @@ table img {
         font-size: 0.8rem;
     }
 
-    ::ng-deep .mat-tooltip{
+    ::ng-deep .mat-tooltip {
         font-size: 12px !important;
     }
 
 }
 
 .greenBackGround {
-  background-color: rgb(195, 248, 195) !important;
-  font-weight: bold;
+    background-color: rgb(195, 248, 195) !important;
+    font-weight: bold;
 }
 
-mat-card-content {
+/* mat-card-content {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+} */
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    /* padding-bottom: 8px; */
+    padding: 4px 4px 12px 4px;
 }
 
 mat-card table {
@@ -92,6 +106,29 @@ mat-card table {
     margin: 0 auto;
     background-color: rgb(209, 206, 202);
 }
+
+.wiki-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.wiki-container a {
+    text-decoration: none !important;
+}
+
+.wiki-button {
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center;
+    gap: 6px;
+    color: inherit;
+}
+
+/* .wiki-button .mat-icon {
+    margin-top: -2px;
+} */
 
 #tablaSab {
     width: 300px !important;

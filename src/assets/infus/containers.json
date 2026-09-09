@@ -1,0 +1,707 @@
+[
+    {
+        "id": 81790,
+        "icon": "https://render.guildwars2.com/file/6BA91E0A08689B40B09ECC3FB3C4589493E6C167/603245.png",
+        "name": "Celestial Infusion Chest",
+        "name_es": "Cofre de infusiones celestiales",
+        "options": [
+            {
+                "ids": [
+                    81783,
+                    81792,
+                    81814,
+                    81927,
+                    82062,
+                    82070,
+                    85646,
+                    85833
+                ],
+                "name": "Celestial Infusion (Red)",
+                "name_es": "Infusión celestial (roja)"
+            }
+        ],
+        "method": "choice"
+    },
+    {
+        "id": 94017,
+        "icon": "https://render.guildwars2.com/file/6BA91E0A08689B40B09ECC3FB3C4589493E6C167/603245.png",
+        "name": "Abyssal Infusion Chest",
+        "name_es": "Cofre de infusión abisal",
+        "options": [
+            {
+                "ids": [
+                    94010,
+                    94024,
+                    94028,
+                    94039,
+                    94078,
+                    94079,
+                    94090,
+                    94091
+                ],
+                "name": "Abyssal Infusion",
+                "name_es": "Infusión abisal"
+            }
+        ],
+        "method": "choice"
+    },
+    {
+        "id": 94956,
+        "icon": "https://render.guildwars2.com/file/F8491D1EF30B0727DED5CCA7F279DEFAF2F23727/2433073.png",
+        "name": "Dragon Eye Infusion Box",
+        "name_es": "Caja de infusión de ojo de dragón",
+        "options": [
+            {
+                "ids": [
+                    94980,
+                    94979,
+                    94964,
+                    94941
+                ],
+                "name": [
+                    "Jormag Left Eye Infusion",
+                    "Jormag Right Eye Infusion",
+                    "Primordus Left Eye Infusion",
+                    "Primordus Right Eye Infusion"
+                ],
+                "name_es": [
+                    "Infusión del ojo derecho de Jormag",
+                    "Infusión del ojo derecho de Primordus",
+                    "Infusión del ojo izquierdo de Jormag",
+                    "Infusión del ojo izquierdo de Primordus"
+                ]
+            }
+        ],
+        "method": "choice"
+    },
+    {
+        "id": 98002,
+        "icon": "https://render.guildwars2.com/file/5059A1B6C33560C273BA4C7252CE05BC00C9B57E/2672259.png",
+        "name": "Glob of Dragonvoid Aether",
+        "name_es": "Pegote de éter del Vacío Dracónico",
+        "options": [
+            {
+                "ids": [
+                    97993,
+                    98004,
+                    98020,
+                    98022,
+                    98023,
+                    98028,
+                    98043,
+                    98066
+                ],
+                "name": "Echo of the Dragonvoid",
+                "name_es": "Eco del Vacío Dracónico"
+            }
+        ],
+        "method": "choice"
+    },
+    {
+        "id": 98092,
+        "icon": "https://render.guildwars2.com/file/05A01879A23009F1E1B6D162542EDFB0020A5D25/2685325.png",
+        "name": "Imperial Everbloom Sprout",
+        "name_es": "Brote de floreterna imperial",
+        "options": [
+            {
+                "ids": [
+                    98083,
+                    98088,
+                    98105,
+                    98119,
+                    98131,
+                    98145,
+                    98153,
+                    98163
+                ],
+                "name": "Imperial Everbloom",
+                "name_es": "Floreterna imperial"
+            }
+        ],
+        "method": "choice"
+    },
+    {
+        "id": 99250,
+        "icon": "https://render.guildwars2.com/file/F70CFA060673A89F0FB7FAC69DEAE4B0CF10D066/2778701.png",
+        "name": "Ever-Spinning Clockwork",
+        "name_es": "Mecanismo de giro eterno",
+        "options": [
+            {
+                "ids": [
+                    99195,
+                    99206,
+                    99209,
+                    99213,
+                    99237,
+                    99240,
+                    99244,
+                    99248
+                ],
+                "name": "Clockwork Infusion",
+                "name_es": "Infusión mecánica"
+            }
+        ],
+        "method": "choice"
+    },
+    {
+        "id": 99844,
+        "icon": "https://render.guildwars2.com/file/C6C9B44F9F460EF806B09729442A94D74CC8FA4C/3072496.png",
+        "name": "Ball of Charged Mists Essence",
+        "name_es": "Bola de esencia de Niebla cargada",
+        "options": [
+            {
+                "ids": [
+                    99784,
+                    99789,
+                    99790,
+                    99809,
+                    99824,
+                    99839,
+                    99848,
+                    99850
+                ],
+                "name": "Mistwalker Infusion",
+                "name_es": "Infusión de caminante de la Niebla"
+            }
+        ],
+        "method": "choice"
+    },
+    {
+        "id": 99864,
+        "icon": "https://render.guildwars2.com/file/AF08AB9A015CE1DB1F1931B0FEDB9A5D4D16C039/3098410.png",
+        "name": "Scavenged Lingering Darkness",
+        "name_es": "Oscuridad persistente escarbada",
+        "options": [
+            {
+                "ids": [
+                    99869,
+                    99878,
+                    99880,
+                    99881,
+                    99882,
+                    99887,
+                    99894,
+                    99898
+                ],
+                "name": "Mote of Darkness",
+                "name_es": "Mota de oscuridad"
+            }
+        ],
+        "method": "choice"
+    },
+    {
+        "id": 99890,
+        "icon": "https://render.guildwars2.com/file/AF08AB9A015CE1DB1F1931B0FEDB9A5D4D16C039/3098410.png",
+        "name": "Lingering Darkness",
+        "name_es": "Oscuridad persistente",
+        "options": [
+            {
+                "ids": [
+                    99869,
+                    99878,
+                    99880,
+                    99881,
+                    99882,
+                    99887,
+                    99894,
+                    99898
+                ],
+                "name": "Mote of Darkness",
+                "name_es": "Mota de oscuridad"
+            }
+        ],
+        "method": "choice"
+    },
+    {
+        "id": 99956,
+        "icon": "https://render.guildwars2.com/file/30F652F6C3437059309E5D085ABF9C90252B4146/3105954.png",
+        "name": "Enchanted Music Box",
+        "name_es": "Caja de música encantada",
+        "options": [
+            {
+                "ids": [
+                    99914,
+                    99921,
+                    99929,
+                    99932,
+                    99939,
+                    99940,
+                    99946,
+                    99948
+                ],
+                "name": "Silent Symphony",
+                "name_es": "Sinfonía silenciosa"
+            }
+        ],
+        "method": "choice"
+    },
+    {
+        "id": 100244,
+        "icon": "https://render.guildwars2.com/file/02490E0CDED8411FF493FFAE75E35F004723640A/3255340.png",
+        "name": "Jar of Dangerous Spirits",
+        "name_es": "Tarro de espíritus peligrosos",
+        "options": [
+            {
+                "ids": [
+                    100008,
+                    100065,
+                    100302,
+                    100407,
+                    100513,
+                    100806,
+                    100913,
+                    100913
+                ],
+                "name": "Possession Infusion",
+                "name_es": "Infusión de posesión"
+            }
+        ],
+        "method": "choice"
+    },
+    {
+        "id": 101144,
+        "icon": "https://render.guildwars2.com/file/D769C27AC07C46EDFE423023C83B2C1CB5E6CA54/3187594.png",
+        "name": "Vial of Cosmic Energies",
+        "name_es": "Frasco de energías cósmicas",
+        "options": [
+            {
+                "ids": [
+                    101124,
+                    101146,
+                    101169,
+                    101171,
+                    101226,
+                    101259,
+                    101262,
+                    101276
+                ],
+                "name": "Jotun Infusion",
+                "name_es": "Infusión jotun"
+            }
+        ],
+        "method": "choice"
+    },
+    {
+        "id": 104448,
+        "icon": "https://render.guildwars2.com/file/52C90A3A3661017CCD375F7EA75A06CA4AD90B96/3592771.png",
+        "name": "Chunk of Pulsing Bloodstone",
+        "name_es": "Pedazo de hematites palpitante",
+        "options": [
+            {
+                "ids": [
+                    104340,
+                    104348,
+                    104349,
+                    104357,
+                    104386,
+                    104456,
+                    104472,
+                    104481
+                ],
+                "name": "Bloodstone Infusion",
+                "name_es": "Infusión de hematites"
+            }
+        ],
+        "method": "choice"
+    },
+    {
+        "id": 105095,
+        "icon": "https://render.guildwars2.com/file/3A7D117EDAF805376A78340134062A7170319548/2314088.png",
+        "name": "Scavenged Frost Legion Infusion",
+        "name_es": "Infusión de la Legión de la Escarcha escarbada",
+        "options": [
+            {
+                "ids": [
+                    93720,
+                    93758,
+                    93773,
+                    93775,
+                    93829,
+                    93858,
+                    93906,
+                    93920
+                ],
+                "name": "Frost Legion Infusion",
+                "name_es": "Infusión de la Legión de la Escarcha"
+            }
+        ],
+        "method": "choice"
+    },
+    {
+        "id": 106285,
+        "icon": "https://render.guildwars2.com/file/0CC392B741C82CDCD52A07AF16C66ACE019CBF14/3708953.png",
+        "name": "Chromatic Bubble Wand",
+        "name_es": "Varita de burbuja cromática",
+        "options": [
+            {
+                "ids": [
+                    105717,
+                    105736,
+                    105924,
+                    106128,
+                    106173,
+                    106278,
+                    106399,
+                    106471
+                ],
+                "name": "Chromatic Bubbles",
+                "name_es": "Burbuja cromática"
+            }
+        ],
+        "method": "choice"
+    },
+    {
+        "id": 106760,
+        "icon": "https://render.guildwars2.com/file/DD502051A6C0FA734B9249AEFFCE0E90672F2533/3708954.png",
+        "name": "Ethereal Aquarium",
+        "name_es": "Acuario etéreo",
+        "options": [
+            {
+                "ids": [
+                    105769,
+                    105993,
+                    106337,
+                    106527,
+                    106597,
+                    106727,
+                    105450,
+                    105682
+                ],
+                "name": "Ethereal Sea-Life Infusion",
+                "name_es": "Infusión de vida marina etérea"
+            }
+        ],
+        "method": "choice"
+    },
+    {
+        "id": 107111,
+        "icon": "https://render.guildwars2.com/file/260CE29FBDEF04E466F555A3CF980561AF2873C5/3744700.png",
+        "name": "Phylactery of Demonic Energy",
+        "name_es": "Amuleto de energía demoníaca",
+        "options": [
+            {
+                "ids": [
+                    107045,
+                    107079,
+                    107083,
+                    107167,
+                    107045,
+                    107079,
+                    107083,
+                    107167
+                ],
+                "name": "Demonic Infusion",
+                "name_es": "Infusión demoníaca"
+            }
+        ],
+        "method": "choice"
+    },
+    {
+        "id": 109239,
+        "icon": "https://render.guildwars2.com/file/C37A1C08D3991412C53808FB2BC2FCFF5F0A16E2/3770114.png",
+        "name": "Mote of Seer Transcendence",
+        "name_es": "Mota de trascendencia de los videntes",
+        "options": [
+            {
+                "ids": [
+                    109243,
+                    109341,
+                    109440,
+                    109518,
+                    109529,
+                    109537,
+                    109573,
+                    109748
+                ],
+                "name": "Seer Transcendence",
+                "name_es": "Trascendencia de los videntes"
+            }
+        ],
+        "method": "choice"
+    },
+    {
+        "id": 76063,
+        "icon": "https://render.guildwars2.com/file/A66CEF1B9C032C240EDB9077FCD53493CD5AC6B9/1203050.png",
+        "name": "Vial of Liquid Aurillium",
+        "name_es": "Vial de aurilio líquido",
+        "options": [
+            {
+                "ids": [
+                    81715,
+                    81875,
+                    81889,
+                    81918,
+                    81975,
+                    82006,
+                    86275,
+                    86291
+                ],
+                "name": "Liquid Aurillium Infusion",
+                "name_es": "Infusión de aurilio líquido"
+            }
+        ],
+        "method": "upgrade"
+    },
+    {
+        "id": 68440,
+        "icon": "https://render.guildwars2.com/file/01C5A7B5B0B01C3605090750B44B760F70C07A05/831489.png",
+        "name": "Preserved Queen Bee",
+        "name_es": "Abeja reina conservada",
+        "options": [
+            {
+                "ids": [
+                    81638,
+                    81663,
+                    81679,
+                    81701,
+                    81818,
+                    81897,
+                    86055,
+                    86303
+                ],
+                "name": "Queen Bee Infusion",
+                "name_es": "Infusión de abeja reina"
+            }
+        ],
+        "method": "upgrade"
+    },
+    {
+        "id": 77594,
+        "icon": "https://render.guildwars2.com/file/01C5A7B5B0B01C3605090750B44B760F70C07A05/831489.png",
+        "name": "Preserved Queen Bee",
+        "name_es": "Abeja reina conservada",
+        "options": [
+            {
+                "ids": [
+                    81638,
+                    81663,
+                    81679,
+                    81701,
+                    81818,
+                    81897,
+                    86055,
+                    86303
+                ],
+                "name": "Queen Bee Infusion",
+                "name_es": "Infusión de abeja reina"
+            }
+        ],
+        "method": "upgrade"
+    },
+    {
+        "id": 72021,
+        "icon": "https://render.guildwars2.com/file/FE73F012119252F1935797B2EC2C94482AB5A308/831485.png",
+        "name": "Chak Egg Sac",
+        "name_es": "Saco de huevos Chak",
+        "options": [
+            {
+                "ids": [
+                    81616,
+                    81677,
+                    81807,
+                    81825,
+                    81840,
+                    82044,
+                    85668,
+                    86251
+                ],
+                "name": "Chak Infusion",
+                "name_es": "Infusión chak"
+            }
+        ],
+        "method": "upgrade"
+    },
+    {
+        "id": 67373,
+        "icon": "https://render.guildwars2.com/file/7A124134FFAC5F032F1E1501F530E326F506BABD/888367.png",
+        "name": "Oontz's Necklace of the Cat",
+        "name_es": "Collar de Oontz del gato",
+        "options": [
+            {
+                "ids": [
+                    81624,
+                    81709,
+                    81810,
+                    81877,
+                    82013,
+                    82039,
+                    85974,
+                    86248
+                ],
+                "name": "Polyluminescent Undulating Infusion (Black)",
+                "name_es": "Infusión ondeante poliluminiscente (negra)"
+            }
+        ],
+        "method": "extract"
+    },
+    {
+        "id": 67375,
+        "icon": "https://render.guildwars2.com/file/B4C6490CAE379BBD90EF68C00A2604477321B468/888378.png",
+        "name": "Polyluminescent Undulating Refractor (Black)",
+        "name_es": "Refractor ondeante poliluminiscente (negro)",
+        "options": [
+            {
+                "ids": [
+                    67375
+                ],
+                "name": "Polyluminescent Undulating Refractor (Black)",
+                "name_es": "Refractor ondeante poliluminiscente (negro)"
+            }
+        ],
+        "method": "upgrade"
+    },
+    {
+        "id": 67376,
+        "icon": "https://render.guildwars2.com/file/7A124134FFAC5F032F1E1501F530E326F506BABD/888367.png",
+        "name": "Oontz's Necklace of the Ghoul",
+        "name_es": "Collar de Oontz del necrófago",
+        "options": [
+            {
+                "ids": [
+                    81612,
+                    81678,
+                    81727,
+                    81948,
+                    81988,
+                    82055,
+                    85682,
+                    86183
+                ],
+                "name": "Polyluminescent Undulating Infusion (Green)",
+                "name_es": "Infusión ondeante poliluminiscente (verde)"
+            }
+        ],
+        "method": "extract"
+    },
+    {
+        "id": 67370,
+        "icon": "https://render.guildwars2.com/file/97EDAF65FCECF802544DD54B36DC3A09323B254A/888374.png",
+        "name": "Polyluminescent Undulating Refractor (Green)",
+        "name_es": "Refractor ondeante poliluminiscente (verde)",
+        "options": [
+            {
+                "ids": [
+                    67370
+                ],
+                "name": "Polyluminescent Undulating Refractor (Green)",
+                "name_es": "Refractor ondeante poliluminiscente (verde)"
+            }
+        ],
+        "method": "upgrade"
+    },
+    {
+        "id": 67361,
+        "icon": "https://render.guildwars2.com/file/7A124134FFAC5F032F1E1501F530E326F506BABD/888367.png",
+        "name": "Oontz's Necklace of the Pumpkin",
+        "name_es": "Collar de Oontz de la calabaza",
+        "options": [
+            {
+                "ids": [
+                    81809,
+                    81847,
+                    81864,
+                    81881,
+                    81911,
+                    81930,
+                    85694,
+                    86310
+                ],
+                "name": "Polyluminescent Undulating Infusion (Orange)",
+                "name_es": "Infusión ondeante poliluminiscente (naranja)"
+            }
+        ],
+        "method": "extract"
+    },
+    {
+        "id": 67372,
+        "icon": "https://render.guildwars2.com/file/04050CC5764DC198D8126812E66305C676954F0C/888376.png",
+        "name": "Polyluminescent Undulating Refractor (Orange)",
+        "name_es": "Refractor ondeante poliluminiscente (naranja)",
+        "options": [
+            {
+                "ids": [
+                    67372
+                ],
+                "name": "Polyluminescent Undulating Refractor (Orange)",
+                "name_es": "Refractor ondeante poliluminiscente (naranja)"
+            }
+        ],
+        "method": "upgrade"
+    },
+    {
+        "id": 79675,
+        "icon": "https://render.guildwars2.com/file/7A124134FFAC5F032F1E1501F530E326F506BABD/888367.png",
+        "name": "Oontz's Necklace of the Spectre",
+        "name_es": "Collar de Oontz del espectro",
+        "options": [
+            {
+                "ids": [
+                    81641,
+                    81653,
+                    81655,
+                    81777,
+                    81858,
+                    81959,
+                    86068,
+                    86312
+                ],
+                "name": "Polyluminescent Undulating Infusion (Teal)",
+                "name_es": "Infusión ondeante poliluminiscente (azul verdosa)"
+            }
+        ],
+        "method": "extract"
+    },
+    {
+        "id": 79647,
+        "icon": "https://render.guildwars2.com/file/7BB3BF57E1060C0A2919290FE03E04BA6B1EE950/1729284.png",
+        "name": "Polyluminescent Undulating Refractor (Teal)",
+        "name_es": "Refractor ondeante poliluminiscente (azul verdoso)",
+        "options": [
+            {
+                "ids": [
+                    79647
+                ],
+                "name": "Polyluminescent Undulating Refractor (Teal)",
+                "name_es": "Refractor ondeante poliluminiscente (azul verdoso)"
+            }
+        ],
+        "method": "upgrade"
+    },
+    {
+        "id": 101176,
+        "icon": "https://render.guildwars2.com/file/46EC231103323FB5EEBBC1AEF74AE015050F013E/3122156.png",
+        "name": "Wurm's Enrichment Choice Chest",
+        "name_es": "Cofre de elección de enriquecimiento de la Sierpe",
+        "options": [
+            {
+                "ids": [
+                    101126,
+                    101187,
+                    101193,
+                    101250,
+                    101272,
+                    101302
+                ],
+                "name": "Wurm's Blessing Enrichment",
+                "name_es": "Enriquecimiento de bendiciones de la Sierpe"
+            }
+        ],
+        "method": "choice"
+    },
+    {
+        "id": 104392,
+        "icon": "https://render.guildwars2.com/file/675E1D5C25D7DD2796A19F54712268D746018018/3592772.png",
+        "name": "Forest Wisp",
+        "name_es": "Llama del bosque",
+        "options": [
+            {
+                "ids": [
+                    104435
+                ],
+                "name": "Forest Wisp Infusion",
+                "name_es": "Infusión de llama del bosque"
+            }
+        ],
+        "method": "extract"
+    }
+]

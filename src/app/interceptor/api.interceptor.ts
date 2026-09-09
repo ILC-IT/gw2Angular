@@ -12,10 +12,10 @@ export class ApiInterceptor implements HttpInterceptor {
   // noCacheTimestamp: true para añadir un timestamp a la URL y romper la caché del navegador
   private noCacheTimestamp = false;
 
-  constructor(private apiKeyService: ApiKeyService) {}
+  constructor(private apiKeyService: ApiKeyService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    
+
     // Aplica solamente access_token a URLs que contengan "account" o "characters" (endpoints autenticados)
 
     const authEndpoints = [
@@ -66,9 +66,9 @@ export class ApiInterceptor implements HttpInterceptor {
           url = `${url}${separator}_=${Date.now()}`;
         }
 
-        const cloned = req.clone({ 
-          url, 
-          params: newParams, 
+        const cloned = req.clone({
+          url,
+          params: newParams,
           headers: newHeaders
         });
 

@@ -1,0 +1,484 @@
+Burbuja cromática, +5 de dureza | +9 de resistencia a la agonía
+Burbuja cromática, +5 de vitalidad | +9 de resistencia a la agonía
+Burbuja cromática, +5 de precisión | +9 de resistencia a la agonía
+Burbuja cromática, +5 de concentración | +9 de resistencia a la agonía
+Burbuja cromática, +5 de daño de condición | +9 de resistencia a la agonía
+Burbuja cromática, +5 de pericia | +9 de resistencia a la agonía
+Burbuja cromática, +5 de curación | +9 de resistencia a la agonía
+Burbuja cromática, +5 de potencia | +9 de resistencia a la agonía
+Corazón del Khan-Ur, +5 de vitalidad | +9 de resistencia a la agonía
+Corazón del Khan-Ur, +5 de precisión | +9 de resistencia a la agonía
+Corazón del Khan-Ur, +5 de potencia | +9 de resistencia a la agonía
+Corazón del Khan-Ur, +5 de pericia | +9 de resistencia a la agonía
+Corazón del Khan-Ur, +5 de curación | +9 de resistencia a la agonía
+Corazón del Khan-Ur, +5 de dureza | +9 de resistencia a la agonía
+Corazón del Khan-Ur, +5 de daño de condición | +9 de resistencia a la agonía
+Corazón del Khan-Ur, +5 de concentración | +9 de resistencia a la agonía
+Eco del Vacío Dracónico, +5 de potencia | +9 de resistencia a la agonía
+Eco del Vacío Dracónico, +5 de pericia | +9 de resistencia a la agonía
+Eco del Vacío Dracónico, +5 de curación | +9 de resistencia a la agonía
+Eco del Vacío Dracónico, +5 de precisión | +9 de resistencia a la agonía
+Eco del Vacío Dracónico, +5 de daño de condición | +9 de resistencia a la agonía
+Eco del Vacío Dracónico, +5 de concentración | +9 de resistencia a la agonía
+Eco del Vacío Dracónico, +5 de vitalidad | +9 de resistencia a la agonía
+Eco del Vacío Dracónico, +5 de dureza | +9 de resistencia a la agonía
+Floreterna imperial, +5 de dureza | +9 de resistencia a la agonía
+Floreterna imperial, +5 de precisión | +9 de resistencia a la agonía
+Floreterna imperial, +5 de curación | +9 de resistencia a la agonía
+Floreterna imperial, +5 de pericia | +9 de resistencia a la agonía
+Floreterna imperial, +5 de concentración | +9 de resistencia a la agonía
+Floreterna imperial, +5 de vitalidad | +9 de resistencia a la agonía
+Floreterna imperial, +5 de potencia | +9 de resistencia a la agonía
+Floreterna imperial, +5 de daño de condición | +9 de resistencia a la agonía
+Infusión abisal, +5 de pericia | +9 de resistencia a la agonía
+Infusión abisal, +5 de concentración | +9 de resistencia a la agonía
+Infusión abisal, +5 de curación | +9 de resistencia a la agonía
+Infusión abisal, +5 de daño de condición | +9 de resistencia a la agonía
+Infusión abisal, +5 de potencia | +9 de resistencia a la agonía
+Infusión abisal, +5 de dureza | +9 de resistencia a la agonía
+Infusión abisal, +5 de vitalidad | +9 de resistencia a la agonía
+Infusión abisal, +5 de precisión | +9 de resistencia a la agonía
+Infusión celestial (azul), +5 de precisión | +9 de resistencia a la agonía
+Infusión celestial (azul), +5 de dureza | +9 de resistencia a la agonía
+Infusión celestial (azul), +5 de curación | +9 de resistencia a la agonía
+Infusión celestial (azul), +5 de vitalidad | +9 de resistencia a la agonía
+Infusión celestial (azul), +5 de potencia | +9 de resistencia a la agonía
+Infusión celestial (azul), +5 de daño de condición | +9 de resistencia a la agonía
+Infusión celestial (azul), +5 de pericia | +9 de resistencia a la agonía
+Infusión celestial (azul), +5 de concentración | +9 de resistencia a la agonía
+Infusión celestial (roja), +5 de potencia | +9 de resistencia a la agonía
+Infusión celestial (roja), +5 de precisión | +9 de resistencia a la agonía
+Infusión celestial (roja), +5 de curación | +9 de resistencia a la agonía
+Infusión celestial (roja), +5 de daño de condición | +9 de resistencia a la agonía
+Infusión celestial (roja), +5 de vitalidad | +9 de resistencia a la agonía
+Infusión celestial (roja), +5 de dureza | +9 de resistencia a la agonía
+Infusión celestial (roja), +5 de pericia | +9 de resistencia a la agonía
+Infusión celestial (roja), +5 de concentración | +9 de resistencia a la agonía
+Infusión chak, +5 de precisión | +9 de resistencia a la agonía
+Infusión chak, +5 de curación | +9 de resistencia a la agonía
+Infusión chak, +5 de daño de condición | +9 de resistencia a la agonía
+Infusión chak, +5 de potencia | +9 de resistencia a la agonía
+Infusión chak, +5 de dureza | +9 de resistencia a la agonía
+Infusión chak, +5 de vitalidad | +9 de resistencia a la agonía
+Infusión chak, +5 de pericia | +9 de resistencia a la agonía
+Infusión chak, +5 de concentración | +9 de resistencia a la agonía
+Infusión curativa, +4 de curación
+Infusión de +1 de Resistencia a la Agonía, +1 de resistencia a la agonía
+Infusión de +2 de Resistencia a la Agonía, +2 de resistencia a la agonía
+Infusión de +3 de Resistencia a la Agonía, +3 de resistencia a la agonía
+Infusión de +4 de Resistencia a la Agonía, +4 de resistencia a la agonía
+Infusión de +5 de Resistencia a la Agonía, +5 de resistencia a la agonía
+Infusión de +5 de resistencia a la agonía curativa, +5 de curación<br>+5 de resistencia a la agonía
+Infusión de +5 de resistencia a la agonía maligna, +5 de daño de condición<br>+5 de resistencia a la agonía
+Infusión de +5 de resistencia a la agonía mística, +5 de concentración | +5 de resistencia a la agonía
+Infusión de +5 de resistencia a la agonía poderosa, +5 de potencia<br>+5 de resistencia a la agonía
+Infusión de +5 de resistencia a la agonía precisa, +5 de precisión<br>+5 de resistencia a la agonía
+Infusión de +5 de resistencia a la agonía rencorosa, +5 de pericia | +5 de resistencia a la agonía
+Infusión de +5 de resistencia a la agonía resistente, +5 de dureza<br>+5 de resistencia a la agonía
+Infusión de +5 de resistencia a la agonía vital, +5 de vitalidad<br>+5 de resistencia a la agonía
+Infusión de +6 de Resistencia a la Agonía, +6 de resistencia a la agonía
+Infusión de +7 de Resistencia a la Agonía, +7 de resistencia a la agonía
+Infusión de +7 de resistencia a la agonía curativa, +5 de curación | +7 de resistencia a la agonía
+Infusión de +7 de resistencia a la agonía maligna, +5 de daño de condición | +7 de resistencia a la agonía
+Infusión de +7 de resistencia a la agonía mística, +5 de concentración | +7 de resistencia a la agonía
+Infusión de +7 de resistencia a la agonía poderosa, +5 de potencia | +7 de resistencia a la agonía
+Infusión de +7 de resistencia a la agonía precisa, +5 de precisión | +7 de resistencia a la agonía
+Infusión de +7 de resistencia a la agonía rencorosa, +5 de pericia | +7 de resistencia a la agonía
+Infusión de +7 de resistencia a la agonía resistente, +5 de dureza | +7 de resistencia a la agonía
+Infusión de +7 de resistencia a la agonía vital, +5 de vitalidad | +7 de resistencia a la agonía
+Infusión de +8 de Resistencia a la Agonía, +8 de resistencia a la agonía
+Infusión de +9 de Resistencia a la Agonía, +9 de resistencia a la agonía
+Infusión de +9 de resistencia a la agonía curativa, +5 de curación | +9 de resistencia a la agonía
+Infusión de +9 de resistencia a la agonía maligna, +5 de daño de condición | +9 de resistencia a la agonía
+Infusión de +9 de resistencia a la agonía mística, +5 de concentración | +9 de resistencia a la agonía
+Infusión de +9 de resistencia a la agonía poderosa, +5 de potencia | +9 de resistencia a la agonía
+Infusión de +9 de resistencia a la agonía precisa, +5 de precisión | +9 de resistencia a la agonía
+Infusión de +9 de resistencia a la agonía rencorosa, +5 de pericia | +9 de resistencia a la agonía
+Infusión de +9 de resistencia a la agonía resistente, +5 de dureza | +9 de resistencia a la agonía
+Infusión de +9 de resistencia a la agonía vital, +5 de vitalidad | +9 de resistencia a la agonía
+Infusión de +10 de Resistencia a la Agonía, +10 de resistencia a la agonía
+Infusión de +11 de Resistencia a la Agonía, +11 de resistencia a la agonía
+Infusión de +12 de Resistencia a la Agonía, +12 de resistencia a la agonía
+Infusión de +13 de Resistencia a la Agonía, +13 de resistencia a la agonía
+Infusión de +14 de Resistencia a la Agonía, +14 de resistencia a la agonía
+Infusión de +15 de Resistencia a la Agonía, +15 de resistencia a la agonía
+Infusión de +16 de Resistencia a la Agonía, +16 de resistencia a la agonía
+Infusión de +17 de Resistencia a la Agonía, +17 de resistencia a la agonía
+Infusión de +18 de Resistencia a la Agonía, +18 de resistencia a la agonía
+Infusión de +19 de Resistencia a la Agonía, +19 de resistencia a la agonía
+Infusión de +20 de Resistencia a la Agonía, +20 de resistencia a la agonía
+Infusión de +21 de Resistencia a la Agonía, +21 de resistencia a la agonía
+Infusión de +22 de Resistencia a la Agonía, +22 de resistencia a la agonía
+Infusión de +23 de Resistencia a la Agonía, +23 de resistencia a la agonía
+Infusión de +24 de Resistencia a la Agonía, +24 de resistencia a la agonía
+Infusión de abeja reina, +5 de precisión | +9 de resistencia a la agonía
+Infusión de abeja reina, +5 de potencia | +9 de resistencia a la agonía
+Infusión de abeja reina, +5 de curación | +9 de resistencia a la agonía
+Infusión de abeja reina, +5 de daño de condición | +9 de resistencia a la agonía
+Infusión de abeja reina, +5 de dureza | +9 de resistencia a la agonía
+Infusión de abeja reina, +5 de vitalidad | +9 de resistencia a la agonía
+Infusión de abeja reina, +5 de concentración | +9 de resistencia a la agonía
+Infusión de abeja reina, +5 de pericia | +9 de resistencia a la agonía
+Infusión de ágata, Te hace ver más gatos. | +5 de precisión | +9 de resistencia a la agonía
+Infusión de ascuas, +5 de curación | +9 de resistencia a la agonía
+Infusión de ascuas, +5 de vitalidad | +9 de resistencia a la agonía
+Infusión de ascuas, +5 de pericia | +9 de resistencia a la agonía
+Infusión de ascuas, +5 de precisión | +9 de resistencia a la agonía
+Infusión de ascuas, +5 de concentración | +9 de resistencia a la agonía
+Infusión de ascuas, +5 de dureza | +9 de resistencia a la agonía
+Infusión de ascuas, +5 de potencia | +9 de resistencia a la agonía
+Infusión de ascuas, +5 de daño de condición | +9 de resistencia a la agonía
+Infusión de aurilio líquido, +5 de potencia | +9 de resistencia a la agonía
+Infusión de aurilio líquido, +5 de precisión | +9 de resistencia a la agonía
+Infusión de aurilio líquido, +5 de curación | +9 de resistencia a la agonía
+Infusión de aurilio líquido, +5 de dureza | +9 de resistencia a la agonía
+Infusión de aurilio líquido, +5 de vitalidad | +9 de resistencia a la agonía
+Infusión de aurilio líquido, +5 de daño de condición | +9 de resistencia a la agonía
+Infusión de aurilio líquido, +5 de concentración | +9 de resistencia a la agonía
+Infusión de aurilio líquido, +5 de pericia | +9 de resistencia a la agonía
+Infusión de cachivache inestable de Moto: azul, +5 de daño de condición | +9 de resistencia a la agonía
+Infusión de cachivache inestable de Moto: azul, +5 de potencia | +9 de resistencia a la agonía
+Infusión de cachivache inestable de Moto: azul, +5 de precisión | +9 de resistencia a la agonía
+Infusión de cachivache inestable de Moto: azul, +5 de curación | +9 de resistencia a la agonía
+Infusión de cachivache inestable de Moto: azul, +5 de dureza | +9 de resistencia a la agonía
+Infusión de cachivache inestable de Moto: azul, +5 de vitalidad | +9 de resistencia a la agonía
+Infusión de cachivache inestable de Moto: azul, +5 de concentración | +9 de resistencia a la agonía
+Infusión de cachivache inestable de Moto: azul, +5 de pericia | +9 de resistencia a la agonía
+Infusión de cachivache inestable de Moto: rojo, +5 de curación | +9 de resistencia a la agonía
+Infusión de cachivache inestable de Moto: rojo, +5 de potencia | +9 de resistencia a la agonía
+Infusión de cachivache inestable de Moto: rojo, +5 de dureza | +9 de resistencia a la agonía
+Infusión de cachivache inestable de Moto: rojo, +5 de precisión | +9 de resistencia a la agonía
+Infusión de cachivache inestable de Moto: rojo, +5 de daño de condición | +9 de resistencia a la agonía
+Infusión de cachivache inestable de Moto: rojo, +5 de vitalidad | +9 de resistencia a la agonía
+Infusión de cachivache inestable de Moto: rojo, +5 de concentración | +9 de resistencia a la agonía
+Infusión de cachivache inestable de Moto: rojo, +5 de pericia | +9 de resistencia a la agonía
+Infusión de caminante de la Niebla, +5 de daño de condición | +1 % de daño a guardias, líderes y supervisores
+Infusión de caminante de la Niebla, +5 de potencia | +1 % de daño a guardias, líderes y supervisores
+Infusión de caminante de la Niebla, +5 de concentración | -1 % de daño recibido de guardias, líderes y supervisores
+Infusión de caminante de la Niebla, +5 de pericia | +1 % de daño a guardias, líderes y supervisores
+Infusión de caminante de la Niebla, +5 de precisión | +1 % de daño a guardias, líderes y supervisores
+Infusión de caminante de la Niebla, +5 de curación | -1 % de daño recibido de guardias, líderes y supervisores
+Infusión de caminante de la Niebla, +5 de dureza | -1 % de daño recibido de guardias, líderes y supervisores
+Infusión de caminante de la Niebla, +5 de vitalidad | -1 % de daño recibido de guardias, líderes y supervisores
+Infusión de caparazón de juguete, +5 de precisión | +9 de resistencia a la agonía
+Infusión de caparazón de juguete, +5 de concentración | +9 de resistencia a la agonía
+Infusión de caparazón de juguete, +5 de potencia | +9 de resistencia a la agonía
+Infusión de caparazón de juguete, +5 de daño de condición | +9 de resistencia a la agonía
+Infusión de caparazón de juguete, +5 de pericia | +9 de resistencia a la agonía
+Infusión de caparazón de juguete, +5 de vitalidad | +9 de resistencia a la agonía
+Infusión de caparazón de juguete, +5 de curación | +9 de resistencia a la agonía
+Infusión de caparazón de juguete, +5 de dureza | +9 de resistencia a la agonía
+Infusión de corazón del invierno, +5 de vitalidad | +9 de resistencia a la agonía
+Infusión de corazón del invierno, +5 de precisión | +9 de resistencia a la agonía
+Infusión de corazón del invierno, +5 de potencia | +9 de resistencia a la agonía
+Infusión de corazón del invierno, +5 de curación | +9 de resistencia a la agonía
+Infusión de corazón del invierno, +5 de daño de condición | +9 de resistencia a la agonía
+Infusión de corazón del invierno, +5 de dureza | +9 de resistencia a la agonía
+Infusión de corazón del invierno, +5 de concentración | +9 de resistencia a la agonía
+Infusión de corazón del invierno, +5 de pericia | +9 de resistencia a la agonía
+Infusión de cristal de curación, +5 de curación | +9 de resistencia a la agonía
+Infusión de cristal de daño de condición, +5 de daño de condición | +9 de resistencia a la agonía
+Infusión de cristal de duración de bendición, +5 de concentración | +9 de resistencia a la agonía
+Infusión de cristal de duración de condición, +5 de pericia | +9 de resistencia a la agonía
+Infusión de cristal de dureza, +5 de dureza | +9 de resistencia a la agonía
+Infusión de cristal de potencia, +5 de potencia | +9 de resistencia a la agonía
+Infusión de cristal de precisión, +5 de precisión | +9 de resistencia a la agonía
+Infusión de cristal de vitalidad, +5 de vitalidad | +9 de resistencia a la agonía
+Infusión de diamantes de nieve, +5 de potencia | +9 de resistencia a la agonía
+Infusión de diamantes de nieve, +5 de curación | +9 de resistencia a la agonía
+Infusión de diamantes de nieve, +5 de precisión | +9 de resistencia a la agonía
+Infusión de diamantes de nieve, +5 de daño de condición | +9 de resistencia a la agonía
+Infusión de diamantes de nieve, +5 de vitalidad | +9 de resistencia a la agonía
+Infusión de diamantes de nieve, +5 de pericia | +9 de resistencia a la agonía
+Infusión de diamantes de nieve, +5 de concentración | +9 de resistencia a la agonía
+Infusión de diamantes de nieve, +5 de dureza | +9 de resistencia a la agonía
+Infusión de fluidez arcana, +5 de potencia | +9 de resistencia a la agonía
+Infusión de fluidez arcana, +5 de pericia | +9 de resistencia a la agonía
+Infusión de fluidez arcana, +5 de concentración | +9 de resistencia a la agonía
+Infusión de fluidez arcana, +5 de daño de condición | +9 de resistencia a la agonía
+Infusión de fluidez arcana, +5 de curación | +9 de resistencia a la agonía
+Infusión de fluidez arcana, +5 de dureza | +9 de resistencia a la agonía
+Infusión de fluidez arcana, +5 de vitalidad | +9 de resistencia a la agonía
+Infusión de fluidez arcana, +5 de precisión | +9 de resistencia a la agonía
+Infusión de hematites, +5 de curación | +9 de resistencia a la agonía
+Infusión de hematites, +5 de vitalidad | +9 de resistencia a la agonía
+Infusión de hematites, +5 de precisión | +9 de resistencia a la agonía
+Infusión de hematites, +5 de potencia | +9 de resistencia a la agonía
+Infusión de hematites, +5 de daño de condición | +9 de resistencia a la agonía
+Infusión de hematites, +5 de dureza | +9 de resistencia a la agonía
+Infusión de hematites, +5 de concentración | +9 de resistencia a la agonía
+Infusión de hematites, +5 de pericia | +9 de resistencia a la agonía
+Infusión de la Legión de la Escarcha, +5 de daño de condición | +9 de resistencia a la agonía
+Infusión de la Legión de la Escarcha, +5 de curación | +9 de resistencia a la agonía
+Infusión de la Legión de la Escarcha, +5 de dureza | +9 de resistencia a la agonía
+Infusión de la Legión de la Escarcha, +5 de concentración | +9 de resistencia a la agonía
+Infusión de la Legión de la Escarcha, +5 de potencia | +9 de resistencia a la agonía
+Infusión de la Legión de la Escarcha, +5 de pericia | +9 de resistencia a la agonía
+Infusión de la Legión de la Escarcha, +5 de precisión | +9 de resistencia a la agonía
+Infusión de la Legión de la Escarcha, +5 de vitalidad | +9 de resistencia a la agonía
+Infusión de llama del bosque, ¡La llama del bosque aparece cuando le viene en gana! | +5 de potencia | +9 de resistencia a la agonía
+Infusión de núcleo calorífico, Habilita el estado supercalentado de la lanza Estrella Fugaz. | +5 de potencia | +9 de resistencia a la agonía
+Infusión de piel de piedra de Deldrimor, +5 de precisión | +9 de resistencia a la agonía
+Infusión de piel de piedra de Deldrimor, +5 de curación | +9 de resistencia a la agonía
+Infusión de piel de piedra de Deldrimor, +5 de pericia | +9 de resistencia a la agonía
+Infusión de piel de piedra de Deldrimor, +5 de potencia | +9 de resistencia a la agonía
+Infusión de piel de piedra de Deldrimor, +5 de daño de condición | +9 de resistencia a la agonía
+Infusión de piel de piedra de Deldrimor, +5 de vitalidad | +9 de resistencia a la agonía
+Infusión de piel de piedra de Deldrimor, +5 de concentración | +9 de resistencia a la agonía
+Infusión de piel de piedra de Deldrimor, +5 de dureza | +9 de resistencia a la agonía
+Infusión de posesión, +5 de potencia | +9 de resistencia a la agonía
+Infusión de posesión, +5 de dureza | +9 de resistencia a la agonía
+Infusión de posesión, +5 de precisión | +9 de resistencia a la agonía
+Infusión de posesión, +5 de curación | +9 de resistencia a la agonía
+Infusión de posesión, +5 de pericia | +9 de resistencia a la agonía
+Infusión de posesión, +5 de daño de condición | +9 de resistencia a la agonía
+Infusión de posesión, +5 de vitalidad | +9 de resistencia a la agonía
+Infusión de posesión, +5 de concentración | +9 de resistencia a la agonía
+Infusión de velocidad de natación +10, Aumenta la velocidad de natación.
+Infusión de velocidad de natación +11, Aumenta la velocidad de natación.
+Infusión de velocidad de natación +12, Aumenta la velocidad de natación.
+Infusión de velocidad de natación +13, Aumenta la velocidad de natación.
+Infusión de velocidad de natación +14, Aumenta la velocidad de natación.
+Infusión de velocidad de natación +15, Aumenta la velocidad de natación.
+Infusión de velocidad de natación +16, Aumenta la velocidad de natación.
+Infusión de velocidad de natación +17, Aumenta la velocidad de natación.
+Infusión de velocidad de natación +18, Aumenta la velocidad de natación.
+Infusión de velocidad de natación +19, Aumenta la velocidad de natación.
+Infusión de velocidad de natación +20, Aumenta la velocidad de natación.
+Infusión de velocidad de natación +21, Aumenta la velocidad de natación.
+Infusión de velocidad de natación +22, Aumenta la velocidad de natación.
+Infusión de velocidad de natación +23, Aumenta la velocidad de natación.
+Infusión de velocidad de natación +24, Aumenta la velocidad de natación.
+Infusión de velocidad de natación +25, Aumenta la velocidad de natación.
+Infusión de velocidad de natación +26, Aumenta la velocidad de natación.
+Infusión de velocidad de natación +27, Aumenta la velocidad de natación.
+Infusión de velocidad de natación +28, Aumenta la velocidad de natación.
+Infusión de velocidad de natación +29, Aumenta la velocidad de natación.
+Infusión de velocidad de natación +30, Aumenta la velocidad de natación.
+Infusión de velocidad de natación de cuenta, Aumentas tu velocidad de natación un 15 %, más bonificación de cuenta. | +5 de resistencia a la agonía
+Infusión de vida marina etérea, +5 de concentración | +9 de resistencia a la agonía
+Infusión de vida marina etérea, +5 de daño de condición | +9 de resistencia a la agonía
+Infusión de vida marina etérea, +5 de pericia | +9 de resistencia a la agonía
+Infusión de vida marina etérea, +5 de vitalidad | +9 de resistencia a la agonía
+Infusión de vida marina etérea, +5 de curación | +9 de resistencia a la agonía
+Infusión de vida marina etérea, +5 de potencia | +9 de resistencia a la agonía
+Infusión de vida marina etérea, +5 de precisión | +9 de resistencia a la agonía
+Infusión de vida marina etérea, +5 de dureza | +9 de resistencia a la agonía
+Infusión de WvW de concentración, +5 de concentración | -1 % de daño recibido de guardias, líderes y supervisores
+Infusión de WvW de curación, +5 de curación | -1 % de daño recibido de guardias, líderes y supervisores
+Infusión de WvW de pericia, +5 de pericia | +1 % de daño a guardias, líderes y supervisores
+Infusión de WvW de poder, +5 de potencia | +1 % de daño a guardias, líderes y supervisores
+Infusión de WvW maligna, +5 de daño de condición | +1 % de daño a guardias, líderes y supervisores
+Infusión de WvW precisa, +5 de precisión | +1 % de daño a guardias, líderes y supervisores
+Infusión de WvW resistente, +5 de dureza | -1 % de daño recibido de guardias, líderes y supervisores
+Infusión de WvW vital, +5 de vitalidad | -1 % de daño recibido de guardias, líderes y supervisores
+Infusión del ojo derecho de Jormag, +5 de curación | +9 de resistencia a la agonía
+Infusión del ojo derecho de Jormag, +5 de vitalidad | +9 de resistencia a la agonía
+Infusión del ojo derecho de Jormag, +5 de potencia | +9 de resistencia a la agonía
+Infusión del ojo derecho de Jormag, +5 de concentración | +9 de resistencia a la agonía
+Infusión del ojo derecho de Jormag, +5 de daño de condición | +9 de resistencia a la agonía
+Infusión del ojo derecho de Jormag, +5 de dureza | +9 de resistencia a la agonía
+Infusión del ojo derecho de Jormag, +5 de pericia | +9 de resistencia a la agonía
+Infusión del ojo derecho de Jormag, +5 de precisión | +9 de resistencia a la agonía
+Infusión del ojo derecho de Primordus, +5 de concentración | +9 de resistencia a la agonía
+Infusión del ojo derecho de Primordus, +5 de curación | +9 de resistencia a la agonía
+Infusión del ojo derecho de Primordus, +5 de pericia | +9 de resistencia a la agonía
+Infusión del ojo derecho de Primordus, +5 de daño de condición | +9 de resistencia a la agonía
+Infusión del ojo derecho de Primordus, +5 de vitalidad | +9 de resistencia a la agonía
+Infusión del ojo derecho de Primordus, +5 de potencia | +9 de resistencia a la agonía
+Infusión del ojo derecho de Primordus, +5 de precisión | +9 de resistencia a la agonía
+Infusión del ojo derecho de Primordus, +5 de dureza | +9 de resistencia a la agonía
+Infusión del ojo izquierdo de Jormag, +5 de potencia | +9 de resistencia a la agonía
+Infusión del ojo izquierdo de Jormag, +5 de concentración | +9 de resistencia a la agonía
+Infusión del ojo izquierdo de Jormag, +5 de vitalidad | +9 de resistencia a la agonía
+Infusión del ojo izquierdo de Jormag, +5 de curación | +9 de resistencia a la agonía
+Infusión del ojo izquierdo de Jormag, +5 de daño de condición | +9 de resistencia a la agonía
+Infusión del ojo izquierdo de Jormag, +5 de dureza | +9 de resistencia a la agonía
+Infusión del ojo izquierdo de Jormag, +5 de pericia | +9 de resistencia a la agonía
+Infusión del ojo izquierdo de Jormag, +5 de precisión | +9 de resistencia a la agonía
+Infusión del ojo izquierdo de Primordus, +5 de precisión | +9 de resistencia a la agonía
+Infusión del ojo izquierdo de Primordus, +5 de curación | +9 de resistencia a la agonía
+Infusión del ojo izquierdo de Primordus, +5 de pericia | +9 de resistencia a la agonía
+Infusión del ojo izquierdo de Primordus, +5 de dureza | +9 de resistencia a la agonía
+Infusión del ojo izquierdo de Primordus, +5 de daño de condición | +9 de resistencia a la agonía
+Infusión del ojo izquierdo de Primordus, +5 de concentración | +9 de resistencia a la agonía
+Infusión del ojo izquierdo de Primordus, +5 de vitalidad | +9 de resistencia a la agonía
+Infusión del ojo izquierdo de Primordus, +5 de potencia | +9 de resistencia a la agonía
+Infusión demoníaca, +5 de pericia | +9 de resistencia a la agonía
+Infusión demoníaca, +5 de concentración | +9 de resistencia a la agonía
+Infusión demoníaca, +5 de daño de condición | +9 de resistencia a la agonía
+Infusión demoníaca, +5 de potencia | +9 de resistencia a la agonía
+Infusión fantasmal, +5 de curación | +9 de resistencia a la agonía
+Infusión fantasmal, +5 de vitalidad | +9 de resistencia a la agonía
+Infusión fantasmal, +5 de potencia | +9 de resistencia a la agonía
+Infusión fantasmal, +5 de precisión | +9 de resistencia a la agonía
+Infusión fantasmal, +5 de daño de condición | +9 de resistencia a la agonía
+Infusión fantasmal, +5 de dureza | +9 de resistencia a la agonía
+Infusión fantasmal, +5 de pericia | +9 de resistencia a la agonía
+Infusión fantasmal, +5 de concentración | +9 de resistencia a la agonía
+Infusión festiva de confeti, +5 de daño de condición | +9 de resistencia a la agonía
+Infusión festiva de confeti, +5 de potencia | +9 de resistencia a la agonía
+Infusión festiva de confeti, +5 de precisión | +9 de resistencia a la agonía
+Infusión festiva de confeti, +5 de dureza | +9 de resistencia a la agonía
+Infusión festiva de confeti, +5 de vitalidad | +9 de resistencia a la agonía
+Infusión festiva de confeti, +5 de curación | +9 de resistencia a la agonía
+Infusión festiva de confeti, +5 de pericia | +9 de resistencia a la agonía
+Infusión festiva de confeti, +5 de concentración | +9 de resistencia a la agonía
+Infusión fosfoluminiscente, +5 de precisión | +9 de resistencia a la agonía
+Infusión fosfoluminiscente, +5 de vitalidad | +9 de resistencia a la agonía
+Infusión fosfoluminiscente, +5 de dureza | +9 de resistencia a la agonía
+Infusión fosfoluminiscente, +5 de potencia | +9 de resistencia a la agonía
+Infusión fosfoluminiscente, +5 de curación | +9 de resistencia a la agonía
+Infusión fosfoluminiscente, +5 de daño de condición | +9 de resistencia a la agonía
+Infusión fosfoluminiscente, +5 de concentración | +9 de resistencia a la agonía
+Infusión fosfoluminiscente, +5 de pericia | +9 de resistencia a la agonía
+Infusión jotun, +5 de daño de condición | +9 de resistencia a la agonía
+Infusión jotun, +5 de curación | +9 de resistencia a la agonía
+Infusión jotun, +5 de concentración | +9 de resistencia a la agonía
+Infusión jotun, +5 de dureza | +9 de resistencia a la agonía
+Infusión jotun, +5 de precisión | +9 de resistencia a la agonía
+Infusión jotun, +5 de vitalidad | +9 de resistencia a la agonía
+Infusión jotun, +5 de pericia | +9 de resistencia a la agonía
+Infusión jotun, +5 de potencia | +9 de resistencia a la agonía
+Infusión maligna, +4 de daño de condición
+Infusión mecánica, +5 de daño de condición | +9 de resistencia a la agonía
+Infusión mecánica, +5 de dureza | +9 de resistencia a la agonía
+Infusión mecánica, +5 de vitalidad | +9 de resistencia a la agonía
+Infusión mecánica, +5 de concentración | +9 de resistencia a la agonía
+Infusión mecánica, +5 de pericia | +9 de resistencia a la agonía
+Infusión mecánica, +5 de potencia | +9 de resistencia a la agonía
+Infusión mecánica, +5 de precisión | +9 de resistencia a la agonía
+Infusión mecánica, +5 de curación | +9 de resistencia a la agonía
+Infusión mística, +5 de vitalidad | +9 de resistencia a la agonía
+Infusión mística, +5 de concentración | +9 de resistencia a la agonía
+Infusión mística, +5 de daño de condición | +9 de resistencia a la agonía
+Infusión mística, +5 de precisión | +9 de resistencia a la agonía
+Infusión mística, +5 de dureza | +9 de resistencia a la agonía
+Infusión mística, +5 de curación | +9 de resistencia a la agonía
+Infusión mística, +5 de pericia | +9 de resistencia a la agonía
+Infusión mística, +5 de potencia | +9 de resistencia a la agonía
+Infusión ondeante poliluminiscente (azul verdosa), +5 de vitalidad | +9 de resistencia a la agonía
+Infusión ondeante poliluminiscente (azul verdosa), +5 de potencia | +9 de resistencia a la agonía
+Infusión ondeante poliluminiscente (azul verdosa), +5 de precisión | +9 de resistencia a la agonía
+Infusión ondeante poliluminiscente (azul verdosa), +5 de daño de condición | +9 de resistencia a la agonía
+Infusión ondeante poliluminiscente (azul verdosa), +5 de dureza | +9 de resistencia a la agonía
+Infusión ondeante poliluminiscente (azul verdosa), +5 de curación | +9 de resistencia a la agonía
+Infusión ondeante poliluminiscente (azul verdosa), +5 de concentración | +9 de resistencia a la agonía
+Infusión ondeante poliluminiscente (azul verdosa), +5 de pericia | +9 de resistencia a la agonía
+Infusión ondeante poliluminiscente (naranja), +5 de precisión | +9 de resistencia a la agonía
+Infusión ondeante poliluminiscente (naranja), +5 de daño de condición | +9 de resistencia a la agonía
+Infusión ondeante poliluminiscente (naranja), +5 de potencia | +9 de resistencia a la agonía
+Infusión ondeante poliluminiscente (naranja), +5 de dureza | +9 de resistencia a la agonía
+Infusión ondeante poliluminiscente (naranja), +5 de vitalidad | +9 de resistencia a la agonía
+Infusión ondeante poliluminiscente (naranja), +5 de curación | +9 de resistencia a la agonía
+Infusión ondeante poliluminiscente (naranja), +5 de pericia | +9 de resistencia a la agonía
+Infusión ondeante poliluminiscente (naranja), +5 de concentración | +9 de resistencia a la agonía
+Infusión ondeante poliluminiscente (negra), +5 de dureza | +9 de resistencia a la agonía
+Infusión ondeante poliluminiscente (negra), +5 de precisión | +9 de resistencia a la agonía
+Infusión ondeante poliluminiscente (negra), +5 de vitalidad | +9 de resistencia a la agonía
+Infusión ondeante poliluminiscente (negra), +5 de daño de condición | +9 de resistencia a la agonía
+Infusión ondeante poliluminiscente (negra), +5 de potencia | +9 de resistencia a la agonía
+Infusión ondeante poliluminiscente (negra), +5 de curación | +9 de resistencia a la agonía
+Infusión ondeante poliluminiscente (negra), +5 de pericia | +9 de resistencia a la agonía
+Infusión ondeante poliluminiscente (negra), +5 de concentración | +9 de resistencia a la agonía
+Infusión ondeante poliluminiscente (verde), +5 de vitalidad | +9 de resistencia a la agonía
+Infusión ondeante poliluminiscente (verde), +5 de potencia | +9 de resistencia a la agonía
+Infusión ondeante poliluminiscente (verde), +5 de curación | +9 de resistencia a la agonía
+Infusión ondeante poliluminiscente (verde), +5 de precisión | +9 de resistencia a la agonía
+Infusión ondeante poliluminiscente (verde), +5 de dureza | +9 de resistencia a la agonía
+Infusión ondeante poliluminiscente (verde), +5 de daño de condición | +9 de resistencia a la agonía
+Infusión ondeante poliluminiscente (verde), +5 de concentración | +9 de resistencia a la agonía
+Infusión ondeante poliluminiscente (verde), +5 de pericia | +9 de resistencia a la agonía
+Infusión poderosa, +4 de potencia
+Infusión precisa, +4 de precisión
+Infusión resistente, +4 de dureza
+Infusión reverberante polisaturante (gris), +5 de daño de condición | +9 de resistencia a la agonía
+Infusión reverberante polisaturante (gris), +5 de pericia | +9 de resistencia a la agonía
+Infusión reverberante polisaturante (gris), +5 de precisión | +9 de resistencia a la agonía
+Infusión reverberante polisaturante (gris), +5 de dureza | +9 de resistencia a la agonía
+Infusión reverberante polisaturante (gris), +5 de potencia | +9 de resistencia a la agonía
+Infusión reverberante polisaturante (gris), +5 de vitalidad | +9 de resistencia a la agonía
+Infusión reverberante polisaturante (gris), +5 de curación | +9 de resistencia a la agonía
+Infusión reverberante polisaturante (gris), +5 de concentración | +9 de resistencia a la agonía
+Infusión reverberante polisaturante (morada), +5 de dureza | +9 de resistencia a la agonía
+Infusión reverberante polisaturante (morada), +5 de precisión | +9 de resistencia a la agonía
+Infusión reverberante polisaturante (morada), +5 de vitalidad | +9 de resistencia a la agonía
+Infusión reverberante polisaturante (morada), +5 de curación | +9 de resistencia a la agonía
+Infusión reverberante polisaturante (morada), +5 de pericia | +9 de resistencia a la agonía
+Infusión reverberante polisaturante (morada), +5 de concentración | +9 de resistencia a la agonía
+Infusión reverberante polisaturante (morada), +5 de potencia | +9 de resistencia a la agonía
+Infusión reverberante polisaturante (morada), +5 de daño de condición | +9 de resistencia a la agonía
+Infusión reverberante polisaturante (roja), +5 de curación | +9 de resistencia a la agonía
+Infusión reverberante polisaturante (roja), +5 de precisión | +9 de resistencia a la agonía
+Infusión reverberante polisaturante (roja), +5 de concentración | +9 de resistencia a la agonía
+Infusión reverberante polisaturante (roja), +5 de vitalidad | +9 de resistencia a la agonía
+Infusión reverberante polisaturante (roja), +5 de pericia | +9 de resistencia a la agonía
+Infusión reverberante polisaturante (roja), +5 de potencia | +9 de resistencia a la agonía
+Infusión reverberante polisaturante (roja), +5 de daño de condición | +9 de resistencia a la agonía
+Infusión reverberante polisaturante (roja), +5 de dureza | +9 de resistencia a la agonía
+Infusión simpar, +5 de dureza | +9 de resistencia a la agonía
+Infusión simpar, +5 de daño de condición | +9 de resistencia a la agonía
+Infusión simpar, +5 de vitalidad | +9 de resistencia a la agonía
+Infusión simpar, +5 de precisión | +9 de resistencia a la agonía
+Infusión simpar, +5 de potencia | +9 de resistencia a la agonía
+Infusión simpar, +5 de curación | +9 de resistencia a la agonía
+Infusión simpar, +5 de concentración | +9 de resistencia a la agonía
+Infusión simpar, +5 de pericia | +9 de resistencia a la agonía
+Infusión simple, +5 de resistencia a la agonía
+Infusión simple +3, +3 de resistencia a la agonía
+Infusión simple +5, +5 de resistencia a la agonía
+Infusión simple +7, +7 de resistencia a la agonía
+Infusión vital, +4 de vitalidad
+Lente de agonía ámbar (derecha), Altera el color de la energía de la mano derecha de Eikasia, aferranieblas. | +5 de potencia | +9 de resistencia a la agonía
+Lente de agonía ámbar (izquierda), Altera el color de la energía de la mano izquierda de Eikasia, aferranieblas. | +5 de potencia | +9 de resistencia a la agonía
+Lente de agonía áurea (derecha), Altera el color de la energía de la mano derecha de Eikasia, aferranieblas. | +5 de potencia | +9 de resistencia a la agonía
+Lente de agonía áurea (izquierda), Altera el color de la energía de la mano izquierda de Eikasia, aferranieblas. | +5 de potencia | +9 de resistencia a la agonía
+Lente de agonía carmesí (derecha), Altera el color de la energía de la mano derecha de Eikasia, aferranieblas. | +5 de potencia | +9 de resistencia a la agonía
+Lente de agonía carmesí (izquierda), Altera el color de la energía de la mano izquierda de Eikasia, aferranieblas. | +5 de potencia | +9 de resistencia a la agonía
+Lente de agonía celeste (derecha), Altera el color de la energía de la mano derecha de Eikasia, aferranieblas. | +5 de potencia | +9 de resistencia a la agonía
+Lente de agonía celeste (izquierda), Altera el color de la energía de la mano izquierda de Eikasia, aferranieblas. | +5 de potencia | +9 de resistencia a la agonía
+Lente de agonía evanescente (derecha), Oculta la energía de la mano derecha de Eikasia, aferranieblas. | +5 de potencia | +9 de resistencia a la agonía
+Lente de agonía evanescente (izquierda), Oculta la energía de la mano izquierda de Eikasia, aferranieblas. | +5 de potencia | +9 de resistencia a la agonía
+Lente de agonía rosada (derecha), Altera el color de la energía de la mano derecha de Eikasia, aferranieblas. | +5 de potencia | +9 de resistencia a la agonía
+Lente de agonía rosada (izquierda), Altera el color de la energía de la mano izquierda de Eikasia, aferranieblas. | +5 de potencia | +9 de resistencia a la agonía
+Lente de agonía viridiana (derecha), Altera el color de la energía de la mano derecha de Eikasia, aferranieblas. | +5 de potencia | +9 de resistencia a la agonía
+Lente de agonía viridiana (izquierda), Altera el color de la energía de la mano izquierda de Eikasia, aferranieblas. | +5 de potencia | +9 de resistencia a la agonía
+Mota de oscuridad, +5 de pericia | +9 de resistencia a la agonía
+Mota de oscuridad, +5 de potencia | +9 de resistencia a la agonía
+Mota de oscuridad, +5 de daño de condición | +9 de resistencia a la agonía
+Mota de oscuridad, +5 de vitalidad | +9 de resistencia a la agonía
+Mota de oscuridad, +5 de precisión | +9 de resistencia a la agonía
+Mota de oscuridad, +5 de curación | +9 de resistencia a la agonía
+Mota de oscuridad, +5 de concentración | +9 de resistencia a la agonía
+Mota de oscuridad, +5 de dureza | +9 de resistencia a la agonía
+Sinfonía silenciosa, +5 de dureza | +9 de resistencia a la agonía
+Sinfonía silenciosa, +5 de concentración | +9 de resistencia a la agonía
+Sinfonía silenciosa, +5 de curación | +9 de resistencia a la agonía
+Sinfonía silenciosa, +5 de pericia | +9 de resistencia a la agonía
+Sinfonía silenciosa, +5 de precisión | +9 de resistencia a la agonía
+Sinfonía silenciosa, +5 de potencia | +9 de resistencia a la agonía
+Sinfonía silenciosa, +5 de vitalidad | +9 de resistencia a la agonía
+Sinfonía silenciosa, +5 de daño de condición | +9 de resistencia a la agonía
+Trascendencia de los videntes, +5 de precisión | +9 de resistencia a la agonía
+Trascendencia de los videntes, +5 de potencia | +9 de resistencia a la agonía
+Trascendencia de los videntes, +5 de curación | +9 de resistencia a la agonía
+Trascendencia de los videntes, +5 de pericia | +9 de resistencia a la agonía
+Trascendencia de los videntes, +5 de vitalidad | +9 de resistencia a la agonía
+Trascendencia de los videntes, +5 de daño de condición | +9 de resistencia a la agonía
+Trascendencia de los videntes, +5 de dureza | +9 de resistencia a la agonía
+Trascendencia de los videntes, +5 de concentración | +9 de resistencia a la agonía
+Enriquecimiento chapado, +20 % de oro obtenido de monstruos
+Enriquecimiento de bendiciones de la Nutria, +20 % de hallazgo mágico
+Enriquecimiento de bendiciones de PEM de la Sierpe, +10 % de experiencia en WvW
+Enriquecimiento de bendiciones de ruta de recompensas en WvW de la Sierpe, +5 % de ganancia en la ruta de recompensas WvW
+Enriquecimiento de bendiciones doradas de la Sierpe, +20 % de oro obtenido de monstruos
+Enriquecimiento de bendiciones experimentadas de la Sierpe, +20 % de experiencia al matar
+Enriquecimiento de bendiciones kármicas de la Sierpe, +15 % de karma
+Enriquecimiento de bendiciones mágicas de la Sierpe, +20 % de hallazgo mágico
+Enriquecimiento de cumpleaños de celebración, +15 % de karma
+Enriquecimiento de experiencia, +20 % de experiencia al matar
+Enriquecimiento de karma, +15 % de karma
+Enriquecimiento de magia, +20 % de hallazgo mágico
+Enriquecimiento de PEM, +10 % de experiencia en WvW
+Enriquecimiento de ruta de recompensas en WvW, +5 % de ganancia en la ruta de recompensas WvW
+Enriquecimiento del calor de Koda, +15 % de karma

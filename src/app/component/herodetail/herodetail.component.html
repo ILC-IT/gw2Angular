@@ -1,5 +1,9 @@
 <a>
     <img src="https://static.staticwars.com/quaggans/construction.jpg">
 </a>
-<p>{{hero.name}}</p>
-<button type="button" (click)="goBack()">go back</button>
+<p>{{heroName}}</p>
+<button type="button" (click)="goBack()">← Go back</button>
+
+<div *ngIf="loading">
+    Loading info...
+</div>

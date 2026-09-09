@@ -1,49 +1,43 @@
+<h2 class="component-title">Calculadora</h2>
+
 <div class="centrado">
-  <a href="https://www.gw2tp.com/calculator" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
-    <button mat-button>GW2TP Calculator</button>
-  </a>
+    <a href="https://www.gw2tp.com" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+        <button mat-button>GW2TP Calculator</button>
+    </a>
 </div>
 
 <div class="example-container">
     <form [formGroup]="formularioCalc" (ngSubmit)="sendForm()">
         <div class="datos" style="font-size: 18px">
-            <p>Calcular porcentaje:</p>
+            <p>Calcular oro final:</p>
 
             <mat-form-field appearance="fill">
                 <mat-label>Cantidad</mat-label>
-                <input type="number"
-                placeholder="Cantidad"
-                formControlName="cantidad" matInput>
+                <input type="number" placeholder="Cantidad" formControlName="cantidad" matInput>
             </mat-form-field>
 
             <div class="box">
-                <img mat-card-image src="../../../assets/img/oro.png">
+                <img class="coin-img" src="../../../assets/img/oro.png">
             </div>
             <mat-form-field appearance="fill">
                 <mat-label>Oro</mat-label>
-                <input type="number"
-                placeholder="Oro"
-                formControlName="oro" matInput>
+                <input type="number" placeholder="Oro" formControlName="oro" matInput>
             </mat-form-field>
 
             <div class="box">
-                <img mat-card-image src="../../../assets/img/plata.png">
+                <img class="coin-img" src="../../../assets/img/plata.png">
             </div>
             <mat-form-field appearance="fill">
                 <mat-label>Plata</mat-label>
-                <input type="number"
-                placeholder="Plata"
-                formControlName="plata" matInput>
+                <input type="number" placeholder="Plata" formControlName="plata" matInput>
             </mat-form-field>
 
             <div class="box">
-                <img mat-card-image src="../../../assets/img/cobre.png">
+                <img class="coin-img" src="../../../assets/img/cobre.png">
             </div>
             <mat-form-field appearance="fill">
                 <mat-label>Cobre</mat-label>
-                <input type="number"
-                placeholder="Cobre"
-                formControlName="cobre" matInput>
+                <input type="number" placeholder="Cobre" formControlName="cobre" matInput>
             </mat-form-field>
 
             <div class="box">
@@ -51,52 +45,57 @@
             </div>
             <mat-form-field appearance="fill">
                 <mat-label>%</mat-label>
-                <input type="number"
-                placeholder="Porcentaje"
-                formControlName="porcentaje" matInput>
+                <input type="number" placeholder="Porcentaje" formControlName="porcentaje" matInput>
+                <button mat-icon-button matSuffix type="button" class="info-btn"
+                    matTooltip="0% comprar, 5% listar, 10% vender, 15% total" matTooltipClass="tooltip-grande"
+                    matTooltipTouchGestures="on">
+                    <mat-icon>info</mat-icon>
+                </button>
             </mat-form-field>
         </div>
-        <button mat-raised-button color="primary" type="submit">Calcular</button>
-        <button mat-raised-button color="secondary" (click)="resetForm()" type="button">Reset</button>
+        <div class="centrado">
+            <button mat-raised-button color="primary" type="submit">Calcular</button>
+            <button mat-raised-button color="secondary" (click)="resetForm()" type="button">Reset</button>
+        </div>
     </form>
 
     <div class="resultado" *ngIf="loading" style="font-size: 18px">
         <div>
             <div class="res">
-                ({{formularioCalc.value.porcentaje}}%)
+                <div class="res-title">({{formularioCalc.value.porcentaje}}%)</div>
                 <p></p>
                 <mat-card-title-group>
-                    <img mat-card-sm-image src="../../../assets/img/oro.png">
-                    <mat-card-title> {{resultado.resOro}} </mat-card-title>
+                    <img class="coin-img" src="../../../assets/img/oro.png">
+                    <mat-card-title>{{resultado.resOro}}</mat-card-title>
                 </mat-card-title-group>
                 <p></p>
                 <mat-card-title-group>
-                    <img mat-card-sm-image src="../../../assets/img/plata.png">
+                    <img class="coin-img" src="../../../assets/img/plata.png">
                     <mat-card-title>{{resultado.resPlata}}</mat-card-title>
                 </mat-card-title-group>
                 <p></p>
                 <mat-card-title-group>
-                    <img mat-card-sm-image src="../../../assets/img/cobre.png">
+                    <img class="coin-img" src="../../../assets/img/cobre.png">
                     <mat-card-title>{{resultado.resCobre}}</mat-card-title>
                 </mat-card-title-group>
             </div>
         </div>
         <div>
             <div class="res">
-                Resultado:
+                <div class="res-title">Resultado:</div>
                 <p></p>
                 <mat-card-title-group>
-                    <img mat-card-sm-image src="../../../assets/img/oro.png">
+                    <img class="coin-img" src="../../../assets/img/oro.png">
                     <mat-card-title>{{resultado.difOro}}</mat-card-title>
                 </mat-card-title-group>
                 <p></p>
                 <mat-card-title-group>
-                    <img mat-card-sm-image src="../../../assets/img/plata.png">
+                    <img class="coin-img" src="../../../assets/img/plata.png">
                     <mat-card-title>{{resultado.difPlata}}</mat-card-title>
                 </mat-card-title-group>
                 <p></p>
                 <mat-card-title-group>
-                    <img mat-card-sm-image src="../../../assets/img/cobre.png">
+                    <img class="coin-img" src="../../../assets/img/cobre.png">
                     <mat-card-title>{{resultado.difCobre}}</mat-card-title>
                 </mat-card-title-group>
             </div>

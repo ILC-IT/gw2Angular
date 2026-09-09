@@ -84,7 +84,7 @@ export class StatsComponent implements OnInit {
     'buscarporarma': 'Buscar por nombre arma/armadura'
   };
 
-  constructor(private formBuilder: FormBuilder,  private route: ActivatedRoute,  private router: Router) { 
+  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router) {
     this.initForm();
   }
 
@@ -119,7 +119,7 @@ export class StatsComponent implements OnInit {
     this.router.navigate(['/stats', routeName]);
   }
 
-  initForm(){
+  initForm() {
     this.formularioStats = this.formBuilder.group({
       stat1Mayor: [''],
       stat2Mayor: [''],
@@ -146,55 +146,55 @@ export class StatsComponent implements OnInit {
     });
   }
 
-  sendFormStat(){
-    if (this.formularioStats.status == "INVALID"){
+  sendFormStat() {
+    if (this.formularioStats.status == "INVALID") {
       return;
     }
     this.resultado = this.buscarAtributos();
     this.loadingS = true;
   }
 
-  sendFormPrefijo(){
-    if (this.formularioPrefijo.status == "INVALID"){
+  sendFormPrefijo() {
+    if (this.formularioPrefijo.status == "INVALID") {
       return;
     }
     this.resultadoPrefijo = this.buscarPrefijo();
     this.loadingP = true;
   }
 
-  sendFormArmadura(){
-    if (this.formularioArmadura.status == "INVALID"){
+  sendFormArmadura() {
+    if (this.formularioArmadura.status == "INVALID") {
       return;
     }
     this.resultadoArmadura = this.buscarArmadura();
     this.loadingA = true;
   }
 
-  sendFormStatEng(){
-    if (this.formularioStatsEng.status == "INVALID"){
+  sendFormStatEng() {
+    if (this.formularioStatsEng.status == "INVALID") {
       return;
     }
     this.resultadoEng = this.buscarAtributosEng();
     this.loadingSEng = true;
   }
 
-  sendFormPrefijoEng(){
-    if (this.formularioPrefijoEng.status == "INVALID"){
+  sendFormPrefijoEng() {
+    if (this.formularioPrefijoEng.status == "INVALID") {
       return;
     }
     this.resultadoPrefijoEng = this.buscarPrefijoEng();
     this.loadingPEng = true;
   }
 
-  sendFormArmaduraEng(){
-    if (this.formularioArmaduraEng.status == "INVALID"){
+  sendFormArmaduraEng() {
+    if (this.formularioArmaduraEng.status == "INVALID") {
       return;
     }
     this.resultadoArmaduraEng = this.buscarArmaduraEng();
     this.loadingAEng = true;
   }
 
-  resetFormS(){
+  resetFormS() {
     this.formularioStats.reset();
     this.formularioStats.markAsUntouched();
     this.formularioStats.setValue({
@@ -206,7 +206,7 @@ export class StatsComponent implements OnInit {
     this.loadingS = false;
   }
 
-  resetFormP(){
+  resetFormP() {
     this.formularioPrefijo.reset();
     this.formularioPrefijo.markAsUntouched();
     this.formularioPrefijo.setValue({
@@ -215,7 +215,7 @@ export class StatsComponent implements OnInit {
     this.loadingP = false;
   }
 
-  resetFormA(){
+  resetFormA() {
     this.formularioArmadura.reset();
     this.formularioArmadura.markAsUntouched();
     this.formularioArmadura.setValue({
@@ -224,7 +224,7 @@ export class StatsComponent implements OnInit {
     this.loadingA = false;
   }
 
-  resetFormSEng(){
+  resetFormSEng() {
     this.formularioStatsEng.reset();
     this.formularioStatsEng.markAsUntouched();
     this.formularioStatsEng.setValue({
@@ -236,7 +236,7 @@ export class StatsComponent implements OnInit {
     this.loadingSEng = false;
   }
 
-  resetFormPEng(){
+  resetFormPEng() {
     this.formularioPrefijoEng.reset();
     this.formularioPrefijoEng.markAsUntouched();
     this.formularioPrefijoEng.setValue({
@@ -245,7 +245,7 @@ export class StatsComponent implements OnInit {
     this.loadingPEng = false;
   }
 
-  resetFormAEng(){
+  resetFormAEng() {
     this.formularioArmaduraEng.reset();
     this.formularioArmaduraEng.markAsUntouched();
     this.formularioArmaduraEng.setValue({
@@ -254,7 +254,7 @@ export class StatsComponent implements OnInit {
     this.loadingAEng = false;
   }
 
-  buscarAtributos(){
+  buscarAtributos() {
     let valor = this.formularioStats.value;
     let arrayBuscar = [];
     let resultadoo = {};
@@ -266,8 +266,8 @@ export class StatsComponent implements OnInit {
     // console.log(statsEsp[0])
     // console.log(arrayBuscar)
 
-    for (let i = 0; i < statsEsp.length; i++){
-      if (isEqual(statsEsp[i].stats, arrayBuscar) ){
+    for (let i = 0; i < statsEsp.length; i++) {
+      if (isEqual(statsEsp[i].stats, arrayBuscar)) {
         //console.log('encontrado')
         return resultadoo = statsEsp[i];
       }
@@ -282,13 +282,13 @@ export class StatsComponent implements OnInit {
     }
   }
 
-  buscarPrefijo(){
+  buscarPrefijo() {
     let valor = this.formularioPrefijo.value;
     let resultadoo = {};
     // console.log(valor.prefijo)
 
-    for (let i = 0; i < statsEsp.length; i++){
-      if (isEqual(statsEsp[i].nombreStat, valor.prefijo) ){
+    for (let i = 0; i < statsEsp.length; i++) {
+      if (isEqual(statsEsp[i].nombreStat, valor.prefijo)) {
         // console.log('encontrado')
         return resultadoo = statsEsp[i];
       }
@@ -303,13 +303,13 @@ export class StatsComponent implements OnInit {
     }
   }
 
-  buscarArmadura(){
+  buscarArmadura() {
     let valor = this.formularioArmadura.value;
     let resultadoo = {};
     // console.log(valor.armadura)
 
-    for (let i = 0; i < statsEsp.length; i++){
-      if (isEqual(statsEsp[i].armadura, valor.armadura) ){
+    for (let i = 0; i < statsEsp.length; i++) {
+      if (isEqual(statsEsp[i].armadura, valor.armadura)) {
         // console.log('encontrado')
         return resultadoo = statsEsp[i];
       }
@@ -325,7 +325,7 @@ export class StatsComponent implements OnInit {
   }
 
   //ENG
-  buscarAtributosEng(){
+  buscarAtributosEng() {
     let valor = this.formularioStatsEng.value;
     let arrayBuscar = [];
     let resultadoo = {};
@@ -337,8 +337,8 @@ export class StatsComponent implements OnInit {
     // console.log(statsEng[0])
     // console.log(arrayBuscar)
 
-    for (let i = 0; i < statsEng.length; i++){
-      if (isEqual(statsEng[i].stats, arrayBuscar) ){
+    for (let i = 0; i < statsEng.length; i++) {
+      if (isEqual(statsEng[i].stats, arrayBuscar)) {
         // console.log('encontrado')
         return resultadoo = statsEng[i];
       }
@@ -353,13 +353,13 @@ export class StatsComponent implements OnInit {
     }
   }
 
-  buscarPrefijoEng(){
+  buscarPrefijoEng() {
     let valor = this.formularioPrefijoEng.value;
     let resultadoo = {};
     // console.log(valor.prefijo)
 
-    for (let i = 0; i < statsEng.length; i++){
-      if (isEqual(statsEng[i].nombreStat, valor.prefijo) ){
+    for (let i = 0; i < statsEng.length; i++) {
+      if (isEqual(statsEng[i].nombreStat, valor.prefijo)) {
         // console.log('encontrado')
         return resultadoo = statsEng[i];
       }
@@ -374,13 +374,13 @@ export class StatsComponent implements OnInit {
     }
   }
 
-  buscarArmaduraEng(){
+  buscarArmaduraEng() {
     let valor = this.formularioArmaduraEng.value;
     let resultadoo = {};
     // console.log(valor.armadura)
 
-    for (let i = 0; i < statsEng.length; i++){
-      if (isEqual(statsEng[i].armadura, valor.armadura) ){
+    for (let i = 0; i < statsEng.length; i++) {
+      if (isEqual(statsEng[i].armadura, valor.armadura)) {
         // console.log('encontrado')
         return resultadoo = statsEng[i];
       }

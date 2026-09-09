@@ -3,117 +3,147 @@
         <nav>
             <a routerLink="/">Menú</a>
 
-            <a [matMenuTriggerFor]="diariasMenu"
-                #diariasTrigger="matMenuTrigger"
-                (mouseenter)="openMenu(diariasTrigger)"
-                (mouseleave)="closeMenu(diariasTrigger)"
-                routerLink="/diaria">
+            <a [matMenuTriggerFor]="diariasMenu" #diariasTrigger="matMenuTrigger"
+                (mouseenter)="openMenu(diariasTrigger)" (mouseleave)="closeMenu(diariasTrigger)" routerLink="/diaria">
                 Diarias
             </a>
             <mat-menu class="menu-diarias" [hasBackdrop]="false" #diariasMenu="matMenu" [overlapTrigger]="false">
-                <div (mouseenter)="cancelCloseMenu(diariasTrigger)"
-                    (mouseleave)="closeMenu(diariasTrigger)">
-                <a mat-menu-item [routerLink]="'/diaria/wizardvault'">Cámara del brujo</a>
-                <a mat-menu-item [routerLink]="'/diaria/fractales'">Fractales</a>
-                <a mat-menu-item [routerLink]="'/diaria/semanales'">Semanales</a>
-                <a mat-menu-item [routerLink]="'/diaria/otros'">Más diarias</a>
+                <div (mouseenter)="cancelCloseMenu(diariasTrigger)" (mouseleave)="closeMenu(diariasTrigger)">
+                    <a mat-menu-item [routerLink]="'/diaria/wizardvault'">Cámara del brujo</a>
+                    <a mat-menu-item [routerLink]="'/diaria/fractales'">Fractales</a>
+                    <a mat-menu-item [routerLink]="'/diaria/semanales'">Semanales</a>
+                    <a mat-menu-item [routerLink]="'/diaria/otros'">Más diarias</a>
                 </div>
             </mat-menu>
 
-            <a routerLink="/heroes">Héroes</a>
+            <a [matMenuTriggerFor]="heroesMenu" #heroesTrigger="matMenuTrigger" (mouseenter)="openMenu(heroesTrigger)"
+                (mouseleave)="closeMenu(heroesTrigger)" routerLink="/heroes">
+                Héroes
+            </a>
+            <mat-menu class="menu-diarias" [hasBackdrop]="false" #heroesMenu="matMenu" [overlapTrigger]="false">
+                <div (mouseenter)="cancelCloseMenu(heroesTrigger)" (mouseleave)="closeMenu(heroesTrigger)">
+                    <a mat-menu-item [routerLink]="'/heroes/heroesinfo'">Héroes Info</a>
+                    <a mat-menu-item [routerLink]="'/heroes/infusiones'">Infusiones</a>
+                </div>
+            </mat-menu>
+
             <a routerLink="/calculadora">Calculadora</a>
 
-            <a [matMenuTriggerFor]="buscadorStatsMenu"
-                #buscadorStatsTrigger="matMenuTrigger"
-                (mouseenter)="openMenu(buscadorStatsTrigger)"
-                (mouseleave)="closeMenu(buscadorStatsTrigger)"
+            <a [matMenuTriggerFor]="buscadorStatsMenu" #buscadorStatsTrigger="matMenuTrigger"
+                (mouseenter)="openMenu(buscadorStatsTrigger)" (mouseleave)="closeMenu(buscadorStatsTrigger)"
                 routerLink="/stats">
                 Buscador Stats
             </a>
             <mat-menu class="menu-diarias" [hasBackdrop]="false" #buscadorStatsMenu="matMenu" [overlapTrigger]="false">
                 <div (mouseenter)="cancelCloseMenu(buscadorStatsTrigger)"
                     (mouseleave)="closeMenu(buscadorStatsTrigger)">
-                <a mat-menu-item [routerLink]="'/stats/buscarporstats'">Atributos</a>
-                <a mat-menu-item [routerLink]="'/stats/buscarporprefijo'">Prefijo</a>
-                <a mat-menu-item [routerLink]="'/stats/buscarporarma'">Nombre arma</a>
+                    <a mat-menu-item [routerLink]="'/stats/buscarporstats'">Atributos</a>
+                    <a mat-menu-item [routerLink]="'/stats/buscarporprefijo'">Prefijo</a>
+                    <a mat-menu-item [routerLink]="'/stats/buscarporarma'">Nombre arma</a>
+                </div>
+            </mat-menu>
+
+            <a [matMenuTriggerFor]="buscadorPoiMenu" #buscadorPoiTrigger="matMenuTrigger"
+                (mouseenter)="openMenu(buscadorPoiTrigger)" (mouseleave)="closeMenu(buscadorPoiTrigger)"
+                routerLink="/poi">
+                Buscador Poi
+            </a>
+            <mat-menu class="menu-diarias" [hasBackdrop]="false" #buscadorPoiMenu="matMenu" [overlapTrigger]="false">
+                <div (mouseenter)="cancelCloseMenu(buscadorPoiTrigger)" (mouseleave)="closeMenu(buscadorPoiTrigger)">
+                    <a mat-menu-item [routerLink]="'/poi/buscarpornombre'">Nombre</a>
+                    <a mat-menu-item [routerLink]="'/poi/buscarpormapa'">Mapa</a>
+                    <a mat-menu-item [routerLink]="'/poi/buscarporcodigo'">Código</a>
                 </div>
             </mat-menu>
 
             <a routerLink="/enlaces">Enlaces</a>
 
-            <a [matMenuTriggerFor]="raidMenu"
-                #raidTrigger="matMenuTrigger"
-                (mouseenter)="openMenu(raidTrigger)"
-                (mouseleave)="closeMenu(raidTrigger)"
-                routerLink="/raid">
+            <a [matMenuTriggerFor]="raidMenu" #raidTrigger="matMenuTrigger" (mouseenter)="openMenu(raidTrigger)"
+                (mouseleave)="closeMenu(raidTrigger)" routerLink="/raid">
                 Raid
             </a>
             <mat-menu class="menu-diarias" [hasBackdrop]="false" #raidMenu="matMenu" [overlapTrigger]="false">
-                <div (mouseenter)="cancelCloseMenu(raidTrigger)"
-                    (mouseleave)="closeMenu(raidTrigger)">
-                <a mat-menu-item [routerLink]="'/raid/limpieza'">Limpieza</a>
-                <a mat-menu-item [routerLink]="'/raid/weeklyraid'">Logro Raid Semanal</a>
-                <a mat-menu-item [routerLink]="'/raid/dailyraidbounties'">Daily Raid Bounties</a>
+                <div (mouseenter)="cancelCloseMenu(raidTrigger)" (mouseleave)="closeMenu(raidTrigger)">
+                    <a mat-menu-item [routerLink]="'/raid/limpieza'">Limpieza</a>
+                    <a mat-menu-item [routerLink]="'/raid/weeklyraid'">Logro Raid Semanal</a>
+                    <a mat-menu-item [routerLink]="'/raid/dailyraidbounties'">Daily Raid Bounties</a>
                 </div>
             </mat-menu>
 
-            <a [matMenuTriggerFor]="legendariosMenu"
-                #legendariosTrigger="matMenuTrigger"
-                (mouseenter)="openMenu(legendariosTrigger)"
-                (mouseleave)="closeMenu(legendariosTrigger)"
+            <a routerLink="/dungeon">Dungeon</a>
+
+            <a [matMenuTriggerFor]="legendariosMenu" #legendariosTrigger="matMenuTrigger"
+                (mouseenter)="openMenu(legendariosTrigger)" (mouseleave)="closeMenu(legendariosTrigger)"
                 routerLink="/legendary">
                 Legendarios
             </a>
             <mat-menu class="menu-diarias" [hasBackdrop]="false" #legendariosMenu="matMenu" [overlapTrigger]="false">
-                <div (mouseenter)="cancelCloseMenu(legendariosTrigger)"
-                    (mouseleave)="closeMenu(legendariosTrigger)">
-                <a mat-menu-item [routerLink]="'/legendary/armaduraraid'">Armadura Raid</a>
-                <a mat-menu-item [routerLink]="'/legendary/otroslegendarios'">Otros legendarios</a>
-                <a mat-menu-item [routerLink]="'/legendary/otros'">Otros componentes</a>
-                <a mat-menu-item [routerLink]="'/legendary/cartera'">Cartera</a>
-                <a mat-menu-item [routerLink]="'/legendary/preciost6'">Precios T6</a>
-                <a mat-menu-item [routerLink]="'/legendary/preciosvarios'">Precios varios</a>
-                <a mat-menu-item [routerLink]="'/legendary/preciosarmas'">Precios armas</a>
+                <div (mouseenter)="cancelCloseMenu(legendariosTrigger)" (mouseleave)="closeMenu(legendariosTrigger)">
+                    <a mat-menu-item [routerLink]="'/legendary/armaduraraid'">Armadura Raid</a>
+                    <a mat-menu-item [routerLink]="'/legendary/otroslegendarios'">Otros legendarios</a>
+                    <a mat-menu-item [routerLink]="'/legendary/otros'">Otros componentes</a>
+                    <a mat-menu-item [routerLink]="'/legendary/cartera'">Cartera</a>
+                    <a mat-menu-item [routerLink]="'/legendary/preciost6'">Precios T6</a>
+                    <a mat-menu-item [routerLink]="'/legendary/preciosvarios'">Precios varios</a>
+                    <a mat-menu-item [routerLink]="'/legendary/preciosarmas'">Precios armas</a>
                 </div>
             </mat-menu>
-            
-            <a routerLink="/festival">Festival</a>
 
-            <a [matMenuTriggerFor]="homesteadMenu"
-                #homesteadTrigger="matMenuTrigger"
-                (mouseenter)="openMenu(homesteadTrigger)"
-                (mouseleave)="closeMenu(homesteadTrigger)"
+            <a routerLink="/festival">Festivales</a>
+
+            <a [matMenuTriggerFor]="homesteadMenu" #homesteadTrigger="matMenuTrigger"
+                (mouseenter)="openMenu(homesteadTrigger)" (mouseleave)="closeMenu(homesteadTrigger)"
                 routerLink="/homestead">
                 Homestead
             </a>
             <mat-menu class="menu-diarias" [hasBackdrop]="false" #homesteadMenu="matMenu" [overlapTrigger]="false">
-                <div (mouseenter)="cancelCloseMenu(homesteadTrigger)"
-                    (mouseleave)="closeMenu(homesteadTrigger)">
-                <a mat-menu-item [routerLink]="'/homestead/precioshuerto'">Precios Huerto</a>
-                <a mat-menu-item [routerLink]="'/homestead/glifos'">Glifos</a>
+                <div (mouseenter)="cancelCloseMenu(homesteadTrigger)" (mouseleave)="closeMenu(homesteadTrigger)">
+                    <a mat-menu-item [routerLink]="'/homestead/precioshuerto'">Precios Huerto</a>
+                    <a mat-menu-item [routerLink]="'/homestead/glifos'">Glifos</a>
                 </div>
             </mat-menu>
 
             &nbsp;
-            <a href="https://dps.report/" target="_blank" rel="noopener noreferrer" style="text-decoration: none">LOGS</a>
-            
-            &nbsp;
-            <a href="https://gw2efficiency.com/" target="_blank" rel="noopener noreferrer" style="text-decoration: none">GW2Eff</a>
+            <a href="https://dps.report/" target="_blank" rel="noopener noreferrer"
+                style="text-decoration: none">LOGS</a>
 
             &nbsp;
-            <a href="https://killproof.me/account/gw2accounts" target="_blank" rel="noopener noreferrer" style="text-decoration: none">KP</a>
+            <a href="https://gw2efficiency.com/" target="_blank" rel="noopener noreferrer"
+                style="text-decoration: none">GW2Eff</a>
 
             &nbsp;
-            <a [cdkCopyToClipboard]="account.name" matTooltip="Copiar" style="cursor: pointer;" [ngClass]="{ 'error-account': account?.error }">{{account.name || 'Loading API...' }}</a>
+            <a href="https://killproof.me/account/gw2accounts" target="_blank" rel="noopener noreferrer"
+                style="text-decoration: none">KP</a>
+
+            &nbsp;
+            <a routerLink="/accounts">Accounts</a>
+
+            &nbsp;
+            <a [cdkCopyToClipboard]="account?.name || ''" matTooltip="Copiar" style="cursor: pointer;" [ngClass]="{
+                'valid-account': account?.name && !account?.error,
+                'error-account': account?.error,
+                'no-account': !loadingAccount && !account?.error && !account?.name
+                }">
+                <ng-container *ngIf="loadingAccount">
+                    Loading API...
+                </ng-container>
+
+                <ng-container *ngIf="!loadingAccount && account?.error">
+                    API ERROR
+                </ng-container>
+
+                <ng-container *ngIf="!loadingAccount && !account?.error && account?.name">
+                    {{ account.name }}
+                </ng-container>
+
+                <ng-container *ngIf="!loadingAccount && !account?.error && !account?.name">
+                    No account selected
+                </ng-container>
+            </a>
 
             <div class="nav-select-wrapper" (click)="accountSelect.open()">
-                <mat-select 
-                    #accountSelect
-                    class="nav-select-btn"
-                    placeholder="Select account"
-                    [value]="selectedAccount"
-                    (selectionChange)="onAccountChange($event.value)"
-                >
+                <mat-select #accountSelect class="nav-select-btn" placeholder="Select account" [value]="selectedAccount"
+                    (selectionChange)="onAccountChange($event.value)">
                     <mat-option *ngFor="let acc of accounts" [value]="acc">
                         {{ acc.name }}
                     </mat-option>
@@ -125,13 +155,15 @@
         <mat-form-field class="example-form-field">
             <input matInput type="text" placeholder="Buscar en Wiki" [(ngModel)]="value">
             <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Borrar" (click)="value=''">
-            <mat-icon>x</mat-icon>
+                <mat-icon>x</mat-icon>
             </button>
         </mat-form-field>
-        <a href="https://wiki-en.guildwars2.com/index.php?title=Special%3ASearch&search={{value}}&go=Go" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+        <a href="https://wiki-en.guildwars2.com/index.php?title=Special%3ASearch&search={{value}}&go=Go" target="_blank"
+            rel="noopener noreferrer" style="text-decoration: none">
             <button mat-raised-button color="primary">EN</button>
         </a>
-        <a href="https://wiki-es.guildwars2.com/index.php?title=Special%3ASearch&search={{value}}&go=Go" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+        <a href="https://wiki-es.guildwars2.com/index.php?title=Special%3ASearch&search={{value}}&go=Go" target="_blank"
+            rel="noopener noreferrer" style="text-decoration: none">
             <button mat-raised-button color="primary">ES</button>
         </a>
     </div>

@@ -9,16 +9,19 @@ table {
 }
 
 table td {
-    font-size: 16px; /* celdas normales */
+    font-size: 16px;
+    /* celdas normales */
 }
 
-:host ::ng-deep .mat-sort-header-container { 
-    display: flex;  
-    justify-content: center; 
+:host ::ng-deep .mat-sort-header-container {
+    display: flex;
+    justify-content: center;
 }
 
-th.mat-header-cell, td.mat-cell, td.mat-footer-cell { 
-    text-align: center; 
+th.mat-header-cell,
+td.mat-cell,
+td.mat-footer-cell {
+    text-align: center;
 }
 
 th.mat-header-cell {
@@ -35,26 +38,28 @@ tr.mat-footer-row {
     font-weight: bold;
 }
 
-.mat-column-nombre{
+.mat-column-nombre {
     width: 20% !important;
 }
 
-.boton{
+.boton {
     height: 40px;
     font-size: large;
+    border-radius: 12px;
+    cursor: pointer;
 }
 
-img { 
-    width: 50px; 
-    height: 50px; 
+img {
+    width: 50px;
+    height: 50px;
 }
 
 ::ng-deep .mat-sort-header-sorted {
     color: rgb(255, 0, 0);
 }
-  
+
 ::ng-deep .mat-sort-header-arrow {
-    color: red; /*change color of arrow*/
+    color: red;
 }
 
 .centrado {
@@ -74,7 +79,7 @@ img {
 }
 
 .responsive-container {
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     row-gap: 16px;
     text-align: center;
     padding: 8px;
@@ -90,28 +95,28 @@ img {
     display: inline-flex;
     align-items: center;
     text-decoration: none;
-    padding: 8px 16px; /* Botón con padding */
-    background-color: #007BFF; /* Fondo azul */
-    color: white; /* Texto blanco */
-    border-radius: 4px; /* Bordes redondeados */
+    padding: 8px 16px;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 4px;
     font-weight: bold;
-    transition: all 0.3s ease; /* Transición suave */
+    transition: all 0.3s ease;
 }
 
 .enlace-boton img {
-    margin-right: 8px; /* Espaciado entre la imagen y el texto */
+    margin-right: 8px;
 }
 
 .enlace-boton:hover {
-    background-color: #0056b3; /* Cambio de fondo al pasar el ratón */
-    cursor: pointer; /* Cambia el cursor */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra al pasar el ratón */
+    background-color: #0056b3;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .contenedor-materiales {
     display: flex;
     align-items: center;
-    gap: 1.5rem; /* espacio entre botón y spans */
+    gap: 1.5rem;
     flex-wrap: wrap;
 }
 
@@ -135,7 +140,7 @@ img {
 .big-button {
     font-size: 16px;
     padding: 10px 10px;
-    border-radius: 12px; /* Esquinas redondeadas */
+    border-radius: 12px;
 }
 
 .big-button:hover {
@@ -143,7 +148,7 @@ img {
 }
 
 .greenBackGround {
-    background-color:rgb(195, 248, 195);
+    background-color: rgb(195, 248, 195);
     font-weight: bold;
 }
 
@@ -180,12 +185,97 @@ img {
     transform: rotate(180deg);
 }
 
+.moneda-icon {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    margin-left: 4px;
+}
+
 @media (max-width: 768px) {
-    table td {
-        font-size: 12px; /* celdas */
+
+    /* Encabezados */
+    table th {
+        font-size: 14px;
     }
 
-    table th {
-        font-size: 14px; /* encabezados */
+    /* Celdas */
+    table td {
+        font-size: 12px;
+    }
+
+    /* Ancho columnas mas grandes */
+    .mat-column-precioTpCompraS {
+        min-width: 150px !important;
+    }
+
+    .mat-column-precioTpVentaS {
+        min-width: 150px !important;
+    }
+
+    .mat-column-precioStackCompraS {
+        min-width: 150px !important;
+    }
+
+    .mat-column-precioStackVentaS {
+        min-width: 150px !important;
+    }
+
+    .mat-column-precioStackVentaS90 {
+        min-width: 150px !important;
+    }
+
+    .mat-column-precioTpCompraSPre {
+        min-width: 150px !important;
+    }
+
+    .mat-column-precioTpVentaSPre {
+        min-width: 150px !important;
+    }
+
+    .mat-column-tengo {
+        min-width: 70px !important;
+    }
+
+    .mat-column-nombre {
+        min-width: 150px !important;
+    }
+
+    img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .tabla-contenedor {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+
+    .responsive-container {
+        width: 100%;
+        box-sizing: border-box;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: space-around;
+        gap: 30px;
+        padding: 8px;
+    }
+
+    .responsive-container .item {
+        flex: 0 0 auto;
+        white-space: nowrap;
+    }
+
+    .contenido-tabla {
+        width: max-content;
+        min-width: 100%;
+    }
+
+    .contenido-tabla table {
+        width: max-content;
+        min-width: 100%;
     }
 }

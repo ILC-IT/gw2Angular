@@ -52,7 +52,7 @@ img {
 }
   
 ::ng-deep .mat-sort-header-arrow {
-    color: red; /*change color of arrow*/
+    color: red; /*cambiar color de la flecha*/
 }
 
 .redBackGround {

@@ -1,42 +1,89 @@
 /* You can add global styles to this file, and also import other style files */
 /* Application-wide Styles */
 @import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+
 h1 {
     color: #369;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 250%;
-  }
-h2, h3 {
+}
+
+h2,
+h3 {
     /* color: #444; */
     /* color: rgb(255, 255, 255); */
     font-family: Arial, Helvetica, sans-serif;
     font-weight: lighter;
 }
+
 body {
     margin: 2em;
 }
-body, input[type="text"], button {
+
+body,
+input[type="text"],
+button {
     color: #333;
     font-family: Cambria, Georgia, serif;
 }
+
 /* everywhere else */
 * {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.mat-app-background{
+.mat-app-background {
     background-color: rgba(0, 0, 0, 0.25)
 }
 
 mat-card.result {
-    background-color: #dad8d8; /*d4d3d3*/
+    background-color: #dad8d8;
+    /*d4d3d3*/
     color: #080808;
     border: 1px solid #333;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Ver linea vertical divisoria en las columnas de las tablas excepto en tabla-sin-bordes */
+table:not(.tabla-sin-bordes) .mat-header-cell,
+table:not(.tabla-sin-bordes) .mat-cell {
+    border-right: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+/* Quitar la barra vertical en la ultima columna */
+table:not(.tabla-sin-bordes) .mat-header-cell:last-child,
+table:not(.tabla-sin-bordes) .mat-cell:last-child {
+    border-right: none;
+}
+
+/* Titulos de los componentes */
+.component-title {
+    text-align: center;
+    margin: 20px 0 28px;
+    color: #37474f;
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.component-title::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 55px;
+    height: 3px;
+    background: #607d8b;
+    border-radius: 3px;
+    transform: translateX(-50%);
 }
 
 @media (max-width: 1569.99px) {
-    html, body {
+
+    html,
+    body {
         font-size: 14px;
     }
 
@@ -51,6 +98,7 @@ mat-card.result {
     h3 {
         font-size: 1.1em;
     }
+
     button,
     input,
     select,
@@ -61,7 +109,19 @@ mat-card.result {
     .mat-input-element {
         font-size: 0.9em !important;
     }
+
     .mat-error {
         font-size: 0.8em !important;
+    }
+
+    .component-title {
+        font-size: 20px;
+        margin: 15px 0 22px;
+        padding-bottom: 8px;
+    }
+
+    .component-title::after {
+        width: 45px;
+        height: 2px;
     }
 }

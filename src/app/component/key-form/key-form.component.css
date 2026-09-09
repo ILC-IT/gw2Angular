@@ -1,0 +1,356 @@
+/* Titulos de seccion */
+.key-form h2,
+.key-form h3 {
+    margin: 0;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Añadir / Editar cuenta */
+.key-form h2 {
+    position: relative;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    font-size: 22px;
+}
+
+.key-form h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 45px;
+    height: 3px;
+    border-radius: 3px;
+    background: #3f51b5;
+}
+
+/* Separacion antes de las cuentas guardadas */
+.key-form .accounts {
+    margin-top: 35px;
+    padding-top: 25px;
+    border-top: 1px solid #e5e5e5;
+}
+
+/* Cuentas guardadas */
+.key-form h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    font-size: 18px;
+}
+
+/* Pequeño indicador junto al titulo */
+.key-form h3::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 20px;
+    border-radius: 3px;
+    background: #4caf50;
+}
+
+.key-form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 18px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #3f51b5;
+}
+
+.error {
+    margin-top: 5px;
+    color: #d32f2f;
+    font-size: 12px;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+button {
+    border: 0;
+    border-radius: 4px;
+    padding: 8px 14px;
+    cursor: pointer;
+    background: #3f51b5;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+button.cancel {
+    background: #777;
+}
+
+.accounts {
+    margin-top: 20px;
+}
+
+.account {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #fafafa;
+}
+
+.account.current {
+    border-color: #3f51b5;
+    background: #f0f2ff;
+}
+
+.account-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.account-info strong {
+    font-size: 15px;
+}
+
+.account-info .key {
+    color: #666;
+    font-size: 12px;
+    word-break: break-all;
+}
+
+.active {
+    display: inline-block;
+    width: fit-content;
+    padding: 2px 6px;
+    border-radius: 3px;
+    background: #4caf50;
+    color: white;
+    font-size: 11px;
+}
+
+.account-actions {
+    display: flex;
+    gap: 5px;
+    flex-shrink: 0;
+}
+
+.account-actions .select {
+    background: #4caf50;
+}
+
+.account-actions .edit {
+    background: #607d8b;
+}
+
+.account-actions .delete {
+    background: #d32f2f;
+}
+
+.empty {
+    margin-top: 20px;
+    padding: 20px;
+    text-align: center;
+    color: #777;
+}
+
+/* Importar / exportar */
+.import-export {
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
+    margin-bottom: 8px;
+}
+
+.import-export button {
+    flex: 1;
+}
+
+/* Aviso sobre las API Keys */
+.import-warning {
+    margin: 8px 0 20px;
+    padding: 10px 12px;
+    border-radius: 4px;
+    background: #fff8e1;
+    border: 1px solid #ffe082;
+    color: #795548;
+    font-size: 12px;
+}
+
+/* Panel de importacion */
+.import-options {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 2px solid #3f51b5;
+    border-radius: 6px;
+    background: #f8f9ff;
+}
+
+.import-options h3 {
+    margin-bottom: 15px;
+}
+
+.import-options ul {
+    margin: 10px 0 15px;
+    padding-left: 20px;
+}
+
+.import-options li {
+    margin-bottom: 6px;
+}
+
+/* Errores de validacion */
+.import-errors {
+    margin-top: 15px;
+    padding: 12px;
+    border: 1px solid #ef9a9a;
+    border-radius: 4px;
+    background: #ffebee;
+    color: #b71c1c;
+}
+
+.import-errors h4 {
+    margin: 0 0 8px;
+}
+
+.import-errors ul {
+    margin-bottom: 0;
+}
+
+/* Pregunta */
+.import-question {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+/* Botones de importacion */
+.import-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.import-buttons button {
+    flex: 1;
+    min-width: 120px;
+}
+
+.import-buttons .danger {
+    background: #d32f2f;
+}
+
+.import-buttons .cancel {
+    background: #777;
+}
+
+/* Aviso del boton destructivo */
+.import-danger-warning {
+    margin-top: 12px;
+    margin-bottom: 0;
+    color: #d32f2f;
+    font-size: 12px;
+}
+
+/* Botones deshabilitados */
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+
+    .key-form {
+        width: 100%;
+        box-sizing: border-box;
+        margin: 10px auto;
+        padding: 15px;
+    }
+
+    .account {
+        display: block;
+        padding: 14px;
+    }
+
+    .account-info {
+        display: block;
+        width: 100%;
+    }
+
+    .account-info strong {
+        display: inline-block;
+        margin-right: 8px;
+        margin-bottom: 8px;
+    }
+
+    .account-info .key {
+        display: block;
+        width: 100%;
+        margin-top: 5px;
+        word-break: break-all;
+        overflow-wrap: anywhere;
+    }
+
+    .account-actions {
+        display: flex;
+        width: 100%;
+        gap: 8px;
+        margin-top: 14px;
+    }
+
+    .account-actions button {
+        flex: 1;
+        padding: 10px 8px;
+    }
+
+    .import-export {
+        flex-direction: column;
+    }
+
+    .import-export button {
+        width: 100%;
+    }
+
+    .import-buttons {
+        flex-direction: column;
+    }
+
+    .import-buttons button {
+        width: 100%;
+    }
+
+    .import-options {
+        padding: 15px;
+    }
+
+}

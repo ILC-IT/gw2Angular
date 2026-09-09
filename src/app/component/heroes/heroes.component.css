@@ -2,8 +2,8 @@ table {
   width: 80%;
   background-color: rgba(0, 0, 0, 0.021);
   text-align: center !important;
-  margin-left:auto; 
-  margin-right:auto; 
+  margin-left: auto;
+  margin-right: auto;
 }
 
 :host ::ng-deep .mat-sort-header-container {
@@ -14,16 +14,18 @@ table {
 ::ng-deep .mat-sort-header-sorted {
   color: rgb(255, 0, 0);
 }
-  
+
 ::ng-deep .mat-sort-header-arrow {
-  color: red; /*change color of arrow*/
+  /* Cambiar color de la flecha */
+  color: red;
 }
 
-tr.mat-row { 
-  height: 80px; 
+tr.mat-row {
+  height: 80px;
 }
 
-th, td {
+th,
+td {
   font-size: 16px;
 }
 
@@ -32,14 +34,750 @@ th, td {
   cursor: pointer;
 }
 
-.cabecera{
-  text-align: center;
-}
-
 table th {
   background-color: rgb(150, 173, 221);
 }
 
 h2 {
   text-align: center;
+}
+
+.table-container table {
+  width: 100%;
+  min-width: 800px;
+}
+
+.table-container {
+  width: 100%;
+  padding: 0 4px 12px;
+  box-sizing: border-box;
+  overflow-x: auto;
+}
+
+.loading-extra {
+  text-align: center;
+  padding: 8px;
+  /* color: #e67e22; */
+  font-weight: bold;
+}
+
+.boton-arriba {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  background-color: #3f51b5;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+.boton-arriba:hover {
+  background-color: #303f9f;
+}
+
+.error-card {
+  width: 80%;
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  box-sizing: border-box;
+  background-color: #ffebee;
+  border: 1px solid #ef9a9a;
+  border-left: 5px solid #f44336;
+  border-radius: 12px;
+  color: #b71c1c;
+  font-size: 16px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.error-card mat-icon {
+  flex-shrink: 0;
+}
+
+.error-card span {
+  line-height: 1.5;
+}
+
+.error-card button {
+  flex-shrink: 0;
+  margin-left: 15px;
+  padding: 8px 22px;
+  min-height: 44px;
+  border-radius: 22px;
+  font-size: 15px;
+}
+
+/* ========================================================= */
+/* TAB DE INFUSIONES                                         */
+
+:host ::ng-deep .mat-tab-body-content {
+  background-color: #dad8d8;
+}
+
+
+/* ========================================================= */
+/* CONTENEDOR PRINCIPAL                                      */
+
+.infusions-container {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px;
+  background: #f5f7fa;
+  border-radius: 12px;
+}
+
+/* ========================================================= */
+/* FILTROS                                                   */
+
+.infusion-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 18px;
+  margin-bottom: 20px;
+  background: #dad8d8;
+  border-radius: 12px;
+  border: 1px solid #6590c2 !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+}
+
+.infusion-filters mat-form-field {
+  flex: 1 1 200px;
+
+  min-width: 200px;
+}
+
+.infusion-filters button {
+  cursor: pointer;
+}
+
+/* Para controlar el ancho y scroll horizontal del autocomplete */
+::ng-deep .autocomplete-infusiones.mat-autocomplete-panel,
+::ng-deep .autocomplete-contenedores.mat-autocomplete-panel {
+  overflow-x: auto !important;
+  overflow-y: auto !important;
+}
+
+::ng-deep .autocomplete-infusiones .mat-option-text,
+::ng-deep .autocomplete-contenedores .mat-option-text {
+  display: block !important;
+  width: max-content !important;
+  max-width: none !important;
+  overflow: visible !important;
+  white-space: nowrap !important;
+}
+
+::ng-deep .autocomplete-infusiones .mat-option,
+::ng-deep .autocomplete-contenedores .mat-option {
+  overflow: visible !important;
+  white-space: nowrap !important;
+}
+
+/* Para colorear la barra de scroll del autocomplete */
+::ng-deep .autocomplete-infusiones::-webkit-scrollbar,
+::ng-deep .autocomplete-contenedores::-webkit-scrollbar {
+  width: 14px;
+  height: 8px;
+}
+
+::ng-deep .autocomplete-infusiones::-webkit-scrollbar-track,
+::ng-deep .autocomplete-contenedores::-webkit-scrollbar-track {
+  background: #e0e0e0;
+  border-radius: 4px;
+}
+
+::ng-deep .autocomplete-infusiones::-webkit-scrollbar-thumb,
+::ng-deep .autocomplete-contenedores::-webkit-scrollbar-thumb {
+  background: #6590c2;
+  border-radius: 8px;
+}
+
+::ng-deep .autocomplete-infusiones::-webkit-scrollbar-thumb:hover,
+::ng-deep .autocomplete-contenedores::-webkit-scrollbar-thumb:hover {
+  background: #4f78a5;
+}
+
+/* ========================================================= */
+/* BOTONES DE MODO                                           */
+
+.infusion-modos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  transform: translateY(-10px);
+}
+
+.infusion-modos button {
+  height: 48px;
+  white-space: nowrap;
+  border-radius: 10px !important;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.infusion-modos .modo-activo {
+  background-color: #dcedc8 !important;
+  color: #33691e !important;
+  border: 1px solid #aed581 !important;
+  box-shadow: 0 2px 6px rgba(76, 175, 80, 0.20);
+}
+
+.reset-button {
+  background-color: #e53935 !important;
+  color: #ffffff !important;
+  border-radius: 10px !important;
+  height: 48px;
+  padding: 0 20px;
+}
+
+.reset-button:hover {
+  background-color: #c62828 !important;
+}
+
+/* ========================================================= */
+/* GRID DE TARJETAS                                          */
+
+.infusions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ========================================================= */
+/* TARJETAS                                                  */
+
+.infusion-card {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  margin: 0 !important;
+  padding: 18px !important;
+  background: #dad8d8;
+  border-radius: 12px !important;
+  border: 1px solid #6590c2 !important;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.06),
+    0 1px 2px rgba(0, 0, 0, 0.04);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.infusion-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
+}
+
+/* ========================================================= */
+/* CABECERA                                                  */
+
+.infusion-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.infusion-header img {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  padding: 6px;
+  box-sizing: border-box;
+  background: #f1f3f5;
+  border-radius: 10px;
+}
+
+.infusion-header-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.infusion-header h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+  line-height: 1.3;
+  font-weight: 600;
+  color: #263238;
+  word-break: break-word;
+}
+
+.infusion-description {
+  margin-bottom: 6px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: #37474f;
+}
+
+.infusion-total {
+  margin-top: 6px;
+  font-size: 16px;
+  color: #455a64;
+}
+
+/* ========================================================= */
+/* CONTENIDO                                                 */
+
+.infusion-content {
+  font-size: 14px;
+  color: #455a64;
+}
+
+/* ========================================================= */
+/* SECCIONES                                                 */
+
+.infusion-section {
+  margin-bottom: 12px;
+}
+
+.infusion-section-title {
+  margin-bottom: 7px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #546e7a;
+}
+
+.container-location-section {
+  margin-top: 10px;
+}
+
+/* ========================================================= */
+/* INFORMACION / BADGES                                      */
+
+.infusion-info {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 4px 6px 4px 0;
+  padding: 6px 10px;
+  box-sizing: border-box;
+  background: #f5f7fa;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #455a64;
+}
+
+.infusion-info strong {
+  color: #263238;
+}
+
+.container-location-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 4px 6px 4px 0;
+  padding: 6px 10px;
+  box-sizing: border-box;
+  background: #f2f0f0;
+  border: 1px solid #bbdefb;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #455a64;
+}
+
+.container-location-card strong {
+  color: #0d47a1;
+}
+
+/* ========================================================= */
+/* CABECERA                                                  */
+
+.cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 10px;
+}
+
+.heroes-count {
+  font-size: 16px;
+  font-weight: 600;
+  color: #37474f;
+  white-space: nowrap;
+}
+
+.heroes-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-refresh-heroes {
+  padding: 7px 12px;
+  border: 1px solid #90caf9;
+  border-radius: 6px;
+  background: #e3f2fd;
+  color: #1565c0;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-refresh-heroes:hover:not(:disabled) {
+  background: #bbdefb;
+}
+
+.btn-refresh-heroes:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.heroes-last-update {
+  font-size: 16px;
+  color: #607d8b;
+  white-space: nowrap;
+}
+
+.heroes-error {
+  margin-top: 8px;
+  margin-bottom: 10px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: #ffebee;
+  border: 1px solid #ffcdd2;
+  color: #c62828;
+  font-size: 12px;
+}
+
+/* ========================================================= */
+/* PERSONAJES                                                */
+
+.infusion-character {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+  padding: 7px 10px;
+  margin: 4px 0;
+  background: #f2f0f0;
+  border-left: 3px solid #7986cb;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #455a64;
+}
+
+.infusion-character strong {
+  color: #263238;
+  white-space: nowrap;
+}
+
+.infusion-character-selected {
+  border-left: 3px solid #5c6bc0;
+}
+
+/* ========================================================= */
+/* MATERIALES                                                */
+
+.infusion-material {
+  color: #6d4c41;
+  background: #fff8f5;
+}
+
+.infusion-material strong {
+  color: #5d4037;
+}
+
+/* ========================================================= */
+/* CONTENEDORES                                              */
+
+.infusion-container-card {
+  padding: 10px 12px;
+  margin-top: 6px;
+  margin-bottom: 8px;
+  background: #f3f8ff;
+  border-left: 3px solid #42a5f5;
+  border-radius: 6px;
+  color: #455a64;
+}
+
+.container-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.container-name {
+  font-weight: 600;
+  color: #1565c0;
+}
+
+.container-variants {
+  margin-top: 4px;
+  font-size: 11px;
+  color: #546e7a;
+  padding-bottom: 6px;
+  margin-bottom: 6px;
+  border-bottom: 4px solid rgba(66, 165, 245, 0.15);
+}
+
+.container-detail {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 7px;
+  font-size: 13px;
+}
+
+/* .container-location {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #546e7a;
+} */
+
+.infusion-container-item {
+  color: #1565c0;
+  background: #f3f8ff;
+}
+
+.infusion-container-item strong {
+  color: #1565c0;
+}
+
+/* ========================================================= */
+/* ESTADOS: TENGO / NO TENGO                                 */
+
+.infusion-status {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  margin-top: 4px;
+  padding: 4px 9px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.status-owned {
+  color: #2e7d32;
+  background: #e8f5e9;
+}
+
+.status-missing {
+  color: #616161;
+  background: #c7c5c5;
+}
+
+/* ========================================================= */
+/* TODAS LAS INFUSIONES                                      */
+
+.agony-resistance {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 10px;
+  padding: 6px 10px;
+  color: #6a1b9a;
+  background: #f3e5f5;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.agony-resistance span {
+  font-weight: 700;
+}
+
+/* ========================================================= */
+/* VARIANTES                                                 */
+
+.infusion-variant {
+  padding: 10px 0;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.infusion-variant:last-child {
+  border-bottom: none;
+}
+
+.variant-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.variant-header .infusion-status {
+  margin-top: 0;
+}
+
+.variant-stat {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  color: #3949ab;
+  background: #e8eaf6;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.variant-location {
+  margin-top: 8px;
+  padding-left: 10px;
+  border-left: 2px solid #e0e0e0;
+}
+
+/* ========================================================= */
+/* MOVIL                                                     */
+
+@media (max-width: 600px) {
+
+  .table-container th,
+  .table-container td {
+    font-size: 10px;
+  }
+
+  .error-card {
+    width: 95%;
+    padding: 20px 15px;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .error-card button {
+    margin-left: 0;
+    margin-top: 8px;
+    padding: 10px 28px;
+    min-height: 46px;
+    border-radius: 24px;
+    font-size: 16px;
+  }
+
+  ::ng-deep .autocomplete-infusiones .mat-option,
+  ::ng-deep .autocomplete-contenedores .mat-option {
+    font-size: 13px !important;
+  }
+
+  ::ng-deep .autocomplete-infusiones .mat-option-text,
+  ::ng-deep .autocomplete-contenedores .mat-option-text {
+    font-size: 13px !important;
+  }
+
+  .cabecera {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .heroes-count {
+    text-align: center;
+    font-size: 16px;
+  }
+
+  .heroes-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .btn-refresh-heroes {
+    width: 100%;
+    max-width: 220px;
+  }
+
+  .heroes-last-update {
+    font-size: 13px;
+    text-align: center;
+  }
+
+}
+
+@media (max-width: 900px) {
+
+  .infusions-container {
+    padding: 14px;
+  }
+
+  .infusion-filters {
+    padding: 14px;
+  }
+
+  .infusion-modos {
+    width: 100%;
+
+    margin-left: 0;
+  }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .infusions-container {
+    padding: 10px;
+  }
+
+  .infusion-filters {
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .infusion-filters mat-form-field {
+    flex: 1 1 100%;
+    min-width: 100%;
+    width: 100%;
+  }
+
+  .infusion-filters>button {
+    width: 100%;
+  }
+
+  .infusion-modos {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .infusion-modos button {
+    width: 100%;
+  }
+
+  .infusions-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .infusion-card {
+    padding: 14px !important;
+  }
+
+  .infusion-header img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .infusion-header h3 {
+    font-size: 16px;
+  }
+
 }

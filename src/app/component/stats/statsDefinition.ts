@@ -6,7 +6,7 @@ export const atributosEng = [
     'Vitality', 'Toughness', 'Precision', 'Power', 'Healing power', 'Ferocity', 'Expertise', 'Condition damage', 'Concentration'
 ];
 
-export const  atributos2 = [
+export const atributos2 = [
     '-', 'Vitalidad', 'Precisión', 'Potencia', 'Poder de curación', 'Pericia', 'Ferocidad', 'Dureza', 'Daño de condición', 'Concentración'
 ];
 
@@ -55,7 +55,7 @@ export const statsEsp = [
     {
         nombreStat: "Abandonado",
         nombreStatEng: "Forsaken",
-        stats: ["Potencia", "-", "Dureza",	"Poder de curación"],
+        stats: ["Potencia", "-", "Dureza", "Poder de curación"],
         armadura: "-",
         juego: "GW2 Core"
     },
@@ -366,13 +366,13 @@ export const statsEsp = [
         stats: ["Poder de curación", "-", "Potencia", "Dureza"],
         armadura: "Tateos/Theodosus",
         juego: "GW2 Core"
-    },    {
+    }, {
         nombreStat: "Magi",
         nombreStatEng: "Magi",
         stats: ["Poder de curación", "-", "Precisión", "Vitalidad"],
         armadura: "Hronk",
         juego: "GW2 Core"
-    },    {
+    }, {
         nombreStat: "Boticario",
         nombreStatEng: "Apothecary",
         stats: ["Poder de curación", "-", "Dureza", "Daño de condición"],
@@ -384,7 +384,7 @@ export const statsEsp = [
         nombreStatEng: "Dragon",
         stats: ["Potencia", "Ferocidad", "Precisión", "Vitalidad"],
         armadura: "Suun",
-        juego: "EoD"   
+        juego: "EoD"
     },
     {
         nombreStat: "Ritualista",
@@ -731,14 +731,14 @@ export const statsEng = [
         stats: ["Healing power", "-", "Power", "Toughness"],
         armadura: "Tateos/Theodosus",
         juego: "GW2 Core"
-    },    
+    },
     {
         nombreStat: "Magi",
         nombreStatEsp: "Magi",
         stats: ["Healing power", "-", "Precision", "Vitality"],
         armadura: "Hronk",
         juego: "GW2 Core"
-    },    
+    },
     {
         nombreStat: "Apothecary",
         nombreStatEsp: "Boticario",
@@ -751,7 +751,7 @@ export const statsEng = [
         nombreStatEsp: "Dragón",
         stats: ["Power", "Ferocity", "Precision", "Vitality"],
         armadura: "Suun",
-        juego: "EoD"   
+        juego: "EoD"
     },
     {
         nombreStat: "Ritualist",

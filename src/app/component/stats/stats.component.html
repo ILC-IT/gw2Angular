@@ -1,5 +1,7 @@
-<h2>Buscador de stats(atributos) de armas/armaduras (esp/eng)</h2>
-<mat-tab-group mat-stretch-tabs [(selectedIndex)]="selectedTabIndex" (selectedTabChange)="onTabChange($event)" class="example-stretched-tabs mat-elevation-z4" backgroundColor="primary" color="primary">
+<h2 class="component-title">Buscador de stats de armas/armaduras</h2>
+
+<mat-tab-group mat-stretch-tabs [(selectedIndex)]="selectedTabIndex" (selectedTabChange)="onTabChange($event)"
+    class="example-stretched-tabs mat-elevation-z4" backgroundColor="primary" color="primary">
 
     <mat-tab label="Buscar por stats (atributos)">
         <!-- <form class="statForm">
@@ -20,16 +22,16 @@
             </mat-form-field>
         </form> -->
         <div class="body">
-            <a href="https://wiki.guildwars2.com/wiki/Attribute_combinations" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+            <a href="https://wiki.guildwars2.com/wiki/Attribute_combinations" target="_blank" rel="noopener noreferrer"
+                style="text-decoration: none">
                 <button mat-button>WIKI</button>
             </a>
-            <button mat-raised-button #tooltip="matTooltip"
-                matTooltip="Si 3 stats: seleccionar 2ª atrib mayor -"
-                matTooltipHideDelay="3000"
+            <button mat-raised-button #tooltip="matTooltip" matTooltip="Si 3 stats, seleccionar - en el 2ª atrib mayor"
+                matTooltipHideDelay="2000" matTooltipClass="tooltip-grande" matTooltipTouchGestures="on"
                 aria-label="Button that displays a tooltip for 'matTooltipHideDelay' seconds">
                 Info
             </button>
-            <form [formGroup]="formularioStats" (ngSubmit)="sendFormStat()"> 
+            <form [formGroup]="formularioStats" (ngSubmit)="sendFormStat()">
                 <div class="aaa">
 
                     <mat-chip-list aria-label="Lengua">
@@ -91,7 +93,7 @@
                     <mat-card>{{resultado.juego}}</mat-card>
                 </div>
             </div>
-            <form [formGroup]="formularioStatsEng" (ngSubmit)="sendFormStatEng()"> 
+            <form [formGroup]="formularioStatsEng" (ngSubmit)="sendFormStatEng()">
                 <div class="aaa">
 
                     <mat-chip-list aria-label="Lengua">
@@ -157,10 +159,11 @@
     <mat-tab label="Buscar por prefijo">
 
         <div class="body">
-            <a href="https://wiki.guildwars2.com/wiki/Attribute_combinations" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+            <a href="https://wiki.guildwars2.com/wiki/Attribute_combinations" target="_blank" rel="noopener noreferrer"
+                style="text-decoration: none">
                 <button mat-button>WIKI</button>
             </a>
-            <form [formGroup]="formularioPrefijo" (ngSubmit)="sendFormPrefijo()"> 
+            <form [formGroup]="formularioPrefijo" (ngSubmit)="sendFormPrefijo()">
                 <div class="aaa">
 
                     <mat-chip-list aria-label="Lengua">
@@ -197,7 +200,7 @@
                     <mat-card>{{resultadoPrefijo.juego}}</mat-card>
                 </div>
             </div>
-            <form [formGroup]="formularioPrefijoEng" (ngSubmit)="sendFormPrefijoEng()"> 
+            <form [formGroup]="formularioPrefijoEng" (ngSubmit)="sendFormPrefijoEng()">
                 <div class="aaa">
 
                     <mat-chip-list aria-label="Lengua">
@@ -241,10 +244,11 @@
     <mat-tab label="Buscar por nombre arma/armadura">
 
         <div class="body">
-            <a href="https://wiki.guildwars2.com/wiki/Attribute_combinations" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+            <a href="https://wiki.guildwars2.com/wiki/Attribute_combinations" target="_blank" rel="noopener noreferrer"
+                style="text-decoration: none">
                 <button mat-button>WIKI</button>
             </a>
-            <form [formGroup]="formularioArmadura" (ngSubmit)="sendFormArmadura()"> 
+            <form [formGroup]="formularioArmadura" (ngSubmit)="sendFormArmadura()">
                 <div class="aaa">
 
                     <mat-chip-list aria-label="Lengua">
@@ -278,7 +282,7 @@
                     <mat-card>{{resultadoArmadura.juego}}</mat-card>
                 </div>
             </div>
-            <form [formGroup]="formularioArmaduraEng" (ngSubmit)="sendFormArmaduraEng()"> 
+            <form [formGroup]="formularioArmaduraEng" (ngSubmit)="sendFormArmaduraEng()">
                 <div class="aaa">
 
                     <mat-chip-list aria-label="Lengua">
@@ -314,5 +318,5 @@
             </div>
         </div>
     </mat-tab>
-    
+
 </mat-tab-group>

@@ -1,20 +1,25 @@
 # Gw2Angular
 
 > [!IMPORTANT]
-> - Introducir las API key de las cuentas de GW2 en `src/app/service/key.ts` para ver la información.
+> - Introducir los datos de las cuentas de GW2 (alias, gw2Name, key) en `Accounts` para ver la información.
+> - Los datos introducidos de las cuentas se guardan en local storage.
+> - El campo **`gw2Name` es único** y no puede haber dos iguales. Por comodidad tampoco se permite `name` iguales.
 > - Requisitos necesarios de la API key: `account`, `inventories`, `characters`, `wallet`, `unlocks`, `builds`, `progression`.
 
 Esta aplicación permite:
 - Ver diarias de la cámara del brujo, fractales diarios con info y otras diarias de interés.
-- Héroes: tabla con los personajes de la cuenta con información básica.
-- Calculadora del bazar: para aplicar un porcentaje de reducción a un precio y ver valor final calculado.
+- Héroes: tabla con los personajes de la cuenta con información básica y buscador de infusiones en la cuenta seleccionada.
+- Calculadora del bazar: para aplicar un porcentaje de reducción a un precio y ver el valor final calculado.
 - Buscador de stats por atributos, stats por prefijo y stats por nombre. ESP/ENG.
-- Enlaces a determinados sitios web de ayuda.
+- Buscador de poi/waypoint/vista de mapas. ESP/ENG.
+- Enlaces a determinados sitios web de ayuda y de información.
 - Raid: seguimiento de los bosses de raid hechos de la semana.
-- Legendarios: ver los objetos necesarios que faltan para la armadura legendaria de PvE, sellos y runas legendarios, precios de los T6, precios de items varios y precios/desbloqueos/variantes de armas legendarias de 1ª, 2ª y 3ª generación.
-- Precios de divisas de festivales, precios de materiales de huerto.
-- Buscador en la wiki oficial ESP/ENG.
-- Cambiar entre diferentes cuentas.
+- Mazmorra: seguimiento de las mazmorras.
+- Legendarios: ver los objetos necesarios que faltan para la armadura legendaria de PvE, sellos y runas legendarios, precios de los T6, precios de items varios y precios/desbloqueos/variantes de armas legendarias de 1ª, 2ª y 3ª generación y más cosas.
+- Precios de divisas y cofres de festivales.
+- Precios de materiales de huerto y glifos equipados en la heredad.
+- Buscador en la wiki oficial. ESP/ENG.
+- Posibilidad de cambiar entre diferentes cuentas.
 
 ## Development server
 
@@ -39,8 +44,9 @@ Run `ng build` or `ng build --prod` to build the project. The build artifacts wi
 ![T6](./src/assets/imgapp/t6.png)
 
 ## Thanks to
-- Arenanet's [API](https://wiki.guildwars2.com/wiki/API:2)
-- [Invisi](https://github.com/Invisi) for his [instabilities fractal repo]([https://github.com/Invisi/gw2-fotm-instabilities])
+- Arenanet's [API](https://wiki.guildwars2.com/wiki/API:2).
+- [Invisi](https://github.com/Invisi) for his [instabilities fractal repo](https://github.com/Invisi/gw2-fotm-instabilities).
+- [Snappey](https://github.com/Snappey) for his [maps repo](https://github.com/Snappey/maps.gw2.io).
 
 ## For Raspberry Pi (tested in 3b+)
 Angular version:

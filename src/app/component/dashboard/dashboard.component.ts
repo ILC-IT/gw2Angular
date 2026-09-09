@@ -1,8 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
-import { Observable, timer } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
-import { HeroService } from "../../service/hero.service";
 import { ApiKeyService } from '../../service/api-key.service';
 import { ApiAccount } from '../../service/key';
 
@@ -15,19 +12,11 @@ export class DashboardComponent implements OnInit {
 
   title = 'GW2 Angular';
   value: string = '';
-  
-  //reloj
-  // private _time$: Observable<Date> = timer(0, 1000).pipe(
-  //   map(tick => new Date()),
-  //   shareReplay(1)
-  // );
-
-  // get time() {
-  //   return this._time$;
-  // }
 
   @ViewChild('diariasTrigger') diariasTrigger!: MatMenuTrigger;
+  @ViewChild('heroesTrigger') heroesTrigger!: MatMenuTrigger;
   @ViewChild('buscadorStatsTrigger') buscadorStatsTrigger!: MatMenuTrigger;
+  @ViewChild('buscadorPoiTrigger') buscadorPoiTrigger!: MatMenuTrigger;
   @ViewChild('raidTrigger') raidTrigger!: MatMenuTrigger;
   @ViewChild('legendariosTrigger') legendariosTrigger!: MatMenuTrigger;
   @ViewChild('homesteadTrigger') homesteadTrigger!: MatMenuTrigger;
@@ -39,7 +28,7 @@ export class DashboardComponent implements OnInit {
     clearTimeout(this.closeMenuTimeout);
     this.openMenuTimeout = setTimeout(() => {
       trigger.openMenu();
-    }, 50); // Ajusta el tiempo según sea necesario
+    }, 50); // Ajustar el tiempo segun sea necesario
   }
 
   cancelCloseMenu(trigger: MatMenuTrigger) {
@@ -50,50 +39,35 @@ export class DashboardComponent implements OnInit {
     clearTimeout(this.openMenuTimeout);
     this.closeMenuTimeout = setTimeout(() => {
       trigger.closeMenu();
-    }, 50); // Ajusta el tiempo según sea necesario
+    }, 50); // Ajustar el tiempo segun sea necesario
   }
-  
-  account: any = {
+
+  @Input() account: any = {
     name: '',
     error: false
   };
 
-  // selector de API key
+  @Input() loadingAccount = false;
+
+  // Selector de API key
   accounts: ApiAccount[] = [];
   selectedAccount!: ApiAccount | null;
 
-  constructor(private heroService: HeroService, private apiKeyService: ApiKeyService) { }
+  constructor(private apiKeyService: ApiKeyService) { }
 
   ngOnInit() {
-    this.getAccount();
+    // Inicializar cuentas
     this.accounts = this.apiKeyService.getAccounts();
-    this.selectedAccount = this.apiKeyService.getCurrentAccount();
+    this.selectedAccount = this.apiKeyService.getCurrentAccount() ?? this.accounts[0];
+    // Suscripcion para actualizar seleccion si cambia en otro lugar
     this.apiKeyService.getCurrentAccount$().subscribe(account => {
-      this.selectedAccount = account;
+      this.selectedAccount = account ?? this.accounts[0];
     });
   }
 
-  getAccount(){
-    this.heroService.getAccount().subscribe((acc: any) => {
-        this.account = { 
-          ...acc,
-          name: acc?.name || 'Loading API...',
-          error: false 
-        };
-      },
-      (err) => {
-        console.error('Error al obtener la cuenta:', err);
-        console.warn('Problema en la API');
-        this.account = { 
-          name: 'API ERROR',
-          error: true
-        };
-      }
-  )}
-
   onAccountChange(account: ApiAccount) {
     this.apiKeyService.setAccount(account);
-     window.location.reload(); 
+    window.location.reload();
   }
 
 }

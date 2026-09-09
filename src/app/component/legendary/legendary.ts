@@ -51,6 +51,7 @@ export interface otrosLegendarios {
     expansion: string;
     tengoPartes?: number[];
     partes?: string[];
+    nonUnique?: boolean;
 }
 
 export interface cartera {
@@ -78,9 +79,22 @@ export interface preciosVarios {
 };
 
 export interface ColorRule {
-  nombre: string[] | null;
-  condition: (tengo: number) => boolean;
-  className: string;
+    nombre: string[] | null;
+    condition: (tengo: number) => boolean;
+    className: string;
+}
+
+export interface CommercePrice {
+    id: number;
+    whitelisted: boolean;
+    buys: {
+        quantity: number;
+        unit_price: number;
+    };
+    sells: {
+        quantity: number;
+        unit_price: number;
+    };
 }
 
 export const idsT6 = "24295,24358,24351,24277,24357,24289,24300,24283";
@@ -243,7 +257,8 @@ export const anilloMundo = [
         modo: "WvW",
         icon: ["https://wiki.guildwars2.com/images/8/85/Conflux.png"],
         wiki: "https://wiki.guildwars2.com/wiki/Conflux",
-        expansion: "Core"
+        expansion: "HoT",
+        nonUnique: true
     }
 ];
 
@@ -269,7 +284,8 @@ export const anilloPvE = [
         modo: "PvE",
         icon: ["https://wiki.guildwars2.com/images/6/6e/Endless_Summer.png"],
         wiki: "https://wiki.guildwars2.com/wiki/Endless_Summer",
-        expansion: "VoE"
+        expansion: "VoE",
+        nonUnique: true
     }
 ];
 
@@ -293,6 +309,28 @@ export const legendaryAccessory = [
         icon: ["https://wiki.guildwars2.com/images/1/18/Vision.png"],
         wiki: "https://wiki.guildwars2.com/wiki/Vision",
         expansion: "LW4"
+    },
+    {
+        id: 109070,
+        nombre: "Stella Radians",
+        tengo: 0,
+        tipo: "Accesorio",
+        modo: "PvE",
+        icon: ["https://wiki.guildwars2.com/images/b/bb/Stella_Radians.png"],
+        wiki: "https://wiki.guildwars2.com/wiki/Stella_Radians",
+        expansion: "VoE",
+        nonUnique: true
+    },
+    {
+        id: 109012,
+        nombre: "Strife Unending",
+        tengo: 0,
+        tipo: "Accesorio",
+        modo: "WvW",
+        icon: ["https://wiki.guildwars2.com/images/9/9e/Strife_Unending.png"],
+        wiki: "https://wiki.guildwars2.com/wiki/Strife_Unending",
+        expansion: "VoE",
+        nonUnique: true
     }
 ];
 
@@ -318,7 +356,7 @@ export const amuletoPvP = [
         modo: "PvP",
         icon: ["https://wiki.guildwars2.com/images/8/85/Transcendence.png"],
         wiki: "https://wiki.guildwars2.com/wiki/Transcendence",
-        expansion: "Core"
+        expansion: "HoT"
     }
 ];
 
@@ -575,6 +613,27 @@ export const restoCuriosidadMursaat = [
     }
 ];
 
+export const saviaCromatica = [
+    {
+        id: 106385,
+        icon: "https://wiki.guildwars2.com/images/9/9f/Chromatic_Sap.png"
+    }
+];
+
+export const piedraEncantamientoBruto = [
+    {
+        id: 105686,
+        icon: "https://wiki.guildwars2.com/images/0/0a/Raw_Enchanting_Stone.png"
+    }
+];
+
+export const fragmentoPiedraSombria = [
+    {
+        id: 109459,
+        icon: "https://wiki.guildwars2.com/images/b/bb/Shadowstone_Fragment.png"
+    }
+];
+
 export const ursusObligue = [
     {
         id: 103372,
@@ -747,6 +806,34 @@ export const monedaInusual = [
     }
 ];
 
+export const oroMoneda = [
+    {
+        idWallet: 1,
+        icon: "https://wiki.guildwars2.com/images/d/d1/Gold_coin.png"
+    }
+];
+
+export const karma = [
+    {
+        idWallet: 2,
+        icon: "https://wiki.guildwars2.com/images/a/af/Karma.png"
+    }
+];
+
+export const laurel = [
+    {
+        idWallet: 3,
+        icon: "https://wiki.guildwars2.com/images/5/56/Laurel.png"
+    }
+];
+
+export const tiqueWvW = [
+    {
+        idWallet: 26,
+        icon: "https://wiki.guildwars2.com/images/d/d0/WvW_Skirmish_Claim_Ticket.png"
+    }
+];
+
 export const esenciaAmalgamadaKryptis = [
     {
         id: 100930,
@@ -760,7 +847,7 @@ export const esenciaAmalgamadaKryptis = [
 ];
 
 export const armaduraAstral = [
-    {   
+    {
         // se fabrica un peso cualquiera y desbloquea todos los demas pesos
         id: [100026, 100282, 100349, 100459, 100162, 100392],
         idSkin: [11755, 11637, 11742, 11722, 11694, 11692],
@@ -774,7 +861,7 @@ export const armaduraAstral = [
 ];
 
 export const armaduraOneiros = [
-    {   
+    {
         // se fabrica un peso cualquiera y desbloquea todos los demas pesos
         id: [101129, 101208, 101149, 101258, 101165, 101286],
         idSkin: [11922, 11876, 11875, 11900, 11917, 11898],
@@ -2070,7 +2157,7 @@ export const legendaryWeaponsOther = [
         modo: "PvE",
         expansion: "JW"
     },
-        {
+    {
         nombre: "Ancla etérica",
         id: 105497,
         idWardrobe: 0,

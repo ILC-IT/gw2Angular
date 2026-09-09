@@ -1,1 +1,226 @@
-<p>key-form works!</p>
+<div class="key-form">
+
+    <h2>
+        {{ editingIndex !== null ? 'Editar cuenta' : 'Añadir cuenta' }}
+    </h2>
+
+    <!-- Formulario de cuenta -->
+    <form [formGroup]="form" (ngSubmit)="save()">
+
+        <!-- Alias -->
+        <div class="form-group">
+            <label for="name">Alias</label>
+
+            <input id="name" type="text" formControlName="name" maxlength="20" placeholder="Ej: Mi cuenta principal" />
+
+            <div class="error" *ngIf="form.get('name')?.touched && form.get('name')?.hasError('required')">
+                El alias es obligatorio.
+            </div>
+
+            <div class="error" *ngIf="form.get('name')?.hasError('maxlength')">
+                El alias no puede superar los 20 caracteres.
+            </div>
+        </div>
+
+        <!-- Nombre GW2 -->
+        <div class="form-group">
+            <label for="gw2Name">Nombre de cuenta GW2</label>
+
+            <input id="gw2Name" type="text" formControlName="gw2Name" placeholder="Ej: Nombre.1234" />
+
+            <div class="error" *ngIf="form.get('gw2Name')?.touched && form.get('gw2Name')?.hasError('required')">
+                El nombre de cuenta es obligatorio.
+            </div>
+
+            <div class="error" *ngIf="form.get('gw2Name')?.touched && form.get('gw2Name')?.hasError('pattern')">
+                Debe tener el formato Nombre.1234
+            </div>
+        </div>
+
+        <!-- API Key -->
+        <div class="form-group">
+            <label for="key">API Key</label>
+
+            <input id="key" type="text" formControlName="key" placeholder="Introduce tu API Key" />
+
+            <div class="error" *ngIf="form.get('key')?.touched && form.get('key')?.hasError('required')">
+                La API Key es obligatoria.
+            </div>
+
+            <div class="error" *ngIf="form.get('key')?.touched && form.get('key')?.hasError('pattern')">
+                La API Key no tiene un formato válido.
+            </div>
+        </div>
+
+        <div class="error" *ngIf="errorMessage">
+            {{ errorMessage }}
+        </div>
+
+        <div class="form-buttons">
+
+            <button type="submit" [disabled]="isSaving">
+                {{ isSaving ? 'Verificando...' : (editingIndex !== null ? 'Actualizar' : 'Añadir') }}
+            </button>
+
+            <button *ngIf="editingIndex !== null" type="button" class="cancel" (click)="cancelEdit()"
+                [disabled]="isSaving">
+                Cancelar
+            </button>
+
+        </div>
+
+    </form>
+
+    <div class="import-export">
+
+        <button type="button" (click)="exportAccounts()" [disabled]="isImporting">
+            Exportar cuentas
+        </button>
+
+        <button type="button" (click)="fileInput.click()" [disabled]="isImporting">
+            {{ isImporting ? 'Verificando...' : 'Importar cuentas' }}
+        </button>
+
+        <button type="button" (click)="replaceAll()" [disabled]="isImporting">
+            Borrar todas las cuentas
+        </button>
+
+        <input #fileInput type="file" accept=".json,application/json" hidden (change)="importAccounts($event)">
+
+    </div>
+
+    <p class="import-warning">
+        ⚠️ El archivo contiene tus API keys. Evita compartirlo para prevenir su exposición.
+    </p>
+
+    <div class="import-options" *ngIf="showImportOptions">
+
+        <h3>Importar cuentas</h3>
+
+        <p>
+            El archivo contiene
+            <strong>{{ importTotal }}</strong>
+            cuenta(s).
+        </p>
+
+        <ul>
+            <li>
+                <strong>{{ importNew }}</strong>
+                cuenta(s) nuevas
+            </li>
+
+            <li>
+                <strong>{{ importExisting }}</strong>
+                cuenta(s) que ya existen
+            </li>
+
+            <li *ngIf="importInvalid > 0">
+                <strong>{{ importInvalid }}</strong>
+                cuenta(s) inválidas
+            </li>
+        </ul>
+
+        <!-- Errores de validacion -->
+        <div class="import-errors" *ngIf="importInvalidAccounts.length > 0">
+
+            <h4>Datos inválidos</h4>
+
+            <ul>
+                <li *ngFor="let invalid of importInvalidAccounts">
+
+                    <strong>Cuenta {{ invalid.index + 1 }}</strong>
+
+                    <span *ngIf="invalid.name">
+                        — {{ invalid.name }}
+                    </span>
+
+                    <span *ngIf="invalid.gw2Name">
+                        — {{ invalid.gw2Name }}
+                    </span>
+
+                    : {{ invalid.reason }}
+
+                </li>
+            </ul>
+
+        </div>
+
+        <p class="import-question">
+            Opciones disponibles
+        </p>
+
+        <div class="import-verifying" *ngIf="isImporting">
+            Verificando las API Keys con Guild Wars 2...
+        </div>
+
+        <div class="import-buttons">
+
+            <button type="button" (click)="importAddNew()" [disabled]="isImporting || importNew === 0">
+                {{ isImporting ? 'Verificando...' : 'Añadir nuevas' }}
+            </button>
+
+            <button type="button" (click)="importUpdateExisting()" [disabled]="isImporting || importExisting === 0">
+                {{ isImporting ? 'Verificando...' : 'Actualizar existentes' }}
+            </button>
+
+            <button type="button" class="danger" (click)="importReplaceAll()"
+                [disabled]="isImporting || importAccountsData.length === 0 || importInvalid > 0">
+                {{ isImporting ? 'Verificando...' : 'Borrar e importar todo' }}
+            </button>
+
+            <button type="button" class="cancel" (click)="cancelImport()" [disabled]="isImporting">
+                Cancelar
+            </button>
+
+        </div>
+        <p class="import-danger-warning" *ngIf="importInvalid > 0">
+            Para utilizar "Borrar e importar todo", todas las cuentas del archivo deben ser válidas.
+        </p>
+
+    </div>
+
+    <div class="accounts" *ngIf="accounts.length > 0">
+
+        <h3>Cuentas guardadas</h3>
+
+        <div class="account" *ngFor="let account of accounts; let i = index" [class.current]="isCurrent(account)">
+
+            <div class="account-info">
+
+                <strong>{{ account.name }}</strong>
+
+                <span class="active" *ngIf="isCurrent(account)">
+                    Activa
+                </span>
+
+                <span class="gw2-name">
+                    {{ account.gw2Name }}
+                </span>
+
+            </div>
+
+            <div class="account-actions">
+
+                <button type="button" class="select" *ngIf="!isCurrent(account)" (click)="select(account)">
+                    Seleccionar
+                </button>
+
+                <button type="button" class="edit" (click)="edit(i)">
+                    Editar
+                </button>
+
+                <button type="button" class="delete" (click)="delete(i)">
+                    Borrar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="empty" *ngIf="accounts.length === 0">
+        No hay cuentas configuradas.
+    </div>
+
+</div>

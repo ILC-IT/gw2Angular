@@ -1,0 +1,173 @@
+Burbuja cromática
+Corazón del Khan-Ur
+Eco del Vacío Dracónico
+Floreterna imperial
+Infusión abisal
+Infusión celestial (azul)
+Infusión celestial (roja)
+Infusión chak
+Infusión curativa
+Infusión de +1 de Resistencia a la Agonía
+Infusión de +2 de Resistencia a la Agonía
+Infusión de +3 de Resistencia a la Agonía
+Infusión de +4 de Resistencia a la Agonía
+Infusión de +5 de Resistencia a la Agonía
+Infusión de +5 de resistencia a la agonía curativa
+Infusión de +5 de resistencia a la agonía maligna
+Infusión de +5 de resistencia a la agonía mística
+Infusión de +5 de resistencia a la agonía poderosa
+Infusión de +5 de resistencia a la agonía precisa
+Infusión de +5 de resistencia a la agonía rencorosa
+Infusión de +5 de resistencia a la agonía resistente
+Infusión de +5 de resistencia a la agonía vital
+Infusión de +6 de Resistencia a la Agonía
+Infusión de +7 de Resistencia a la Agonía
+Infusión de +7 de resistencia a la agonía curativa
+Infusión de +7 de resistencia a la agonía maligna
+Infusión de +7 de resistencia a la agonía mística
+Infusión de +7 de resistencia a la agonía poderosa
+Infusión de +7 de resistencia a la agonía precisa
+Infusión de +7 de resistencia a la agonía rencorosa
+Infusión de +7 de resistencia a la agonía resistente
+Infusión de +7 de resistencia a la agonía vital
+Infusión de +8 de Resistencia a la Agonía
+Infusión de +9 de Resistencia a la Agonía
+Infusión de +9 de resistencia a la agonía curativa
+Infusión de +9 de resistencia a la agonía maligna
+Infusión de +9 de resistencia a la agonía mística
+Infusión de +9 de resistencia a la agonía poderosa
+Infusión de +9 de resistencia a la agonía precisa
+Infusión de +9 de resistencia a la agonía rencorosa
+Infusión de +9 de resistencia a la agonía resistente
+Infusión de +9 de resistencia a la agonía vital
+Infusión de +10 de Resistencia a la Agonía
+Infusión de +11 de Resistencia a la Agonía
+Infusión de +12 de Resistencia a la Agonía
+Infusión de +13 de Resistencia a la Agonía
+Infusión de +14 de Resistencia a la Agonía
+Infusión de +15 de Resistencia a la Agonía
+Infusión de +16 de Resistencia a la Agonía
+Infusión de +17 de Resistencia a la Agonía
+Infusión de +18 de Resistencia a la Agonía
+Infusión de +19 de Resistencia a la Agonía
+Infusión de +20 de Resistencia a la Agonía
+Infusión de +21 de Resistencia a la Agonía
+Infusión de +22 de Resistencia a la Agonía
+Infusión de +23 de Resistencia a la Agonía
+Infusión de +24 de Resistencia a la Agonía
+Infusión de abeja reina
+Infusión de ágata
+Infusión de ascuas
+Infusión de aurilio líquido
+Infusión de cachivache inestable de Moto: azul
+Infusión de cachivache inestable de Moto: rojo
+Infusión de caminante de la Niebla
+Infusión de caparazón de juguete
+Infusión de corazón del invierno
+Infusión de cristal de curación
+Infusión de cristal de daño de condición
+Infusión de cristal de duración de bendición
+Infusión de cristal de duración de condición
+Infusión de cristal de dureza
+Infusión de cristal de potencia
+Infusión de cristal de precisión
+Infusión de cristal de vitalidad
+Infusión de diamantes de nieve
+Infusión de fluidez arcana
+Infusión de hematites
+Infusión de la Legión de la Escarcha
+Infusión de llama del bosque
+Infusión de núcleo calorífico
+Infusión de piel de piedra de Deldrimor
+Infusión de posesión
+Infusión de velocidad de natación +10
+Infusión de velocidad de natación +11
+Infusión de velocidad de natación +12
+Infusión de velocidad de natación +13
+Infusión de velocidad de natación +14
+Infusión de velocidad de natación +15
+Infusión de velocidad de natación +16
+Infusión de velocidad de natación +17
+Infusión de velocidad de natación +18
+Infusión de velocidad de natación +19
+Infusión de velocidad de natación +20
+Infusión de velocidad de natación +21
+Infusión de velocidad de natación +22
+Infusión de velocidad de natación +23
+Infusión de velocidad de natación +24
+Infusión de velocidad de natación +25
+Infusión de velocidad de natación +26
+Infusión de velocidad de natación +27
+Infusión de velocidad de natación +28
+Infusión de velocidad de natación +29
+Infusión de velocidad de natación +30
+Infusión de velocidad de natación de cuenta
+Infusión de vida marina etérea
+Infusión de WvW de concentración
+Infusión de WvW de curación
+Infusión de WvW de pericia
+Infusión de WvW de poder
+Infusión de WvW maligna
+Infusión de WvW precisa
+Infusión de WvW resistente
+Infusión de WvW vital
+Infusión del ojo derecho de Jormag
+Infusión del ojo derecho de Primordus
+Infusión del ojo izquierdo de Jormag
+Infusión del ojo izquierdo de Primordus
+Infusión demoníaca
+Infusión fantasmal
+Infusión festiva de confeti
+Infusión fosfoluminiscente
+Infusión jotun
+Infusión maligna
+Infusión mecánica
+Infusión mística
+Infusión ondeante poliluminiscente (azul verdosa)
+Infusión ondeante poliluminiscente (naranja)
+Infusión ondeante poliluminiscente (negra)
+Infusión ondeante poliluminiscente (verde)
+Infusión poderosa
+Infusión precisa
+Infusión resistente
+Infusión reverberante polisaturante (gris)
+Infusión reverberante polisaturante (morada)
+Infusión reverberante polisaturante (roja)
+Infusión simpar
+Infusión simple
+Infusión simple +3
+Infusión simple +5
+Infusión simple +7
+Infusión vital
+Lente de agonía ámbar (derecha)
+Lente de agonía ámbar (izquierda)
+Lente de agonía áurea (derecha)
+Lente de agonía áurea (izquierda)
+Lente de agonía carmesí (derecha)
+Lente de agonía carmesí (izquierda)
+Lente de agonía celeste (derecha)
+Lente de agonía celeste (izquierda)
+Lente de agonía evanescente (derecha)
+Lente de agonía evanescente (izquierda)
+Lente de agonía rosada (derecha)
+Lente de agonía rosada (izquierda)
+Lente de agonía viridiana (derecha)
+Lente de agonía viridiana (izquierda)
+Mota de oscuridad
+Sinfonía silenciosa
+Trascendencia de los videntes
+Enriquecimiento chapado
+Enriquecimiento de bendiciones de la Nutria
+Enriquecimiento de bendiciones de PEM de la Sierpe
+Enriquecimiento de bendiciones de ruta de recompensas en WvW de la Sierpe
+Enriquecimiento de bendiciones doradas de la Sierpe
+Enriquecimiento de bendiciones experimentadas de la Sierpe
+Enriquecimiento de bendiciones kármicas de la Sierpe
+Enriquecimiento de bendiciones mágicas de la Sierpe
+Enriquecimiento de cumpleaños de celebración
+Enriquecimiento de experiencia
+Enriquecimiento de karma
+Enriquecimiento de magia
+Enriquecimiento de PEM
+Enriquecimiento de ruta de recompensas en WvW
+Enriquecimiento del calor de Koda

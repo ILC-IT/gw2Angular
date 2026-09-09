@@ -69,7 +69,12 @@
         <a mat-menu-item [routerLink]="'/diaria/otros'" (click)="sidenav.close()">Más diarias</a>
       </mat-menu>
 
-      <a routerLink="/heroes" (click)="sidenav.close()">Héroes</a>
+      <!-- Buscador Heroes con submenú -->
+      <a mat-button [matMenuTriggerFor]="heroesMenu" (click)="$event.preventDefault()">Héroes</a>
+      <mat-menu #heroesMenu="matMenu">
+        <a mat-menu-item [routerLink]="'/heroes/heroesinfo'" (click)="sidenav.close()">Héroes Info</a>
+        <a mat-menu-item [routerLink]="'/heroes/infusiones'" (click)="sidenav.close()">Infusiones</a>
+      </mat-menu>
 
       <a routerLink="/calculadora" (click)="sidenav.close()">Calculadora</a>
 
@@ -81,6 +86,14 @@
         <a mat-menu-item [routerLink]="'/stats/buscarporarma'" (click)="sidenav.close()">Nombre arma</a>
       </mat-menu>
 
+      <!-- Buscador Poi con submenú -->
+      <a mat-button [matMenuTriggerFor]="poiMenu" (click)="$event.preventDefault()">Buscador Poi</a>
+      <mat-menu #poiMenu="matMenu">
+        <a mat-menu-item [routerLink]="'/poi/buscarpornombre'" (click)="sidenav.close()">Nombre</a>
+        <a mat-menu-item [routerLink]="'/poi/buscarpormapa'" (click)="sidenav.close()">Mapa</a>
+        <a mat-menu-item [routerLink]="'/poi/buscarporcodigo'" (click)="sidenav.close()">Código</a>
+      </mat-menu>
+
       <a routerLink="/enlaces" (click)="sidenav.close()">Enlaces</a>
 
       <!-- Raid con submenú -->
@@ -90,6 +103,8 @@
         <a mat-menu-item [routerLink]="'/raid/weeklyraid'" (click)="sidenav.close()">Logro Raid Semanal</a>
         <a mat-menu-item [routerLink]="'/raid/dailyraidbounties'" (click)="sidenav.close()">Daily Raid Bounties</a>
       </mat-menu>
+
+      <a routerLink="/dungeon" (click)="sidenav.close()">Dungeon</a>
 
       <!-- Legendarios con submenú -->
       <a mat-button [matMenuTriggerFor]="legendariosMenu" (click)="$event.preventDefault()">Legendarios</a>
@@ -103,8 +118,8 @@
         <a mat-menu-item [routerLink]="'/legendary/preciosarmas'" (click)="sidenav.close()">Precios armas</a>
       </mat-menu>
 
-      <a routerLink="/festival" (click)="sidenav.close()">Festival</a>
-      
+      <a routerLink="/festival" (click)="sidenav.close()">Festivales</a>
+
       <!-- Homestead con submenú -->
       <a mat-button [matMenuTriggerFor]="homesteadMenu" (click)="$event.preventDefault()">Homestead</a>
       <mat-menu #homesteadMenu="matMenu">
@@ -113,20 +128,38 @@
       </mat-menu>
 
       <a href="https://dps.report/" target="_blank" rel="noopener noreferrer">LOGS</a>
+
       <a href="https://gw2efficiency.com/" target="_blank" rel="noopener noreferrer">GW2Eff</a>
+
       <a href="https://killproof.me/account/gw2accounts" target="_blank" rel="noopener noreferrer">KP</a>
-      <a [cdkCopyToClipboard]="account.name" matTooltip="Copiar" style="cursor: pointer;" [ngClass]="{ 'error-account': account?.error }">{{account.name || 'Loading API...' }}</a>
+
+      <a routerLink="/accounts" (click)="sidenav.close()">Accounts</a>
+
+      <a [cdkCopyToClipboard]="account.name || ''" matTooltip="Copiar" style="cursor: pointer;" [ngClass]="{
+        'valid-account': account?.name && !account?.error,  
+        'error-account': account?.error,
+        'no-account': !loadingAccount && !account?.error && !account?.name 
+        }">
+        <ng-container *ngIf="loadingAccount">
+          Loading API...
+        </ng-container>
+        <ng-container *ngIf="!loadingAccount && account?.error">
+          API ERROR
+        </ng-container>
+        <ng-container *ngIf="!loadingAccount && !account?.error && account?.name">
+          {{ account.name }}
+        </ng-container> <ng-container *ngIf="!loadingAccount && !account?.error && !account?.name">
+          No account selected
+        </ng-container>
+      </a>
       <mat-form-field appearance="fill" style="width: 180px; margin-top: 10px;">
-        <mat-select
-            placeholder="Select account"
-            [value]="selectedAccount"
-            (selectionChange)="onAccountChange($event.value)"
-        >
-            <mat-option *ngFor="let acc of accounts" [value]="acc">
+        <mat-select placeholder="Select account" [value]="selectedAccount"
+          (selectionChange)="onAccountChange($event.value)">
+          <mat-option *ngFor="let acc of accounts" [value]="acc">
             {{ acc.name }}
-            </mat-option>
+          </mat-option>
         </mat-select>
-    </mat-form-field>
+      </mat-form-field>
     </nav>
   </mat-sidenav>
 
@@ -142,16 +175,18 @@
       <div class="search-container">
         <div class="search" color="primary">
           <mat-form-field class="example-form-field">
-              <input matInput type="text" placeholder="Buscar en Wiki" [(ngModel)]="value">
-              <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Borrar" (click)="value=''">
+            <input matInput type="text" placeholder="Buscar en Wiki" [(ngModel)]="value">
+            <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Borrar" (click)="value=''">
               <mat-icon>x</mat-icon>
-              </button>
+            </button>
           </mat-form-field>
-          <a href="https://wiki-en.guildwars2.com/index.php?title=Special%3ASearch&search={{value}}&go=Go" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
-              <button mat-raised-button color="primary">EN</button>
+          <a href="https://wiki-en.guildwars2.com/index.php?title=Special%3ASearch&search={{value}}&go=Go"
+            target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+            <button mat-raised-button color="primary">EN</button>
           </a>
-          <a href="https://wiki-es.guildwars2.com/index.php?title=Special%3ASearch&search={{value}}&go=Go" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
-              <button mat-raised-button color="primary">ES</button>
+          <a href="https://wiki-es.guildwars2.com/index.php?title=Special%3ASearch&search={{value}}&go=Go"
+            target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+            <button mat-raised-button color="primary">ES</button>
           </a>
         </div>
       </div>
@@ -161,7 +196,8 @@
       </div>
 
       <div class="reloj">
-        {{ time | async | date: 'hh:mm:ss a' }}
+        <!--{{ time | async | date: 'hh:mm:ss a' }}-->
+        {{ (time | async | date: 'EEEE, d MMMM yyyy, H:mm:ss':'':'es-ES') | titlecase }}
       </div>
     </div>
     <div class="mobile-content">
@@ -171,18 +207,19 @@
 </mat-sidenav-container>
 
 <ng-template #desktopView>
-  <div class="app-container"> 
+  <div class="app-container">
 
     <div class="titulo">
-        <h1>{{title}}</h1>
+      <h1>{{title}}</h1>
     </div>
 
     <div class="reloj">
-      {{ time | async | date: 'hh:mm:ss a' }}
+      <!--{{ time | async | date: 'hh:mm:ss a' }}-->
+      {{ (time | async | date: 'EEEE, d MMMM yyyy, H:mm:ss':'':'es-ES') | titlecase }}
     </div>
 
-    <app-dashboard></app-dashboard>
-    
+    <app-dashboard [account]="account" [loadingAccount]="loadingAccount"></app-dashboard>
+
     <div class="app-body">
       <router-outlet></router-outlet>
     </div>

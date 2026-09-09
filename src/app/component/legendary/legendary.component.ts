@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { HeroService } from 'src/app/service/hero.service';
 import { LegendaryService } from 'src/app/service/legendary.service';
-import { legendarios, armaduraLigera, armaduraMedia, armaduraPesada, runa, sello, anilloRaid, t6, idsT6, vales, cantidadArmadura, cantidadRunas, cantidadSellos, valeId, trebolId, liId, ectoplasmaId, liArmadura, trebolArmadura, trebolRuna, trebolSello, trebolAnilloRaid, t6ArmaduraSelloRuna, ectoplasmaRuna, ectoplasmaSello, liAnilloRaid, t6AnilloRaid, obsidianaArmadura, obsidianaRuna, obsidianaSello, obsidianaId, favorImperial,otrosComponentes, lingoteAurico, placaReclamada, huevoChak, piezaAeronave, trozoAurilio, cristalLineaLey, montonCristalLuminoso, aspectoMistico, talismanBrillantez, talismanPotencia, talismanHabilidad, motaMistica, simboloControl, simboloMejora, simboloDolor, monedaMistica, preciosVarios, idsPreciosVarios, legendaryWeapons1, legendaryWeapons2, legendaryWeapons3, legendaryWeapons3Variants, donExploracion, donBatalla, notasInvestigacion, monedaMazmorra, otrosLegendarios, anilloMundo, legendaryAccessory, amuletoPvE, amuletoPvP, legendaryRelic, legendaryWeaponsOther, legendaryBack, armaduraLigeraPve, armaduraMediaPve, armaduraPesadaPve, insigniaFarolero, ambarGris, vetusta, amalgamada, amalgamadaDraconica, recuerdoAurene, piedraJade, florMielera, troncoPinoTierrasBajas, ambarTitan, mineralTitan, quemateritaTitan, obsidianaMursaat, piedraRunicaMursaat, esquirlaCuriosaMursaat, restoCuriosidadMursaat, ursusObligue, saviaRica, ducadoAnticuado, esenciaDesesperacionT1, esenciaAvariciaT2, esenciaTriunfoT3, monedaAntigua, monedaInusual, magiaLiberada, magiaVolatil, esquirlaEspiritual, legendaryGlovesFractal, ColorRule, cartera, legendaryAquaticHeadgear, legendaryWeaponsGenOther, anilloPvE} from './legendary';
+import { legendarios, armaduraLigera, armaduraMedia, armaduraPesada, runa, sello, anilloRaid, t6, idsT6, vales, cantidadArmadura, cantidadRunas, cantidadSellos, valeId, trebolId, liId, ectoplasmaId, liArmadura, trebolArmadura, trebolRuna, trebolSello, trebolAnilloRaid, t6ArmaduraSelloRuna, ectoplasmaRuna, ectoplasmaSello, liAnilloRaid, t6AnilloRaid, obsidianaArmadura, obsidianaRuna, obsidianaSello, obsidianaId, favorImperial, otrosComponentes, lingoteAurico, placaReclamada, huevoChak, piezaAeronave, trozoAurilio, cristalLineaLey, montonCristalLuminoso, aspectoMistico, talismanBrillantez, talismanPotencia, talismanHabilidad, motaMistica, simboloControl, simboloMejora, simboloDolor, monedaMistica, preciosVarios, idsPreciosVarios, legendaryWeapons1, legendaryWeapons2, legendaryWeapons3, legendaryWeapons3Variants, donExploracion, donBatalla, notasInvestigacion, monedaMazmorra, otrosLegendarios, anilloMundo, legendaryAccessory, amuletoPvE, amuletoPvP, legendaryRelic, legendaryWeaponsOther, legendaryBack, armaduraLigeraPve, armaduraMediaPve, armaduraPesadaPve, insigniaFarolero, ambarGris, vetusta, amalgamada, amalgamadaDraconica, recuerdoAurene, piedraJade, florMielera, troncoPinoTierrasBajas, ambarTitan, mineralTitan, quemateritaTitan, obsidianaMursaat, piedraRunicaMursaat, esquirlaCuriosaMursaat, restoCuriosidadMursaat, ursusObligue, saviaRica, ducadoAnticuado, esenciaDesesperacionT1, esenciaAvariciaT2, esenciaTriunfoT3, monedaAntigua, monedaInusual, magiaLiberada, magiaVolatil, esquirlaEspiritual, legendaryGlovesFractal, ColorRule, cartera, legendaryAquaticHeadgear, legendaryWeaponsGenOther, anilloPvE, oroMoneda, karma, laurel, tiqueWvW, saviaCromatica, piedraEncantamientoBruto, fragmentoPiedraSombria, CommercePrice } from './legendary';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -189,7 +189,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     wiki: "https://wiki.guildwars2.com/wiki/Legendary_armor#Raid_set",
     totalVales: vales * cantidadArmadura,
     totalTreboles: trebolArmadura * cantidadArmadura,
-    totalLi:  liArmadura * cantidadArmadura,
+    totalLi: liArmadura * cantidadArmadura,
     totalT6: t6ArmaduraSelloRuna * cantidadArmadura,
     totalEctoplasma: 0,
     totalObsidiana: obsidianaArmadura * cantidadArmadura
@@ -201,7 +201,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     wiki: "https://wiki.guildwars2.com/wiki/Legendary_armor#Raid_set",
     totalVales: vales * cantidadArmadura,
     totalTreboles: trebolArmadura * cantidadArmadura,
-    totalLi:  liArmadura * cantidadArmadura,
+    totalLi: liArmadura * cantidadArmadura,
     totalT6: t6ArmaduraSelloRuna * cantidadArmadura,
     totalEctoplasma: 0,
     totalObsidiana: obsidianaArmadura * cantidadArmadura
@@ -213,7 +213,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     wiki: "https://wiki.guildwars2.com/wiki/Legendary_armor#Raid_set",
     totalVales: vales * cantidadArmadura,
     totalTreboles: trebolArmadura * cantidadArmadura,
-    totalLi:  liArmadura * cantidadArmadura,
+    totalLi: liArmadura * cantidadArmadura,
     totalT6: t6ArmaduraSelloRuna * cantidadArmadura,
     totalEctoplasma: 0,
     totalObsidiana: obsidianaArmadura * cantidadArmadura
@@ -225,7 +225,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     wiki: "https://wiki.guildwars2.com/wiki/Coalescence",
     totalVales: 0,
     totalTreboles: trebolAnilloRaid,
-    totalLi:  liAnilloRaid,
+    totalLi: liAnilloRaid,
     totalT6: t6AnilloRaid,
     totalEctoplasma: 0,
     totalObsidiana: 0
@@ -237,7 +237,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     wiki: "https://wiki.guildwars2.com/wiki/Legendary_Rune",
     totalVales: vales * cantidadRunas,
     totalTreboles: trebolRuna * cantidadRunas,
-    totalLi:  0,
+    totalLi: 0,
     totalT6: t6ArmaduraSelloRuna * cantidadRunas,
     totalEctoplasma: ectoplasmaRuna * cantidadRunas,
     totalObsidiana: obsidianaRuna * cantidadRunas
@@ -249,7 +249,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     wiki: "https://wiki.guildwars2.com/wiki/Legendary_Sigil",
     totalVales: vales * cantidadSellos,
     totalTreboles: trebolSello * cantidadSellos,
-    totalLi:  0,
+    totalLi: 0,
     totalT6: t6ArmaduraSelloRuna * cantidadSellos,
     totalEctoplasma: ectoplasmaSello * cantidadSellos,
     totalObsidiana: obsidianaSello * cantidadSellos
@@ -257,10 +257,10 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
   totalesDatos: legendarios = {
     nombre: "Total",
     cantidad: this.armaduraLigeraDatos.cantidad + this.armaduraMediaDatos.cantidad + this.armaduraPesadaDatos.cantidad + this.anilloRaidDatos.cantidad + this.runaDatos.cantidad + this.selloDatos.cantidad,
-    tengo: this.armaduraLigeraDatos.tengo + this.armaduraMediaDatos.tengo + this.armaduraPesadaDatos.tengo + this.anilloRaidDatos.tengo + this.runaDatos.tengo+ this.selloDatos.tengo,
+    tengo: this.armaduraLigeraDatos.tengo + this.armaduraMediaDatos.tengo + this.armaduraPesadaDatos.tengo + this.anilloRaidDatos.tengo + this.runaDatos.tengo + this.selloDatos.tengo,
     wiki: "",
     totalVales: this.armaduraLigeraDatos.totalVales + this.armaduraMediaDatos.totalVales + this.armaduraPesadaDatos.totalVales + this.anilloRaidDatos.totalVales + this.runaDatos.totalVales + this.selloDatos.totalVales,
-    totalTreboles: this.armaduraLigeraDatos.totalTreboles + this.armaduraMediaDatos.totalTreboles + this.armaduraPesadaDatos.totalTreboles + this.anilloRaidDatos.totalTreboles + this.runaDatos.totalTreboles+ this.selloDatos.totalTreboles,
+    totalTreboles: this.armaduraLigeraDatos.totalTreboles + this.armaduraMediaDatos.totalTreboles + this.armaduraPesadaDatos.totalTreboles + this.anilloRaidDatos.totalTreboles + this.runaDatos.totalTreboles + this.selloDatos.totalTreboles,
     totalLi: this.armaduraLigeraDatos.totalLi + this.armaduraMediaDatos.totalLi + this.armaduraPesadaDatos.totalLi + this.anilloRaidDatos.totalLi + this.runaDatos.totalLi + this.selloDatos.totalLi,
     totalT6: this.armaduraLigeraDatos.totalT6 + this.armaduraMediaDatos.totalT6 + this.armaduraPesadaDatos.totalT6 + this.anilloRaidDatos.totalT6 + this.runaDatos.totalT6 + this.selloDatos.totalT6,
     totalEctoplasma: this.armaduraLigeraDatos.totalEctoplasma + this.armaduraMediaDatos.totalEctoplasma + this.armaduraPesadaDatos.totalEctoplasma + this.anilloRaidDatos.totalEctoplasma + this.runaDatos.totalEctoplasma + this.selloDatos.totalEctoplasma,
@@ -272,7 +272,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     tengo: 0,
     wiki: "",
     totalVales: this.armaduraLigeraDatos.totalVales + this.armaduraMediaDatos.totalVales + this.armaduraPesadaDatos.totalVales + this.anilloRaidDatos.totalVales + this.runaDatos.totalVales + this.selloDatos.totalVales,
-    totalTreboles: this.armaduraLigeraDatos.totalTreboles + this.armaduraMediaDatos.totalTreboles + this.armaduraPesadaDatos.totalTreboles + this.anilloRaidDatos.totalTreboles + this.runaDatos.totalTreboles+ this.selloDatos.totalTreboles,
+    totalTreboles: this.armaduraLigeraDatos.totalTreboles + this.armaduraMediaDatos.totalTreboles + this.armaduraPesadaDatos.totalTreboles + this.anilloRaidDatos.totalTreboles + this.runaDatos.totalTreboles + this.selloDatos.totalTreboles,
     totalLi: this.armaduraLigeraDatos.totalLi + this.armaduraMediaDatos.totalLi + this.armaduraPesadaDatos.totalLi + this.anilloRaidDatos.totalLi + this.runaDatos.totalLi + this.selloDatos.totalLi,
     totalT6: this.armaduraLigeraDatos.totalT6 + this.armaduraMediaDatos.totalT6 + this.armaduraPesadaDatos.totalT6 + this.anilloRaidDatos.totalT6 + this.runaDatos.totalT6 + this.selloDatos.totalT6,
     totalEctoplasma: this.armaduraLigeraDatos.totalEctoplasma + this.armaduraMediaDatos.totalEctoplasma + this.armaduraPesadaDatos.totalEctoplasma + this.anilloRaidDatos.totalT6 + this.runaDatos.totalEctoplasma + this.selloDatos.totalEctoplasma,
@@ -283,11 +283,11 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     cantidad: 0,
     tengo: 0,
     wiki: "",
-    totalVales: this.armaduraLigeraDatos.totalVales + this.armaduraMediaDatos.totalVales + this.armaduraPesadaDatos.totalVales + this.anilloRaidDatos.totalVales + this.runaDatos.totalVales+ this.selloDatos.totalVales,
-    totalTreboles: this.armaduraLigeraDatos.totalTreboles + this.armaduraMediaDatos.totalTreboles + this.armaduraPesadaDatos.totalTreboles + this.anilloRaidDatos.totalTreboles + this.runaDatos.totalTreboles+ this.selloDatos.totalTreboles,
+    totalVales: this.armaduraLigeraDatos.totalVales + this.armaduraMediaDatos.totalVales + this.armaduraPesadaDatos.totalVales + this.anilloRaidDatos.totalVales + this.runaDatos.totalVales + this.selloDatos.totalVales,
+    totalTreboles: this.armaduraLigeraDatos.totalTreboles + this.armaduraMediaDatos.totalTreboles + this.armaduraPesadaDatos.totalTreboles + this.anilloRaidDatos.totalTreboles + this.runaDatos.totalTreboles + this.selloDatos.totalTreboles,
     totalLi: this.armaduraLigeraDatos.totalLi + this.armaduraMediaDatos.totalLi + this.armaduraPesadaDatos.totalLi + this.anilloRaidDatos.totalLi + this.runaDatos.totalLi + this.selloDatos.totalLi,
-    totalT6: this.armaduraLigeraDatos.totalT6 + this.armaduraMediaDatos.totalT6 + this.armaduraPesadaDatos.totalT6 + this.anilloRaidDatos.totalT6 + this.runaDatos.totalT6+ this.selloDatos.totalT6,
-    totalEctoplasma: this.armaduraLigeraDatos.totalEctoplasma + this.armaduraMediaDatos.totalEctoplasma + this.armaduraPesadaDatos.totalEctoplasma + this.anilloRaidDatos.totalEctoplasma + this.runaDatos.totalEctoplasma+ this.selloDatos.totalEctoplasma,
+    totalT6: this.armaduraLigeraDatos.totalT6 + this.armaduraMediaDatos.totalT6 + this.armaduraPesadaDatos.totalT6 + this.anilloRaidDatos.totalT6 + this.runaDatos.totalT6 + this.selloDatos.totalT6,
+    totalEctoplasma: this.armaduraLigeraDatos.totalEctoplasma + this.armaduraMediaDatos.totalEctoplasma + this.armaduraPesadaDatos.totalEctoplasma + this.anilloRaidDatos.totalEctoplasma + this.runaDatos.totalEctoplasma + this.selloDatos.totalEctoplasma,
     totalObsidiana: this.armaduraLigeraDatos.totalObsidiana + this.armaduraMediaDatos.totalObsidiana + this.armaduraPesadaDatos.totalObsidiana + this.runaDatos.totalObsidiana + this.selloDatos.totalObsidiana
   }
   necesitoDatos: legendarios = {
@@ -296,7 +296,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     tengo: 0,
     wiki: "",
     totalVales: this.armaduraLigeraDatos.totalVales + this.armaduraMediaDatos.totalVales + this.armaduraPesadaDatos.totalVales + this.anilloRaidDatos.totalVales + this.runaDatos.totalVales + this.selloDatos.totalVales,
-    totalTreboles: this.armaduraLigeraDatos.totalTreboles + this.armaduraMediaDatos.totalTreboles + this.armaduraPesadaDatos.totalTreboles + this.anilloRaidDatos.totalTreboles + this.runaDatos.totalTreboles+ this.selloDatos.totalTreboles,
+    totalTreboles: this.armaduraLigeraDatos.totalTreboles + this.armaduraMediaDatos.totalTreboles + this.armaduraPesadaDatos.totalTreboles + this.anilloRaidDatos.totalTreboles + this.runaDatos.totalTreboles + this.selloDatos.totalTreboles,
     totalLi: this.armaduraLigeraDatos.totalLi + this.armaduraMediaDatos.totalLi + this.armaduraPesadaDatos.totalLi + this.anilloRaidDatos.totalLi + this.runaDatos.totalLi + this.selloDatos.totalLi,
     totalT6: this.armaduraLigeraDatos.totalT6 + this.armaduraMediaDatos.totalT6 + this.armaduraPesadaDatos.totalT6 + this.anilloRaidDatos.totalT6 + this.runaDatos.totalT6 + this.selloDatos.totalT6,
     totalEctoplasma: this.armaduraLigeraDatos.totalEctoplasma + this.armaduraMediaDatos.totalEctoplasma + this.armaduraPesadaDatos.totalEctoplasma + this.anilloRaidDatos.totalEctoplasma + this.runaDatos.totalEctoplasma + this.selloDatos.totalEctoplasma,
@@ -332,55 +332,83 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
   dataSourceLegen = this.legendariosDatos;
 
   ///////////////////// Cartera /////////////////////////////
+  oroMoneda: cartera = {
+    nombre: "Oro",
+    id: oroMoneda[0].idWallet,
+    icon: oroMoneda[0].icon,
+    tengo: 0
+  };
+  karma: cartera = {
+    nombre: "Karma",
+    id: karma[0].idWallet,
+    icon: karma[0].icon,
+    tengo: 0
+  };
+  laurel: cartera = {
+    nombre: "Laurel",
+    id: laurel[0].idWallet,
+    icon: laurel[0].icon,
+    tengo: 0
+  };
+  tiqueWvW: cartera = {
+    nombre: "Tique de recogida de escaramuzas WvW",
+    id: tiqueWvW[0].idWallet,
+    icon: tiqueWvW[0].icon,
+    tengo: 0
+  };
   esenciat1: cartera = {
     nombre: "Esencia T1",
     id: esenciaDesesperacionT1[0].idWallet,
     icon: esenciaDesesperacionT1[0].icon,
     tengo: 0
-  }
+  };
   esenciat2: cartera = {
     nombre: "Esencia T2",
     id: esenciaAvariciaT2[0].idWallet,
     icon: esenciaAvariciaT2[0].icon,
     tengo: 0
-  }
+  };
   esenciat3: cartera = {
     nombre: "Esencia T3",
     id: esenciaTriunfoT3[0].idWallet,
     icon: esenciaTriunfoT3[0].icon,
     tengo: 0
-  }
+  };
   monedaAntigua: cartera = {
     nombre: "Moneda antigua",
     id: monedaAntigua[0].idWallet,
     icon: monedaAntigua[0].icon,
     tengo: 0
-  }
+  };
   monedaInusual: cartera = {
     nombre: "Moneda inusual",
     id: monedaInusual[0].idWallet,
     icon: monedaInusual[0].icon,
     tengo: 0
-  }
+  };
   ursusObligue: cartera = {
     nombre: "Obligo ursus",
     id: ursusObligue[0].idWallet,
     icon: ursusObligue[0].icon,
     tengo: 0
-  }
+  };
   saviaRica: cartera = {
     nombre: "Savia rica en éter",
     id: saviaRica[0].idWallet,
     icon: saviaRica[0].icon,
     tengo: 0
-  }
+  };
   ducadoAnticuado: cartera = {
     nombre: "Ducado anticuado",
     id: ducadoAnticuado[0].idWallet,
     icon: ducadoAnticuado[0].icon,
     tengo: 0
-  }
+  };
   cartera: cartera[] = [
+    this.oroMoneda,
+    this.karma,
+    this.laurel,
+    this.tiqueWvW,
     this.esenciat1,
     this.esenciat2,
     this.esenciat3,
@@ -389,7 +417,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     this.ursusObligue,
     this.saviaRica,
     this.ducadoAnticuado
-  ]
+  ];
   // tabla cartera
   displayedColumnsCartera: string[] = ['nombre', 'id', 'icon', 'tengo'];
   dataSourceCartera = this.cartera;
@@ -557,6 +585,33 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     gaste: 0,
     necesito: 0
   }
+  saviaCromatica: otrosComponentes = {
+    nombre: "Savia cromática",
+    id: saviaCromatica[0].id,
+    icon: saviaCromatica[0].icon,
+    cantidad: 0,
+    tengo: 0,
+    gaste: 0,
+    necesito: 0
+  }
+  piedraEncantamientoBruto: otrosComponentes = {
+    nombre: "Piedra de encantamiento en bruto",
+    id: piedraEncantamientoBruto[0].id,
+    icon: piedraEncantamientoBruto[0].icon,
+    cantidad: 0,
+    tengo: 0,
+    gaste: 0,
+    necesito: 0
+  }
+  fragmentoPiedraSombria: otrosComponentes = {
+    nombre: "Fragmento de piedra sombría",
+    id: fragmentoPiedraSombria[0].id,
+    icon: fragmentoPiedraSombria[0].icon,
+    cantidad: 0,
+    tengo: 0,
+    gaste: 0,
+    necesito: 0
+  }
   filaEnBlancoOtros: otrosComponentes = {
     nombre: "",
     id: 0,
@@ -584,9 +639,12 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     this.simboloDolor,
     this.esquirlaCuriosaMursaat,
     this.restoCuriosidadMursaat,
-    this.monedaMistica
+    this.monedaMistica,
+    this.saviaCromatica,
+    this.piedraEncantamientoBruto,
+    this.fragmentoPiedraSombria
   ]
-    // tabla otros componentes
+  // tabla otros componentes
   displayedColumnsOtros: string[] = ['nombre', 'id', 'icon', 'tengo', 'cantidad', 'gaste', 'necesito'];
   dataSourceOtros = this.otros;
 
@@ -609,7 +667,8 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     modo: anilloMundo[0].modo,
     icon: anilloMundo[0].icon,
     wiki: anilloMundo[0].wiki,
-    expansion: anilloMundo[0].expansion
+    expansion: anilloMundo[0].expansion,
+    nonUnique: anilloMundo[0].nonUnique
   }
   anilloPve: otrosLegendarios = {
     id: anilloPvE[0].id,
@@ -619,7 +678,8 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     modo: anilloPvE[0].modo,
     icon: anilloPvE[0].icon,
     wiki: anilloPvE[0].wiki,
-    expansion: anilloPvE[0].expansion
+    expansion: anilloPvE[0].expansion,
+    nonUnique: anilloPvE[0].nonUnique
   }
   accesorioPvE0: otrosLegendarios = {
     id: legendaryAccessory[0].id,
@@ -640,6 +700,28 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     icon: legendaryAccessory[1].icon,
     wiki: legendaryAccessory[1].wiki,
     expansion: legendaryAccessory[1].expansion
+  }
+  accesorioPvE2: otrosLegendarios = {
+    id: legendaryAccessory[2].id,
+    nombre: legendaryAccessory[2].nombre,
+    tengo: legendaryAccessory[2].tengo,
+    tipo: legendaryAccessory[2].tipo,
+    modo: legendaryAccessory[2].modo,
+    icon: legendaryAccessory[2].icon,
+    wiki: legendaryAccessory[2].wiki,
+    expansion: legendaryAccessory[2].expansion,
+    nonUnique: legendaryAccessory[2].nonUnique
+  }
+  accesorioWvW0: otrosLegendarios = {
+    id: legendaryAccessory[3].id,
+    nombre: legendaryAccessory[3].nombre,
+    tengo: legendaryAccessory[3].tengo,
+    tipo: legendaryAccessory[3].tipo,
+    modo: legendaryAccessory[3].modo,
+    icon: legendaryAccessory[3].icon,
+    wiki: legendaryAccessory[3].wiki,
+    expansion: legendaryAccessory[3].expansion,
+    nonUnique: legendaryAccessory[3].nonUnique
   }
   amuletoPvE: otrosLegendarios = {
     id: amuletoPvE[0].id,
@@ -807,6 +889,8 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     this.anilloPve,
     this.accesorioPvE0,
     this.accesorioPvE1,
+    this.accesorioPvE2,
+    this.accesorioWvW0,
     this.amuletoPvE,
     this.amuletoPvP,
     this.reliquiaLegendaria,
@@ -826,12 +910,12 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
 
   colorRules: ColorRule[] = [
     {
-      nombre: [this.anilloPvERaid.nombre, this.anilloWvW.nombre, this.anilloPve.nombre, this.accesorioPvE0.nombre, this.accesorioPvE1.nombre, this.amuletoPvE.nombre, this.amuletoPvP.nombre, this.reliquiaLegendaria.nombre, this.mochilaPvE.nombre, this.mochilaFractal.nombre, this.mochilaPvP.nombre, this.mochilaWvW.nombre, this.lanzaJanthirLegendaria.nombre, this.lanzaVoELegendaria.nombre, this.baculoVoELegendario.nombre, this.obsidianaLigera.nombre, this.obsidianaMedia.nombre, this.obsidianaPesada.nombre, this.guantesFractal.nombre, this.respiradorAcuatico.nombre],
+      nombre: [this.anilloPvERaid.nombre, this.anilloWvW.nombre, this.anilloPve.nombre, this.accesorioPvE0.nombre, this.accesorioPvE1.nombre, this.accesorioPvE2.nombre, this.accesorioWvW0.nombre, this.amuletoPvE.nombre, this.amuletoPvP.nombre, this.reliquiaLegendaria.nombre, this.mochilaPvE.nombre, this.mochilaFractal.nombre, this.mochilaPvP.nombre, this.mochilaWvW.nombre, this.lanzaJanthirLegendaria.nombre, this.lanzaVoELegendaria.nombre, this.baculoVoELegendario.nombre, this.obsidianaLigera.nombre, this.obsidianaMedia.nombre, this.obsidianaPesada.nombre, this.guantesFractal.nombre, this.respiradorAcuatico.nombre],
       condition: (t) => t === 0,
       className: 'redBackGround'
     },
     {
-      nombre: [this.anilloPvERaid.nombre, this.anilloWvW.nombre, this.anilloPve.nombre, this.accesorioPvE0.nombre, this.accesorioPvE1.nombre, this.amuletoPvE.nombre, this.amuletoPvP.nombre, this.reliquiaLegendaria.nombre, this.mochilaPvE.nombre, this.mochilaFractal.nombre, this.mochilaPvP.nombre, this.mochilaWvW.nombre, this.lanzaJanthirLegendaria.nombre, this.lanzaVoELegendaria.nombre, this.baculoVoELegendario.nombre],
+      nombre: [this.anilloPvERaid.nombre, this.anilloWvW.nombre, this.anilloPve.nombre, this.accesorioPvE0.nombre, this.accesorioPvE1.nombre, this.accesorioPvE2.nombre, this.accesorioWvW0.nombre, this.amuletoPvE.nombre, this.amuletoPvP.nombre, this.reliquiaLegendaria.nombre, this.mochilaPvE.nombre, this.mochilaFractal.nombre, this.mochilaPvP.nombre, this.mochilaWvW.nombre, this.lanzaJanthirLegendaria.nombre, this.lanzaVoELegendaria.nombre, this.baculoVoELegendario.nombre],
       condition: (t) => t > 0,
       className: 'greenBackGround'
     },
@@ -870,12 +954,12 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
   // tabla otros legendarios
   expandedElement: otrosLegendarios | null = null;
   toggleRow(element: otrosLegendarios) {
-    if (this.isArrayId(element)){
+    if (this.isArrayId(element)) {
       this.expandedElement = this.expandedElement === element ? null : element;
-    } else{
+    } else {
       this.expandedElement = null;
     }
-    
+
   }
   isArrayId(element: otrosLegendarios): boolean {
     return Array.isArray(element.id);
@@ -1216,7 +1300,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
   displayedColumnsArmasLegendarias2: string[] = ['icon', 'tengo', 'nombre', 'tipo', 'pre'];
   displayedColumnsArmasLegendarias3: string[] = ['icon', 'tengo', 'nombre', 'tipo', 'precioTpVentaS', 'pre', 'precioTpVentaSPre'];
   displayedColumnsArmasLegendarias3Variants: string[] = ['nombre', 'tipo', 'zhaitan', 'mordremoth', 'kralkatorrik', 'primordus', 'jormag', 'soowon'];
-  displayedColumnsArmasLegendariasGenOther: string [] = ['icon', 'nombre', 'tipo', 'precioTpCompraS', 'precioTpVentaS', 'pre', 'precioTpCompraSPre', 'precioTpVentaSPre'];
+  displayedColumnsArmasLegendariasGenOther: string[] = ['icon', 'nombre', 'tipo', 'precioTpCompraS', 'precioTpVentaS', 'pre', 'precioTpCompraSPre', 'precioTpVentaSPre'];
   dataSourceArmasLegendarias1 = this.armasLegendarias1;
   dataSourceArmasLegendarias2 = this.armasLegendarias2;
   dataSourceArmasLegendarias3 = this.armasLegendarias3;
@@ -1244,7 +1328,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
 
   imagePath = '../../../assets/img/aurene_variants.png';
 
-  constructor(private heroService: HeroService, private legendaryService: LegendaryService, private route: ActivatedRoute,  private router: Router) { }
+  constructor(private heroService: HeroService, private legendaryService: LegendaryService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     // Para hacer el routing a las pestañas de la tabla
@@ -1288,131 +1372,140 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     this.router.navigate(['/legendary', routeName]);
   }
 
-  getT6Tengo(){
+  getT6Tengo() {
     this.heroService.getMaterials().subscribe((materials: any) => {
-      for (let i = 0; i < materials.length; i++){
+      for (let i = 0; i < materials.length; i++) {
         //t6
-        if (materials[i].id === this.vialDeSangrePoderosa.id){
+        if (materials[i].id === this.vialDeSangrePoderosa.id) {
           this.vialDeSangrePoderosa.tengo = materials[i].count;
         }
-        if (materials[i].id === this.huesoAntiguo.id){
+        if (materials[i].id === this.huesoAntiguo.id) {
           this.huesoAntiguo.tengo = materials[i].count;
         }
-        if (materials[i].id === this.garraDespiadada.id){
+        if (materials[i].id === this.garraDespiadada.id) {
           this.garraDespiadada.tengo = materials[i].count;
         }
-        if (materials[i].id === this.montonDePolvoCristalino.id){
+        if (materials[i].id === this.montonDePolvoCristalino.id) {
           this.montonDePolvoCristalino.tengo = materials[i].count;
         }
-        if (materials[i].id === this.colmilloFeroz.id){
+        if (materials[i].id === this.colmilloFeroz.id) {
           this.colmilloFeroz.tengo = materials[i].count;
         }
-        if (materials[i].id === this.escamaBlindada.id){
+        if (materials[i].id === this.escamaBlindada.id) {
           this.escamaBlindada.tengo = materials[i].count;
         }
-        if (materials[i].id === this.totemElaborado.id){
+        if (materials[i].id === this.totemElaborado.id) {
           this.totemElaborado.tengo = materials[i].count;
         }
-        if (materials[i].id === this.vesiculaDeVenenoPoderoso.id){
+        if (materials[i].id === this.vesiculaDeVenenoPoderoso.id) {
           this.vesiculaDeVenenoPoderoso.tengo = materials[i].count;
         }
         //otros
-        if (materials[i].id === lingoteAurico[0].id){
+        if (materials[i].id === lingoteAurico[0].id) {
           this.lingoteAurico.tengo = materials[i].count;
         }
-        if (materials[i].id === placaReclamada[0].id){
+        if (materials[i].id === placaReclamada[0].id) {
           this.placaReclamada.tengo = materials[i].count;
         }
-        if (materials[i].id === huevoChak[0].id){
+        if (materials[i].id === huevoChak[0].id) {
           this.huevoChak.tengo = materials[i].count;
         }
-        if (materials[i].id === trozoAurilio[0].id){
+        if (materials[i].id === trozoAurilio[0].id) {
           this.trozoAurilio.tengo = materials[i].count;
         }
-        if (materials[i].id === piezaAeronave[0].id){
+        if (materials[i].id === piezaAeronave[0].id) {
           this.piezaAeronave.tengo = materials[i].count;
         }
-        if (materials[i].id === cristalLineaLey[0].id){
+        if (materials[i].id === cristalLineaLey[0].id) {
           this.cristalLineaLey.tengo = materials[i].count;
         }
-        if (materials[i].id === montonCristalLuminoso[0].id){
+        if (materials[i].id === montonCristalLuminoso[0].id) {
           this.montonCristalLuminoso.tengo = materials[i].count;
         }
-        if (materials[i].id === aspectoMistico[0].id){
+        if (materials[i].id === aspectoMistico[0].id) {
           this.aspectoMistico.tengo = materials[i].count;
         }
-        if (materials[i].id === talismanBrillantez[0].id){
+        if (materials[i].id === talismanBrillantez[0].id) {
           this.talismanBrillantez.tengo = materials[i].count;
         }
-        if (materials[i].id === talismanPotencia[0].id){
+        if (materials[i].id === talismanPotencia[0].id) {
           this.talismanPotencia.tengo = materials[i].count;
         }
-        if (materials[i].id === talismanHabilidad[0].id){
+        if (materials[i].id === talismanHabilidad[0].id) {
           this.talismanHabilidad.tengo = materials[i].count;
         }
-        if (materials[i].id === motaMistica[0].id){
+        if (materials[i].id === motaMistica[0].id) {
           this.motaMistica.tengo = materials[i].count;
         }
-        if (materials[i].id === simboloControl[0].id){
+        if (materials[i].id === simboloControl[0].id) {
           this.simboloControl.tengo = materials[i].count;
         }
-        if (materials[i].id === simboloMejora[0].id){
+        if (materials[i].id === simboloMejora[0].id) {
           this.simboloMejora.tengo = materials[i].count;
         }
-        if (materials[i].id === simboloDolor[0].id){
+        if (materials[i].id === simboloDolor[0].id) {
           this.simboloDolor.tengo = materials[i].count;
         }
-        if (materials[i].id === monedaMistica[0].id){
+        if (materials[i].id === monedaMistica[0].id) {
           this.monedaMistica.tengo = materials[i].count;
           this.monedaMisticaPV.tengo = materials[i].count;
         }
-        if (materials[i].id === esquirlaCuriosaMursaat[0].id){
+        if (materials[i].id === esquirlaCuriosaMursaat[0].id) {
           this.esquirlaCuriosaMursaat.tengo = materials[i].count;
         }
-        if (materials[i].id === restoCuriosidadMursaat[0].id){
+        if (materials[i].id === restoCuriosidadMursaat[0].id) {
           this.restoCuriosidadMursaat.tengo = materials[i].count;
         }
+        if (materials[i].id === saviaCromatica[0].id) {
+          this.saviaCromatica.tengo = materials[i].count;
+        }
+        if (materials[i].id === piedraEncantamientoBruto[0].id) {
+          this.piedraEncantamientoBruto.tengo = materials[i].count;
+        }
+        if (materials[i].id === fragmentoPiedraSombria[0].id) {
+          this.fragmentoPiedraSombria.tengo = materials[i].count;
+        }
         //Varios
-        if (materials[i].id === insigniaFarolero[0].id){
+        if (materials[i].id === insigniaFarolero[0].id) {
           this.insigniaFarolero.tengo = materials[i].count;
         }
-        if (materials[i].id === ambarGris[0].id){
+        if (materials[i].id === ambarGris[0].id) {
           this.ambarGris.tengo = materials[i].count;
         }
-        if (materials[i].id === vetusta[0].id){
+        if (materials[i].id === vetusta[0].id) {
           this.vetusta.tengo = materials[i].count;
         }
-        if (materials[i].id === amalgamada[0].id){
+        if (materials[i].id === amalgamada[0].id) {
           this.amalgamada.tengo = materials[i].count;
         }
-        if (materials[i].id === amalgamadaDraconica[0].id){
+        if (materials[i].id === amalgamadaDraconica[0].id) {
           this.amalgamadaDraconica.tengo = materials[i].count;
         }
-        if (materials[i].id === recuerdoAurene[0].id){
+        if (materials[i].id === recuerdoAurene[0].id) {
           this.recuerdoAurene.tengo = materials[i].count;
         }
-        if (materials[i].id === piedraJade[0].id){
+        if (materials[i].id === piedraJade[0].id) {
           this.piedraJade.tengo = materials[i].count;
         }
-        if (materials[i].id === florMielera[0].id){
+        if (materials[i].id === florMielera[0].id) {
           this.florMielera.tengo = materials[i].count;
         }
-        if (materials[i].id === troncoPinoTierrasBajas[0].id){
+        if (materials[i].id === troncoPinoTierrasBajas[0].id) {
           this.troncoPinoTierrasBajas.tengo = materials[i].count;
         }
-        if (materials[i].id === ambarTitan[0].id){
+        if (materials[i].id === ambarTitan[0].id) {
           this.ambarTitan.tengo = materials[i].count;
         }
-        if (materials[i].id === mineralTitan[0].id){
+        if (materials[i].id === mineralTitan[0].id) {
           this.mineralTitan.tengo = materials[i].count;
         }
-        if (materials[i].id === quemateritaTitan[0].id){
+        if (materials[i].id === quemateritaTitan[0].id) {
           this.quemateritaTitan.tengo = materials[i].count;
         }
-        if (materials[i].id === obsidianaMursaat[0].id){
+        if (materials[i].id === obsidianaMursaat[0].id) {
           this.obsidianaMursaat.tengo = materials[i].count;
         }
-        if (materials[i].id === piedraRunicaMursaat[0].id){
+        if (materials[i].id === piedraRunicaMursaat[0].id) {
           this.piedraRunicaMursaat.tengo = materials[i].count;
         }
       }
@@ -1425,6 +1518,8 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
       this.escamaBlindada.cantidad = this.totalesDatos.totalT6;
       this.totemElaborado.cantidad = this.totalesDatos.totalT6;
       this.vesiculaDeVenenoPoderoso.cantidad = this.totalesDatos.totalT6;
+
+      this.dataSourceOtros = this.otros;
     })
   }
 
@@ -1433,9 +1528,9 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     return Array.isArray(id) ? id.length : 1;
   }
 
-  getLegendaryTengo(){
+  getLegendaryTengo() {
     this.heroService.getLegendaryArmory().subscribe((legendary: any) => {
-      
+
       // Inicializo a cero el array tengoPartes segun su longitud definida en legendary.ts
       this.obsidianaLigera.tengoPartes = Array(this.getIdLength(this.obsidianaLigera.id)).fill(0);
       this.obsidianaMedia.tengoPartes = Array(this.getIdLength(this.obsidianaMedia.id)).fill(0);
@@ -1443,116 +1538,122 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
       this.guantesFractal.tengoPartes = Array(this.getIdLength(this.guantesFractal.id)).fill(0);
       this.respiradorAcuatico.tengoPartes = Array(this.getIdLength(this.respiradorAcuatico.id)).fill(0);
 
-      for (let i = 0; i < legendary.length; i++){
-        for (let j = 0; j < armaduraLigera[0].id.length; j++){
-          if (legendary[i].id === armaduraLigera[0].id[j]){
+      for (let i = 0; i < legendary.length; i++) {
+        for (let j = 0; j < armaduraLigera[0].id.length; j++) {
+          if (legendary[i].id === armaduraLigera[0].id[j]) {
             this.armaduraLigeraCount++;
           }
         }
-        for (let j = 0; j < armaduraMedia[0].id.length; j++){
-          if (legendary[i].id === armaduraMedia[0].id[j]){
+        for (let j = 0; j < armaduraMedia[0].id.length; j++) {
+          if (legendary[i].id === armaduraMedia[0].id[j]) {
             this.armaduraMediaCount++;
           }
         }
-        for (let j = 0; j < armaduraPesada[0].id.length; j++){
-          if (legendary[i].id === armaduraPesada[0].id[j]){
+        for (let j = 0; j < armaduraPesada[0].id.length; j++) {
+          if (legendary[i].id === armaduraPesada[0].id[j]) {
             this.armaduraPesadaCount++;
           }
         }
-        if (legendary[i].id === anilloRaid[0].id){
+        if (legendary[i].id === anilloRaid[0].id) {
           this.anilloRaidCount++;
           this.anilloPvERaid.tengo = legendary[i].count;
         }
-        if (legendary[i].id === runa[0].id){
+        if (legendary[i].id === runa[0].id) {
           this.runaCount = legendary[i].count;
         }
-        if (legendary[i].id === sello[0].id){
+        if (legendary[i].id === sello[0].id) {
           this.selloCount = legendary[i].count;
         }
-        if (legendary[i].id === this.anilloWvW.id){
+        if (legendary[i].id === this.anilloWvW.id) {
           this.anilloWvW.tengo = legendary[i].count;
         }
-        if (legendary[i].id === this.anilloPve.id){
+        if (legendary[i].id === this.anilloPve.id) {
           this.anilloPve.tengo = legendary[i].count;
         }
-        if (legendary[i].id === this.accesorioPvE0.id){
+        if (legendary[i].id === this.accesorioPvE0.id) {
           this.accesorioPvE0.tengo = legendary[i].count;
         }
-        if (legendary[i].id === this.accesorioPvE1.id){
+        if (legendary[i].id === this.accesorioPvE1.id) {
           this.accesorioPvE1.tengo = legendary[i].count;
         }
-        if (legendary[i].id === this.amuletoPvE.id){
+        if (legendary[i].id === this.accesorioPvE2.id) {
+          this.accesorioPvE2.tengo = legendary[i].count;
+        }
+        if (legendary[i].id === this.accesorioWvW0.id) {
+          this.accesorioWvW0.tengo = legendary[i].count;
+        }
+        if (legendary[i].id === this.amuletoPvE.id) {
           this.amuletoPvE.tengo = legendary[i].count;
         }
-        if (legendary[i].id === this.amuletoPvP.id){
+        if (legendary[i].id === this.amuletoPvP.id) {
           this.amuletoPvP.tengo = legendary[i].count;
         }
-        if (legendary[i].id === this.mochilaPvE.id){
+        if (legendary[i].id === this.mochilaPvE.id) {
           this.mochilaPvE.tengo = legendary[i].count;
         }
-        if (legendary[i].id === this.mochilaFractal.id){
+        if (legendary[i].id === this.mochilaFractal.id) {
           this.mochilaFractal.tengo = legendary[i].count;
         }
-        if (legendary[i].id === this.mochilaPvP.id){
+        if (legendary[i].id === this.mochilaPvP.id) {
           this.mochilaPvP.tengo = legendary[i].count;
         }
-        if (legendary[i].id === this.mochilaWvW.id){
+        if (legendary[i].id === this.mochilaWvW.id) {
           this.mochilaWvW.tengo = legendary[i].count;
         }
-        if (legendary[i].id === this.reliquiaLegendaria.id){
+        if (legendary[i].id === this.reliquiaLegendaria.id) {
           this.reliquiaLegendaria.tengo = legendary[i].count;
         }
-        if (legendary[i].id === this.lanzaJanthirLegendaria.id){
+        if (legendary[i].id === this.lanzaJanthirLegendaria.id) {
           this.lanzaJanthirLegendaria.tengo = legendary[i].count;
         }
-        if (legendary[i].id === this.lanzaVoELegendaria.id){
+        if (legendary[i].id === this.lanzaVoELegendaria.id) {
           this.lanzaVoELegendaria.tengo = legendary[i].count;
         }
-        if (legendary[i].id === this.baculoVoELegendario.id){
+        if (legendary[i].id === this.baculoVoELegendario.id) {
           this.baculoVoELegendario.tengo = legendary[i].count;
-        }      
-        for (let j = 0; j < armaduraLigeraPve[0].id.length; j++){
-          if (legendary[i].id === armaduraLigeraPve[0].id[j]){
+        }
+        for (let j = 0; j < armaduraLigeraPve[0].id.length; j++) {
+          if (legendary[i].id === armaduraLigeraPve[0].id[j]) {
             this.obsidianaLigera.tengo++;
             this.obsidianaLigera.tengoPartes[j]++;
           }
         }
-        for (let j = 0; j < armaduraMediaPve[0].id.length; j++){
-          if (legendary[i].id === armaduraMediaPve[0].id[j]){
+        for (let j = 0; j < armaduraMediaPve[0].id.length; j++) {
+          if (legendary[i].id === armaduraMediaPve[0].id[j]) {
             this.obsidianaMedia.tengo++;
             this.obsidianaMedia.tengoPartes[j]++;
           }
         }
-        for (let j = 0; j < armaduraPesadaPve[0].id.length; j++){
-          if (legendary[i].id === armaduraPesadaPve[0].id[j]){
+        for (let j = 0; j < armaduraPesadaPve[0].id.length; j++) {
+          if (legendary[i].id === armaduraPesadaPve[0].id[j]) {
             this.obsidianaPesada.tengo++;
             this.obsidianaPesada.tengoPartes[j]++;
           }
         }
-        for (let j = 0; j < legendaryGlovesFractal[0].id.length; j++){
-          if (legendary[i].id === legendaryGlovesFractal[0].id[j]){
+        for (let j = 0; j < legendaryGlovesFractal[0].id.length; j++) {
+          if (legendary[i].id === legendaryGlovesFractal[0].id[j]) {
             this.guantesFractal.tengo++;
             this.guantesFractal.tengoPartes[j]++;
           }
         }
-        for (let j = 0; j < legendaryAquaticHeadgear[0].id.length; j++){
-          if (legendary[i].id === legendaryAquaticHeadgear[0].id[j]){
+        for (let j = 0; j < legendaryAquaticHeadgear[0].id.length; j++) {
+          if (legendary[i].id === legendaryAquaticHeadgear[0].id[j]) {
             this.respiradorAcuatico.tengo++;
             this.respiradorAcuatico.tengoPartes[j]++;
           }
         }
-        for (let j = 0; j < legendaryWeapons1.length; j++){
-          if (legendary[i].id === legendaryWeapons1[j].id){
+        for (let j = 0; j < legendaryWeapons1.length; j++) {
+          if (legendary[i].id === legendaryWeapons1[j].id) {
             legendaryWeapons1[j].tengo = legendary[i].count;
           }
         }
-        for (let j = 0; j < legendaryWeapons2.length; j++){
-          if (legendary[i].id === legendaryWeapons2[j].id){
+        for (let j = 0; j < legendaryWeapons2.length; j++) {
+          if (legendary[i].id === legendaryWeapons2[j].id) {
             legendaryWeapons2[j].tengo = legendary[i].count;
           }
         }
-        for (let j = 0; j < legendaryWeapons3.length; j++){
-          if (legendary[i].id === legendaryWeapons3[j].id){
+        for (let j = 0; j < legendaryWeapons3.length; j++) {
+          if (legendary[i].id === legendaryWeapons3[j].id) {
             legendaryWeapons3[j].tengo = legendary[i].count;
           }
         }
@@ -1566,7 +1667,9 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
       this.runaDatos.tengo = this.runaCount;
       this.selloDatos.tengo = this.selloCount;
       this.totalesDatos.tengo = this.armaduraLigeraDatos.tengo + this.armaduraMediaDatos.tengo + this.armaduraPesadaDatos.tengo + this.anilloRaidDatos.tengo + this.runaDatos.tengo + this.selloDatos.tengo;
-      this.tengoDatos.cantidad =  this.armaduraLigeraDatos.tengo + this.armaduraMediaDatos.tengo + this.armaduraPesadaDatos.tengo + this.anilloRaidDatos.tengo + this.runaDatos.tengo + this.selloDatos.tengo;
+      this.tengoDatos.cantidad = this.armaduraLigeraDatos.tengo + this.armaduraMediaDatos.tengo + this.armaduraPesadaDatos.tengo + this.anilloRaidDatos.tengo + this.runaDatos.tengo + this.selloDatos.tengo;
+
+      this.dataSourceOtrosLegendarios = this.otrosLegendarios;
 
       this.getMatsTengo(); //cuantos vales, treboles, lis, ectoplasma tengo
     });
@@ -1597,26 +1700,26 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
       //     }
       //   }
       // }
-      
-      // "forEach" parece más rápido que el "for"
+
+      // "forEach" parece mas rapido que el "for"
       skins.forEach((element: number) => {
         legendaryWeapons3Variants.forEach(diseño => {
-          if (element === diseño.zhaitanSkinId){
+          if (element === diseño.zhaitanSkinId) {
             diseño.zhaitanTengo = 1;
           }
-          else if (element === diseño.mordremothSkinId){
+          else if (element === diseño.mordremothSkinId) {
             diseño.mordremothTengo = 1;
           }
-          else if (element === diseño.kralkatorrikSkinId){
+          else if (element === diseño.kralkatorrikSkinId) {
             diseño.kralkatorrikTengo = 1;
           }
-          else if (element === diseño.primordusSkinId){
+          else if (element === diseño.primordusSkinId) {
             diseño.primordusTengo = 1;
           }
-          else if (element === diseño.jormagSkinId){
+          else if (element === diseño.jormagSkinId) {
             diseño.jormagTengo = 1;
           }
-          else if (element === diseño.soowonSkinId){
+          else if (element === diseño.soowonSkinId) {
             diseño.soowonTengo = 1;
           }
         })
@@ -1629,57 +1732,62 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     })
   }
 
-  getMatsTengo(){
+  getMatsTengo() {
     this.heroService.getMaterials().subscribe((mats: any) => {
-      for (let i = 0; i < mats.length; i++){
-        if (mats[i].id === trebolId[0].id){
+      for (let i = 0; i < mats.length; i++) {
+        if (mats[i].id === trebolId[0].id) {
           this.tengoDatos.totalTreboles = mats[i].count;
           this.trebol[0].tengo = mats[i].count;
         }
-        if (mats[i].id === ectoplasmaId[0].id){
+        if (mats[i].id === ectoplasmaId[0].id) {
           this.tengoDatos.totalEctoplasma = mats[i].count;
           this.ectoplasmaPV.tengo = mats[i].count;
         }
-        if (mats[i].id === obsidianaId[0].id){
+        if (mats[i].id === obsidianaId[0].id) {
           this.tengoDatos.totalObsidiana = mats[i].count;
         }
       }
 
       let minimo = 0;
-      minimo = Math.min.apply(Math, this.materialesT6.map(function(o) { return o.tengo; }))
+      minimo = Math.min.apply(Math, this.materialesT6.map(function (o) { return o.tengo; }))
       // minimo = Math.min(...this.materialesT6.map(o => o.tengo));
       this.tengoDatos.totalT6 = minimo;
 
       this.heroService.getWallet().subscribe((wallet: any) => {
-        this.valeCount = wallet.find((o: { id: number; value: number}) => o.id === valeId[0].idWallet)?.value ?? 0;
-        this.liCount = wallet.find((o: { id: number; value: number}) => o.id === liId[0].idWallet)?.value ?? 0;
+        this.valeCount = wallet.find((o: { id: number; value: number }) => o.id === valeId[0].idWallet)?.value ?? 0;
+        this.liCount = wallet.find((o: { id: number; value: number }) => o.id === liId[0].idWallet)?.value ?? 0;
         this.tengoDatos.totalVales = this.valeCount;
         this.tengoDatos.totalLi = this.liCount;
         //otros
-        this.trozoAurilio.tengo = wallet.find((o: { id: number; value: number}) => o.id === trozoAurilio[0].idWallet)?.value ?? 0;
-        this.piezaAeronave.tengo = wallet.find((o: { id: number; value: number}) => o.id === piezaAeronave[0].idWallet)?.value ?? 0;
-        this.cristalLineaLey.tengo = wallet.find((o: { id: number; value: number}) => o.id === cristalLineaLey[0].idWallet)?.value ?? 0;
-        this.esenciat1.tengo = wallet.find((o: { id: number; value: number}) => o.id === esenciaDesesperacionT1[0].idWallet)?.value ?? 0;
-        this.esenciat2.tengo = wallet.find((o: { id: number; value: number}) => o.id === esenciaAvariciaT2[0].idWallet)?.value ?? 0;
-        this.esenciat3.tengo = wallet.find((o: { id: number; value: number}) => o.id === esenciaTriunfoT3[0].idWallet)?.value ?? 0;
-        this.monedaAntigua.tengo = wallet.find((o: { id: number; value: number}) => o.id === monedaAntigua[0].idWallet)?.value ?? 0;
-        this.monedaInusual.tengo = wallet.find((o: { id: number; value: number}) => o.id === monedaInusual[0].idWallet)?.value ?? 0;
-        this.ursusObligue.tengo = wallet.find((o: { id: number; value: number}) => o.id === ursusObligue[0].idWallet)?.value ?? 0;
-        this.saviaRica.tengo = wallet.find((o: { id: number; value: number}) => o.id === saviaRica[0].idWallet)?.value ?? 0;
-        this.ducadoAnticuado.tengo = wallet.find((o: { id: number; value: number}) => o.id === ducadoAnticuado[0].idWallet)?.value ?? 0;
-        this.magiaLiberada[0].tengoEnCartera = wallet.find((o: { id: number; value: number}) => o.id === magiaLiberada[0].idWallet)?.value ?? 0;
-        this.magiaVolatil[0].tengoEnCartera = wallet.find((o: { id: number; value: number}) => o.id === magiaVolatil[0].idWallet)?.value ?? 0;
-        this.esquirlaEspiritual[0].tengoEnCartera = wallet.find((o: { id: number; value: number}) => o.id === esquirlaEspiritual[0].idWallet)?.value ?? 0;
-        this.favorImperial[0].tengoEnCartera = wallet.find((o: { id: number; value: number}) => o.id === favorImperial[0].idWallet)?.value ?? 0;
+        this.trozoAurilio.tengo = wallet.find((o: { id: number; value: number }) => o.id === trozoAurilio[0].idWallet)?.value ?? 0;
+        this.piezaAeronave.tengo = wallet.find((o: { id: number; value: number }) => o.id === piezaAeronave[0].idWallet)?.value ?? 0;
+        this.cristalLineaLey.tengo = wallet.find((o: { id: number; value: number }) => o.id === cristalLineaLey[0].idWallet)?.value ?? 0;
+        this.oroMoneda.tengo = wallet.find((o: { id: number; value: number }) => o.id === oroMoneda[0].idWallet)?.value ?? 0;
+        this.karma.tengo = wallet.find((o: { id: number; value: number }) => o.id === karma[0].idWallet)?.value ?? 0;
+        this.laurel.tengo = wallet.find((o: { id: number; value: number }) => o.id === laurel[0].idWallet)?.value ?? 0;
+        this.tiqueWvW.tengo = wallet.find((o: { id: number; value: number }) => o.id === tiqueWvW[0].idWallet)?.value ?? 0;
+        this.esenciat1.tengo = wallet.find((o: { id: number; value: number }) => o.id === esenciaDesesperacionT1[0].idWallet)?.value ?? 0;
+        this.esenciat2.tengo = wallet.find((o: { id: number; value: number }) => o.id === esenciaAvariciaT2[0].idWallet)?.value ?? 0;
+        this.esenciat3.tengo = wallet.find((o: { id: number; value: number }) => o.id === esenciaTriunfoT3[0].idWallet)?.value ?? 0;
+        this.monedaAntigua.tengo = wallet.find((o: { id: number; value: number }) => o.id === monedaAntigua[0].idWallet)?.value ?? 0;
+        this.monedaInusual.tengo = wallet.find((o: { id: number; value: number }) => o.id === monedaInusual[0].idWallet)?.value ?? 0;
+        this.ursusObligue.tengo = wallet.find((o: { id: number; value: number }) => o.id === ursusObligue[0].idWallet)?.value ?? 0;
+        this.saviaRica.tengo = wallet.find((o: { id: number; value: number }) => o.id === saviaRica[0].idWallet)?.value ?? 0;
+        this.ducadoAnticuado.tengo = wallet.find((o: { id: number; value: number }) => o.id === ducadoAnticuado[0].idWallet)?.value ?? 0;
+        this.magiaLiberada[0].tengoEnCartera = wallet.find((o: { id: number; value: number }) => o.id === magiaLiberada[0].idWallet)?.value ?? 0;
+        this.magiaVolatil[0].tengoEnCartera = wallet.find((o: { id: number; value: number }) => o.id === magiaVolatil[0].idWallet)?.value ?? 0;
+        this.esquirlaEspiritual[0].tengoEnCartera = wallet.find((o: { id: number; value: number }) => o.id === esquirlaEspiritual[0].idWallet)?.value ?? 0;
+        this.favorImperial[0].tengoEnCartera = wallet.find((o: { id: number; value: number }) => o.id === favorImperial[0].idWallet)?.value ?? 0;
 
         this.getMatsGaste(); //cuantos vales, treboles, lis, ectoplasma gasté ya
         this.getOtrosGaste(); //cuantos otros gasté ya
+
+        this.dataSourceCartera = this.cartera;
       })
     });
-
   }
 
-  getMatsGaste(){
+  getMatsGaste() {
     let valesGastados = vales * (this.armaduraLigeraCount + this.armaduraMediaCount + this.armaduraPesadaCount + this.selloCount + this.runaCount);
     let trebolesGastados = trebolArmadura * (this.armaduraLigeraCount + this.armaduraMediaCount + this.armaduraPesadaCount) + trebolAnilloRaid * this.anilloRaidCount + trebolRuna * this.runaCount + trebolSello * this.selloCount;
     let liGastados = liArmadura * (this.armaduraLigeraCount + this.armaduraMediaCount + this.armaduraPesadaCount) + liAnilloRaid * this.anilloRaidCount;
@@ -1697,7 +1805,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     this.getMatsNecesito();
   }
 
-  getMatsNecesito(){
+  getMatsNecesito() {
     this.necesitoDatos.cantidad = this.totalesDatos.cantidad - this.tengoDatos.cantidad;
     // this.necesitoDatos.tengo = this.tengoDatos.tengo - this.totalesDatos.tengo;
     this.necesitoDatos.totalVales = this.totalesDatos.totalVales - this.tengoDatos.totalVales - this.gasteDatos.totalVales;
@@ -1709,14 +1817,14 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
 
     this.getNecesitoT6Prices();  //actualiza columna necesito de la tabla Precios T6
   }
-  getOtrosGaste(){
+  getOtrosGaste() {
     this.lingoteAurico.gaste = lingoteAurico[0].cantidad * (this.armaduraLigeraDatos.tengo + this.armaduraMediaDatos.tengo + this.armaduraPesadaDatos.tengo);
     this.placaReclamada.gaste = placaReclamada[0].cantidad * (this.armaduraLigeraDatos.tengo + this.armaduraMediaDatos.tengo + this.armaduraPesadaDatos.tengo);
     this.huevoChak.gaste = huevoChak[0].cantidad * (this.armaduraLigeraDatos.tengo + this.armaduraMediaDatos.tengo + this.armaduraPesadaDatos.tengo);
     this.trozoAurilio.gaste = trozoAurilio[0].cantidad * (this.armaduraLigeraDatos.tengo + this.armaduraMediaDatos.tengo + this.armaduraPesadaDatos.tengo);
     this.cristalLineaLey.gaste = cristalLineaLey[0].cantidad * (this.armaduraLigeraDatos.tengo + this.armaduraMediaDatos.tengo + this.armaduraPesadaDatos.tengo);
     this.piezaAeronave.gaste = piezaAeronave[0].cantidad * (this.armaduraLigeraDatos.tengo + this.armaduraMediaDatos.tengo + this.armaduraPesadaDatos.tengo);
- 
+
     this.montonCristalLuminoso.gaste = montonCristalLuminoso[0].cantidadRuna * this.runaDatos.tengo + montonCristalLuminoso[0].cantidadSello * this.selloDatos.tengo - (montonCristalLuminoso[0].cantidadRuna * this.aspectoMistico.tengo + montonCristalLuminoso[0].cantidadSello * this.motaMistica.tengo);
 
     //this.aspectoMistico.gaste = aspectoMistico[0].cantidad * this.runaDatos.tengo;
@@ -1732,8 +1840,8 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     this.getOtrosNecesito();
   }
 
-  getOtrosNecesito(){
-    this.lingoteAurico.necesito = this.lingoteAurico.cantidad - this.lingoteAurico.tengo- this.lingoteAurico.gaste;
+  getOtrosNecesito() {
+    this.lingoteAurico.necesito = this.lingoteAurico.cantidad - this.lingoteAurico.tengo - this.lingoteAurico.gaste;
     this.placaReclamada.necesito = this.placaReclamada.cantidad - this.placaReclamada.tengo - this.placaReclamada.gaste;
     this.huevoChak.necesito = this.huevoChak.cantidad - this.huevoChak.tengo - this.huevoChak.gaste;
     this.trozoAurilio.necesito = this.trozoAurilio.cantidad - this.trozoAurilio.tengo - this.trozoAurilio.gaste;
@@ -1741,19 +1849,19 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     this.piezaAeronave.necesito = this.piezaAeronave.cantidad - this.piezaAeronave.tengo - this.piezaAeronave.gaste;
     this.montonCristalLuminoso.necesito = this.montonCristalLuminoso.cantidad - this.montonCristalLuminoso.tengo - this.montonCristalLuminoso.gaste;
     //this.aspectoMistico.necesito = this.aspectoMistico.cantidad - this.aspectoMistico.tengo - this.aspectoMistico.gaste;
-    this.talismanBrillantez.necesito = this.talismanBrillantez.cantidad - this.talismanBrillantez.tengo - this.talismanBrillantez.gaste - this.aspectoMistico.tengo * talismanBrillantez[0] .cantidad;
-    this.talismanPotencia.necesito = this.talismanPotencia.cantidad - this.talismanPotencia.tengo - this.talismanPotencia.gaste - this.aspectoMistico.tengo * talismanPotencia[0] .cantidad;
-    this.talismanHabilidad.necesito = this.talismanHabilidad.cantidad - this.talismanHabilidad.tengo - this.talismanHabilidad.gaste - this.aspectoMistico.tengo * talismanHabilidad[0] .cantidad;
+    this.talismanBrillantez.necesito = this.talismanBrillantez.cantidad - this.talismanBrillantez.tengo - this.talismanBrillantez.gaste - this.aspectoMistico.tengo * talismanBrillantez[0].cantidad;
+    this.talismanPotencia.necesito = this.talismanPotencia.cantidad - this.talismanPotencia.tengo - this.talismanPotencia.gaste - this.aspectoMistico.tengo * talismanPotencia[0].cantidad;
+    this.talismanHabilidad.necesito = this.talismanHabilidad.cantidad - this.talismanHabilidad.tengo - this.talismanHabilidad.gaste - this.aspectoMistico.tengo * talismanHabilidad[0].cantidad;
     //this.motaMistica.necesito = this.motaMistica.cantidad - this.motaMistica.tengo - this.motaMistica.gaste;
-    this.simboloControl.necesito = this.simboloControl.cantidad - this.simboloControl.tengo - this.simboloControl.gaste - this.motaMistica.tengo * simboloControl[0] .cantidad;
-    this.simboloMejora.necesito = this.simboloMejora.cantidad - this.simboloMejora.tengo - this.simboloMejora.gaste - this.motaMistica.tengo * simboloMejora[0] .cantidad;
-    this.simboloDolor.necesito = this.simboloDolor.cantidad - this.simboloDolor.tengo - this.simboloDolor.gaste - this.motaMistica.tengo * simboloDolor[0] .cantidad;
+    this.simboloControl.necesito = this.simboloControl.cantidad - this.simboloControl.tengo - this.simboloControl.gaste - this.motaMistica.tengo * simboloControl[0].cantidad;
+    this.simboloMejora.necesito = this.simboloMejora.cantidad - this.simboloMejora.tengo - this.simboloMejora.gaste - this.motaMistica.tengo * simboloMejora[0].cantidad;
+    this.simboloDolor.necesito = this.simboloDolor.cantidad - this.simboloDolor.tengo - this.simboloDolor.gaste - this.motaMistica.tengo * simboloDolor[0].cantidad;
   }
 
-  getT6Prices(){
-    this.legendaryService.getCommercePrices(idsT6).subscribe((prices: any) => {
-      for(let i = 0; i < prices.length; i++){
-        if (prices[i].id == this.vialDeSangrePoderosa.id){
+  getT6Prices() {
+    this.legendaryService.getCommercePrices(idsT6).subscribe(prices => {
+      for (let i = 0; i < prices.length; i++) {
+        if (prices[i].id == this.vialDeSangrePoderosa.id) {
           this.vialDeSangrePoderosa.precioTpCompra = prices[i].buys.unit_price;
           this.vialDeSangrePoderosa.precioTpVenta = prices[i].sells.unit_price;
           this.vialDeSangrePoderosa.precioStackCompra = prices[i].buys.unit_price * 250;
@@ -1765,7 +1873,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
           this.vialDeSangrePoderosa.precioStackVentaS = this.getPriceSplit(this.vialDeSangrePoderosa.precioStackVenta);
           this.vialDeSangrePoderosa.precioStackVentaS90 = this.getPriceSplit(this.vialDeSangrePoderosa.precioStackVenta90);
         }
-        if (prices[i].id == this.huesoAntiguo.id){
+        if (prices[i].id == this.huesoAntiguo.id) {
           this.huesoAntiguo.precioTpCompra = prices[i].buys.unit_price;
           this.huesoAntiguo.precioTpVenta = prices[i].sells.unit_price;
           this.huesoAntiguo.precioStackCompra = prices[i].buys.unit_price * 250;
@@ -1777,7 +1885,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
           this.huesoAntiguo.precioStackVentaS = this.getPriceSplit(this.huesoAntiguo.precioStackVenta);
           this.huesoAntiguo.precioStackVentaS90 = this.getPriceSplit(this.huesoAntiguo.precioStackVenta90);
         }
-        if (prices[i].id == this.garraDespiadada.id){
+        if (prices[i].id == this.garraDespiadada.id) {
           this.garraDespiadada.precioTpCompra = prices[i].buys.unit_price;
           this.garraDespiadada.precioTpVenta = prices[i].sells.unit_price;
           this.garraDespiadada.precioStackCompra = prices[i].buys.unit_price * 250;
@@ -1789,7 +1897,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
           this.garraDespiadada.precioStackVentaS = this.getPriceSplit(this.garraDespiadada.precioStackVenta);
           this.garraDespiadada.precioStackVentaS90 = this.getPriceSplit(this.garraDespiadada.precioStackVenta90);
         }
-        if (prices[i].id == this.montonDePolvoCristalino.id){
+        if (prices[i].id == this.montonDePolvoCristalino.id) {
           this.montonDePolvoCristalino.precioTpCompra = prices[i].buys.unit_price;
           this.montonDePolvoCristalino.precioTpVenta = prices[i].sells.unit_price;
           this.montonDePolvoCristalino.precioStackCompra = prices[i].buys.unit_price * 250;
@@ -1801,7 +1909,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
           this.montonDePolvoCristalino.precioStackVentaS = this.getPriceSplit(this.montonDePolvoCristalino.precioStackVenta);
           this.montonDePolvoCristalino.precioStackVentaS90 = this.getPriceSplit(this.montonDePolvoCristalino.precioStackVenta90);
         }
-        if (prices[i].id == this.colmilloFeroz.id){
+        if (prices[i].id == this.colmilloFeroz.id) {
           this.colmilloFeroz.precioTpCompra = prices[i].buys.unit_price;
           this.colmilloFeroz.precioTpVenta = prices[i].sells.unit_price;
           this.colmilloFeroz.precioStackCompra = prices[i].buys.unit_price * 250;
@@ -1813,7 +1921,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
           this.colmilloFeroz.precioStackVentaS = this.getPriceSplit(this.colmilloFeroz.precioStackVenta);
           this.colmilloFeroz.precioStackVentaS90 = this.getPriceSplit(this.colmilloFeroz.precioStackVenta90);
         }
-        if (prices[i].id == this.escamaBlindada.id){
+        if (prices[i].id == this.escamaBlindada.id) {
           this.escamaBlindada.precioTpCompra = prices[i].buys.unit_price;
           this.escamaBlindada.precioTpVenta = prices[i].sells.unit_price;
           this.escamaBlindada.precioStackCompra = prices[i].buys.unit_price * 250;
@@ -1825,7 +1933,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
           this.escamaBlindada.precioStackVentaS = this.getPriceSplit(this.escamaBlindada.precioStackVenta);
           this.escamaBlindada.precioStackVentaS90 = this.getPriceSplit(this.escamaBlindada.precioStackVenta90);
         }
-        if (prices[i].id == this.totemElaborado.id){
+        if (prices[i].id == this.totemElaborado.id) {
           this.totemElaborado.precioTpCompra = prices[i].buys.unit_price;
           this.totemElaborado.precioTpVenta = prices[i].sells.unit_price;
           this.totemElaborado.precioStackCompra = prices[i].buys.unit_price * 250;
@@ -1837,7 +1945,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
           this.totemElaborado.precioStackVentaS = this.getPriceSplit(this.totemElaborado.precioStackVenta);
           this.totemElaborado.precioStackVentaS90 = this.getPriceSplit(this.totemElaborado.precioStackVenta90);
         }
-        if (prices[i].id == this.vesiculaDeVenenoPoderoso.id){
+        if (prices[i].id == this.vesiculaDeVenenoPoderoso.id) {
           this.vesiculaDeVenenoPoderoso.precioTpCompra = prices[i].buys.unit_price;
           this.vesiculaDeVenenoPoderoso.precioTpVenta = prices[i].sells.unit_price;
           this.vesiculaDeVenenoPoderoso.precioStackCompra = prices[i].buys.unit_price * 250;
@@ -1863,7 +1971,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     })
   }
 
-  getNecesitoT6Prices(){
+  getNecesitoT6Prices() {
     this.vialDeSangrePoderosa.necesito = this.totalesDatos.totalT6 - this.vialDeSangrePoderosa.tengo - this.gasteDatos.totalT6;
     this.huesoAntiguo.necesito = this.totalesDatos.totalT6 - this.huesoAntiguo.tengo - this.gasteDatos.totalT6;
     this.garraDespiadada.necesito = this.totalesDatos.totalT6 - this.garraDespiadada.tengo - this.gasteDatos.totalT6;
@@ -1875,7 +1983,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
   }
 
   getPreciosVariosPrices() {
-    this.legendaryService.getCommercePrices(idsPreciosVarios).subscribe((prices: any) => {
+    this.legendaryService.getCommercePrices(idsPreciosVarios).subscribe(prices => {
 
       this.preciosVarios.forEach(item => {
         const priceData = prices.find((p: { id: number; }) => p.id === item.id);
@@ -1902,145 +2010,48 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     });
   }
 
-  getArmasLegendariasPrices(){
-    //saco los ids de las armas y sus pres de primera gen
-    let idsArmasLegendarias = "";
-    let idsArmasLegendariasPre = "";
-    for(let i = 0; i < legendaryWeapons1.length; i++){
-      idsArmasLegendarias = idsArmasLegendarias.concat(legendaryWeapons1[i].id.toString(), ",");
-      idsArmasLegendariasPre = idsArmasLegendariasPre.concat(legendaryWeapons1[i].preId.toString(), ",");
-    }
-    //consulto precios en el bazar de las armas de primera gen
-    this.legendaryService.getCommercePrices(idsArmasLegendarias).subscribe((prices: any) => {
-      for(let j = 0; j < legendaryWeapons1.length; j++){
-        for(let i = 0; i < prices.length; i++){
-          if (prices[i].id == legendaryWeapons1[j].id){
-            legendaryWeapons1[j].precioTpVenta = prices[i].sells.unit_price;
-            legendaryWeapons1[j].precioTpVentaS = this.getPriceSplit(legendaryWeapons1[j].precioTpVenta);
-            break;
-          }
-        }
-      }
+  getArmasLegendariasPrices() {
+    // saco los ids de las armas y sus pres de primera, tercera y other gen
+    const idsLW1 = `${legendaryWeapons1.map(w => w.id).join(",")},${legendaryWeapons1.map(w => w.preId).join(",")}`;
+    const idsLW3 = `${legendaryWeapons3.map(w => w.id).join(",")},${legendaryWeapons3.map(w => w.preId).join(",")}`;
+    const idsGenOther = `${legendaryWeaponsGenOther.map(w => w.id).join(",")},${legendaryWeaponsGenOther.filter(w => w.preId !== 0).map(w => w.preId).join(",")}`;
+    const idsTodos = `${idsLW1},${idsLW3},${idsGenOther}`;
+
+    //consulto precios en el bazar de las armas de primera, tercera y other gen
+    this.legendaryService.getCommercePrices(idsTodos).subscribe(prices => {
+
+      const pricesMap = new Map<number, CommercePrice>(
+        prices.map(p => [p.id, p])
+      );
+
+      this.actualizarPreciosLegendarias(legendaryWeapons1, pricesMap);
+      this.actualizarPreciosLegendarias(legendaryWeapons3, pricesMap);
+      this.actualizarPreciosLegendarias(legendaryWeaponsGenOther, pricesMap, true);
+
       this.dataSourceArmasLegendarias1 = new MatTableDataSource(legendaryWeapons1);
       this.dataSourceArmasLegendarias1.sort = this.sort1;
-    });
-    //consulto precios en el bazar de las pres de primera gen
-    this.legendaryService.getCommercePrices(idsArmasLegendariasPre).subscribe((prices: any) => {
-      for(let j = 0; j < legendaryWeapons1.length; j++){
-        for(let i = 0; i < prices.length; i++){
-          if (prices[i].id == legendaryWeapons1[j].preId){
-            legendaryWeapons1[j].precioTpVentaPre = prices[i].sells.unit_price;
-            legendaryWeapons1[j].precioTpVentaSPre = this.getPriceSplit(legendaryWeapons1[j].precioTpVentaPre);
-            legendaryWeapons1[j].precioOrdenable = this.padPrecio(legendaryWeapons1[j].precioTpVentaSPre);
-            break;
-          }
-        }
-      }
-      this.dataSourceArmasLegendarias1 = new MatTableDataSource(legendaryWeapons1);
-      this.dataSourceArmasLegendarias1.sort = this.sort1;
-    });
 
-    //saco los ids de las armas y sus pres de tercera gen
-    let idsArmasLegendarias3 = "";
-    let idsArmasLegendarias3Pre = "";
-    for(let i = 0; i < legendaryWeapons3.length; i++){
-      idsArmasLegendarias3 = idsArmasLegendarias3.concat(legendaryWeapons3[i].id.toString(), ",");
-      idsArmasLegendarias3Pre = idsArmasLegendarias3Pre.concat(legendaryWeapons3[i].preId.toString(), ",");
-    }
-    //consulto precios en el bazar de las armas de tercera gen
-    this.legendaryService.getCommercePrices(idsArmasLegendarias3).subscribe((prices: any) => {
-      for(let j = 0; j < legendaryWeapons3.length; j++){
-        for(let i = 0; i < prices.length; i++){
-          if (prices[i].id == legendaryWeapons3[j].id){
-            legendaryWeapons3[j].precioTpVenta = prices[i].sells.unit_price;
-            legendaryWeapons3[j].precioTpVentaS = this.getPriceSplit(legendaryWeapons3[j].precioTpVenta);
-            break;
-          }
-        }
-      }
       this.dataSourceArmasLegendarias3 = new MatTableDataSource(legendaryWeapons3);
       this.dataSourceArmasLegendarias3.sort = this.sort3;
-    });
-    //consulto precios en el bazar de las pres de tercera gen
-    this.legendaryService.getCommercePrices(idsArmasLegendarias3Pre).subscribe((prices: any) => {
-      for(let j = 0; j < legendaryWeapons3.length; j++){
-        for(let i = 0; i < prices.length; i++){
-          if (prices[i].id == legendaryWeapons3[j].preId){
-            legendaryWeapons3[j].precioTpVentaPre = prices[i].sells.unit_price;
-            legendaryWeapons3[j].precioTpVentaSPre = this.getPriceSplit(legendaryWeapons3[j].precioTpVentaPre);
-            legendaryWeapons3[j].precioOrdenable = this.padPrecio(legendaryWeapons3[j].precioTpVentaSPre);
-            break;
-          }
-        }
-      }
-      this.dataSourceArmasLegendarias3 = new MatTableDataSource(legendaryWeapons3);
-      this.dataSourceArmasLegendarias3.sort = this.sort3;
-    });
 
-    //saco los ids de las armas de gen other y sus pres
-    let idsArmasLegendariasGenOther = "";
-    let idsArmasLegendariasGenOtherPre = "";
-    for(let i = 0; i < legendaryWeaponsGenOther.length; i++){
-      idsArmasLegendariasGenOther = idsArmasLegendariasGenOther.concat(legendaryWeaponsGenOther[i].id.toString(), ",");
-      idsArmasLegendariasGenOtherPre = idsArmasLegendariasGenOtherPre.concat(legendaryWeaponsGenOther[i].preId.toString(), ",");
-    }
-    //consulto precios en el bazar de las armas de gen other
-    this.legendaryService.getCommercePrices(idsArmasLegendariasGenOther).subscribe((prices: any) => {
-      for(let j = 0; j < legendaryWeaponsGenOther.length; j++){
-        for(let i = 0; i < prices.length; i++){
-          if (prices[i].id == legendaryWeaponsGenOther[j].id){
-            if ("precioTpCompra" in legendaryWeaponsGenOther[j]) {
-              legendaryWeaponsGenOther[j].precioTpCompra = prices[i].buys.unit_price;
-              legendaryWeaponsGenOther[j].precioTpCompraS = this.getPriceSplit(legendaryWeaponsGenOther[j].precioTpCompra);
-            }
-            if ("precioTpVenta" in legendaryWeaponsGenOther[j]) {
-              legendaryWeaponsGenOther[j].precioTpVenta = prices[i].sells.unit_price;
-              legendaryWeaponsGenOther[j].precioTpVentaS = this.getPriceSplit(legendaryWeaponsGenOther[j].precioTpVenta);
-            }
-            break;
-          }
-        }
-      }
       this.dataSourceArmasLegendariasGenOther = new MatTableDataSource(legendaryWeaponsGenOther);
     });
-    //consulto precios en el bazar de las pres de gen other
-    this.legendaryService.getCommercePrices(idsArmasLegendariasGenOtherPre).subscribe((prices: any) => {
-      for(let j = 0; j < legendaryWeaponsGenOther.length; j++){
-        for(let i = 0; i < prices.length; i++){
-          if (prices[i].id == legendaryWeaponsGenOther[j].preId){
-            if ("precioTpCompraPre" in legendaryWeaponsGenOther[j]) {
-              legendaryWeaponsGenOther[j].precioTpCompraPre = prices[i].buys.unit_price;
-              legendaryWeaponsGenOther[j].precioTpCompraSPre = this.getPriceSplit(legendaryWeaponsGenOther[j].precioTpCompraPre);
-            }
-            if ("precioTpVentaPre" in legendaryWeaponsGenOther[j]) {
-              legendaryWeaponsGenOther[j].precioTpVentaPre = prices[i].sells.unit_price;
-              legendaryWeaponsGenOther[j].precioTpVentaSPre = this.getPriceSplit(legendaryWeaponsGenOther[j].precioTpVentaPre);
-            }
-            break;
-          }
-        }
-      }
-      this.dataSourceArmasLegendariasGenOther = new MatTableDataSource(legendaryWeaponsGenOther)
-    });
 
-    //Saco la cantidad de don de exploracion del banco
+    //Saco la cantidad de don de exploracion y don de batalla del banco
     this.heroService.getBank().subscribe((banco: any) => {
-      for (let i = 0; i < banco.length; i++){
-        if (banco[i] !== null){
-          if (banco[i].id === donExploracion[0].id){
+      let encontradoExploracion = false;
+      let encontradoBatalla = false;
+      for (let i = 0; i < banco.length; i++) {
+        if (banco[i] !== null) {
+          if (!encontradoExploracion && banco[i].id === donExploracion[0].id) {
             donExploracion[0].tengoEnBanco = banco[i].count;
-            break;
+            encontradoExploracion = true;
           }
-        }
-      }
-    })
-    
-    //Saco la cantidad de don de batalla del banco
-    this.heroService.getBank().subscribe((banco: any) => {
-      for (let i = 0; i < banco.length; i++){
-        if (banco[i] !== null){
-          if (banco[i].id === donBatalla[0].id){
+          if (!encontradoBatalla && banco[i].id === donBatalla[0].id) {
             donBatalla[0].tengoEnBanco = banco[i].count;
+            encontradoBatalla = true;
+          }
+          if (encontradoExploracion && encontradoBatalla) {
             break;
           }
         }
@@ -2049,8 +2060,8 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
 
     //Saco la cantidad de notas de investigacion y moneda de mazmorra de la cartera
     this.heroService.getWallet().subscribe((wallet: any) => {
-      notasInvestigacion[0].tengoEnCartera = wallet.find((o: { id: number; value: number}) => o.id === notasInvestigacion[0].idWallet)?.value ?? 0;
-      monedaMazmorra[0].tengoEnCartera = wallet.find((o: { id: number; value: number}) => o.id === monedaMazmorra[0].idWallet)?.value ?? 0;
+      notasInvestigacion[0].tengoEnCartera = wallet.find((o: { id: number; value: number }) => o.id === notasInvestigacion[0].idWallet)?.value ?? 0;
+      monedaMazmorra[0].tengoEnCartera = wallet.find((o: { id: number; value: number }) => o.id === monedaMazmorra[0].idWallet)?.value ?? 0;
     })
 
     //Hago tabla de armas de segunda gen
@@ -2058,9 +2069,84 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     this.dataSourceArmasLegendarias2.sort = this.sort2;
   }
 
+  actualizarPreciosLegendarias(weapons: any[], pricesMap: Map<number, CommercePrice>, tieneCompra: boolean = false) {
+
+    const armasConDosPre = new Map<number, number[]>([
+      [30689, [30703, 30704]], // Eternidad: Amanecer + Crepusculo 
+      // [OTRA_ARMA_ID, [PRE_ID_1, PRE_ID_2]], 
+    ]);
+
+    for (const weapon of weapons) {
+
+      // Precio del arma
+      const price = pricesMap.get(weapon.id);
+      if (price) {
+        if (tieneCompra && "precioTpCompra" in weapon) {
+          weapon.precioTpCompra = price.buys.unit_price;
+          weapon.precioTpCompraS = this.getPriceSplit(weapon.precioTpCompra);
+        }
+        if ("precioTpVenta" in weapon) {
+          weapon.precioTpVenta = price.sells.unit_price;
+          weapon.precioTpVentaS = this.getPriceSplit(weapon.precioTpVenta);
+        }
+      }
+
+      // Precio del precursor
+      if (weapon.preId !== 0) {
+
+        // Caso especial de armas con dos precursores
+        const preIds = armasConDosPre.get(weapon.id);
+        if (preIds) {
+          let precioVentaTotal = 0;
+          let precioCompraTotal = 0;
+          let todosEncontrados = true;
+          for (const preId of preIds) {
+            const prePrice = pricesMap.get(preId);
+            if (!prePrice) {
+              todosEncontrados = false;
+              break;
+            }
+            precioVentaTotal += prePrice.sells.unit_price;
+            precioCompraTotal += prePrice.buys.unit_price;
+          }
+          if (todosEncontrados) {
+            if (tieneCompra && "precioTpCompraPre" in weapon) {
+              weapon.precioTpCompraPre = precioCompraTotal;
+              weapon.precioTpCompraSPre = this.getPriceSplit(weapon.precioTpCompraPre);
+            }
+            if ("precioTpVentaPre" in weapon) {
+              weapon.precioTpVentaPre = precioVentaTotal;
+              weapon.precioTpVentaSPre = this.getPriceSplit(weapon.precioTpVentaPre);
+              if ("precioOrdenable" in weapon) {
+                weapon.precioOrdenable = this.padPrecio(weapon.precioTpVentaSPre);;
+              }
+            }
+          }
+          continue;
+        }
+
+        // Resto de armas con una unica pre
+        const prePrice = pricesMap.get(weapon.preId);
+        if (prePrice) {
+          if (tieneCompra && "precioTpCompraPre" in weapon) {
+            weapon.precioTpCompraPre = prePrice.buys.unit_price;
+            weapon.precioTpCompraSPre = this.getPriceSplit(weapon.precioTpCompraPre);
+          }
+          if ("precioTpVentaPre" in weapon) {
+            weapon.precioTpVentaPre = prePrice.sells.unit_price;
+            weapon.precioTpVentaSPre = this.getPriceSplit(weapon.precioTpVentaPre);
+            if ("precioOrdenable" in weapon) {
+              weapon.precioOrdenable = this.padPrecio(weapon.precioTpVentaSPre);
+            }
+          }
+        }
+      }
+    }
+  }
+
   padPrecio(precioStr: string | null | undefined): string {
-    // convierte la cadena del precio en [5 dígitos]g [2 dígitos]s [2 dígitos]c. Si por ej. es 99g 8p 5c lo convierte en 00099g 08p 05c para ordenar bien
-    
+    // convierte la cadena del precio en [5 digitos]g [2 digitos]s [2 digitos]c. Si por ej. es 99g 8p 5c lo convierte en 00099g 08p 05c para ordenar bien
+
     // // Funciona solo si tiene las tres partes ( g s c)
     // // const match = precioStr.match(/(\d+)g\s+(\d+)s\s+(\d+)c/);
     // // if (!match) return '';
@@ -2072,7 +2158,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
       // Si no hay precio, lo mandamos al fondo del ordenamiento
       return '00000g 00s 00c';
     }
-    
+
     const oroMatch = precioStr.match(/(\d+)g/);
     const plataMatch = precioStr.match(/(\d+)s/);
     const cobreMatch = precioStr.match(/(\d+)c/);
@@ -2085,34 +2171,34 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
   }
 
 
-  getPriceSplit(cantidad: number){
+  getPriceSplit(cantidad: number) {
     // Le paso el numero y me devuelve una string en oro, plata, cobre
     // let sss = (""+cantidad).split('').map(Number); // array de numeros
-    let sss = (""+cantidad).split(''); // array de char
+    let sss = ("" + cantidad).split(''); // array de char
     // console.log(sss)
     let cobre = "";
     let plata = "";
     let oro = "";
     let resFinal = "";
 
-    if (sss.length === 1){
+    if (sss.length === 1) {
       cobre = sss[0] + "c"; // 1 cifra
       resFinal = cobre;
-    }else if(sss.length === 2){
+    } else if (sss.length === 2) {
       cobre = sss[0] + sss[1] + "c"; // 2 cifras
       resFinal = cobre;
-    }else if(sss.length === 3){ // 3 cifras
+    } else if (sss.length === 3) { // 3 cifras
       cobre = sss[1] + sss[2] + "c";
       plata = sss[0] + "s";
       resFinal = plata + " " + cobre;
-    }else if(sss.length === 4){ // 4 cifras
+    } else if (sss.length === 4) { // 4 cifras
       cobre = sss[2] + sss[3] + "c";
       plata = sss[0] + sss[1] + "s";
       resFinal = plata + " " + cobre;
-    }else if(sss.length > 4){ // >= 5 cifras
-      cobre = sss[sss.length-2] + sss[sss.length-1] + "c";
-      plata = sss[sss.length-4] + sss[sss.length-3] + "s";
-      for (let i = (sss.length - 5); i >= 0; i--){
+    } else if (sss.length > 4) { // >= 5 cifras
+      cobre = sss[sss.length - 2] + sss[sss.length - 1] + "c";
+      plata = sss[sss.length - 4] + sss[sss.length - 3] + "s";
+      for (let i = (sss.length - 5); i >= 0; i--) {
         oro = sss[i] + oro;
       }
       oro = oro + "g";
@@ -2120,6 +2206,54 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     }
     // console.log(resFinal);
     return resFinal
+  }
+
+  formatearCantidad(cantidad: number): string {
+    // Para visualizar la cantidad formateada con separador de miles
+
+    return cantidad.toLocaleString('es-ES');  //con es-ES pone separador a partir de 5 digitos
+  }
+
+  formatearValor(element: any): string {
+    // Para visualizar la cantidad formateada con separador de miles
+
+    const valor = Number(element.tengo);
+
+    // Si es oroMoneda, mostrar como oro, plata y cobre
+    if (element.id === 1) {
+
+      const cobres = valor % 100;
+      const platas = Math.floor(valor / 100) % 100;
+      const oros = Math.floor(valor / 10000);
+
+      const partes: string[] = [];
+
+      if (oros > 0) {
+        partes.push(`
+          ${oros.toLocaleString('es-ES')}
+          <img src="assets/img/oro.png" class="moneda-icon">
+        `);
+      }
+
+      if (platas > 0) {
+        partes.push(`
+          ${platas}
+          <img src="assets/img/plata.png" class="moneda-icon">
+        `);
+      }
+
+      if (cobres > 0 || partes.length === 0) {
+        partes.push(`
+          ${cobres}
+          <img src="assets/img/cobre.png" class="moneda-icon">
+        `);
+      }
+
+      return partes.join(' ');
+    }
+
+    // Si NO es oroMoneda, mostrar separador
+    return valor.toLocaleString('es-ES');  //con es-ES pone separador a partir de 5 digitos
   }
 
   //-------------- T6 TOTAL PRICES ------------------------------------------------------------------------
@@ -2143,32 +2277,32 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     return this.getPriceSplit(this.dataSourceT6.reduce((acc, value) => acc + value.precioStackVenta, 0));
   }
 
-  getTotalPrecioStackVenta90(){
+  getTotalPrecioStackVenta90() {
     return this.dataSourceT6.reduce((acc, value) => acc + value.precioStackVenta90, 0);
   }
 
-  getTotalPrecioStackVentaS90(){
+  getTotalPrecioStackVentaS90() {
     return this.getPriceSplit(this.dataSourceT6.reduce((acc, value) => acc + value.precioStackVenta90, 0));
   }
-  
+
   //------------------------------------
-  getTotalTotalVales(){
+  getTotalTotalVales() {
     return this.dataSourceLegen.reduce((acc, value) => acc + value.totalVales, 0);
   }
 
-  getTotalTotalTreboles(){
+  getTotalTotalTreboles() {
     return this.dataSourceLegen.reduce((acc, value) => acc + value.totalTreboles, 0);
   }
 
-  getTotalTotalLi(){
+  getTotalTotalLi() {
     return this.dataSourceLegen.reduce((acc, value) => acc + value.totalLi, 0);
   }
 
-  getTotalTotalT6(){
+  getTotalTotalT6() {
     return this.dataSourceLegen.reduce((acc, value) => acc + value.totalT6, 0);
   }
 
-  getTotalTotalEctoplasma(){
+  getTotalTotalEctoplasma() {
     return this.dataSourceLegen.reduce((acc, value) => acc + value.totalEctoplasma, 0);
   }
   //------------------------------------

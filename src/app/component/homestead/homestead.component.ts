@@ -15,9 +15,9 @@ export class HomesteadComponent implements OnInit, AfterViewInit {
 
   // GLIFOS
   GLIFO: Glifos[] = [
-    {category: "Harvesting", name: '-'},
-    {category: "Logging", name: '-'},
-    {category: "Mining", name: '-'},
+    { category: "Harvesting", name: '-' },
+    { category: "Logging", name: '-' },
+    { category: "Mining", name: '-' },
   ];
 
   // Tabla glifos
@@ -565,7 +565,7 @@ export class HomesteadComponent implements OnInit, AfterViewInit {
     precioOrdenableTpCompra: "",
     precioOrdenableTpVenta: ""
   };
-  calabazaDulce : Huerto = {
+  calabazaDulce: Huerto = {
     id: 12538,
     nombre: "Calabaza dulce",
     tengo: 0,
@@ -577,7 +577,7 @@ export class HomesteadComponent implements OnInit, AfterViewInit {
     precioOrdenableTpCompra: "",
     precioOrdenableTpVenta: ""
   };
-  hojasDeEstragon : Huerto = {
+  hojasDeEstragon: Huerto = {
     id: 12506,
     nombre: "Hojas de estragón ",
     tengo: 0,
@@ -589,7 +589,7 @@ export class HomesteadComponent implements OnInit, AfterViewInit {
     precioOrdenableTpCompra: "",
     precioOrdenableTpVenta: ""
   };
-  hojaDeTomillo : Huerto = {
+  hojaDeTomillo: Huerto = {
     id: 12248,
     nombre: "Hoja de tomillo",
     tengo: 0,
@@ -601,7 +601,7 @@ export class HomesteadComponent implements OnInit, AfterViewInit {
     precioOrdenableTpCompra: "",
     precioOrdenableTpVenta: ""
   };
-  nabo : Huerto = {
+  nabo: Huerto = {
     id: 12162,
     nombre: "Nabo ",
     tengo: 0,
@@ -613,7 +613,7 @@ export class HomesteadComponent implements OnInit, AfterViewInit {
     precioOrdenableTpCompra: "",
     precioOrdenableTpVenta: ""
   };
-  vainaDeVainilla : Huerto = {
+  vainaDeVainilla: Huerto = {
     id: 12234,
     nombre: "Vaina de vainilla",
     tengo: 0,
@@ -625,7 +625,7 @@ export class HomesteadComponent implements OnInit, AfterViewInit {
     precioOrdenableTpCompra: "",
     precioOrdenableTpVenta: ""
   };
-  boniato : Huerto = {
+  boniato: Huerto = {
     id: 12329,
     nombre: "Boniato",
     tengo: 0,
@@ -637,7 +637,7 @@ export class HomesteadComponent implements OnInit, AfterViewInit {
     precioOrdenableTpCompra: "",
     precioOrdenableTpVenta: ""
   };
-  calabacin : Huerto = {
+  calabacin: Huerto = {
     id: 12330,
     nombre: "Calabacín",
     tengo: 0,
@@ -649,7 +649,7 @@ export class HomesteadComponent implements OnInit, AfterViewInit {
     precioOrdenableTpCompra: "",
     precioOrdenableTpVenta: ""
   };
-  hojaDeCilantroCultivado : Huerto = {
+  hojaDeCilantroCultivado: Huerto = {
     id: 91715,
     nombre: "*Hoja de cilantro cultivado*",
     tengo: 0,
@@ -661,7 +661,7 @@ export class HomesteadComponent implements OnInit, AfterViewInit {
     precioOrdenableTpCompra: "",
     precioOrdenableTpVenta: ""
   };
-  clavoCultivado : Huerto = {
+  clavoCultivado: Huerto = {
     id: 91796,
     nombre: "*Clavo cultivado*",
     tengo: 0,
@@ -673,7 +673,7 @@ export class HomesteadComponent implements OnInit, AfterViewInit {
     precioOrdenableTpCompra: "",
     precioOrdenableTpVenta: ""
   };
-  hojaDeMentaCultivada : Huerto = {
+  hojaDeMentaCultivada: Huerto = {
     id: 91793,
     nombre: "*Hoja de menta cultivada*",
     tengo: 0,
@@ -685,7 +685,7 @@ export class HomesteadComponent implements OnInit, AfterViewInit {
     precioOrdenableTpCompra: "",
     precioOrdenableTpVenta: ""
   };
-  granoDePimientaCultivada : Huerto = {
+  granoDePimientaCultivada: Huerto = {
     id: 91869,
     nombre: "*Grano de pimienta cultivada*",
     tengo: 0,
@@ -697,7 +697,7 @@ export class HomesteadComponent implements OnInit, AfterViewInit {
     precioOrdenableTpCompra: "",
     precioOrdenableTpVenta: ""
   };
-  semillaDeSesamoCultivado : Huerto = {
+  semillaDeSesamoCultivado: Huerto = {
     id: 91701,
     nombre: "*Semilla de sésamo cultivado*",
     tengo: 0,
@@ -806,7 +806,7 @@ export class HomesteadComponent implements OnInit, AfterViewInit {
     this.dataSourceMaterialesHuerto.sort = this.sort1;
   }
 
-    // devuelve el index de la pestaña de la tabla
+  // devuelve el index de la pestaña de la tabla
   getTabIndex(tab: string): number {
     const tabName = this.routeMap[tab] || tab;
     return this.tabs.indexOf(tabName);
@@ -822,14 +822,14 @@ export class HomesteadComponent implements OnInit, AfterViewInit {
     this.router.navigate(['/homestead', routeName]);
   }
 
-  getAccGlyphs(){
+  getAccGlyphs() {
     this.homesteadService.getAccGlyphs().subscribe((glifo: any) => {
-      for (let i = 0; i < glifo.length; i++){
-        if (glifo[i].includes("harvesting")){
+      for (let i = 0; i < glifo.length; i++) {
+        if (glifo[i].includes("harvesting")) {
           this.GLIFO[0].name = this.capitalizeFirstLetter(glifo[i].split("_harvesting")[0]);
-        } else if (glifo[i].includes("logging")){
+        } else if (glifo[i].includes("logging")) {
           this.GLIFO[1].name = this.capitalizeFirstLetter(glifo[i].split("_logging")[0]);
-        } else if (glifo[i].includes("mining")){
+        } else if (glifo[i].includes("mining")) {
           this.GLIFO[2].name = this.capitalizeFirstLetter(glifo[i].split("_mining")[0]);
         }
       }
@@ -841,11 +841,11 @@ export class HomesteadComponent implements OnInit, AfterViewInit {
     return cadena.charAt(0).toUpperCase() + cadena.slice(1);
   }
 
-  getMaterialesHuertoTengo(){
+  getMaterialesHuertoTengo() {
     this.homesteadService.getMaterials().subscribe((materials: any) => {
-      for (let j = 0; j < this.materialesHuerto.length; j++){
-        for (let i = 0; i < materials.length; i++){
-          if (materials[i].id === this.materialesHuerto[j].id){
+      for (let j = 0; j < this.materialesHuerto.length; j++) {
+        for (let i = 0; i < materials.length; i++) {
+          if (materials[i].id === this.materialesHuerto[j].id) {
             this.materialesHuerto[j].tengo = materials[i].count;
             break;
           }
@@ -856,15 +856,15 @@ export class HomesteadComponent implements OnInit, AfterViewInit {
     })
   }
 
-  getMaterialesHuertoPrices(){
+  getMaterialesHuertoPrices() {
     // Saco los ids de los materiales separados por comas
     this.idsHuerto = this.materialesHuerto.map(m => m.id).join(',');
 
     //consulto precios en el bazar
     this.homesteadService.getCommercePrices(this.idsHuerto).subscribe((prices: any) => {
-      for(let j = 0; j < this.materialesHuerto.length; j++){
-        for(let i = 0; i < prices.length; i++){
-          if (prices[i].id == this.materialesHuerto[j].id){
+      for (let j = 0; j < this.materialesHuerto.length; j++) {
+        for (let i = 0; i < prices.length; i++) {
+          if (prices[i].id == this.materialesHuerto[j].id) {
             this.materialesHuerto[j].precioTpCompra = prices[i].buys.unit_price;
             this.materialesHuerto[j].precioTpVenta = prices[i].sells.unit_price;
             this.materialesHuerto[j].precioTpCompraS = this.getPriceSplit(this.materialesHuerto[j].precioTpCompra);
@@ -880,34 +880,34 @@ export class HomesteadComponent implements OnInit, AfterViewInit {
     })
   }
 
-  getPriceSplit(cantidad: number){
+  getPriceSplit(cantidad: number) {
     // Le paso el numero y me devuelve una string en oro, plata, cobre
     // let sss = (""+cantidad).split('').map(Number); // array de numeros
-    let sss = (""+cantidad).split(''); // array de char
+    let sss = ("" + cantidad).split(''); // array de char
     // console.log(sss)
     let cobre = "";
     let plata = "";
     let oro = "";
     let resFinal = "";
 
-    if (sss.length === 1){
+    if (sss.length === 1) {
       cobre = sss[0] + "c"; // 1 cifra
       resFinal = cobre;
-    }else if(sss.length === 2){
+    } else if (sss.length === 2) {
       cobre = sss[0] + sss[1] + "c"; // 2 cifras
       resFinal = cobre;
-    }else if(sss.length === 3){ // 3 cifras
+    } else if (sss.length === 3) { // 3 cifras
       cobre = sss[1] + sss[2] + "c";
       plata = sss[0] + "s";
       resFinal = plata + " " + cobre;
-    }else if(sss.length === 4){ // 4 cifras
+    } else if (sss.length === 4) { // 4 cifras
       cobre = sss[2] + sss[3] + "c";
       plata = sss[0] + sss[1] + "s";
       resFinal = plata + " " + cobre;
-    }else if(sss.length > 4){ // >= 5 cifras
-      cobre = sss[sss.length-2] + sss[sss.length-1] + "c";
-      plata = sss[sss.length-4] + sss[sss.length-3] + "s";
-      for (let i = (sss.length - 5); i >= 0; i--){
+    } else if (sss.length > 4) { // >= 5 cifras
+      cobre = sss[sss.length - 2] + sss[sss.length - 1] + "c";
+      plata = sss[sss.length - 4] + sss[sss.length - 3] + "s";
+      for (let i = (sss.length - 5); i >= 0; i--) {
         oro = sss[i] + oro;
       }
       oro = oro + "g";

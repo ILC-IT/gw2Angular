@@ -4,14 +4,14 @@ export interface Glifos {
 };
 
 export interface Huerto {
-    id: number;
-    nombre: string;
-    tengo: number;
-    icon: string;
-    precioTpCompra: number;
-    precioTpCompraS: string;
-    precioTpVenta: number;
-    precioTpVentaS: string;
-    precioOrdenableTpCompra: string;
-    precioOrdenableTpVenta: string;
+  id: number;
+  nombre: string;
+  tengo: number;
+  icon: string;
+  precioTpCompra: number;
+  precioTpCompraS: string;
+  precioTpVenta: number;
+  precioTpVentaS: string;
+  precioOrdenableTpCompra: string;
+  precioOrdenableTpVenta: string;
 };

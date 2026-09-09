@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly ;
-  }
+}
 
 .datos{
     display: flex;
@@ -19,29 +19,101 @@
 .resultado{
     display: flex;
     flex-direction: row; 
-    justify-content: space-around;
+    justify-content: center;
+    gap: 30px;
 }
 
 .resultado > div{
-    width: 50%;
-    padding: 50px
+    flex: 1;
+    max-width: 300px;
+    padding: 16px;
 }
 
 .res{
     display: flex;
     flex-direction: column; 
     justify-content: center;
+    gap: 10px;
+    min-width: 150px;
 }
 
 button{
-    /* margin-left: 10px; */
     height: 30px;
     cursor: pointer;
-    font-size:20px
-  }
+    font-size:20px;
+    border-radius: 6px;
+}
 
 .centrado {
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    gap: 20px;
+}
+
+.info-btn {
+    display: flex;
+    align-items: center;
+}
+
+.info-btn mat-icon {
+    font-size: 22px;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+}
+
+::ng-deep .tooltip-grande {
+    font-size: 14px;
+    line-height: 1.4;
+    padding: 10px 12px;
+}
+
+mat-card-title-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.coin-img {
+    width: 20px;
+    height: auto;
+    object-fit: contain;
+}
+
+.res-title {
+    display: inline-block;
+    width: fit-content;
+    padding: 6px 10px;
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+
+    .example-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .resultado {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .resultado > div {
+        max-width: 100%;
+    }
+
+    .res {
+        min-width: unset;
+        align-items: center;
+    }
+
+    .coin-img {
+        width: 20px;
+    }
 }

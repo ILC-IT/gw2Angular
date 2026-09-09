@@ -5,7 +5,7 @@ export const Specs = [
     // API BUG: training retrurns empty, so we can see only the current specialization in current equipment (with req. auth) at:
     // https://api.guildwars2.com/v2/characters/:name/specializations/pve and then search the ids at:
     // https://api.guildwars2.com/v2/specializations?id=xx , in "name"
-    {        
+    {
         profession: "Guardian",
         // specHot: 85,
         specHot: 27,

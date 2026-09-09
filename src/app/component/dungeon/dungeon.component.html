@@ -1,0 +1,119 @@
+<h2 class="component-title">Dungeons</h2>
+
+<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+
+<div *ngIf="!loading">
+  <div class="cards-container">
+    <mat-card class="frequenter-card">
+      <div class="frequenter-content">
+
+        <mat-icon class="frequenter-icon">
+          emoji_events
+        </mat-icon>
+
+        <div class="frequenter-info">
+          <span class="frequenter-title">
+            Dungeon Frequenter
+          </span>
+
+          <span class="frequenter-count">
+            {{ frequenterDoneCount }} / {{ frequenterMax }}
+          </span>
+        </div>
+
+        <mat-icon class="status-icon" [ngClass]="{ 'completed': frequenterCompleted }">
+          {{ frequenterCompleted ? 'check_circle' : 'hourglass_empty' }}
+        </mat-icon>
+
+      </div>
+
+      <mat-progress-bar class="frequenter-progress" mode="determinate"
+        [value]="(frequenterDoneCount / frequenterMax) * 100">
+      </mat-progress-bar>
+
+    </mat-card>
+
+    <mat-card class="hobby-card">
+
+      <div class="hobby-content">
+
+        <mat-icon class="hobby-icon">
+          explore
+        </mat-icon>
+
+        <div class="hobby-info">
+
+          <span class="hobby-title">
+            Hobby Explorer
+          </span>
+
+          <span class="hobby-count">
+            {{ hobbyExplorerPoints }} / {{ hobbyExplorerMaxPoints }} AP
+          </span>
+
+          <span class="hobby-detail">
+            Current: {{ hobbyExplorerCurrent }} / {{ hobbyExplorerCurrentMax }}
+          </span>
+
+          <span class="hobby-detail">
+            {{ hobbyExplorerCompleted }} / {{ hobbyExplorerMax }}
+            ({{ hobbyExplorerTotalCompleted }} total completed)
+          </span>
+
+        </div>
+
+        <mat-icon class="status-icon" [ngClass]="{ 'completed': hobbyExplorerDone }">
+          {{ hobbyExplorerDone ? 'check_circle' : 'explore' }}
+        </mat-icon>
+
+      </div>
+
+      <mat-progress-bar mode="determinate" [value]="hobbyExplorerProgress">
+      </mat-progress-bar>
+
+    </mat-card>
+  </div>
+
+  <div class="dungeons-grid">
+
+    <mat-card *ngFor="let dungeon of dungeonsInfo" class="dungeon-card">
+
+      <mat-card-header>
+        <mat-card-title class="dungeon-title">
+          {{ dungeon.name }}
+        </mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+
+        <!-- Cabecera columnas -->
+        <div class="path-header">
+          <span>Path</span>
+          <span class="center">Daily</span>
+          <span class="center">Frequenter</span>
+        </div>
+
+
+        <!-- Paths -->
+        <div class="path-row" *ngFor="let path of dungeon.paths">
+
+          <span>
+            {{ path.namePath }}
+          </span>
+
+          <span class="status center">
+            {{ path.done ? '✅' : '❌' }}
+          </span>
+
+          <span class="status center">
+            {{ path.freqDone ? '✅' : '❌' }}
+          </span>
+
+        </div>
+
+      </mat-card-content>
+
+    </mat-card>
+
+  </div>
+</div>

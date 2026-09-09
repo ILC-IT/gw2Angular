@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from "rxjs/operators";
+import { HttpClient } from '@angular/common/http';
+import { catchError, map, tap, shareReplay } from "rxjs/operators";
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
 import { ApiKeyService } from './api-key.service';
@@ -14,7 +14,7 @@ export class HeroService {
   apiUrl = "https://api.guildwars2.com/v2/";
 
   constructor(
-    private httpClient: HttpClient, 
+    private httpClient: HttpClient,
     private messageService: MessageService,
     private apiKeyService: ApiKeyService
   ) { }
@@ -23,86 +23,129 @@ export class HeroService {
     return this.apiKeyService.getCurrentKey();
   }
 
-  getHeroes(){
-    //Devuelve todos los heroes
-    const url = `${this.apiUrl}characters?ids=all&access_token=${this.getApiKey()}`;
-    return this.httpClient.get(url);
+  // getHeroes() {
+  //   //Devuelve todos los heroes
+  //   const url = `${this.apiUrl}characters?ids=all&access_token=${this.getApiKey()}&v=2024-07-20T01:00:00.000Z`;
+  //   return this.httpClient.get(url);
+  // }
+
+  private heroes$?: Observable<any>;
+  private ultimaActualizacionHeroes: Date | undefined
+  getHeroes(): Observable<any> {
+
+    // Si no hay caché, hacer la llamada
+    if (!this.heroes$) {
+      console.log('Actualizando datos de la API de Heroes');
+      const url = `${this.apiUrl}characters?ids=all&access_token=${this.getApiKey()}&v=2024-07-20T01:00:00.000Z`;
+
+      this.heroes$ = this.httpClient.get(url).pipe(
+        tap(() => {
+          // La peticion HTTP ha terminado correctamente
+          this.ultimaActualizacionHeroes = new Date();
+        }),
+        catchError(error => {
+          // Si falla, borrar la caché
+          this.heroes$ = undefined;
+          throw error;
+        }),
+        // Hace caché, guarda el ultimo valor emitido
+        shareReplay(1)
+      );
+    }
+
+    return this.heroes$;
   }
 
-  getHero(id: any){
-    const url = `${this.apiUrl}characters/${id}?access_token=${this.getApiKey()}&v=latest`;
+  refreshHeroes(): void {
+    // Invalida la caché. La proxima llamada a getHeroes() hara una nueva peticion HTTP
+    this.heroes$ = undefined;
+  }
+
+  getUltimaActualizacionHeroes(): Date | undefined {
+    return this.ultimaActualizacionHeroes;
+  }
+
+  getHero(id: any) {
+    const url = `${this.apiUrl}characters/${id}?access_token=${this.getApiKey()}&v=2024-07-20T01:00:00.000Z`;
     return this.httpClient.get(url)
-    .pipe(
-      tap(_ => this.log(`fetched hero id=${id}`)),
-      catchError(this.handleError('getHero', []))
-    );
+      .pipe(
+        tap(_ => this.log(`fetched hero id=${id}`)),
+        catchError(this.handleError('getHero', []))
+      );
   }
 
-  getInfoHero(nombre: string){
+  getInfoHero(nombre: string) {
     let nombreSinEspacios = nombre.replace(/ /g, '%20'); //reemplaza los espacios por %20
-    const url = `${this.apiUrl}characters/${nombreSinEspacios}?access_token=${this.getApiKey()}`;
+    const url = `${this.apiUrl}characters/${nombreSinEspacios}?access_token=${this.getApiKey()}&v=2024-07-20T01:00:00.000Z`;
     return this.httpClient.get(url);
   }
 
-  getLegendaryArmory(){
+  getLegendaryArmory() {
     const url = `${this.apiUrl}account/legendaryarmory?access_token=${this.getApiKey()}`;
     return this.httpClient.get(url);
   }
 
-  getMaterials(){
+  getMaterials() {
     const url = `${this.apiUrl}account/materials?access_token=${this.getApiKey()}`;
     return this.httpClient.get(url);
   }
 
-  getBank(){
+  getBank() {
     const url = `${this.apiUrl}account/bank?access_token=${this.getApiKey()}`;
     return this.httpClient.get(url);
   }
 
-  getWallet(){
+  getWallet() {
     const url = `${this.apiUrl}account/wallet?access_token=${this.getApiKey()}`;
     return this.httpClient.get(url);
   }
 
-  getCurrencies(){
+  getCurrencies() {
     const url = `${this.apiUrl}account/currencies?access_token=${this.getApiKey()}`;
     return this.httpClient.get(url);
   }
 
-  getProfession(profession: string){
+  getProfession(profession: string) {
     const url = `${this.apiUrl}professions/${profession}`;
     return this.httpClient.get(url).pipe(map((res: any) => {
       return res.training.filter((eliteEspec: any) => eliteEspec.category === "EliteSpecializations");
     }));
   }
 
-  getItem(id: number){
-    const url = `${this.apiUrl}items?id=${id}`;
+  getItem(id: number) {
+    const idioma = 'es';
+    const url = `${this.apiUrl}items?lang=${idioma}&id=${id}`;
     return this.httpClient.get(url);
   }
 
-  getSkins(){
+  getItems(ids: string) {
+    const idioma = 'es';
+    const url = `${this.apiUrl}items?lang=${idioma}&ids=${ids}`;
+    return this.httpClient.get<any[]>(url);
+  }
+
+  getSkins() {
     const url = `${this.apiUrl}account/skins?access_token=${this.getApiKey()}`;
     return this.httpClient.get(url);
   }
 
-  getAccount(){
+  getAccount() {
     const url = `${this.apiUrl}account?access_token=${this.getApiKey()}`;
     return this.httpClient.get(url);
   }
 
-  getInventory(){
+  getInventory() {
     // Devuelve inventario compartido
     const url = `${this.apiUrl}account/inventory?access_token=${this.getApiKey()}`;
     return this.httpClient.get(url);
   }
 
-    /**
-   * Handle Http operation that failed.
-   * Let the app continue.
-   * @param operation - name of the operation that failed
-   * @param result - optional value to return as the observable result
-   */
+  /**
+ * Handle Http operation that failed.
+ * Let the app continue.
+ * @param operation - name of the operation that failed
+ * @param result - optional value to return as the observable result
+ */
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 

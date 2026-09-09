@@ -1,11 +1,10 @@
-<div class="enlaces">
-  <a *ngFor="let enlace of enlaces"
-     [href]="enlace.url"
-     target="_blank"
-     rel="noopener noreferrer"
-     style="text-decoration: none">
+<h2 class="component-title">Enlaces</h2>
 
-        <button mat-button>{{ enlace.label }}</button>
+<div class="enlaces">
+  <a *ngFor="let enlace of enlaces" [href]="enlace.url" target="_blank" rel="noopener noreferrer"
+    style="text-decoration: none">
+
+    <button mat-button>{{ enlace.label }}</button>
 
   </a>
 </div>

@@ -1,0 +1,428 @@
+h2 {
+  text-align: center;
+}
+
+.body {
+  margin: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.aaa {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.input-largo {
+  width: 550px;
+}
+
+.botones {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+}
+
+button {
+  height: 30px !important;
+  width: 100px !important;
+  font-size: 20px !important;
+  border-radius: 12px;
+}
+
+.card-actions-center {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.chat-section {
+  margin-top: 30px;
+}
+
+.chat-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.label {
+  font-weight: 600;
+}
+
+.value {
+  word-break: break-all;
+  background: #f5f5f5;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.resultado {
+  margin: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+
+.resultadoC {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.result-card {
+  background-color: #eeeeee;
+}
+
+mat-card {
+  flex: 1;
+  min-width: 400px;
+  max-width: 800px;
+  box-sizing: border-box;
+}
+
+mat-chip {
+  cursor: pointer;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  border-radius: 20px;
+}
+
+mat-chip.mat-chip-selected {
+  background-color: #7b1fa2;
+  color: white;
+}
+
+.chip-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 4px 0;
+  border-bottom: 1px solid #eee;
+
+  flex-wrap: wrap;
+}
+
+.label {
+  font-weight: 600;
+  color: #666;
+}
+
+.value2 {
+  text-align: right;
+  max-width: 50%;
+  word-break: break-word;
+}
+
+.code {
+  font-family: monospace;
+  background: #f5f5f5;
+  padding: 2px 6px;
+  border-radius: 4px;
+  word-break: break-all;
+  overflow-wrap: anywhere;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+}
+
+::ng-deep.mat-tab-label,
+::ng-deep.mat-tab-label-content {
+  /*min-width: 1!important;*/
+  padding: 3px !important;
+  margin: 3px !important;
+  font-size: large;
+}
+
+::ng-deep .tooltip-grande {
+  font-size: 14px;
+  line-height: 1.4;
+  padding: 10px 12px;
+}
+
+.separador {
+  width: 100%;
+  display: block;
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #673ab7, transparent);
+  margin: 30px 0;
+}
+
+/* Buscar por mapa */
+.map-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin: 20px 0;
+  padding: 12px 20px;
+  border: 1px solid #a2a9b1;
+  border-radius: 6px;
+  background: #f8f9fa;
+  font-size: 16px;
+}
+
+.map-card strong {
+  color: #444;
+}
+
+.map-selector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.map-selector select {
+  min-width: 280px;
+  padding: 6px 10px;
+  font-size: 14px;
+  height: 36px;
+  box-sizing: border-box;
+  background-color: #e8e8e8;
+}
+
+.map-selector button {
+  min-width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 16px;
+  font-size: 14px;
+  cursor: pointer;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+.gw2-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.gw2-table th,
+.gw2-table td {
+  border: 1px solid #a2a9b1;
+  padding: 7px 10px;
+}
+
+.gw2-table thead tr:nth-child(2) th {
+  background: #eaecf0;
+  font-weight: bold;
+}
+
+.gw2-table tbody tr:nth-child(even) {
+  background: #f8f9fa;
+}
+
+.table-title {
+  background: #f8f9fa !important;
+  padding: 10px !important;
+}
+
+.wiki-icon {
+  cursor: pointer;
+  font-size: 18px;
+  color: #3f51b5;
+}
+
+.wiki-icon:hover {
+  color: #1a237e;
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.title-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.title-icon {
+  width: 28px;
+  height: 28px;
+}
+
+.location-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.chat-link {
+  cursor: pointer;
+  color: #0645ad;
+  font-family: Consolas, monospace;
+  padding: 3px 6px;
+  border-radius: 4px;
+  user-select: none;
+  transition: background-color .15s;
+}
+
+.chat-link:hover {
+  background: #dcecff;
+  text-decoration: underline;
+}
+
+.chat-link:active {
+  background: #bcd9ff;
+}
+
+/* --- */
+
+.tipo-field {
+  border: 1px solid rgba(0, 0, 0, 0.38);
+  border-radius: 4px;
+  padding: 16px 12px 12px;
+}
+
+mat-card-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wiki-btn {
+  font-size: 12px;
+  height: 28px;
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.btn-wiki {
+  min-width: 120px;
+  margin-bottom: 20px;
+}
+
+.archivo-error {
+  margin: 20px 0;
+}
+
+.archivo-error mat-card {
+  background-color: #fff3f3;
+  border-left: 5px solid #f44336;
+}
+
+.archivo-error mat-card-title {
+  color: #d32f2f;
+}
+
+.archivo-error mat-card-content {
+  color: #555;
+  padding-bottom: 16px;
+}
+
+/* Evita la barra vertical que aparece durante
+   la animacion al cambiar de pestaña */
+::ng-deep .mat-tab-body-content {
+  overflow-y: hidden !important;
+  overflow-x: hidden !important;
+}
+
+@media (max-width: 1050.99px) {
+  .body {
+    margin: 10px;
+    padding: 0 10px;
+    align-items: stretch;
+  }
+
+  .aaa {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .botones {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .resultado {
+    flex-direction: column;
+    align-items: stretch;
+    margin: 10px;
+  }
+
+  .resultadoC {
+    flex-direction: column;
+  }
+
+  .res1 {
+    flex-direction: column;
+    align-items: stretch;
+    margin: 10px 0;
+  }
+
+  button {
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 12px;
+  }
+
+  .mat-form-field {
+    width: 100%;
+  }
+
+  mat-card {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .map-selector {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .map-selector select,
+  .map-selector button {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .map-card {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+}

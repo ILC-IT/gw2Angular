@@ -1,1 +1,626 @@
-<p>buscador works!</p>
+<h2 class="component-title">Buscador de POIs</h2>
+
+<mat-tab-group mat-stretch-tabs [(selectedIndex)]="selectedTabIndex" (selectedTabChange)="onTabChange($event)"
+    class="example-stretched-tabs mat-elevation-z4" backgroundColor="primary" color="primary">
+
+    <mat-tab label="Buscar por nombre">
+
+        <div class="body">
+
+            <div *ngIf="errorArchivoEs" class="archivo-error">
+                <mat-card>
+                    <mat-card-title>
+                        Error
+                    </mat-card-title>
+
+                    <mat-card-content>
+                        No se ha podido cargar el archivo de datos de POI en español.<br>
+                        Comprueba que el archivo existe e inténtalo de nuevo más tarde.
+                    </mat-card-content>
+                </mat-card>
+            </div>
+
+            <div *ngIf="!errorArchivoEs">
+                <!-- TIPO -->
+                <form [formGroup]="formularioNombre">
+
+                    <div class="tipo-field">
+                        <!-- <mat-select formControlName="tipo">
+                        <mat-option
+                            *ngFor="let type of typesEs"
+                            [value]="type">
+                                {{ formatTypeLabel(type) }}
+                        </mat-option>
+                    </mat-select> -->
+                        <mat-chip-list aria-label="Tipo filtros">
+                            <mat-chip *ngFor="let type of typesEs"
+                                [selected]="formularioNombre.get('tipo')?.value === type" (click)="selectTypeEs(type)"
+                                selectable>
+                                <img class="chip-icon" [src]="getTypeIcon(type)" />
+                                {{ formatTypeLabel(type) }}
+                            </mat-chip>
+                        </mat-chip-list>
+                    </div>
+
+                </form>
+
+                <!-- ID -->
+                <form [formGroup]="formularioNombre">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Buscar por ID</mat-label>
+                        <input matInput type="number" formControlName="id" (focus)="onIdFocusEs()">
+                    </mat-form-field>
+                </form>
+
+                <!-- ESPAÑOL -->
+                <form [formGroup]="formularioNombre" (ngSubmit)="sendFormNombre()">
+                    <div class="aaa">
+                        <mat-chip-list aria-label="Lengua">
+                            <mat-chip color="primary" selected style="cursor: default">ESPAÑOL</mat-chip>
+                        </mat-chip-list>
+
+                        <mat-form-field appearance="outline" class="input-largo">
+                            <mat-label>
+                                {{ getNombreLabel('es') }}
+                            </mat-label>
+
+                            <input matInput formControlName="nombreEs" [matAutocomplete]="autoEs"
+                                [placeholder]="getNombreLabel('es')">
+
+                            <mat-autocomplete #autoEs="matAutocomplete" [displayWith]="displayFn"
+                                (optionSelected)="onSelected($event.option.value)">
+                                <mat-option *ngFor="let option of filteredOptionsEs; trackBy: trackById"
+                                    [value]="option">
+                                    {{ option.data?.tooltip }}
+                                </mat-option>
+                            </mat-autocomplete>
+
+                        </mat-form-field>
+                    </div>
+                    <div class="botones">
+                        <button mat-raised-button color="primary" type="submit">Buscar</button>
+                        <button mat-raised-button color="secondary" (click)="resetFormNombre()"
+                            type="button">Reset</button>
+                    </div>
+                </form>
+
+                <!-- RESULTADO -->
+                <div class="resultado" *ngIf="busquedaRealizadaEs">
+                    <mat-card *ngIf="resultadoNombre" class="result-card">
+                        <mat-card-title>
+                            {{ resultadoNombre.data?.tooltip }}
+                        </mat-card-title>
+                        <mat-card-subtitle>
+                            <div>ID: {{ resultadoNombre.id }}</div>
+                            <div>Tipo: {{ formatTypeLabel(resultadoNombre.type) }}</div>
+                            <div>Mapa: {{ resultadoNombre.map }}</div>
+                            <div>Continente: {{ resultadoNombre.continent }}</div>
+                        </mat-card-subtitle>
+                        <mat-divider></mat-divider>
+                        <mat-card-content class="chat-section">
+                            <div class="chat-row">
+                                <span class="label">Chat link:</span>
+                                <code class="value">
+                            {{ resultadoNombre.data?.chat_link }}
+                            </code>
+                            </div>
+                        </mat-card-content>
+                        <mat-card-actions class="card-actions-center">
+                            <button mat-raised-button color="accent" *ngIf="resultadoNombre.data?.chat_link"
+                                (click)="openWikiSearch(resultadoNombre.data?.chat_link)">
+                                WIKI
+                            </button>
+                            <button mat-raised-button color="accent" *ngIf="resultadoNombre.data?.chat_link"
+                                [cdkCopyToClipboard]="resultadoNombre.data?.chat_link"
+                                (cdkCopyToClipboardCopied)="copiadoEs = true; resetCopiadoEs()">
+                                {{ copiadoEs ? '¡Copiado!' : 'Copiar' }}
+                            </button>
+                        </mat-card-actions>
+                    </mat-card>
+                    <p *ngIf="!resultadoNombre">
+                        No se ha encontrado ningún resultado.
+                    </p>
+                </div>
+            </div>
+
+            <hr class="separador">
+
+            <div *ngIf="errorArchivoEn" class="archivo-error">
+                <mat-card>
+                    <mat-card-title>
+                        Error
+                    </mat-card-title>
+
+                    <mat-card-content>
+                        The English POI data file could not be loaded.<br>
+                        Please check that the file exists and try again later.
+                    </mat-card-content>
+                </mat-card>
+            </div>
+
+            <div *ngIf="!errorArchivoEn">
+
+                <!-- TYPE -->
+                <form [formGroup]="formularioName">
+
+                    <div class="tipo-field">
+                        <!-- <mat-select formControlName="type">
+                        <mat-option
+                            *ngFor="let type of typesEn"
+                            [value]="type">
+                                {{ formatTypeLabel(type) }}
+                        </mat-option>
+                    </mat-select> -->
+                        <mat-chip-list aria-label="Type filters">
+                            <mat-chip *ngFor="let type of typesEn"
+                                [selected]="formularioName.get('type')?.value === type" (click)="selectTypeEn(type)"
+                                selectable>
+                                <img class="chip-icon" [src]="getTypeIcon(type)" />
+                                {{ formatTypeLabel(type) }}
+                            </mat-chip>
+                        </mat-chip-list>
+
+                    </div>
+
+                </form>
+
+                <!-- ID -->
+                <form [formGroup]="formularioName">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Search by ID</mat-label>
+                        <input matInput type="number" formControlName="id" (focus)="onIdFocusEn()">
+                    </mat-form-field>
+                </form>
+
+                <!-- ENGLISH -->
+                <form [formGroup]="formularioName" (ngSubmit)="sendFormName()">
+                    <div class="aaa">
+                        <mat-chip-list aria-label="Lengua">
+                            <mat-chip color="primary" selected style="cursor: default">ENGLISH</mat-chip>
+                        </mat-chip-list>
+
+                        <mat-form-field appearance="outline" class="input-largo">
+                            <mat-label>
+                                {{ getNombreLabel('en') }}
+                            </mat-label>
+
+                            <input matInput formControlName="nameEn" [matAutocomplete]="autoEn"
+                                [placeholder]="getNombreLabel('en')" />
+
+                            <mat-autocomplete #autoEn="matAutocomplete" [displayWith]="displayFn"
+                                (optionSelected)="onSelected($event.option.value)">
+                                <mat-option *ngFor="let option of filteredOptionsEn; trackBy: trackById"
+                                    [value]="option">
+                                    {{ option.data?.tooltip }}
+                                </mat-option>
+                            </mat-autocomplete>
+
+                        </mat-form-field>
+                    </div>
+                    <div class="botones">
+                        <button mat-raised-button color="primary" type="submit">Search</button>
+                        <button mat-raised-button color="secondary" (click)="resetFormName()"
+                            type="button">Reset</button>
+                    </div>
+                </form>
+
+                <!-- RESULT -->
+                <div class="resultado" *ngIf="busquedaRealizadaEn">
+                    <mat-card *ngIf="resultadoName" class="result-card">
+                        <mat-card-title>
+                            {{ resultadoName.data?.tooltip }}
+                        </mat-card-title>
+                        <mat-card-subtitle>
+                            <div>ID: {{ resultadoName.id }}</div>
+                            <div>Tipo: {{ formatTypeLabel(resultadoName.type) }}</div>
+                            <div>Mapa: {{ resultadoName.map }}</div>
+                            <div>Continent: {{ resultadoName.continent }}</div>
+                        </mat-card-subtitle>
+                        <mat-divider></mat-divider>
+                        <mat-card-content class="chat-section">
+                            <div class="chat-row">
+                                <span class="label">Chat link:</span>
+                                <code class="value">
+                            {{ resultadoName.data?.chat_link }}
+                            </code>
+                            </div>
+                        </mat-card-content>
+                        <mat-card-actions class="card-actions-center">
+                            <button mat-raised-button color="accent" *ngIf="resultadoName.data?.chat_link"
+                                (click)="openWikiSearch(resultadoName.data?.chat_link)">
+                                WIKI
+                            </button>
+                            <button mat-raised-button color="accent" *ngIf="resultadoName.data?.chat_link"
+                                [cdkCopyToClipboard]="resultadoName.data?.chat_link"
+                                (cdkCopyToClipboardCopied)="copiadoEn = true; resetCopiadoEn()">
+                                {{ copiadoEn ? 'Copied!' : 'Copy' }}
+                            </button>
+                        </mat-card-actions>
+                    </mat-card>
+                    <p *ngIf="!resultadoName">
+                        No results were found.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </mat-tab>
+
+    <mat-tab label="Buscar por mapa">
+
+        <div class="body">
+
+            <div *ngIf="errorArchivoEs" class="archivo-error">
+                <mat-card>
+                    <mat-card-title>
+                        Error
+                    </mat-card-title>
+
+                    <mat-card-content>
+                        No se ha podido cargar el archivo de datos de POI en español.<br>
+                        Comprueba que el archivo existe e inténtalo de nuevo más tarde.
+                    </mat-card-content>
+                </mat-card>
+            </div>
+
+            <div *ngIf="!errorArchivoEs">
+
+                <button type="button" class="btn-wiki" (click)="openWiki()">
+                    Wiki codes
+                </button>
+
+                <!-- ESPAÑOL -->
+                <div class="map-selector">
+                    <mat-chip-list aria-label="Lengua">
+                        <mat-chip color="primary" selected style="cursor: default">
+                            ESPAÑOL
+                        </mat-chip>
+                    </mat-chip-list>
+
+                    <select [(ngModel)]="selectedMapEs" (change)="onMapChangeEs()">
+                        <option value="">Selecciona un mapa...</option>
+                        <option *ngFor="let map of mapsEs" [value]="map">
+                            {{ map }}
+                        </option>
+                    </select>
+
+                    <button type="button" (click)="resetMapEs()">
+                        Reset
+                    </button>
+                </div>
+
+                <div *ngIf="selectedMapInfoEs" class="map-card">
+                    <div>
+                        <strong>Mapa:</strong>
+                        {{ selectedMapInfoEs.map }}
+                    </div>
+
+                    <div>
+                        <strong>Continente:</strong>
+                        {{ selectedMapInfoEs.continent }}
+                    </div>
+                </div>
+
+                <div *ngIf="selectedMapEs">
+                    <div *ngFor="let tipo of ['landmark','waypoint','vista']">
+                        <div class="table-wrapper">
+                            <table class="gw2-table" *ngIf="groupedByTypeEs[tipo]?.length">
+                                <thead>
+                                    <tr>
+                                        <th colspan="4" class="table-title">
+                                            <span class="title-content">
+                                                <img [src]="getTypeIcon(tipo)" class="title-icon">
+                                                {{ tipo | titlecase }}
+                                                ({{ groupedByTypeEs[tipo].length }})
+                                            </span>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:70px">Id</th>
+                                        <th style="width:60px">Wiki</th>
+                                        <th style="width:180px">Copiar link</th>
+                                        <th>Localización</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of groupedByTypeEs[tipo]">
+                                        <td>
+                                            {{ item.id }}
+                                        </td>
+                                        <td>
+                                            <span class="material-icons wiki-icon" *ngIf="item.data?.chat_link"
+                                                (click)="openWikiSearch(item.data.chat_link)" title="Abrir wiki">
+                                                language
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <code *ngIf="item.data?.chat_link" class="chat-link"
+                                                (click)="copyChatLink(item.data.chat_link)" title="Copiar chat link">
+                                            {{ item.data.chat_link }}
+                                        </code>
+                                        </td>
+                                        <td>
+                                            <ng-container *ngIf="item.data?.tooltip; else noTooltip">
+                                                <img [src]="getTypeIcon(tipo)" class="location-icon">
+                                                {{ item.data.tooltip }}
+                                            </ng-container>
+                                            <ng-template #noTooltip>
+                                                —
+                                            </ng-template>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="separador">
+
+            <div *ngIf="errorArchivoEn" class="archivo-error">
+                <mat-card>
+                    <mat-card-title>
+                        Error
+                    </mat-card-title>
+
+                    <mat-card-content>
+                        The English POI data file could not be loaded.<br>
+                        Please check that the file exists and try again later.
+                    </mat-card-content>
+                </mat-card>
+            </div>
+
+            <div *ngIf="!errorArchivoEn">
+                <!-- ENGLISH -->
+                <div class="map-selector">
+                    <mat-chip-list aria-label="Lengua">
+                        <mat-chip color="primary" selected style="cursor: default">
+                            ENGLISH
+                        </mat-chip>
+                    </mat-chip-list>
+
+                    <select [(ngModel)]="selectedMapEn" (change)="onMapChangeEn()">
+                        <option value="">Select a map...</option>
+                        <option *ngFor="let map of mapsEn" [value]="map">
+                            {{ map }}
+                        </option>
+                    </select>
+
+                    <button type="button" (click)="resetMapEn()">
+                        Reset
+                    </button>
+                </div>
+
+                <div *ngIf="selectedMapInfoEn" class="map-card">
+                    <div>
+                        <strong>Map:</strong>
+                        {{ selectedMapInfoEn.map }}
+                    </div>
+
+                    <div>
+                        <strong>Continent:</strong>
+                        {{ selectedMapInfoEn.continent }}
+                    </div>
+                </div>
+
+                <div *ngIf="selectedMapEn">
+                    <div *ngFor="let tipo of ['landmark','waypoint','vista']">
+                        <div class="table-wrapper">
+                            <table class="gw2-table" *ngIf="groupedByTypeEn[tipo]?.length">
+                                <thead>
+                                    <tr>
+                                        <th colspan="4" class="table-title">
+                                            <span class="title-content">
+                                                <img [src]="getTypeIcon(tipo)" class="title-icon">
+                                                {{ tipo | titlecase }}
+                                                ({{ groupedByTypeEn[tipo].length }})
+                                            </span>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:70px">Id</th>
+                                        <th style="width:60px">Wiki</th>
+                                        <th style="width:180px">Copy link</th>
+                                        <th>Location</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of groupedByTypeEn[tipo]">
+                                        <td>
+                                            {{ item.id }}
+                                        </td>
+                                        <td>
+                                            <span class="material-icons wiki-icon" *ngIf="item.data?.chat_link"
+                                                (click)="openWikiSearch(item.data.chat_link)" title="Open wiki">
+                                                language
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <code *ngIf="item.data?.chat_link" class="chat-link"
+                                                (click)="copyChatLink(item.data.chat_link)" title="Copy chat link">
+                                            {{ item.data.chat_link }}
+                                        </code>
+                                        </td>
+                                        <td>
+                                            <ng-container *ngIf="item.data?.tooltip; else noTooltip">
+                                                <img [src]="getTypeIcon(tipo)" class="location-icon">
+                                                {{ item.data.tooltip }}
+                                            </ng-container>
+                                            <ng-template #noTooltip>
+                                                —
+                                            </ng-template>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </mat-tab>
+
+    <mat-tab label="Buscar por código">
+
+        <div class="body">
+
+            <!-- CODIGO -->
+            <form [formGroup]="formularioCodigo" (ngSubmit)="sendFormCodigo()">
+                <div class="aaa">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Código / Code</mat-label>
+                        <input matInput type="text" formControlName="codigoC" />
+                    </mat-form-field>
+                </div>
+                <div class="botones">
+                    <button mat-raised-button color="primary" type="submit">Go</button>
+                    <button mat-raised-button color="secondary" (click)="resetFormCodigo()" type="button">Reset</button>
+                </div>
+            </form>
+
+            <!-- RESULT -->
+            <div class="resultadoC" *ngIf="busquedaRealizadaC">
+
+                <!-- ESPAÑOL -->
+                <mat-card *ngIf="resultadoCodigoEs" class="result-card">
+                    <mat-card-title>
+                        <mat-chip-list aria-label="Lengua">
+                            <mat-chip color="primary" selected style="cursor: default">
+                                ESPAÑOL
+                            </mat-chip>
+                        </mat-chip-list>
+                    </mat-card-title>
+
+
+                    <mat-card-content class="stats">
+                        <div class="row">
+                            <span class="label">ID</span>
+                            <span class="value2">{{ resultadoCodigoEs.id }}</span>
+                        </div>
+
+                        <div class="row">
+                            <span class="label">Tipo</span>
+                            <span class="value2">{{ formatTypeLabel(resultadoCodigoEs.type) }}</span>
+                        </div>
+
+                        <div class="row">
+                            <span class="label">Mapa</span>
+                            <span class="value2">{{ resultadoCodigoEs.map }}</span>
+                        </div>
+
+                        <div class="row">
+                            <span class="label">Continente</span>
+                            <span class="value2">{{ resultadoCodigoEs.continent }}</span>
+                        </div>
+
+                        <div class="row" *ngIf="resultadoCodigoEs.data?.tooltip?.trim()">
+                            <span class="label">Nombre</span>
+                            <span class="value2"> {{ resultadoCodigoEs.data.tooltip }} </span>
+                        </div>
+
+                        <div class="row">
+                            <span class="label">Chat link</span>
+                            <code class="value2 code">{{ resultadoCodigoEs.data?.chat_link }}</code>
+                        </div>
+                        <mat-card-title>
+                            <button mat-stroked-button class="wiki-btn"
+                                (click)="openWikiSearch(resultadoCodigoEs.data?.chat_link)">
+                                WIKI
+                            </button>
+                        </mat-card-title>
+                    </mat-card-content>
+                </mat-card>
+
+                <!-- Error cargando Español -->
+                <div *ngIf="errorArchivoEs" class="archivo-error">
+                    <mat-card>
+                        <mat-card-title>
+                            Error
+                        </mat-card-title>
+
+                        <mat-card-content>
+                            No se ha podido cargar el archivo de datos en español.<br>
+                            Comprueba que el archivo existe e inténtalo de nuevo más tarde.
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+
+                <!-- ENGLISH -->
+                <mat-card *ngIf="resultadoCodigoEn" class="result-card">
+                    <mat-card-title>
+                        <mat-chip-list aria-label="Lengua">
+                            <mat-chip color="primary" selected style="cursor: default">
+                                ENGLISH
+                            </mat-chip>
+                        </mat-chip-list>
+                    </mat-card-title>
+
+                    <mat-card-content class="stats">
+                        <div class="row">
+                            <span class="label">ID</span>
+                            <span class="value2">{{ resultadoCodigoEn.id }}</span>
+                        </div>
+
+                        <div class="row">
+                            <span class="label">Type</span>
+                            <span class="value2">{{ formatTypeLabel(resultadoCodigoEn.type) }}</span>
+                        </div>
+
+                        <div class="row">
+                            <span class="label">Map</span>
+                            <span class="value2">{{ resultadoCodigoEn.map }}</span>
+                        </div>
+
+                        <div class="row">
+                            <span class="label">Continent</span>
+                            <span class="value2">{{ resultadoCodigoEn.continent }}</span>
+                        </div>
+
+                        <div class="row" *ngIf="resultadoCodigoEn.data?.tooltip?.trim()">
+                            <span class="label">Name</span>
+                            <span class="value2"> {{ resultadoCodigoEn.data.tooltip }} </span>
+                        </div>
+
+                        <div class="row">
+                            <span class="label">Chat link</span>
+                            <code class="value2 code">{{ resultadoCodigoEn.data?.chat_link }}</code>
+                        </div>
+                        <mat-card-title>
+                            <button mat-stroked-button class="wiki-btn"
+                                (click)="openWikiSearch(resultadoCodigoEn.data?.chat_link)">
+                                WIKI
+                            </button>
+                        </mat-card-title>
+                    </mat-card-content>
+                </mat-card>
+
+                <!-- Error loading English -->
+                <div *ngIf="errorArchivoEn" class="archivo-error">
+                    <mat-card>
+                        <mat-card-title>
+                            Error
+                        </mat-card-title>
+
+                        <mat-card-content>
+                            The English POI data file could not be loaded.<br>
+                            Please check that the file exists and try again later.
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+
+                <!-- NO RESULT -->
+                <p *ngIf="!resultadoCodigoEs && !resultadoCodigoEn && !errorArchivoEs && !errorArchivoEn">
+                    No se ha encontrado / Not found
+                </p>
+
+            </div>
+
+        </div>
+
+    </mat-tab>
+
+</mat-tab-group>

@@ -16,26 +16,26 @@ export class RaidService {
     return this.apiKeyService.getCurrentKey();
   }
 
-  getRaid(){
+  getRaid() {
     const url = `${this.apiUrl}account/raids?access_token=${this.getApiKey()}`;
     return this.httpClient.get(url);
   }
 
-  getCallOfTheMists(){
+  getCallOfTheMists() {
     // Returns current number week of double gold raid between 1 and 7
     const givenDate = new Date(); // The date for which you want to determine the week number 'yyyy-mm-dd'
     const valorRaidValeDobleEstaSemana = this.raidValeDobleEstaSemana(givenDate);
     return valorRaidValeDobleEstaSemana;
   }
 
-  raidValeDobleEstaSemana(date: Date){
+  raidValeDobleEstaSemana(date: Date) {
     // Retorna el numero de semana en la que la raid vale doble
     // La rotacion esa semana empieza en la W3 = week3
     // const startDate = new Date('2023-12-25'); // Start date of the first week, it was week number 3
     // La rotacion esa semana empieza en la W7 = week7
     const startDate = new Date('2025-03-24'); // Start date of the first week, it was week number 7
     const millisecondsPerWeek = 7 * 24 * 60 * 60 * 1000; // Number of milliseconds in a week
-  
+
     const elapsedTime = date.getTime() - startDate.getTime();
     const weekNumber = Math.floor(elapsedTime / millisecondsPerWeek) + 7;
     let weekNumberMod8 = (weekNumber) % 8; // -2 es para que coincida bien entre 1-8 al hacer mod8
@@ -44,21 +44,21 @@ export class RaidService {
     return weekNumberMod8;
   }
 
-  getEmboldened(){
+  getEmboldened() {
     // Returns current number week of emboldened raid between 1 and 7
     const givenDate = new Date(); // The date for which you want to determine the week number 'yyyy-mm-dd'
     const valorRaidEnvalentonadoEstaSemana = this.raidEnvalentonadoEstaSemana(givenDate);
     return valorRaidEnvalentonadoEstaSemana;
   }
 
-  raidEnvalentonadoEstaSemana(date: Date){
+  raidEnvalentonadoEstaSemana(date: Date) {
     // Retorna el numero de semana en la que la raid esta envalentonada
     // La rotacion esa semana empieza en la W2 = week2
     // const startDate = new Date('2023-12-25'); // Start date of the first week, it was week number 2
     // La rotacion esa semana empieza en la W6 = week6
     const startDate = new Date('2025-03-24'); // Start date of the first week, it was week number 6
     const millisecondsPerWeek = 7 * 24 * 60 * 60 * 1000; // Number of milliseconds in a week
-  
+
     const elapsedTime = date.getTime() - startDate.getTime();
     const weekNumber = Math.floor(elapsedTime / millisecondsPerWeek) + 6;
     let weekNumberMod8 = (weekNumber) % 8; // -2 es para que coincida bien entre 1-8 al hacer mod8
@@ -67,13 +67,13 @@ export class RaidService {
     return weekNumberMod8;
   }
 
-  getWeeklyRaidId(){
+  getWeeklyRaidId() {
     // Para sacar el id de las raid semanales
     const url = `${this.apiUrl}achievements/categories/477`;
     return this.httpClient.get(url);
   }
 
-  getWeeklyRaidDone(wekklyIdsS: string){
+  getWeeklyRaidDone(wekklyIdsS: string) {
     const url = `${this.apiUrl}account/achievements?ids=${wekklyIdsS}&access_token=${this.getApiKey()}`;
     return this.httpClient.get<any[]>(url);
   }
@@ -82,7 +82,7 @@ export class RaidService {
     // Devuelve los dailyRaidBounties de cada dia, rotando diariamente
     const startDate = new Date(2026, 3, 22); // 22 de abril de 2026 (mes 0-based)
     startDate.setHours(0, 0, 0, 0);
-    
+
     const millisecondsPerDay = 24 * 60 * 60 * 1000;
 
     const daysSinceStart = Math.floor(
@@ -106,7 +106,7 @@ export class RaidService {
     // Devuelve los dailyRaidBounties de cada semana
     const startOfWeek = new Date(semana);
     const day = startOfWeek.getDay(); // 0 domingo, 1 lunes...
-    
+
     // Calcular cuantos dias retroceder para llegar al lunes
     // Si es lunes (1), retroceder 0. Si es domingo (0), retroceder 6 para llegar al lunes anterior
     const daysToSubtract = day === 0 ? 6 : (day - 1);
@@ -162,5 +162,5 @@ export class RaidService {
       notInWeek,
     };
   }
-  
+
 }

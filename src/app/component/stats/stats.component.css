@@ -1,6 +1,6 @@
 h2 {
-    text-align: center;
-  }
+  text-align: center;
+}
 
 /* .statForm {
   min-width: 150px;
@@ -44,6 +44,7 @@ button{
   height: 30px !important;
   width: 80px !important;
   font-size: 20px !important;
+  border-radius: 12px;
 }
 
 /* esto es para que no salga el scroll vertical en el panel de seleccion 
@@ -73,7 +74,13 @@ button{
   padding: 3px!important;
   margin: 3px!important;
   font-size: large;
- }
+}
+
+::ng-deep .tooltip-grande {
+  font-size: 14px;
+  line-height: 1.4;
+  padding: 10px 12px;
+}
 
  @media (max-width: 1050.99px) {
   .body {
@@ -108,6 +115,7 @@ button{
   button {
     width: 100% !important;
     height: auto !important;
+    border-radius: 12px;
   }
 
   .mat-form-field {

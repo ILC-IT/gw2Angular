@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-calculadora',
@@ -19,15 +19,15 @@ export class CalculadoraComponent implements OnInit {
   };
   loading = false;
 
-  constructor(private formBuilder: FormBuilder) { 
+  constructor(private formBuilder: FormBuilder) {
     this.initForm();
   }
 
   ngOnInit(): void {
-    
+
   }
 
-  initForm(){
+  initForm() {
     this.formularioCalc = this.formBuilder.group({
       cantidad: ['1', [Validators.pattern("^[0-9]*$"), Validators.min(1)]],
       oro: ['0', [Validators.pattern("^[0-9]*$"), Validators.min(0)]],
@@ -37,15 +37,15 @@ export class CalculadoraComponent implements OnInit {
     })
   }
 
-  sendForm(){
-    if (this.formularioCalc.status == "INVALID"){
+  sendForm() {
+    if (this.formularioCalc.status == "INVALID") {
       return;
     }
     this.resultado = this.calcularPorcentaje();
     this.loading = true;
   }
 
-  resetForm(){
+  resetForm() {
     this.formularioCalc.reset();
     // console.log(this.formularioRegistro); 
     this.formularioCalc.markAsUntouched();
@@ -59,26 +59,26 @@ export class CalculadoraComponent implements OnInit {
     this.loading = false;
   }
 
-  calcularPorcentaje(){
+  calcularPorcentaje() {
     let valor = this.formularioCalc.value;
     //console.log("oro: ", valor.oro, " plata: ", valor.plata, " cobre: ", valor.cobre)
 
     let cantidadCobre = valor.cantidad * valor.cobre;
     let cantidadPlata = valor.cantidad * valor.plata;
     let cantidadOro = valor.cantidad * valor.oro;
-    if (cantidadCobre >= 100){
+    if (cantidadCobre >= 100) {
       let invertir = this.invertirCadena(cantidadCobre.toString());
-      let partePlata = this.splitNum(invertir,2)[1];
-      let parteCobre = this.splitNum(invertir,2)[0];
+      let partePlata = this.splitNum(invertir, 2)[1];
+      let parteCobre = this.splitNum(invertir, 2)[0];
       partePlata = this.invertirCadena(partePlata);
       parteCobre = this.invertirCadena(parteCobre);
       cantidadPlata = cantidadPlata + Number(partePlata);
       cantidadCobre = Number(parteCobre);
     }
-    if (cantidadPlata >= 100){
+    if (cantidadPlata >= 100) {
       let invertir = this.invertirCadena(cantidadPlata.toString());
-      let parteOro = this.splitNum(invertir,2)[1];
-      let partePlata = this.splitNum(invertir,2)[0];
+      let parteOro = this.splitNum(invertir, 2)[1];
+      let partePlata = this.splitNum(invertir, 2)[0];
       parteOro = this.invertirCadena(parteOro);
       partePlata = this.invertirCadena(partePlata);
       cantidadOro = cantidadOro + Number(parteOro);
@@ -138,12 +138,12 @@ export class CalculadoraComponent implements OnInit {
     let difOro = 0;
     let difCobre = 0;
     difCobre = Number(tempCobre) - resCobre; //calculo el cobre diferencia entre el total (original) y el res (al aplicar el porcentaje)
-    if (difCobre < 0){
+    if (difCobre < 0) {
       difCobre = 100 - Math.abs(difCobre);
       difPlata--;
     }
-    difPlata = difPlata + Number(tempPlata) - resPlata; 
-    if (difPlata < 0){
+    difPlata = difPlata + Number(tempPlata) - resPlata;
+    if (difPlata < 0) {
       difPlata = 100 - Math.abs(difPlata);
       difOro--;
     }
@@ -162,10 +162,10 @@ export class CalculadoraComponent implements OnInit {
     return resultado;
   }
 
-  splitNum(cad: string, pos: number){
+  splitNum(cad: string, pos: number) {
     // divide una cadena en 2 trozos a partir de pos
     return [cad.substring(0, pos), cad.substring(pos)];
-   }
+  }
 
   invertirCadena(cad: string) {
     return cad.split("").reverse().join("");
