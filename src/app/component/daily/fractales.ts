@@ -1,235 +1,223 @@
 //Lista de fractales: level, ar, name
 
-// interface Test {
-//     level: string;
-//     ar: string;
-//     name: string;
-//     nameEs: string;
-//     idDaily: Number[];
-//     idRec0: Number;
-//     idRec1: Number;
-//     idRec2: Number;
-// }
-
-// export const Fractales: Test[] = [
-const FractalesInfo = [
-    {
-        level: "1, 19, 28, 52, 92",
-        ar: "0, 0, 22, 65, 136",
-        name: "Volcanic",
-        nameEs: "Volcánico",
-        idDaily: [2911, 2908, 2890, 2989],
-        idRec0: 2492,
-        idRec1: 2297,
-        idRec2: 0
-    },
-    {
-        level: "2, 36, 62, 79",
-        ar: "0, 36, 83, 113",
-        name: "Uncategorized",
-        nameEs: "Sin Clasificar",
-        idDaily: [2940, 2902, 2925, 2939],
-        idRec0: 2477,
-        idRec1: 2309,
-        idRec2: 3213
-    },
-    {
-        level: "3, 27, 51, 86",
-        ar: "0, 20, 63, 125",
-        name: "Snowblind",
-        nameEs: "Ceguera de la Nieve",
-        idDaily: [2916, 2949, 2918, 2952],
-        idRec1: 2239
-    },
-    {
-        level: "4, 31, 57, 85",
-        ar: "0, 27, 74, 123",
-        name: "Urban Battleground",
-        nameEs: "Campo de Batalla Urbano",
-        idDaily: [2896, 2907, 2897, 2941],
-        idRec0: 2405,
-        idRec1: 2533,
-        idRec2: 3202
-    },
-    {
-        level: "5, 32, 56, 77, 89",
-        ar: "0, 29, 72, 109, 131",
-        name: "Swampland",
-        nameEs: "Cenagal",
-        idDaily: [2935, 2961, 2972, 2892],
-        idRec0: 2316,
-        idRec1: 2363
-    },
-    {
-        level: "6, 46, 68, 94",
-        ar: "0, 54, 93, 139",
-        name: "Cliffside",
-        nameEs: "Despeñadero",
-        idDaily: [2977, 2958, 2926, 2930],
-        idRec0: 2229,
-        idRec2: 3187
-    },
-    {
-        level: "7, 26, 61, 76",
-        ar: "0, 18, 81, 107",
-        name: "Aquatic Ruins",
-        nameEs: "Ruinas Acuáticas",
-        idDaily: [2900, 2898, 2964, 2956],
-        idRec0: 2329,
-        idRec2: 3198
-    },
-    {
-        level: "8, 29, 53, 81",
-        ar: "0, 24, 67, 116",
-        name: "Underground Facility",
-        nameEs: "Instalación Subterránea",
-        idDaily: [2929, 2889, 2950, 2947],
-        idRec0: 2422,
-        idRec2: 3237
-    },
-    {
-        level: "9, 39, 58, 83",
-        ar: "0, 42, 75, 120",
-        name: "Molten Furnace",
-        nameEs: "Fragua Fundida",
-        idDaily: [2976, 2955, 2944, 2903],
-        idRec1: 2591,
-        idRec2: 3192
-    },
-    {
-        level: "10, 40, 69, 90",
-        ar: "0, 43, 95, 132",
-        name: "Molten Boss",
-        nameEs: "Jefes Fundidos",
-        idDaily: [2979, 2985, 2934, 2966],
-        idRec0: 2560,
-        idRec2: 3219
-    },
-    {
-        level: "11, 33, 67, 84",
-        ar: "0, 31, 91, 122",
-        name: "Deepstone",
-        nameEs: "Rocahonda",
-        idDaily: [4244, 4218, 4210, 4224],
-        idRec0: 2153
-    },
-    {
-        level: "12, 37, 54, 78",
-        ar: "0, 38, 68, 111",
-        name: "Siren's Reef",
-        nameEs: "Arrecife de la Sirena",
-        idDaily: [4551, 4496, 4526, 4494],
-        idRec0: 2597,
-        idRec1: 2377,
-        idRec2: 3185
-    },
-    {
-        level: "13, 30, 63, 88",
-        ar: "0, 26, 84, 129",
-        name: "Chaos",
-        nameEs: "Caos",
-        idDaily: [3063, 3044, 3045, 3038],
-        idRec1: 2330,
-    },
-    {
-        level: "14, 45, 65, 93",
-        ar: "0, 52, 88, 138",
-        name: "Aetherblade",
-        nameEs: "Filoetéreo",
-        idDaily: [2927, 2909, 2928, 2948],
-        idRec0: 2327,
-        idRec2: 3189
-    },
-    {
-        level: "15, 34, 55, 64, 82",
-        ar: "0, 33, 70, 86, 118",
-        name: "Thaumanova Reactor",
-        nameEs: "Reactor Taumanova",
-        idDaily: [2981, 2991, 2895, 2967],
-        idRec0: 2238,
-        idRec1: 2592,
-        idRec2: 3215
-    },
-    {
-        level: "16, 41, 59, 87",
-        ar: "0, 45, 77, 127",
-        name: "Twilight Oasis",
-        nameEs: "Oasis del Crepúsculo",
-        idDaily: [4028, 4006, 4030, 3973],
-        idRec0: 2308,
-        idRec1: 2598,
-        idRec2: 3228
-    },
-    {
-        level: "18, 42, 71, 91",
-        ar: "0, 47, 99, 134",
-        name: "Captain Mai Trin Boss",
-        nameEs: "Mai Trin",
-        idDaily: [2978, 2899, 2962, 2932],
-        idRec0: 2467,
-        idRec1: 2394
-    },
-    {
-        level: "20, 35, 44, 60, 80",
-        ar: "8, 34, 50, 79, 115",
-        name: "Solid Ocean",
-        nameEs: "Océano Sólido",
-        idDaily: [2954, 2971, 2986, 2923],
-        idRec1: 2266,
-        idRec2: 3172
-    },
-    {
-        level: "22, 47, 72, 96",
-        ar: "11, 56, 100, 143",
-        name: "Nightmare",
-        nameEs: "Pesadilla",
-        idDaily: [3229, 3196, 3175, 3177],
-        idRec1: 2463
-    },
-    {
-        level: "23, 48, 73, 97",
-        ar: "13, 58, 102, 145",
-        name: "Shattered Observatory",
-        nameEs: "Observatorio Asolado",
-        idDaily: [3509, 3478, 3464, 3458],
-        idRec1: 2337
-    },
-    {
-        level: "24, 49, 74, 98",
-        ar: "15, 59, 104, 147",
-        name: "Sunqua Peak",
-        nameEs: "Pico de Sunqua",
-        idDaily: [5447, 5449, 5437, 5446],
-        idRec0: 2245,
-        idRec2: 3204
-    },
-    {
-        level: "21, 43, 66, 99",
-        ar: "10, 49, 89, 149",
-        name: "Silent Surf",
-        nameEs: "Oleaje Silencioso",
-        idDaily: [6953, 6943, 6945, 6935],
-        idRec0: 2189,
-        idRec2: 3184
-    },
-    {
-        level: "25, 50, 75, 100",
-        ar: "17, 61, 105, 150",
-        name: "Lonely Tower",
-        nameEs: "Torre Solitaria",
-        idDaily: [8055, 7992, 8000, 7950],
-        idRec1: 8037,
-        idRec2: 3238
-    },
-    {
-        level: "17, 38, 70, 95",
-        ar: "0, 40, 97, 141",
-        name: "Kinfall",
-        nameEs: "Hecatombe Allegada",
-        idDaily: [8784, 8736, 8729, 8739],
-        idRec2: 3203
-    }
-]
+// const FractalesInfo = [
+//     {
+//         level: "1, 19, 28, 52, 92",
+//         ar: "0, 0, 22, 65, 136",
+//         name: "Volcanic",
+//         nameEs: "Volcánico",
+//         idDaily: [2911, 2908, 2890, 2989],
+//         idRec0: 2492,
+//         idRec1: 2297,
+//         idRec2: 0
+//     },
+//     {
+//         level: "2, 36, 62, 79",
+//         ar: "0, 36, 83, 113",
+//         name: "Uncategorized",
+//         nameEs: "Sin Clasificar",
+//         idDaily: [2940, 2902, 2925, 2939],
+//         idRec0: 2477,
+//         idRec1: 2309,
+//         idRec2: 3213
+//     },
+//     {
+//         level: "3, 27, 51, 86",
+//         ar: "0, 20, 63, 125",
+//         name: "Snowblind",
+//         nameEs: "Ceguera de la Nieve",
+//         idDaily: [2916, 2949, 2918, 2952],
+//         idRec1: 2239
+//     },
+//     {
+//         level: "4, 31, 57, 85",
+//         ar: "0, 27, 74, 123",
+//         name: "Urban Battleground",
+//         nameEs: "Campo de Batalla Urbano",
+//         idDaily: [2896, 2907, 2897, 2941],
+//         idRec0: 2405,
+//         idRec1: 2533,
+//         idRec2: 3202
+//     },
+//     {
+//         level: "5, 32, 56, 77, 89",
+//         ar: "0, 29, 72, 109, 131",
+//         name: "Swampland",
+//         nameEs: "Cenagal",
+//         idDaily: [2935, 2961, 2972, 2892],
+//         idRec0: 2316,
+//         idRec1: 2363
+//     },
+//     {
+//         level: "6, 46, 68, 94",
+//         ar: "0, 54, 93, 139",
+//         name: "Cliffside",
+//         nameEs: "Despeñadero",
+//         idDaily: [2977, 2958, 2926, 2930],
+//         idRec0: 2229,
+//         idRec2: 3187
+//     },
+//     {
+//         level: "7, 26, 61, 76",
+//         ar: "0, 18, 81, 107",
+//         name: "Aquatic Ruins",
+//         nameEs: "Ruinas Acuáticas",
+//         idDaily: [2900, 2898, 2964, 2956],
+//         idRec0: 2329,
+//         idRec2: 3198
+//     },
+//     {
+//         level: "8, 29, 53, 81",
+//         ar: "0, 24, 67, 116",
+//         name: "Underground Facility",
+//         nameEs: "Instalación Subterránea",
+//         idDaily: [2929, 2889, 2950, 2947],
+//         idRec0: 2422,
+//         idRec2: 3237
+//     },
+//     {
+//         level: "9, 39, 58, 83",
+//         ar: "0, 42, 75, 120",
+//         name: "Molten Furnace",
+//         nameEs: "Fragua Fundida",
+//         idDaily: [2976, 2955, 2944, 2903],
+//         idRec1: 2591,
+//         idRec2: 3192
+//     },
+//     {
+//         level: "10, 40, 69, 90",
+//         ar: "0, 43, 95, 132",
+//         name: "Molten Boss",
+//         nameEs: "Jefes Fundidos",
+//         idDaily: [2979, 2985, 2934, 2966],
+//         idRec0: 2560,
+//         idRec2: 3219
+//     },
+//     {
+//         level: "11, 33, 67, 84",
+//         ar: "0, 31, 91, 122",
+//         name: "Deepstone",
+//         nameEs: "Rocahonda",
+//         idDaily: [4244, 4218, 4210, 4224],
+//         idRec0: 2153
+//     },
+//     {
+//         level: "12, 37, 54, 78",
+//         ar: "0, 38, 68, 111",
+//         name: "Siren's Reef",
+//         nameEs: "Arrecife de la Sirena",
+//         idDaily: [4551, 4496, 4526, 4494],
+//         idRec0: 2597,
+//         idRec1: 2377,
+//         idRec2: 3185
+//     },
+//     {
+//         level: "13, 30, 63, 88",
+//         ar: "0, 26, 84, 129",
+//         name: "Chaos",
+//         nameEs: "Caos",
+//         idDaily: [3063, 3044, 3045, 3038],
+//         idRec1: 2330,
+//     },
+//     {
+//         level: "14, 45, 65, 93",
+//         ar: "0, 52, 88, 138",
+//         name: "Aetherblade",
+//         nameEs: "Filoetéreo",
+//         idDaily: [2927, 2909, 2928, 2948],
+//         idRec0: 2327,
+//         idRec2: 3189
+//     },
+//     {
+//         level: "15, 34, 55, 64, 82",
+//         ar: "0, 33, 70, 86, 118",
+//         name: "Thaumanova Reactor",
+//         nameEs: "Reactor Taumanova",
+//         idDaily: [2981, 2991, 2895, 2967],
+//         idRec0: 2238,
+//         idRec1: 2592,
+//         idRec2: 3215
+//     },
+//     {
+//         level: "16, 41, 59, 87",
+//         ar: "0, 45, 77, 127",
+//         name: "Twilight Oasis",
+//         nameEs: "Oasis del Crepúsculo",
+//         idDaily: [4028, 4006, 4030, 3973],
+//         idRec0: 2308,
+//         idRec1: 2598,
+//         idRec2: 3228
+//     },
+//     {
+//         level: "18, 42, 71, 91",
+//         ar: "0, 47, 99, 134",
+//         name: "Captain Mai Trin Boss",
+//         nameEs: "Mai Trin",
+//         idDaily: [2978, 2899, 2962, 2932],
+//         idRec0: 2467,
+//         idRec1: 2394
+//     },
+//     {
+//         level: "20, 35, 44, 60, 80",
+//         ar: "8, 34, 50, 79, 115",
+//         name: "Solid Ocean",
+//         nameEs: "Océano Sólido",
+//         idDaily: [2954, 2971, 2986, 2923],
+//         idRec1: 2266,
+//         idRec2: 3172
+//     },
+//     {
+//         level: "22, 47, 72, 96",
+//         ar: "11, 56, 100, 143",
+//         name: "Nightmare",
+//         nameEs: "Pesadilla",
+//         idDaily: [3229, 3196, 3175, 3177],
+//         idRec1: 2463
+//     },
+//     {
+//         level: "23, 48, 73, 97",
+//         ar: "13, 58, 102, 145",
+//         name: "Shattered Observatory",
+//         nameEs: "Observatorio Asolado",
+//         idDaily: [3509, 3478, 3464, 3458],
+//         idRec1: 2337
+//     },
+//     {
+//         level: "24, 49, 74, 98",
+//         ar: "15, 59, 104, 147",
+//         name: "Sunqua Peak",
+//         nameEs: "Pico de Sunqua",
+//         idDaily: [5447, 5449, 5437, 5446],
+//         idRec0: 2245,
+//         idRec2: 3204
+//     },
+//     {
+//         level: "21, 43, 66, 99",
+//         ar: "10, 49, 89, 149",
+//         name: "Silent Surf",
+//         nameEs: "Oleaje Silencioso",
+//         idDaily: [6953, 6943, 6945, 6935],
+//         idRec0: 2189,
+//         idRec2: 3184
+//     },
+//     {
+//         level: "25, 50, 75, 100",
+//         ar: "17, 61, 105, 150",
+//         name: "Lonely Tower",
+//         nameEs: "Torre Solitaria",
+//         idDaily: [8055, 7992, 8000, 7950],
+//         idRec1: 8037,
+//         idRec2: 3238
+//     },
+//     {
+//         level: "17, 38, 70, 95",
+//         ar: "0, 40, 97, 141",
+//         name: "Kinfall",
+//         nameEs: "Hecatombe Allegada",
+//         idDaily: [8784, 8736, 8729, 8739],
+//         idRec2: 3203
+//     }
+// ]
 
 export const Fractales = [
     //Volcanico
@@ -239,17 +227,7 @@ export const Fractales = [
         name: "Volcanic",
         nameEs: "Volcánico",
         idDaily: 2911,
-        idRec: 0,
-        tier: "T1",
-        done: false
-    },
-    {
-        level: 19,
-        ar: 0,
-        name: "Volcanic",
-        nameEs: "Volcánico",
-        idDaily: 2911,
-        idRec: 2492,
+        idRec: 2362,
         tier: "T1",
         done: false
     },
@@ -274,8 +252,8 @@ export const Fractales = [
         done: false
     },
     {
-        level: 92,
-        ar: 136,
+        level: 91,
+        ar: 134,
         name: "Volcanic",
         nameEs: "Volcánico",
         idDaily: 2989,
@@ -391,7 +369,7 @@ export const Fractales = [
         ar: 74,
         name: "Urban Battleground",
         nameEs: "Campo de Batalla Urbano",
-        idDaily: 2907,
+        idDaily: 2897,
         idRec: 3202,
         tier: "T3",
         done: false
@@ -448,16 +426,6 @@ export const Fractales = [
         tier: "T4",
         done: false
     },
-    {
-        level: 89,
-        ar: 131,
-        name: "Swampland",
-        nameEs: "Cenagal",
-        idDaily: 2892,
-        idRec: 0,
-        tier: "T4",
-        done: false
-    },
     //Despeñadero
     {
         level: 6,
@@ -490,8 +458,8 @@ export const Fractales = [
         done: false
     },
     {
-        level: 94,
-        ar: 139,
+        level: 93,
+        ar: 138,
         name: "Cliffside",
         nameEs: "Despeñadero",
         idDaily: 2930,
@@ -654,8 +622,8 @@ export const Fractales = [
         done: false
     },
     {
-        level: 90,
-        ar: 132,
+        level: 89,
+        ar: 131,
         name: "Molten Boss",
         nameEs: "Jefes Fundidos",
         idDaily: 2966,
@@ -818,8 +786,8 @@ export const Fractales = [
         done: false
     },
     {
-        level: 93,
-        ar: 138,
+        level: 92,
+        ar: 136,
         name: "Aetherblade",
         nameEs: "Filoetéreo",
         idDaily: 2948,
@@ -855,16 +823,6 @@ export const Fractales = [
         nameEs: "Reactor Taumanova",
         idDaily: 2895,
         idRec: 0,
-        tier: "T3",
-        done: false
-    },
-    {
-        level: 64,
-        ar: 86,
-        name: "Thaumanova Reactor",
-        nameEs: "Reactor Taumanova",
-        idDaily: 2895,
-        idRec: 3215,
         tier: "T3",
         done: false
     },
@@ -951,8 +909,8 @@ export const Fractales = [
         done: false
     },
     {
-        level: 91,
-        ar: 134,
+        level: 90,
+        ar: 132,
         name: "Captain Mai Trin Boss",
         nameEs: "Mai Trin",
         idDaily: 2932,
@@ -978,16 +936,6 @@ export const Fractales = [
         nameEs: "Océano Sólido",
         idDaily: 2971,
         idRec: 2266,
-        tier: "T2",
-        done: false
-    },
-    {
-        level: 44,
-        ar: 50,
-        name: "Solid Ocean",
-        nameEs: "Océano Sólido",
-        idDaily: 2971,
-        idRec: 0,
         tier: "T2",
         done: false
     },
@@ -1256,14 +1204,68 @@ export const Fractales = [
         idRec: 0,
         tier: "T4",
         done: false
+    },
+    //Trono
+    {
+        level: 19,
+        ar: 0,
+        name: "Solitary Throne",
+        nameEs: "Trono Solitario",
+        idDaily: 9423,
+        idRec: 0,
+        tier: "T1",
+        done: false
+    },
+    {
+        level: 44,
+        ar: 50,
+        name: "Solitary Throne",
+        nameEs: "Trono Solitario",
+        idDaily: 9412,
+        idRec: 0,
+        tier: "T2",
+        done: false
+    },
+    {
+        level: 64,
+        ar: 86,
+        name: "Solitary Throne",
+        nameEs: "Trono Solitario",
+        idDaily: 9373,
+        idRec: 3215,
+        tier: "T3",
+        done: false
+    },
+    {
+        level: 94,
+        ar: 139,
+        name: "Solitary Throne",
+        nameEs: "Trono Solitario",
+        idDaily: 9388,
+        idRec: 0,
+        tier: "T4",
+        done: false
     }
 ];
 
 export const FractalesCm = [
+    //Trono
+    {
+        level: 94,
+        ar: 139,
+        id: 9388,
+        name: "Solitary Throne",
+        nameEs: "Trono Solitario",
+        inestab1: "",
+        inestab2: "",
+        inestab3: "",
+        tier: "T4"
+    },
     //Hecatombe
     {
         level: 95,
         ar: 141,
+        id: 8739,
         name: "Kinfall",
         nameEs: "Hecatombe",
         inestab1: "",
@@ -1275,6 +1277,7 @@ export const FractalesCm = [
     {
         level: 96,
         ar: 143,
+        id: 3177,
         name: "Nightmare",
         nameEs: "Pesadilla",
         inestab1: "",
@@ -1286,6 +1289,7 @@ export const FractalesCm = [
     {
         level: 97,
         ar: 145,
+        id: 3458,
         name: "Shattered Observatory",
         nameEs: "Observatorio Asolado",
         inestab1: "",
@@ -1297,6 +1301,7 @@ export const FractalesCm = [
     {
         level: 98,
         ar: 147,
+        id: 5446,
         name: "Sunqua Peak",
         nameEs: "Pico de Sunqua",
         inestab1: "",
@@ -1308,6 +1313,7 @@ export const FractalesCm = [
     {
         level: 99,
         ar: 149,
+        id: 6935,
         name: "Silent Surf",
         nameEs: "Oleaje Silencioso",
         inestab1: "",
@@ -1319,6 +1325,7 @@ export const FractalesCm = [
     {
         level: 100,
         ar: 150,
+        id: 7950,
         name: "Lonely Tower",
         nameEs: "Torre Solitaria",
         inestab1: "",

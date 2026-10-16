@@ -266,9 +266,11 @@
 
             <div *ngIf="!errorArchivoEs">
 
-                <button type="button" class="btn-wiki" (click)="openWiki()">
-                    Wiki codes
-                </button>
+                <div class="wiki-button-container">
+                    <button type="button" class="btn-wiki" (click)="openWiki()">
+                        Wiki codes
+                    </button>
+                </div>
 
                 <!-- ESPAÑOL -->
                 <div class="map-selector">
@@ -278,12 +280,35 @@
                         </mat-chip>
                     </mat-chip-list>
 
-                    <select [(ngModel)]="selectedMapEs" (change)="onMapChangeEs()">
+                    <!--<select [(ngModel)]="selectedMapEs" (change)="onMapChangeEs()">
                         <option value="">Selecciona un mapa...</option>
                         <option *ngFor="let map of mapsEs" [value]="map">
                             {{ map }}
                         </option>
-                    </select>
+                    </select>-->
+
+                    <mat-form-field appearance="outline" class="map-select">
+
+                        <mat-label>Selecciona un mapa...</mat-label>
+
+                        <mat-select [(ngModel)]="selectedMapEs" (selectionChange)="onMapChangeEs()"
+                            (openedChange)="onMapOpenedEs($event)">
+
+                            <mat-option class="map-search-option" disabled>
+                                <input #mapSearchInputEs matInput placeholder="Buscar mapa..." [(ngModel)]="mapSearchEs"
+                                    [ngModelOptions]="{ standalone: true }" (ngModelChange)="filterMapsEs()"
+                                    (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()">
+                            </mat-option>
+
+                            <mat-optgroup *ngFor="let region of filteredRegionalMapsEs" [label]="region.region">
+                                <mat-option *ngFor="let map of region.maps" [value]="map">
+                                    {{ map }}
+                                </mat-option>
+                            </mat-optgroup>
+
+                        </mat-select>
+
+                    </mat-form-field>
 
                     <button type="button" (click)="resetMapEs()">
                         Reset
@@ -304,8 +329,8 @@
 
                 <div *ngIf="selectedMapEs">
                     <div *ngFor="let tipo of ['landmark','waypoint','vista']">
-                        <div class="table-wrapper">
-                            <table class="gw2-table" *ngIf="groupedByTypeEs[tipo]?.length">
+                        <div class="table-wrapper" *ngIf="groupedByTypeEs[tipo]?.length">
+                            <table class="gw2-table" [class.vista-table]="tipo === 'vista'">
                                 <thead>
                                     <tr>
                                         <th colspan="4" class="table-title">
@@ -381,12 +406,36 @@
                         </mat-chip>
                     </mat-chip-list>
 
-                    <select [(ngModel)]="selectedMapEn" (change)="onMapChangeEn()">
+                    <!--<select [(ngModel)]="selectedMapEn" (change)="onMapChangeEn()">
                         <option value="">Select a map...</option>
                         <option *ngFor="let map of mapsEn" [value]="map">
                             {{ map }}
                         </option>
-                    </select>
+                    </select>-->
+
+                    <mat-form-field appearance="outline" class="map-select">
+                        <mat-label>Select a map...</mat-label>
+
+                        <mat-select [(ngModel)]="selectedMapEn" (selectionChange)="onMapChangeEn()"
+                            (openedChange)="onMapOpenedEn($event)">
+
+                            <!-- Search -->
+                            <mat-option class="map-search-option" disabled>
+                                <input #mapSearchInputEn matInput placeholder="Search map..." [(ngModel)]="mapSearchEn"
+                                    [ngModelOptions]="{ standalone: true }" (ngModelChange)="filterMapsEn()"
+                                    (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()">
+                            </mat-option>
+
+                            <!-- Regions -->
+                            <mat-optgroup *ngFor="let region of filteredRegionalMapsEn" [label]="region.region">
+                                <mat-option *ngFor="let map of region.maps" [value]="map">
+                                    {{ map }}
+                                </mat-option>
+                            </mat-optgroup>
+
+                        </mat-select>
+
+                    </mat-form-field>
 
                     <button type="button" (click)="resetMapEn()">
                         Reset
@@ -407,8 +456,8 @@
 
                 <div *ngIf="selectedMapEn">
                     <div *ngFor="let tipo of ['landmark','waypoint','vista']">
-                        <div class="table-wrapper">
-                            <table class="gw2-table" *ngIf="groupedByTypeEn[tipo]?.length">
+                        <div class="table-wrapper" *ngIf="groupedByTypeEn[tipo]?.length">
+                            <table class="gw2-table" [class.vista-table]="tipo === 'vista'">
                                 <thead>
                                     <tr>
                                         <th colspan="4" class="table-title">

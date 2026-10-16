@@ -11,8 +11,6 @@ h2 {
   padding: 0;
   margin: auto;
   max-width: 2100px;
-
-  /* flexbox */
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -41,14 +39,11 @@ h2 {
   text-align: center;
   height: 60px !important;
   font-size: 18px !important;
-
-  background: #c8cccc !important;
-
+  background: #e5e4e7 !important;
   /* Tarjeta mas estrecha */
   width: 85% !important;
   max-width: 500px !important;
   margin: 7px auto !important;
-
   box-sizing: border-box !important;
   border: 1px solid #b4b9b9;
   border-radius: 9px;

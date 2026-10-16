@@ -52,6 +52,12 @@
             </div>
         </div>
 
+        <!-- KP -->
+        <div class="form-group">
+            <label for="kp">KP (opcional)</label>
+            <input id="kp" type="text" formControlName="kp" placeholder="Introduce tu codigo de Killproof" />
+        </div>
+
         <div class="error" *ngIf="errorMessage">
             {{ errorMessage }}
         </div>
@@ -193,9 +199,17 @@
                     Activa
                 </span>
 
-                <span class="gw2-name">
-                    {{ account.gw2Name }}
-                </span>
+                <div class="account-details">
+                    <span class="gw2-name">
+                        {{ account.gw2Name }}
+                    </span>
+                    <ng-container *ngIf="account.kp">
+                        <span class="separator">|</span>
+                        <span class="kp">
+                            {{ account.kp }}
+                        </span>
+                    </ng-container>
+                </div>
 
             </div>
 

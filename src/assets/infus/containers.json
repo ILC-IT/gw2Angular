@@ -250,7 +250,7 @@
                     100513,
                     100806,
                     100913,
-                    100913
+                    100914
                 ],
                 "name": "Possession Infusion",
                 "name_es": "Infusión de posesión"
@@ -381,10 +381,8 @@
         "options": [
             {
                 "ids": [
-                    107045,
-                    107079,
-                    107083,
-                    107167,
+                    106901,
+                    106906,
                     107045,
                     107079,
                     107083,
@@ -444,29 +442,6 @@
     },
     {
         "id": 68440,
-        "icon": "https://render.guildwars2.com/file/01C5A7B5B0B01C3605090750B44B760F70C07A05/831489.png",
-        "name": "Preserved Queen Bee",
-        "name_es": "Abeja reina conservada",
-        "options": [
-            {
-                "ids": [
-                    81638,
-                    81663,
-                    81679,
-                    81701,
-                    81818,
-                    81897,
-                    86055,
-                    86303
-                ],
-                "name": "Queen Bee Infusion",
-                "name_es": "Infusión de abeja reina"
-            }
-        ],
-        "method": "upgrade"
-    },
-    {
-        "id": 77594,
         "icon": "https://render.guildwars2.com/file/01C5A7B5B0B01C3605090750B44B760F70C07A05/831489.png",
         "name": "Preserved Queen Bee",
         "name_es": "Abeja reina conservada",
@@ -703,5 +678,26 @@
             }
         ],
         "method": "extract"
+    },
+    {
+        "id": 110179,
+        "icon": "https://render.guildwars2.com/file/92EEF1F7026F7FA469704A62F7F376CA5594153A/3805886.png",
+        "name": "Volatile Glimmer of Ascension",
+        "name_es": "Destello volátil de ascensión",
+        "options": [
+            {
+                "ids": [
+                    109921,
+                    109938,
+                    110071,
+                    110136,
+                    110187,
+                    110235
+                ],
+                "name": "Volatile Ascension",
+                "name_es": "Ascensión volátil"
+            }
+        ],
+        "method": "choice"
     }
 ]

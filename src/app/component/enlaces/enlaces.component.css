@@ -1,64 +1,116 @@
-
-h2 {
-  text-align: center;
-  margin: 20px 0 28px;
-  color: #37474f;
-  font-size: 28px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  position: relative;
-  padding-bottom: 10px;
+/* Contenedor */
+.enlaces-container {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 25px;
 }
 
-h2::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 55px;
-  height: 3px;
-  background: #607d8b;
-  border-radius: 3px;
-  transform: translateX(-50%);
+/* Secciones */
+.seccion {
+    margin-bottom: 38px;
 }
 
+.seccion h3 {
+    margin: 0 0 18px;
+    padding-left: 12px;
+    color: #546e7a;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    border-left: 4px solid #607d8b;
+}
 
+/* Grid */
 .enlaces {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    width: 100%;
+}
+
+/* Enlaces */
+.enlace {
+    min-height: 65px;
+    padding: 0 18px;
     display: flex;
-    flex-direction: column;
-    margin-top: 30px;
-    justify-content: center;
     align-items: center;
-    row-gap: 1rem;
-    width: 100%;
-}
-
-.enlaces a {
-    width: 100%;
-    max-width: 500px;
-}
-
-button {
-    /* margin-top: 20px; */
-    font-size: 20px !important;
-    height: 50px;
-    width: 100%;
-    max-width: 500px;
-    cursor: pointer;
+    justify-content: center;
+    position: relative;
+    background: #e5e4e7;
+    color: #37474f;
+    border: 1px solid #90a4ae;
     border-radius: 12px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 17px;
+    font-weight: 500;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06);
+    transition:
+        box-shadow 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease;
 }
 
-* {
-    font-family: Arial, Helvetica, sans-serif;
+/* Flecha */
+.flecha {
+    position: absolute;
+    right: 14px;
+    color: #78909c;
+    font-size: 18px;
+    transition: transform 0.2s ease;
 }
 
-@media (max-width: 768px) {
-    .enlaces a {
+/* Hover */
+.enlace:hover {
+    background: #d5dde0;
+    border-color: #607d8b;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.10);
+}
+
+.enlace:hover .flecha {
+    transform: translate(2px, -2px);
+}
+
+/* Pantallas grandes */
+@media (min-width: 1200px) {
+    .enlaces {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+    .enlaces {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Movil */
+@media (max-width: 600px) {
+    .enlaces-container {
         width: 90%;
+        padding: 0;
     }
 
-    button {
-        font-size: 16px !important;
-        width: 100%;
+    .seccion {
+        margin-bottom: 32px;
+    }
+
+    .seccion h3 {
+        font-size: 17px;
+        gap: 10px;
+        margin-bottom: 14px;
+    }
+
+    .enlaces {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .enlace {
+        min-height: 52px;
+        font-size: 14px;
+        padding: 8px 18px;
     }
 }

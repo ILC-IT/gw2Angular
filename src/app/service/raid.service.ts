@@ -38,7 +38,7 @@ export class RaidService {
 
     const elapsedTime = date.getTime() - startDate.getTime();
     const weekNumber = Math.floor(elapsedTime / millisecondsPerWeek) + 7;
-    let weekNumberMod8 = (weekNumber) % 8; // -2 es para que coincida bien entre 1-8 al hacer mod8
+    let weekNumberMod8 = (weekNumber) % 8;
     if (weekNumberMod8 === 0) weekNumberMod8 = 8; // Weeks are numbered from 1 to 8
     // console.log("raidValeDobleEstaSemana ", weekNumberMod8)
     return weekNumberMod8;
@@ -61,7 +61,7 @@ export class RaidService {
 
     const elapsedTime = date.getTime() - startDate.getTime();
     const weekNumber = Math.floor(elapsedTime / millisecondsPerWeek) + 6;
-    let weekNumberMod8 = (weekNumber) % 8; // -2 es para que coincida bien entre 1-8 al hacer mod8
+    let weekNumberMod8 = (weekNumber) % 8;
     if (weekNumberMod8 === 0) weekNumberMod8 = 8; // Weeks are numbered from 1 to 8
     // console.log("raidEnvalentonadoEstaSemana ", weekNumberMod8)
     return weekNumberMod8;
@@ -80,14 +80,30 @@ export class RaidService {
 
   getDailyRaidBounties(dia: Date) {
     // Devuelve los dailyRaidBounties de cada dia, rotando diariamente
-    const startDate = new Date(2026, 3, 22); // 22 de abril de 2026 (mes 0-based)
+    const startDate = new Date(2026, 3, 22); // 22 de abril de 2026 (mes 0-based), do not change
     startDate.setHours(0, 0, 0, 0);
 
     const millisecondsPerDay = 24 * 60 * 60 * 1000;
 
-    const daysSinceStart = Math.floor(
+    let daysSinceStart = Math.floor(
       (dia.getTime() - startDate.getTime()) / millisecondsPerDay
     );
+
+    // La rotacion contempla el 29 de febrero.
+    // Si un año NO es bisiesto, se salta la rotacion que corresponderia al 29 de febrero
+    // Se cuentan los años no bisiestos posteriores a la fecha inicial.
+    for (let year = startDate.getFullYear(); year <= dia.getFullYear(); year++) {
+      const isLeapYear = year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
+
+      if (!isLeapYear) {
+        const march1 = new Date(year, 2, 1);
+        march1.setHours(0, 0, 0, 0);
+
+        if (startDate < march1 && dia >= march1) {
+          daysSinceStart++;
+        }
+      }
+    }
 
     const pick = (arr: string[], offset = 4) => {
       const index = (daysSinceStart + offset) % arr.length;
@@ -128,6 +144,7 @@ export class RaidService {
 
       week.push({
         date: d,
+        dayName: d.toLocaleDateString('es-ES', { weekday: 'long' }),
         bounties
       });
     }
@@ -138,22 +155,15 @@ export class RaidService {
       [] as string[]
     );
 
-    const normalize = (str: string) =>
-      str
-        ?.trim()
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "");
-
     const orderMap = new Map(
-      OrdenReferenciaEng.map((name, index) => [normalize(name), index])
+      OrdenReferenciaEng.map((name, index) => [this.normalizeName(name), index])
     );
 
     const notInWeek = allBosses.filter(
       (boss) => !usedBosses.has(boss)
     ).sort((a, b) => {
-      const indexA = orderMap.get(normalize(a)) ?? Number.MAX_SAFE_INTEGER;
-      const indexB = orderMap.get(normalize(b)) ?? Number.MAX_SAFE_INTEGER;
+      const indexA = orderMap.get(this.normalizeName(a)) ?? Number.MAX_SAFE_INTEGER;
+      const indexB = orderMap.get(this.normalizeName(b)) ?? Number.MAX_SAFE_INTEGER;
       return indexA - indexB;
     });
 
@@ -161,6 +171,14 @@ export class RaidService {
       week,
       notInWeek,
     };
+  }
+
+  normalizeName(str: string): string {
+    return str
+      ?.trim()
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
   }
 
 }

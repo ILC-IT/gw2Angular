@@ -634,6 +634,13 @@ export const fragmentoPiedraSombria = [
     }
 ];
 
+export const datoInvestigacionPiedraSombria = [
+    {
+        id: 110156,
+        icon: "https://wiki.guildwars2.com/images/5/53/Shadowstone_Research_Data.png"
+    }
+];
+
 export const ursusObligue = [
     {
         id: 103372,
@@ -2222,12 +2229,35 @@ export const legendaryWeaponsOther = [
         precioTpVentaSPre: "",
         modo: "PvE",
         expansion: "VoE"
+    },
+        {
+        nombre: "Jornal Estelar",
+        id: 110020,
+        idWardrobe: 14230,
+        tipo: "Espada",
+        tengo: 0,
+        pre: "Constelación Incipiente",
+        preId: 110142,
+        icon: ["https://wiki.guildwars2.com/images/3/31/Wages_of_Stars.png"],
+        wiki: "https://wiki.guildwars2.com/wiki/Wages_of_Stars",
+        wikiPre: "https://wiki.guildwars2.com/wiki/Fledgling_Constellation",
+        precioTpCompra: 0,
+        precioTpCompraS: "-",
+        precioTpVenta: 0,
+        precioTpVentaS: "-",
+        precioTpCompraPre: 0,
+        precioTpCompraSPre: "-",
+        precioTpVentaPre: 0,
+        precioTpVentaSPre: "-",
+        modo: "PvE",
+        expansion: "VoE"
     }
 ];
 
 export const legendaryWeaponsGenOther = [
     legendaryWeaponsOther[0],
-    legendaryWeaponsOther[1]
+    legendaryWeaponsOther[1],
+    legendaryWeaponsOther[4]
 ]
 
 export const legendaryBack = [

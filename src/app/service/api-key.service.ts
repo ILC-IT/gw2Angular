@@ -382,7 +382,10 @@ export class ApiKeyService {
       const account: ApiAccount = {
         name,
         gw2Name,
-        key
+        key,
+        kp: typeof item.kp === 'string'
+          ? item.kp.trim()
+          : ''
       };
 
       validAccounts.push({

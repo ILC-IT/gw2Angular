@@ -4,13 +4,13 @@ const path = require("path");
 // Devuelve solo los POIs de tipo "waypoint" (o el que se configure) de cada archivo
 
 const CONFIG = {
-  // tipo de POI a filtrar
+  // Tipo de POI a filtrar
   types: ["waypoint", "landmark", "vista"],
 
-  // solo estos continentes (si null, entonces coge todos)
+  // Solo estos continentes (si null, entonces coge todos)
   includeContinents: null,
 
-  // excluir continentes (solo si includeContinents es null)
+  // Excluir continentes (solo si includeContinents es null)
   excludeContinents: [
     // "Player vs. Player",
     // "World vs. World",
@@ -77,14 +77,30 @@ function extractTypeFromFile(inputFile, config = CONFIG) {
 }
 
 // ARCHIVOS
+const inputFolder = path.join(__dirname, "files_to_work");
+
 const files = [
-  "./poi_Tyria_en.json",
-  "./poi_Tyria_es.json",
-  "./poi_Mists_en.json",
-  "./poi_Mists_es.json",
-];
+  "poi_Tyria_en.json",
+  "poi_Tyria_es.json",
+  "poi_Mists_en.json",
+  "poi_Mists_es.json",
+].map(file => path.join(inputFolder, file));
 
 // EJECUCION
+// Comprobar todos los archivos antes de procesarlos
+const missingFiles = files.filter(file => !fs.existsSync(file));
+
+if (missingFiles.length > 0) {
+  console.error("\nERROR: Faltan los siguientes archivos:");
+
+  missingFiles.forEach(file => {
+    console.error(` - ${file}`);
+  });
+
+  process.exit(1);
+}
+
+// Si todos existen, comenzar el procesamiento
 files.forEach(file => {
   extractTypeFromFile(file, CONFIG);
 });

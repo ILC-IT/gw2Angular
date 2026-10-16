@@ -12,10 +12,13 @@ import { RefreshService } from 'src/app/service/refresh.service';
 const CONVERGENCIAS_ACHIEVEMENTS = {
   convergenciaSotoWeekly: { id: 7706, max: 3, description: 'Convergencia Soto Weekly' },
   convergenciaJwWeekly: { id: 8448, max: 3, description: 'Convergencia JW Weekly' },
+  convergenciaVoeWeekly: { id: 9447, max: 3, description: 'Convergencia VoE Weekly' },
   convergenciaSoto100: { id: 7668, max: 100, description: 'Convergencia Soto 100' },
   convergenciaSoto150: { id: 7720, max: 150, repeated: 0, description: 'Convergencia Soto 150' },
   convergenciaJw50: { id: 8456, max: 50, description: 'Convergencia JW 50' },
-  convergenciaJw50Rep: { id: 8440, max: 50, repeated: 0, description: 'Convergencia JW 50 Repetible' }
+  convergenciaJw50Rep: { id: 8440, max: 50, repeated: 0, description: 'Convergencia JW 50 Repetible' },
+  convergenciaVoe50: { id: 9349, max: 50, description: 'Convergencia VoE 50' },
+  convergenciaVoe50Rep: { id: 9384, max: 50, description: 'Convergencia VoE 50 Repetible' }
 };
 
 const QUICKPLAY_WEEKLY_ACHIEVEMENTS = {
@@ -56,6 +59,10 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy {
   pactSupply: string[] = [];
   pactSupplyUpdate: string = "";
   mapBonusRewardweekNumber = 1;
+  mapBonusRewardHoT: { weekNumber: number, mapName: string } = {
+    weekNumber: 1,
+    mapName: 'Tangled Depths'
+  };
   bestWeek = 1;
   tokenSupply: string[][] = [];
   anomalia: string = '';
@@ -65,17 +72,23 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy {
   weeklyQuickplayRaidEncounter: any = [];
   convergenciaSoto: string = '';
   convergenciaJw: string = '';
+  convergenciaVoe: string = '';
   convergenciaSotoWeekly: any = [];
   convergenciaJwWeekly: any = [];
+  convergenciaVoeWeekly: any = [];
   convergenciaCopy: string = '';
   convergenciaSoto100: any = [];
   convergenciaSoto150: any = [];
   convergenciaJw50: any = [];
   convergenciaJw50Rep: any = [];
+  convergenciaVoe50: any = [];
+  convergenciaVoe50Rep: any = [];
   // loadingConvergenciaSoto100: boolean = true;
   // loadingConvergenciaJw50: boolean = true;
-  // loadingConvergenciaJw50Rep: boolean = true;
+  // loadingConvergenciaVoe50: boolean = true;
   // loadingConvergenciaSoto150: boolean = true;
+  // loadingConvergenciaJw50Rep: boolean = true;
+  // loadingConvergenciaVoe50Rep: boolean = true;
   loadingConvergencias: boolean = true;
   loadingQuickplayWeekly = true;
   dailyActivity: string = "";
@@ -162,6 +175,7 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy {
   fractDaily4: any = [];
   fractDailys: any = [];
   merged: any = [];
+  dailyFractalIdsSet = new Set<number>();
   fractalesRecDailyString: string = "";
   dailyRaidBountiesString: string = "";
   fractDailyInestabilidadCmEng: string[] = [];
@@ -227,6 +241,7 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy {
   STRIKE_NAMES_SOTO = ['CO', 'Febe'];
   SOTO_CONVERGENCIA = ['Caballero demonio / Demon Knight', 'Tristeza / Sorrow', 'Hermana del infierno / Hell Sister', 'Alaterrible / Dreadwing', 'Umbriel'];
   JW_CONVERGENCIA = ['Decima', 'Greer', 'Ura'];
+  VOE_CONVERGENCIA = ['Vloxx'];
   RAID_ENCOUNTERS = ['SP', 'Fraenir', 'Twins', 'Whisper', 'Boneskinner', 'CW', 'AH', 'XJJ', 'KO', 'HT', 'CO', 'Febe', 'OLC', 'Kela'];
   weeklyEoDStrikes: { index: number, name: string }[] = [];
   weeklyEoDStrikesDoneIds: Set<number> = new Set();
@@ -236,6 +251,8 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy {
   weeklySotoCMConvergenciaDoneIds: Set<number> = new Set();
   weeklyJWCMConvergencia: { index: number, name: string }[] = [];
   weeklyJWCMConvergenciaDoneIds: Set<number> = new Set();
+  weeklyVoeCMConvergencia: { index: number, name: string }[] = [];
+  weeklyVoeCMConvergenciaDoneIds: Set<number> = new Set();
   weeklyWvW: { id: number, name: string; current: number; max: number; done: boolean }[] = [];
   wvwRank: any;
   weeklyRiftHuntingSoto: { id: number, name: string; current: number; max: number; done: boolean }[] = [];
@@ -315,7 +332,8 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy {
     this.pactSupply = this.getPactSupply();
     this.programarActualizacionPsnaDiaria();
     this.bestWeek = this.dailyService.bestMapBonusRewardWeekNumber;
-    this.mapBonusRewardweekNumber = this.getMapBonusRewardWeekNumber(); //numero de semana de map bonus reward entre 1-8
+    this.mapBonusRewardweekNumber = this.getMapBonusRewardWeekNumber(); // numero de semana de map bonus reward entre 1-8
+    this.mapBonusRewardHoT = this.getMapBonusRewardHot(); // numero de semana de map bonus reward entre 1-3 y mapa
 
     this.tokenSupply = this.getTokenSupply();
     this.dailyActivity = this.getDailyActivity();
@@ -376,6 +394,7 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy {
     await this.loadConvergenciasAchievements();
     this.loadWeeklyConvergenciaCMSoto();
     this.loadWeeklyConvergenciaCMJW();
+    this.loadWeeklyConvergenciaCMVoe();
 
     // Ver fractales y raids diarias
     console.log('Daily Fractal-Raid:', this.dailyInfoF)
@@ -436,8 +455,14 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy {
     this.dailyIdsF = '';
     const dailyFractals = this.dailyFractalsId.achievements;
     this.dailyIdsF = dailyFractals.join(',');
+    this.dailyFractalIdsSet = new Set(dailyFractals);
     this.getDailyInfoF(this.dailyIdsF, "fractals");
   }
+
+  isDailyFractal(id: number): boolean {
+    return this.dailyFractalIdsSet.has(id);
+  }
+
 
   async loadWizardVault() {
     this.wizardVault = await this.dailyService.getWizardVault().toPromise();
@@ -480,75 +505,96 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy {
   getDailyInfoF(ids: string, tipo: string) {
     this.dailyService.getDailyInfo(ids).subscribe((dailyInfo: any) => {
       //console.log(dailyInfo)
-      if (tipo === "fractals") {
-        this.dailyInfoF.fractals = dailyInfo;
-        this.searchFractalIds();
-        this.getDailyInestabilidadCm();
-        // FIX para cuando fractal 95 no esta en API y es diario
-        // if (this.dailyInfoF.fractals.length === 11){
-        //   ids = ids + "8784,8736,8729,8739";
-        // }
-        this.getFractalsDone(ids);
-        this.getFractalRank();
-        this.loading = false;
-      }
-      else if (tipo === "strike") {
-        this.dailyInfoF.strike = dailyInfo;
-        // //metemos en una variable el icono de la strike porque solo lo lleva la de IBS y no la de EoD
-        // for (let i = 0; i < dailyInfo.length; i++){
-        //   if (dailyInfo[i].hasOwnProperty('icon')){
-        //     this.dailyStrikeIcon = dailyInfo[i].icon;
-        //     break;
-        //   }
-        // }
+      try {
+        if (tipo === "fractals") {
+          this.dailyInfoF.fractals = dailyInfo;
+          this.searchFractalIds();
+          this.getDailyInestabilidadCm();
+          // FIX para cuando fractal 95 no esta en API y es diario
+          // if (this.dailyInfoF.fractals.length === 11){
+          //   ids = ids + "8784,8736,8729,8739";
+          // }
+          this.getFractalsDone(ids);
+          this.getFractalRank();
+          this.loading = false;
+        }
+        else if (tipo === "strike") {
+          this.dailyInfoF.strike = dailyInfo;
 
-        // Me quedo con el nombre de la strike quitando el prefijo
-        this.dailyInfoF.strike = this.dailyInfoF.strike.map((s: any) => ({
-          ...s,
-          name: s.name?.split(':')[1]?.trim() || ''
-        }));
-        // Ordeno por id
-        // this.dailyInfoF.strike = this.dailyInfoF.strike.sort((a: any, b: any) => a.id - b.id);
-        // Ordeno por alas
-        const normalize = (str: string) =>
-          str
-            ?.trim()
-            .toLowerCase()
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "");
-        const orderMap = new Map(
-          OrdenReferenciaEsp.map((name, index) => [normalize(name), index])
-        );
-        this.dailyInfoF.strike = this.dailyInfoF.strike.sort((a: any, b: any) => {
-          const indexA = orderMap.get(normalize(a.name)) ?? Number.MAX_SAFE_INTEGER;
-          const indexB = orderMap.get(normalize(b.name)) ?? Number.MAX_SAFE_INTEGER;
-          return indexA - indexB;
-        });
+          // Me quedo con el nombre de la strike quitando el prefijo
+          this.dailyInfoF.strike = this.dailyInfoF.strike.map((s: any) => {
+            const name = s.name?.split(':')[1]?.trim() || '';
+            return {
+              ...s,
+              name:
+                s.id === 9201
+                  ? 'Qadim Q1'
+                  : s.id === 9124
+                    ? 'Qadim Q2'
+                    : name
+            };
+          });
 
-        this.dailyRaidBountiesString = "Daily Raid Bounties: " + this.dailyInfoF.strike.map((s: any) => s.name).join(', ');
+          // Ordeno por id
+          // this.dailyInfoF.strike = this.dailyInfoF.strike.sort((a: any, b: any) => a.id - b.id);
 
-        this.loading2 = false;
+          // Ordeno por alas
+          const normalize = (str: string) =>
+            str
+              ?.trim()
+              .toLowerCase()
+              .normalize("NFD")
+              .replace(/[\u0300-\u036f]/g, "");
+          const orderMap = new Map(
+            OrdenReferenciaEsp.map((name, index) => [normalize(name), index])
+          );
+          this.dailyInfoF.strike = this.dailyInfoF.strike.sort((a: any, b: any) => {
+            const indexA = orderMap.get(normalize(a.name)) ?? Number.MAX_SAFE_INTEGER;
+            const indexB = orderMap.get(normalize(b.name)) ?? Number.MAX_SAFE_INTEGER;
+            return indexA - indexB;
+          });
+
+          this.dailyRaidBountiesString = "Daily Raid Bounties: " + this.dailyInfoF.strike.map((s: any) => s.name).join(', ');
+
+          this.loading2 = false;
+        }
+      } catch (error) {
+        console.error(`Error procesando los datos diarios (${tipo}):`, error);
+
+        if (tipo === 'fractals') {
+          this.loading = false;
+          this.errorCargaFractales = true;
+          this.mensajeErrorFractales = 'Los datos de fractales se han recibido correctamente desde la API, pero la configuración local no está actualizada.\n' + 'Es posible que haya cambiado la rotación de fractales.';
+        }
+
+        if (tipo === 'strike') {
+          this.loading2 = false;
+          this.errorCargaStrikes = true;
+          this.mensajeErrorStrikes = 'Los datos de las strikes se han cargado desde la API, pero no se han podido procesar correctamente.';
+        }
       }
     },
       (error) => {
         console.error(`Error obteniendo información diaria (${tipo}):`, error);
+
         if (tipo === 'fractals') {
           this.errorCargaFractales = true;
-          this.mensajeErrorFractales = 'No se han podido cargar los datos de fractales.';
+          this.mensajeErrorFractales = 'No se han podido cargar los datos de fractales desde la API.';
           this.loading = false;
         }
+
         if (tipo === 'strike') {
           this.errorCargaStrikes = true;
-          this.mensajeErrorStrikes = 'No se han podido cargar los datos de las strikes.';
+          this.mensajeErrorStrikes = 'No se han podido cargar los datos de las raid bounties desde la API.';
           this.loading2 = false;
         }
-      })
+      }
+    )
   }
 
   getPactSupply() {
-    this.pactSupplyUpdate = this.dailyService.esHorarioInvierno()
-      ? "*Location updates automatically every day at 9.00 UTC+1."
-      : "*Location updates automatically every day at 10.00 UTC+2.";
+    const hora = this.refreshService.getHoraLocalDesdeUtc(8); // 8.00 UTC
+    this.pactSupplyUpdate = `*Location updates automatically at ${hora} local time.`;
     return this.dailyService.getPactSupply();
   }
 
@@ -807,7 +853,8 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy {
   actualizarConvergencias() {
     this.convergenciaSoto = this.getConvergenciaSoto();
     this.convergenciaJw = this.getConvergenciaJw();
-    this.convergenciaCopy = this.convergenciaSoto + "\n" + this.convergenciaJw;
+    this.convergenciaVoe = this.getConvergenciaVoe();
+    this.convergenciaCopy = this.convergenciaSoto + "\n" + this.convergenciaJw + "\n" + this.convergenciaVoe;
   }
 
   getConvergenciaSoto() {
@@ -816,6 +863,10 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy {
 
   getConvergenciaJw() {
     return this.dailyService.getConvergenciaJw();
+  }
+
+  getConvergenciaVoe() {
+    return this.dailyService.getConvergenciaVoe();
   }
 
   async loadConvergenciasAchievements() {
@@ -838,6 +889,11 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy {
       );
       this.convergenciaJwWeekly = jwWeekly ? [jwWeekly] : [];
 
+      const voeWeekly = this.convergenciasAchievements.get(
+        CONVERGENCIAS_ACHIEVEMENTS.convergenciaVoeWeekly.id
+      );
+      this.convergenciaVoeWeekly = voeWeekly ? [voeWeekly] : [];
+
       const soto100 = this.convergenciasAchievements.get(
         CONVERGENCIAS_ACHIEVEMENTS.convergenciaSoto100.id
       );
@@ -857,6 +913,16 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy {
         CONVERGENCIAS_ACHIEVEMENTS.convergenciaJw50Rep.id
       );
       this.convergenciaJw50Rep = jw50Rep ? [jw50Rep] : [];
+
+      const voe50 = this.convergenciasAchievements.get(
+        CONVERGENCIAS_ACHIEVEMENTS.convergenciaVoe50.id
+      );
+      this.convergenciaVoe50 = voe50 ? [voe50] : [];
+
+      const voe50Rep = this.convergenciasAchievements.get(
+        CONVERGENCIAS_ACHIEVEMENTS.convergenciaVoe50Rep.id
+      );
+      this.convergenciaVoe50Rep = voe50Rep ? [voe50Rep] : [];
 
     } finally {
       this.loadingConvergencias = false;
@@ -912,6 +978,10 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy {
   //   this.convergenciaJwWeekly = await this.dailyService.getConvergenciaJwWeekly();
   // }
 
+  // async loadConvergenciaVoeWeekly() {
+  //   this.convergenciaVoeWeekly = await this.dailyService.getConvergenciaVoeWeekly();
+  // }
+
   // async loadConvergenciaSoto100() {
   //   try {
   //     this.convergenciaSoto100 = await this.dailyService.getConvergenciaSoto100();
@@ -944,6 +1014,22 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy {
   //   }
   // }
 
+  // async loadConvergenciaVoe50() {
+  //   try {
+  //     this.convergenciaVoe50 = await this.dailyService.getConvergenciaVoe50();
+  //   } finally {
+  //     this.loadingConvergenciaVoe50 = false;
+  //   }
+  // }
+
+  // async loadConvergenciaVoe50Rep() {
+  //   try {
+  //     this.convergenciaVoe50Rep = await this.dailyService.getConvergenciaVoe50Rep();
+  //   } finally {
+  //     this.loadingConvergenciaVoe50Rep = false;
+  //   }
+  // }
+
   // async loadWeeklyQuickplayRaidEncounter(){
   //   this.weeklyQuickplayRaidEncounter = await this.dailyService.getWeeklyQuickplayRaidEncounter();
   // }
@@ -970,27 +1056,58 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy {
 
   searchFractalIds() {
     let obj: any = {}
-    //Recomendados
+    this.fractRec = [];
+    this.fractDaily1 = [];
+    this.fractDaily2 = [];
+    this.fractDaily3 = [];
+    this.fractDaily4 = [];
+
+    //Recomendados y T1-4
     for (let i = 0; i < this.dailyInfoF.fractals.length; i++) {
       if (this.dailyInfoF.fractals[i].name.includes("recomendado")) {
         obj = this.fractales.find(o => o.idRec === this.dailyInfoF.fractals[i].id);
+        if (!obj) {
+          throw new Error(
+            `No existe configuración local para el fractal recomendado con ID ${this.dailyInfoF.fractals[i].id}`
+          );
+        }
         this.fractRec.push(obj);
       }
       else if (this.dailyInfoF.fractals[i].name.includes("rango 1")) {
         obj = this.fractales.filter(o => o.idDaily === this.dailyInfoF.fractals[i].id);
+        if (obj.length === 0) {
+          throw new Error(
+            `No existe configuración local para el fractal de rango 1 con ID ${this.dailyInfoF.fractals[i].id}`
+          );
+        }
         this.fractDaily1.push(obj);
       }
       else if (this.dailyInfoF.fractals[i].name.includes("rango 2")) {
         obj = this.fractales.filter(o => o.idDaily === this.dailyInfoF.fractals[i].id);
+        if (obj.length === 0) {
+          throw new Error(
+            `No existe configuración local para el fractal de rango 2 con ID ${this.dailyInfoF.fractals[i].id}`
+          );
+        }
         this.fractDaily2.push(obj);
       }
       else if (this.dailyInfoF.fractals[i].name.includes("rango 3")) {
         obj = this.fractales.filter(o => o.idDaily === this.dailyInfoF.fractals[i].id);
+        if (obj.length === 0) {
+          throw new Error(
+            `No existe configuración local para el fractal de rango 3 con ID ${this.dailyInfoF.fractals[i].id}`
+          );
+        }
         this.fractDaily3.push(obj);
       }
       else if (this.dailyInfoF.fractals[i].name.includes("rango 4")) {
         obj = this.fractales.filter(o => o.idDaily === this.dailyInfoF.fractals[i].id);
         //filter en vez de find para que devuelva todos los casos porque hay fractales que tienen distintos niveles en el mismo tier y comparten id
+        if (obj.length === 0) {
+          throw new Error(
+            `No existe configuración local para el fractal de rango 4 con ID ${this.dailyInfoF.fractals[i].id}`
+          );
+        }
         this.fractDaily4.push(obj);
       }
     }
@@ -1005,29 +1122,6 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy {
     //   this.fractDaily3.push(obj);
     //   obj = this.fractales.filter(o => o.idDaily === 8739);
     //   this.fractDaily4.push(obj);
-    // }
-
-    // for (let i = 0; i <= 2; i++){
-    //   obj = this.fractales.find(o => o.idRec === this.dailyInfoF.fractals[i].id);
-    // //   console.log('id ', this.dailyInfoF.fractals[i].id)
-    // //   console.log('fracc ', obj)
-    //   this.fractRec.push(obj)
-    // }
-    // // console.log('aaa ', this.fractRec)
-    // //Daily1
-    // for (let i = 3; i <= 6; i++){
-    //   obj = this.fractales.filter(o => o.idDaily === this.dailyInfoF.fractals[i].id);
-    //   this.fractDaily1.push(obj)
-    // }
-    // //Daily2
-    // for (let i = 7; i <= 10; i++){
-    //   obj = this.fractales.filter(o => o.idDaily === this.dailyInfoF.fractals[i].id);
-    //   this.fractDaily2.push(obj)
-    // }
-    // //Daily3
-    // for (let i = 11; i <= 14; i++){
-    //   obj = this.fractales.filter(o => o.idDaily === this.dailyInfoF.fractals[i].id);
-    //   this.fractDaily3.push(obj)
     // }
 
     //SIN ESTAS DOS LINEAS NO FUNCIONA LA TABLA DE RECOMENDADOS
@@ -1098,7 +1192,8 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy {
       // (por ejemplo datos incompletos o errores en la fuente)
       apiIndex = Math.max(0, Math.min(sample.length - 1, apiIndex));
 
-      // Cojo info de 95 96 97 98 99 100 usando apiIndex
+      // Cojo info de 94 95 96 97 98 99 100 usando apiIndex
+      const trono = inst["94"][apiIndex];
       const hecatombe = inst["95"][apiIndex];
       const pesadilla = inst["96"][apiIndex];
       const observatorio = inst["97"][apiIndex];
@@ -1107,8 +1202,8 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy {
       const torre = inst["100"][apiIndex];
 
       // Devuelve array de (numero_de_cms x 3) posiciones
-      this.fractDailyInestabilidadCmEng = this.buscarInestabilidadCmNombre(nombres, hecatombe, pesadilla, observatorio, sunqua, oleaje, torre, 'en');
-      this.fractDailyInestabilidadCmEsp = this.buscarInestabilidadCmNombre(nombres, hecatombe, pesadilla, observatorio, sunqua, oleaje, torre, 'es');
+      this.fractDailyInestabilidadCmEng = this.buscarInestabilidadCmNombre(nombres, trono, hecatombe, pesadilla, observatorio, sunqua, oleaje, torre, 'en');
+      this.fractDailyInestabilidadCmEsp = this.buscarInestabilidadCmNombre(nombres, trono, hecatombe, pesadilla, observatorio, sunqua, oleaje, torre, 'es');
       this.getFractalesCm();
     },
       (error) => {
@@ -1255,8 +1350,9 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy {
     return ((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0);
   }
 
-  buscarInestabilidadCmNombre(nombres: InstabilityDetail[], fractal95: number[], fractal96: number[], fractal97: number[], fractal98: number[], fractal99: number[], fractal100: number[], idioma: 'en' | 'es' | 'fr' | 'de') {
+  buscarInestabilidadCmNombre(nombres: InstabilityDetail[], fractal94: number[], fractal95: number[], fractal96: number[], fractal97: number[], fractal98: number[], fractal99: number[], fractal100: number[], idioma: 'en' | 'es' | 'fr' | 'de') {
     let fractalInest = [
+      nombres[fractal94[0]].name[idioma], nombres[fractal94[1]].name[idioma], nombres[fractal94[2]].name[idioma],
       nombres[fractal95[0]].name[idioma], nombres[fractal95[1]].name[idioma], nombres[fractal95[2]].name[idioma],
       nombres[fractal96[0]].name[idioma], nombres[fractal96[1]].name[idioma], nombres[fractal96[2]].name[idioma],
       nombres[fractal97[0]].name[idioma], nombres[fractal97[1]].name[idioma], nombres[fractal97[2]].name[idioma],
@@ -1269,6 +1365,10 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy {
 
   getMapBonusRewardWeekNumber() {
     return this.dailyService.getMapBonusRewardWeekNumber();
+  }
+
+  getMapBonusRewardHot() {
+    return this.dailyService.getMapBonusRewardHot();
   }
 
   ////////////////////////////////////// WEEKLY
@@ -1690,6 +1790,42 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy {
         }));
         this.weeklyJWCMConvergenciaDoneIds = new Set(); // todos no hechos
         console.warn('Weekly JW CM convergencias sin hacer');
+      }
+    });
+  }
+
+  loadWeeklyConvergenciaCMVoe() {
+    this.dailyService.getConvergenciaVoeWeeklyCM().subscribe({
+      next: (data: any) => {
+        // Prepara lista visual
+        this.weeklyVoeCMConvergencia = this.VOE_CONVERGENCIA.map((name, index) => ({
+          index: index,
+          name: name
+        }));
+
+        // Si no hay data, considera como no hechos
+        if (!data || data.length === 0) {
+          this.weeklyVoeCMConvergenciaDoneIds = new Set(); // todos como no hechos
+          return;
+        }
+
+        const result = data[0];
+
+        if (result.done === true) {
+          // Todos hechos: incluir todos los indices en el Set
+          this.weeklyVoeCMConvergenciaDoneIds = new Set(this.weeklyVoeCMConvergencia.map(s => s.index));
+        } else {
+          // Solo los que esten en bits
+          this.weeklyVoeCMConvergenciaDoneIds = new Set(result.bits || []);
+        }
+      },
+      error: (err) => {
+        this.weeklyVoeCMConvergencia = this.VOE_CONVERGENCIA.map((name, index) => ({
+          index: index,
+          name: name
+        }));
+        this.weeklyVoeCMConvergenciaDoneIds = new Set(); // todos no hechos
+        console.warn('Weekly Voe CM convergencia sin hacer');
       }
     });
   }

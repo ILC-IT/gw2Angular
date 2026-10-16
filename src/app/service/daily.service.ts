@@ -26,6 +26,7 @@ export class DailyService {
   apiUrl = "https://api.guildwars2.com/v2/";
 
   public readonly bestMapBonusRewardWeekNumber: number = 8; // Variable a cambiar segun cambie la mejor zona
+
   riftSoto = [
     // https://wiki.guildwars2.com/wiki/Weekly_Rift_Hunting
     [
@@ -86,13 +87,20 @@ export class DailyService {
   ];
 
   pactSupply = [
-    ["1.[&BIsHAAA=]  \n2.[&BDoBAAA=]  \n3.[&BC0AAAA=]  \n4.[&BP8DAAA=]  \n5.[&BIUCAAA=]  \n6.[&BCECAAA=]"], //Domingo
-    ["1.[&BA8CAAA=]  \n2.[&BKYBAAA=]  \n3.[&BEwDAAA=]  \n4.[&BIcHAAA=]  \n5.[&BNIEAAA=]  \n6.[&BIMCAAA=]"], //Lunes
-    ["1.[&BH8HAAA=]  \n2.[&BEgAAAA=]  \n3.[&BBkAAAA=]  \n4.[&BKgCAAA=]  \n5.[&BGQCAAA=]  \n6.[&BIMBAAA=]"], //Martes
-    ["1.[&BH4HAAA=]  \n2.[&BMIBAAA=]  \n3.[&BKEAAAA=]  \n4.[&BP0CAAA=]  \n5.[&BDgDAAA=]  \n6.[&BPEBAAA=]"], //Miercoles
-    ["1.[&BKsHAAA=]  \n2.[&BF0AAAA=]  \n3.[&BIMAAAA=]  \n4.[&BO4CAAA=]  \n5.[&BF0GAAA=]  \n6.[&BOQBAAA=]"], //Jueves
-    ["1.[&BJQHAAA=]  \n2.[&BMMCAAA=]  \n3.[&BNUGAAA=]  \n4.[&BJsCAAA=]  \n5.[&BHsBAAA=]  \n6.[&BNMAAAA=]"], //Viernes
-    ["1.[&BH8HAAA=]  \n2.[&BNMCAAA=]  \n3.[&BJIBAAA=]  \n4.[&BBEDAAA=]  \n5.[&BEICAAA=]  \n6.[&BBABAAA=]"]  //Sabado
+    //Domingo
+    ["1.[&BIsHAAA=]  \n2.[&BDoBAAA=]  \n3.[&BC0AAAA=]  \n4.[&BP8DAAA=]  \n5.[&BIUCAAA=]  \n6.[&BCECAAA=]"],
+    //Lunes
+    ["1.[&BA8CAAA=]  \n2.[&BKYBAAA=]  \n3.[&BEwDAAA=]  \n4.[&BIcHAAA=]  \n5.[&BNIEAAA=]  \n6.[&BIMCAAA=]"],
+    //Martes
+    ["1.[&BH8HAAA=]  \n2.[&BEgAAAA=]  \n3.[&BBkAAAA=]  \n4.[&BKgCAAA=]  \n5.[&BGQCAAA=]  \n6.[&BIMBAAA=]"],
+    //Miercoles
+    ["1.[&BH4HAAA=]  \n2.[&BMIBAAA=]  \n3.[&BKEAAAA=]  \n4.[&BP0CAAA=]  \n5.[&BDgDAAA=]  \n6.[&BPEBAAA=]"],
+    //Jueves
+    ["1.[&BKsHAAA=]  \n2.[&BF0AAAA=]  \n3.[&BIMAAAA=]  \n4.[&BO4CAAA=]  \n5.[&BF0GAAA=]  \n6.[&BOQBAAA=]"],
+    //Viernes
+    ["1.[&BJQHAAA=]  \n2.[&BMMCAAA=]  \n3.[&BNUGAAA=]  \n4.[&BJsCAAA=]  \n5.[&BHsBAAA=]  \n6.[&BNMAAAA=]"],
+    //Sabado
+    ["1.[&BH8HAAA=]  \n2.[&BNMCAAA=]  \n3.[&BJIBAAA=]  \n4.[&BBEDAAA=]  \n5.[&BEICAAA=]  \n6.[&BBABAAA=]"]
   ];
 
   tokenSupply = [
@@ -156,6 +164,9 @@ export class DailyService {
   convergenciaJwWp = ["Costas bajas: [&BK4OAAA=]"];
   convergenciaJw = [2, 5, 8, 11, 14, 17, 20, 23];
   convergenciaJwInvierno = [1, 4, 7, 10, 13, 16, 19, 22];
+  convergenciaVoeWp = ["Hondonadas del Manantial de Ley: [&BDYQAAA=]"];
+  convergenciaVoe = [0, 3, 6, 9, 12, 15, 18, 21];
+  convergenciaVoeInvierno = [2, 5, 8, 11, 14, 17, 20, 23];
 
   constructor(private httpClient: HttpClient, private apiKeyService: ApiKeyService) { }
 
@@ -208,39 +219,53 @@ export class DailyService {
     return this.httpClient.get(url);
   }
 
-  getPactSupply() { //el dia empieza a las 10am UTC+2 o 9am UTC+1
-    let d = new Date();
-    let n = d.getDay(); //Sunday is 0, Monday is 1, and so on.
-    let h = d.getHours();
-    let fechaCambiaVerano = new Date(d.getFullYear(), d.getMonth(), d.getDay(), 10, 0, 0); //10am
-    let fechaCambiaInvierno = new Date(d.getFullYear(), d.getMonth(), d.getDay(), 9, 0, 0); //9am
+  // getPactSupply() { //el dia empieza a las 10am UTC+2 o 9am UTC+1
+  //   let d = new Date();
+  //   let n = d.getDay(); //Sunday is 0, Monday is 1, and so on.
+  //   let h = d.getHours();
+  //   let fechaCambiaVerano = new Date(d.getFullYear(), d.getMonth(), d.getDay(), 10, 0, 0); //10am
+  //   let fechaCambiaInvierno = new Date(d.getFullYear(), d.getMonth(), d.getDay(), 9, 0, 0); //9am
 
-    if (!this.esHorarioInvierno()) { //es verano
-      if (h >= fechaCambiaVerano.getHours()) { //h cambia a las 10am (UTC + 2)
-        return this.pactSupply[n];
-      }
-      else {
-        if (n !== 0) {
-          return this.pactSupply[n - 1];
-        }
-        else {
-          return this.pactSupply[this.pactSupply.length - 1];
-        }
-      }
+  //   if (!this.esHorarioInvierno()) { //es verano
+  //     if (h >= fechaCambiaVerano.getHours()) { //h cambia a las 10am (UTC + 2)
+  //       return this.pactSupply[n];
+  //     }
+  //     else {
+  //       if (n !== 0) {
+  //         return this.pactSupply[n - 1];
+  //       }
+  //       else {
+  //         return this.pactSupply[this.pactSupply.length - 1];
+  //       }
+  //     }
+  //   }
+  //   else { //es invierno
+  //     if (h >= fechaCambiaInvierno.getHours()) { //h cambia a las 9am (UTC + 1)
+  //       return this.pactSupply[n];
+  //     }
+  //     else {
+  //       if (n !== 0) {
+  //         return this.pactSupply[n - 1];
+  //       }
+  //       else {
+  //         return this.pactSupply[this.pactSupply.length - 1];
+  //       }
+  //     }
+  //   }
+  // }
+
+  getPactSupply() {
+    const now = new Date();
+
+    // El dia de Pact Supply cambia a las 08:00 UTC
+    const resetHourUtc = 8;
+
+    // Antes de las resetHourUtc seguimos en el dia anterior
+    if (now.getUTCHours() < resetHourUtc) {
+      now.setUTCDate(now.getUTCDate() - 1);
     }
-    else { //es invierno
-      if (h >= fechaCambiaInvierno.getHours()) { //h cambia a las 9am (UTC + 1)
-        return this.pactSupply[n];
-      }
-      else {
-        if (n !== 0) {
-          return this.pactSupply[n - 1];
-        }
-        else {
-          return this.pactSupply[this.pactSupply.length - 1];
-        }
-      }
-    }
+
+    return this.pactSupply[now.getUTCDay()];
   }
 
   getTokenSupply() {
@@ -248,20 +273,20 @@ export class DailyService {
   }
 
   getDailyActivity() {
-    let now = new Date();
-    let day = now.getDay(); //Sunday is 0, Monday is 1, and so on.
+    const now = new Date();
+    const day = now.getUTCDay(); //Sunday is 0, Monday is 1, and so on.
     return this.dailyActivity[day];
   }
 
   getRecordatorio() {
-    let now = new Date();
-    let day = now.getDay();
+    const now = new Date();
+    const day = now.getUTCDay();
 
     // Hora actual en UTC 
     const utcHour = now.getUTCHours();
     const utcMinutes = now.getUTCMinutes();
 
-    // El reset es a las 07:30 UTC cuando el juego esta en UTC+2 
+    // El reset es a las 07:30 UTC
     const afterReset = (utcHour > 7 || (utcHour === 7 && utcMinutes >= 30));
 
     // Lunes y despues del reset
@@ -271,12 +296,12 @@ export class DailyService {
         message: this.recordatorio
       };
     }
-    else {
-      return {
-        ok: false,
-        message: ""
-      };
-    }
+
+    return {
+      ok: false,
+      message: ""
+    };
+
   }
 
   getMapBonusRewardWeekNumber() {
@@ -287,7 +312,7 @@ export class DailyService {
   }
 
   mapBonusRewardweekNumber(date: Date) {
-    const startDate = new Date('2023-07-07'); // Start date of the first week, it was week number 5
+    const startDate = new Date('2023-07-06T20:00:00Z'); // Start date of the first week, it was week number 5
     const millisecondsPerWeek = 7 * 24 * 60 * 60 * 1000; // Number of milliseconds in a week
 
     const elapsedTime = date.getTime() - startDate.getTime();
@@ -296,6 +321,37 @@ export class DailyService {
     if (weekNumberMod8 === 0) weekNumberMod8 = 8; //weeks are numbered from 1 to 8
 
     return weekNumberMod8;
+  }
+
+  getMapBonusRewardHot() {
+    return this.mapBonusRewardHot(new Date());
+  }
+
+  mapBonusRewardHot(date: Date) {
+    // Devuelve el numero de semana actual y el nombre del mapa de HoT (1-3) para el map bonus reward de HoT
+
+    // Week 1: Tangled Depths
+    // Week 2: Auric Basin
+    // Week 3: Verdant Brink
+
+    const startDate = new Date('2026-10-01T20:00:00Z'); // Start date of the first week, it was week number 2
+    const millisecondsPerWeek = 7 * 24 * 60 * 60 * 1000;
+
+    const elapsedTime = date.getTime() - startDate.getTime();
+    const weekNumber = Math.floor(elapsedTime / millisecondsPerWeek) + 2;
+    let weekNumberMod3 = weekNumber % 3;
+    if (weekNumberMod3 === 0) weekNumberMod3 = 3; //weeks are numbered from 1 to 3
+
+    const maps = [
+      'Tangled Depths',
+      'Auric Basin',
+      'Verdant Brink'
+    ];
+
+    return {
+      weekNumber: weekNumberMod3,
+      mapName: maps[weekNumberMod3 - 1]
+    };
   }
 
   getWeeklyRiftSotoInfo() {
@@ -583,6 +639,48 @@ export class DailyService {
     }
   }
 
+  getConvergenciaVoe() {
+    let d = new Date();
+    let h = d.getHours(); //Get the hour (0-23)
+    let m = d.getMinutes(); //Get the minute (0-59)
+    //Compruebo el intervalo de horas y minutos y devuelvo la convergencia que va a pasar
+    if (this.esHorarioInvierno()) {
+      if (this.convergenciaVoeInvierno.includes(h)) {
+        if (m <= 9) { //10 min para entrar
+          return `${h % 24}:00 ` + this.convergenciaVoeWp[0];
+        } else {
+          return `${(h + 3) % 24}:00 ` + this.convergenciaVoeWp[0];
+        }
+      } else {
+        let horaMasCercana = this.convergenciaVoeInvierno.reduce(function (prev, curr) {
+          return (Math.abs(curr - h) < Math.abs(prev - h) ? curr : prev);
+        });
+        if (horaMasCercana <= h) {
+          return `${(horaMasCercana + 3) % 24}:00 ` + this.convergenciaVoeWp[0];
+        } else {
+          return `${(horaMasCercana) % 24}:00 ` + this.convergenciaVoeWp[0];
+        }
+      }
+    } else {
+      if (this.convergenciaVoe.includes(h)) {
+        if (m <= 9) { //10 min para entrar
+          return `${h % 24}:00 ` + this.convergenciaVoeWp[0];
+        } else {
+          return `${(h + 3) % 24}:00 ` + this.convergenciaVoeWp[0];
+        }
+      } else {
+        let horaMasCercana = this.convergenciaVoe.reduce(function (prev, curr) {
+          return (Math.abs(curr - h) < Math.abs(prev - h) ? curr : prev);
+        });
+        if (horaMasCercana <= h) {
+          return `${(horaMasCercana + 3) % 24}:00 ` + this.convergenciaVoeWp[0];
+        } else {
+          return `${(horaMasCercana) % 24}:00 ` + this.convergenciaVoeWp[0];
+        }
+      }
+    }
+  }
+
   esHorarioInvierno() {
     let arr: any = [];
     for (let i = 0; i < 365; i++) {
@@ -633,7 +731,8 @@ export class DailyService {
 
   getConvergenciaSotoWeeklyCM() {
     // devuelve logro semanal de hacer 5 convergencias cm de soto
-    const url = `${this.apiUrl}account/achievements?ids=8464&access_token=${this.getApiKey()}`;
+    const id = 8464;
+    const url = `${this.apiUrl}account/achievements?ids=${id}&access_token=${this.getApiKey()}`;
     return this.httpClient.get(url);
   }
 
@@ -641,24 +740,6 @@ export class DailyService {
     // devuelve logro de hacer 50 convergencias de jw
     return this.getAchievement(8456, 50);
   }
-
-  // async getConvergenciaJw50Rep(): Promise<any> {
-  //   // devuelve logro de hacer 50 convergencias repetible
-  //   const url = `${this.apiUrl}account/achievements?ids=8440&access_token=${this.getApiKey()}`;
-  //   try {
-  //     return await this.httpClient.get(url).toPromise();
-  //   } catch (error) {
-  //     return [
-  //       {
-  //         id: 8440,
-  //         current: 0,
-  //         max: 50,
-  //         done: false
-  //         // "repeated": 0
-  //       }
-  //     ];
-  //   }
-  // }
 
   async getConvergenciaJw50Rep(): Promise<Achievement[]> {
     // devuelve logro de hacer 50 convergencias de jw repetible
@@ -672,7 +753,29 @@ export class DailyService {
 
   getConvergenciaJwWeeklyCM() {
     // devuelve logro semanal de hacer 3 convergencias cm de jw
-    const url = `${this.apiUrl}account/achievements?ids=8776&access_token=${this.getApiKey()}`;
+    const id = 8776;
+    const url = `${this.apiUrl}account/achievements?ids=${id}&access_token=${this.getApiKey()}`;
+    return this.httpClient.get(url);
+  }
+  async getConvergenciaVoe50(): Promise<Achievement[]> {
+    // devuelve logro de hacer 50 convergencias de voe
+    return this.getAchievement(9349, 50);
+  }
+
+  async getConvergenciaVoe50Rep(): Promise<Achievement[]> {
+    // devuelve logro de hacer 50 convergencias de voe repetible
+    return this.getAchievement(9384, 50, 0);
+  }
+
+  async getConvergenciaVoeWeekly(): Promise<Achievement[]> {
+    // devuelve logro semanal de hacer 3 convergencias de voe
+    return this.getAchievement(9447, 3);
+  }
+
+  getConvergenciaVoeWeeklyCM() {
+    // devuelve logro semanal de hacer 1 convergencia cm de voe
+    const id = 9422;
+    const url = `${this.apiUrl}account/achievements?ids=${id}&access_token=${this.getApiKey()}`;
     return this.httpClient.get(url);
   }
 
@@ -771,6 +874,16 @@ export class DailyService {
     return this.httpClient.get<any[]>(url);
   }
 
+  getWeeklyRiftHuntingVoeId() {
+    const url = `${this.apiUrl}achievements/categories/464`;
+    return this.httpClient.get<any>(url);
+  }
+
+  getWeeklyRiftHuntingVoe(ids: string) {
+    const url = `${this.apiUrl}account/achievements?ids=${ids}&access_token=${this.getApiKey()}`;
+    return this.httpClient.get<any[]>(url);
+  }
+
   getWeeklyEoDStrikes() {
     // para sacar el id de las strikes semanales de EoD
     const url = `${this.apiUrl}account/achievements?ids=5577&access_token=${this.getApiKey()}`;
@@ -801,16 +914,6 @@ export class DailyService {
   async getFractalInfiniteRecursion(): Promise<Achievement[]> {
     // devuelve logro de hacer 150 polvo fractalino en fractal quickplay repetible
     return this.getAchievement(8814, 150, 0);
-  }
-
-  getWeeklyRiftHuntingVoeId() {
-    const url = `${this.apiUrl}achievements/categories/464`;
-    return this.httpClient.get<any>(url);
-  }
-
-  getWeeklyRiftHuntingVoe(ids: string) {
-    const url = `${this.apiUrl}account/achievements?ids=${ids}&access_token=${this.getApiKey()}`;
-    return this.httpClient.get<any[]>(url);
   }
 
   getDailyWorldBoss() {

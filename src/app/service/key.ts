@@ -1,7 +1,8 @@
 export interface ApiAccount {
-  name: string;      // Alias elegido por el usuario, max 20 caracteres
+  name: string;      // Alias elegido por el usuario, max. 20 caracteres
   gw2Name: string;   // Nombre real de GW2 con numeros
   key: string;       // API key
+  kp?: string;       // Killproof code (optional)
 };
 
 export interface ValidImportAccount {

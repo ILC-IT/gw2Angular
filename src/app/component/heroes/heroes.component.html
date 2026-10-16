@@ -31,10 +31,11 @@
         <mat-progress-bar mode="query" *ngIf="!containersError && !catalogoError && loading"></mat-progress-bar>
 
         <br>
+
         <!-- Cabecera de personajes -->
         <div class="cabecera" *ngIf="!containersError && !catalogoError && !loading && heroes?.length">
-            <div class="heroes-count"> 
-                {{ heroes.length }} personajes 
+            <div class="heroes-count">
+                {{ heroes.length }} personajes
             </div>
             <div class="heroes-actions">
                 <button type="button" class="btn-refresh-heroes" (click)="actualizarHeroes()"
@@ -58,7 +59,8 @@
             ⚠️ No se han podido actualizar los héroes.
             Se muestran los últimos datos disponibles.
         </div>
-        <br>
+
+        <br *ngIf="heroesError && heroes?.length">
 
         <!-- Cargando info extra -->
         <div *ngIf="!containersError && !catalogoError && loadingExtra" class="loading-extra">
@@ -669,6 +671,12 @@
                                 <h3>
                                     {{ contenedor.nombre }}
                                 </h3>
+
+                                <div class="infusion-description">
+                                    <div *ngFor="let infu of contenedor.infu">
+                                        {{ infu }}
+                                    </div>
+                                </div>
 
                                 <div *ngIf="contenedor.cantidadTotal > 0">
                                     Total:

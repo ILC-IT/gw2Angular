@@ -108,6 +108,7 @@ interface ContainerDataView {
   id: number;
   nombre: string;
   icon: string;
+  infu: string[];
   cantidadTotal: number;
   cantidadBanco: number;
   cantidadInvComp: number;
@@ -1104,8 +1105,20 @@ export class HeroesComponent implements OnInit, AfterViewInit {
 
         const cuenta = containersMap.get(catalogo.id);
 
+        // Normalizar name_es: puede ser string o string[]
+        const infusiones: string[] = [];
+
+        catalogo.options?.forEach(option => {
+          if (Array.isArray(option.name_es)) {
+            infusiones.push(...option.name_es);
+          } else if (option.name_es) {
+            infusiones.push(option.name_es);
+          }
+        });
+
         return {
           id: catalogo.id,
+          infu: infusiones,
           nombre: catalogo.name_es,
           icon: catalogo.icon || '',
           cantidadTotal: cuenta?.cantidadTotal || 0,

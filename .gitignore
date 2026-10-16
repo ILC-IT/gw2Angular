@@ -1,5 +1,12 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 #/src/app/service/key.ts
+
+# mantener vacia files_to_work
+/scripts/poi/files_to_work/*
+!/scripts/poi/files_to_work/.gitkeep
+/scripts/infus/files_to_work/*
+!/scripts/infus/files_to_work/.gitkeep
+
 # compiled output
 /dist
 /tmp

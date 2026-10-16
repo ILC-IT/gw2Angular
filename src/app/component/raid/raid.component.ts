@@ -174,17 +174,6 @@ export class RaidComponent implements OnInit {
   DailyRaidBounties = DailyRaidBounties;
   dailyRotation: any;
   weeklyRotation: any;
-  isDailyBoss(boss: string): boolean {
-    if (!this.dailyRotation) return false;
-    return Object.values(this.dailyRotation).includes(boss);
-  }
-  isWeeklyBoss(boss: string): boolean {
-    if (!this.weeklyRotation?.week) return false;
-
-    return this.weeklyRotation.week.some((day: any) =>
-      Object.values(day.bounties).includes(boss)
-    );
-  }
 
   // Para copiar al portapapeles
   copiadoNotInWeek = false;
@@ -195,6 +184,11 @@ export class RaidComponent implements OnInit {
   bossesInWeek = '';
   private bossGroupMap!: Map<string, string>;
   bossesNotInWeekGrouped: { wing: string, bosses: string[] }[] = [];
+  bossesNotInWeekSet = new Set<string>();
+  // Si se quiere que no salgan los bosses no disponibles esta semana
+  filtrarBossesNoDisponibles = false;
+  // Si se quiere que se muestre la tabla de bosses por dias
+  mostrarTablaPorDias = true;
 
   // Para las rutas a las pestañas de raid
   selectedTabIndex: number = 0;
@@ -296,13 +290,12 @@ export class RaidComponent implements OnInit {
     }
   }
 
-  sumCountById(arr: { id: number; count: number }[], idBossRaid: number): number {
-    // devuelve la suma de count de todas las ocurrencias de idBossRaid en el array del banco (token)
+  sumCountById(arr: ({ id: number; count: number } | null)[], idBossRaid: number): number {
+    // Devuelve la suma de count de todas las ocurrencias de idBossRaid en el array del banco (token)
     return arr.reduce((sum, obj) => {
-      if (obj !== null) { // porque token tiene valores null y asi los evitamos
-        if (obj.id === idBossRaid) {
-          return sum + obj.count;
-        }
+      // Porque token tiene valores null y asi se evitan
+      if (obj !== null && obj.id === idBossRaid) {
+        return sum + obj.count;
       }
       return sum;
     }, 0);
@@ -310,34 +303,42 @@ export class RaidComponent implements OnInit {
 
   getToken() {
     this.heroService.getBank().subscribe((token: any) => {
-      //Devuelve los materiales del banco en stacks de maximo 250, si supera esa cantidad habra varias ids iguales
-      for (let i = 0; i < TokenId.length; i++) {
-        this.raidWings[0].tokenCount[0] = this.sumCountById(token, TokenId[0].vale_guardian);
-        this.raidWings[0].tokenCount[2] = this.sumCountById(token, TokenId[0].gorseval);
-        this.raidWings[0].tokenCount[3] = this.sumCountById(token, TokenId[0].sabetha);
-        this.raidWings[1].tokenCount[0] = this.sumCountById(token, TokenId[0].slothasor);
-        this.raidWings[1].tokenCount[2] = this.sumCountById(token, TokenId[0].matthias);
-        this.raidWings[2].tokenCount[0] = this.sumCountById(token, TokenId[0].escort);
-        this.raidWings[2].tokenCount[1] = this.sumCountById(token, TokenId[0].keep_construct);
-        this.raidWings[2].tokenCount[3] = this.sumCountById(token, TokenId[0].xera);
-        this.raidWings[3].tokenCount[0] = this.sumCountById(token, TokenId[0].cairn);
-        this.raidWings[3].tokenCount[1] = this.sumCountById(token, TokenId[0].mursaat_overseer);
-        this.raidWings[3].tokenCount[2] = this.sumCountById(token, TokenId[0].samarog);
-        this.raidWings[3].tokenCount[3] = this.sumCountById(token, TokenId[0].deimos);
-        this.raidWings[4].tokenCount[0] = this.sumCountById(token, TokenId[0].soulless_horror);
-        this.raidWings[4].tokenCount[1] = this.sumCountById(token, TokenId[0].river_of_souls);
-        this.raidWings[4].tokenCount[2] = this.sumCountById(token, TokenId[0].statues_of_grenth);
-        this.raidWings[4].tokenCount[3] = this.sumCountById(token, TokenId[0].voice_in_the_void);
-        this.raidWings[5].tokenCount[0] = this.sumCountById(token, TokenId[0].conjured_amalgamate);
-        this.raidWings[5].tokenCount[1] = this.sumCountById(token, TokenId[0].twin_largos);
-        this.raidWings[5].tokenCount[2] = this.sumCountById(token, TokenId[0].qadim);
-        this.raidWings[6].tokenCount[1] = this.sumCountById(token, TokenId[0].adina);
-        this.raidWings[6].tokenCount[2] = this.sumCountById(token, TokenId[0].sabir);
-        this.raidWings[6].tokenCount[3] = this.sumCountById(token, TokenId[0].qadim_the_peerless);
-        this.raidWings[7].tokenCount[1] = this.sumCountById(token, TokenId[0].decima);
-        this.raidWings[7].tokenCount[2] = this.sumCountById(token, TokenId[0].greer);
-        this.raidWings[7].tokenCount[3] = this.sumCountById(token, TokenId[0].ura);
-      }
+      // El banco puede devolver varias entradas con el mismo ID porque
+      // los materiales se almacenan en stacks de máximo 250.
+      // sumCountById() suma todas las ocurrencias del mismo ID.
+
+      this.raidWings[0].tokenCount[0] = this.sumCountById(token, TokenId.vale_guardian);
+      this.raidWings[0].tokenCount[2] = this.sumCountById(token, TokenId.gorseval);
+      this.raidWings[0].tokenCount[3] = this.sumCountById(token, TokenId.sabetha);
+
+      this.raidWings[1].tokenCount[0] = this.sumCountById(token, TokenId.slothasor);
+      this.raidWings[1].tokenCount[2] = this.sumCountById(token, TokenId.matthias);
+
+      this.raidWings[2].tokenCount[0] = this.sumCountById(token, TokenId.escort);
+      this.raidWings[2].tokenCount[1] = this.sumCountById(token, TokenId.keep_construct);
+      this.raidWings[2].tokenCount[3] = this.sumCountById(token, TokenId.xera);
+
+      this.raidWings[3].tokenCount[0] = this.sumCountById(token, TokenId.cairn);
+      this.raidWings[3].tokenCount[1] = this.sumCountById(token, TokenId.mursaat_overseer);
+      this.raidWings[3].tokenCount[2] = this.sumCountById(token, TokenId.samarog);
+      this.raidWings[3].tokenCount[3] = this.sumCountById(token, TokenId.deimos);
+
+      this.raidWings[4].tokenCount[0] = this.sumCountById(token, TokenId.soulless_horror);
+      this.raidWings[4].tokenCount[1] = this.sumCountById(token, TokenId.river_of_souls);
+      this.raidWings[4].tokenCount[2] = this.sumCountById(token, TokenId.statues_of_grenth);
+      this.raidWings[4].tokenCount[3] = this.sumCountById(token, TokenId.voice_in_the_void);
+
+      this.raidWings[5].tokenCount[0] = this.sumCountById(token, TokenId.conjured_amalgamate);
+      this.raidWings[5].tokenCount[1] = this.sumCountById(token, TokenId.twin_largos);
+      this.raidWings[5].tokenCount[2] = this.sumCountById(token, TokenId.qadim);
+
+      this.raidWings[6].tokenCount[1] = this.sumCountById(token, TokenId.adina);
+      this.raidWings[6].tokenCount[2] = this.sumCountById(token, TokenId.sabir);
+      this.raidWings[6].tokenCount[3] = this.sumCountById(token, TokenId.qadim_the_peerless);
+
+      this.raidWings[7].tokenCount[1] = this.sumCountById(token, TokenId.decima);
+      this.raidWings[7].tokenCount[2] = this.sumCountById(token, TokenId.greer);
+      this.raidWings[7].tokenCount[3] = this.sumCountById(token, TokenId.ura);
     })
   }
 
@@ -525,15 +526,55 @@ export class RaidComponent implements OnInit {
     }
   }
 
+  isDailyBoss(boss: string): boolean {
+    // Comprueba si el boss es diario hoy
+    if (!this.dailyRotation) return false;
+    return Object.values(this.dailyRotation).includes(boss);
+  }
+
+  isDailyBossTodayForDay(boss: string, day: any): boolean {
+    // Comprueba si el boss es diario hoy y si el dia indicado corresponde al dia de hoy
+    if (!day?.date || !this.dailyRotation) {
+      return false;
+    }
+    
+    // Otra forma de hacerlo:
+    // const todayDayName = new Date().toLocaleDateString('es-ES', { weekday: 'long' });
+    // return todayDayName === day.dayName && Object.values(this.dailyRotation).includes(boss);
+
+    const today = new Date();
+    const dayDate = new Date(day.date);
+    const isToday =
+      today.getFullYear() === dayDate.getFullYear() &&
+      today.getMonth() === dayDate.getMonth() &&
+      today.getDate() === dayDate.getDate();
+    return isToday && Object.values(this.dailyRotation).includes(boss);
+  }
+
+  isWeeklyBoss(boss: string): boolean {
+    // Comprueba si el boss aparece en alguno de los dias de la rotacion semanal
+    if (!this.weeklyRotation?.week) return false;
+    return this.weeklyRotation.week.some((day: any) =>
+      Object.values(day.bounties).includes(boss)
+    );
+  }
+
   getDailyBossKeys(): string[] {
+    // Devuelve las claves de los bosses diarios disponibles, excluyendo 'notInWeek'
     return Object.keys(this.DailyRaidBounties).filter(key => key !== 'notInWeek');
   }
 
   getDailyBossByKey(key: string): string[] {
-    return (this.DailyRaidBounties as Record<string, string[]>)[key] || [];
+    // Devuelve la lista de bosses diarios para un dia especifico, filtrando los que no están disponibles esta semana si `filtrarBossesNoDisponibles` es true
+    const bosses = (this.DailyRaidBounties as Record<string, string[]>)[key] || [];
+    if (!this.filtrarBossesNoDisponibles) {
+      return bosses;
+    }
+    return bosses.filter(boss => !this.isBossNotInWeek(boss));
   }
 
   getBossClass(boss: string): string {
+    // Devuelve la clase CSS para un boss segun su estado: diario, semanal o inactivo
     if (this.isDailyBoss(boss)) {
       return 'daily-boss';
     }
@@ -544,16 +585,29 @@ export class RaidComponent implements OnInit {
   }
 
   getDisplayBoss(boss: string): string {
+    // Devuelve el nombre del boss en mayusculas si es diario, o tal cual si es semanal o inactivo
     return this.isDailyBoss(boss) ? boss.toUpperCase() : boss;
   }
 
+  getWeeklyBossClass(boss: string, day: any): string {
+    // Devuelve la clase CSS para un boss en funcion de si es diario, semanal o inactivo para ese dia
+    if (this.isDailyBossTodayForDay(boss, day)) {
+      return 'daily-boss';
+    }
+    if (this.isWeeklyBoss(boss)) {
+      return 'weekly-boss';
+    }
+    return 'inactive-boss';
+  }
+
+  getWeeklyDisplayBoss(boss: string, day: any): string {
+    // Devuelve el nombre del boss en mayusculas si es el boss diario del dia indicado
+    return this.isDailyBossTodayForDay(boss, day) ? boss.toUpperCase() : boss;
+  }
+
   getBossGroupMap(): Map<string, string> {
-    const normalize = (str: string) =>
-      str
-        ?.trim()
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "");
+    // Devuelve un mapa que asocia cada boss con su wing correspondiente, ignorando los bosses 
+    // que no son semanales ni diarios
 
     const map = new Map<string, string>();
 
@@ -573,14 +627,14 @@ export class RaidComponent implements OnInit {
         ) {
           return;
         }
-        map.set(normalize(boss), raid.wing);
+        map.set(this.raidService.normalizeName(boss), raid.wing);
       });
     });
 
     // Strikes
     this.strikeWings.forEach(strike => {
       strike.bossOk.forEach(boss => {
-        map.set(normalize(boss), strike.wing);
+        map.set(this.raidService.normalizeName(boss), strike.wing);
       });
     });
 
@@ -594,15 +648,8 @@ export class RaidComponent implements OnInit {
       return;
     }
 
-    const normalize = (str: string) =>
-      str
-        ?.trim()
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "");
-
     const orderMap = new Map(
-      OrdenReferenciaEng.map((name, index) => [normalize(name), index])
+      OrdenReferenciaEng.map((name, index) => [this.raidService.normalizeName(name), index])
     );
 
     // const addWing = (boss: string): string => {
@@ -613,8 +660,8 @@ export class RaidComponent implements OnInit {
     // Bosses diarios
     const dailyBosses = Object.values(this.dailyRotation) as string[];
     dailyBosses.sort((a, b) =>
-      (orderMap.get(normalize(a)) ?? 999) -
-      (orderMap.get(normalize(b)) ?? 999)
+      (orderMap.get(this.raidService.normalizeName(a)) ?? 999) -
+      (orderMap.get(this.raidService.normalizeName(b)) ?? 999)
     );
     // this.bossesDaily = dailyBosses
     //   .map(addWing)
@@ -626,6 +673,11 @@ export class RaidComponent implements OnInit {
     // this.bossesNotInWeek = this.weeklyRotation?.notInWeek
     //   ? this.weeklyRotation.notInWeek.map(addWing).join("\n")
     //   : "";
+    this.bossesNotInWeekSet = new Set(
+      this.weeklyRotation.notInWeek.map((boss: string) =>
+        this.raidService.normalizeName(boss)
+      )
+    );
     this.bossesNotInWeek = this.weeklyRotation?.notInWeek
       ? this.groupByWing(this.weeklyRotation.notInWeek)
       : "";
@@ -641,8 +693,8 @@ export class RaidComponent implements OnInit {
       });
     });
     weekBosses.sort((a, b) =>
-      (orderMap.get(normalize(a)) ?? 999) -
-      (orderMap.get(normalize(b)) ?? 999)
+      (orderMap.get(this.raidService.normalizeName(a)) ?? 999) -
+      (orderMap.get(this.raidService.normalizeName(b)) ?? 999)
     );
     // this.bossesInWeek = weekBosses
     //   .map(addWing)
@@ -679,6 +731,8 @@ export class RaidComponent implements OnInit {
   }
 
   groupBossesByWing(bosses: string[]): { wing: string, bosses: string[] }[] {
+    // Agrupa los bosses por wing y devuelve un array con cada wing y sus bosses
+
     const groups = new Map<string, string[]>();
 
     bosses.forEach(boss => {
@@ -693,6 +747,21 @@ export class RaidComponent implements OnInit {
       wing,
       bosses
     }));
+  }
+
+  isBossNotInWeek(boss: string): boolean {
+    const bossNormalizado = this.raidService.normalizeName(boss);
+    return this.bossesNotInWeekSet.has(bossNormalizado);
+  }
+
+  getWeeklyBountyDays(): any[] {
+    // Devuelve los dias y bosses de la rotacion semanal
+    return this.weeklyRotation?.week || [];
+  }
+
+  getWeeklyBosses(day: any): string[] {
+    // Devuelve los 4 bosses de un dia concreto para la tabla semanal
+    return Object.values(day.bounties) as string[];
   }
 
   copyToClipboard(text: string, type: 'notInWeek' | 'daily' | 'inWeek'): void {

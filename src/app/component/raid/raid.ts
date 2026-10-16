@@ -28,36 +28,35 @@ export const LegendariaRaidId = [
     }
 ];
 
-export const TokenId = [
-    {
-        vale_guardian: 77705,
-        gorseval: 77751,
-        sabetha: 77728,
-        slothasor: 77706,
-        matthias: 77679,
-        escort: 78873,
-        keep_construct: 78902,
-        xera: 78942,
-        cairn: 80623,
-        mursaat_overseer: 80269,
-        samarog: 80087,
-        deimos: 80542,
-        soulless_horror: 85993,
-        river_of_souls: 85785,
-        statues_of_grenth: 85800,
-        voice_in_the_void: 85633,
-        conjured_amalgamate: 88543,
-        twin_largos: 88860,
-        qadim: 88645,
-        adina: 91246,
-        sabir: 91270,
-        qadim_the_peerless: 91175,
-        decima: 103754,
-        greer: 104047,
-        ura: 103996,
-        kela: 106994
-    }
-];
+export const TokenId =
+{
+    vale_guardian: 77705,
+    gorseval: 77751,
+    sabetha: 77728,
+    slothasor: 77706,
+    matthias: 77679,
+    escort: 78873,
+    keep_construct: 78902,
+    xera: 78942,
+    cairn: 80623,
+    mursaat_overseer: 80269,
+    samarog: 80087,
+    deimos: 80542,
+    soulless_horror: 85993,
+    river_of_souls: 85785,
+    statues_of_grenth: 85800,
+    voice_in_the_void: 85633,
+    conjured_amalgamate: 88543,
+    twin_largos: 88860,
+    qadim: 88645,
+    adina: 91246,
+    sabir: 91270,
+    qadim_the_peerless: 91175,
+    decima: 103754,
+    greer: 104047,
+    ura: 103996,
+    kela: 106994
+};
 
 export const RaidsInfo = [
     // https://api.guildwars2.com/v2/raids/forsaken_thicket
@@ -157,9 +156,9 @@ export const RaidsInfo = [
         name: 'The Key of Ahdashim', //the_key_of_ahdashim
         wing: 'W7',
         boss: ['gate', 'adina', 'sabir', 'qadim_the_peerless'],
-        bossOk: ['Gate', 'Adina', 'Sabir', 'Q2 Qadim The Peerless'],
+        bossOk: ['Gate', 'Adina', 'Sabir', 'Q2 Qadim the Peerless'],
         bossCompletado: [false, false, false, false],
-        bossWeekly: ['Gate', 'Adina', 'Sabir', 'Q2 Qadim The Peerless'],
+        bossWeekly: ['Gate', 'Adina', 'Sabir', 'Q2 Qadim the Peerless'],
         bossWeeklyCompletado: [false, false, false, false],
         weeklyId: 9156,
         tokenCount: [0, 0, 0, 0],
@@ -206,12 +205,12 @@ export const StrikesInfo = [
 
 export const BossBountyWing = {
     // Raids
-    "Gorseval": "W1",
     "Vale Guardian": "W1",
+    "Gorseval": "W1",
     "Sabetha": "W1",
 
     "Slothasor": "W2",
-    "Matthias": "W2",
+    "Matthias Gabrel": "W2",
 
     "Keep Construct": "W3",
     "Xera": "W3",
@@ -226,11 +225,11 @@ export const BossBountyWing = {
 
     "Conjured Amalgamate": "W6",
     "Twin Largos": "W6",
-    "Qadim": "W6",
+    "Q1 Qadim": "W6",
 
-    "Cardinal Adina": "W7",
-    "Cardinal Sabir": "W7",
-    "Qadim the Peerless": "W7",
+    "Adina": "W7",
+    "Sabir": "W7",
+    "Q2 Qadim the Peerless": "W7",
 
     "Decima": "W8",
     "Greer": "W8",
@@ -278,7 +277,7 @@ export const DailyRaidBounties = {
     ],
     boss2: [
         "Aetherblade Hideout",
-        "Cardinal Sabir",
+        "Sabir",
         "Whisper of Jormag",
         "Vale Guardian",
         "Cosmic Observatory",
@@ -292,21 +291,21 @@ export const DailyRaidBounties = {
     ],
     boss3: [
         "Slothasor",
-        "Matthias",
+        "Matthias Gabrel",
         "Xera",
         "Samarog",
         "Conjured Amalgamate",
         "Twin Largos",
         "Decima",
-        "Cardinal Adina",
+        "Adina",
         "Old Lion's Court",
         "Ura",
         "Kaineng Overlook",
         "Deimos"
     ],
     boss4: [
-        "Qadim",
-        "Qadim the Peerless",
+        "Q1 Qadim",
+        "Q2 Qadim the Peerless",
         "Soulless Horror",
         "Harvest Temple",
         "Dhuum",
@@ -314,6 +313,6 @@ export const DailyRaidBounties = {
     ]
 };
 
-export const OrdenReferenciaEng = ["Vale Guardian", "Gorseval", "Sabetha", "Slothasor", "Matthias", "Keep Construct", "Xera", "Cairn", "Mursaat Overseer", "Samarog", "Deimos", "Soulless Horror", "Dhuum", "Conjured Amalgamate", "Twin Largos", "Qadim", "Cardinal Adina", "Cardinal Sabir", "Qadim The Peerless", "Decima", "Greer", "Ura", "Shiverpeaks", "Voice of the Fallen", "Fraenir of Jormag", "Whisper of Jormag", "Boneskinner", "Cold War", "Aetherblade Hideout", "Xunlai Jade Junkyard", "Kaineng Overlook", "Harvest Temple", "Old Lion's Court", "Cosmic Observatory", "Temple of Febe", "Kela"];
+export const OrdenReferenciaEng = ["Vale Guardian", "Gorseval", "Sabetha", "Slothasor", "Matthias Gabrel", "Keep Construct", "Xera", "Cairn", "Mursaat Overseer", "Samarog", "Deimos", "Soulless Horror", "Dhuum", "Conjured Amalgamate", "Twin Largos", "Qadim Q1", "Adina", "Sabir", "Qadim Q2", "Decima", "Greer", "Ura", "Shiverpeaks", "Voice of the Fallen", "Fraenir of Jormag", "Whisper of Jormag", "Boneskinner", "Cold War", "Aetherblade Hideout", "Xunlai Jade Junkyard", "Kaineng Overlook", "Harvest Temple", "Old Lion's Court", "Cosmic Observatory", "Temple of Febe", "Kela"];
 
-export const OrdenReferenciaEsp = ["Guardián del valle", "Gorseval", "Sabetha", "Perezón", "Matías", "Ensamblaje de la Fortaleza", "Xera", "Cairn", "Dirigente mursaat", "Samarog", "Deimos", "Horror sin alma", "Dhuum", "Amalgamado conjurado", "Largos gemelos", "Qadim", "Cardenal Adina", "Cardenal Sabir", "Qadim el Simpar", "Decima", "Greer", "Ura", "Paso de las Picosescalofriantes", "Voz y Garra de los Caídos", "Fraenir de Jormag", "Susurro de Jormag", "Pelahuesos", "Guerra fría", "Escondite Filoetéreo", "Chatarrería de Xunlai Jade", "Mirador de Kaineng", "Templo de la Cosecha", "Vieja Corte del León", "Cosmic Observatory", "Temple de Febe", "Kela"];
+export const OrdenReferenciaEsp = ["Guardián del valle", "Gorseval", "Sabetha", "Perezón", "Matías Gabrel", "Ensamblaje de la Fortaleza", "Xera", "Cairn", "Dirigente mursaat", "Samarog", "Deimos", "Horror sin alma", "Dhuum", "Amalgamado conjurado", "Largos gemelos", "Qadim Q1", "Adina", "Sabir", "Qadim Q2", "Decima", "Greer", "Ura", "Paso de las Picosescalofriantes", "Voz y Garra de los Caídos", "Fraenir de Jormag", "Susurro de Jormag", "Pelahuesos", "Guerra fría", "Escondite Filoetéreo", "Chatarrería de Xunlai Jade", "Mirador de Kaineng", "Templo de la Cosecha", "Vieja Corte del León", "Cosmic Observatory", "Temple de Febe", "Kela"];

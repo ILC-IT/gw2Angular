@@ -1,3 +1,9 @@
+Ascensión volátil, +5 de potencia | +9 de resistencia a la agonía
+Ascensión volátil, +5 de concentración | +9 de resistencia a la agonía
+Ascensión volátil, +5 de vitalidad | +9 de resistencia a la agonía
+Ascensión volátil, +5 de precisión | +9 de resistencia a la agonía
+Ascensión volátil, +5 de curación | +9 de resistencia a la agonía
+Ascensión volátil, +5 de daño de condición | +9 de resistencia a la agonía
 Burbuja cromática, +5 de dureza | +9 de resistencia a la agonía
 Burbuja cromática, +5 de vitalidad | +9 de resistencia a la agonía
 Burbuja cromática, +5 de precisión | +9 de resistencia a la agonía
@@ -304,6 +310,8 @@ Infusión del ojo izquierdo de Primordus, +5 de daño de condición | +9 de resi
 Infusión del ojo izquierdo de Primordus, +5 de concentración | +9 de resistencia a la agonía
 Infusión del ojo izquierdo de Primordus, +5 de vitalidad | +9 de resistencia a la agonía
 Infusión del ojo izquierdo de Primordus, +5 de potencia | +9 de resistencia a la agonía
+Infusión demoníaca, +5 de precisión | +9 de resistencia a la agonía
+Infusión demoníaca, +5 de curación | +9 de resistencia a la agonía
 Infusión demoníaca, +5 de pericia | +9 de resistencia a la agonía
 Infusión demoníaca, +5 de concentración | +9 de resistencia a la agonía
 Infusión demoníaca, +5 de daño de condición | +9 de resistencia a la agonía

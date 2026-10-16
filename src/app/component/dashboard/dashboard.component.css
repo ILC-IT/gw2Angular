@@ -135,7 +135,6 @@ a.valid-account {
     display: inline-flex !important;
     width: auto !important;
     max-width: 180px;
-
     padding: 1rem;
     margin-top: 10px;
     background-color: #dad8d8;
@@ -167,4 +166,40 @@ a.valid-account {
 /* Panel del dropdown */
 .mat-select-panel {
     color: #fff;
+}
+
+/* KP */
+.nav-account-kp {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.nav-kp-button {
+    padding: 1rem;
+    text-decoration: none;
+    margin: 10px 0 0 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    min-height: 48px;
+    box-sizing: border-box;
+    background-color: #dad8d8;
+    color: #3d3d3d;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+.nav-kp-button:hover {
+    color: white;
+    background-color: #42545C;
+}
+
+.kp-arrow {
+    font-size: 10px;
+    margin-left: 5px;
 }

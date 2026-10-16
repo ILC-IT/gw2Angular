@@ -1,10 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { debounceTime, map } from 'rxjs/operators';
-import { TYPE_LABELS, TYPE_ICONS, VALID_MAPS_ES, VALID_MAPS_EN, normalizeText, quitarEspaciosGuionesAntesText, CHAT_CODE_HEADERS, ChatCodeType, HEADER_TO_TYPE } from './buscadorExtra';
+import { TYPE_LABELS, TYPE_ICONS, GW2_REGIONAL_MAPS, VALID_MAPS_ES, VALID_MAPS_EN, normalizeText, quitarEspaciosGuionesAntesText, CHAT_CODE_HEADERS, ChatCodeType, HEADER_TO_TYPE, RegionalMapGroup } from './buscadorExtra';
 
 @Component({
   selector: 'app-buscador',
@@ -51,6 +51,14 @@ export class BuscadorComponent implements OnInit, OnDestroy {
   selectedMapInfoEn: any = null;
   groupedByTypeEs: { [key: string]: any[] } = {};
   groupedByTypeEn: { [key: string]: any[] } = {};
+  regionalMapsEs: RegionalMapGroup[] = [];
+  regionalMapsEn: RegionalMapGroup[] = [];
+  filteredRegionalMapsEs: RegionalMapGroup[] = [];
+  filteredRegionalMapsEn: RegionalMapGroup[] = [];
+  mapSearchEs = '';
+  mapSearchEn = '';
+  @ViewChild('mapSearchInputEs') mapSearchInputEs!: ElementRef<HTMLInputElement>;
+  @ViewChild('mapSearchInputEn') mapSearchInputEn!: ElementRef<HTMLInputElement>;
 
   // Para las rutas a las pestañas de poi
   selectedTabIndex: number = 0;
@@ -110,6 +118,26 @@ export class BuscadorComponent implements OnInit, OnDestroy {
           .filter(item => !this.mapsEs.includes(item));
         console.log('Mapas que no estan en lista de validos: ', diferenciaEs); // mapas que no estan en la lista de mapas validos
 
+        const validMapsEs = new Set(
+          this.mapsEs.map(map => normalizeText(map))
+        );
+
+        this.regionalMapsEs = Object.values(GW2_REGIONAL_MAPS)
+          .map(regionData => ({
+            region: regionData.region.es,
+            maps: regionData.maps
+              .map(map => quitarEspaciosGuionesAntesText(map.es))
+              .filter(map =>
+                !!map && validMapsEs.has(normalizeText(map))
+              )
+              .sort((a, b) =>
+                normalizeText(a).localeCompare(normalizeText(b), 'es')
+              )
+          }))
+          .filter(region => region.maps.length > 0);
+
+        this.filteredRegionalMapsEs = [...this.regionalMapsEs];
+
         // console.log('Originales:', rawMaps.length);
         // console.log('Tras filtro:', filteredMaps.length);
         // console.log('Final unicos:', this.mapsEs.length);
@@ -165,6 +193,26 @@ export class BuscadorComponent implements OnInit, OnDestroy {
 
         const diferenciaEn = [...new Set(rawMaps)].filter(item => !this.mapsEn.includes(item));
         console.log('Maps that are not on the valid list:', diferenciaEn); // mapas que no estan en la lista de mapas validos
+
+        const validMapsEn = new Set(
+          this.mapsEn.map(map => normalizeText(map))
+        );
+
+        this.regionalMapsEn = Object.values(GW2_REGIONAL_MAPS)
+          .map(regionData => ({
+            region: regionData.region.en,
+            maps: regionData.maps
+              .map(map => quitarEspaciosGuionesAntesText(map.en))
+              .filter(map =>
+                !!map && validMapsEn.has(normalizeText(map))
+              )
+              .sort((a, b) =>
+                normalizeText(a).localeCompare(normalizeText(b), 'en')
+              )
+          }))
+          .filter(region => region.maps.length > 0);
+
+        this.filteredRegionalMapsEn = [...this.regionalMapsEn];
 
         // console.log('Originales:', rawMaps.length);
         // console.log('Tras filtro:', filteredMaps.length);
@@ -471,8 +519,9 @@ export class BuscadorComponent implements OnInit, OnDestroy {
       return;
     }
 
+    const selected = normalizeText(this.selectedMapEs);
     const datos = this.optionsEs.filter(item =>
-      item.map === this.selectedMapEs
+      normalizeText(item.map || '') === selected
     );
 
     this.selectedMapInfoEs = datos.length ? datos[0] : null;
@@ -493,8 +542,9 @@ export class BuscadorComponent implements OnInit, OnDestroy {
       return;
     }
 
+    const selected = normalizeText(this.selectedMapEn);
     const datos = this.optionsEn.filter(item =>
-      item.map === this.selectedMapEn
+      normalizeText(item.map || '') === selected
     );
 
     this.selectedMapInfoEn = datos.length ? datos[0] : null;
@@ -544,12 +594,16 @@ export class BuscadorComponent implements OnInit, OnDestroy {
     this.selectedMapEs = '';
     this.selectedMapInfoEs = null;
     this.groupedByTypeEs = {};
+    this.mapSearchEs = '';
+    this.filteredRegionalMapsEs = [...this.regionalMapsEs];
   }
 
   resetMapEn(): void {
     this.selectedMapEn = '';
     this.selectedMapInfoEn = null;
     this.groupedByTypeEn = {};
+    this.mapSearchEn = '';
+    this.filteredRegionalMapsEn = [...this.regionalMapsEn];
   }
 
   // Para que salga en el mat-label el texto correcto dependiendo del tipo seleccionado
@@ -610,6 +664,68 @@ export class BuscadorComponent implements OnInit, OnDestroy {
       return 'POI (Landmark)';
     }
     return t.charAt(0).toUpperCase() + t.slice(1);
+  }
+
+  filterMapsEs(): void {
+    const search = normalizeText(this.mapSearchEs || '');
+
+    if (!search) {
+      this.filteredRegionalMapsEs = [...this.regionalMapsEs];
+      return;
+    }
+
+    this.filteredRegionalMapsEs = this.regionalMapsEs
+      .map(region => ({
+        region: region.region,
+        maps: region.maps.filter(map =>
+          normalizeText(map).includes(search)
+        )
+      }))
+      .filter(region => region.maps.length > 0);
+  }
+
+  filterMapsEn(): void {
+    const search = normalizeText(this.mapSearchEn || '');
+
+    if (!search) {
+      this.filteredRegionalMapsEn = [...this.regionalMapsEn];
+      return;
+    }
+
+    this.filteredRegionalMapsEn = this.regionalMapsEn
+      .map(region => ({
+        region: region.region,
+        maps: region.maps.filter(map =>
+          normalizeText(map).includes(search)
+        )
+      }))
+      .filter(region => region.maps.length > 0);
+  }
+
+  onMapOpenedEs(opened: boolean): void {
+    if (!opened) {
+      return;
+    }
+
+    this.mapSearchEs = '';
+    this.filteredRegionalMapsEs = [...this.regionalMapsEs];
+
+    setTimeout(() => {
+      this.mapSearchInputEs?.nativeElement.focus();
+    });
+  }
+
+  onMapOpenedEn(opened: boolean): void {
+    if (!opened) {
+      return;
+    }
+
+    this.mapSearchEn = '';
+    this.filteredRegionalMapsEn = [...this.regionalMapsEn];
+
+    setTimeout(() => {
+      this.mapSearchInputEn?.nativeElement.focus();
+    });
   }
 
   // sendSearchById() {
@@ -694,35 +810,10 @@ export class BuscadorComponent implements OnInit, OnDestroy {
     this.loadingNombre = false;
   }
 
-  // sendFormName(){
-  //   if (this.formularioName.status == "INVALID"){
-  //     return;
-  //   }
-
-  //   const value = this.formularioName.get('nameEn')?.value;
-
-  //   // input vacio, no mostrar nada
-  //   if (!value) {
-  //     this.busquedaRealizadaEn = false;
-  //     this.resultadoName = null;
-  //     return;
-  //   }
-  //   // texto escrito pero no seleccionado
-  //   if (typeof value === 'string') {
-  //     this.busquedaRealizadaEn = true;
-  //     this.resultadoName = null;
-  //     return;
-  //   }
-  //   // seleccion valida
-  //   this.busquedaRealizadaEn = true;
-  //   this.resultadoName = value;
-  //   this.loadingName = true;
-  // }
-
   sendFormName() {
     const id = this.formularioName.get('id')?.value;
-    const nombre = this.formularioName.get('nombreEn')?.value;
-    const tipo = this.formularioName.get('tipo')?.value;
+    const nombre = this.formularioName.get('nameEn')?.value;
+    const tipo = this.formularioName.get('type')?.value;
 
     this.loadingName = true; // empieza busqueda
 

@@ -1,10 +1,34 @@
-// Este script compara dos archivos JSON de infusiones y genera tres archivos de salida: uno para las infusiones añadidas, otro para las eliminadas y otro para las modificadas
+// Este script compara dos archivos JSON de infusiones y genera tres archivos de salida: 
+// uno para las infusiones añadidas, otro para las eliminadas y otro para las modificadas
+
+// IMPORTANTE: 
+// Renombrar archivo antiguo de infusiones a "infusions-old.json" y el nuevo a "infusions.json" antes de ejecutar este script
 
 const fs = require('fs');
+const path = require('path');
+
+// Carpeta de trabajo
+const workDir = path.join(__dirname, 'files_to_work');
 
 // Archivos a comparar
-const OLD_FILE = 'infusions-old.json';
-const NEW_FILE = 'infusions.json';
+const OLD_FILE = path.join(workDir, 'infusions-old.json');
+const NEW_FILE = path.join(workDir, 'infusions.json');
+
+// Comprobar que existen los dos archivos antes de continuar
+const missingFiles = [OLD_FILE, NEW_FILE].filter(
+    file => !fs.existsSync(file)
+);
+
+if (missingFiles.length > 0) {
+    console.error("\nERROR: Faltan los siguientes archivos:");
+
+    missingFiles.forEach(file => {
+        console.error(` - ${path.basename(file)}`);
+    });
+
+    console.error("\nComparación cancelada.");
+    process.exit(1);
+}
 
 // Leer archivos
 const oldData = JSON.parse(
@@ -14,7 +38,6 @@ const oldData = JSON.parse(
 const newData = JSON.parse(
     fs.readFileSync(NEW_FILE, 'utf8')
 );
-
 
 // Crear Maps por ID
 const oldMap = new Map(
@@ -57,7 +80,6 @@ function compareStats(oldStat, newStat) {
         ? newStat
         : [];
 
-
     // Convertir los atributos en Maps usando "attribute" como identificador
     const oldStats = new Map(
         oldStat.map(stat => [
@@ -73,9 +95,7 @@ function compareStats(oldStat, newStat) {
         ])
     );
 
-
     // Atributos nuevos o modificados
-
     for (const [attribute, newValue] of newStats) {
 
         const oldValue = oldStats.get(attribute);
@@ -174,7 +194,6 @@ for (const [id, newItem] of newMap) {
         newItem.stat
     );
 
-
     if (statChanges.length > 0) {
 
         changes.push({
@@ -213,39 +232,49 @@ changed.sort((a, b) => a.id - b.id);
 
 // Guardar resultados
 if (added.length > 0) {
-    fs.writeFileSync('infusions-added.json', JSON.stringify(added, null, 4), 'utf8');
+    fs.writeFileSync(
+        path.join(workDir, 'infusions-added.json'),
+        JSON.stringify(added, null, 4),
+        'utf8'
+    );
 }
 
 if (removed.length > 0) {
-    fs.writeFileSync('infusions-removed.json', JSON.stringify(removed, null, 4), 'utf8');
+    fs.writeFileSync(
+        path.join(workDir, 'infusions-removed.json'),
+        JSON.stringify(removed, null, 4),
+        'utf8'
+    );
 }
 
 if (changed.length > 0) {
-    fs.writeFileSync('infusions-changed.json', JSON.stringify(changed, null, 4), 'utf8');
+    fs.writeFileSync(
+        path.join(workDir, 'infusions-changed.json'),
+        JSON.stringify(changed, null, 4),
+        'utf8'
+    );
 }
 
-// Resumen
+// Logs
 console.log('');
 console.log('=================================');
 console.log('Comparacion terminada');
 console.log('=================================');
-
 console.log(`Infusiones anteriores: ${oldData.length}`);
-
 console.log(`Infusiones actuales:   ${newData.length}`);
-
 console.log(`Nuevas:                ${added.length}`);
-
-console.log(`Eliminadas:             ${removed.length}`);
-
-console.log(`Modificadas:            ${changed.length}`);
-
+console.log(`Eliminadas:            ${removed.length}`);
+console.log(`Modificadas:           ${changed.length}`);
 console.log('');
-
-console.log('Archivos generados:');
-
-console.log('  infusions-added.json');
-
-console.log('  infusions-removed.json');
-
-console.log('  infusions-changed.json');
+if (added.length > 0 || removed.length > 0 || changed.length > 0) {
+    console.log('Archivos generados:');
+}
+if (added.length > 0) {
+    console.log('  infusions-added.json');
+}
+if (removed.length > 0) {
+    console.log('  infusions-removed.json');
+}
+if (changed.length > 0) {
+    console.log('  infusions-changed.json');
+}

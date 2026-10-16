@@ -1,7 +1,7 @@
 h2 {
     text-align: center;
-  }
-  
+}
+
 h2 a {
     font-size: inherit;
 }
@@ -32,7 +32,6 @@ a {
     min-width: 350px;
     margin: 2.5rem auto;
     box-sizing: border-box;
-
     order: 0;
     flex: 0 1 auto;
     align-self: stretch;
@@ -68,7 +67,8 @@ a:hover {
     margin: 2px;
 }
 
-/* Esto es para evitar que el cursor cambie a pointer al pasar por encima de los resultados, ya que no son clicables. */
+/* Esto es para evitar que el cursor cambie a pointer 
+al pasar por encima de los resultados, ya que no son clicables */
 .result,
 .result *,
 mat-card.result,
@@ -76,12 +76,13 @@ mat-card.result * {
     cursor: default !important;
 }
 
-::ng-deep.mat-tab-label, ::ng-deep.mat-tab-label-content {
+::ng-deep.mat-tab-label,
+::ng-deep.mat-tab-label-content {
     /*min-width: 1!important;*/
-    padding: 3px!important;
-    margin: 3px!important;
+    padding: 3px !important;
+    margin: 3px !important;
     font-size: large;
- }
+}
 
 .mat-card-image {
     /*object-fit: fill; */
@@ -100,7 +101,6 @@ mat-card.result * {
 textarea {
     display: block;
     margin: auto
-    /* margin: 4px 0 8px; */
 }
 
 /* .mat-form-field + .mat-form-field {
@@ -134,7 +134,8 @@ table {
 }
 
 ::ng-deep .mat-sort-header-arrow {
-    color: red; /*change color of arrow*/
+    color: red;
+    /*change color of arrow*/
 }
 
 .waypoint {
@@ -142,7 +143,8 @@ table {
     flex-direction: column;
 }
 
-::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
     background-color: #005691;
 }
 
@@ -152,11 +154,11 @@ table {
 }
 
 .green {
-    background-color:rgb(195, 248, 195);
+    background-color: rgb(195, 248, 195);
 }
 
 .red {
-    color:rgb(255, 0, 0);
+    color: rgb(255, 0, 0);
 }
 
 button {
@@ -177,7 +179,7 @@ button {
     justify-content: center;
 }
 
-.completadas > a {
+.completadas>a {
     max-width: 700px;
     width: 90%;
     box-sizing: border-box;
@@ -254,7 +256,7 @@ button {
 }
 
 .tier-separator td {
-  border-top: 2px solid #000;
+    border-top: 2px solid #000;
 }
 
 .separador {
@@ -283,7 +285,7 @@ button {
 
 .link-button:hover {
     transform: scale(1.05);
-    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }
 
 .centrado {
@@ -303,24 +305,40 @@ button {
 }
 
 .responsive-container {
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     row-gap: 16px;
     text-align: center;
     padding: 8px;
     overflow-x: auto;
 }
 
-img { 
-    width: 25px; 
-    height: 25px; 
+img {
+    width: 25px;
+    height: 25px;
+}
+
+/* .daily-fractal {
+    font-weight: bold;
+    text-transform: uppercase;
+} */
+
+.daily-mark {
+    color: #4caf50;
+    margin-left: 5px;
+}
+
+.daily-row {
+    background-color: rgb(195, 248, 195);
 }
 
 .desplegable {
-    background-color: rgb(218, 216, 216); /*(230, 227, 227)*/ 
+    background-color: rgb(218, 216, 216);
+    /*(230, 227, 227)*/
 }
 
 .error-api {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 15px;
@@ -334,7 +352,19 @@ img {
 }
 
 .error-api p {
+    white-space: pre-line;
     margin: 8px 0 15px;
+}
+
+.error-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.error-header mat-icon {
+    flex-shrink: 0;
 }
 
 .loading-api {
@@ -354,7 +384,7 @@ img {
         width: 100%;
         margin-right: 0;
     }
-    
+
     .legend-icon {
         width: 18px;
         height: 18px;
@@ -387,7 +417,7 @@ img {
         padding: 0 8px;
     }
 
-    .daily-menu > a {
+    .daily-menu>a {
         min-width: 0;
         width: 100%;
         max-width: 100%;
@@ -402,7 +432,7 @@ img {
         box-sizing: border-box;
     }
 
-    .completadas > a {
+    .completadas>a {
         min-width: 0;
         width: 100%;
         max-width: 100%;

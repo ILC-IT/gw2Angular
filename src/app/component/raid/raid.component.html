@@ -64,10 +64,19 @@
                                 {{ item.bossCompletado[i] === true ? 'check_box' : 'cancel' }}
                             </mat-icon>
                             <div mat-line *ngIf="item.tokenCount[i] !== 0; else soloNombre">
-                                {{raidBoss}} ({{item.tokenCount[i]}})
+                                {{raidBoss}}
+                                <span *ngIf="isBossNotInWeek(raidBoss)" class="not-in-week-star"
+                                    matTooltip="Boss no semanal">
+                                    ★
+                                </span>
+                                ({{ item.tokenCount[i] }})
                             </div>
                             <ng-template #soloNombre mat-line>
                                 {{raidBoss}}
+                                <span *ngIf="isBossNotInWeek(raidBoss)" class="not-in-week-star"
+                                    matTooltip="Boss no semanal">
+                                    ★
+                                </span>
                             </ng-template>
                         </mat-list-item>
                     </mat-list>
@@ -225,26 +234,68 @@
 
         <!-- Grid de 4 columnas con Daily Raid Bounties -->
         <div class="daily-bounties-container">
+            <!-- Checkbox para filtrar bosses no disponibles y ver rotacion por dias -->
+            <div class="daily-bounties-options">
+                <mat-checkbox *ngIf="!mostrarTablaPorDias" [(ngModel)]="filtrarBossesNoDisponibles" color="primary">
+                    {{ filtrarBossesNoDisponibles
+                    ? 'Bosses no disponibles esta semana ocultos'
+                    : 'Bosses no disponibles esta semana visibles' }}
+                </mat-checkbox>
+                <mat-checkbox [(ngModel)]="mostrarTablaPorDias" color="primary">
+                    {{ mostrarTablaPorDias ? 'Ver rotación normal' : 'Ver rotación por días' }}
+                </mat-checkbox>
+            </div>
             <!-- Contenedor grid con 4 columnas -->
-            <div class="daily-bounties-grid">
-                <mat-card class="mat-elevation-z4 daily-bounties-card" *ngFor="let key of getDailyBossKeys()">
-                    <!-- CABECERA -->
-                    <div class="daily-bounties-card-header">
-                        <h3>
-                            {{ key.replace('boss', 'Boss ') }}
-                        </h3>
-                    </div>
-                    <!-- BOSSES DAILY -->
-                    <mat-list class="daily-bounties-list">
-                        <mat-list-item *ngFor="let boss of getDailyBossByKey(key)" class="daily-bounties-list-item">
-                            <div mat-line class="daily-bounties-list-item-text">
-                                <mat-chip class="boss-chip2" [ngClass]="getBossClass(boss)">
-                                    {{ getDisplayBoss(boss) }}
-                                </mat-chip>
-                            </div>
-                        </mat-list-item>
-                    </mat-list>
-                </mat-card>
+            <div *ngIf="!mostrarTablaPorDias">
+                <div class="daily-bounties-grid">
+                    <mat-card class="mat-elevation-z4 daily-bounties-card" *ngFor="let key of getDailyBossKeys()">
+                        <!-- CABECERA -->
+                        <div class="daily-bounties-card-header">
+                            <h3>
+                                {{ key.replace('boss', 'Boss ') }}
+                            </h3>
+                        </div>
+                        <!-- BOSSES DAILY -->
+                        <mat-list class="daily-bounties-list">
+                            <mat-list-item *ngFor="let boss of getDailyBossByKey(key)" class="daily-bounties-list-item">
+                                <div mat-line class="daily-bounties-list-item-text">
+                                    <mat-chip class="boss-chip2" [ngClass]="getBossClass(boss)">
+                                        {{ getDisplayBoss(boss) }}
+                                    </mat-chip>
+                                </div>
+                            </mat-list-item>
+                        </mat-list>
+                    </mat-card>
+                </div>
+            </div>
+
+            <!-- VISTA POR DIAS -->
+            <div *ngIf="mostrarTablaPorDias">
+                <div class="weekly-bounties-table-wrapper">
+                    <table class="weekly-bounties-table">
+                        <thead>
+                            <tr>
+                                <th>Día</th>
+                                <th>Boss 1</th>
+                                <th>Boss 2</th>
+                                <th>Boss 3</th>
+                                <th>Boss 4</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let day of getWeeklyBountyDays()">
+                                <td class="weekly-day">
+                                    {{ day.dayName | titlecase }}
+                                </td>
+                                <td *ngFor="let boss of getWeeklyBosses(day)">
+                                    <mat-chip class="boss-chip2" [ngClass]="getWeeklyBossClass(boss, day)">
+                                        {{ getWeeklyDisplayBoss(boss, day) }}
+                                    </mat-chip>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             <!-- Leyenda de colores -->
@@ -278,7 +329,15 @@
                         <span>Bosses disponibles esta semana</span>
                     </div>
                 </div>
+                <div class="reset">
+                    *Resets each day with the
+                    <a href="https://wiki.guildwars2.com/wiki/Server_reset" target="_blank" rel="noopener noreferrer"
+                        class="reset-link">
+                        server reset ↗
+                    </a>
+                </div>
             </div>
+
         </div>
     </mat-tab>
 

@@ -1,10 +1,27 @@
 <h2 class="component-title">Enlaces</h2>
 
-<div class="enlaces">
-  <a *ngFor="let enlace of enlaces" [href]="enlace.url" target="_blank" rel="noopener noreferrer"
-    style="text-decoration: none">
+<div class="enlaces-container">
 
-    <button mat-button>{{ enlace.label }}</button>
+  <section class="seccion" *ngFor="let seccion of secciones">
 
-  </a>
+    <h3>{{ seccion.nombre }}</h3>
+
+    <div class="enlaces">
+
+      <a *ngFor="let enlace of seccion.enlaces" [href]="enlace.url" target="_blank" rel="noopener noreferrer"
+        class="enlace">
+        <span>
+          {{ enlace.label }}
+          <ng-container *ngIf="enlace.sublabel">
+            <br>
+            <small>{{ enlace.sublabel }}</small>
+          </ng-container>
+        </span>
+        <span class="flecha">↗</span>
+      </a>
+
+    </div>
+
+  </section>
+
 </div>

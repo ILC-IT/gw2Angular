@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { HeroService } from 'src/app/service/hero.service';
 import { LegendaryService } from 'src/app/service/legendary.service';
-import { legendarios, armaduraLigera, armaduraMedia, armaduraPesada, runa, sello, anilloRaid, t6, idsT6, vales, cantidadArmadura, cantidadRunas, cantidadSellos, valeId, trebolId, liId, ectoplasmaId, liArmadura, trebolArmadura, trebolRuna, trebolSello, trebolAnilloRaid, t6ArmaduraSelloRuna, ectoplasmaRuna, ectoplasmaSello, liAnilloRaid, t6AnilloRaid, obsidianaArmadura, obsidianaRuna, obsidianaSello, obsidianaId, favorImperial, otrosComponentes, lingoteAurico, placaReclamada, huevoChak, piezaAeronave, trozoAurilio, cristalLineaLey, montonCristalLuminoso, aspectoMistico, talismanBrillantez, talismanPotencia, talismanHabilidad, motaMistica, simboloControl, simboloMejora, simboloDolor, monedaMistica, preciosVarios, idsPreciosVarios, legendaryWeapons1, legendaryWeapons2, legendaryWeapons3, legendaryWeapons3Variants, donExploracion, donBatalla, notasInvestigacion, monedaMazmorra, otrosLegendarios, anilloMundo, legendaryAccessory, amuletoPvE, amuletoPvP, legendaryRelic, legendaryWeaponsOther, legendaryBack, armaduraLigeraPve, armaduraMediaPve, armaduraPesadaPve, insigniaFarolero, ambarGris, vetusta, amalgamada, amalgamadaDraconica, recuerdoAurene, piedraJade, florMielera, troncoPinoTierrasBajas, ambarTitan, mineralTitan, quemateritaTitan, obsidianaMursaat, piedraRunicaMursaat, esquirlaCuriosaMursaat, restoCuriosidadMursaat, ursusObligue, saviaRica, ducadoAnticuado, esenciaDesesperacionT1, esenciaAvariciaT2, esenciaTriunfoT3, monedaAntigua, monedaInusual, magiaLiberada, magiaVolatil, esquirlaEspiritual, legendaryGlovesFractal, ColorRule, cartera, legendaryAquaticHeadgear, legendaryWeaponsGenOther, anilloPvE, oroMoneda, karma, laurel, tiqueWvW, saviaCromatica, piedraEncantamientoBruto, fragmentoPiedraSombria, CommercePrice } from './legendary';
+import { legendarios, armaduraLigera, armaduraMedia, armaduraPesada, runa, sello, anilloRaid, t6, idsT6, vales, cantidadArmadura, cantidadRunas, cantidadSellos, valeId, trebolId, liId, ectoplasmaId, liArmadura, trebolArmadura, trebolRuna, trebolSello, trebolAnilloRaid, t6ArmaduraSelloRuna, ectoplasmaRuna, ectoplasmaSello, liAnilloRaid, t6AnilloRaid, obsidianaArmadura, obsidianaRuna, obsidianaSello, obsidianaId, favorImperial, otrosComponentes, lingoteAurico, placaReclamada, huevoChak, piezaAeronave, trozoAurilio, cristalLineaLey, montonCristalLuminoso, aspectoMistico, talismanBrillantez, talismanPotencia, talismanHabilidad, motaMistica, simboloControl, simboloMejora, simboloDolor, monedaMistica, preciosVarios, idsPreciosVarios, legendaryWeapons1, legendaryWeapons2, legendaryWeapons3, legendaryWeapons3Variants, donExploracion, donBatalla, notasInvestigacion, monedaMazmorra, otrosLegendarios, anilloMundo, legendaryAccessory, amuletoPvE, amuletoPvP, legendaryRelic, legendaryWeaponsOther, legendaryBack, armaduraLigeraPve, armaduraMediaPve, armaduraPesadaPve, insigniaFarolero, ambarGris, vetusta, amalgamada, amalgamadaDraconica, recuerdoAurene, piedraJade, florMielera, troncoPinoTierrasBajas, ambarTitan, mineralTitan, quemateritaTitan, obsidianaMursaat, piedraRunicaMursaat, esquirlaCuriosaMursaat, restoCuriosidadMursaat, ursusObligue, saviaRica, ducadoAnticuado, esenciaDesesperacionT1, esenciaAvariciaT2, esenciaTriunfoT3, monedaAntigua, monedaInusual, magiaLiberada, magiaVolatil, esquirlaEspiritual, legendaryGlovesFractal, ColorRule, cartera, legendaryAquaticHeadgear, legendaryWeaponsGenOther, anilloPvE, oroMoneda, karma, laurel, tiqueWvW, saviaCromatica, piedraEncantamientoBruto, fragmentoPiedraSombria, datoInvestigacionPiedraSombria, CommercePrice } from './legendary';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -612,6 +612,15 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     gaste: 0,
     necesito: 0
   }
+  datoInvestigacionPiedraSombria: otrosComponentes = {
+    nombre: "Dato de investigación de piedra sombría",
+    id: datoInvestigacionPiedraSombria[0].id,
+    icon: datoInvestigacionPiedraSombria[0].icon,
+    cantidad: 0,
+    tengo: 0,
+    gaste: 0,
+    necesito: 0
+  }
   filaEnBlancoOtros: otrosComponentes = {
     nombre: "",
     id: 0,
@@ -642,7 +651,8 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     this.monedaMistica,
     this.saviaCromatica,
     this.piedraEncantamientoBruto,
-    this.fragmentoPiedraSombria
+    this.fragmentoPiedraSombria,
+    this.datoInvestigacionPiedraSombria
   ]
   // tabla otros componentes
   displayedColumnsOtros: string[] = ['nombre', 'id', 'icon', 'tengo', 'cantidad', 'gaste', 'necesito'];
@@ -771,7 +781,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     modo: legendaryWeaponsOther[2].modo,
     icon: legendaryWeaponsOther[2].icon,
     wiki: legendaryWeaponsOther[2].wiki,
-    expansion: legendaryWeaponsOther[1].expansion
+    expansion: legendaryWeaponsOther[2].expansion
   }
   baculoVoELegendario: otrosLegendarios = {
     id: legendaryWeaponsOther[3].id,
@@ -782,6 +792,16 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     icon: legendaryWeaponsOther[3].icon,
     wiki: legendaryWeaponsOther[3].wiki,
     expansion: legendaryWeaponsOther[3].expansion
+  }
+  espadaVoELegendario: otrosLegendarios = {
+    id: legendaryWeaponsOther[4].id,
+    nombre: legendaryWeaponsOther[4].nombre,
+    tengo: legendaryWeaponsOther[4].tengo,
+    tipo: legendaryWeaponsOther[4].tipo,
+    modo: legendaryWeaponsOther[4].modo,
+    icon: legendaryWeaponsOther[4].icon,
+    wiki: legendaryWeaponsOther[4].wiki,
+    expansion: legendaryWeaponsOther[4].expansion
   }
   mochilaWvW: otrosLegendarios = {
     id: legendaryBack[0].id,
@@ -901,6 +921,7 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
     this.lanzaJanthirLegendaria,
     this.lanzaVoELegendaria,
     this.baculoVoELegendario,
+    this.espadaVoELegendario,
     this.obsidianaLigera,
     this.obsidianaMedia,
     this.obsidianaPesada,
@@ -910,12 +931,12 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
 
   colorRules: ColorRule[] = [
     {
-      nombre: [this.anilloPvERaid.nombre, this.anilloWvW.nombre, this.anilloPve.nombre, this.accesorioPvE0.nombre, this.accesorioPvE1.nombre, this.accesorioPvE2.nombre, this.accesorioWvW0.nombre, this.amuletoPvE.nombre, this.amuletoPvP.nombre, this.reliquiaLegendaria.nombre, this.mochilaPvE.nombre, this.mochilaFractal.nombre, this.mochilaPvP.nombre, this.mochilaWvW.nombre, this.lanzaJanthirLegendaria.nombre, this.lanzaVoELegendaria.nombre, this.baculoVoELegendario.nombre, this.obsidianaLigera.nombre, this.obsidianaMedia.nombre, this.obsidianaPesada.nombre, this.guantesFractal.nombre, this.respiradorAcuatico.nombre],
+      nombre: [this.anilloPvERaid.nombre, this.anilloWvW.nombre, this.anilloPve.nombre, this.accesorioPvE0.nombre, this.accesorioPvE1.nombre, this.accesorioPvE2.nombre, this.accesorioWvW0.nombre, this.amuletoPvE.nombre, this.amuletoPvP.nombre, this.reliquiaLegendaria.nombre, this.mochilaPvE.nombre, this.mochilaFractal.nombre, this.mochilaPvP.nombre, this.mochilaWvW.nombre, this.lanzaJanthirLegendaria.nombre, this.lanzaVoELegendaria.nombre, this.baculoVoELegendario.nombre, this.espadaVoELegendario.nombre, this.obsidianaLigera.nombre, this.obsidianaMedia.nombre, this.obsidianaPesada.nombre, this.guantesFractal.nombre, this.respiradorAcuatico.nombre],
       condition: (t) => t === 0,
       className: 'redBackGround'
     },
     {
-      nombre: [this.anilloPvERaid.nombre, this.anilloWvW.nombre, this.anilloPve.nombre, this.accesorioPvE0.nombre, this.accesorioPvE1.nombre, this.accesorioPvE2.nombre, this.accesorioWvW0.nombre, this.amuletoPvE.nombre, this.amuletoPvP.nombre, this.reliquiaLegendaria.nombre, this.mochilaPvE.nombre, this.mochilaFractal.nombre, this.mochilaPvP.nombre, this.mochilaWvW.nombre, this.lanzaJanthirLegendaria.nombre, this.lanzaVoELegendaria.nombre, this.baculoVoELegendario.nombre],
+      nombre: [this.anilloPvERaid.nombre, this.anilloWvW.nombre, this.anilloPve.nombre, this.accesorioPvE0.nombre, this.accesorioPvE1.nombre, this.accesorioPvE2.nombre, this.accesorioWvW0.nombre, this.amuletoPvE.nombre, this.amuletoPvP.nombre, this.reliquiaLegendaria.nombre, this.mochilaPvE.nombre, this.mochilaFractal.nombre, this.mochilaPvP.nombre, this.mochilaWvW.nombre, this.lanzaJanthirLegendaria.nombre, this.lanzaVoELegendaria.nombre, this.baculoVoELegendario.nombre, this.espadaVoELegendario.nombre],
       condition: (t) => t > 0,
       className: 'greenBackGround'
     },
@@ -1465,6 +1486,9 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
         if (materials[i].id === fragmentoPiedraSombria[0].id) {
           this.fragmentoPiedraSombria.tengo = materials[i].count;
         }
+        if (materials[i].id === datoInvestigacionPiedraSombria[0].id) {
+          this.datoInvestigacionPiedraSombria.tengo = materials[i].count;
+        }
         //Varios
         if (materials[i].id === insigniaFarolero[0].id) {
           this.insigniaFarolero.tengo = materials[i].count;
@@ -1530,6 +1554,20 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
 
   getLegendaryTengo() {
     this.heroService.getLegendaryArmory().subscribe((legendary: any) => {
+      // Reiniciar contadores
+      this.armaduraLigeraCount = 0;
+      this.armaduraMediaCount = 0;
+      this.armaduraPesadaCount = 0;
+      this.anilloRaidCount = 0;
+      this.runaCount = 0;
+      this.selloCount = 0;
+
+      // Reiniciar partes
+      this.obsidianaLigera.tengo = 0;
+      this.obsidianaMedia.tengo = 0;
+      this.obsidianaPesada.tengo = 0;
+      this.guantesFractal.tengo = 0;
+      this.respiradorAcuatico.tengo = 0;
 
       // Inicializo a cero el array tengoPartes segun su longitud definida en legendary.ts
       this.obsidianaLigera.tengoPartes = Array(this.getIdLength(this.obsidianaLigera.id)).fill(0);
@@ -1611,6 +1649,9 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
         }
         if (legendary[i].id === this.baculoVoELegendario.id) {
           this.baculoVoELegendario.tengo = legendary[i].count;
+        }
+        if (legendary[i].id === this.espadaVoELegendario.id) {
+          this.espadaVoELegendario.tengo = legendary[i].count;
         }
         for (let j = 0; j < armaduraLigeraPve[0].id.length; j++) {
           if (legendary[i].id === armaduraLigeraPve[0].id[j]) {
@@ -1754,30 +1795,38 @@ export class LegendaryComponent implements OnInit, AfterViewInit {
       this.tengoDatos.totalT6 = minimo;
 
       this.heroService.getWallet().subscribe((wallet: any) => {
-        this.valeCount = wallet.find((o: { id: number; value: number }) => o.id === valeId[0].idWallet)?.value ?? 0;
-        this.liCount = wallet.find((o: { id: number; value: number }) => o.id === liId[0].idWallet)?.value ?? 0;
+
+        const walletMap = new Map<number, number>(
+          wallet.map((item: { id: number; value: number }) => [item.id, item.value])
+        );
+
+        const getWalletValue = (id: number): number =>
+          walletMap.get(id) ?? 0;
+
+        this.valeCount = getWalletValue(valeId[0].idWallet);
+        this.liCount = getWalletValue(liId[0].idWallet);
         this.tengoDatos.totalVales = this.valeCount;
         this.tengoDatos.totalLi = this.liCount;
         //otros
-        this.trozoAurilio.tengo = wallet.find((o: { id: number; value: number }) => o.id === trozoAurilio[0].idWallet)?.value ?? 0;
-        this.piezaAeronave.tengo = wallet.find((o: { id: number; value: number }) => o.id === piezaAeronave[0].idWallet)?.value ?? 0;
-        this.cristalLineaLey.tengo = wallet.find((o: { id: number; value: number }) => o.id === cristalLineaLey[0].idWallet)?.value ?? 0;
-        this.oroMoneda.tengo = wallet.find((o: { id: number; value: number }) => o.id === oroMoneda[0].idWallet)?.value ?? 0;
-        this.karma.tengo = wallet.find((o: { id: number; value: number }) => o.id === karma[0].idWallet)?.value ?? 0;
-        this.laurel.tengo = wallet.find((o: { id: number; value: number }) => o.id === laurel[0].idWallet)?.value ?? 0;
-        this.tiqueWvW.tengo = wallet.find((o: { id: number; value: number }) => o.id === tiqueWvW[0].idWallet)?.value ?? 0;
-        this.esenciat1.tengo = wallet.find((o: { id: number; value: number }) => o.id === esenciaDesesperacionT1[0].idWallet)?.value ?? 0;
-        this.esenciat2.tengo = wallet.find((o: { id: number; value: number }) => o.id === esenciaAvariciaT2[0].idWallet)?.value ?? 0;
-        this.esenciat3.tengo = wallet.find((o: { id: number; value: number }) => o.id === esenciaTriunfoT3[0].idWallet)?.value ?? 0;
-        this.monedaAntigua.tengo = wallet.find((o: { id: number; value: number }) => o.id === monedaAntigua[0].idWallet)?.value ?? 0;
-        this.monedaInusual.tengo = wallet.find((o: { id: number; value: number }) => o.id === monedaInusual[0].idWallet)?.value ?? 0;
-        this.ursusObligue.tengo = wallet.find((o: { id: number; value: number }) => o.id === ursusObligue[0].idWallet)?.value ?? 0;
-        this.saviaRica.tengo = wallet.find((o: { id: number; value: number }) => o.id === saviaRica[0].idWallet)?.value ?? 0;
-        this.ducadoAnticuado.tengo = wallet.find((o: { id: number; value: number }) => o.id === ducadoAnticuado[0].idWallet)?.value ?? 0;
-        this.magiaLiberada[0].tengoEnCartera = wallet.find((o: { id: number; value: number }) => o.id === magiaLiberada[0].idWallet)?.value ?? 0;
-        this.magiaVolatil[0].tengoEnCartera = wallet.find((o: { id: number; value: number }) => o.id === magiaVolatil[0].idWallet)?.value ?? 0;
-        this.esquirlaEspiritual[0].tengoEnCartera = wallet.find((o: { id: number; value: number }) => o.id === esquirlaEspiritual[0].idWallet)?.value ?? 0;
-        this.favorImperial[0].tengoEnCartera = wallet.find((o: { id: number; value: number }) => o.id === favorImperial[0].idWallet)?.value ?? 0;
+        this.trozoAurilio.tengo = getWalletValue(trozoAurilio[0].idWallet);
+        this.piezaAeronave.tengo = getWalletValue(piezaAeronave[0].idWallet);
+        this.cristalLineaLey.tengo = getWalletValue(cristalLineaLey[0].idWallet);
+        this.oroMoneda.tengo = getWalletValue(oroMoneda[0].idWallet);
+        this.karma.tengo = getWalletValue(karma[0].idWallet);
+        this.laurel.tengo = getWalletValue(laurel[0].idWallet);
+        this.tiqueWvW.tengo = getWalletValue(tiqueWvW[0].idWallet);
+        this.esenciat1.tengo = getWalletValue(esenciaDesesperacionT1[0].idWallet);
+        this.esenciat2.tengo = getWalletValue(esenciaAvariciaT2[0].idWallet);
+        this.esenciat3.tengo = getWalletValue(esenciaTriunfoT3[0].idWallet);
+        this.monedaAntigua.tengo = getWalletValue(monedaAntigua[0].idWallet);
+        this.monedaInusual.tengo = getWalletValue(monedaInusual[0].idWallet);
+        this.ursusObligue.tengo = getWalletValue(ursusObligue[0].idWallet);
+        this.saviaRica.tengo = getWalletValue(saviaRica[0].idWallet);
+        this.ducadoAnticuado.tengo = getWalletValue(ducadoAnticuado[0].idWallet);
+        this.magiaLiberada[0].tengoEnCartera = getWalletValue(magiaLiberada[0].idWallet);
+        this.magiaVolatil[0].tengoEnCartera = getWalletValue(magiaVolatil[0].idWallet);
+        this.esquirlaEspiritual[0].tengoEnCartera = getWalletValue(esquirlaEspiritual[0].idWallet);
+        this.favorImperial[0].tengoEnCartera = getWalletValue(favorImperial[0].idWallet);
 
         this.getMatsGaste(); //cuantos vales, treboles, lis, ectoplasma gasté ya
         this.getOtrosGaste(); //cuantos otros gasté ya

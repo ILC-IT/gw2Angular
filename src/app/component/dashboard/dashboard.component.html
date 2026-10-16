@@ -112,10 +112,6 @@
                 style="text-decoration: none">GW2Eff</a>
 
             &nbsp;
-            <a href="https://killproof.me/account/gw2accounts" target="_blank" rel="noopener noreferrer"
-                style="text-decoration: none">KP</a>
-
-            &nbsp;
             <a routerLink="/accounts">Accounts</a>
 
             &nbsp;
@@ -140,14 +136,35 @@
                     No account selected
                 </ng-container>
             </a>
+            <div class="nav-account-kp">
+                <div class="nav-select-wrapper" (click)="accountSelect.open()">
+                    <mat-select #accountSelect class="nav-select-btn" placeholder="Select account"
+                        [value]="selectedAccount" (selectionChange)="onAccountChange($event.value)">
+                        <mat-option *ngFor="let acc of accounts" [value]="acc">
+                            {{ acc.name }}
+                        </mat-option>
+                    </mat-select>
+                </div>
 
-            <div class="nav-select-wrapper" (click)="accountSelect.open()">
-                <mat-select #accountSelect class="nav-select-btn" placeholder="Select account" [value]="selectedAccount"
-                    (selectionChange)="onAccountChange($event.value)">
-                    <mat-option *ngFor="let acc of accounts" [value]="acc">
-                        {{ acc.name }}
-                    </mat-option>
-                </mat-select>
+                <ng-container *ngIf="selectedAccount?.kp; else kpLink">
+                    <button type="button" class="nav-kp-button" [matMenuTriggerFor]="kpMenu">
+                        KP <span class="kp-arrow">▼</span>
+                    </button>
+                    <mat-menu #kpMenu="matMenu" class="kp-menu">
+                        <button mat-menu-item [cdkCopyToClipboard]="selectedKp" matTooltip="Copiar KP">
+                            <span class="kp-menu-icon">⧉</span>
+                        </button>
+                        <a mat-menu-item [href]="'https://killproof.me/proof/' + selectedKp" target="_blank"
+                            rel="noopener noreferrer" matTooltip="Abrir KP">
+                            <span class="kp-menu-icon">↗</span>
+                        </a>
+                    </mat-menu>
+                </ng-container>
+                <ng-template #kpLink>
+                    <a href="https://killproof.me/account/gw2accounts" target="_blank" rel="noopener noreferrer">
+                        KP
+                    </a>
+                </ng-template>
             </div>
         </nav>
     </div>

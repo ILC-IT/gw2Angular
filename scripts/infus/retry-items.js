@@ -1,21 +1,26 @@
-// Este script intenta recuperar los items que no se pudieron obtener en la primera ejecucion de get-items.js
+// Este script intenta recuperar los items que no se pudieron obtener en la primera ejecucion de get-infus-enrichments
 
 const fs = require('fs');
 const https = require('https');
+const path = require('path');
 
 const idioma = '?lang=es'
 const API_URL = `https://api.guildwars2.com/v2/items${idioma}`;
 
-const BATCH_SIZE = 200;
-const DELAY_MS = 500;
-const MAX_RETRIES = 5;
-const RETRY_DELAY_MS = 5000;
+// Carpeta de trabajo
+const workDir = path.join(__dirname, 'files_to_work');
 
+// Cantidad de ids maximos por peticion
+const BATCH_SIZE = 200;
+
+// Para reintentos cuando haya error
+const MAX_RETRIES = 5;
+const DELAY_MS = 500;
+const RETRY_DELAY_MS = 5000;
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-
 
 function getItems(ids) {
 
@@ -63,12 +68,14 @@ function getItems(ids) {
     });
 }
 
-
 async function main() {
 
     // Leer missing-ids.json
     const missingIds = JSON.parse(
-        fs.readFileSync('missing-ids.json', 'utf8')
+        fs.readFileSync(
+            path.join(workDir, 'missing-ids.json'),
+            'utf8'
+        )
     );
 
     console.log(`IDs para volver a comprobar: ${missingIds.length}`);
@@ -79,10 +86,7 @@ async function main() {
     // Dividir en tandas
     for (let i = 0; i < missingIds.length; i += BATCH_SIZE) {
 
-        const batch = missingIds.slice(
-            i,
-            i + BATCH_SIZE
-        );
+        const batch = missingIds.slice(i, i + BATCH_SIZE);
 
         const batchNumber = Math.floor(i / BATCH_SIZE) + 1;
 
@@ -147,18 +151,18 @@ async function main() {
 
     }
 
-
     // Guardar resultados
     if (foundItems.length > 0) {
         fs.writeFileSync(
-            'retry-items.json',
+            path.join(workDir, 'retry-items.json'),
             JSON.stringify(foundItems, null, 4),
             'utf8'
         );
     }
+
     if (stillMissing.length > 0) {
         fs.writeFileSync(
-            'missing-ids-retry.json',
+            path.join(workDir, 'missing-ids-retry.json'),
             JSON.stringify(
                 [...new Set(stillMissing)],
                 null,
@@ -177,7 +181,7 @@ async function main() {
     console.log(`IDs que siguen sin aparecer: ` + `${new Set(stillMissing).size}`);
 }
 
-
+// EJECUCION
 main().catch(error => {
     console.error('Error fatal:', error);
 });

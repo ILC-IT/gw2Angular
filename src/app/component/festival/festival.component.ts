@@ -281,6 +281,17 @@ export class FestivalComponent implements OnInit {
     precioTpVenta: 0,
     precioTpVentaS: ""
   };
+  desencadenadoDelComerciante: FestivalDivisas = {
+    id: 110259,
+    nombre: "Cofre desencadenado de comerciante",
+    // tengo: 0,
+    icon: "https://wiki.guildwars2.com/images/4/4c/Unchained_Chest.png",
+    gw2bltc: "https://www.gw2bltc.com/es/item/110259-Cofre-desencadenado-de-comerciante",
+    precioTpCompra: 0,
+    precioTpCompraS: "",
+    precioTpVenta: 0,
+    precioTpVentaS: ""
+  };
   regaloDelDiaInvernal: FestivalDivisas = {
     id: 77604,
     nombre: "Regalo del Día Invernal",
@@ -339,6 +350,7 @@ export class FestivalComponent implements OnInit {
     this.creadoAlSolDelComerciante,
     this.carameloDelComerciante,
     this.maquinaMacabraDelComerciante,
+    this.desencadenadoDelComerciante,
     this.regaloDelDiaInvernal,
     this.pelucheDelComerciante,
     this.solsticioSagradoDelComerciante
@@ -384,7 +396,8 @@ export class FestivalComponent implements OnInit {
     this.barraDeCaramelo,
     this.sacoDeHalloween,
     this.carameloDelComerciante,
-    this.maquinaMacabraDelComerciante
+    this.maquinaMacabraDelComerciante,
+    this.desencadenadoDelComerciante
   ];
   wintersday: FestivalDivisas[] = [
     this.copoDeNieve,
@@ -526,6 +539,7 @@ export class FestivalComponent implements OnInit {
         [this.creadoAlSolDelComerciante.id]: this.creadoAlSolDelComerciante,
         [this.carameloDelComerciante.id]: this.carameloDelComerciante,
         [this.maquinaMacabraDelComerciante.id]: this.maquinaMacabraDelComerciante,
+        [this.desencadenadoDelComerciante.id]: this.desencadenadoDelComerciante,
         [this.regaloDelDiaInvernal.id]: this.regaloDelDiaInvernal,
         [this.pelucheDelComerciante.id]: this.pelucheDelComerciante,
         [this.solsticioSagradoDelComerciante.id]: this.solsticioSagradoDelComerciante

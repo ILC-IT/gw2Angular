@@ -70,4 +70,8 @@ export class DashboardComponent implements OnInit {
     window.location.reload();
   }
 
+  get selectedKp(): string {
+    return this.selectedAccount?.kp || '';
+  }
+
 }

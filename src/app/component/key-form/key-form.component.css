@@ -288,6 +288,22 @@ button:disabled {
     cursor: not-allowed;
 }
 
+/* gw2Name + KP */
+.account-details {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 2px;
+}
+
+.separator {
+    color: #aaa;
+}
+
+.kp {
+    font-size: 12px;
+}
+
 @media (max-width: 600px) {
 
     .key-form {

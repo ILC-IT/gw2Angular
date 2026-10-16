@@ -63,18 +63,45 @@ function unirArchivos(file1Path, file2Path, outputFile) {
   } catch (err) {
     console.error("Merge error:");
     console.error(err.message);
+    throw err;
   }
 }
 
 // EJECUCION
-unirArchivos(
-  "./waypoint_landmark_vista_poi_Tyria_en.json",
-  "./waypoint_landmark_vista_poi_Mists_en.json",
-  "./full_poi_Tyria_Mists_en.json"
-);
+const inputFolder = path.join(__dirname, "files_to_work");
+const filePath = file => path.join(inputFolder, file);
 
-unirArchivos(
-  "./waypoint_landmark_vista_poi_Tyria_es.json",
-  "./waypoint_landmark_vista_poi_Mists_es.json",
-  "./full_poi_Tyria_Mists_es.json"
-);
+// Configuracion de las uniones
+const merges = [
+  {
+    file1: filePath("waypoint_landmark_vista_poi_Tyria_en.json"),
+    file2: filePath("waypoint_landmark_vista_poi_Mists_en.json"),
+    output: filePath("full_poi_Tyria_Mists_en.json")
+  },
+  {
+    file1: filePath("waypoint_landmark_vista_poi_Tyria_es.json"),
+    file2: filePath("waypoint_landmark_vista_poi_Mists_es.json"),
+    output: filePath("full_poi_Tyria_Mists_es.json")
+  }
+];
+
+// Comprobar que existen todos los archivos de entrada
+const missingFiles = [
+  ...new Set(merges.flatMap(({ file1, file2 }) => [file1, file2]))
+].filter(file => !fs.existsSync(file));
+
+if (missingFiles.length > 0) {
+  console.error("\nERROR: No se encuentran los siguientes archivos:");
+
+  missingFiles.forEach(file => {
+    console.error(` - ${file}`);
+  });
+
+  console.error("\nSe cancela la ejecución.");
+  process.exit(1);
+}
+
+// Ejecutar las uniones solo si todos los archivos existen
+for (const merge of merges) {
+  unirArchivos(merge.file1, merge.file2, merge.output);
+}

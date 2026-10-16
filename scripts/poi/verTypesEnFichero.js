@@ -1,4 +1,5 @@
 const fs = require("fs");
+const path = require("path");
 
 // Extrae y muestra los tipos unicos de un JSON array de objetos con campo "type"
 
@@ -28,4 +29,10 @@ function printUniqueTypes(filePath) {
 }
 
 // EJECUCION
-printUniqueTypes("./poi_Tyria_en.json");
+const fichero = "poi_Tyria_en.json";
+const carpeta = "files_to_work";
+
+const inputDir = path.join(__dirname, carpeta);
+const inputFile = path.join(inputDir, fichero);
+
+printUniqueTypes(inputFile);

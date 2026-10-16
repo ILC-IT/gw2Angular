@@ -7496,6 +7496,40 @@
         "description": "+5 de dureza\n+9 de resistencia a la agonía"
     },
     {
+        "id": 106901,
+        "nombre": "Infusión demoníaca",
+        "icon": "https://render.guildwars2.com/file/260CE29FBDEF04E466F555A3CF980561AF2873C5/3744700.png",
+        "tipo": "Infusion",
+        "stat": [
+            {
+                "attribute": "Precision",
+                "modifier": 5
+            },
+            {
+                "attribute": "AgonyResistance",
+                "modifier": 9
+            }
+        ],
+        "description": "+5 de precisión\n+9 de resistencia a la agonía"
+    },
+    {
+        "id": 106906,
+        "nombre": "Infusión demoníaca",
+        "icon": "https://render.guildwars2.com/file/260CE29FBDEF04E466F555A3CF980561AF2873C5/3744700.png",
+        "tipo": "Infusion",
+        "stat": [
+            {
+                "attribute": "Healing",
+                "modifier": 5
+            },
+            {
+                "attribute": "AgonyResistance",
+                "modifier": 9
+            }
+        ],
+        "description": "+5 de curación\n+9 de resistencia a la agonía"
+    },
+    {
         "id": 107045,
         "nombre": "Infusión demoníaca",
         "icon": "https://render.guildwars2.com/file/260CE29FBDEF04E466F555A3CF980561AF2873C5/3744700.png",
@@ -7698,5 +7732,107 @@
             }
         ],
         "description": "+5 de concentración\n+9 de resistencia a la agonía"
+    },
+    {
+        "id": 109921,
+        "nombre": "Ascensión volátil",
+        "icon": "https://render.guildwars2.com/file/92EEF1F7026F7FA469704A62F7F376CA5594153A/3805886.png",
+        "tipo": "Infusion",
+        "stat": [
+            {
+                "attribute": "Power",
+                "modifier": 5
+            },
+            {
+                "attribute": "AgonyResistance",
+                "modifier": 9
+            }
+        ],
+        "description": "+5 de potencia\n+9 de resistencia a la agonía"
+    },
+    {
+        "id": 109938,
+        "nombre": "Ascensión volátil",
+        "icon": "https://render.guildwars2.com/file/92EEF1F7026F7FA469704A62F7F376CA5594153A/3805886.png",
+        "tipo": "Infusion",
+        "stat": [
+            {
+                "attribute": "BoonDuration",
+                "modifier": 5
+            },
+            {
+                "attribute": "AgonyResistance",
+                "modifier": 9
+            }
+        ],
+        "description": "+5 de concentración\n+9 de resistencia a la agonía"
+    },
+    {
+        "id": 110071,
+        "nombre": "Ascensión volátil",
+        "icon": "https://render.guildwars2.com/file/92EEF1F7026F7FA469704A62F7F376CA5594153A/3805886.png",
+        "tipo": "Infusion",
+        "stat": [
+            {
+                "attribute": "Vitality",
+                "modifier": 5
+            },
+            {
+                "attribute": "AgonyResistance",
+                "modifier": 9
+            }
+        ],
+        "description": "+5 de vitalidad\n+9 de resistencia a la agonía"
+    },
+    {
+        "id": 110136,
+        "nombre": "Ascensión volátil",
+        "icon": "https://render.guildwars2.com/file/92EEF1F7026F7FA469704A62F7F376CA5594153A/3805886.png",
+        "tipo": "Infusion",
+        "stat": [
+            {
+                "attribute": "Precision",
+                "modifier": 5
+            },
+            {
+                "attribute": "AgonyResistance",
+                "modifier": 9
+            }
+        ],
+        "description": "+5 de precisión\n+9 de resistencia a la agonía"
+    },
+    {
+        "id": 110187,
+        "nombre": "Ascensión volátil",
+        "icon": "https://render.guildwars2.com/file/92EEF1F7026F7FA469704A62F7F376CA5594153A/3805886.png",
+        "tipo": "Infusion",
+        "stat": [
+            {
+                "attribute": "Healing",
+                "modifier": 5
+            },
+            {
+                "attribute": "AgonyResistance",
+                "modifier": 9
+            }
+        ],
+        "description": "+5 de curación\n+9 de resistencia a la agonía"
+    },
+    {
+        "id": 110235,
+        "nombre": "Ascensión volátil",
+        "icon": "https://render.guildwars2.com/file/92EEF1F7026F7FA469704A62F7F376CA5594153A/3805886.png",
+        "tipo": "Infusion",
+        "stat": [
+            {
+                "attribute": "ConditionDamage",
+                "modifier": 5
+            },
+            {
+                "attribute": "AgonyResistance",
+                "modifier": 9
+            }
+        ],
+        "description": "+5 de daño de condición\n+9 de resistencia a la agonía"
     }
 ]

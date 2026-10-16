@@ -283,7 +283,7 @@ h2 {
 }
 
 .infusion-card:hover {
-  transform: translateY(-2px);
+  /* transform: translateY(-2px); */
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
 }
 
@@ -329,6 +329,10 @@ h2 {
   font-size: 13px;
   line-height: 1.45;
   color: #37474f;
+}
+
+.infusion-description>div {
+  margin-bottom: 3px;
 }
 
 .infusion-total {
@@ -526,9 +530,16 @@ h2 {
   gap: 10px;
 }
 
+.container-main strong {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
 .container-name {
   font-weight: 600;
   color: #1565c0;
+  flex: 1;
+  min-width: 0;
 }
 
 .container-variants {

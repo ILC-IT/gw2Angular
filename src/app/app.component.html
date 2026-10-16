@@ -127,12 +127,13 @@
         <a mat-menu-item [routerLink]="'/homestead/glifos'" (click)="sidenav.close()">Glifos</a>
       </mat-menu>
 
+      <!-- Logs -->
       <a href="https://dps.report/" target="_blank" rel="noopener noreferrer">LOGS</a>
 
+      <!-- gw2efficiency -->
       <a href="https://gw2efficiency.com/" target="_blank" rel="noopener noreferrer">GW2Eff</a>
 
-      <a href="https://killproof.me/account/gw2accounts" target="_blank" rel="noopener noreferrer">KP</a>
-
+      <!-- Accounts -->
       <a routerLink="/accounts" (click)="sidenav.close()">Accounts</a>
 
       <a [cdkCopyToClipboard]="account.name || ''" matTooltip="Copiar" style="cursor: pointer;" [ngClass]="{
@@ -152,6 +153,29 @@
           No account selected
         </ng-container>
       </a>
+
+      <!-- KP -->
+      <ng-container *ngIf="selectedAccount?.kp; else mobileKpLink">
+        <button type="button" class="mobile-kp-button" [matMenuTriggerFor]="mobileKpMenu">
+          KP <span class="mobile-kp-arrow">▼</span>
+        </button>
+        <mat-menu #mobileKpMenu="matMenu" class="mobile-kp-menu">
+          <button mat-menu-item [cdkCopyToClipboard]="selectedKp" matTooltip="Copiar KP"
+            (click)="$event.stopPropagation()">
+            <span class="kp-menu-icon">⧉</span>
+          </button>
+          <a mat-menu-item [href]="'https://killproof.me/proof/' + selectedKp" target="_blank" rel="noopener noreferrer"
+            matTooltip="Abrir KP" (click)="sidenav.close()">
+            <span class="kp-menu-icon">↗</span>
+          </a>
+        </mat-menu>
+      </ng-container>
+      <ng-template #mobileKpLink>
+        <a href="https://killproof.me/account/gw2accounts" target="_blank" rel="noopener noreferrer">
+          KP
+        </a>
+      </ng-template>
+
       <mat-form-field appearance="fill" style="width: 180px; margin-top: 10px;">
         <mat-select placeholder="Select account" [value]="selectedAccount"
           (selectionChange)="onAccountChange($event.value)">

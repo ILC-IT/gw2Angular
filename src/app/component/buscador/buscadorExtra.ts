@@ -27,7 +27,21 @@ export interface Gw2RegionalMaps {
   };
 }
 
+export interface RegionalMapGroup {
+  region: string;
+  maps: string[];
+}
+
 export const GW2_REGIONAL_MAPS: Gw2RegionalMaps = {
+  // "hogar": {
+  //   region: { es: "Hogar", en: "Home" },
+  //   maps: [
+  //     { es: "Cantón del Héroe (Hogar)", en: "Hero's Canton (Home)" },
+  //     { es: "Distrito de Salma (Hogar)", en: "Salma District (Home)" },
+  //     { es: "Hogar del Cazador (Hogar)", en: "Hunter's Hearth (Home)" },
+  //     { es: "Laboratorio de Desarrollos Aplicados (Hogar)", en: "Applied Development Lab (Home)" }
+  //   ]
+  // },
   "kryta": {
     region: { es: "Kryta", en: "Kryta" },
     maps: [
@@ -46,6 +60,7 @@ export const GW2_REGIONAL_MAPS: Gw2RegionalMaps = {
       // { es: "La Torre de las Pesadillas", en: "The Tower of Nightmares" },
       // { es: "La batalla de Arco del Leon (zona)", en: "The Battle For Lion's Arch" },
       // { es: "El Pabellon de la Corona (zona)", en: "The Crown Pavilion (zone)" }
+      // { es: "Desafío celestial", en: "Celestial Challenge" }
     ]
   },
   "shiverpeaks": {
@@ -106,8 +121,8 @@ export const GW2_REGIONAL_MAPS: Gw2RegionalMaps = {
       { es: "Valle Espiritual", en: "Spirit Vale" },
       { es: "Paso de la Salvacion", en: "Salvation Pass" },
       { es: "Fortaleza de los Fieles", en: "Stronghold of the Faithful" },
-      { es: "Bastion del Penitente", en: "Bastion of the Penitent" }
-      // { es: "Cueva Dorada", en: "Gilded Hollow" },
+      { es: "Bastion del Penitente", en: "Bastion of the Penitent" },
+      { es: "Cueva Dorada", en: "Gilded Hollow" },
     ]
   },
   "maguuma_horn": {
@@ -192,8 +207,8 @@ export const GW2_REGIONAL_MAPS: Gw2RegionalMaps = {
       { es: "Janthir Syntri", en: "Janthir Syntri" },
       { es: "Yermos de Pavesas de Niebla", en: "Mistburned Barrens" },
       { es: "Bava Nisos", en: "Bava Nisos" },
-      { es: "Monte Balrior", en: "Mount Balrior" },
-      { es: "Convergencia: Monte Balrior (escuadron privado)", en: "Convergence: Mount Balrior (Private Squad)" }
+      { es: "Monte Balrior", en: "Mount Balrior" }
+      // { es: "Convergencia: Monte Balrior (escuadron privado)", en: "Convergence: Mount Balrior (Private Squad)" }
     ]
   },
   "ring_of_fire": {
@@ -207,7 +222,8 @@ export const GW2_REGIONAL_MAPS: Gw2RegionalMaps = {
     maps: [
       { es: "Litoral del Naufragio", en: "Shipwreck Strand" },
       { es: "Bosquezuelo Estelar", en: "Starlit Weald" },
-      { es: "Jardin de la Eternidad", en: "Eternity's Garden" }
+      { es: "Jardin de la Eternidad", en: "Eternity's Garden" },
+      { es: "Hondonadas del Manantial de Ley", en: "Leyspring Hollows" }
     ]
   },
   "wvw": {

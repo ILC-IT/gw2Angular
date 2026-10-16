@@ -49,6 +49,9 @@ export class KeyFormComponent implements OnInit {
           Validators.maxLength(72),
           Validators.pattern(/^[0-9A-Fa-f]+(?:-[0-9A-Fa-f]+)+$/)
         ]
+      ],
+      kp: [
+        ''
       ]
     });
   }
@@ -190,7 +193,8 @@ export class KeyFormComponent implements OnInit {
       const account: ApiAccount = {
         name: this.form.value.name.trim(),
         gw2Name: this.form.value.gw2Name.trim(),
-        key: this.form.value.key.trim()
+        key: this.form.value.key.trim(),
+        kp: this.form.value.kp?.trim() || ''
       };
 
       const oldIndex = this.editingIndex;
@@ -277,7 +281,8 @@ export class KeyFormComponent implements OnInit {
     this.form.patchValue({
       name: account.name,
       gw2Name: account.gw2Name,
-      key: account.key
+      key: account.key,
+      kp: account.kp || ''
     });
 
     this.editingIndex = index;
@@ -316,7 +321,8 @@ export class KeyFormComponent implements OnInit {
     this.form.reset({
       name: '',
       gw2Name: '',
-      key: ''
+      key: '',
+      kp: ''
     });
   }
 
@@ -489,7 +495,7 @@ export class KeyFormComponent implements OnInit {
     this.apiKeyService.replaceAllAccounts();
 
     this.loadAccounts();
-    
+
     const message = 'Se han borrado todas las cuentas.';
     alert(message);
 

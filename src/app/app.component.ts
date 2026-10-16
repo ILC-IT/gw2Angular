@@ -116,4 +116,9 @@ export class AppComponent implements OnInit, OnDestroy {
 
   onSidenavClose() {
   }
+
+  get selectedKp(): string {
+    return this.selectedAccount?.kp || '';
+  }
+
 }

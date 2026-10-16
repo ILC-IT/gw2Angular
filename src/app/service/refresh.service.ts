@@ -25,10 +25,26 @@ export class RefreshService {
       );
     }
 
-    const tiempoRestante =
-      siguienteActualizacion.getTime() - ahora.getTime();
+    const tiempoRestante = siguienteActualizacion.getTime() - ahora.getTime();
 
     return setTimeout(accion, tiempoRestante);
   }
+
+  getTimeZone(): string {
+    return Intl.DateTimeFormat().resolvedOptions().timeZone;
+  }
+
+  getHoraLocalDesdeUtc(horaUtc: number, minutoUtc: number = 0): string {
+    const fecha = new Date();
+
+    fecha.setUTCHours(horaUtc, minutoUtc, 0, 0);
+
+    return fecha.toLocaleTimeString([], {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false
+    });
+  }
+
 
 }

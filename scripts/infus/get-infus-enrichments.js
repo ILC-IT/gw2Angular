@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 const https = require('https');
+const path = require('path');
 
 const idioma = '?lang=es'
 const API_URL = `https://api.guildwars2.com/v2/items${idioma}`;
@@ -21,8 +22,36 @@ const failedBatches = []; // ids que han fallado
 const missingIds = []; // ids que dan 206 y no han dado resultado
 const bothTypes = []; // ids que son a la vez infusion y enrichment
 
+// Carpeta donde se guardaran los archivos generados
+const outputDir = path.join(__dirname, 'files_to_work');
+
+const destination = path.resolve(
+    __dirname,
+    "../../src/assets/infus"
+);
+
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function backupInfusions() {
+
+    const source = path.join(destination, 'infusions.json');
+    const backup = path.join(outputDir, 'infusions-old.json');
+
+    // Comprobar si existe el archivo original
+    if (!fs.existsSync(source)) {
+        console.log(`No existe infusions.json en ${destination}. Se omite la copia.`);
+        return;
+    }
+
+    // Crear outputDir si todavía no existe
+    fs.mkdirSync(outputDir, { recursive: true });
+
+    // Copiar y sobrescribir el backup si ya existe
+    fs.copyFileSync(source, backup);
+
+    console.log(`Archivo infusions-old.json creado: ${backup}`);
 }
 
 // Peticion HTTP
@@ -108,6 +137,9 @@ async function getAllItemIds() {
 // Main
 async function main() {
 
+    // Copiar infusions.json anterior, antes de iniciar el proceso, y guardarlo en files_to_work/infusions-old.json
+    backupInfusions();
+
     console.log('Obteniendo lista de IDs...');
 
     const allIds = await getAllItemIds();
@@ -127,10 +159,10 @@ async function main() {
         const batchNumber = Math.floor(i / BATCH_SIZE) + 1;
 
         console.log(
-			`[${new Date().toLocaleTimeString()}] ` +
-			`Procesando tanda ${batchNumber}/${totalBatches} ` +
-			`(${batch.length} IDs)...`
-		);
+            `[${new Date().toLocaleTimeString()}] ` +
+            `Procesando tanda ${batchNumber}/${totalBatches} ` +
+            `(${batch.length} IDs)...`
+        );
 
         let retries = 0;
         let success = false;
@@ -168,17 +200,14 @@ async function main() {
                         continue;
                     }
 
-                    const flags =
-                        item.details.infusion_upgrade_flags;
+                    const flags = item.details.infusion_upgrade_flags;
 
                     if (!Array.isArray(flags)) {
                         continue;
                     }
 
                     // Interesan tanto Infusion como Enrichment
-                    const esInfusion =
-                        flags.includes('Infusion') ||
-                        flags.includes('Enrichment');
+                    const esInfusion = flags.includes('Infusion') || flags.includes('Enrichment');
 
                     if (!esInfusion) {
                         continue;
@@ -198,23 +227,21 @@ async function main() {
                         tipo = 'Infusion';
                     }
 
-                    const description =
-                        item.details &&
+                    const description = item.details &&
                         item.details.infix_upgrade &&
                         item.details.infix_upgrade.buff &&
                         item.details.infix_upgrade.buff.description
-                            ? item.details.infix_upgrade.buff.description
-                            : '';
+                        ? item.details.infix_upgrade.buff.description
+                        : '';
 
-                    const stat =
-                        item.details &&
+                    const stat = item.details &&
                         item.details.infix_upgrade &&
                         Array.isArray(item.details.infix_upgrade.attributes)
-                            ? item.details.infix_upgrade.attributes.map(attribute => ({
-                                attribute: attribute.attribute,
-                                modifier: attribute.modifier
-                            }))
-                            : [];
+                        ? item.details.infix_upgrade.attributes.map(attribute => ({
+                            attribute: attribute.attribute,
+                            modifier: attribute.modifier
+                        }))
+                        : [];
 
                     // Guardar info
                     infusions.push({
@@ -260,78 +287,86 @@ async function main() {
                         ids: batch
                     });
 
-                    console.log(
-                        `${batch.length} IDs guardados como fallidos.`
-                    );
+                    console.log(`${batch.length} IDs guardados como fallidos.`);
                 }
             }
-        }   
+        }
 
         // No esperar despues de la ultima
         if (i + BATCH_SIZE < allIds.length) {
 
-            console.log(
-                `Esperando ${DELAY_MS} ms...`
-            );
+            console.log(`Esperando ${DELAY_MS} ms...`);
 
             await sleep(DELAY_MS);
         }
     }
 
-
     // Eliminar posibles duplicados
     const uniqueInfusions = Array.from(
-        new Map(
-            infusions.map(item => [item.id, item])
-        ).values()
+        new Map(infusions.map(item => [item.id, item])).values()
     );
-
 
     // Ordenar por ID
     uniqueInfusions.sort((a, b) => a.id - b.id);
 
+    // Crear la carpeta si no existe
+    if (!fs.existsSync(outputDir)) {
+        fs.mkdirSync(outputDir, { recursive: true });
+    }
 
     // Guardar JSON
     fs.writeFileSync(
-        'infusions.json',
+        path.join(outputDir, 'infusions.json'),
         JSON.stringify(uniqueInfusions, null, 4),
         'utf8'
     );
+
     if (failedBatches.length > 0) {
         fs.writeFileSync(
-            'failed-batches.json',
+            path.join(outputDir, 'failed-batches.json'),
             JSON.stringify(failedBatches, null, 4),
             'utf8'
         );
     }
+
     if (missingIds.length > 0) {
         fs.writeFileSync(
-            'missing-ids.json',
+            path.join(outputDir, 'missing-ids.json'),
             JSON.stringify([...new Set(missingIds)], null, 4),
             'utf8'
         );
     }
+
     if (bothTypes.length > 0) {
         fs.writeFileSync(
-            'both-types.json',
+            path.join(outputDir, 'both-types.json'),
             JSON.stringify(bothTypes, null, 4),
             'utf8'
         );
     }
 
-    
-    // LOGS
+    // Logs
     console.log('');
     console.log('=================================');
     console.log('Proceso terminado');
     console.log('=================================');
     console.log(`Infusiones/enrichments: ${uniqueInfusions.length}`);
-    console.log(`Items con ambos tipos: ${bothTypes.length}`);
     console.log('Archivo generado: infusions.json');
+    if (failedBatches.length > 0 || missingIds.length > 0 || bothTypes.length > 0) {
+        console.log('Se han generado archivos adicionales:');
+    }
+    if (failedBatches.length > 0) {
+        console.log(`Batches fallidos: ${failedBatches.length}. Archivo: failed-batches.json`);
+    }
+    if (missingIds.length > 0) {
+        console.log(`IDs que siguen sin aparecer: ${new Set(missingIds).size}. Archivo: missing-ids.json`);
+    }
+    if (bothTypes.length > 0) {
+        console.log(`Items con ambos tipos: ${bothTypes.length}. Archivo: both-types.json`);
+    }
 }
 
-
-// Ejecutar
+// EJECUCION
 main().catch(error => {
     console.error('Error fatal:', error);
 });

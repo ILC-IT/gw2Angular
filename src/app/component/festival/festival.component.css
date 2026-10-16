@@ -1,35 +1,11 @@
+/* Titulos generales */
 h2 {
     text-align: center;
 }
 
-:host ::ng-deep .mat-sort-header-container {
-    display: flex;
-    justify-content: center;
-}
-
-th.mat-header-cell,
-td.mat-cell,
-td.mat-footer-cell {
-    text-align: center;
-}
-
-th.mat-header-cell {
-    /* color: red; */
-    background-color: rgb(150, 217, 248);
-    font-size: 14px;
-}
-
-tr.mat-footer-row {
-    font-weight: bold;
-}
-
-.mat-column-nombre {
-    width: 20% !important;
-}
-
 .titulo-tabla {
     text-align: center;
-    margin: 30px 0 10px 0;
+    margin: 30px 0 10px;
     font-size: 1.8rem;
     font-weight: 600;
     color: #3f51b5;
@@ -38,110 +14,7 @@ tr.mat-footer-row {
     font-family: 'Segoe UI', Roboto, sans-serif;
 }
 
-.festival-card {
-    margin: 30px auto;
-    padding: 20px;
-    max-width: 1000px;
-    background: #fafafa;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    background-color: rgb(209, 206, 202);
-}
-
-table img {
-    height: 32px;
-    width: 32px;
-    object-fit: contain;
-}
-
-.mat-elevation-z8 {
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-::ng-deep .mat-tooltip {
-    font-size: 18px;
-}
-
-@media (max-width: 768px) {
-    .festival-card {
-        padding: 10px;
-    }
-
-    .titulo-tabla {
-        font-size: 1.4rem;
-    }
-
-    table.mat-elevation-z8 th.mat-header-cell,
-    table.mat-elevation-z8 td.mat-cell {
-        font-size: 0.8rem;
-    }
-
-    ::ng-deep .mat-tooltip {
-        font-size: 12px !important;
-    }
-
-}
-
-.greenBackGround {
-    background-color: rgb(195, 248, 195) !important;
-    font-weight: bold;
-}
-
-/* mat-card-content {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-} */
-
-.table-container {
-    width: 100%;
-    overflow-x: auto;
-    /* padding-bottom: 8px; */
-    padding: 4px 4px 12px 4px;
-}
-
-mat-card table {
-    width: 600px !important;
-    margin: 0 auto;
-    background-color: rgb(209, 206, 202);
-}
-
-.wiki-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-bottom: 16px;
-}
-
-.wiki-container a {
-    text-decoration: none !important;
-}
-
-.wiki-button {
-    text-decoration: none !important;
-    display: inline-flex !important;
-    align-items: center;
-    gap: 6px;
-    color: inherit;
-}
-
-/* .wiki-button .mat-icon {
-    margin-top: -2px;
-} */
-
-#tablaSab {
-    width: 300px !important;
-    display: block;
-    margin: 0 auto;
-}
-
-#tablaFourWinds {
-    width: 300px !important;
-    display: block;
-    margin: 0 auto;
-}
-
+/* Iconos decorativos de los titulos */
 :host ::ng-deep .titulo-tabla::before,
 :host ::ng-deep .titulo-tabla::after {
     content: "";
@@ -190,4 +63,208 @@ mat-card table {
 :host ::ng-deep .titulo-tabla.wintersday::before,
 :host ::ng-deep .titulo-tabla.wintersday::after {
     background-image: url("https://wiki.guildwars2.com/images/thumb/5/5d/Event_Wintersday.png/30px-Event_Wintersday.png");
+}
+
+/* Tarjetas de festivales */
+.festival-card {
+    margin: 30px auto;
+    padding: 20px;
+    max-width: 1000px;
+    background-color: rgb(209, 206, 202);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Botones de la wiki */
+.wiki-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.wiki-container a {
+    text-decoration: none !important;
+}
+
+.wiki-button {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 6px;
+    color: inherit;
+    text-decoration: none !important;
+}
+
+/* Estilos comunes de las tablas */
+/* Contenedor con desplazamiento horizontal */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    padding: 4px 4px 12px 4px;
+}
+
+/* Todas las tablas de las tarjetas */
+.festival-card table {
+    margin: 0 auto;
+    background-color: rgb(209, 206, 202);
+    border-radius: 8px;
+}
+
+/* Cabeceras */
+.festival-card th.mat-header-cell {
+    background-color: rgb(150, 217, 248);
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Celdas */
+.festival-card th.mat-header-cell,
+.festival-card td.mat-cell,
+.festival-card td.mat-footer-cell {
+    text-align: center;
+}
+
+/* Columnas ordenables */
+:host ::ng-deep .mat-sort-header-container {
+    display: flex;
+    justify-content: center;
+}
+
+/* Imagenes de todas las tablas */
+.festival-card table img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+/* Bordes y elevacion */
+.festival-card .mat-elevation-z8 {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Filas de pie */
+tr.mat-footer-row {
+    font-weight: bold;
+}
+
+/* Columnas comunes */
+/* Columna de iconos */
+.festival-card .mat-column-icon {
+    width: 70px;
+    min-width: 70px;
+    text-align: center;
+}
+
+/* Columna de nombres */
+.festival-card .mat-column-nombre {
+    padding-left: 6px;
+    padding-right: 6px;
+    min-width: 300px;
+}
+
+/* Columna Tengo en PC */
+.festival-card .mat-column-tengo {
+    min-width: 30px;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+/* Anchos especificos. Solo afectan a la tabla indicada */
+#tablaLunar,
+#tablaSabCofres,
+#tablaDragonBash,
+#tablaFourWindsCofres,
+#tablaHalloween,
+#tablaWintersday {
+    width: 800px;
+}
+
+#tablaSab,
+#tablaFourWinds {
+    width: 450px !important;
+    table-layout: auto;
+    margin: 0 auto;
+}
+
+#tablaSab .mat-column-nombre,
+#tablaFourWinds .mat-column-nombre {
+    min-width: 250px;
+    padding-left: 16px;
+    padding-right: 16px;
+    text-align: center;
+}
+
+/* Colores dinamicos */
+.greenBackGround {
+    background-color: rgb(195, 248, 195) !important;
+    font-weight: bold;
+}
+
+/* Tooltips */
+::ng-deep .mat-tooltip {
+    font-size: 18px;
+}
+
+/* Movil */
+@media (max-width: 768px) {
+
+    .festival-card {
+        padding: 10px;
+    }
+
+    .titulo-tabla {
+        font-size: 1.4rem;
+    }
+
+    .festival-card table.mat-elevation-z8 th.mat-header-cell,
+    .festival-card table.mat-elevation-z8 td.mat-cell {
+        font-size: 0.8rem;
+    }
+
+    .festival-card .mat-column-nombre {
+        min-width: 100px;
+        max-width: 100px;
+        padding-left: 8px;
+        padding-right: 8px;
+        white-space: normal;
+        overflow-wrap: break-word;
+    }
+
+    .festival-card .mat-column-tengo {
+        min-width: 20px;
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+
+    #tablaLunar,
+    #tablaDragonBash,
+    #tablaFourWindsCofres,
+    #tablaHalloween,
+    #tablaWintersday,
+    #tablaSabCofres {
+        width: 600px !important;
+    }
+
+    #tablaSab {
+        width: 100% !important;
+        max-width: 450px;
+    }
+
+    #tablaSab .mat-column-nombre {
+        min-width: 0;
+    }
+
+    #tablaFourWinds {
+        width: 100% !important;
+        max-width: 450px;
+    }
+
+    #tablaFourWinds .mat-column-nombre {
+        min-width: 0;
+    }
+
+    ::ng-deep .mat-tooltip {
+        font-size: 12px !important;
+    }
 }
