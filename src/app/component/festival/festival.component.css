@@ -170,6 +170,51 @@ tr.mat-footer-row {
     padding-right: 6px;
 }
 
+/* Columna Skins */
+.festival-card .mat-column-skins {
+    min-width: 30px;
+    padding-left: 6px;
+    padding-right: 6px;
+    width: 85px;
+    white-space: nowrap;
+}
+
+.skins-menu-button {
+    margin-left: 6px;
+    width: 26px;
+    height: 26px;
+    min-width: 26px;
+    padding: 0;
+    background-color: #dad8d8;
+    border-radius: 6px;
+    vertical-align: middle;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skins-menu-button mat-icon {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Moneda */
+:host ::ng-deep img.moneda-icon {
+    display: inline-block !important;
+    width: 14px !important;
+    height: 14px !important;
+    object-fit: contain;
+    vertical-align: -2px !important;
+    margin-right: 4px;
+}
+
 /* Anchos especificos. Solo afectan a la tabla indicada */
 #tablaLunar,
 #tablaSabCofres,
@@ -177,7 +222,7 @@ tr.mat-footer-row {
 #tablaFourWindsCofres,
 #tablaHalloween,
 #tablaWintersday {
-    width: 800px;
+    width: 900px;
 }
 
 #tablaSab,
@@ -266,5 +311,13 @@ tr.mat-footer-row {
 
     ::ng-deep .mat-tooltip {
         font-size: 12px !important;
+    }
+
+    :host ::ng-deep img.moneda-icon {
+        display: inline-block !important;
+        width: 12px !important;
+        height: 12px !important;
+        object-fit: contain;
+        margin-right: 4px;
     }
 }

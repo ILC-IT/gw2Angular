@@ -76,6 +76,41 @@ mat-card.result * {
     cursor: default !important;
 }
 
+/* Daily fisher */
+.wiki-title {
+    text-decoration: none;
+    color: inherit;
+}
+
+.wiki-title mat-icon {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    margin-left: 4px;
+}
+
+.daily-fish-card {
+    margin-top: 12px;
+}
+
+.daily-fish-maps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 16px 16px 48px;
+    padding: 12px;
+    border: 1px solid rgba(128, 128, 128, 0.4);
+    border-radius: 8px;
+}
+
+.map-tag {
+    background-color: rgba(128, 128, 128, 0.15);
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
 ::ng-deep.mat-tab-label,
 ::ng-deep.mat-tab-label-content {
     /*min-width: 1!important;*/

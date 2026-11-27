@@ -115,7 +115,7 @@
     </mat-tab>
 
     <mat-tab label="Otros legendarios">
-        <table mat-table [dataSource]="getDataWithExpandedRow()" class="mat-elevation-z8" multiTemplateDataRows>
+        <table mat-table [dataSource]="dataSourceOtrosLegendarios" class="mat-elevation-z8" multiTemplateDataRows>
 
             <!-- expand Column (flecha) -->
             <ng-container matColumnDef="expand">
@@ -177,12 +177,17 @@
             <ng-container matColumnDef="expandedDetail">
                 <td mat-cell *matCellDef="let row" [attr.colspan]="displayedColumnsOtrosLegendarios.length">
                     <ng-container *ngIf="row.element && isArrayId(row.element)">
-                        <strong>Partes de {{ row.element.nombre }}</strong>
-                        <table>
+                        <strong class="titulo-partes">
+                            Partes de {{ row.element.nombre }}
+                        </strong>
+                        <table class="tabla-partes">
                             <thead>
                                 <tr>
                                     <th>Icono</th>
-                                    <th>Nombre</th>
+                                    <th>
+                                        {{ ['Selachimorpha', 'Eikasia, aferranieblas'].includes(row.element.nombre) ?
+                                        'Peso' : 'Nombre' }}
+                                    </th>
                                     <th>Tengo</th>
                                 </tr>
                             </thead>
@@ -301,7 +306,7 @@
             <ng-container matColumnDef="tengo">
                 <th mat-header-cell *matHeaderCellDef> Tengo </th>
                 <td mat-cell *matCellDef="let element">
-                    <span [innerHTML]="formatearValor(element)"></span>
+                    <span [innerHTML]="element.tengoFormated"></span>
                 </td>
             </ng-container>
 
@@ -361,36 +366,52 @@
                     <!-- precioTpCompraS Column -->
                     <ng-container matColumnDef="precioTpCompraS">
                         <th mat-header-cell *matHeaderCellDef> Precio TP Compra </th>
-                        <td mat-cell *matCellDef="let element"> {{element.precioTpCompraS}} </td>
+                        <td mat-cell *matCellDef="let element">
+                            <span [innerHTML]="element.precioTpCompraSF"></span>
+                        </td>
                         <td mat-footer-cell *matFooterCellDef></td>
                     </ng-container>
 
                     <!-- precioTpVentaS Column -->
                     <ng-container matColumnDef="precioTpVentaS">
                         <th mat-header-cell *matHeaderCellDef> Precio TP Venta </th>
-                        <td mat-cell *matCellDef="let element"> {{element.precioTpVentaS}} </td>
+                        <td mat-cell *matCellDef="let element">
+                            <span [innerHTML]="element.precioTpVentaSF"></span>
+                        </td>
                         <td mat-footer-cell *matFooterCellDef></td>
                     </ng-container>
 
                     <!-- precioStackCompraS Column -->
                     <ng-container matColumnDef="precioStackCompraS">
                         <th mat-header-cell *matHeaderCellDef> Precio Stack Compra </th>
-                        <td mat-cell *matCellDef="let element"> {{element.precioStackCompraS}} </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getTotalPrecioStackCompraS()}} </td>
+                        <td mat-cell *matCellDef="let element">
+                            <span [innerHTML]="element.precioStackCompraSF"></span>
+                        </td>
+                        <td mat-footer-cell *matFooterCellDef>
+                            <span [innerHTML]="totalPrecioStackCompraSF"></span>
+                        </td>
                     </ng-container>
 
                     <!-- precioStackVentaS Column -->
                     <ng-container matColumnDef="precioStackVentaS">
                         <th mat-header-cell *matHeaderCellDef> Precio Stack Venta </th>
-                        <td mat-cell *matCellDef="let element"> {{element.precioStackVentaS}} </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getTotalPrecioStackVentaS()}} </td>
+                        <td mat-cell *matCellDef="let element">
+                            <span [innerHTML]="element.precioStackVentaSF"></span>
+                        </td>
+                        <td mat-footer-cell *matFooterCellDef>
+                            <span [innerHTML]="totalPrecioStackVentaSF"></span>
+                        </td>
                     </ng-container>
 
                     <!-- precioStackVentaS90 Column -->
                     <ng-container matColumnDef="precioStackVentaS90">
                         <th mat-header-cell *matHeaderCellDef> Precio Stack Venta 90% </th>
-                        <td mat-cell *matCellDef="let element"> {{element.precioStackVentaS90}} </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getTotalPrecioStackVentaS90()}} </td>
+                        <td mat-cell *matCellDef="let element">
+                            <span [innerHTML]="element.precioStackVentaSF90"></span>
+                        </td>
+                        <td mat-footer-cell *matFooterCellDef>
+                            <span [innerHTML]="totalPrecioStackVentaSF90"></span>
+                        </td>
                     </ng-container>
 
                     <tr mat-header-row *matHeaderRowDef="displayedColumnsT6; sticky: true"></tr>
@@ -404,15 +425,15 @@
                     </a>
                     <span class="material-item">
                         <img title="Magia Liberada" [src]="magiaLiberada[0].icon" class="icono-material" />
-                        {{ formatearCantidad(magiaLiberada[0].tengoEnCartera) }}
+                        {{ magiaLiberada[0].tengoEnCarteraFormated }}
                     </span>
                     <span class="material-item">
                         <img title="Magia Volatil" [src]="magiaVolatil[0].icon" class="icono-material" />
-                        {{ formatearCantidad(magiaVolatil[0].tengoEnCartera) }}
+                        {{ magiaVolatil[0].tengoEnCarteraFormated }}
                     </span>
                     <span class="material-item">
                         <img title="Esquirla espiritual" [src]="esquirlaEspiritual[0].icon" class="icono-material" />
-                        {{ formatearCantidad(esquirlaEspiritual[0].tengoEnCartera) }}
+                        {{ esquirlaEspiritual[0].tengoEnCarteraFormated }}
                     </span>
                 </div>
             </div>
@@ -450,31 +471,41 @@
             <!-- precioTpCompraS Column -->
             <ng-container matColumnDef="precioTpCompraS">
                 <th mat-header-cell *matHeaderCellDef> Precio TP Compra </th>
-                <td mat-cell *matCellDef="let element"> {{element.precioTpCompraS}} </td>
+                <td mat-cell *matCellDef="let element" class="precio-derecha">
+                    <span [innerHTML]="element.precioTpCompraSF"></span>
+                </td>
             </ng-container>
 
             <!-- precioTpVentaS Column -->
             <ng-container matColumnDef="precioTpVentaS">
                 <th mat-header-cell *matHeaderCellDef> Precio TP Venta </th>
-                <td mat-cell *matCellDef="let element"> {{element.precioTpVentaS}} </td>
+                <td mat-cell *matCellDef="let element" class="precio-derecha">
+                    <span [innerHTML]="element.precioTpVentaSF"></span>
+                </td>
             </ng-container>
 
             <!-- precioStackCompraS Column -->
             <ng-container matColumnDef="precioStackCompraS">
                 <th mat-header-cell *matHeaderCellDef> Precio Stack Compra </th>
-                <td mat-cell *matCellDef="let element"> {{element.precioStackCompraS}} </td>
+                <td mat-cell *matCellDef="let element" class="precio-derecha">
+                    <span [innerHTML]="element.precioStackCompraSF"></span>
+                </td>
             </ng-container>
 
             <!-- precioStackVentaS Column -->
             <ng-container matColumnDef="precioStackVentaS">
                 <th mat-header-cell *matHeaderCellDef> Precio Stack Venta </th>
-                <td mat-cell *matCellDef="let element"> {{element.precioStackVentaS}} </td>
+                <td mat-cell *matCellDef="let element" class="precio-derecha">
+                    <span [innerHTML]="element.precioStackVentaSF"></span>
+                </td>
             </ng-container>
 
             <!-- precioStackVentaS90 Column -->
             <ng-container matColumnDef="precioStackVentaS90">
                 <th mat-header-cell *matHeaderCellDef> Precio Stack Venta 90% </th>
-                <td mat-cell *matCellDef="let element"> {{element.precioStackVentaS90}} </td>
+                <td mat-cell *matCellDef="let element" class="precio-derecha">
+                    <span [innerHTML]="element.precioStackVentaSF90"></span>
+                </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumnsPreciosVarios; sticky: true"></tr>
@@ -513,7 +544,7 @@
                             </span>
                         </div>
                         <table mat-table #sort1="matSort" [dataSource]="dataSourceArmasLegendarias1" matSort
-                            matSortActive="precioTpVentaS" matSortDirection="desc" class="mat-elevation-z8">
+                            matSortActive="precioOrdenableTpVenta" matSortDirection="desc" class="mat-elevation-z8">
 
                             <!-- icon Column -->
                             <ng-container matColumnDef="icon">
@@ -548,8 +579,12 @@
 
                             <!-- precioTpVentaS Column -->
                             <ng-container matColumnDef="precioTpVentaS">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Precio TP Venta </th>
-                                <td mat-cell *matCellDef="let element"> {{element.precioTpVentaS}} </td>
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header="precioOrdenableTpVenta">
+                                    Precio TP Venta
+                                </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <span [innerHTML]="element.precioTpVentaSF"></span>
+                                </td>
                             </ng-container>
 
                             <!-- pre Column -->
@@ -565,9 +600,12 @@
 
                             <!-- precioTpVentaSPre Column -->
                             <ng-container matColumnDef="precioTpVentaSPre">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header="precioOrdenable"> Precio TP Venta
-                                    Pre </th>
-                                <td mat-cell *matCellDef="let element"> {{element.precioTpVentaSPre}} </td>
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header="precioOrdenableTpVentaPre">
+                                    Precio TP Venta Pre
+                                </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <span [innerHTML]="element.precioTpVentaSFPre"></span>
+                                </td>
                             </ng-container>
 
                             <tr mat-header-row *matHeaderRowDef="displayedColumnsArmasLegendarias1; sticky: true"></tr>
@@ -670,7 +708,7 @@
                             </span>
                         </div>
                         <table mat-table #sort3="matSort" [dataSource]="dataSourceArmasLegendarias3" matSort
-                            matSortActive="precioTpVentaS" matSortDirection="desc" class="mat-elevation-z8">
+                            matSortActive="precioOrdenableTpVenta" matSortDirection="desc" class="mat-elevation-z8">
 
                             <!-- icon Column -->
                             <ng-container matColumnDef="icon">
@@ -705,8 +743,12 @@
 
                             <!-- precioTpVentaS Column -->
                             <ng-container matColumnDef="precioTpVentaS">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Precio TP Venta </th>
-                                <td mat-cell *matCellDef="let element"> {{element.precioTpVentaS}} </td>
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header="precioOrdenableTpVenta">
+                                    Precio TP Venta
+                                </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <span [innerHTML]="element.precioTpVentaSF"></span>
+                                </td>
                             </ng-container>
 
                             <!-- pre Column -->
@@ -722,9 +764,12 @@
 
                             <!-- precioTpVentaSPre Column -->
                             <ng-container matColumnDef="precioTpVentaSPre">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header="precioOrdenable"> Precio TP Venta
-                                    Pre </th>
-                                <td mat-cell *matCellDef="let element"> {{element.precioTpVentaSPre}} </td>
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header="precioOrdenableTpVentaPre">
+                                    Precio TP Venta Pre
+                                </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <span [innerHTML]="element.precioTpVentaSFPre"></span>
+                                </td>
                             </ng-container>
 
                             <tr mat-header-row *matHeaderRowDef="displayedColumnsArmasLegendarias3; sticky: true"></tr>
@@ -852,7 +897,8 @@
                                 </a>
                             </span>
                         </div>
-                        <table mat-table [dataSource]="dataSourceArmasLegendariasGenOther" class="mat-elevation-z8">
+                        <table mat-table #sort5="matSort" [dataSource]="dataSourceArmasLegendariasGenOther" matSort
+                            matSortActive="precioOrdenableTpVenta" matSortDirection="desc" class="mat-elevation-z8">
 
                             <!-- icon Column -->
                             <ng-container matColumnDef="icon">
@@ -862,7 +908,7 @@
 
                             <!-- nombre Column -->
                             <ng-container matColumnDef="nombre">
-                                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
                                 <td mat-cell *matCellDef="let element">
                                     <a href={{element.wiki}} target="_blank" rel="noopener noreferrer"
                                         style="text-decoration: none">
@@ -873,25 +919,33 @@
 
                             <!-- tipo Column -->
                             <ng-container matColumnDef="tipo">
-                                <th mat-header-cell *matHeaderCellDef> Tipo </th>
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo </th>
                                 <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
                             </ng-container>
 
                             <!-- precioTpCompraS Column -->
                             <ng-container matColumnDef="precioTpCompraS">
-                                <th mat-header-cell *matHeaderCellDef> Precio TP Compra </th>
-                                <td mat-cell *matCellDef="let element"> {{element.precioTpCompraS}} </td>
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header="precioOrdenableTpCompra">
+                                    Precio TP Compra
+                                </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <span [innerHTML]="element.precioTpCompraSF"></span>
+                                </td>
                             </ng-container>
 
                             <!-- precioTpVentaS Column -->
                             <ng-container matColumnDef="precioTpVentaS">
-                                <th mat-header-cell *matHeaderCellDef> Precio TP Venta </th>
-                                <td mat-cell *matCellDef="let element"> {{element.precioTpVentaS}} </td>
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header="precioOrdenableTpVenta">
+                                    Precio TP Venta
+                                </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <span [innerHTML]="element.precioTpVentaSF"></span>
+                                </td>
                             </ng-container>
 
                             <!-- pre Column -->
                             <ng-container matColumnDef="pre">
-                                <th mat-header-cell *matHeaderCellDef> Pre </th>
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Pre </th>
                                 <td mat-cell *matCellDef="let element">
                                     <a href={{element.wikiPre}} target="_blank" rel="noopener noreferrer"
                                         style="text-decoration: none">
@@ -902,14 +956,22 @@
 
                             <!-- precioTpCompraSPre Column -->
                             <ng-container matColumnDef="precioTpCompraSPre">
-                                <th mat-header-cell *matHeaderCellDef> Precio TP Compra Pre </th>
-                                <td mat-cell *matCellDef="let element"> {{element.precioTpCompraSPre}} </td>
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header="precioOrdenableTpCompraPre">
+                                    Precio TP Compra Pre
+                                </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <span [innerHTML]="element.precioTpCompraSFPre"></span>
+                                </td>
                             </ng-container>
 
                             <!-- precioTpVentaSPre Column -->
                             <ng-container matColumnDef="precioTpVentaSPre">
-                                <th mat-header-cell *matHeaderCellDef> Precio TP Venta Pre </th>
-                                <td mat-cell *matCellDef="let element"> {{element.precioTpVentaSPre}} </td>
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header="precioOrdenableTpVentaPre">
+                                    Precio TP Venta Pre
+                                </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <span [innerHTML]="element.precioTpVentaSFPre"></span>
+                                </td>
                             </ng-container>
 
                             <tr mat-header-row
@@ -922,3 +984,5 @@
         </mat-tab-group>
     </mat-tab>
 </mat-tab-group>
+
+<app-scroll-top-button></app-scroll-top-button>

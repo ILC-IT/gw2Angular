@@ -200,6 +200,8 @@ const GW2_REGIONAL_MAPS = {
       // { es: "Tierras Fronterizas alpinas verdes", en: "Green Alpine Borderlands" },
       { es: "Tierras Fronterizas alpinas", en: "Alpine Borderlands" },
       { es: "Tierras Fronterizas deserticas", en: "Desert Borderlands" },
+      // BETA MAP
+      { es: "Tierras Fronterizas calcinadas", en: "Seared Borderlands" },
       { es: "El Borde de la Niebla", en: "Edge of the Mists" }
       // { es: "Sagrario de Obsidiana", en: "Obsidian Sanctum (zone)" },
       // { es: "Bastion del Armisticio", en: "Armistice Bastion" },

@@ -63,7 +63,6 @@ const files = [
     } catch (err) {
         console.error("\nERROR: Infusion asset copy failed.");
         console.error(err.message);
-
-        process.exitCode = 1;
+        process.exit(1);
     }
 })();

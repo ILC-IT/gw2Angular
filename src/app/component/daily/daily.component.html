@@ -923,6 +923,29 @@
             </mat-card-content>
           </mat-card>
         </ng-container>
+        <hr class="separador">
+        <h2>
+          <a href="https://wiki.guildwars2.com/wiki/Daily_Catch#Exchanges" target="_blank" rel="noopener noreferrer"
+            class="wiki-title">
+            <span>Daily Fisher</span>
+            <mat-icon>open_in_new</mat-icon>
+          </a>
+        </h2>
+        <mat-card class="daily-fish-card result" *ngFor="let achievement of dailyEoD">
+          <mat-card-content>
+            <section class="example-section">
+              <mat-checkbox class="example-margin" [checked]="achievement.done" [(indeterminate)]="indeterminate"
+                [labelPosition]="labelPosition" [class.mat-checkbox-disabled]="false" disabled>
+                {{ achievement.name }} ({{ achievement.current }}/{{ achievement.max }})
+              </mat-checkbox>
+            </section>
+          </mat-card-content>
+          <div class="daily-fish-maps">
+            <span class="map-tag" *ngFor="let map of achievement.maps">
+              {{ map }}
+            </span>
+          </div>
+        </mat-card>
       </a>
       <a *ngIf="recordatorio.ok">
         <h2>RECORDATORIO</h2>
@@ -933,3 +956,5 @@
   </mat-tab>
 
 </mat-tab-group>
+
+<app-scroll-top-button [showOnDesktop]="true"></app-scroll-top-button>

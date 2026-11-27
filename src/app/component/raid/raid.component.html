@@ -30,8 +30,8 @@
 
         <ng-container *ngIf="!isRaidLoading && !raidError">
             <mat-grid-list [cols]="cols" [rowHeight]="rowHeight">
-                <mat-grid-tile class="mat-elevation-z4" style="border-radius: 4px;" *ngFor="let item of raidWings"
-                    [colspan]="1" [rowspan]="4">
+                <mat-grid-tile class="mat-elevation-z4 resources-tile" *ngFor="let item of raidWings" [colspan]="1"
+                    [rowspan]="4">
                     <mat-list>
                         <!-- CABECERA -->
                         <div mat-subheader class="raid-header">
@@ -63,66 +63,64 @@
                                 [ngStyle]="{'color': item.bossCompletado[i] === true ? 'rgba(11, 161, 11, 0.904)' : 'red'}">
                                 {{ item.bossCompletado[i] === true ? 'check_box' : 'cancel' }}
                             </mat-icon>
-                            <div mat-line *ngIf="item.tokenCount[i] !== 0; else soloNombre">
+                            <div mat-line>
                                 {{raidBoss}}
                                 <span *ngIf="isBossNotInWeek(raidBoss)" class="not-in-week-star"
                                     matTooltip="Boss no semanal">
                                     ★
                                 </span>
-                                ({{ item.tokenCount[i] }})
+                                <span *ngIf="item.bossesWithTokens[i]">
+                                    ({{ item.tokenCount[i] }})
+                                </span>
                             </div>
-                            <ng-template #soloNombre mat-line>
-                                {{raidBoss}}
-                                <span *ngIf="isBossNotInWeek(raidBoss)" class="not-in-week-star"
-                                    matTooltip="Boss no semanal">
-                                    ★
-                                </span>
-                            </ng-template>
                         </mat-list-item>
                     </mat-list>
                 </mat-grid-tile>
-                <mat-grid-tile class="mat-elevation-z4" style="border-radius: 4px;" [colspan]="1" [rowspan]="4">
+                <mat-grid-tile class="mat-elevation-z4 resources-tile" [colspan]="1" [rowspan]="4">
                     <mat-list>
-                        <div mat-subheader>
-                            {{liTengo}}
+
+                        <div mat-subheader class="raid-header">
+                            <h3>Currencies</h3>
                         </div>
-                        <mat-list-item>
-                            <mat-icon mat-list-icon>
-                                <a href="https://wiki.guildwars2.com/wiki/Legendary_Insight" target="_blank"
-                                    rel="noopener noreferrer" style="text-decoration: none">
-                                    <img class="icon" title="Legendary Insight"
-                                        src="../../../assets/img/Legendary_Insight.png" />
-                                </a>
-                            </mat-icon>
-                        </mat-list-item>
-                    </mat-list>
-                    <mat-list>
-                        <div mat-subheader>
-                            {{magnetitas}}
-                        </div>
-                        <mat-list-item>
-                            <mat-icon mat-list-icon>
-                                <a href="https://wiki.guildwars2.com/wiki/Magnetite_Shard#Rewarded_by" target="_blank"
-                                    rel="noopener noreferrer" style="text-decoration: none">
-                                    <img class="icon" title="Esquirla de magnetita"
-                                        src="https://render.guildwars2.com/file/95F8F70D97186780CE45B54600B90BE356D8EA7C/1302741.png" />
-                                </a>
-                            </mat-icon>
-                        </mat-list-item>
-                    </mat-list>
-                    <mat-list>
-                        <div mat-subheader>
-                            {{gaets}}
-                        </div>
-                        <mat-list-item>
-                            <mat-icon mat-list-icon>
-                                <a href="https://wiki.guildwars2.com/wiki/Gaeting_Crystal" target="_blank"
-                                    rel="noopener noreferrer" style="text-decoration: none">
-                                    <img class="icon" title="Cristal de Gaets"
-                                        src="https://render.guildwars2.com/file/0C05B2E6F012B209C3095CDD6AF5F84B0BA9CC3A/3442797.png" />
-                                </a>
-                            </mat-icon>
-                        </mat-list-item>
+
+                        <table class="resources-table">
+                            <tr>
+                                <td>LI</td>
+                                <td>
+                                    <a href="https://wiki.guildwars2.com/wiki/Legendary_Insight" target="_blank"
+                                        rel="noopener noreferrer">
+                                        <img class="icon" title="Legendary Insight"
+                                            src="../../../assets/img/Legendary_Insight.png">
+                                    </a>
+                                </td>
+                                <td>{{liTengo}}</td>
+                            </tr>
+
+                            <tr>
+                                <td>Magnetitas</td>
+                                <td>
+                                    <a href="https://wiki.guildwars2.com/wiki/Magnetite_Shard#Rewarded_by"
+                                        target="_blank" rel="noopener noreferrer">
+                                        <img class="icon" title="Esquirla de magnetita"
+                                            src="https://render.guildwars2.com/file/95F8F70D97186780CE45B54600B90BE356D8EA7C/1302741.png">
+                                    </a>
+                                </td>
+                                <td>{{magnetitas}}</td>
+                            </tr>
+
+                            <tr>
+                                <td>Gaets</td>
+                                <td>
+                                    <a href="https://wiki.guildwars2.com/wiki/Gaeting_Crystal" target="_blank"
+                                        rel="noopener noreferrer">
+                                        <img class="icon" title="Cristal de Gaets"
+                                            src="https://render.guildwars2.com/file/0C05B2E6F012B209C3095CDD6AF5F84B0BA9CC3A/3442797.png">
+                                    </a>
+                                </td>
+                                <td>{{gaets}}</td>
+                            </tr>
+                        </table>
+
                     </mat-list>
                 </mat-grid-tile>
             </mat-grid-list>
@@ -156,8 +154,8 @@
 
         <ng-container *ngIf="!isWeeklyRaidLoading && !weeklyRaidError">
             <mat-grid-list [cols]="cols" [rowHeight]="rowHeight">
-                <mat-grid-tile class="mat-elevation-z4" style="border-radius: 4px;" *ngFor="let item of raidWings"
-                    [colspan]="1" [rowspan]="4">
+                <mat-grid-tile class="mat-elevation-z4 resources-tile" *ngFor="let item of raidWings" [colspan]="1"
+                    [rowspan]="4">
                     <mat-list>
                         <!-- CABECERA -->
                         <div mat-subheader class="raid-header">
@@ -342,3 +340,5 @@
     </mat-tab>
 
 </mat-tab-group>
+
+<app-scroll-top-button></app-scroll-top-button>

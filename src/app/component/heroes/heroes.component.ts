@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HeroService } from "../../service/hero.service";
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
@@ -6,6 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Specs } from './specs';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin } from 'rxjs';
+import { ScrollService } from '../../service/scroll.service';
 
 interface Equipment {
   infusions?: number[] | string;
@@ -51,12 +52,14 @@ interface ContainerData {
   name_es: string;
   options: ContainerInfusion[];
   method: string;
+  tradeable: boolean;
 }
 
 interface ContenedorInfo {
   id: number;
   nombre: string;
   nombreEs: string;
+  tradeable: boolean;
   cantidad: number;
   method: string;
   variantes: number;
@@ -98,6 +101,8 @@ interface InfusionVarianteGrupo {
 interface InfusionGrupo {
   nombre: string;
   icon: string;
+  nombresContenedores: string[];
+  tradeable: boolean;
   agonyResistance?: number;
   agonyStatNombre?: string;
   contenedores: ContenedorInfo[];
@@ -108,6 +113,7 @@ interface ContainerDataView {
   id: number;
   nombre: string;
   icon: string;
+  tradeable: boolean;
   infu: string[];
   cantidadTotal: number;
   cantidadBanco: number;
@@ -122,6 +128,7 @@ interface InfusionData {
   tipo: string;
   stat: InfusionAttribute[];
   description: string;
+  tradeable?: string[] | boolean;
   personajesEnLosQueEsta: InfusionPersonaje[];
   cantidadTotal: number;
   cantidadBanco: number;
@@ -138,7 +145,7 @@ interface InfusionData {
   templateUrl: './heroes.component.html',
   styleUrls: ['./heroes.component.css']
 })
-export class HeroesComponent implements OnInit, AfterViewInit {
+export class HeroesComponent implements OnInit {
 
   heroes: any = [];
   heroesOptions: any[] = [];
@@ -154,14 +161,16 @@ export class HeroesComponent implements OnInit, AfterViewInit {
   // Buscador de infusiones
   infusionsData: InfusionData[] = []; // Array para almacenar los datos de infusiones de la cuenta
   private infusionsDataSinAgrupar: InfusionData[] = [];
-  infusionSearch = '';
+  infusionSearch: string = '';
   selectedInfusion: InfusionData | null = null;
-  selectedHero = '';
+  selectedHero: string = '';
+  selectedLocation: string = '';
   filteredInfusions: InfusionData[] = [];
   filteredAllInfusions: InfusionData[] = [];
   filteredAllInfusionGroups: InfusionGrupo[] = [];
   mostrarTodasLasInfusiones: boolean = false;
   mostrarTodosLosContenedores: boolean = false;
+  filtrosInfusionColapsadosMovil = true;
   infusionsCatalog: InfusionData[] = []; // Array para almacenar los datos de infusiones del juego
   infusionsCatalogMap = new Map<number, InfusionData>();
   allInfusionsData: InfusionData[] = [];
@@ -180,11 +189,20 @@ export class HeroesComponent implements OnInit, AfterViewInit {
     { value: 'Healing', label: 'Curación' },
     { value: 'AgonyResistance', label: 'Resistencia a la Agonía' }
   ];
+  statOptionsOrdenadas = [...this.statOptions].sort((a, b) =>
+    a.label.localeCompare(b.label, 'es', {
+      sensitivity: 'base'
+    })
+  );
+  ubicacionOptions = [
+    { name: 'Banco', value: 'banco' },
+    { name: 'Inventario compartido', value: 'inventario-compartido' },
+    { name: 'Materiales', value: 'materiales' }
+  ];
   containerSearch: string = '';
   filteredContainers: ContainerData[] = [];
   selectedContainer: ContainerData | null = null;
   allContainers: ContainerDataView[] = [];
-  mostrarBotonArriba = false;
   actualizandoHeroes = false;
   ultimaActualizacionHeroes: Date | undefined;
 
@@ -196,7 +214,7 @@ export class HeroesComponent implements OnInit, AfterViewInit {
     'infusiones': 'Infusiones'
   };
 
-  constructor(private heroService: HeroService, private http: HttpClient, private router: Router, private route: ActivatedRoute) { }
+  constructor(private heroService: HeroService, private http: HttpClient, private router: Router, private route: ActivatedRoute, private scrollService: ScrollService) { }
 
   @ViewChild(MatSort)
   set matSort(sort: MatSort) {
@@ -209,34 +227,6 @@ export class HeroesComponent implements OnInit, AfterViewInit {
     }
   }
   sort!: MatSort;
-
-  ngAfterViewInit(): void {
-    const appBody = document.querySelector('.app-body');
-    const mobileContent = document.querySelector('.mobile-content');
-    appBody?.addEventListener('scroll', () => {
-      this.comprobarScroll();
-    });
-    mobileContent?.addEventListener('scroll', () => {
-      this.comprobarScroll();
-    });
-  }
-
-  comprobarScroll(): void {
-    const appBody = document.querySelector('.app-body') as HTMLElement | null;
-    const mobileContent = document.querySelector('.mobile-content') as HTMLElement | null;
-    const scrollTop =
-      appBody?.scrollTop ||
-      mobileContent?.scrollTop ||
-      0;
-    this.mostrarBotonArriba = scrollTop > 300;
-  }
-
-  subirArriba(): void {
-    const appBody = document.querySelector('.app-body') as HTMLElement | null;
-    const mobileContent = document.querySelector('.mobile-content') as HTMLElement | null;
-    appBody?.scrollTo({ top: 0, behavior: 'smooth' });
-    mobileContent?.scrollTo({ top: 0, behavior: 'smooth' });
-  }
 
   ngOnInit(): void {
     // Para hacer el routing a las pestañas de la tabla
@@ -251,12 +241,13 @@ export class HeroesComponent implements OnInit, AfterViewInit {
 
   loadContainersCatalog(): void {
     // Funcion para cargar el archivo de contenedores de infusiones
+    const containersFich: string = 'assets/infus/containers.json';
     this.loading = true;
     this.loadingExtra = true;
     this.containersError = false;
 
     this.http
-      .get<ContainerData[]>('assets/infus/containers.json')
+      .get<ContainerData[]>(containersFich)
       .subscribe((containers: ContainerData[]) => {
         this.containersCatalog = containers;
         this.containersCatalogMap.clear();
@@ -288,12 +279,13 @@ export class HeroesComponent implements OnInit, AfterViewInit {
 
   loadInfusionsCatalog(): void {
     // Funcion para cargar el archivo de infusiones y enriquecimientos sacados de api/items
+    const infusionFich = 'assets/infus/infusions.json';
     this.loading = true;
     this.loadingExtra = true;
     this.catalogoError = false;
 
     this.http
-      .get<InfusionData[]>('assets/infus/infusions.json')
+      .get<InfusionData[]>(infusionFich)
       .subscribe((infusions: InfusionData[]) => {
         this.infusionsCatalog = infusions;
         this.infusionsCatalogMap.clear();
@@ -1121,6 +1113,7 @@ export class HeroesComponent implements OnInit, AfterViewInit {
           infu: infusiones,
           nombre: catalogo.name_es,
           icon: catalogo.icon || '',
+          tradeable: catalogo.tradeable,
           cantidadTotal: cuenta?.cantidadTotal || 0,
           cantidadBanco: cuenta?.cantidadBanco || 0,
           cantidadInvComp: cuenta?.cantidadInvComp || 0,
@@ -1217,6 +1210,7 @@ export class HeroesComponent implements OnInit, AfterViewInit {
             tipo: item.tipo,
             stat: item.stat,
             description: item.description,
+            tradeable: this.esTradeable(item.tradeable),
             personajesEnLosQueEsta: personajes,
             cantidadTotal: infusion.cantidadTotal,
             cantidadBanco: infusion.cantidadBanco,
@@ -1329,6 +1323,7 @@ export class HeroesComponent implements OnInit, AfterViewInit {
               id: container.id,
               nombre: container.name,
               nombreEs: container.name_es,
+              tradeable: container.tradeable,
               cantidad: containerData.cantidadTotal,
               method: container.method,
               variantes: variantes,
@@ -1503,6 +1498,7 @@ export class HeroesComponent implements OnInit, AfterViewInit {
           tipo: 'Contenedor',
           stat: [],
           description: '',
+          tradeable: containerEncontrado.tradeable,
           personajesEnLosQueEsta: [],
           cantidadTotal: 0,
           cantidadBanco: 0,
@@ -1561,11 +1557,13 @@ export class HeroesComponent implements OnInit, AfterViewInit {
 
         // Buscar por estadistica
         const coincideStat =
-          !this.selectedStat ||
-          infusion.stat.some(
-            (stat: InfusionAttribute) =>
-              stat.attribute === this.selectedStat
-          );
+          this.selectedStat === 'tradeable'
+            ? this.esTradeableEnMisInfusiones(infusion)
+            : !this.selectedStat ||
+            infusion.stat.some(
+              (stat: InfusionAttribute) =>
+                stat.attribute === this.selectedStat
+            );
 
         // Buscar por personaje
         const coincideHeroe =
@@ -1573,7 +1571,25 @@ export class HeroesComponent implements OnInit, AfterViewInit {
           infusion.personajesEnLosQueEsta.some(
             (personaje: InfusionPersonaje) =>
               personaje.nombre === this.selectedHero
+          ) ||
+          infusion.contenedores.some(
+            contenedor =>
+              contenedor.personajes.some(
+                personaje => personaje.nombre === this.selectedHero
+              )
           );
+
+        // Buscar por ubicacion
+        const coincideLocation =
+          !this.selectedLocation ||
+          (this.selectedLocation === 'banco' &&
+            (infusion.cantidadBanco > 0 ||
+              infusion.contenedores.some(contenedor => contenedor.cantidadBanco > 0))) ||
+          (this.selectedLocation === 'inventario-compartido' &&
+            (infusion.cantidadInvComp > 0 ||
+              infusion.contenedores.some(contenedor => contenedor.cantidadInvComp > 0))) ||
+          (this.selectedLocation === 'materiales' &&
+            infusion.materiales.some(material => material.cantidad > 0));
 
         // Buscar por contenedor
         const coincideContenedor =
@@ -1586,7 +1602,8 @@ export class HeroesComponent implements OnInit, AfterViewInit {
         return coincideNombre &&
           coincideStat &&
           coincideContenedor &&
-          coincideHeroe;
+          coincideHeroe &&
+          coincideLocation;
       })
       .sort((a, b) => {
         // 1. Ordenar las infusiones alfabeticamente
@@ -1606,12 +1623,15 @@ export class HeroesComponent implements OnInit, AfterViewInit {
         });
       })
       .map((infusion: InfusionData) => {
+        const contenedores = this.getContenedoresPorUbicacion(infusion.contenedores);
 
-        // Si no hay personaje seleccionado, devolver la infusion completa
+        // Si no hay personaje seleccionado, devolver la infusion con sus contenedores filtrados
         if (!this.selectedHero) {
-          return infusion;
+          return {
+            ...infusion,
+            contenedores
+          };
         }
-
         // Buscar la cantidad que tiene el personaje seleccionado
         const personaje = infusion.personajesEnLosQueEsta.find(
           p => p.nombre === this.selectedHero
@@ -1619,14 +1639,13 @@ export class HeroesComponent implements OnInit, AfterViewInit {
 
         return {
           ...infusion,
-
           // Mostrar solo la cantidad del personaje seleccionado
           cantidadTotal: personaje?.cantidad || 0,
-
           // Los demas personajes no se muestran
           personajesEnLosQueEsta: personaje
             ? [personaje]
-            : []
+            : [],
+          contenedores
         };
       });
   }
@@ -1697,6 +1716,22 @@ export class HeroesComponent implements OnInit, AfterViewInit {
     }
   }
 
+  private getContenedoresPorUbicacion(contenedores: ContenedorInfo[]): ContenedorInfo[] {
+    if (this.selectedLocation === 'banco') {
+      return contenedores.filter(contenedor => contenedor.cantidadBanco > 0);
+    }
+
+    if (this.selectedLocation === 'inventario-compartido') {
+      return contenedores.filter(contenedor => contenedor.cantidadInvComp > 0);
+    }
+
+    if (this.selectedLocation === 'materiales') {
+      return [];
+    }
+
+    return contenedores;
+  }
+
   onInfusionSearch(): void {
     this.selectedInfusion = null;
     this.filtrarInfusiones();
@@ -1733,6 +1768,10 @@ export class HeroesComponent implements OnInit, AfterViewInit {
     this.filtrarInfusiones();
   }
 
+  onLocationChange(): void {
+    this.filtrarInfusiones();
+  }
+
   onInfusionSelected(infusion: InfusionData): void {
     this.selectedInfusion = infusion;
     this.infusionSearch = infusion.nombre;
@@ -1761,6 +1800,7 @@ export class HeroesComponent implements OnInit, AfterViewInit {
     this.infusionSearch = '';
     this.selectedHero = '';
     this.selectedStat = '';
+    this.selectedLocation = '';
     this.selectedInfusion = null;
     this.containerSearch = '';
     this.selectedContainer = null;
@@ -1771,16 +1811,19 @@ export class HeroesComponent implements OnInit, AfterViewInit {
     return this.mostrarTodasLasInfusiones || this.mostrarTodosLosContenedores;
   }
 
-  mostrarMisInfusiones(): void {
-    this.mostrarTodasLasInfusiones = false;
-    this.mostrarTodosLosContenedores = false;
-    this.filtrarInfusiones();
+  alternarFiltrosInfusionMovil(): void {
+    this.filtrosInfusionColapsadosMovil = !this.filtrosInfusionColapsadosMovil;
   }
 
   mostrarTodas(): void {
+    const filtrosVisibles = !this.filtrosInfusionesDeshabilitados;
+
     this.mostrarTodasLasInfusiones = true;
     this.mostrarTodosLosContenedores = false;
 
+    if (filtrosVisibles && this.scrollService.esMovil()) {
+      this.scrollService.subirArriba();
+    }
     const infusionesSinAgrupar = this.infusionsDataSinAgrupar;
 
     this.filteredAllInfusions = this.infusionsCatalog
@@ -1843,6 +1886,7 @@ export class HeroesComponent implements OnInit, AfterViewInit {
           tipo: catalogInfusion.tipo,
           stat: catalogInfusion.stat || [],
           description: catalogInfusion.description || '',
+          tradeable: this.esTradeable(catalogInfusion.tradeable),
           personajesEnLosQueEsta: [],
           cantidadTotal: 0,
           cantidadBanco: 0,
@@ -1961,15 +2005,21 @@ export class HeroesComponent implements OnInit, AfterViewInit {
   // console.log('IDs:', infusionesFaltantes.map(i => i.id));
   // console.log('Infusiones:', infusionesFaltantes);
 
+  mostrarMisInfusiones(): void {
+    this.mostrarTodasLasInfusiones = false;
+    this.mostrarTodosLosContenedores = false;
+    this.filtrarInfusiones();
+  }
 
   mostrarTodosLosContenedoresModo(): void {
+    const filtrosVisibles = !this.filtrosInfusionesDeshabilitados;
 
-    this.mostrarTodosLosContenedores = !this.mostrarTodosLosContenedores;
+    this.mostrarTodosLosContenedores = true;
+    this.mostrarTodasLasInfusiones = false;
 
-    if (this.mostrarTodosLosContenedores) {
-      this.mostrarTodasLasInfusiones = false;
+    if (filtrosVisibles && this.scrollService.esMovil()) {
+      this.scrollService.subirArriba();
     }
-
   }
 
   private agruparInfusionesPorNombre(
@@ -1995,6 +2045,22 @@ export class HeroesComponent implements OnInit, AfterViewInit {
   ): InfusionGrupo[] {
 
     const grupos = new Map<string, InfusionGrupo>();
+    const nombresContenedoresPorInfusion = new Map<number, Set<string>>();
+
+    this.containersCatalogMap.forEach(contenedor => {
+      contenedor.options.forEach(opcion => {
+        opcion.ids.forEach(idInfusion => {
+          let nombres = nombresContenedoresPorInfusion.get(idInfusion);
+
+          if (!nombres) {
+            nombres = new Set<string>();
+            nombresContenedoresPorInfusion.set(idInfusion, nombres);
+          }
+
+          nombres.add(contenedor.name_es);
+        });
+      });
+    });
 
     infusiones.forEach(infusion => {
 
@@ -2011,6 +2077,8 @@ export class HeroesComponent implements OnInit, AfterViewInit {
         grupo = {
           nombre: nombreGrupo,
           icon: infusion.icon,
+          nombresContenedores: [],
+          tradeable: false,
           variantes: [],
           contenedores: [],
           agonyResistance: undefined
@@ -2056,11 +2124,14 @@ export class HeroesComponent implements OnInit, AfterViewInit {
         grupo.agonyStatNombre = agonyOption?.label || '';
       }
 
-      // CONTENEDORES
-      // La infusion ya trae los contenedores asociados desde
-      // asociarContenedoresConInfusiones().
-      // No es necesario volver a buscarlos en el catalogo.
+      // NOMBRES DE CONTENEDORES DEL CATALOGO
+      nombresContenedoresPorInfusion.get(infusion.id)?.forEach(nombreContenedor => {
+        if (!grupo!.nombresContenedores.includes(nombreContenedor)) {
+          grupo!.nombresContenedores.push(nombreContenedor);
+        }
+      });
 
+      // CONTENEDORES QUE TIENE EL USUARIO
       const contenedores = infusion.contenedores.map(contenedor => ({
         ...contenedor,
         loTengo: contenedor.cantidad > 0
@@ -2087,7 +2158,27 @@ export class HeroesComponent implements OnInit, AfterViewInit {
 
     });
 
+    grupos.forEach(grupo => {
+      grupo.tradeable = grupo.variantes.length > 0 &&
+        grupo.variantes.every(variante =>
+          this.esTradeable(variante.infusion.tradeable)
+        );
+    });
+
     return Array.from(grupos.values());
+  }
+
+  private esTradeable(tradeable: string[] | boolean | undefined): boolean {
+    if (typeof tradeable === 'boolean') {
+      return tradeable;
+    }
+
+    return Array.isArray(tradeable) && !tradeable.includes('AccountBound');
+  }
+
+  private esTradeableEnMisInfusiones(infusion: InfusionData): boolean {
+    return this.esTradeable(infusion.tradeable) ||
+      infusion.contenedores.some(contenedor => contenedor.tradeable);
   }
 
   private obtenerNombreGrupoInfusion(nombre: string): string {

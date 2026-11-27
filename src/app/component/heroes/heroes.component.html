@@ -192,102 +192,153 @@
                 <!-- FILTROS -->
                 <div class="infusion-filters">
 
-                    <!-- Buscador de infusion -->
-                    <mat-form-field appearance="outline">
+                    <button mat-raised-button color="primary" type="button" class="toggle-infusion-filters"
+                        *ngIf="!filtrosInfusionesDeshabilitados" [attr.aria-expanded]="!filtrosInfusionColapsadosMovil"
+                        aria-controls="infusion-filters-content" (click)="alternarFiltrosInfusionMovil()">
+                        <span>
+                            {{ filtrosInfusionColapsadosMovil ? 'Mostrar filtros' : 'Ocultar filtros' }}
+                        </span>
+                        <mat-icon aria-hidden="true">
+                            {{ filtrosInfusionColapsadosMovil ? 'expand_more' : 'expand_less' }}
+                        </mat-icon>
+                    </button>
 
-                        <mat-label>
-                            Buscar mis infusiones
-                        </mat-label>
+                    <div class="infusion-filters-content" id="infusion-filters-content"
+                        [class.filtros-colapsados-movil]="filtrosInfusionColapsadosMovil"
+                        [class.ocultar-en-movil]="mostrarTodasLasInfusiones || mostrarTodosLosContenedores">
 
-                        <input matInput [(ngModel)]="infusionSearch" (input)="onInfusionSearch()"
-                            [matAutocomplete]="autoInfusion" [disabled]="filtrosInfusionesDeshabilitados">
+                        <!-- Buscador de infusion -->
+                        <mat-form-field appearance="outline">
 
-                        <mat-autocomplete #autoInfusion="matAutocomplete" class="autocomplete-infusiones"
-                            (optionSelected)="onInfusionSelected($event.option.value)">
+                            <mat-label>
+                                Buscar mis infusiones
+                            </mat-label>
 
-                            <mat-option *ngFor="let infusion of filteredInfusions" [value]="infusion">
-                                {{ infusion.nombre }}
-                            </mat-option>
-                        </mat-autocomplete>
+                            <input matInput [(ngModel)]="infusionSearch" (input)="onInfusionSearch()"
+                                [matAutocomplete]="autoInfusion" [disabled]="filtrosInfusionesDeshabilitados">
 
-                    </mat-form-field>
+                            <mat-autocomplete #autoInfusion="matAutocomplete" class="autocomplete-infusiones"
+                                (optionSelected)="onInfusionSelected($event.option.value)">
 
-                    <!-- Estadistica -->
-                    <mat-form-field appearance="outline">
+                                <mat-option *ngFor="let infusion of filteredInfusions" [value]="infusion">
+                                    {{ infusion.nombre }}
+                                </mat-option>
+                            </mat-autocomplete>
 
-                        <mat-label>
-                            Estadística
-                        </mat-label>
+                        </mat-form-field>
 
-                        <mat-select [(ngModel)]="selectedStat" (selectionChange)="onStatChange()"
-                            [disabled]="filtrosInfusionesDeshabilitados">
+                        <!-- Estadistica -->
+                        <mat-form-field appearance="outline">
 
-                            <mat-option value="">
-                                Todas
-                            </mat-option>
+                            <mat-label>
+                                Estadística
+                            </mat-label>
 
-                            <mat-option *ngFor="let stat of statOptions" [value]="stat.value">
-                                {{ stat.label }}
-                            </mat-option>
+                            <mat-select [(ngModel)]="selectedStat" (selectionChange)="onStatChange()"
+                                [disabled]="filtrosInfusionesDeshabilitados">
 
-                        </mat-select>
+                                <mat-option value="">
+                                    Todas
+                                </mat-option>
 
-                    </mat-form-field>
+                                <mat-option *ngFor="let stat of statOptionsOrdenadas" [value]="stat.value">
+                                    {{ stat.label }}
+                                </mat-option>
 
-                    <!-- Buscador de contenedor -->
-                    <mat-form-field appearance="outline">
+                                <mat-option value="tradeable">
+                                    Tradeable en bazar
+                                </mat-option>
 
-                        <mat-label>
-                            Buscar mis contenedores
-                        </mat-label>
+                            </mat-select>
 
-                        <input matInput [(ngModel)]="containerSearch" (focus)="onContainerSearch()"
-                            (input)="onContainerSearch()" [matAutocomplete]="autoContainer"
-                            [disabled]="filtrosInfusionesDeshabilitados">
+                        </mat-form-field>
 
-                        <mat-autocomplete #autoContainer="matAutocomplete" class="autocomplete-contenedores"
-                            (optionSelected)="onContainerSelected($event.option.value)">
+                        <!-- Personaje -->
+                        <mat-form-field appearance="outline">
 
-                            <mat-option *ngFor="let container of filteredContainers" [value]="container.name_es">
-                                {{ container.name_es }}
-                            </mat-option>
+                            <mat-label>
+                                Personaje
+                            </mat-label>
 
-                        </mat-autocomplete>
+                            <mat-select [(ngModel)]="selectedHero" (selectionChange)="onHeroChange()"
+                                [disabled]="filtrosInfusionesDeshabilitados">
 
-                    </mat-form-field>
+                                <mat-option value="">
+                                    Todos
+                                </mat-option>
 
-                    <!-- Personaje -->
-                    <mat-form-field appearance="outline">
+                                <mat-option *ngFor="let hero of heroesOptions" [value]="hero.name">
+                                    {{ hero.name }}
+                                </mat-option>
 
-                        <mat-label>
-                            Personaje
-                        </mat-label>
+                            </mat-select>
 
-                        <mat-select [(ngModel)]="selectedHero" (selectionChange)="onHeroChange()"
-                            [disabled]="filtrosInfusionesDeshabilitados">
+                        </mat-form-field>
 
-                            <mat-option value="">
-                                Todos
-                            </mat-option>
+                        <!-- Ubicacion -->
+                        <mat-form-field appearance="outline">
 
-                            <mat-option *ngFor="let hero of heroesOptions" [value]="hero.name">
-                                {{ hero.name }}
-                            </mat-option>
+                            <mat-label>
+                                Ubicación
+                            </mat-label>
 
-                        </mat-select>
+                            <mat-select [(ngModel)]="selectedLocation" (selectionChange)="onLocationChange()"
+                                [disabled]="filtrosInfusionesDeshabilitados">
 
-                    </mat-form-field>
+                                <mat-option value="">
+                                    Todas
+                                </mat-option>
+
+                                <mat-option *ngFor="let location of ubicacionOptions" [value]="location.value">
+                                    {{ location.name }}
+                                </mat-option>
+
+                            </mat-select>
+
+                        </mat-form-field>
+
+                        <!-- Buscador de contenedor -->
+                        <mat-form-field appearance="outline">
+
+                            <mat-label>
+                                Buscar mis contenedores
+                            </mat-label>
+
+                            <input matInput [(ngModel)]="containerSearch" (focus)="onContainerSearch()"
+                                (input)="onContainerSearch()" [matAutocomplete]="autoContainer"
+                                [disabled]="filtrosInfusionesDeshabilitados">
+
+                            <mat-autocomplete #autoContainer="matAutocomplete" class="autocomplete-contenedores"
+                                (optionSelected)="onContainerSelected($event.option.value)">
+
+                                <mat-option *ngFor="let container of filteredContainers" [value]="container.name_es">
+                                    {{ container.name_es }}
+                                </mat-option>
+
+                            </mat-autocomplete>
+
+                        </mat-form-field>
+
+                        <button mat-raised-button type="button" class="reset-button reset-button-mobile"
+                            *ngIf="!filtrosInfusionesDeshabilitados" (click)="resetInfusionFilters()">
+                            Reset
+                        </button>
+
+                    </div>
 
                     <!-- Modos -->
                     <div class="infusion-modos">
 
                         <!-- Reset -->
-                        <button mat-raised-button type="button" class="reset-button" (click)="resetInfusionFilters()">
+                        <button mat-raised-button type="button" class="reset-button reset-button-desktop"
+                            [class.ocultar-en-movil]="mostrarTodasLasInfusiones || mostrarTodosLosContenedores"
+                            [disabled]="filtrosInfusionesDeshabilitados" (click)="resetInfusionFilters()">
                             Reset
                         </button>
 
                         <!-- Mis infusiones -->
-                        <button mat-raised-button color="primary" [class.modo-activo]="!filtrosInfusionesDeshabilitados"
+                        <button mat-raised-button color="primary"
+                            [class.modo-activo]="!mostrarTodasLasInfusiones && !mostrarTodosLosContenedores"
                             (click)="mostrarMisInfusiones()">
                             Mis infusiones
                         </button>
@@ -304,6 +355,12 @@
                             Todos los contenedores
                         </button>
 
+                        <a class="infusion-wiki-link" href="https://wiki.guildwars2.com/wiki/Cosmetic_infusion"
+                            target="_blank" rel="noopener noreferrer"
+                            aria-label="Abrir la wiki de Guild Wars 2 sobre infusiones cosméticas">
+                            Precios & Info ↗
+                        </a>
+
                     </div>
 
                 </div>
@@ -315,7 +372,7 @@
                     <mat-card *ngFor="let infusion of filteredInfusions" class="infusion-card">
 
                         <!-- CABECERA -->
-                        <div class="infusion-header">
+                        <div class="infusion-header has-content">
 
                             <img [src]="infusion.icon" [alt]="infusion.nombre">
 
@@ -324,6 +381,11 @@
                                 <h3>
                                     {{ infusion.nombre }}
                                 </h3>
+
+                                <span *ngIf="!infusion.esContenedor && infusion.tradeable === true"
+                                    class="tradeability-badge tradeability-tradeable">
+                                    Infusión tradeable en bazar
+                                </span>
 
                                 <div class="infusion-description"
                                     *ngIf="!infusion.esContenedor && infusion.description">
@@ -418,7 +480,7 @@
                                     Contenedores
                                 </div>
 
-                                <div class="infusion-container-card" *ngFor=" let contenedor of infusion.contenedores">
+                                <div class="infusion-container-card" *ngFor="let contenedor of infusion.contenedores">
 
                                     <div class="container-main">
                                         <span class="container-name">
@@ -428,6 +490,10 @@
                                             x {{ contenedor.cantidad }}
                                         </strong>
                                     </div>
+                                    <span *ngIf="contenedor.tradeable"
+                                        class="tradeability-badge tradeability-tradeable">
+                                        Contenedor tradeable en bazar
+                                    </span>
                                     <div class="container-variants">
                                         {{ contenedor.variantes }}
                                         variantes posibles
@@ -486,7 +552,7 @@
                     <mat-card *ngFor="let grupo of filteredAllInfusionGroups" class="infusion-card">
 
                         <!-- CABECERA -->
-                        <div class="infusion-header">
+                        <div class="infusion-header has-content">
 
                             <img [src]="grupo.icon" [alt]="grupo.nombre">
 
@@ -495,6 +561,17 @@
                                 <h3>
                                     {{ grupo.nombre }}
                                 </h3>
+
+                                <span *ngIf="grupo.tradeable" class="tradeability-badge tradeability-tradeable">
+                                    Infusión tradeable en bazar
+                                </span>
+
+                                <!-- Contenedor del que puede salir la infusion -->
+                                <div class="infusion-description" *ngIf="grupo.nombresContenedores.length > 0">
+                                    <div *ngFor="let nombreContenedor of grupo.nombresContenedores">
+                                        {{ nombreContenedor }}
+                                    </div>
+                                </div>
 
                             </div>
 
@@ -589,7 +666,7 @@
                         <!-- CONTENEDORES -->
                         <!-- Los contenedores pertenecen al grupo de la infusion, no a cada variante individual.
                             Todas las variantes comparten el mismo contenedor -->
-                        <div class="infusion-section"
+                        <div class="infusion-section infusion-containers"
                             *ngIf="grupo.variantes.length > 0 && grupo.contenedores.length > 0">
 
                             <div class="infusion-section-title">
@@ -662,7 +739,7 @@
                     <mat-card *ngFor="let contenedor of allContainers" class="infusion-card">
 
                         <!-- CABECERA -->
-                        <div class="infusion-header">
+                        <div class="infusion-header" [class.has-content]="contenedor.cantidadTotal > 0">
 
                             <img [src]="contenedor.icon" [alt]="contenedor.nombre">
 
@@ -671,6 +748,10 @@
                                 <h3>
                                     {{ contenedor.nombre }}
                                 </h3>
+
+                                <span *ngIf="contenedor.tradeable" class="tradeability-badge tradeability-tradeable">
+                                    Contenedor tradeable en bazar
+                                </span>
 
                                 <div class="infusion-description">
                                     <div *ngFor="let infu of contenedor.infu">
@@ -700,12 +781,11 @@
                         <!-- DONDE ESTA -->
                         <div class="infusion-content" *ngIf="contenedor.cantidadTotal > 0">
 
+                            <!-- Personajes -->
                             <div class="infusion-section" *ngIf="contenedor.personajes.length > 0">
-
                                 <div class="infusion-section-title">
                                     Personajes
                                 </div>
-                                <!-- Personajes -->
                                 <div class="infusion-character" *ngFor="let personaje of contenedor.personajes">
                                     <span>
                                         {{ personaje.nombre }}
@@ -750,6 +830,4 @@
 
 </mat-tab-group>
 
-<button *ngIf="mostrarBotonArriba" class="boton-arriba" (click)="subirArriba()">
-    ↑
-</button>
+<app-scroll-top-button [showOnDesktop]="true"></app-scroll-top-button>

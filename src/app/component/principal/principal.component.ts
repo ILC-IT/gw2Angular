@@ -24,6 +24,7 @@ export class PrincipalComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   // Mapeo de nombres de pestañas a rutas igual al de diarias
   routeMap: { [key: string]: string } = {
     'Cámara del brujo': 'wizardvault',
@@ -51,7 +52,8 @@ export class PrincipalComponent implements OnInit {
     'Precios Huerto': 'precioshuerto',
     'Glifos': 'glifos'
   };
-  // Helper method to convert to route format
+
+  // Metodo auxiliar para convertir al formato de ruta
   sanitizeRoute(name: string): string {
     return this.routeMap[name] || name.replace(/[^\w-]+/g, '').toLowerCase();
   }

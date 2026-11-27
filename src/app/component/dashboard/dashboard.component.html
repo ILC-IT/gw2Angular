@@ -171,8 +171,9 @@
     <div class="search" color="primary">
         <mat-form-field class="example-form-field">
             <input matInput type="text" placeholder="Buscar en Wiki" [(ngModel)]="value">
-            <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Borrar" (click)="value=''">
-                <mat-icon>x</mat-icon>
+            <button mat-icon-button class="clear-search-button" *ngIf="value" matSuffix aria-label="Borrar"
+                (click)="value=''">
+                <mat-icon>X</mat-icon>
             </button>
         </mat-form-field>
         <a href="https://wiki-en.guildwars2.com/index.php?title=Special%3ASearch&search={{value}}&go=Go" target="_blank"

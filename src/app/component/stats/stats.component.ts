@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { atributos, atributosEng, atributos2, atributos2Eng, prefijos, prefijosEng, armaduras, armadurasEng, statsEsp, statsEng } from "./statsDefinition";
 // import * as _ from 'lodash';
 import { isEqual } from 'lodash';
@@ -97,11 +97,6 @@ export class StatsComponent implements OnInit {
       }
     });
   }
-
-  // stat1 = new FormControl();
-  // OnStat1Selected(option: { value: any; }) {
-  //   console.log("1 ", option.value);
-  // }
 
   // devuelve el index de la pestaña de la tabla
   getTabIndex(tab: string): number {

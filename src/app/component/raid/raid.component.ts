@@ -28,138 +28,9 @@ export class RaidComponent implements OnInit {
   cols: number = 4;
   rowHeight: string = '5:1';
 
-  raidWings: Raid[] = [
-    {
-      name: RaidsInfo[0]['name'],
-      wing: RaidsInfo[0]['wing'],
-      boss: RaidsInfo[0]['boss'],
-      bossOk: RaidsInfo[0]['bossOk'],
-      bossCompletado: RaidsInfo[0]['bossCompletado'],
-      bossWeekly: RaidsInfo[0]['bossWeekly'],
-      bossWeeklyCompletado: RaidsInfo[0]['bossWeeklyCompletado'],
-      weeklyId: RaidsInfo[0]['weeklyId'],
-      tokenCount: RaidsInfo[0]['tokenCount'],
-      callOfTheMists: RaidsInfo[0]['callOfTheMists'],
-      emboldened: RaidsInfo[0]['emboldened'],
-      url: RaidsInfo[0]['url']
-    },
-    {
-      name: RaidsInfo[1]['name'],
-      wing: RaidsInfo[1]['wing'],
-      boss: RaidsInfo[1]['boss'],
-      bossOk: RaidsInfo[1]['bossOk'],
-      bossCompletado: RaidsInfo[1]['bossCompletado'],
-      bossWeeklyCompletado: RaidsInfo[1]['bossWeeklyCompletado'],
-      bossWeekly: RaidsInfo[1]['bossWeekly'],
-      weeklyId: RaidsInfo[1]['weeklyId'],
-      tokenCount: RaidsInfo[1]['tokenCount'],
-      callOfTheMists: RaidsInfo[1]['callOfTheMists'],
-      emboldened: RaidsInfo[1]['emboldened'],
-      url: RaidsInfo[1]['url']
-    },
-    {
-      name: RaidsInfo[2]['name'],
-      wing: RaidsInfo[2]['wing'],
-      boss: RaidsInfo[2]['boss'],
-      bossOk: RaidsInfo[2]['bossOk'],
-      bossCompletado: RaidsInfo[2]['bossCompletado'],
-      bossWeeklyCompletado: RaidsInfo[2]['bossWeeklyCompletado'],
-      bossWeekly: RaidsInfo[2]['bossWeekly'],
-      weeklyId: RaidsInfo[2]['weeklyId'],
-      tokenCount: RaidsInfo[2]['tokenCount'],
-      callOfTheMists: RaidsInfo[2]['callOfTheMists'],
-      emboldened: RaidsInfo[2]['emboldened'],
-      url: RaidsInfo[2]['url']
-    },
-    {
-      name: RaidsInfo[3]['name'],
-      wing: RaidsInfo[3]['wing'],
-      boss: RaidsInfo[3]['boss'],
-      bossOk: RaidsInfo[3]['bossOk'],
-      bossCompletado: RaidsInfo[3]['bossCompletado'],
-      bossWeeklyCompletado: RaidsInfo[3]['bossWeeklyCompletado'],
-      bossWeekly: RaidsInfo[3]['bossWeekly'],
-      weeklyId: RaidsInfo[3]['weeklyId'],
-      tokenCount: RaidsInfo[3]['tokenCount'],
-      callOfTheMists: RaidsInfo[3]['callOfTheMists'],
-      emboldened: RaidsInfo[3]['emboldened'],
-      url: RaidsInfo[3]['url']
-    },
-    {
-      name: RaidsInfo[4]['name'],
-      wing: RaidsInfo[4]['wing'],
-      boss: RaidsInfo[4]['boss'],
-      bossOk: RaidsInfo[4]['bossOk'],
-      bossCompletado: RaidsInfo[4]['bossCompletado'],
-      bossWeeklyCompletado: RaidsInfo[4]['bossWeeklyCompletado'],
-      bossWeekly: RaidsInfo[4]['bossWeekly'],
-      weeklyId: RaidsInfo[4]['weeklyId'],
-      tokenCount: RaidsInfo[4]['tokenCount'],
-      callOfTheMists: RaidsInfo[4]['callOfTheMists'],
-      emboldened: RaidsInfo[4]['emboldened'],
-      url: RaidsInfo[4]['url']
-    },
-    {
-      name: RaidsInfo[5]['name'],
-      wing: RaidsInfo[5]['wing'],
-      boss: RaidsInfo[5]['boss'],
-      bossOk: RaidsInfo[5]['bossOk'],
-      bossCompletado: RaidsInfo[5]['bossCompletado'],
-      bossWeeklyCompletado: RaidsInfo[5]['bossWeeklyCompletado'],
-      bossWeekly: RaidsInfo[5]['bossWeekly'],
-      weeklyId: RaidsInfo[5]['weeklyId'],
-      tokenCount: RaidsInfo[5]['tokenCount'],
-      callOfTheMists: RaidsInfo[5]['callOfTheMists'],
-      emboldened: RaidsInfo[5]['emboldened'],
-      url: RaidsInfo[5]['url']
-    },
-    {
-      name: RaidsInfo[6]['name'],
-      wing: RaidsInfo[6]['wing'],
-      boss: RaidsInfo[6]['boss'],
-      bossOk: RaidsInfo[6]['bossOk'],
-      bossCompletado: RaidsInfo[6]['bossCompletado'],
-      bossWeeklyCompletado: RaidsInfo[6]['bossWeeklyCompletado'],
-      bossWeekly: RaidsInfo[6]['bossWeekly'],
-      weeklyId: RaidsInfo[6]['weeklyId'],
-      tokenCount: RaidsInfo[6]['tokenCount'],
-      callOfTheMists: RaidsInfo[6]['callOfTheMists'],
-      emboldened: RaidsInfo[6]['emboldened'],
-      url: RaidsInfo[6]['url']
-    },
-    {
-      name: RaidsInfo[7]['name'],
-      wing: RaidsInfo[7]['wing'],
-      boss: RaidsInfo[7]['boss'],
-      bossOk: RaidsInfo[7]['bossOk'],
-      bossCompletado: RaidsInfo[7]['bossCompletado'],
-      bossWeeklyCompletado: RaidsInfo[7]['bossWeeklyCompletado'],
-      bossWeekly: RaidsInfo[7]['bossWeekly'],
-      weeklyId: RaidsInfo[7]['weeklyId'],
-      tokenCount: RaidsInfo[7]['tokenCount'],
-      callOfTheMists: RaidsInfo[7]['callOfTheMists'],
-      emboldened: RaidsInfo[7]['emboldened'],
-      url: RaidsInfo[7]['url']
-    }
-  ];
-  strikeWings: Strike[] = [
-    {
-      wing: StrikesInfo[0]['wing'],
-      bossOk: StrikesInfo[0]['bossOk'],
-    },
-    {
-      wing: StrikesInfo[1]['wing'],
-      bossOk: StrikesInfo[1]['bossOk'],
-    },
-    {
-      wing: StrikesInfo[2]['wing'],
-      bossOk: StrikesInfo[2]['bossOk'],
-    },
-    {
-      wing: StrikesInfo[3]['wing'],
-      bossOk: StrikesInfo[3]['bossOk'],
-    }
-  ];
+  raidWings: Raid[] = RaidsInfo.map(raid => ({ ...raid }));
+
+  strikeWings: Strike[] = StrikesInfo.map(strike => ({ ...strike }));
 
   isRaidLoading = false;
   isWeeklyRaidLoading = false;
@@ -533,21 +404,25 @@ export class RaidComponent implements OnInit {
   }
 
   isDailyBossTodayForDay(boss: string, day: any): boolean {
-    // Comprueba si el boss es diario hoy y si el dia indicado corresponde al dia de hoy
+    // Comprueba si el boss es diario hoy y si el dia indicado corresponde al dia efectivo de juego
     if (!day?.date || !this.dailyRotation) {
       return false;
     }
-    
+
     // Otra forma de hacerlo:
-    // const todayDayName = new Date().toLocaleDateString('es-ES', { weekday: 'long' });
+    // const todayDayName = new Date().toLocaleDateString('es-ES', { weekday: 'long', timeZone: 'UTC' });
     // return todayDayName === day.dayName && Object.values(this.dailyRotation).includes(boss);
 
-    const today = new Date();
+    // Obtener la fecha efectiva actual del juego (teniendo en cuenta el reset de la 1am/2am)
+    const effectiveToday = this.raidService.getEffectiveGameDate(new Date());
     const dayDate = new Date(day.date);
+
+    // Comparar usando metodos UTC (ya que effectiveToday y day.date estan en formato UTC/medianoche)
     const isToday =
-      today.getFullYear() === dayDate.getFullYear() &&
-      today.getMonth() === dayDate.getMonth() &&
-      today.getDate() === dayDate.getDate();
+      effectiveToday.getUTCFullYear() === dayDate.getUTCFullYear() &&
+      effectiveToday.getUTCMonth() === dayDate.getUTCMonth() &&
+      effectiveToday.getUTCDate() === dayDate.getUTCDate();
+
     return isToday && Object.values(this.dailyRotation).includes(boss);
   }
 

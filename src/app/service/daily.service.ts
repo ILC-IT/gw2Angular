@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ApiKeyService } from './api-key.service';
+import { HttpParams } from '@angular/common/http';
+import { Gw2DataService } from './gw2-data.service';
 import { of } from 'rxjs';
 
 export interface Achievement {
@@ -22,8 +22,6 @@ interface AchievementRequest {
   providedIn: 'root'
 })
 export class DailyService {
-
-  apiUrl = "https://api.guildwars2.com/v2/";
 
   public readonly bestMapBonusRewardWeekNumber: number = 8; // Variable a cambiar segun cambie la mejor zona
 
@@ -158,21 +156,17 @@ export class DailyService {
 
   strike: any;
 
-  convergenciaSotoWp = ["Torre del brujo: [&BB8OAAA=]"];
+  convergenciaSotoWp = ["Zona exterior de Nayos: [&BB8OAAA=]"];
   convergenciaSoto = [0, 3, 6, 9, 12, 15, 18, 21, 24];
   convergenciaSotoInvierno = [2, 5, 8, 11, 14, 17, 20, 23];
-  convergenciaJwWp = ["Costas bajas: [&BK4OAAA=]"];
+  convergenciaJwWp = ["Monte Balrior: [&BK4OAAA=]"];
   convergenciaJw = [2, 5, 8, 11, 14, 17, 20, 23];
   convergenciaJwInvierno = [1, 4, 7, 10, 13, 16, 19, 22];
-  convergenciaVoeWp = ["Hondonadas del Manantial de Ley: [&BDYQAAA=]"];
+  convergenciaVoeWp = ["Nexo de Eternidad: [&BB8QAAA=]"];
   convergenciaVoe = [0, 3, 6, 9, 12, 15, 18, 21];
   convergenciaVoeInvierno = [2, 5, 8, 11, 14, 17, 20, 23];
 
-  constructor(private httpClient: HttpClient, private apiKeyService: ApiKeyService) { }
-
-  private getApiKey(): string | null {
-    return this.apiKeyService.getCurrentKey();
-  }
+  constructor(private gw2DataService: Gw2DataService) { }
 
   /*
     DAILY:
@@ -195,9 +189,8 @@ export class DailyService {
 
   getDaily() {
     //INFO: https://wiki.guildwars2.com/wiki/API_talk:2/achievements/daily
-    //const url = `${this.apiUrl}achievements/daily?v=2019-05-16T00:00:00.000Z`;
-    const url = `${this.apiUrl}achievements/daily?v=latest`;
-    return this.httpClient.get(url);
+    const params = new HttpParams().set('v', 'latest'); // v=2019-05-16T00:00:00.000Z
+    return this.gw2DataService.get('achievements/daily', params);
   }
 
   getDailyInfo(dailyIds: string) {
@@ -215,8 +208,8 @@ export class DailyService {
     //?ids=5577 semanales eod
     //?ids=7154 febe/cerus
     //?ids=7130 observatorio/dagda
-    const url = `${this.apiUrl}achievements?ids=${dailyIds}`;
-    return this.httpClient.get(url);
+    const params = new HttpParams().set('ids', dailyIds);
+    return this.gw2DataService.get('achievements', params);
   }
 
   // getPactSupply() { //el dia empieza a las 10am UTC+2 o 9am UTC+1
@@ -375,57 +368,41 @@ export class DailyService {
     return weekNumberMod11;
   }
 
-  getWallet() {
-    const url = `${this.apiUrl}account/wallet?access_token=${this.getApiKey()}`;
-    return this.httpClient.get(url);
-  }
-
   getDailyCraft() {
-    const url = `${this.apiUrl}account/dailycrafting?access_token=${this.getApiKey()}`;
-    return this.httpClient.get(url);
+    return this.gw2DataService.getAccount('dailycrafting');
   }
 
-  getDailyStrikeId() { //para sacar el id de las strikes diarias
-    const url = `${this.apiUrl}achievements/categories/250`;
-    return this.httpClient.get(url);
+  getDailyStrikeId() {
+    // Para sacar el id de las strikes diarias
+    return this.gw2DataService.get('achievements/categories/250');
   }
 
-  getDailyFractalsId() { //para sacar el id de los fractales diarios
-    const url = `${this.apiUrl}achievements/categories/88`;
-    return this.httpClient.get(url);
+  getDailyFractalsId() {
+    // Para sacar el id de los fractales diarios
+    return this.gw2DataService.get('achievements/categories/88');
   }
 
   getWizardVault() {
-    const url = `${this.apiUrl}/wizardsvault`;
-    return this.httpClient.get(url);
+    return this.gw2DataService.get('wizardsvault');
   }
 
   getDailyWizardVault() {
-    // const url = `${this.apiUrl}achievements/categories/367`;
-    const url = `${this.apiUrl}account/wizardsvault/daily?access_token=${this.getApiKey()}`;
-    return this.httpClient.get(url);
+    // return this.gw2DataService.getAccount('achievements/categories/367');
+    return this.gw2DataService.getAccount('wizardsvault/daily');
   }
 
   getWeeklyWizardVault() {
-    // const url = `${this.apiUrl}achievements/categories/363`;
-    const url = `${this.apiUrl}account/wizardsvault/weekly?access_token=${this.getApiKey()}`;
-    return this.httpClient.get(url);
+    // return this.gw2DataService.getAccount('achievements/categories/363');
+    return this.gw2DataService.getAccount('wizardsvault/weekly');
   }
 
   getSpecialWizardVault() {
-    // const url = `${this.apiUrl}achievements/categories/359`;
-    const url = `${this.apiUrl}account/wizardsvault/special?access_token=${this.getApiKey()}`;
-    return this.httpClient.get(url);
+    // return this.gw2DataService.getAccount('achievements/categories/359');
+    return this.gw2DataService.getAccount('wizardsvault/special');
   }
 
   getDailyHeroChoiceChest() {
-    const url = `${this.apiUrl}account/mapchests?access_token=${this.getApiKey()}`;
-    return this.httpClient.get(url);
-  }
-
-  getMaterials() {
-    const url = `${this.apiUrl}account/materials?access_token=${this.getApiKey()}`;
-    return this.httpClient.get(url);
+    return this.gw2DataService.getAccount('mapchests');
   }
 
   esPar(n: number) {
@@ -704,14 +681,13 @@ export class DailyService {
   getInestabilidadCm() {
     // devuelve json con "instabilities" diarias de un año de fractal 76 a 100 y "instability_details" con su info
     const url = "https://raw.githubusercontent.com/Invisi/gw2-fotm-instabilities/refs/heads/master/instabilities.json";
-    return this.httpClient.get(url);
+    return this.gw2DataService.getExternal(url);
   }
 
   getQuaggans(name: string) {
     // devuelve imagenes de quaggans con valores {id, url}
     // EJ. https://api.guildwars2.com/v2/quaggans/404
-    const url = `${this.apiUrl}quaggans/${name}`;
-    return this.httpClient.get(url);
+    return this.gw2DataService.get(`quaggans/${name}`);
   }
 
   async getConvergenciaSoto100(): Promise<Achievement[]> {
@@ -732,8 +708,8 @@ export class DailyService {
   getConvergenciaSotoWeeklyCM() {
     // devuelve logro semanal de hacer 5 convergencias cm de soto
     const id = 8464;
-    const url = `${this.apiUrl}account/achievements?ids=${id}&access_token=${this.getApiKey()}`;
-    return this.httpClient.get(url);
+    const params = new HttpParams().set('ids', id);
+    return this.gw2DataService.getAccount('achievements', params);
   }
 
   async getConvergenciaJw50(): Promise<Achievement[]> {
@@ -754,9 +730,10 @@ export class DailyService {
   getConvergenciaJwWeeklyCM() {
     // devuelve logro semanal de hacer 3 convergencias cm de jw
     const id = 8776;
-    const url = `${this.apiUrl}account/achievements?ids=${id}&access_token=${this.getApiKey()}`;
-    return this.httpClient.get(url);
+    const params = new HttpParams().set('ids', id);
+    return this.gw2DataService.getAccount('achievements', params);
   }
+
   async getConvergenciaVoe50(): Promise<Achievement[]> {
     // devuelve logro de hacer 50 convergencias de voe
     return this.getAchievement(9349, 50);
@@ -775,130 +752,73 @@ export class DailyService {
   getConvergenciaVoeWeeklyCM() {
     // devuelve logro semanal de hacer 1 convergencia cm de voe
     const id = 9422;
-    const url = `${this.apiUrl}account/achievements?ids=${id}&access_token=${this.getApiKey()}`;
-    return this.httpClient.get(url);
-  }
-
-  async getAchievement(id: number, max: number, repeated?: number, description?: string): Promise<Achievement[]> {
-    const url = `${this.apiUrl}account/achievements?ids=${id}&access_token=${this.getApiKey()}`;
-    try {
-      return await this.httpClient.get<Achievement[]>(url).toPromise();
-    } catch (error) {
-      console.warn(`${description || `achievement ${id}`} sin hacer`);
-      const fallback: Achievement = {
-        id,
-        current: 0,
-        max,
-        done: false,
-        ...(repeated !== undefined && { repeated })
-      };
-      return [fallback];
-    }
-  }
-
-  async getAchievements(requests: AchievementRequest[]): Promise<Achievement[]> {
-    const ids = requests.map(r => r.id);
-    const url = `${this.apiUrl}account/achievements?ids=${ids.join(',')}&access_token=${this.getApiKey()}`;
-
-    try {
-      const response = await this.httpClient.get<Achievement[]>(url).toPromise();
-
-      return requests.map(r => {
-        const achievement = response.find(a => a.id === r.id);
-
-        if (!achievement) {
-          console.warn(`${r.description || `achievement ${r.id}`} sin hacer`);
-          return {
-            id: r.id,
-            current: 0,
-            max: r.max,
-            done: false,
-            ...(r.repeated !== undefined && { repeated: r.repeated })
-          };
-        }
-        return achievement;
-      });
-
-    } catch (error) {
-      console.warn(
-        `No se han podido obtener los achievements: ${requests.map(r => r.description || `achievement ${r.id}`).join(', ')
-        }`
-      );
-      return requests.map(r => ({
-        id: r.id,
-        current: 0,
-        max: r.max,
-        done: false,
-        ...(r.repeated !== undefined && { repeated: r.repeated })
-      }));
-    }
+    const params = new HttpParams().set('ids', id);
+    return this.gw2DataService.getAccount('achievements', params);
   }
 
   getDailyStrikeDone(dailyIdsS: string) {
-    const url = `${this.apiUrl}account/achievements?ids=${dailyIdsS}&access_token=${this.getApiKey()}`;
-    return this.httpClient.get<Achievement[]>(url);
+    const params = new HttpParams().set('ids', dailyIdsS);
+    return this.gw2DataService.getAccount<Achievement[]>('achievements', params);
   }
 
   getAchievementsByIds(ids: string) {
-    const url = `${this.apiUrl}achievements?ids=${ids}`;
-    return this.httpClient.get<any[]>(url);
+    const params = new HttpParams().set('ids', ids);
+    return this.gw2DataService.get<any[]>('achievements', params);
   }
 
   getWeeklyWvWId() {
-    const url = `${this.apiUrl}achievements/categories/346`;
-    return this.httpClient.get<any>(url);
+    return this.gw2DataService.get<any>('achievements/categories/346');
   }
 
   getWeeklyWvW(ids: string) {
-    const url = `${this.apiUrl}account/achievements?ids=${ids}&access_token=${this.getApiKey()}`;
-    return this.httpClient.get<any[]>(url);
+    const params = new HttpParams().set('ids', ids);
+    return this.gw2DataService.getAccount<any[]>('achievements', params);
   }
 
   getWeeklyRiftHuntingJWId() {
-    const url = `${this.apiUrl}achievements/categories/423`;
-    return this.httpClient.get<any>(url);
+    return this.gw2DataService.get<any>('achievements/categories/423');
   }
 
   getWeeklyRiftHuntingJW(ids: string) {
-    const url = `${this.apiUrl}account/achievements?ids=${ids}&access_token=${this.getApiKey()}`;
-    return this.httpClient.get<any[]>(url);
+    const params = new HttpParams().set('ids', ids);
+    return this.gw2DataService.getAccount<any[]>('achievements', params);
   }
 
   getWeeklyRiftHuntingSotoId() {
-    const url = `${this.apiUrl}achievements/categories/365`;
-    return this.httpClient.get<any>(url);
+    return this.gw2DataService.get<any>('achievements/categories/365');
   }
 
   getWeeklyRiftHuntingSoto(ids: string) {
-    const url = `${this.apiUrl}account/achievements?ids=${ids}&access_token=${this.getApiKey()}`;
-    return this.httpClient.get<any[]>(url);
+    const params = new HttpParams().set('ids', ids);
+    return this.gw2DataService.getAccount<any[]>('achievements', params);
   }
 
   getWeeklyRiftHuntingVoeId() {
-    const url = `${this.apiUrl}achievements/categories/464`;
-    return this.httpClient.get<any>(url);
+    return this.gw2DataService.get<any>('achievements/categories/464');
   }
 
   getWeeklyRiftHuntingVoe(ids: string) {
-    const url = `${this.apiUrl}account/achievements?ids=${ids}&access_token=${this.getApiKey()}`;
-    return this.httpClient.get<any[]>(url);
+    const params = new HttpParams().set('ids', ids);
+    return this.gw2DataService.getAccount<any[]>('achievements', params);
   }
 
   getWeeklyEoDStrikes() {
     // para sacar el id de las strikes semanales de EoD
-    const url = `${this.apiUrl}account/achievements?ids=5577&access_token=${this.getApiKey()}`;
-    return this.httpClient.get(url);
+    const id = 5577;
+    const params = new HttpParams().set('ids', id);
+    return this.gw2DataService.getAccount('achievements', params);
   }
 
   getWeeklySotoStrikes() {
     // para sacar el id de las strikes semanales de Soto
-    const url = `${this.apiUrl}account/achievements?ids=7155&access_token=${this.getApiKey()}`;
-    return this.httpClient.get(url);
+    const id = 7155;
+    const params = new HttpParams().set('ids', id);
+    return this.gw2DataService.getAccount('achievements', params);
   }
 
   getFractalsDone(ids: string) {
-    const url = `${this.apiUrl}account/achievements?ids=${ids}&access_token=${this.getApiKey()}`;
-    return this.httpClient.get<any[]>(url);
+    const params = new HttpParams().set('ids', ids);
+    return this.gw2DataService.getAccount<any[]>('achievements', params);
   }
 
   async getWeeklyQuickplayRaidEncounter(): Promise<Achievement[]> {
@@ -917,35 +837,92 @@ export class DailyService {
   }
 
   getDailyWorldBoss() {
-    const url = `${this.apiUrl}account/worldbosses?access_token=${this.getApiKey()}`;
-    return this.httpClient.get(url);
+    return this.gw2DataService.getAccount('worldbosses');
   }
 
   getWeeklyRaidEncounters() {
     // para sacar el id de los raid encounters semanales (antiguas strikes)
-    const url = `${this.apiUrl}account/achievements?ids=9125&access_token=${this.getApiKey()}`;
-    return this.httpClient.get(url);
+    const id = '9125';
+    const params = new HttpParams().set('ids', id);
+    return this.gw2DataService.getAccount('achievements', params);
   }
 
   getDailyRaidBountiesId() {
     // para sacar el id de las raid bounties diarias
-    const url = `${this.apiUrl}achievements/categories/475`;
-    return this.httpClient.get(url);
+    return this.gw2DataService.get('achievements/categories/475');
   }
 
   getWvWRank() {
-    const url = `${this.apiUrl}account?access_token=${this.getApiKey()}`;
-    return this.httpClient.get(url);
+    return this.gw2DataService.getAccount('');
   }
 
   getFractalRank() {
-    const url = `${this.apiUrl}account?access_token=${this.getApiKey()}`;
-    return this.httpClient.get(url);
+    return this.gw2DataService.getAccount('');
   }
 
   getDailyOrnateKey(): Promise<Achievement[]> {
     // Diaria de matar 10 krait para una llave ornamentada oxidada
     return this.getAchievement(4181, 10, undefined, 'Daily Ornate Key');
+  }
+
+  getDailyEoDId() { //para sacar el id de EoD diarias
+    return this.gw2DataService.get<any>('achievements/categories/321');
+  }
+
+  getDailyEoD(ids: string) {
+    const params = new HttpParams().set('ids', ids);
+    return this.gw2DataService.getAccount<any[]>('achievements', params);
+  }
+
+  async getAchievement(id: number, max: number, repeated?: number, description?: string): Promise<Achievement[]> {
+    const params = new HttpParams().set('ids', id);
+
+    try {
+      return await this.gw2DataService.getAccount<Achievement[]>('achievements', params).toPromise();
+    } catch (error) {
+      console.warn(`${description || `achievement ${id}`} sin hacer`);
+      return [
+        this.createFallback(id, max, repeated)
+      ];
+    }
+  }
+
+  async getAchievements(requests: AchievementRequest[]): Promise<Achievement[]> {
+    const ids = requests.map(r => r.id);
+    const params = new HttpParams().set('ids', ids.join(','));
+
+    try {
+      const response = await this.gw2DataService.getAccount<Achievement[]>('achievements', params).toPromise();
+
+      return requests.map(r => {
+        const achievement = response.find(a => a.id === r.id);
+
+        if (!achievement) {
+          console.warn(`${r.description || `achievement ${r.id}`} sin hacer`);
+          return this.createFallback(r.id, r.max, r.repeated);
+        }
+        return achievement;
+      });
+
+    } catch (error) {
+      console.warn(
+        `No se han podido obtener los achievements: ${requests.map(r => r.description || `achievement ${r.id}`).join(', ')
+        }`
+      );
+      return requests.map(r =>
+        this.createFallback(r.id, r.max, r.repeated)
+      );
+    }
+  }
+
+  private createFallback(id: number, max: number, repeated?: number): Achievement {
+    return {
+      id,
+      current: 0,
+      max,
+      done: false,
+      ...(repeated !== undefined && { repeated })
+    };
   }
 
 }

@@ -1,4 +1,4 @@
-- Files generated up to date: 14-Oct-2026.
+- Files generated up to date: 13-Nov-2026.
 
 - To generate the POI files (lang: en, es):
   - Clone the repo https://github.com/Snappey/maps.gw2.io

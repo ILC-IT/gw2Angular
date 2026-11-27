@@ -17,8 +17,12 @@
                 El alias es obligatorio.
             </div>
 
-            <div class="error" *ngIf="form.get('name')?.hasError('maxlength')">
+            <div class="error" *ngIf="form.get('name')?.touched && form.get('name')?.hasError('maxlength')">
                 El alias no puede superar los 20 caracteres.
+            </div>
+
+            <div class="error" *ngIf="form.get('name')?.touched && form.get('name')?.hasError('pattern')">
+                El alias tiene caracteres inválidos.
             </div>
         </div>
 
@@ -55,7 +59,12 @@
         <!-- KP -->
         <div class="form-group">
             <label for="kp">KP (opcional)</label>
+
             <input id="kp" type="text" formControlName="kp" placeholder="Introduce tu codigo de Killproof" />
+
+            <div class="error" *ngIf="form.get('kp')?.touched && form.get('kp')?.hasError('pattern')">
+                KP debe tener entre 3 y 17 caracteres y contener solo letras y números.
+            </div>
         </div>
 
         <div class="error" *ngIf="errorMessage">
@@ -99,7 +108,7 @@
         ⚠️ El archivo contiene tus API keys. Evita compartirlo para prevenir su exposición.
     </p>
 
-    <div class="import-options" *ngIf="showImportOptions">
+    <div class="import-options" *ngIf="showImportOptions" #importOptions>
 
         <h3>Importar cuentas</h3>
 
@@ -238,3 +247,5 @@
     </div>
 
 </div>
+
+<app-scroll-top-button [showOnDesktop]="true"></app-scroll-top-button>

@@ -1,5 +1,7 @@
 Ascensión volátil, +5 de potencia | +9 de resistencia a la agonía
 Ascensión volátil, +5 de concentración | +9 de resistencia a la agonía
+Ascensión volátil, +5 de dureza | +9 de resistencia a la agonía
+Ascensión volátil, +5 de pericia | +9 de resistencia a la agonía
 Ascensión volátil, +5 de vitalidad | +9 de resistencia a la agonía
 Ascensión volátil, +5 de precisión | +9 de resistencia a la agonía
 Ascensión volátil, +5 de curación | +9 de resistencia a la agonía
@@ -437,6 +439,22 @@ Infusión simple +3, +3 de resistencia a la agonía
 Infusión simple +5, +5 de resistencia a la agonía
 Infusión simple +7, +7 de resistencia a la agonía
 Infusión vital, +4 de vitalidad
+Lente de agonía abismal (derecha), Altera el color de la energía de la mano derecha de Eikasia, aferranieblas. | +5 de dureza | +9 de resistencia a la agonía
+Lente de agonía abismal (derecha), Altera el color de la energía de la mano derecha de Eikasia, aferranieblas. | +5 de daño de condición | +9 de resistencia a la agonía
+Lente de agonía abismal (derecha), Altera el color de la energía de la mano derecha de Eikasia, aferranieblas. | +5 de poder de curación | +9 de resistencia a la agonía
+Lente de agonía abismal (derecha), Altera el color de la energía de la mano derecha de Eikasia, aferranieblas. | +5 de pericia | +9 de resistencia a la agonía
+Lente de agonía abismal (derecha), Altera el color de la energía de la mano derecha de Eikasia, aferranieblas. | +5 de potencia | +9 de resistencia a la agonía
+Lente de agonía abismal (derecha), Altera el color de la energía de la mano derecha de Eikasia, aferranieblas. | +5 de concentración | +9 de resistencia a la agonía
+Lente de agonía abismal (derecha), Altera el color de la energía de la mano derecha de Eikasia, aferranieblas. | +5 de precisión | +9 de resistencia a la agonía
+Lente de agonía abismal (derecha), Altera el color de la energía de la mano derecha de Eikasia, aferranieblas. | +5 de vitalidad | +9 de resistencia a la agonía
+Lente de agonía abismal (izquierda), Altera el color de la energía de la mano izquierda de Eikasia, aferranieblas. | +5 de precisión | +9 de resistencia a la agonía
+Lente de agonía abismal (izquierda), Altera el color de la energía de la mano izquierda de Eikasia, aferranieblas. | +5 de concentración | +9 de resistencia a la agonía
+Lente de agonía abismal (izquierda), Altera el color de la energía de la mano izquierda de Eikasia, aferranieblas. | +5 de pericia | +9 de resistencia a la agonía
+Lente de agonía abismal (izquierda), Altera el color de la energía de la mano izquierda de Eikasia, aferranieblas. | +5 de potencia | +9 de resistencia a la agonía
+Lente de agonía abismal (izquierda), Altera el color de la energía de la mano izquierda de Eikasia, aferranieblas. | +5 de poder de curación | +9 de resistencia a la agonía
+Lente de agonía abismal (izquierda), Altera el color de la energía de la mano izquierda de Eikasia, aferranieblas. | +5 de daño de condición | +9 de resistencia a la agonía
+Lente de agonía abismal (izquierda), Altera el color de la energía de la mano izquierda de Eikasia, aferranieblas. | +5 de dureza | +9 de resistencia a la agonía
+Lente de agonía abismal (izquierda), Altera el color de la energía de la mano izquierda de Eikasia, aferranieblas. | +5 de vitalidad | +9 de resistencia a la agonía
 Lente de agonía ámbar (derecha), Altera el color de la energía de la mano derecha de Eikasia, aferranieblas. | +5 de potencia | +9 de resistencia a la agonía
 Lente de agonía ámbar (izquierda), Altera el color de la energía de la mano izquierda de Eikasia, aferranieblas. | +5 de potencia | +9 de resistencia a la agonía
 Lente de agonía áurea (derecha), Altera el color de la energía de la mano derecha de Eikasia, aferranieblas. | +5 de potencia | +9 de resistencia a la agonía
@@ -445,6 +463,22 @@ Lente de agonía carmesí (derecha), Altera el color de la energía de la mano d
 Lente de agonía carmesí (izquierda), Altera el color de la energía de la mano izquierda de Eikasia, aferranieblas. | +5 de potencia | +9 de resistencia a la agonía
 Lente de agonía celeste (derecha), Altera el color de la energía de la mano derecha de Eikasia, aferranieblas. | +5 de potencia | +9 de resistencia a la agonía
 Lente de agonía celeste (izquierda), Altera el color de la energía de la mano izquierda de Eikasia, aferranieblas. | +5 de potencia | +9 de resistencia a la agonía
+Lente de agonía celestial (derecha), Altera el color de la energía de la mano derecha de Eikasia, aferranieblas. | +5 de precisión | +9 de resistencia a la agonía
+Lente de agonía celestial (derecha), Altera el color de la energía de la mano derecha de Eikasia, aferranieblas. | +5 de potencia | +9 de resistencia a la agonía
+Lente de agonía celestial (derecha), Altera el color de la energía de la mano derecha de Eikasia, aferranieblas. | +5 de concentración | +9 de resistencia a la agonía
+Lente de agonía celestial (derecha), Altera el color de la energía de la mano derecha de Eikasia, aferranieblas. | +5 de vitalidad | +9 de resistencia a la agonía
+Lente de agonía celestial (derecha), Altera el color de la energía de la mano derecha de Eikasia, aferranieblas. | +5 de poder de curación | +9 de resistencia a la agonía
+Lente de agonía celestial (derecha), Altera el color de la energía de la mano derecha de Eikasia, aferranieblas. | +5 de pericia | +9 de resistencia a la agonía
+Lente de agonía celestial (derecha), Altera el color de la energía de la mano derecha de Eikasia, aferranieblas. | +5 de daño de condición | +9 de resistencia a la agonía
+Lente de agonía celestial (derecha), Altera el color de la energía de la mano derecha de Eikasia, aferranieblas. | +5 de dureza | +9 de resistencia a la agonía
+Lente de agonía celestial (izquierda), Altera el color de la energía de la mano izquierda de Eikasia, aferranieblas. | +5 de daño de condición | +9 de resistencia a la agonía
+Lente de agonía celestial (izquierda), Altera el color de la energía de la mano izquierda de Eikasia, aferranieblas. | +5 de vitalidad | +9 de resistencia a la agonía
+Lente de agonía celestial (izquierda), Altera el color de la energía de la mano izquierda de Eikasia, aferranieblas. | +5 de potencia | +9 de resistencia a la agonía
+Lente de agonía celestial (izquierda), Altera el color de la energía de la mano izquierda de Eikasia, aferranieblas. | +5 de dureza | +9 de resistencia a la agonía
+Lente de agonía celestial (izquierda), Altera el color de la energía de la mano izquierda de Eikasia, aferranieblas. | +5 de pericia | +9 de resistencia a la agonía
+Lente de agonía celestial (izquierda), Altera el color de la energía de la mano izquierda de Eikasia, aferranieblas. | +5 de precisión | +9 de resistencia a la agonía
+Lente de agonía celestial (izquierda), Altera el color de la energía de la mano izquierda de Eikasia, aferranieblas. | +5 de poder de curación | +9 de resistencia a la agonía
+Lente de agonía celestial (izquierda), Altera el color de la energía de la mano izquierda de Eikasia, aferranieblas. | +5 de concentración | +9 de resistencia a la agonía
 Lente de agonía evanescente (derecha), Oculta la energía de la mano derecha de Eikasia, aferranieblas. | +5 de potencia | +9 de resistencia a la agonía
 Lente de agonía evanescente (izquierda), Oculta la energía de la mano izquierda de Eikasia, aferranieblas. | +5 de potencia | +9 de resistencia a la agonía
 Lente de agonía rosada (derecha), Altera el color de la energía de la mano derecha de Eikasia, aferranieblas. | +5 de potencia | +9 de resistencia a la agonía

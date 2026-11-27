@@ -12,7 +12,7 @@ h2 {
   width: 100%;
 } */
 
-.body{
+.body {
   margin: 40px;
   display: flex;
   flex-direction: column;
@@ -20,31 +20,35 @@ h2 {
   gap: 10px;
 }
 
-form{
+form {
   display: flex;
   flex-direction: column;
   gap: 10px;
   margin-top: 20px;
 }
 
-.aaa{
+.aaa {
   display: flex;
   flex-direction: row;
   gap: 20px;
 }
 
-.botones{
+.botones {
   display: flex;
   flex-direction: row;
   justify-content: center;
   gap: 20px;
 }
 
-button{
+button {
   height: 30px !important;
   width: 80px !important;
   font-size: 20px !important;
   border-radius: 12px;
+}
+
+.wiki-btn {
+  cursor: pointer;
 }
 
 /* esto es para que no salga el scroll vertical en el panel de seleccion 
@@ -53,7 +57,7 @@ button{
   max-height: 60% !important; 
 } */
 
-.resultado{
+.resultado {
   margin: 30px;
   display: flex;
   flex-direction: row;
@@ -61,7 +65,7 @@ button{
   gap: 20px;
 }
 
-.res1{
+.res1 {
   margin: 20px;
   display: flex;
   flex-direction: row;
@@ -69,10 +73,11 @@ button{
   gap: 20px
 }
 
-::ng-deep.mat-tab-label, ::ng-deep.mat-tab-label-content{
+::ng-deep.mat-tab-label,
+::ng-deep.mat-tab-label-content {
   /*min-width: 1!important;*/
-  padding: 3px!important;
-  margin: 3px!important;
+  padding: 3px !important;
+  margin: 3px !important;
   font-size: large;
 }
 
@@ -82,7 +87,7 @@ button{
   padding: 10px 12px;
 }
 
- @media (max-width: 1050.99px) {
+@media (max-width: 1050.99px) {
   .body {
     margin: 10px;
     padding: 0 10px;

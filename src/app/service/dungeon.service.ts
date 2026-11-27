@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ApiKeyService } from './api-key.service';
+import { HttpParams } from '@angular/common/http';
 import { Dungeon, DungeonPath } from 'src/app/component/dungeon/dungeon';
+import { Gw2DataService } from './gw2-data.service';
 
 export interface Achievement {
   id: number;
@@ -16,8 +16,6 @@ export interface Achievement {
   providedIn: 'root'
 })
 export class DungeonService {
-
-  apiUrl = "https://api.guildwars2.com/v2/";
 
   private readonly dungeonNames: { [key: string]: string } = {
     ascalonian_catacombs: 'Ascalonian Catacombs',
@@ -41,33 +39,34 @@ export class DungeonService {
     'The Ruined City of Arah': 'arah'
   };
 
-  constructor(private httpClient: HttpClient, private apiKeyService: ApiKeyService) { }
-
-  private getApiKey(): string | null {
-    return this.apiKeyService.getCurrentKey();
-  }
+  constructor(private gw2DataService: Gw2DataService) { }
 
   async getAchievement(id: number, max: number, repeated?: number, bits?: number[]): Promise<Achievement[]> {
-    const url = `${this.apiUrl}account/achievements?ids=${id}&access_token=${this.getApiKey()}`;
+    const params = new HttpParams().set('ids', id);
+
     try {
-      return await this.httpClient.get<Achievement[]>(url).toPromise();
+      return await this.gw2DataService.getAccount<Achievement[]>('achievements', params).toPromise();
     } catch (error) {
-      const fallback: Achievement = {
-        id,
-        current: 0,
-        max,
-        done: false,
-        ...(repeated !== undefined && { repeated }),
-        ...(bits !== undefined && { bits })
-      };
-      return [fallback];
+      return [
+        this.createFallback(id, max, repeated, bits)
+      ];
     }
+  }
+
+  private createFallback(id: number, max: number, repeated?: number, bits?: number[]): Achievement {
+    return {
+      id,
+      current: 0,
+      max,
+      done: false,
+      ...(repeated !== undefined && { repeated }),
+      ...(bits !== undefined && { bits })
+    };
   }
 
   getDungeonsNames() {
     // Devuelve array con nombre de dungeons
-    const url = `${this.apiUrl}/dungeons`;
-    return this.httpClient.get<string[]>(url);
+    return this.gw2DataService.get<string[]>('dungeons');
   }
 
   private readonly lowercaseWords = ['of', 'the', 'and'];
@@ -111,8 +110,7 @@ export class DungeonService {
 
   getDungeonsDailyDone(): Promise<string[]> {
     // Devuelve unicamente los caminos de mazmorra completados desde el ultimo reinicio diario
-    const url = `${this.apiUrl}account/dungeons?access_token=${this.getApiKey()}`;
-    return this.httpClient.get<string[]>(url).toPromise();
+    return this.gw2DataService.getAccount<string[]>('dungeons').toPromise();
   }
 
   async getDungeonFrequenter(): Promise<Achievement[]> {

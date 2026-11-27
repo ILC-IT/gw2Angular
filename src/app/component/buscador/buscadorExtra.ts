@@ -234,6 +234,8 @@ export const GW2_REGIONAL_MAPS: Gw2RegionalMaps = {
       // { es: "Tierras Fronterizas alpinas verdes", en: "Green Alpine Borderlands" },
       { es: "Tierras Fronterizas alpinas", en: "Alpine Borderlands" },
       { es: "Tierras Fronterizas deserticas", en: "Desert Borderlands" },
+      // BETA MAP
+      { es: "Tierras Fronterizas calcinadas", en: "Seared Borderlands" },
       { es: "El Borde de la Niebla", en: "Edge of the Mists" }
       // { es: "Sagrario de Obsidiana", en: "Obsidian Sanctum (zone)" },
       // { es: "Bastion del Armisticio", en: "Armistice Bastion" },
@@ -281,6 +283,20 @@ Object.values(GW2_REGIONAL_MAPS).forEach(region => {
     VALID_MAPS_EN.add(normalizeText(map.en));
   });
 });
+
+// =========================================================
+// BETA MAPS
+
+export const BETA_MAPS_WvW = {
+  es: {
+    name: 'Tierras Fronterizas calcinadas',
+    file: 'assets/poi/seared_borderlands_es.json'
+  },
+  en: {
+    name: 'Seared Borderlands',
+    file: 'assets/poi/seared_borderlands_en.json'
+  }
+};
 
 ////////////////////////////////////////////////////
 // https://wiki.guildwars2.com/wiki/Chat_link_format

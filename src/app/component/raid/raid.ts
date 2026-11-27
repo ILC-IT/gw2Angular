@@ -8,6 +8,7 @@ export interface Raid {
     bossWeeklyCompletado: boolean[];
     weeklyId: number;
     tokenCount: number[];
+    bossesWithTokens: boolean[]; // true: boss da tokens, false: boss no da tokens
     callOfTheMists: string;
     emboldened: string;
     url: string;
@@ -58,7 +59,7 @@ export const TokenId =
     kela: 106994
 };
 
-export const RaidsInfo = [
+export const RaidsInfo: Raid[] = [
     // https://api.guildwars2.com/v2/raids/forsaken_thicket
     {
         name: 'Spirit Vale', //spirit_vale
@@ -70,6 +71,7 @@ export const RaidsInfo = [
         bossWeeklyCompletado: [false, false, false, false, false],
         weeklyId: 9128,
         tokenCount: [0, 0, 0, 0],
+        bossesWithTokens: [true, false, true, true],
         callOfTheMists: "",
         emboldened: "",
         url: "https://wiki.guildwars2.com/wiki/Spirit_Vale"
@@ -84,6 +86,7 @@ export const RaidsInfo = [
         bossWeeklyCompletado: [false, false, false, false],
         weeklyId: 9147,
         tokenCount: [0, 0, 0],
+        bossesWithTokens: [true, false, true],
         callOfTheMists: "",
         emboldened: "",
         url: "https://wiki.guildwars2.com/wiki/Salvation_Pass"
@@ -98,6 +101,7 @@ export const RaidsInfo = [
         bossWeeklyCompletado: [false, false, false, false, false],
         weeklyId: 9182,
         tokenCount: [0, 0, 0, 0],
+        bossesWithTokens: [true, true, false, true],
         callOfTheMists: "",
         emboldened: "",
         url: "https://wiki.guildwars2.com/wiki/Stronghold_of_the_Faithful"
@@ -114,6 +118,7 @@ export const RaidsInfo = [
         bossWeeklyCompletado: [false, false, false, false],
         weeklyId: 9144,
         tokenCount: [0, 0, 0, 0],
+        bossesWithTokens: [true, true, true, true],
         callOfTheMists: "",
         emboldened: "",
         url: "https://wiki.guildwars2.com/wiki/Bastion_of_the_Penitent"
@@ -130,6 +135,7 @@ export const RaidsInfo = [
         bossWeeklyCompletado: [false, false, false, false, false, false],
         weeklyId: 9111,
         tokenCount: [0, 0, 0, 0],
+        bossesWithTokens: [true, true, true, true],
         callOfTheMists: "",
         emboldened: "",
         url: "https://wiki.guildwars2.com/wiki/Hall_of_Chains"
@@ -146,6 +152,7 @@ export const RaidsInfo = [
         bossWeeklyCompletado: [false, false, false, false, false],
         weeklyId: 9120,
         tokenCount: [0, 0, 0],
+        bossesWithTokens: [true, true, true],
         callOfTheMists: "",
         emboldened: "",
         url: "https://wiki.guildwars2.com/wiki/Mythwright_Gambit"
@@ -162,6 +169,7 @@ export const RaidsInfo = [
         bossWeeklyCompletado: [false, false, false, false],
         weeklyId: 9156,
         tokenCount: [0, 0, 0, 0],
+        bossesWithTokens: [false, true, true, true],
         callOfTheMists: "",
         emboldened: "",
         url: "https://wiki.guildwars2.com/wiki/The_Key_of_Ahdashim"
@@ -178,13 +186,14 @@ export const RaidsInfo = [
         bossWeeklyCompletado: [false, false, false, false, false, false],
         weeklyId: 9181,
         tokenCount: [0, 0, 0, 0],
+        bossesWithTokens: [false, true, true, true],
         callOfTheMists: "",
         emboldened: "",
         url: "https://wiki.guildwars2.com/wiki/Mount_Balrior"
     }
 ];
 
-export const StrikesInfo = [
+export const StrikesInfo: Strike[] = [
     {
         wing: "IBS",
         bossOk: ["Shiverpeaks", "Voice of the Fallen", "Fraenir of Jormag", "Whisper of Jormag", "Boneskinner", "Cold War"]

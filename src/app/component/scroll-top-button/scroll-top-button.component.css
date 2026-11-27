@@ -1,0 +1,43 @@
+.boton-arriba {
+    position: fixed;
+    bottom: 10px;
+    right: 45px;
+    width: 45px;
+    height: 45px;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 50%;
+    background-color: #3f51b5;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+.boton-arriba:hover {
+    background-color: #303f9f;
+}
+
+:host {
+    display: none;
+}
+
+:host(.show-desktop) {
+    display: block;
+}
+
+@media (max-width: 700px) {
+
+    :host {
+        display: block;
+    }
+
+    .boton-arriba {
+        width: 38px;
+        height: 38px;
+        font-size: 20px;
+        bottom: 18px;
+        right: 30px;
+    }
+}

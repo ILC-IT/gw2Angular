@@ -1,43 +1,23 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ApiKeyService } from './api-key.service';
+import { Gw2DataService } from './gw2-data.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HomesteadService {
 
-  apiUrl = "https://api.guildwars2.com/v2/";
-
-  constructor(private httpClient: HttpClient, private apiKeyService: ApiKeyService) { }
-
-  private getApiKey(): string | null {
-    return this.apiKeyService.getCurrentKey();
-  }
+  constructor(private gw2DataService: Gw2DataService) { }
 
   getAccGlyphs() {
-    const url = `${this.apiUrl}account/homestead/glyphs?access_token=${this.getApiKey()}`;
-    return this.httpClient.get(url);
+    return this.gw2DataService.getAccount('homestead/glyphs');
   }
 
-  getAccDecoractions() {
-    const url = `${this.apiUrl}account/homestead/decorations?access_token=${this.getApiKey()}`;
-    return this.httpClient.get(url);
+  getAccDecorations() {
+    return this.gw2DataService.getAccount('homestead/decorations');
   }
 
   getDecoractionsById(id: string) {
-    const url = `${this.apiUrl}homestead/decorations/${id}`;
-    return this.httpClient.get(url);
-  }
-
-  getMaterials() {
-    const url = `${this.apiUrl}account/materials?access_token=${this.getApiKey()}`;
-    return this.httpClient.get(url);
-  }
-
-  getCommercePrices(ids: string) {
-    const url = `${this.apiUrl}commerce/prices?ids=${ids}`;
-    return this.httpClient.get(url);
+    return this.gw2DataService.get(`homestead/decorations/${id}`);
   }
 
 }

@@ -8,6 +8,7 @@ import { ToastNotificationInitializer, DialogLayoutDisplay, ToastUserViewTypeEnu
 import { ActivatedRoute, Router } from '@angular/router';
 import { OrdenReferenciaEsp } from '../raid/raid';
 import { RefreshService } from 'src/app/service/refresh.service';
+import { HeroService } from 'src/app/service/hero.service';
 
 const CONVERGENCIAS_ACHIEVEMENTS = {
   convergenciaSotoWeekly: { id: 7706, max: 3, description: 'Convergencia Soto Weekly' },
@@ -260,13 +261,14 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy {
   weeklyRiftHuntingVoe: { id: number, name: string; current: number; max: number; done: boolean }[] = [];
   weeklyRaidEncounters: { index: number, name: string }[] = [];
   weeklyRaidEncountersDoneIds: Set<number> = new Set();
+  dailyEoD: { id: number, name: string; current: number; max: number; done: boolean, maps: string[] }[] = [];
 
   copiados: Record<string, boolean> = {};
 
   convergenciasAchievements = new Map<number, Achievement>();
   quickplayWeeklyAchievements = new Map<number, Achievement>();
 
-  constructor(private dailyService: DailyService, private route: ActivatedRoute, private router: Router, private refreshService: RefreshService) {
+  constructor(private dailyService: DailyService, private heroService: HeroService, private route: ActivatedRoute, private router: Router, private refreshService: RefreshService) {
 
     this.filterSelectObj = [
       {
@@ -338,6 +340,7 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy {
     this.tokenSupply = this.getTokenSupply();
     this.dailyActivity = this.getDailyActivity();
     this.getDailyOrnateKey();
+    this.loadDailyEoD();
     this.recordatorio = this.getRecordatorio();
 
     this.anomalia = this.getAnomaly();
@@ -635,7 +638,7 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   getMaterials() {
-    this.dailyService.getMaterials().subscribe((materials: any) => {
+    this.heroService.getMaterials().subscribe((materials: any) => {
 
       const ChargedQuartzCrystal = 43772;
       const GlobOfElderSpiritResidue = 46744;
@@ -854,7 +857,7 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy {
     this.convergenciaSoto = this.getConvergenciaSoto();
     this.convergenciaJw = this.getConvergenciaJw();
     this.convergenciaVoe = this.getConvergenciaVoe();
-    this.convergenciaCopy = this.convergenciaSoto + "\n" + this.convergenciaJw + "\n" + this.convergenciaVoe;
+    this.convergenciaCopy = this.convergenciaSoto + "\n  " + this.convergenciaJw + "\n  " + this.convergenciaVoe;
   }
 
   getConvergenciaSoto() {
@@ -1866,13 +1869,132 @@ export class DailyComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
+  loadDailyEoD() {
+    // Paso 1: Obtener los IDs de los logros de la categoria "Daily EoD"
+    this.dailyService.getDailyEoDId().subscribe({
+      next: (categoryData: any) => {
+        const idsArray: number[] = categoryData.achievements || [];
+        // Si no hay logros, salir y dejar la lista vacia
+        if (idsArray.length === 0) {
+          this.dailyEoD = [];
+          return;
+        }
+
+        const ids = idsArray.join(','); // Convertir a string separados por coma para la API
+
+        // Paso 2: Obtener informacion basica de los logros (nombre, tiers, etc.)
+        this.dailyService.getAchievementsByIds(ids).subscribe({
+          next: (basicAchievements: any[]) => {
+
+            // Filtrar unicamente el logro que contiene "daily" y "fisher" o "pescador" en su campo "name"
+            const dailyFisher = basicAchievements.find(b => {
+              const name = b.name?.toLowerCase() || '';
+              return (
+                (name.includes('daily') && name.includes('fisher')) ||
+                name.includes('pescador')
+              );
+            });
+
+            // Si no se encuentra el logro, se deja la lista vacia
+            if (!dailyFisher) {
+              this.dailyEoD = [];
+              return;
+            }
+
+            // Obtener unicamente el ID del logro de pesca diaria
+            const fisherId = dailyFisher.id.toString();
+
+            // Paso 3: Obtener el progreso del jugador para esos logros
+            this.dailyService.getDailyEoD(fisherId).subscribe({
+              next: (progressData: any[]) => {
+                const progress = progressData.find(p => p.id === dailyFisher.id);
+
+                // Combinamos datos basicos y de progreso en un solo objeto
+                this.dailyEoD = [{
+                  id: dailyFisher.id,
+                  name: this.removePrefix(dailyFisher.name),
+                  current: progress?.current ?? 0,
+                  max: progress?.max ?? (dailyFisher.tiers?.[0]?.count ?? 0),
+                  done: progress?.done ?? false,
+                  maps: this.extractMaps(dailyFisher.requirement)
+                }];
+              },
+              error: (err) => {
+                // Si la API devuelve 404 (no hay progreso del jugador para esos logros),
+                // mostramos la info basica con progreso = 0
+                if (err.status === 404) {
+                  console.warn('Daily Fisher sin hacer');
+                  this.dailyEoD = [{
+                    id: dailyFisher.id,
+                    name: this.removePrefix(dailyFisher.name),
+                    current: 0,
+                    max: dailyFisher.tiers?.[0]?.count ?? 0,
+                    done: false,
+                    maps: this.extractMaps(dailyFisher.requirement)
+                  }];
+                } else {
+                  console.error('Error obteniendo progreso daily fisher:', err);
+                  this.dailyEoD = [];
+                }
+              }
+            });
+
+          },
+          error: (err) => {
+            // Error al obtener info basica de los logros
+            console.error('Error al obtener info básica daily EoD:', err);
+            this.dailyEoD = [];
+          }
+        });
+      },
+      error: (err) => {
+        // Error al obtener los IDs de los logros de la categoria
+        console.error('Error al obtener ids daily EoD:', err);
+        this.dailyEoD = [];
+      }
+    });
+  }
+
   getWallet() {
-    this.dailyService.getWallet().subscribe((wallet: any) => {
+    this.heroService.getWallet().subscribe((wallet: any) => {
       this.reliquiaFractal[0].tengo = wallet.find((o: { id: number; value: number }) => o.id === this.reliquiaFractal[0].idWallet)?.value ?? 0;
       this.reliquiaFractalPristina[0].tengo = wallet.find((o: { id: number; value: number }) => o.id === this.reliquiaFractalPristina[0].idWallet)?.value ?? 0;
       this.ufe[0].tengo = wallet.find((o: { id: number; value: number }) => o.id === this.ufe[0].idWallet)?.value ?? 0;
       this.astralAcclaim[0].tengo = wallet.find((o: { id: number; value: number }) => o.id === this.astralAcclaim[0].idWallet)?.value ?? 0;
     })
+  }
+
+  extractMaps(requirement: string): string[] {
+    // Limpia el campo requirement del logro diario de pesca y separa los mapas en un array
+    if (!requirement) return [];
+
+    // Eliminar todo lo anterior a los dos puntos
+    const colonIndex = requirement.indexOf(':');
+    let mapsText = colonIndex !== -1
+      ? requirement.substring(colonIndex + 1)
+      : requirement;
+
+    // Sustituir " o " y " or " por comas
+    mapsText = mapsText.replace(/\s+or\s+|\s+o\s+/gi, ',');
+
+    // Separar los mapas
+    return mapsText.split(',')
+      .map(map => map.trim())
+
+      // Eliminar artículos al principio
+      .map(map => map.replace(/^(el|la|los|las|un|una|unos|unas|the)\s+/i, ''))
+
+      // Eliminar el punto final
+      .map(map => map.replace(/\.$/, ''))
+
+      // Eliminar espacios sobrantes
+      .map(map => map.trim())
+
+      // Eliminar elementos vacíos
+      .filter(map => map.length > 0)
+
+      // Ordenar alfabeticamente
+      .sort((a, b) => a.localeCompare(b, 'es'));
   }
 
   removePrefix(name: string): string {

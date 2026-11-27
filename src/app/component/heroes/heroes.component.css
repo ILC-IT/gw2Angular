@@ -61,26 +61,6 @@ h2 {
   font-weight: bold;
 }
 
-.boton-arriba {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  width: 45px;
-  height: 45px;
-  border: none;
-  border-radius: 50%;
-  background-color: #3f51b5;
-  color: white;
-  font-size: 24px;
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
-}
-
-.boton-arriba:hover {
-  background-color: #303f9f;
-}
-
 .error-card {
   width: 80%;
   max-width: 700px;
@@ -125,7 +105,6 @@ h2 {
   background-color: #dad8d8;
 }
 
-
 /* ========================================================= */
 /* CONTENEDOR PRINCIPAL                                      */
 
@@ -156,12 +135,24 @@ h2 {
 
 .infusion-filters mat-form-field {
   flex: 1 1 200px;
-
   min-width: 200px;
 }
 
 .infusion-filters button {
   cursor: pointer;
+}
+
+.toggle-infusion-filters {
+  display: none;
+}
+
+.infusion-filters-content {
+  display: contents;
+}
+
+.infusion-filters-content mat-form-field {
+  flex: 1 1 200px;
+  min-width: 200px;
 }
 
 /* Para controlar el ancho y scroll horizontal del autocomplete */
@@ -232,6 +223,31 @@ h2 {
     box-shadow 0.15s ease;
 }
 
+.infusion-wiki-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-left: 4px;
+  padding: 0 10px;
+  border-radius: 8px;
+  color: #1565c0;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.15s ease;
+}
+
+.infusion-wiki-link:hover {
+  background-color: #e3f2fd;
+  text-decoration: none;
+}
+
+.infusion-wiki-link:focus-visible {
+  outline: 2px solid #1565c0;
+  outline-offset: 2px;
+}
+
 .infusion-modos .modo-activo {
   background-color: #dcedc8 !important;
   color: #33691e !important;
@@ -247,8 +263,18 @@ h2 {
   padding: 0 20px;
 }
 
+.reset-button-mobile {
+  display: none;
+}
+
 .reset-button:hover {
   background-color: #c62828 !important;
+}
+
+.reset-button:disabled {
+  background-color: #e0e0e0 !important;
+  color: #616161 !important;
+  cursor: default !important;
 }
 
 /* ========================================================= */
@@ -296,6 +322,9 @@ h2 {
   gap: 14px;
   padding-bottom: 14px;
   margin-bottom: 14px;
+}
+
+.infusion-header.has-content {
   border-bottom: 1px solid #eeeeee;
 }
 
@@ -324,11 +353,26 @@ h2 {
   word-break: break-word;
 }
 
+.tradeability-badge {
+  display: inline-block;
+  margin-bottom: 8px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.tradeability-tradeable {
+  color: #1b5e20;
+  background: #e8f5e9;
+}
+
 .infusion-description {
   margin-bottom: 6px;
   font-size: 13px;
   line-height: 1.45;
   color: #37474f;
+  white-space: pre-line;
 }
 
 .infusion-description>div {
@@ -366,7 +410,18 @@ h2 {
 }
 
 .container-location-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   margin-top: 10px;
+}
+
+.container-location-section .infusion-section-title {
+  width: 100%;
+}
+
+.container-location-section .infusion-character {
+  margin: 4px 0;
 }
 
 /* ========================================================= */
@@ -390,9 +445,10 @@ h2 {
 }
 
 .container-location-card {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 6px;
+  width: fit-content;
   margin: 4px 6px 4px 0;
   padding: 6px 10px;
   box-sizing: border-box;
@@ -408,7 +464,7 @@ h2 {
 }
 
 /* ========================================================= */
-/* CABECERA                                                  */
+/* CABECERA HEROES                                           */
 
 .cabecera {
   display: flex;
@@ -574,6 +630,15 @@ h2 {
   color: #1565c0;
 }
 
+.infusion-containers {
+  border-top: 1px solid #eeeeee;
+  /* espacio debajo de la linea */
+  /* padding-top: 14px; */
+  /* espacio encima de la linea */
+  /* margin-top: 6px; */
+  padding: 10px 0;
+}
+
 /* ========================================================= */
 /* ESTADOS: TENGO / NO TENGO                                 */
 
@@ -736,12 +801,10 @@ h2 {
 
   .infusion-modos {
     width: 100%;
-
     margin-left: 0;
   }
 
 }
-
 
 @media (max-width: 700px) {
 
@@ -760,6 +823,30 @@ h2 {
     width: 100%;
   }
 
+  .toggle-infusion-filters {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 48px;
+    padding: 8px 12px;
+    border-radius: 10px !important;
+    font-weight: 600;
+  }
+
+  .infusion-filters-content.filtros-colapsados-movil {
+    display: none !important;
+  }
+
+  .infusion-modos .reset-button-desktop {
+    display: none !important;
+  }
+
+  .infusion-filters-content .reset-button-mobile {
+    display: block;
+    width: 100%;
+  }
+
   .infusion-filters>button {
     width: 100%;
   }
@@ -767,6 +854,7 @@ h2 {
   .infusion-modos {
     flex-direction: column;
     width: 100%;
+    transform: none;
   }
 
   .infusion-modos button {
@@ -789,6 +877,10 @@ h2 {
 
   .infusion-header h3 {
     font-size: 16px;
+  }
+
+  .ocultar-en-movil {
+    display: none !important;
   }
 
 }

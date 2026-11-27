@@ -35,6 +35,10 @@ import { ApiKeyService } from './service/api-key.service';
 import { DungeonComponent } from './component/dungeon/dungeon.component';
 import { RefreshService } from './service/refresh.service';
 import { DungeonService } from './service/dungeon.service';
+import { ImageErrorDirective } from './directives/image-error.directive';
+import { Gw2DataService } from './service/gw2-data.service';
+import { ScrollTopButtonComponent } from './component/scroll-top-button/scroll-top-button.component';
+import { ScrollService } from './service/scroll.service';
 
 @NgModule({
   declarations: [
@@ -53,7 +57,9 @@ import { DungeonService } from './service/dungeon.service';
     LegendaryComponent,
     HomesteadComponent,
     FestivalComponent,
-    DungeonComponent
+    DungeonComponent,
+    ImageErrorDirective,
+    ScrollTopButtonComponent
   ],
   imports: [
     BrowserModule,
@@ -92,6 +98,8 @@ import { DungeonService } from './service/dungeon.service';
     RaidService,
     RefreshService,
     ApiKeyService,
+    Gw2DataService,
+    ScrollService,
     { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

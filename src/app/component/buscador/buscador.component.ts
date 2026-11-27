@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { debounceTime, map } from 'rxjs/operators';
-import { TYPE_LABELS, TYPE_ICONS, GW2_REGIONAL_MAPS, VALID_MAPS_ES, VALID_MAPS_EN, normalizeText, quitarEspaciosGuionesAntesText, CHAT_CODE_HEADERS, ChatCodeType, HEADER_TO_TYPE, RegionalMapGroup } from './buscadorExtra';
+import { debounceTime } from 'rxjs/operators';
+import { TYPE_LABELS, TYPE_ICONS, GW2_REGIONAL_MAPS, VALID_MAPS_ES, VALID_MAPS_EN, normalizeText, quitarEspaciosGuionesAntesText, CHAT_CODE_HEADERS, ChatCodeType, HEADER_TO_TYPE, RegionalMapGroup, BETA_MAPS_WvW } from './buscadorExtra';
 
 @Component({
   selector: 'app-buscador',
@@ -60,6 +60,10 @@ export class BuscadorComponent implements OnInit, OnDestroy {
   @ViewChild('mapSearchInputEs') mapSearchInputEs!: ElementRef<HTMLInputElement>;
   @ViewChild('mapSearchInputEn') mapSearchInputEn!: ElementRef<HTMLInputElement>;
 
+  // BETA MAPS
+  searedOptionsEs: any[] = [];
+  searedOptionsEn: any[] = [];
+
   // Para las rutas a las pestañas de poi
   selectedTabIndex: number = 0;
   tabs: string[] = ['Buscar por nombre', 'Buscar por mapa', 'Buscar por código'];
@@ -111,12 +115,16 @@ export class BuscadorComponent implements OnInit, OnDestroy {
           !!map && VALID_MAPS_ES.has(normalizeText(map))
         );
 
-        this.mapsEs = [...new Set(filteredMaps)].sort();
+        // BETA MAPS
+        this.mapsEs = [...new Set([
+          ...filteredMaps,
+          BETA_MAPS_WvW.es.name
+        ])].sort();
         // console.log(this.mapsEs) // mapas unicos y sin repetir
 
         const diferenciaEs = [...new Set(rawMaps)]
           .filter(item => !this.mapsEs.includes(item));
-        console.log('Mapas que no estan en lista de validos: ', diferenciaEs); // mapas que no estan en la lista de mapas validos
+        console.log(`Mapas que no estan en lista de validos en ${this.fichEs}: `, diferenciaEs); // mapas que no estan en la lista de mapas validos
 
         const validMapsEs = new Set(
           this.mapsEs.map(map => normalizeText(map))
@@ -146,9 +154,9 @@ export class BuscadorComponent implements OnInit, OnDestroy {
         console.error('Error cargando el archivo:', this.fichEs, error);
 
         if (error.status === 404) {
-          console.error('El archivo no existe.');
+          console.error(`El archivo ${this.fichEs} no existe.`);
         } else {
-          console.error('El archivo existe pero no se ha podido cargar.');
+          console.error(`El archivo ${this.fichEs} existe pero no se ha podido cargar.`);
         }
 
         this.errorArchivoEs = true;
@@ -188,11 +196,14 @@ export class BuscadorComponent implements OnInit, OnDestroy {
           !!map && VALID_MAPS_EN.has(normalizeText(map))
         );
 
-        this.mapsEn = [...new Set(filteredMaps)].sort();
+        this.mapsEn = [...new Set([
+          ...filteredMaps,
+          BETA_MAPS_WvW.en.name
+        ])].sort();
         // console.log(this.mapsEn) // mapas unicos y sin repetir
 
         const diferenciaEn = [...new Set(rawMaps)].filter(item => !this.mapsEn.includes(item));
-        console.log('Maps that are not on the valid list:', diferenciaEn); // mapas que no estan en la lista de mapas validos
+        console.log(`Maps that are not on the valid list in ${this.fichEn}:`, diferenciaEn); // mapas que no estan en la lista de mapas validos
 
         const validMapsEn = new Set(
           this.mapsEn.map(map => normalizeText(map))
@@ -222,9 +233,9 @@ export class BuscadorComponent implements OnInit, OnDestroy {
         console.error('Error loading the file:', this.fichEn, error);
 
         if (error.status === 404) {
-          console.error('The file does not exist.');
+          console.error(`The file ${this.fichEn} does not exist.`);
         } else {
-          console.error('The file exists but could not be loaded.');
+          console.error(`The file ${this.fichEn} exists but could not be loaded.`);
         }
 
         this.errorArchivoEn = true;
@@ -422,6 +433,34 @@ export class BuscadorComponent implements OnInit, OnDestroy {
     });
     this.subscriptions.add(sub8);
 
+    // =========================================================
+    // BETA MAPS - START CARGA DE POI
+    // =========================================================
+    const subSearedEs = this.http.get<any[]>(BETA_MAPS_WvW.es.file).subscribe({
+      next: data => {
+        this.searedOptionsEs = data;
+      },
+      error: error => {
+        console.error(`Error cargando ${BETA_MAPS_WvW.es.file}:`, error);
+        this.searedOptionsEs = [];
+      }
+    });
+    this.subscriptions.add(subSearedEs);
+
+    const subSearedEn = this.http.get<any[]>(BETA_MAPS_WvW.en.file).subscribe({
+      next: data => {
+        this.searedOptionsEn = data;
+      },
+      error: error => {
+        console.error(`Error loading ${BETA_MAPS_WvW.en.file}:`, error);
+        this.searedOptionsEn = [];
+      }
+    });
+    this.subscriptions.add(subSearedEn);
+    // =========================================================
+    // BETA MAPS - END CARGA DE POI
+    // =========================================================
+    
   }
 
   ngOnDestroy(): void {
@@ -448,6 +487,9 @@ export class BuscadorComponent implements OnInit, OnDestroy {
     this.busquedaRealizadaEs = false;
     this.busquedaRealizadaEn = false;
     this.busquedaRealizadaC = false;
+    // BETA MAPS
+    this.searedOptionsEs = [];
+    this.searedOptionsEn = [];
   }
 
   // Devuelve el index de la pestaña de la tabla
@@ -490,7 +532,7 @@ export class BuscadorComponent implements OnInit, OnDestroy {
       id: [null]
     });
     this.formularioCodigo = this.formBuilder.group({
-      codigoC: [null]
+      codigoC: [null, [this.validarChatCode]]
     });
   }
 
@@ -520,7 +562,17 @@ export class BuscadorComponent implements OnInit, OnDestroy {
     }
 
     const selected = normalizeText(this.selectedMapEs);
-    const datos = this.optionsEs.filter(item =>
+
+    // BETA MAPS
+    // Comprobar si es el mapa especial
+    const esMapaEspecial = selected === normalizeText(BETA_MAPS_WvW.es.name);
+
+    // Elegir el JSON correspondiente
+    const fuente = esMapaEspecial
+      ? this.searedOptionsEs
+      : this.optionsEs;
+
+    const datos = fuente.filter(item =>
       normalizeText(item.map || '') === selected
     );
 
@@ -543,7 +595,17 @@ export class BuscadorComponent implements OnInit, OnDestroy {
     }
 
     const selected = normalizeText(this.selectedMapEn);
-    const datos = this.optionsEn.filter(item =>
+
+    // BETA MAPS
+    // Comprobar si es el mapa especial
+    const esMapaEspecial = selected === normalizeText(BETA_MAPS_WvW.en.name);
+
+    // Elegir el JSON correspondiente
+    const fuente = esMapaEspecial
+      ? this.searedOptionsEn
+      : this.optionsEn;
+
+    const datos = fuente.filter(item =>
       normalizeText(item.map || '') === selected
     );
 
@@ -953,6 +1015,76 @@ export class BuscadorComponent implements OnInit, OnDestroy {
     this.busquedaRealizadaC = false;
   }
 
+  validarChatCode: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+    const value = control.value?.trim();
+
+    // Campo vacio permitido
+    if (!value) return null;
+
+    try {
+      const chatCode = this.normalizarChatCode(value);
+
+      // Extraer el contenido Base64
+      const base64 = chatCode.substring(2, chatCode.length - 1);
+
+      // Comprobar formato Base64 y padding correcto
+      if (!/^[A-Za-z0-9+/]+={0,2}$/.test(base64) || base64.length % 4 !== 0) {
+        return { invalidChatCode: true };
+      }
+
+      const decoded = this.decodificarChatCode(chatCode);
+
+      // Comprobar tipo y longitud
+      if (decoded.tipo !== 'map') {
+        return { invalidChatCode: true };
+      }
+
+      return null;
+
+    } catch {
+      return { invalidChatCode: true };
+    }
+  }
+
+  normalizarChatCode(chatCode: string): string {
+    if (!chatCode) return '';
+
+    chatCode = chatCode.trim();
+
+    // Eliminar delimitadores existentes
+    chatCode = chatCode.replace(/^\[&?/, '').replace(/\]$/, '');
+
+    // Eliminar & inicial
+    chatCode = chatCode.replace(/^&/, '');
+
+    // Comprobar que no haya caracteres invalidos ni padding intermedio
+    if (!/^[A-Za-z0-9+/]+={0,2}$/.test(chatCode)) {
+      return `[&${chatCode}]`;
+    }
+
+    // Añadir padding unicamente si falta
+    if (!chatCode.endsWith('=')) {
+      const remainder = chatCode.length % 4;
+
+      if (remainder === 2) {
+        chatCode += '==';
+      } else if (remainder === 3) {
+        chatCode += '=';
+      }
+    }
+
+    return `[&${chatCode}]`;
+  }
+
+  normalizarCampoChatCode() {
+    const control = this.formularioCodigo.get('codigoC');
+
+    if (!control || !control.value) return;
+
+    control.setValue(this.normalizarChatCode(control.value));
+    control.updateValueAndValidity();
+  }
+
   /////////////////////////////////// EXTRAS ///////////////////////////////////
   generarChatCode(tipo: ChatCodeType, id: number): string {
     // USO: const code = this.generarChatCode('map', 598);
@@ -960,11 +1092,11 @@ export class BuscadorComponent implements OnInit, OnDestroy {
     const header = CHAT_CODE_HEADERS[tipo];
 
     const bytes = new Uint8Array([
-      header,
-      id & 0xFF,
-      (id >> 8) & 0xFF,
-      (id >> 16) & 0xFF,
-      0x00
+      header,             // Byte 0: tipo
+      id & 0xFF,          // Byte 1: ID
+      (id >> 8) & 0xFF,   // Byte 2: ID
+      (id >> 16) & 0xFF,  // Byte 3: ID
+      0x00                // Byte 4: byte adicional
     ]);
 
     const binary = String.fromCharCode(...bytes);
@@ -982,6 +1114,11 @@ export class BuscadorComponent implements OnInit, OnDestroy {
     // base64 a bytes
     const binary = atob(clean);
     const bytes = Uint8Array.from(binary, c => c.charCodeAt(0));
+
+    // Comprobar longitud del codigo
+    if (bytes.length !== 5) {
+      throw new Error('Longitud de Chat Code incorrecta');
+    }
 
     const header = bytes[0];
 

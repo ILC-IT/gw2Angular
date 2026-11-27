@@ -200,28 +200,29 @@ async function main() {
                         continue;
                     }
 
-                    const flags = item.details.infusion_upgrade_flags;
+                    const detailsFlags = item.details.infusion_upgrade_flags;
 
-                    if (!Array.isArray(flags)) {
+                    if (!Array.isArray(detailsFlags)) {
                         continue;
                     }
 
                     // Interesan tanto Infusion como Enrichment
-                    const esInfusion = flags.includes('Infusion') || flags.includes('Enrichment');
+                    const esInfusion = detailsFlags.includes('Infusion') || detailsFlags.includes('Enrichment');
 
                     if (!esInfusion) {
                         continue;
                     }
 
                     let tipo;
-                    if (flags.includes('Infusion') && flags.includes('Enrichment')) {
+                    if (detailsFlags.includes('Infusion') && detailsFlags.includes('Enrichment')) {
                         bothTypes.push({
                             id: item.id,
                             nombre: item.name,
-                            flags: flags
+                            flags: item.flags,
+                            detailsFlags: detailsFlags
                         });
                         tipo = 'Ambos';
-                    } else if (flags.includes('Enrichment')) {
+                    } else if (detailsFlags.includes('Enrichment')) {
                         tipo = 'Enrichment';
                     } else {
                         tipo = 'Infusion';
@@ -250,7 +251,8 @@ async function main() {
                         icon: item.icon,
                         tipo: tipo,
                         stat: stat,
-                        description: description
+                        description: description,
+                        tradeable: item.flags
                     });
 
                 }

@@ -41,6 +41,7 @@ mat-progress-bar {
 .raid-header {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 6px;
 }
 
@@ -344,6 +345,62 @@ button {
 
 .reset-link:hover {
     color: #4da6ff;
+}
+
+.resources-tile {
+    border-radius: 4px;
+}
+
+.resources-container {
+    width: 100%;
+    padding: 8px;
+}
+
+.resources-container .raid-header {
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+.resources-container .raid-header h3 {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 600;
+    color: #333;
+}
+
+.resources-table {
+    border-collapse: collapse;
+    width: auto;
+    max-width: 100%;
+    font-size: 15px;
+    margin: 0 auto;
+}
+
+.resources-table td {
+    padding: 5px 20px;
+    vertical-align: middle;
+}
+
+.resources-table td:first-child {
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.resources-table td:nth-child(2) {
+    width: 40px;
+}
+
+.resources-table td:last-child {
+    text-align: right;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.resources-table .icon {
+    display: block;
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
 }
 
 @media (max-width: 767px) {

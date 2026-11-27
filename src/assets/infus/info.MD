@@ -1,4 +1,4 @@
-- Files generated up to date: 14-Oct-2026.
+- Files generated up to date: 25-Nov-2026.
 
 - Handled manually:
   - `containers.json` in `gw2Angular/src/assets/infus` includes the infusion containers:

@@ -1,21 +1,20 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { ApiAccount, ImportValidationResult, ImportResult, Gw2TokenInfo, REQUIRED_GW2_PERMISSIONS, Gw2Permission, ValidImportAccount } from './key';
+import { Gw2DataService } from './gw2-data.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiKeyService {
 
-  apiUrl = "https://api.guildwars2.com/v2/";
-
   // apiAccounts son las cuentas que hay en localStorage
   // apiAccount es la cuenta que esta actualmente seleccionada en localStorage
   private accounts: ApiAccount[] = [];
   private currentAccount$ = new BehaviorSubject<ApiAccount | null>(null);
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private gw2DataService: Gw2DataService) {
 
     // Recuperar cuentas guardadas
     const savedAccounts = localStorage.getItem('apiAccounts');
@@ -75,8 +74,8 @@ export class ApiKeyService {
   }
 
   getTokenInfo(key: string) {
-    const url = `${this.apiUrl}tokeninfo?access_token=${encodeURIComponent(key)}`;
-    return this.httpClient.get<Gw2TokenInfo>(url);
+    const params = new HttpParams().set('access_token', key);
+    return this.gw2DataService.get<Gw2TokenInfo>('tokeninfo', params);
   }
 
   getMissingPermissions(tokenInfo: Gw2TokenInfo): Gw2Permission[] {
@@ -86,8 +85,8 @@ export class ApiKeyService {
   }
 
   getAccount(key: string) {
-    const url = `${this.apiUrl}account?access_token=${encodeURIComponent(key)}`;
-    return this.httpClient.get<{ name: string }>(url);
+    const params = new HttpParams().set('access_token', key);
+    return this.gw2DataService.get<{ name: string }>('account', params);
   }
 
   isNameTaken(name: string, excludeIndex: number | null = null): boolean {
@@ -298,8 +297,20 @@ export class ApiKeyService {
     data.forEach((item: any, index: number) => {
 
       // Validar estructura
-      if (!item || typeof item !== 'object') {
+      if (!item || typeof item !== 'object' || Array.isArray(item)) {
         addInvalid(index, item, 'La cuenta no es un objeto válido.');
+        return;
+      }
+
+      // Comprobar propiedades permitidas
+      const allowedProperties = ['name', 'gw2Name', 'key', 'kp'];
+
+      const unexpectedProperties = Object.keys(item).filter(
+        property => !allowedProperties.includes(property)
+      );
+
+      if (unexpectedProperties.length > 0) {
+        addInvalid(index, item, 'La cuenta contiene propiedades no permitidas.');
         return;
       }
 
@@ -318,10 +329,16 @@ export class ApiKeyService {
         return;
       }
 
+      if (item.kp !== undefined && item.kp !== null && typeof item.kp !== 'string') {
+        addInvalid(index, item, 'KP no es válido.');
+        return;
+      }
+
       // Limpiar datos
       const name = item.name.trim();
       const gw2Name = item.gw2Name.trim();
       const key = item.key.trim();
+      const kp = typeof item.kp === 'string' ? item.kp.trim() : '';
 
       // Validar alias
       if (!name) {
@@ -331,7 +348,11 @@ export class ApiKeyService {
 
       if (name.length > 20) {
         addInvalid(index, item, 'El alias no puede superar los 20 caracteres.');
+        return;
+      }
 
+      if (/[<>"']|src/i.test(name)) {
+        addInvalid(index, item, 'El alias contiene caracteres o texto no permitido.');
         return;
       }
 
@@ -341,7 +362,7 @@ export class ApiKeyService {
         return;
       }
 
-      if (!/^[^.]+\.[0-9]{4}$/.test(gw2Name)) {
+      if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+\.[0-9]{4}$/.test(gw2Name)) {
         addInvalid(index, item, 'El nombre de cuenta GW2 no tiene el formato Nombre.1234');
         return;
       }
@@ -359,6 +380,12 @@ export class ApiKeyService {
 
       if (key.length > 72) {
         addInvalid(index, item, 'La API Key no tiene una longitud válida.');
+        return;
+      }
+
+      // Validar KP (opcional)
+      if (kp && !/^[a-zA-Z0-9]{3,17}$/.test(kp)) {
+        addInvalid(index, item, 'KP no tiene un formato válido.');
         return;
       }
 
@@ -383,9 +410,7 @@ export class ApiKeyService {
         name,
         gw2Name,
         key,
-        kp: typeof item.kp === 'string'
-          ? item.kp.trim()
-          : ''
+        kp
       };
 
       validAccounts.push({

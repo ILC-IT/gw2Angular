@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpParams } from '@angular/common/http';
 import { catchError, map, tap, shareReplay } from "rxjs/operators";
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
-import { ApiKeyService } from './api-key.service';
+import { Gw2DataService } from './gw2-data.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,46 +11,44 @@ import { ApiKeyService } from './api-key.service';
 
 export class HeroService {
 
-  apiUrl = "https://api.guildwars2.com/v2/";
-
-  constructor(
-    private httpClient: HttpClient,
-    private messageService: MessageService,
-    private apiKeyService: ApiKeyService
-  ) { }
-
-  private getApiKey(): string | null {
-    return this.apiKeyService.getCurrentKey();
-  }
+  constructor(private messageService: MessageService, private gw2DataService: Gw2DataService) { }
 
   // getHeroes() {
   //   //Devuelve todos los heroes
-  //   const url = `${this.apiUrl}characters?ids=all&access_token=${this.getApiKey()}&v=2024-07-20T01:00:00.000Z`;
-  //   return this.httpClient.get(url);
+  //   const params = new HttpParams()
+  //     .set('ids', 'all')
+  //     .set('v', '2024-07-20T01:00:00.000Z');
+  //   return this.gw2DataService.getAccount('characters', params);
   // }
 
   private heroes$?: Observable<any>;
   private ultimaActualizacionHeroes: Date | undefined
+
   getHeroes(): Observable<any> {
 
     // Si no hay caché, hacer la llamada
     if (!this.heroes$) {
       console.log('Actualizando datos de la API de Heroes');
-      const url = `${this.apiUrl}characters?ids=all&access_token=${this.getApiKey()}&v=2024-07-20T01:00:00.000Z`;
 
-      this.heroes$ = this.httpClient.get(url).pipe(
-        tap(() => {
-          // La peticion HTTP ha terminado correctamente
-          this.ultimaActualizacionHeroes = new Date();
-        }),
-        catchError(error => {
-          // Si falla, borrar la caché
-          this.heroes$ = undefined;
-          throw error;
-        }),
-        // Hace caché, guarda el ultimo valor emitido
-        shareReplay(1)
-      );
+      const params = new HttpParams()
+        .set('ids', 'all')
+        .set('v', '2024-07-20T01:00:00.000Z');
+
+      this.heroes$ = this.gw2DataService
+        .get('characters', params)
+        .pipe(
+          tap(() => {
+            // La peticion HTTP ha terminado correctamente
+            this.ultimaActualizacionHeroes = new Date();
+          }),
+          catchError(error => {
+            // Si falla, borrar la caché
+            this.heroes$ = undefined;
+            throw error;
+          }),
+          // Hace caché, guarda el ultimo valor emitido
+          shareReplay(1)
+        );
     }
 
     return this.heroes$;
@@ -65,9 +63,17 @@ export class HeroService {
     return this.ultimaActualizacionHeroes;
   }
 
+  limpiarCacheHeroes() {
+    this.heroes$ = undefined;
+    this.ultimaActualizacionHeroes = undefined;
+  }
+
   getHero(id: any) {
-    const url = `${this.apiUrl}characters/${id}?access_token=${this.getApiKey()}&v=2024-07-20T01:00:00.000Z`;
-    return this.httpClient.get(url)
+    const params = new HttpParams()
+      .set('ids', id)
+      .set('v', '2024-07-20T01:00:00.000Z');
+    return this.gw2DataService
+      .get('characters', params)
       .pipe(
         tap(_ => this.log(`fetched hero id=${id}`)),
         catchError(this.handleError('getHero', []))
@@ -76,68 +82,65 @@ export class HeroService {
 
   getInfoHero(nombre: string) {
     let nombreSinEspacios = nombre.replace(/ /g, '%20'); //reemplaza los espacios por %20
-    const url = `${this.apiUrl}characters/${nombreSinEspacios}?access_token=${this.getApiKey()}&v=2024-07-20T01:00:00.000Z`;
-    return this.httpClient.get(url);
+    const params = new HttpParams().set('v', '2024-07-20T01:00:00.000Z');
+    return this.gw2DataService.get(`characters/${nombreSinEspacios}`, params);
   }
 
   getLegendaryArmory() {
-    const url = `${this.apiUrl}account/legendaryarmory?access_token=${this.getApiKey()}`;
-    return this.httpClient.get(url);
+    return this.gw2DataService.getAccount('legendaryarmory');
   }
 
   getMaterials() {
-    const url = `${this.apiUrl}account/materials?access_token=${this.getApiKey()}`;
-    return this.httpClient.get(url);
+    return this.gw2DataService.getAccount('materials');
   }
 
   getBank() {
-    const url = `${this.apiUrl}account/bank?access_token=${this.getApiKey()}`;
-    return this.httpClient.get(url);
+    return this.gw2DataService.getAccount('bank');
   }
 
   getWallet() {
-    const url = `${this.apiUrl}account/wallet?access_token=${this.getApiKey()}`;
-    return this.httpClient.get(url);
+    return this.gw2DataService.getAccount('wallet');
   }
 
   getCurrencies() {
-    const url = `${this.apiUrl}account/currencies?access_token=${this.getApiKey()}`;
-    return this.httpClient.get(url);
+    return this.gw2DataService.getAccount('currencies');
   }
 
   getProfession(profession: string) {
-    const url = `${this.apiUrl}professions/${profession}`;
-    return this.httpClient.get(url).pipe(map((res: any) => {
-      return res.training.filter((eliteEspec: any) => eliteEspec.category === "EliteSpecializations");
-    }));
+    return this.gw2DataService
+      .get(`professions/${profession}`)
+      .pipe(map((res: any) => {
+        return res.training.filter((eliteEspec: any) => eliteEspec.category === "EliteSpecializations");
+      }));
   }
 
   getItem(id: number) {
     const idioma = 'es';
-    const url = `${this.apiUrl}items?lang=${idioma}&id=${id}`;
-    return this.httpClient.get(url);
+    const params = new HttpParams()
+      .set('lang', idioma)
+      .set('id', id);
+    return this.gw2DataService.get('items', params);
   }
 
   getItems(ids: string) {
     const idioma = 'es';
-    const url = `${this.apiUrl}items?lang=${idioma}&ids=${ids}`;
-    return this.httpClient.get<any[]>(url);
+    const params = new HttpParams()
+      .set('lang', idioma)
+      .set('ids', ids);
+    return this.gw2DataService.get<any[]>('items', params);
   }
 
   getSkins() {
-    const url = `${this.apiUrl}account/skins?access_token=${this.getApiKey()}`;
-    return this.httpClient.get(url);
+    return this.gw2DataService.getAccount<number[]>('skins');
   }
 
   getAccount() {
-    const url = `${this.apiUrl}account?access_token=${this.getApiKey()}`;
-    return this.httpClient.get(url);
+    return this.gw2DataService.getAccount('');
   }
 
   getInventory() {
     // Devuelve inventario compartido
-    const url = `${this.apiUrl}account/inventory?access_token=${this.getApiKey()}`;
-    return this.httpClient.get(url);
+    return this.gw2DataService.getAccount('inventory');
   }
 
   /**

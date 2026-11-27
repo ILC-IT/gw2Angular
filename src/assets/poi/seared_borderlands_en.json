@@ -1,0 +1,2267 @@
+[
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      5906.45,
+      13312.5
+    ],
+    "data": {
+      "chat_link": "[&BNkEAAA=]",
+      "tooltip": "Dreadfall Bay Waypoint"
+    },
+    "id": 1241,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      5964.92,
+      14727
+    ],
+    "data": {
+      "chat_link": "[&BNoEAAA=]",
+      "tooltip": "Border Waypoint"
+    },
+    "id": 1242,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      6837.57,
+      12668.7
+    ],
+    "data": {
+      "chat_link": "[&BNsEAAA=]",
+      "tooltip": "Garrison Waypoint"
+    },
+    "id": 1243,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      6893.79,
+      11773.3
+    ],
+    "data": {
+      "chat_link": "[&BNwEAAA=]",
+      "tooltip": "Citadel Waypoint"
+    },
+    "id": 1244,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      7667.17,
+      13456.6
+    ],
+    "data": {
+      "chat_link": "[&BN0EAAA=]",
+      "tooltip": "Shadaran Hills Waypoint"
+    },
+    "id": 1245,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      7787.86,
+      14733.3
+    ],
+    "data": {
+      "chat_link": "[&BN4EAAA=]",
+      "tooltip": "Border Waypoint"
+    },
+    "id": 1246,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      7844.21,
+      13519
+    ],
+    "data": {
+      "chat_link": "[&BC8FAAA=]",
+      "tooltip": "Shadaran Bastion"
+    },
+    "id": 1327,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      6891.58,
+      12928.3
+    ],
+    "data": {
+      "chat_link": "[&BDAFAAA=]",
+      "tooltip": " Bastion"
+    },
+    "id": 1328,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      6919.7,
+      11885.8
+    ],
+    "data": {
+      "chat_link": "[&BDEFAAA=]",
+      "tooltip": "Titanpaw Crossroads"
+    },
+    "id": 1329,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      5957.61,
+      13592.9
+    ],
+    "data": {
+      "chat_link": "[&BDIFAAA=]",
+      "tooltip": "Dreadfall Bastion"
+    },
+    "id": 1330,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      7878.89,
+      12798.6
+    ],
+    "data": {
+      "chat_link": "[&BDMFAAA=]",
+      "tooltip": "Foghaven Mill"
+    },
+    "id": 1331,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      6579.18,
+      13721.9
+    ],
+    "data": {
+      "chat_link": "[&BDQFAAA=]",
+      "tooltip": "Battle's Hollow"
+    },
+    "id": 1332,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      7889.93,
+      11971.5
+    ],
+    "data": {
+      "chat_link": "[&BDUFAAA=]",
+      "tooltip": "Eboneigh Camp"
+    },
+    "id": 1333,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      6320.27,
+      12697
+    ],
+    "data": {
+      "chat_link": "[&BDYFAAA=]",
+      "tooltip": "Sunnyhill Tower"
+    },
+    "id": 1334,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      7450.4,
+      12775
+    ],
+    "data": {
+      "chat_link": "[&BDcFAAA=]",
+      "tooltip": "Cragtop Tower"
+    },
+    "id": 1335,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      6116.12,
+      14087.4
+    ],
+    "data": {
+      "chat_link": "[&BDgFAAA=]",
+      "tooltip": "Bluevale Workshop"
+    },
+    "id": 1336,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      6883,
+      14675.1
+    ],
+    "data": {
+      "chat_link": "[&BDkFAAA=]",
+      "tooltip": "Hero's Orchard"
+    },
+    "id": 1337,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      7845.09,
+      14120.2
+    ],
+    "data": {
+      "chat_link": "[&BDoFAAA=]",
+      "tooltip": "Redwater Village"
+    },
+    "id": 1338,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      5859.24,
+      11913.4
+    ],
+    "data": {
+      "chat_link": "[&BDsFAAA=]",
+      "tooltip": "Neuskrittia Camp"
+    },
+    "id": 1339,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      6031.53,
+      12832.4
+    ],
+    "data": {
+      "chat_link": "[&BDwFAAA=]",
+      "tooltip": "Faithleap Quarry"
+    },
+    "id": 1340,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      6595.64,
+      14041.2
+    ],
+    "data": {
+      "chat_link": "[&BD0FAAA=]",
+      "tooltip": "Bluebriar Tower"
+    },
+    "id": 1341,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      7374.78,
+      14003.7
+    ],
+    "data": {
+      "chat_link": "[&BD4FAAA=]",
+      "tooltip": "Redlake Tower"
+    },
+    "id": 1342,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      7963.66,
+      13270.2
+    ],
+    "data": {
+      "chat_link": "[&BJoFAAA=]"
+    },
+    "id": 1434,
+    "map": " Seared Borderlands",
+    "type": "vista",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      7891.62,
+      13926.3
+    ],
+    "data": {
+      "chat_link": "[&BJsFAAA=]"
+    },
+    "id": 1435,
+    "map": " Seared Borderlands",
+    "type": "vista",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      6913.52,
+      13261.7
+    ],
+    "data": {
+      "chat_link": "[&BJwFAAA=]"
+    },
+    "id": 1436,
+    "map": " Seared Borderlands",
+    "type": "vista",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      6808.54,
+      12110
+    ],
+    "data": {
+      "chat_link": "[&BJ0FAAA=]"
+    },
+    "id": 1437,
+    "map": " Seared Borderlands",
+    "type": "vista",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      6890.08,
+      12977.3
+    ],
+    "data": {
+      "chat_link": "[&BJ4FAAA=]"
+    },
+    "id": 1438,
+    "map": " Seared Borderlands",
+    "type": "vista",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      7117.15,
+      14482.1
+    ],
+    "data": {
+      "chat_link": "[&BJ8FAAA=]"
+    },
+    "id": 1439,
+    "map": " Seared Borderlands",
+    "type": "vista",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      6927.21,
+      14164.6
+    ],
+    "data": {
+      "chat_link": "[&BKAFAAA=]"
+    },
+    "id": 1440,
+    "map": " Seared Borderlands",
+    "type": "vista",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      6629.58,
+      14623.4
+    ],
+    "data": {
+      "chat_link": "[&BKEFAAA=]"
+    },
+    "id": 1441,
+    "map": " Seared Borderlands",
+    "type": "vista",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      6273.5,
+      12727.3
+    ],
+    "data": {
+      "chat_link": "[&BKIFAAA=]"
+    },
+    "id": 1442,
+    "map": " Seared Borderlands",
+    "type": "vista",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      5928.18,
+      13654.1
+    ],
+    "data": {
+      "chat_link": "[&BKMFAAA=]"
+    },
+    "id": 1443,
+    "map": " Seared Borderlands",
+    "type": "vista",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      7501.56,
+      12435.1
+    ],
+    "data": {
+      "chat_link": "[&BBUJAAA=]",
+      "tooltip": "Emergency Waypoint"
+    },
+    "id": 2325,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      7667.17,
+      13456.6
+    ],
+    "data": {
+      "chat_link": "[&BCEJAAA=]",
+      "tooltip": "Shadaran Hills Emergency Waypoint A"
+    },
+    "id": 2337,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      7192.3,
+      14032.3
+    ],
+    "data": {
+      "chat_link": "[&BCIJAAA=]",
+      "tooltip": "Emergency Waypoint"
+    },
+    "id": 2338,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      6307.62,
+      12369.5
+    ],
+    "data": {
+      "chat_link": "[&BCcJAAA=]",
+      "tooltip": "Emergency Waypoint"
+    },
+    "id": 2343,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      6529.68,
+      14001.2
+    ],
+    "data": {
+      "chat_link": "[&BCkJAAA=]",
+      "tooltip": "Emergency Waypoint"
+    },
+    "id": 2345,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      6837.57,
+      12668.7
+    ],
+    "data": {
+      "chat_link": "[&BCsJAAA=]",
+      "tooltip": "Garrison Emergency Waypoint A"
+    },
+    "id": 2347,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      5906.45,
+      13312.5
+    ],
+    "data": {
+      "chat_link": "[&BC4JAAA=]",
+      "tooltip": "Dreadfall Bay Emergency Waypoint A"
+    },
+    "id": 2350,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      6154.81,
+      13403.1
+    ],
+    "data": {
+      "chat_link": "[&BJoOAAA=]",
+      "tooltip": "Dreadfall Bay Emergency Waypoint B"
+    },
+    "id": 3738,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      6846.15,
+      12566.2
+    ],
+    "data": {
+      "chat_link": "[&BKAOAAA=]",
+      "tooltip": "Garrison Emergency Waypoint B"
+    },
+    "id": 3744,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      7821.08,
+      13511.9
+    ],
+    "data": {
+      "chat_link": "[&BKYOAAA=]",
+      "tooltip": "Shadaran Hills Emergency Waypoint B"
+    },
+    "id": 3750,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      7012.83,
+      12739
+    ],
+    "data": {
+      "chat_link": "[&BKgOAAA=]",
+      "tooltip": "Garrison Emergency Waypoint C"
+    },
+    "id": 3752,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      6078.33,
+      13192.6
+    ],
+    "data": {
+      "chat_link": "[&BKkOAAA=]",
+      "tooltip": "Dreadfall Bay Emergency Waypoint C"
+    },
+    "id": 3753,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      7547.89,
+      13311.2
+    ],
+    "data": {
+      "chat_link": "[&BK0OAAA=]",
+      "tooltip": "Shadaran Hills Emergency Waypoint C"
+    },
+    "id": 3757,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      9490.45,
+      10752.5
+    ],
+    "data": {
+      "chat_link": "[&BDsQAAA=]",
+      "tooltip": "Blistering Undercroft Emergency Waypoint A"
+    },
+    "id": 4155,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      9857.5,
+      10167.3
+    ],
+    "data": {
+      "chat_link": "[&BDwQAAA=]"
+    },
+    "id": 4156,
+    "map": " Seared Borderlands",
+    "type": "vista",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      10503.7,
+      9325.83
+    ],
+    "data": {
+      "chat_link": "[&BD0QAAA=]",
+      "tooltip": "Hamm's Lab"
+    },
+    "id": 4157,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      13797.6,
+      13983.4
+    ],
+    "data": {
+      "chat_link": "[&BD4QAAA=]"
+    },
+    "id": 4158,
+    "map": " Seared Borderlands",
+    "type": "vista",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      13488.3,
+      12057
+    ],
+    "data": {
+      "chat_link": "[&BD8QAAA=]",
+      "tooltip": "Woodhaven Tower"
+    },
+    "id": 4159,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      9541.61,
+      11032.9
+    ],
+    "data": {
+      "chat_link": "[&BEAQAAA=]",
+      "tooltip": "Blistering Undercroft"
+    },
+    "id": 4160,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      14005.6,
+      12028.7
+    ],
+    "data": {
+      "chat_link": "[&BEEQAAA=]",
+      "tooltip": "Garrison Waypoint"
+    },
+    "id": 4161,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      13441.5,
+      12087.3
+    ],
+    "data": {
+      "chat_link": "[&BEIQAAA=]"
+    },
+    "id": 4162,
+    "map": " Seared Borderlands",
+    "type": "vista",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      14005.6,
+      12028.7
+    ],
+    "data": {
+      "chat_link": "[&BEMQAAA=]",
+      "tooltip": "Garrison Emergency Waypoint A"
+    },
+    "id": 4163,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      14285.2,
+      13842.1
+    ],
+    "data": {
+      "chat_link": "[&BEQQAAA=]"
+    },
+    "id": 4164,
+    "map": " Seared Borderlands",
+    "type": "vista",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      9700.12,
+      11527.4
+    ],
+    "data": {
+      "chat_link": "[&BEUQAAA=]",
+      "tooltip": "McLain's Encampment"
+    },
+    "id": 4165,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      13284.1,
+      13447.4
+    ],
+    "data": {
+      "chat_link": "[&BEYQAAA=]",
+      "tooltip": "Redvale Workshop"
+    },
+    "id": 4166,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      11547.7,
+      10710.2
+    ],
+    "data": {
+      "chat_link": "[&BEcQAAA=]"
+    },
+    "id": 4167,
+    "map": " Seared Borderlands",
+    "type": "vista",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      14087.7,
+      11245.8
+    ],
+    "data": {
+      "chat_link": "[&BEgQAAA=]",
+      "tooltip": "Spiritholme Crossroads"
+    },
+    "id": 4168,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      11405.1,
+      10951.9
+    ],
+    "data": {
+      "chat_link": "[&BEkQAAA=]",
+      "tooltip": "Osprey's Palace Emergency Waypoint B"
+    },
+    "id": 4169,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      14669.6,
+      11795.1
+    ],
+    "data": {
+      "chat_link": "[&BEoQAAA=]",
+      "tooltip": "Emergency Waypoint"
+    },
+    "id": 4170,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      11131.9,
+      10751.2
+    ],
+    "data": {
+      "chat_link": "[&BEsQAAA=]",
+      "tooltip": "Osprey's Palace Emergency Waypoint C"
+    },
+    "id": 4171,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      11462.9,
+      10238.6
+    ],
+    "data": {
+      "chat_link": "[&BEwQAAA=]",
+      "tooltip": "Roy's Refuge"
+    },
+    "id": 4172,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      11473.9,
+      9411.5
+    ],
+    "data": {
+      "chat_link": "[&BE0QAAA=]",
+      "tooltip": "Emberfang Crag"
+    },
+    "id": 4173,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      11251.2,
+      10896.6
+    ],
+    "data": {
+      "chat_link": "[&BE4QAAA=]",
+      "tooltip": "Osprey's Palace Waypoint"
+    },
+    "id": 4174,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      13747.2,
+      13081.9
+    ],
+    "data": {
+      "chat_link": "[&BE8QAAA=]",
+      "tooltip": "Battle's Hollow"
+    },
+    "id": 4175,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      10511.2,
+      11604.6
+    ],
+    "data": {
+      "chat_link": "[&BFAQAAA=]"
+    },
+    "id": 4176,
+    "map": " Seared Borderlands",
+    "type": "vista",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      13199.5,
+      12192.4
+    ],
+    "data": {
+      "chat_link": "[&BFEQAAA=]",
+      "tooltip": "Godslore Quarry"
+    },
+    "id": 4177,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      10113.7,
+      11441.2
+    ],
+    "data": {
+      "chat_link": "[&BFIQAAA=]",
+      "tooltip": "Parched Outpost Emergency Waypoint"
+    },
+    "id": 4178,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      14542.8,
+      13363.7
+    ],
+    "data": {
+      "chat_link": "[&BFMQAAA=]",
+      "tooltip": "Greenlake Tower"
+    },
+    "id": 4179,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      13246.3,
+      12552.6
+    ],
+    "data": {
+      "chat_link": "[&BFQQAAA=]",
+      "tooltip": "Ascension Bay Emergency Waypoint C"
+    },
+    "id": 4180,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      10497.5,
+      10701.7
+    ],
+    "data": {
+      "chat_link": "[&BFUQAAA=]"
+    },
+    "id": 4181,
+    "map": " Seared Borderlands",
+    "type": "vista",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      10421.6,
+      10108.7
+    ],
+    "data": {
+      "chat_link": "[&BFYQAAA=]",
+      "tooltip": "Stoic Rampart Waypoint"
+    },
+    "id": 4182,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      15012.2,
+      12879
+    ],
+    "data": {
+      "chat_link": "[&BFcQAAA=]",
+      "tooltip": "Askalion Bastion"
+    },
+    "id": 4183,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      13763.6,
+      13401.2
+    ],
+    "data": {
+      "chat_link": "[&BFgQAAA=]",
+      "tooltip": "Redbriar Tower"
+    },
+    "id": 4184,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      15057.9,
+      11331.5
+    ],
+    "data": {
+      "chat_link": "[&BFkQAAA=]",
+      "tooltip": "Brownmane Camp"
+    },
+    "id": 4185,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      10213.6,
+      12063.4
+    ],
+    "data": {
+      "chat_link": "[&BFoQAAA=]"
+    },
+    "id": 4186,
+    "map": " Seared Borderlands",
+    "type": "vista",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      11475.6,
+      11366.3
+    ],
+    "data": {
+      "chat_link": "[&BFsQAAA=]"
+    },
+    "id": 4187,
+    "map": " Seared Borderlands",
+    "type": "vista",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      10392.5,
+      9550.04
+    ],
+    "data": {
+      "chat_link": "[&BFwQAAA=]"
+    },
+    "id": 4188,
+    "map": " Seared Borderlands",
+    "type": "vista",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      11251.2,
+      10896.6
+    ],
+    "data": {
+      "chat_link": "[&BF0QAAA=]",
+      "tooltip": "Osprey's Palace Emergency Waypoint A"
+    },
+    "id": 4189,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      10163.2,
+      11161.9
+    ],
+    "data": {
+      "chat_link": "[&BF4QAAA=]",
+      "tooltip": "Central Oasis"
+    },
+    "id": 4190,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      9738.81,
+      10843.1
+    ],
+    "data": {
+      "chat_link": "[&BF8QAAA=]",
+      "tooltip": "Blistering Undercroft Emergency Waypoint B"
+    },
+    "id": 4191,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      13322.8,
+      12763.1
+    ],
+    "data": {
+      "chat_link": "[&BGAQAAA=]",
+      "tooltip": "Ascension Bay Emergency Waypoint B"
+    },
+    "id": 4192,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      10596.8,
+      10179
+    ],
+    "data": {
+      "chat_link": "[&BGEQAAA=]",
+      "tooltip": "Stoic Rampart Emergency Waypoint C"
+    },
+    "id": 4193,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      9548.92,
+      12167
+    ],
+    "data": {
+      "chat_link": "[&BGIQAAA=]",
+      "tooltip": "Border Waypoint"
+    },
+    "id": 4194,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      10776.3,
+      11472.3
+    ],
+    "data": {
+      "chat_link": "[&BGMQAAA=]",
+      "tooltip": "Crankshaft Depot Emergency Waypoint"
+    },
+    "id": 4195,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      11371.9,
+      12173.3
+    ],
+    "data": {
+      "chat_link": "[&BGQQAAA=]",
+      "tooltip": "Border Waypoint"
+    },
+    "id": 4196,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      11034.4,
+      10215
+    ],
+    "data": {
+      "chat_link": "[&BGUQAAA=]",
+      "tooltip": "Eternal Necropolis"
+    },
+    "id": 4197,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      10477.8,
+      9213.31
+    ],
+    "data": {
+      "chat_link": "[&BGYQAAA=]",
+      "tooltip": "Citadel Waypoint"
+    },
+    "id": 4198,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      13027.2,
+      11273.4
+    ],
+    "data": {
+      "chat_link": "[&BGcQAAA=]",
+      "tooltip": "Chitterogg Camp"
+    },
+    "id": 4199,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      11429.1,
+      11560.2
+    ],
+    "data": {
+      "chat_link": "[&BGgQAAA=]",
+      "tooltip": "Bauer Farmstead"
+    },
+    "id": 4200,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      10467,
+      12115.1
+    ],
+    "data": {
+      "chat_link": "[&BGkQAAA=]",
+      "tooltip": "Dustwhisper Well"
+    },
+    "id": 4201,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      14180.8,
+      12099
+    ],
+    "data": {
+      "chat_link": "[&BGoQAAA=]",
+      "tooltip": "Garrison Emergency Waypoint C"
+    },
+    "id": 4202,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      14059.6,
+      12288.3
+    ],
+    "data": {
+      "chat_link": "[&BGsQAAA=]",
+      "tooltip": " Bastion"
+    },
+    "id": 4203,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      14835.2,
+      12816.6
+    ],
+    "data": {
+      "chat_link": "[&BGwQAAA=]",
+      "tooltip": "Askalion Hills Waypoint"
+    },
+    "id": 4204,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      14061.8,
+      11133.3
+    ],
+    "data": {
+      "chat_link": "[&BG0QAAA=]",
+      "tooltip": "Citadel Waypoint"
+    },
+    "id": 4205,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      11428.2,
+      10959
+    ],
+    "data": {
+      "chat_link": "[&BG4QAAA=]",
+      "tooltip": "Osprey's Palace"
+    },
+    "id": 4206,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      10430.1,
+      10006.2
+    ],
+    "data": {
+      "chat_link": "[&BG8QAAA=]",
+      "tooltip": "Stoic Rampart Emergency Waypoint B"
+    },
+    "id": 4207,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      9615.53,
+      10272.4
+    ],
+    "data": {
+      "chat_link": "[&BHAQAAA=]",
+      "tooltip": "Boettiger's Hideaway"
+    },
+    "id": 4208,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      13976.5,
+      11470
+    ],
+    "data": {
+      "chat_link": "[&BHEQAAA=]"
+    },
+    "id": 4209,
+    "map": " Seared Borderlands",
+    "type": "vista",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      14715.9,
+      12671.2
+    ],
+    "data": {
+      "chat_link": "[&BHIQAAA=]",
+      "tooltip": "Askalion Hills Emergency Waypoint C"
+    },
+    "id": 4210,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      13096.2,
+      13014.1
+    ],
+    "data": {
+      "chat_link": "[&BHMQAAA=]"
+    },
+    "id": 4211,
+    "map": " Seared Borderlands",
+    "type": "vista",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      10958.8,
+      11443.7
+    ],
+    "data": {
+      "chat_link": "[&BHQQAAA=]",
+      "tooltip": "Crankshaft Depot"
+    },
+    "id": 4212,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      10475.6,
+      10368.3
+    ],
+    "data": {
+      "chat_link": "[&BHUQAAA=]",
+      "tooltip": "Stoic Rampart"
+    },
+    "id": 4213,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      14360.3,
+      13392.3
+    ],
+    "data": {
+      "chat_link": "[&BHYQAAA=]",
+      "tooltip": "Emergency Waypoint"
+    },
+    "id": 4214,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      13132.9,
+      14087
+    ],
+    "data": {
+      "chat_link": "[&BHcQAAA=]",
+      "tooltip": "Border Waypoint"
+    },
+    "id": 4215,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      10421.6,
+      10108.7
+    ],
+    "data": {
+      "chat_link": "[&BHgQAAA=]",
+      "tooltip": "Stoic Rampart Emergency Waypoint A"
+    },
+    "id": 4216,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      10701.2,
+      11922.1
+    ],
+    "data": {
+      "chat_link": "[&BHkQAAA=]"
+    },
+    "id": 4217,
+    "map": " Seared Borderlands",
+    "type": "vista",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      10179.6,
+      11481.2
+    ],
+    "data": {
+      "chat_link": "[&BHoQAAA=]",
+      "tooltip": "Parched Outpost"
+    },
+    "id": 4218,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      14095.2,
+      13524.6
+    ],
+    "data": {
+      "chat_link": "[&BHsQAAA=]"
+    },
+    "id": 4219,
+    "map": " Seared Borderlands",
+    "type": "vista",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      14955.9,
+      14093.3
+    ],
+    "data": {
+      "chat_link": "[&BHwQAAA=]",
+      "tooltip": "Border Waypoint"
+    },
+    "id": 4220,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      13074.5,
+      12672.5
+    ],
+    "data": {
+      "chat_link": "[&BH0QAAA=]",
+      "tooltip": "Ascension Bay Waypoint"
+    },
+    "id": 4221,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      13697.7,
+      13361.2
+    ],
+    "data": {
+      "chat_link": "[&BH4QAAA=]",
+      "tooltip": "Emergency Waypoint"
+    },
+    "id": 4222,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      9512.18,
+      11094.1
+    ],
+    "data": {
+      "chat_link": "[&BH8QAAA=]"
+    },
+    "id": 4223,
+    "map": " Seared Borderlands",
+    "type": "vista",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      15059.6,
+      13286.3
+    ],
+    "data": {
+      "chat_link": "[&BIAQAAA=]"
+    },
+    "id": 4224,
+    "map": " Seared Borderlands",
+    "type": "vista",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      13074.5,
+      12672.5
+    ],
+    "data": {
+      "chat_link": "[&BIEQAAA=]",
+      "tooltip": "Ascension Bay Emergency Waypoint A"
+    },
+    "id": 4225,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      9904.28,
+      10137
+    ],
+    "data": {
+      "chat_link": "[&BIIQAAA=]",
+      "tooltip": "O'del Academy"
+    },
+    "id": 4226,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      11085.6,
+      9875.07
+    ],
+    "data": {
+      "chat_link": "[&BIMQAAA=]",
+      "tooltip": "Eternal Necropolis Emergency Waypoint"
+    },
+    "id": 4227,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      9443.24,
+      9353.38
+    ],
+    "data": {
+      "chat_link": "[&BIQQAAA=]",
+      "tooltip": "Tikitecki Scratch"
+    },
+    "id": 4228,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      14058.1,
+      12337.3
+    ],
+    "data": {
+      "chat_link": "[&BIUQAAA=]"
+    },
+    "id": 4229,
+    "map": " Seared Borderlands",
+    "type": "vista",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      14618.4,
+      12135
+    ],
+    "data": {
+      "chat_link": "[&BIYQAAA=]",
+      "tooltip": "Dawn's Tower"
+    },
+    "id": 4230,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      9891.62,
+      9809.54
+    ],
+    "data": {
+      "chat_link": "[&BIcQAAA=]",
+      "tooltip": "O'del Academy Emergency Waypoint"
+    },
+    "id": 4231,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      14081.5,
+      12621.7
+    ],
+    "data": {
+      "chat_link": "[&BIgQAAA=]"
+    },
+    "id": 4232,
+    "map": " Seared Borderlands",
+    "type": "vista",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      13475.6,
+      11729.5
+    ],
+    "data": {
+      "chat_link": "[&BIkQAAA=]",
+      "tooltip": "Emergency Waypoint"
+    },
+    "id": 4233,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      10474.1,
+      10417.3
+    ],
+    "data": {
+      "chat_link": "[&BIoQAAA=]"
+    },
+    "id": 4234,
+    "map": " Seared Borderlands",
+    "type": "vista",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      15131.7,
+      12630.2
+    ],
+    "data": {
+      "chat_link": "[&BIsQAAA=]"
+    },
+    "id": 4235,
+    "map": " Seared Borderlands",
+    "type": "vista",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      9490.45,
+      10752.5
+    ],
+    "data": {
+      "chat_link": "[&BIwQAAA=]",
+      "tooltip": "Blistering Undercroft Waypoint"
+    },
+    "id": 4236,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      15013.1,
+      13480.2
+    ],
+    "data": {
+      "chat_link": "[&BI0QAAA=]",
+      "tooltip": "Greenwater Village"
+    },
+    "id": 4237,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      14051,
+      14035.1
+    ],
+    "data": {
+      "chat_link": "[&BI4QAAA=]",
+      "tooltip": "Champion's Orchard"
+    },
+    "id": 4238,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      9662.33,
+      10632.6
+    ],
+    "data": {
+      "chat_link": "[&BI8QAAA=]",
+      "tooltip": "Blistering Undercroft Emergency Waypoint C"
+    },
+    "id": 4239,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      13125.6,
+      12952.9
+    ],
+    "data": {
+      "chat_link": "[&BJAQAAA=]",
+      "tooltip": "Ascension Bastion"
+    },
+    "id": 4240,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      15046.9,
+      12158.6
+    ],
+    "data": {
+      "chat_link": "[&BJEQAAA=]",
+      "tooltip": "Stargrove Mill"
+    },
+    "id": 4241,
+    "map": " Seared Borderlands",
+    "type": "landmark",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      14989.1,
+      12871.9
+    ],
+    "data": {
+      "chat_link": "[&BJIQAAA=]",
+      "tooltip": "Askalion Hills Emergency Waypoint B"
+    },
+    "id": 4242,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      14835.2,
+      12816.6
+    ],
+    "data": {
+      "chat_link": "[&BJMQAAA=]",
+      "tooltip": "Askalion Hills Emergency Waypoint A"
+    },
+    "id": 4243,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  },
+  {
+    "continent": "World vs. World",
+    "coordinates": [
+      14014.1,
+      11926.2
+    ],
+    "data": {
+      "chat_link": "[&BJQQAAA=]",
+      "tooltip": "Garrison Emergency Waypoint B"
+    },
+    "id": 4244,
+    "map": " Seared Borderlands",
+    "type": "waypoint",
+    "maps": [
+      " Seared Borderlands"
+    ]
+  }
+]

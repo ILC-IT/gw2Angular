@@ -56,6 +56,7 @@ export type Gw2Permission = typeof REQUIRED_GW2_PERMISSIONS[number];
 // Comprobar que el gw2Name introducido coincide con la cuenta asociada a la API Key llamando a la API de GW2
 export const VALIDATE_GW2_ACCOUNT_NAME = false;
 
-// Insert the name (you can put what you want, max 20 characters), the game name with numbers and the associated API key. 
+// Insert the name (you can put what you want, max 20 characters), the game name with numbers, 
+// the associated API key and the optional kp code. 
 // You can add as many as you want, just make sure to put a UNIQUE NAME for each one for easy identification. 
 // The first key in the list will be used by default, but you can change it from the app's interface.

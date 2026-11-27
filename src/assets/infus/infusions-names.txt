@@ -140,6 +140,8 @@ Infusión simple +3
 Infusión simple +5
 Infusión simple +7
 Infusión vital
+Lente de agonía abismal (derecha)
+Lente de agonía abismal (izquierda)
 Lente de agonía ámbar (derecha)
 Lente de agonía ámbar (izquierda)
 Lente de agonía áurea (derecha)
@@ -148,6 +150,8 @@ Lente de agonía carmesí (derecha)
 Lente de agonía carmesí (izquierda)
 Lente de agonía celeste (derecha)
 Lente de agonía celeste (izquierda)
+Lente de agonía celestial (derecha)
+Lente de agonía celestial (izquierda)
 Lente de agonía evanescente (derecha)
 Lente de agonía evanescente (izquierda)
 Lente de agonía rosada (derecha)

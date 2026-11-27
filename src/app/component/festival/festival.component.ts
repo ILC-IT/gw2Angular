@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FestivalService } from 'src/app/service/festival.service';
-import { FestivalDivisas, FestivalMonedas } from './festival';
+import { FestivalDivisas, FestivalMonedas, skinGroups } from './festival';
 import { MatTableDataSource } from '@angular/material/table';
+import { HeroService } from 'src/app/service/hero.service';
+import { LegendaryService } from 'src/app/service/legendary.service';
 
 @Component({
   selector: 'app-festival',
@@ -116,6 +118,19 @@ export class FestivalComponent implements OnInit {
     precioTpVenta: 0,
     precioTpVentaS: ""
   };
+  lunarGiftBox: FestivalDivisas = {
+    id: 99344,
+    nombre: "Caja de regalo lunar",
+    // tengo: 0,
+    icon: "https://wiki.guildwars2.com/images/5/5e/Lunar_Gift_Box.png",
+    gw2bltc: "https://www.gw2bltc.com/es/item/99344-Caja-de-regalo-lunar",
+    precioTpCompra: 0,
+    precioTpCompraS: "",
+    precioTpVenta: 0,
+    precioTpVentaS: "",
+    skinTengo: 0,
+    skinFaltan: 0
+  };
   farolDelComerciante: FestivalDivisas = {
     id: 106991,
     nombre: "Cofre de farol del comerciante",
@@ -147,7 +162,9 @@ export class FestivalComponent implements OnInit {
     precioTpCompra: 0,
     precioTpCompraS: "",
     precioTpVenta: 0,
-    precioTpVentaS: ""
+    precioTpVentaS: "",
+    skinTengo: 0,
+    skinFaltan: 0
   };
   superarcoiris: FestivalDivisas = {
     id: 108959,
@@ -181,6 +198,19 @@ export class FestivalComponent implements OnInit {
     precioTpCompraS: "",
     precioTpVenta: 0,
     precioTpVentaS: ""
+  };
+  dragonBashPrizeCoffer: FestivalDivisas = {
+    id: 98175,
+    nombre: "Cofre de premios del festival del Dragonicidio",
+    // tengo: 0,
+    icon: "https://wiki.guildwars2.com/images/5/5a/Dragon_Bash_Prize_Coffer.png",
+    gw2bltc: "https://www.gw2bltc.com/es/item/98175-Cofre-de-premios-del-festival-del-Dragonicidio",
+    precioTpCompra: 0,
+    precioTpCompraS: "",
+    precioTpVenta: 0,
+    precioTpVentaS: "",
+    skinTengo: 0,
+    skinFaltan: 0
   };
   cofreDelDragon: FestivalDivisas = {
     id: 43357,
@@ -226,6 +256,19 @@ export class FestivalComponent implements OnInit {
     precioTpVenta: 0,
     precioTpVentaS: ""
   };
+  fourWindsPrizeBag: FestivalDivisas = {
+    id: 98586,
+    nombre: "Saco de premios de los Cuatro Vientos",
+    // tengo: 0,
+    icon: "https://wiki.guildwars2.com/images/8/83/Four_Winds_Prize_Bag.png",
+    gw2bltc: "https://www.gw2bltc.com/es/item/98586-Saco-de-premios-de-los-Cuatro-Vientos",
+    precioTpCompra: 0,
+    precioTpCompraS: "",
+    precioTpVenta: 0,
+    precioTpVentaS: "",
+    skinTengo: 0,
+    skinFaltan: 0
+  };
   huesoLeviatanDelComerciante: FestivalDivisas = {
     id: 109888,
     nombre: "Cofre de hueso de Leviatán del comerciante",
@@ -258,6 +301,19 @@ export class FestivalComponent implements OnInit {
     precioTpCompraS: "",
     precioTpVenta: 0,
     precioTpVentaS: ""
+  };
+  halloweenPrizeBag: FestivalDivisas = {
+    id: 99106,
+    nombre: "Saco de premios de Halloween",
+    // tengo: 0,
+    icon: "https://wiki.guildwars2.com/images/a/a9/Halloween_Prize_Bag.png",
+    gw2bltc: "https://www.gw2bltc.com/es/item/99106-Saco-de-premios-de-Halloween",
+    precioTpCompra: 0,
+    precioTpCompraS: "",
+    precioTpVenta: 0,
+    precioTpVentaS: "",
+    skinTengo: 0,
+    skinFaltan: 0
   };
   carameloDelComerciante: FestivalDivisas = {
     id: 105376,
@@ -292,6 +348,17 @@ export class FestivalComponent implements OnInit {
     precioTpVenta: 0,
     precioTpVentaS: ""
   };
+  maquinaHumo: FestivalDivisas = {
+    id: 110262,
+    nombre: "Cofre de máquina de humo",
+    // tengo: 0,
+    icon: "https://wiki.guildwars2.com/images/a/a7/Fog_Machine_Chest.png",
+    gw2bltc: "",
+    precioTpCompra: 0,
+    precioTpCompraS: "",
+    precioTpVenta: 0,
+    precioTpVentaS: ""
+  };
   regaloDelDiaInvernal: FestivalDivisas = {
     id: 77604,
     nombre: "Regalo del Día Invernal",
@@ -302,6 +369,19 @@ export class FestivalComponent implements OnInit {
     precioTpCompraS: "",
     precioTpVenta: 0,
     precioTpVentaS: ""
+  };
+  jollyWintersdayGift: FestivalDivisas = {
+    id: 99293,
+    nombre: "Regalo del Día Invernal alegre",
+    // tengo: 0,
+    icon: "https://wiki.guildwars2.com/images/8/88/Jolly_Wintersday_Gift.png",
+    gw2bltc: "https://www.gw2bltc.com/es/item/99293-Regalo-del-Dia-Invernal-alegre",
+    precioTpCompra: 0,
+    precioTpCompraS: "",
+    precioTpVenta: 0,
+    precioTpVentaS: "",
+    skinTengo: 0,
+    skinFaltan: 0
   };
   pelucheDelComerciante: FestivalDivisas = {
     id: 106848,
@@ -337,7 +417,6 @@ export class FestivalComponent implements OnInit {
     this.diamanteDeNieve,
     this.farolDelComerciante,
     this.afortunadoDelComerciante,
-    this.supersacoDeBotin,
     this.superarcoiris,
     this.fulminagolemsDeComerciante,
     this.generacionDelComerciante,
@@ -351,9 +430,16 @@ export class FestivalComponent implements OnInit {
     this.carameloDelComerciante,
     this.maquinaMacabraDelComerciante,
     this.desencadenadoDelComerciante,
+    // this.maquinaHumo,
     this.regaloDelDiaInvernal,
     this.pelucheDelComerciante,
-    this.solsticioSagradoDelComerciante
+    this.solsticioSagradoDelComerciante,
+    this.lunarGiftBox,
+    this.supersacoDeBotin,
+    this.dragonBashPrizeCoffer,
+    this.fourWindsPrizeBag,
+    this.halloweenPrizeBag,
+    this.jollyWintersdayGift
   ];
   monedas: FestivalMonedas[] = [
     this.cachivaches,
@@ -362,6 +448,7 @@ export class FestivalComponent implements OnInit {
   ];
   lunar: FestivalDivisas[] = [
     this.sobreDeLaSuerteDivino,
+    this.lunarGiftBox,
     this.farolDelComerciante,
     this.afortunadoDelComerciante
   ];
@@ -379,6 +466,7 @@ export class FestivalComponent implements OnInit {
     this.zhaitamelo,
     this.jorcamelo,
     this.cofreDelDragon,
+    this.dragonBashPrizeCoffer,
     this.cuervoDelComerciante,
     this.cristalDelComerciante,
     this.destrozadragonesDelComerciante
@@ -387,6 +475,7 @@ export class FestivalComponent implements OnInit {
     this.valeDelDestival
   ];
   fourWindsCofres: FestivalDivisas[] = [
+    this.fourWindsPrizeBag,
     this.huesoLeviatanDelComerciante,
     this.arenosoDelComerciante,
     this.creadoAlSolDelComerciante
@@ -395,14 +484,17 @@ export class FestivalComponent implements OnInit {
     this.trozoDeCaramelo,
     this.barraDeCaramelo,
     this.sacoDeHalloween,
+    this.halloweenPrizeBag,
     this.carameloDelComerciante,
     this.maquinaMacabraDelComerciante,
-    this.desencadenadoDelComerciante
+    this.desencadenadoDelComerciante,
+    // this.maquinaHumo
   ];
   wintersday: FestivalDivisas[] = [
     this.copoDeNieve,
     this.diamanteDeNieve,
     this.regaloDelDiaInvernal,
+    this.jollyWintersdayGift,
     this.pelucheDelComerciante,
     this.solsticioSagradoDelComerciante
   ];
@@ -425,46 +517,157 @@ export class FestivalComponent implements OnInit {
   displayedColumnsMonedas: string[] = ['icon', 'nombre'];
   dataSourceMonedas = new MatTableDataSource(this.monedas);
   // Tabla lunar
-  displayedColumnsLunar: string[] = ['icon', 'nombre', 'precioTpCompraS', 'precioTpVentaS'];
+  displayedColumnsLunar: string[] = ['icon', 'nombre', 'precioTpCompraS', 'precioTpVentaS', 'skins'];
   dataSourceLunar = new MatTableDataSource(this.lunar);
   // Tabla sab
   displayedColumnsSab: string[] = ['icon', 'nombre'];
   dataSourceSab = new MatTableDataSource(this.sab);
   // Tabla sabCofres
-  displayedColumnsSabCofres: string[] = ['icon', 'nombre', 'precioTpCompraS', 'precioTpVentaS'];
+  displayedColumnsSabCofres: string[] = ['icon', 'nombre', 'precioTpCompraS', 'precioTpVentaS', 'skins'];
   dataSourceSabCofres = new MatTableDataSource(this.sabCofres);
   // Tabla dragonBash
-  displayedColumnsDragonBash: string[] = ['icon', 'tengo', 'nombre', 'precioTpCompraS', 'precioTpVentaS'];
+  displayedColumnsDragonBash: string[] = ['icon', 'tengo', 'nombre', 'precioTpCompraS', 'precioTpVentaS', 'skins'];
   dataSourceDragonBash = new MatTableDataSource(this.dragonBash);
   // Tabla fourWinds
   displayedColumnsFourWinds: string[] = ['icon', 'tengo', 'nombre'];
   dataSourceFourWinds = new MatTableDataSource(this.fourWinds);
   // Tabla fourWindsCofres
-  displayedColumnsFourWindsCofres: string[] = ['icon', 'nombre', 'precioTpCompraS', 'precioTpVentaS'];
+  displayedColumnsFourWindsCofres: string[] = ['icon', 'nombre', 'precioTpCompraS', 'precioTpVentaS', 'skins'];
   dataSourceFourWindsCofres = new MatTableDataSource(this.fourWindsCofres);
   // Tabla halloween
-  displayedColumnsHalloween: string[] = ['icon', 'tengo', 'nombre', 'precioTpCompraS', 'precioTpVentaS'];
+  displayedColumnsHalloween: string[] = ['icon', 'tengo', 'nombre', 'precioTpCompraS', 'precioTpVentaS', 'skins'];
   dataSourceHalloween = new MatTableDataSource(this.halloween);
   // Tabla wintersday
-  displayedColumnsWintersday: string[] = ['icon', 'tengo', 'nombre', 'precioTpCompraS', 'precioTpVentaS'];
+  displayedColumnsWintersday: string[] = ['icon', 'tengo', 'nombre', 'precioTpCompraS', 'precioTpVentaS', 'skins'];
   dataSourceWintersday = new MatTableDataSource(this.wintersday);
 
-  constructor(private festivalService: FestivalService) { }
+  constructor(private festivalService: FestivalService, private heroService: HeroService, private legendaryService: LegendaryService) { }
 
   ngOnInit(): void {
+    this.getSkins();
     this.getConsumiblesTengoWallet();
     this.getConsumiblesTengoBank();
     this.getConsumiblesPrices();
   }
 
+  getSkins() {
+    this.heroService.getSkins().subscribe((skins) => {
+      const skinsTengo = new Set<number>(skins);
+
+      const grupos = [
+        {
+          ids: skinGroups.lunarGiftBoxSkins,
+          item: this.lunarGiftBox
+        },
+        {
+          ids: skinGroups.supersacoDeBotinSkins,
+          item: this.supersacoDeBotin
+        },
+        {
+          ids: skinGroups.dragonBashPrizeCofferSkins,
+          item: this.dragonBashPrizeCoffer
+        },
+        {
+          ids: skinGroups.fourWindsPrizeBagSkin,
+          item: this.fourWindsPrizeBag
+        },
+        {
+          ids: skinGroups.halloweenPrizeBagSkin,
+          item: this.halloweenPrizeBag
+        },
+        {
+          ids: skinGroups.jollyWintersdayGiftSkin,
+          item: this.jollyWintersdayGift
+        },
+        {
+          ids: skinGroups.farolDelComercianteSkin,
+          item: this.farolDelComerciante
+        },
+        {
+          ids: skinGroups.afortunadoDelComercianteSkin,
+          item: this.afortunadoDelComerciante
+        },
+        {
+          ids: skinGroups.superarcoirisSkin,
+          item: this.superarcoiris
+        },
+        {
+          ids: skinGroups.fulminagolemsDeComercianteSkins,
+          item: this.fulminagolemsDeComerciante
+        },
+        {
+          ids: skinGroups.generacionDelComercianteSkins,
+          item: this.generacionDelComerciante
+        },
+        {
+          ids: skinGroups.cuervoDelComercianteSkins,
+          item: this.cuervoDelComerciante
+        },
+        {
+          ids: skinGroups.cristalDelComercianteSkins,
+          item: this.cristalDelComerciante
+        },
+        {
+          ids: skinGroups.destrozadragonesDelComercianteSkins,
+          item: this.destrozadragonesDelComerciante
+        },
+        {
+          ids: skinGroups.huesoLeviatanDelComercianteSkins,
+          item: this.huesoLeviatanDelComerciante
+        },
+        {
+          ids: skinGroups.arenosoDelComercianteSkins,
+          item: this.arenosoDelComerciante
+        },
+        {
+          ids: skinGroups.creadoAlSolDelComercianteSkins,
+          item: this.creadoAlSolDelComerciante
+        },
+        {
+          ids: skinGroups.carameloDelComercianteSkins,
+          item: this.carameloDelComerciante
+        },
+        {
+          ids: skinGroups.maquinaMacabraDelComercianteSkins,
+          item: this.maquinaMacabraDelComerciante
+        },
+        {
+          ids: skinGroups.desencadenadoDelComercianteSkins,
+          item: this.desencadenadoDelComerciante
+        },
+        {
+          ids: skinGroups.maquinaHumoSkins,
+          item: this.maquinaHumo
+        },
+        {
+          ids: skinGroups.pelucheDelComercianteSkins,
+          item: this.pelucheDelComerciante
+        },
+        {
+          ids: skinGroups.solsticioSagradoDelComercianteSkins,
+          item: this.solsticioSagradoDelComerciante
+        }
+      ];
+
+      grupos.forEach(({ ids, item }) => {
+        const encontrados = ids.filter(objeto => skinsTengo.has(objeto.idSkin));
+        const faltantes = ids.filter(objeto => !skinsTengo.has(objeto.idSkin));
+        item.skinTengo = encontrados.length;
+        item.skinFaltan = faltantes.length;
+        item.skinsFaltantes = faltantes;
+      });
+
+    })
+  }
+
   getConsumiblesTengoWallet() {
-    this.festivalService.getWallet().subscribe((wallet: any) => {
+    this.heroService.getWallet().subscribe((wallet: any) => {
       this.valeDelDestival.tengo = wallet.find((o: { id: number; value: number }) => o.id === this.valeDelDestival.id)?.value ?? 0;
     })
   }
 
   getConsumiblesTengoBank() {
-    this.festivalService.getMaterials().subscribe((bank: any) => {
+    this.heroService.getMaterials().subscribe((bank: any) => {
 
       for (let i = 0; i < bank.length; i++) {
         if (bank[i].id === this.zhaitamelo.id) {
@@ -513,57 +716,69 @@ export class FestivalComponent implements OnInit {
     const allIds = uniqueIds.join(','); // y separo por comas
 
     // Consulto precios en el bazar
-    this.festivalService.getCommercePrices(allIds).subscribe((prices: any) => {
-      // Creo un mapa para acceder rapido a cada objeto por id
-      const idToObjetoMap: { [key: number]: FestivalDivisas } = {
-        [this.sobreDeLaSuerteDivino.id]: this.sobreDeLaSuerteDivino,
-        [this.zhaitamelo.id]: this.zhaitamelo,
-        [this.jorcamelo.id]: this.jorcamelo,
-        [this.trozoDeCaramelo.id]: this.trozoDeCaramelo,
-        [this.barraDeCaramelo.id]: this.barraDeCaramelo,
-        [this.sacoDeHalloween.id]: this.sacoDeHalloween,
-        [this.copoDeNieve.id]: this.copoDeNieve,
-        [this.diamanteDeNieve.id]: this.diamanteDeNieve,
-        [this.farolDelComerciante.id]: this.farolDelComerciante,
-        [this.afortunadoDelComerciante.id]: this.afortunadoDelComerciante,
-        [this.supersacoDeBotin.id]: this.supersacoDeBotin,
-        [this.superarcoiris.id]: this.superarcoiris,
-        [this.fulminagolemsDeComerciante.id]: this.fulminagolemsDeComerciante,
-        [this.generacionDelComerciante.id]: this.generacionDelComerciante,
-        [this.cofreDelDragon.id]: this.cofreDelDragon,
-        [this.cuervoDelComerciante.id]: this.cuervoDelComerciante,
-        [this.cristalDelComerciante.id]: this.cristalDelComerciante,
-        [this.destrozadragonesDelComerciante.id]: this.destrozadragonesDelComerciante,
-        [this.huesoLeviatanDelComerciante.id]: this.huesoLeviatanDelComerciante,
-        [this.arenosoDelComerciante.id]: this.arenosoDelComerciante,
-        [this.creadoAlSolDelComerciante.id]: this.creadoAlSolDelComerciante,
-        [this.carameloDelComerciante.id]: this.carameloDelComerciante,
-        [this.maquinaMacabraDelComerciante.id]: this.maquinaMacabraDelComerciante,
-        [this.desencadenadoDelComerciante.id]: this.desencadenadoDelComerciante,
-        [this.regaloDelDiaInvernal.id]: this.regaloDelDiaInvernal,
-        [this.pelucheDelComerciante.id]: this.pelucheDelComerciante,
-        [this.solsticioSagradoDelComerciante.id]: this.solsticioSagradoDelComerciante
-      };
-      if (Array.isArray(prices)) {
-        prices.forEach(price => {
-          const obj = idToObjetoMap[price.id];
-          if (obj) {
-            obj.precioTpCompra = price.buys.unit_price;
-            obj.precioTpVenta = price.sells.unit_price;
-            obj.precioTpCompraS = this.getPriceSplit(obj.precioTpCompra);
-            obj.precioTpVentaS = this.getPriceSplit(obj.precioTpVenta);
-          }
-        });
-      } else {
-        console.error('Error festival component: prices no es un array', prices)
+    this.legendaryService.getCommercePrices(allIds).subscribe({
+      next: (prices) => {
+        // Creo un mapa para acceder rapido a cada objeto por id
+        const idToObjetoMap: { [key: number]: FestivalDivisas } = {
+          [this.sobreDeLaSuerteDivino.id]: this.sobreDeLaSuerteDivino,
+          [this.lunarGiftBox.id]: this.lunarGiftBox,
+          [this.zhaitamelo.id]: this.zhaitamelo,
+          [this.jorcamelo.id]: this.jorcamelo,
+          [this.trozoDeCaramelo.id]: this.trozoDeCaramelo,
+          [this.barraDeCaramelo.id]: this.barraDeCaramelo,
+          [this.sacoDeHalloween.id]: this.sacoDeHalloween,
+          [this.copoDeNieve.id]: this.copoDeNieve,
+          [this.diamanteDeNieve.id]: this.diamanteDeNieve,
+          [this.farolDelComerciante.id]: this.farolDelComerciante,
+          [this.afortunadoDelComerciante.id]: this.afortunadoDelComerciante,
+          [this.supersacoDeBotin.id]: this.supersacoDeBotin,
+          [this.superarcoiris.id]: this.superarcoiris,
+          [this.fulminagolemsDeComerciante.id]: this.fulminagolemsDeComerciante,
+          [this.generacionDelComerciante.id]: this.generacionDelComerciante,
+          [this.cofreDelDragon.id]: this.cofreDelDragon,
+          [this.cuervoDelComerciante.id]: this.cuervoDelComerciante,
+          [this.cristalDelComerciante.id]: this.cristalDelComerciante,
+          [this.destrozadragonesDelComerciante.id]: this.destrozadragonesDelComerciante,
+          [this.huesoLeviatanDelComerciante.id]: this.huesoLeviatanDelComerciante,
+          [this.arenosoDelComerciante.id]: this.arenosoDelComerciante,
+          [this.creadoAlSolDelComerciante.id]: this.creadoAlSolDelComerciante,
+          [this.carameloDelComerciante.id]: this.carameloDelComerciante,
+          [this.maquinaMacabraDelComerciante.id]: this.maquinaMacabraDelComerciante,
+          [this.desencadenadoDelComerciante.id]: this.desencadenadoDelComerciante,
+          // [this.maquinaHumo.id]: this.maquinaHumo,
+          [this.regaloDelDiaInvernal.id]: this.regaloDelDiaInvernal,
+          [this.pelucheDelComerciante.id]: this.pelucheDelComerciante,
+          [this.solsticioSagradoDelComerciante.id]: this.solsticioSagradoDelComerciante,
+          [this.dragonBashPrizeCoffer.id]: this.dragonBashPrizeCoffer,
+          [this.fourWindsPrizeBag.id]: this.fourWindsPrizeBag,
+          [this.halloweenPrizeBag.id]: this.halloweenPrizeBag,
+          [this.jollyWintersdayGift.id]: this.jollyWintersdayGift
+        };
+        if (Array.isArray(prices)) {
+          prices.forEach(price => {
+            const obj = idToObjetoMap[price.id];
+            if (obj) {
+              obj.precioTpCompra = price.buys.unit_price;
+              obj.precioTpVenta = price.sells.unit_price;
+              obj.precioTpCompraS = this.legendaryService.getPriceSplit(obj.precioTpCompra);
+              obj.precioTpVentaS = this.legendaryService.getPriceSplit(obj.precioTpVenta);
+              obj.precioTpCompraSF = this.legendaryService.formatearValorOro(obj.precioTpCompraS);
+              obj.precioTpVentaSF = this.legendaryService.formatearValorOro(obj.precioTpVentaS);
+            }
+          });
+        } else {
+          console.error('Error festival component: prices no es un array', prices)
+        }
+
+        this.actualizarPrecios(this.dragonBash, this.zhaitamelo, this.jorcamelo);
+        this.actualizarPrecios(this.halloween, this.trozoDeCaramelo, this.barraDeCaramelo);
+        this.actualizarPrecios(this.wintersday, this.copoDeNieve, this.diamanteDeNieve);
+
+        this.actualizarTablas();
+      },
+      error: error => {
+        console.error('Error al consultar los precios del festival:', error);
       }
-
-      this.actualizarPrecios(this.dragonBash, this.zhaitamelo, this.jorcamelo);
-      this.actualizarPrecios(this.halloween, this.trozoDeCaramelo, this.barraDeCaramelo);
-      this.actualizarPrecios(this.wintersday, this.copoDeNieve, this.diamanteDeNieve);
-
-      this.actualizarTablas();
-
     });
   }
 
@@ -615,43 +830,6 @@ export class FestivalComponent implements OnInit {
     } else {
       return ``;
     }
-  }
-
-  getPriceSplit(cantidad: number) {
-    // Le paso el numero y me devuelve una string en oro, plata, cobre
-    // let sss = (""+cantidad).split('').map(Number); // array de numeros
-    let sss = ("" + cantidad).split(''); // array de char
-    // console.log(sss)
-    let cobre = "";
-    let plata = "";
-    let oro = "";
-    let resFinal = "";
-
-    if (sss.length === 1) {
-      cobre = sss[0] + "c"; // 1 cifra
-      resFinal = cobre;
-    } else if (sss.length === 2) {
-      cobre = sss[0] + sss[1] + "c"; // 2 cifras
-      resFinal = cobre;
-    } else if (sss.length === 3) { // 3 cifras
-      cobre = sss[1] + sss[2] + "c";
-      plata = sss[0] + "s";
-      resFinal = plata + " " + cobre;
-    } else if (sss.length === 4) { // 4 cifras
-      cobre = sss[2] + sss[3] + "c";
-      plata = sss[0] + sss[1] + "s";
-      resFinal = plata + " " + cobre;
-    } else if (sss.length > 4) { // >= 5 cifras
-      cobre = sss[sss.length - 2] + sss[sss.length - 1] + "c";
-      plata = sss[sss.length - 4] + sss[sss.length - 3] + "s";
-      for (let i = (sss.length - 5); i >= 0; i--) {
-        oro = sss[i] + oro;
-      }
-      oro = oro + "g";
-      resFinal = oro + " " + plata + " " + cobre;
-    }
-    // console.log(resFinal);
-    return resFinal
   }
 
   actualizarTablas() {

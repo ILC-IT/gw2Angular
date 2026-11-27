@@ -24,10 +24,10 @@
         <div class="body">
             <a href="https://wiki.guildwars2.com/wiki/Attribute_combinations" target="_blank" rel="noopener noreferrer"
                 style="text-decoration: none">
-                <button mat-button>WIKI</button>
+                <button class="wiki-btn" mat-button>WIKI</button>
             </a>
             <button mat-raised-button #tooltip="matTooltip" matTooltip="Si 3 stats, seleccionar - en el 2ª atrib mayor"
-                matTooltipHideDelay="2000" matTooltipClass="tooltip-grande" matTooltipTouchGestures="on"
+                matTooltipHideDelay="1000" matTooltipClass="tooltip-grande" matTooltipTouchGestures="on"
                 aria-label="Button that displays a tooltip for 'matTooltipHideDelay' seconds">
                 Info
             </button>
@@ -161,7 +161,7 @@
         <div class="body">
             <a href="https://wiki.guildwars2.com/wiki/Attribute_combinations" target="_blank" rel="noopener noreferrer"
                 style="text-decoration: none">
-                <button mat-button>WIKI</button>
+                <button class="wiki-btn" mat-button>WIKI</button>
             </a>
             <form [formGroup]="formularioPrefijo" (ngSubmit)="sendFormPrefijo()">
                 <div class="aaa">
@@ -246,7 +246,7 @@
         <div class="body">
             <a href="https://wiki.guildwars2.com/wiki/Attribute_combinations" target="_blank" rel="noopener noreferrer"
                 style="text-decoration: none">
-                <button mat-button>WIKI</button>
+                <button class="wiki-btn" mat-button>WIKI</button>
             </a>
             <form [formGroup]="formularioArmadura" (ngSubmit)="sendFormArmadura()">
                 <div class="aaa">
@@ -320,3 +320,5 @@
     </mat-tab>
 
 </mat-tab-group>
+
+<app-scroll-top-button></app-scroll-top-button>

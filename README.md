@@ -1,17 +1,17 @@
 # Gw2Angular
 
 > [!IMPORTANT]
-> - Introducir los datos de las cuentas de GW2 (alias, gw2Name, key) en `Accounts` para ver la información.
+> - Introducir los datos de las cuentas de GW2 (alias, gw2Name, key, kp) en `Accounts` para ver la información.
 > - Los datos introducidos de las cuentas se guardan en local storage.
 > - El campo **`gw2Name` es único** y no puede haber dos iguales. Por comodidad tampoco se permite `name` iguales.
 > - Requisitos necesarios de la API key: `account`, `inventories`, `characters`, `wallet`, `unlocks`, `builds`, `progression`.
 
 Esta aplicación permite:
 - Ver diarias de la cámara del brujo, fractales diarios con info y otras diarias de interés.
-- Héroes: tabla con los personajes de la cuenta con información básica y buscador de infusiones en la cuenta seleccionada.
+- Héroes: tabla con los personajes de la cuenta con información básica y buscador de infusiones en la cuenta seleccionada. [^1]
 - Calculadora del bazar: para aplicar un porcentaje de reducción a un precio y ver el valor final calculado.
 - Buscador de stats por atributos, stats por prefijo y stats por nombre. ESP/ENG.
-- Buscador de poi/waypoint/vista de mapas. ESP/ENG.
+- Buscador de poi/waypoint/vista de mapas. ESP/ENG. [^2]
 - Enlaces a determinados sitios web de ayuda y de información.
 - Raid: seguimiento de los bosses de raid hechos de la semana.
 - Mazmorra: seguimiento de las mazmorras.
@@ -20,6 +20,8 @@ Esta aplicación permite:
 - Precios de materiales de huerto y glifos equipados en la heredad.
 - Buscador en la wiki oficial. ESP/ENG.
 - Posibilidad de cambiar entre diferentes cuentas.
+[^1]: See src/assets/infus/info.MD
+[^2]: See src/assets/poi/info.MD
 
 ## Development server
 
@@ -33,15 +35,21 @@ Tested and works on node <= v16.20.2 & angular cli v >= 12.2.0
 
 Run `ng build` or `ng build --prod` to build the project. The build artifacts will be stored in the `dist/gw2Angular` directory.
 
-## Screenshots (outdated)
+## Screenshots
 
-![Diarias Wizard](./src/assets/imgapp/wizard1.png)
-![Diarias Fract PvE](./src/assets/imgapp/frac1.png)
-![Diarias Fract PvE](./src/assets/imgapp/frac2.png)
+![Diarias Wizard1](./src/assets/imgapp/wizard1.png)
+![Diarias Wizard2](./src/assets/imgapp/wizard2.png)
+![Diarias Fract1 PvE](./src/assets/imgapp/frac1.png)
+![Diarias Fract2 PvE](./src/assets/imgapp/frac2.png)
+![Heroes Infus](./src/assets/imgapp/infus.png)
 ![Calculadora](./src/assets/imgapp/calc.png)
 ![Buscador Stats](./src/assets/imgapp/stats.png)
+![Buscador Poi](./src/assets/imgapp/poi.png)
 ![Raid](./src/assets/imgapp/raid.png)
+![Dungeon](./src/assets/imgapp/dungeon.png)
 ![T6](./src/assets/imgapp/t6.png)
+![Festival](./src/assets/imgapp/festival.png)
+![Homestead](./src/assets/imgapp/homestead.png)
 
 ## Thanks to
 - Arenanet's [API](https://wiki.guildwars2.com/wiki/API:2).

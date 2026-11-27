@@ -12,45 +12,45 @@ export class ApiInterceptor implements HttpInterceptor {
   // noCacheTimestamp: true para añadir un timestamp a la URL y romper la caché del navegador
   private noCacheTimestamp = false;
 
+  // URL base de la API de GW2
+  private readonly apiUrl = 'https://api.guildwars2.com/v2/';
+
+  // Endpoints autenticados
+  private readonly authEndpoints = [
+    'account',
+    'characters'
+  ];
+
   constructor(private apiKeyService: ApiKeyService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    // Aplica solamente access_token a URLs que contengan "account" o "characters" (endpoints autenticados)
+    // Comprobar que pertenece a la API de GW2
+    if (!req.url.startsWith(this.apiUrl)) {
+      return next.handle(req);
+    }
 
-    const authEndpoints = [
-      'account',
-      'characters'
-    ];
+    // Obtener endpoint de la URL
+    const endpoint = req.url.substring(this.apiUrl.length);
 
-    if (!authEndpoints.some(e => req.url.includes(e))) {
+    // Comprobar si necesita autenticacion
+    const requiresAuth = this.authEndpoints.some(
+      e => endpoint === e || endpoint.startsWith(`${e}/`)
+    );
+
+    if (!requiresAuth) {
       return next.handle(req);
     }
 
     return this.apiKeyService.getCurrentAccount$().pipe(
       take(1),
       switchMap(account => {
+
         const apiKey = account?.key;
+        
         if (!apiKey) return next.handle(req);
 
-        let url = req.url;
-
-        // Reemplazar access_token si existe en la cadena de la URL
-        if (url.includes('access_token=')) {
-          url = url.replace(/access_token=[^&]*/, `access_token=${apiKey}`);
-        }
-
-        // Si no estaba en la cadena de la URL, se añade
-        else if (!url.includes('access_token=')) {
-          const separator = url.includes('?') ? '&' : '?';
-          url = `${url}${separator}access_token=${apiKey}`;
-        }
-
-        // Revisar los HttpParams y reemplazar access_token si existe
-        let newParams = req.params;
-        // if (req.params.has('access_token')) {
-        //   newParams = newParams.set('access_token', apiKey);
-        // }
+        let newParams = req.params.set('access_token', apiKey);
 
         let newHeaders = req.headers;
 
@@ -62,12 +62,10 @@ export class ApiInterceptor implements HttpInterceptor {
         }
 
         if (this.noCacheTimestamp) {
-          const separator = url.includes('?') ? '&' : '?';
-          url = `${url}${separator}_=${Date.now()}`;
+          newParams = newParams.set('_', Date.now().toString());
         }
 
         const cloned = req.clone({
-          url,
           params: newParams,
           headers: newHeaders
         });

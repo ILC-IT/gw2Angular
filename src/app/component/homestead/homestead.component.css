@@ -2,34 +2,61 @@ h2 {
     text-align: center;
 }
 
-#tablaGlifos {
-    width: 25%;
-    margin-left:auto; 
-    margin-right:auto; 
+/* Tabla huerto */
+.huerto-table-responsive {
+    width: 100%;
+    margin: 0 auto;
+    padding: 5px;
+    box-sizing: border-box;
+    overflow-x: auto;
 }
 
 #tablaMaterialesHuerto {
     width: 100%;
-    margin-left:auto; 
-    margin-right:auto;
+    min-width: 650px;
+    margin: 0 auto;
+    border-collapse: collapse;
 }
+
+/* Columnas */
+#tablaMaterialesHuerto th,
+#tablaMaterialesHuerto td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px 8px;
+}
+
+/* Iconos */
+#tablaMaterialesHuerto img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
+
+/* Nombre */
+#tablaMaterialesHuerto .mat-column-nombre {
+    width: 25%;
+}
+
+/**/
 
 table {
     background-color: rgba(0, 0, 0, 0);
     border-collapse: collapse;
 }
 
-:host ::ng-deep .mat-sort-header-container { 
-    display: flex;  
-    justify-content: center; 
+:host ::ng-deep .mat-sort-header-container {
+    display: flex;
+    justify-content: center;
 }
 
-th.mat-header-cell, td.mat-cell, td.mat-footer-cell { 
-    text-align: center; 
+th.mat-header-cell,
+td.mat-cell,
+td.mat-footer-cell {
+    text-align: center;
 }
 
 th.mat-header-cell {
-    /* color: red; */
     background-color: rgb(150, 217, 248);
     font-size: 14px;
 }
@@ -38,24 +65,343 @@ tr.mat-footer-row {
     font-weight: bold;
 }
 
-.mat-column-nombre{
+.mat-column-nombre {
     width: 20% !important;
 }
 
-img { 
-    width: 50px; 
-    height: 50px; 
+img {
+    width: 50px;
+    height: 50px;
 }
 
 ::ng-deep .mat-sort-header-sorted {
     color: rgb(255, 0, 0);
 }
-  
+
 ::ng-deep .mat-sort-header-arrow {
-    color: red; /*cambiar color de la flecha*/
+    color: red;
+    /*cambiar color de la flecha*/
 }
 
 .redBackGround {
     color: rgba(255, 34, 34, 0.9);
     font-weight: bold;
+}
+
+/* Secciones de glifos */
+.glyphs-section {
+    width: 100%;
+    margin: 25px auto 35px;
+    text-align: center;
+}
+
+.table-title {
+    text-align: center;
+    font-size: 19px;
+    font-weight: 600;
+    margin: 25px 0 18px;
+    color: inherit;
+}
+
+.glyphs-tp-section {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+/* Tabla de glifos equipados */
+.glyph-name {
+    display: block;
+    font-weight: 500;
+}
+
+.glyph-unused {
+    display: block;
+    font-size: 12px;
+    color: #888;
+    font-style: italic;
+    margin-top: 2px;
+}
+
+#tablaGlifos {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    table-layout: fixed !important;
+}
+
+:host ::ng-deep #tablaGlifos .mat-column-category,
+:host ::ng-deep #tablaGlifos .mat-column-nombre {
+    width: 50% !important;
+    min-width: 50% !important;
+    max-width: 50% !important;
+}
+
+/* Tabla de glifos de bazar */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    margin: 0 auto;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+#tablaGlifosTP {
+    width: 100%;
+    min-width: 750px;
+    margin: 0 auto;
+}
+
+/* Cabeceras */
+#tablaGlifos th,
+#tablaGlifosTP th {
+    background-color: rgb(150, 217, 248);
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+    padding: 12px 10px;
+}
+
+#tablaGlifos td,
+#tablaGlifosTP td {
+    text-align: center;
+    padding: 10px;
+}
+
+:host ::ng-deep .mat-sort-header-container {
+    display: flex;
+    justify-content: center;
+}
+
+::ng-deep .mat-sort-header-sorted {
+    color: rgb(255, 0, 0);
+}
+
+::ng-deep .mat-sort-header-arrow {
+    color: red;
+}
+
+/* Iconos */
+#tablaGlifos img {
+    width: 40px;
+    height: 40px;
+}
+
+#tablaGlifosTP img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+}
+
+/* Boton descripcion */
+.btn-description {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 6px 13px;
+    border: 1px solid #7986cb;
+    border-radius: 20px;
+    background-color: transparent;
+    color: #5c6bc0;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.btn-description mat-icon {
+    font-size: 19px;
+    width: 19px;
+    height: 19px;
+    line-height: 19px;
+}
+
+.btn-description:hover {
+    background-color: #5c6bc0;
+    color: white;
+    border-color: #5c6bc0;
+}
+
+/* Filas expandibles */
+.glyph-row {
+    transition: background-color 0.2s ease;
+}
+
+.glyph-row.expanded {
+    background-color: rgba(63, 81, 181, 0.06);
+}
+
+.glyph-detail-row {
+    height: 0;
+}
+
+.glyph-detail-row td {
+    padding: 0 !important;
+    border-bottom: none;
+}
+
+.glyph-detail {
+    margin: 8px 16px 14px;
+    padding: 18px 22px;
+    background-color: #c9c6c6;
+    border-left: 4px solid #777fae;
+    border-radius: 5px;
+    text-align: left;
+    animation: showDescription 0.2s ease;
+}
+
+.glyph-description {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #424242;
+    white-space: pre-line;
+    overflow-wrap: break-word;
+}
+
+/* Moneda */
+:host ::ng-deep img.moneda-icon {
+    display: inline-block !important;
+    width: 14px !important;
+    height: 14px !important;
+    object-fit: contain;
+    vertical-align: -2px !important;
+    margin-right: 4px;
+}
+
+@keyframes showDescription {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Movil */
+@media screen and (max-width: 768px) {
+
+    .glyphs-section {
+        margin: 18px auto 25px;
+    }
+
+    .glyphs-tp-section {
+        padding: 0 8px;
+    }
+
+    .table-title {
+        font-size: 17px;
+        margin: 20px 0 14px;
+    }
+
+    #tablaGlifos {
+        max-width: 100%;
+    }
+
+    #tablaGlifos th,
+    #tablaGlifos td {
+        padding: 9px 7px;
+        font-size: 13px;
+    }
+
+    #tablaGlifosTP {
+        min-width: 680px;
+    }
+
+    #tablaGlifosTP th,
+    #tablaGlifosTP td {
+        padding: 9px 8px;
+        font-size: 12px;
+    }
+
+    #tablaGlifosTP img {
+        width: 36px;
+        height: 36px;
+    }
+
+    .btn-description {
+        padding: 5px 9px;
+        font-size: 12px;
+    }
+
+    .btn-description mat-icon {
+        font-size: 17px;
+        width: 17px;
+        height: 17px;
+        line-height: 17px;
+    }
+
+    .glyph-detail {
+        margin: 6px 8px 10px;
+        padding: 13px 14px;
+    }
+
+    .glyph-description {
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    .huerto-table-responsive {
+        padding: 5px;
+        margin-bottom: 15px;
+    }
+
+    #tablaMaterialesHuerto {
+        min-width: 600px;
+    }
+
+    #tablaMaterialesHuerto th {
+        font-size: 12px;
+        padding: 9px 6px;
+        white-space: nowrap;
+    }
+
+    #tablaMaterialesHuerto td {
+        font-size: 12px;
+        padding: 7px 5px;
+    }
+
+    #tablaMaterialesHuerto img {
+        width: 35px;
+        height: 35px;
+    }
+
+    #tablaMaterialesHuerto .mat-column-nombre {
+        width: 25%;
+    }
+}
+
+/* Moviles pequeños */
+@media screen and (max-width: 400px) {
+
+    .table-title {
+        font-size: 16px;
+    }
+
+    #tablaGlifosTP {
+        min-width: 650px;
+    }
+
+    #tablaMaterialesHuerto {
+        min-width: 580px;
+    }
+
+    #tablaMaterialesHuerto th,
+    #tablaMaterialesHuerto td {
+        font-size: 11px;
+        padding: 6px 4px;
+    }
+
+    #tablaMaterialesHuerto img {
+        width: 30px;
+        height: 30px;
+    }
 }

@@ -17,10 +17,12 @@
                     85833
                 ],
                 "name": "Celestial Infusion (Red)",
-                "name_es": "Infusión celestial (roja)"
+                "name_es": "Infusión celestial (roja)",
+                "tradeable": false
             }
         ],
-        "method": "choice"
+        "method": "choice",
+        "tradeable": false
     },
     {
         "id": 94017,
@@ -40,10 +42,12 @@
                     94091
                 ],
                 "name": "Abyssal Infusion",
-                "name_es": "Infusión abisal"
+                "name_es": "Infusión abisal",
+                "tradeable": false
             }
         ],
-        "method": "choice"
+        "method": "choice",
+        "tradeable": false
     },
     {
         "id": 94956,
@@ -69,10 +73,12 @@
                     "Infusión del ojo derecho de Primordus",
                     "Infusión del ojo izquierdo de Jormag",
                     "Infusión del ojo izquierdo de Primordus"
-                ]
+                ],
+                "tradeable": false
             }
         ],
-        "method": "choice"
+        "method": "choice",
+        "tradeable": false
     },
     {
         "id": 98002,
@@ -92,10 +98,12 @@
                     98066
                 ],
                 "name": "Echo of the Dragonvoid",
-                "name_es": "Eco del Vacío Dracónico"
+                "name_es": "Eco del Vacío Dracónico",
+                "tradeable": false
             }
         ],
-        "method": "choice"
+        "method": "choice",
+        "tradeable": true
     },
     {
         "id": 98092,
@@ -115,10 +123,12 @@
                     98163
                 ],
                 "name": "Imperial Everbloom",
-                "name_es": "Floreterna imperial"
+                "name_es": "Floreterna imperial",
+                "tradeable": false
             }
         ],
-        "method": "choice"
+        "method": "choice",
+        "tradeable": true
     },
     {
         "id": 99250,
@@ -138,10 +148,12 @@
                     99248
                 ],
                 "name": "Clockwork Infusion",
-                "name_es": "Infusión mecánica"
+                "name_es": "Infusión mecánica",
+                "tradeable": false
             }
         ],
-        "method": "choice"
+        "method": "choice",
+        "tradeable": true
     },
     {
         "id": 99844,
@@ -161,10 +173,12 @@
                     99850
                 ],
                 "name": "Mistwalker Infusion",
-                "name_es": "Infusión de caminante de la Niebla"
+                "name_es": "Infusión de caminante de la Niebla",
+                "tradeable": false
             }
         ],
-        "method": "choice"
+        "method": "choice",
+        "tradeable": true
     },
     {
         "id": 99864,
@@ -184,10 +198,12 @@
                     99898
                 ],
                 "name": "Mote of Darkness",
-                "name_es": "Mota de oscuridad"
+                "name_es": "Mota de oscuridad",
+                "tradeable": false
             }
         ],
-        "method": "choice"
+        "method": "choice",
+        "tradeable": false
     },
     {
         "id": 99890,
@@ -207,10 +223,12 @@
                     99898
                 ],
                 "name": "Mote of Darkness",
-                "name_es": "Mota de oscuridad"
+                "name_es": "Mota de oscuridad",
+                "tradeable": false
             }
         ],
-        "method": "choice"
+        "method": "choice",
+        "tradeable": true
     },
     {
         "id": 99956,
@@ -230,10 +248,12 @@
                     99948
                 ],
                 "name": "Silent Symphony",
-                "name_es": "Sinfonía silenciosa"
+                "name_es": "Sinfonía silenciosa",
+                "tradeable": false
             }
         ],
-        "method": "choice"
+        "method": "choice",
+        "tradeable": true
     },
     {
         "id": 100244,
@@ -253,10 +273,12 @@
                     100914
                 ],
                 "name": "Possession Infusion",
-                "name_es": "Infusión de posesión"
+                "name_es": "Infusión de posesión",
+                "tradeable": false
             }
         ],
-        "method": "choice"
+        "method": "choice",
+        "tradeable": true
     },
     {
         "id": 101144,
@@ -276,10 +298,12 @@
                     101276
                 ],
                 "name": "Jotun Infusion",
-                "name_es": "Infusión jotun"
+                "name_es": "Infusión jotun",
+                "tradeable": false
             }
         ],
-        "method": "choice"
+        "method": "choice",
+        "tradeable": true
     },
     {
         "id": 104448,
@@ -299,10 +323,12 @@
                     104481
                 ],
                 "name": "Bloodstone Infusion",
-                "name_es": "Infusión de hematites"
+                "name_es": "Infusión de hematites",
+                "tradeable": false
             }
         ],
-        "method": "choice"
+        "method": "choice",
+        "tradeable": true
     },
     {
         "id": 105095,
@@ -322,10 +348,12 @@
                     93920
                 ],
                 "name": "Frost Legion Infusion",
-                "name_es": "Infusión de la Legión de la Escarcha"
+                "name_es": "Infusión de la Legión de la Escarcha",
+                "tradeable": true
             }
         ],
-        "method": "choice"
+        "method": "choice",
+        "tradeable": false
     },
     {
         "id": 106285,
@@ -345,10 +373,12 @@
                     106471
                 ],
                 "name": "Chromatic Bubbles",
-                "name_es": "Burbuja cromática"
+                "name_es": "Burbuja cromática",
+                "tradeable": false
             }
         ],
-        "method": "choice"
+        "method": "choice",
+        "tradeable": true
     },
     {
         "id": 106760,
@@ -368,10 +398,12 @@
                     105682
                 ],
                 "name": "Ethereal Sea-Life Infusion",
-                "name_es": "Infusión de vida marina etérea"
+                "name_es": "Infusión de vida marina etérea",
+                "tradeable": false
             }
         ],
-        "method": "choice"
+        "method": "choice",
+        "tradeable": true
     },
     {
         "id": 107111,
@@ -389,10 +421,12 @@
                     107167
                 ],
                 "name": "Demonic Infusion",
-                "name_es": "Infusión demoníaca"
+                "name_es": "Infusión demoníaca",
+                "tradeable": false
             }
         ],
-        "method": "choice"
+        "method": "choice",
+        "tradeable": false
     },
     {
         "id": 109239,
@@ -412,10 +446,12 @@
                     109748
                 ],
                 "name": "Seer Transcendence",
-                "name_es": "Trascendencia de los videntes"
+                "name_es": "Trascendencia de los videntes",
+                "tradeable": false
             }
         ],
-        "method": "choice"
+        "method": "choice",
+        "tradeable": true
     },
     {
         "id": 76063,
@@ -435,10 +471,12 @@
                     86291
                 ],
                 "name": "Liquid Aurillium Infusion",
-                "name_es": "Infusión de aurilio líquido"
+                "name_es": "Infusión de aurilio líquido",
+                "tradeable": true
             }
         ],
-        "method": "upgrade"
+        "method": "upgrade",
+        "tradeable": true
     },
     {
         "id": 68440,
@@ -458,10 +496,12 @@
                     86303
                 ],
                 "name": "Queen Bee Infusion",
-                "name_es": "Infusión de abeja reina"
+                "name_es": "Infusión de abeja reina",
+                "tradeable": true
             }
         ],
-        "method": "upgrade"
+        "method": "upgrade",
+        "tradeable": true
     },
     {
         "id": 72021,
@@ -481,10 +521,12 @@
                     86251
                 ],
                 "name": "Chak Infusion",
-                "name_es": "Infusión chak"
+                "name_es": "Infusión chak",
+                "tradeable": true
             }
         ],
-        "method": "upgrade"
+        "method": "upgrade",
+        "tradeable": true
     },
     {
         "id": 67373,
@@ -504,10 +546,12 @@
                     86248
                 ],
                 "name": "Polyluminescent Undulating Infusion (Black)",
-                "name_es": "Infusión ondeante poliluminiscente (negra)"
+                "name_es": "Infusión ondeante poliluminiscente (negra)",
+                "tradeable": true
             }
         ],
-        "method": "extract"
+        "method": "extract",
+        "tradeable": false
     },
     {
         "id": 67375,
@@ -520,10 +564,12 @@
                     67375
                 ],
                 "name": "Polyluminescent Undulating Refractor (Black)",
-                "name_es": "Refractor ondeante poliluminiscente (negro)"
+                "name_es": "Refractor ondeante poliluminiscente (negro)",
+                "tradeable": true
             }
         ],
-        "method": "upgrade"
+        "method": "upgrade",
+        "tradeable": true
     },
     {
         "id": 67376,
@@ -543,10 +589,12 @@
                     86183
                 ],
                 "name": "Polyluminescent Undulating Infusion (Green)",
-                "name_es": "Infusión ondeante poliluminiscente (verde)"
+                "name_es": "Infusión ondeante poliluminiscente (verde)",
+                "tradeable": true
             }
         ],
-        "method": "extract"
+        "method": "extract",
+        "tradeable": false
     },
     {
         "id": 67370,
@@ -559,10 +607,12 @@
                     67370
                 ],
                 "name": "Polyluminescent Undulating Refractor (Green)",
-                "name_es": "Refractor ondeante poliluminiscente (verde)"
+                "name_es": "Refractor ondeante poliluminiscente (verde)",
+                "tradeable": true
             }
         ],
-        "method": "upgrade"
+        "method": "upgrade",
+        "tradeable": true
     },
     {
         "id": 67361,
@@ -582,10 +632,12 @@
                     86310
                 ],
                 "name": "Polyluminescent Undulating Infusion (Orange)",
-                "name_es": "Infusión ondeante poliluminiscente (naranja)"
+                "name_es": "Infusión ondeante poliluminiscente (naranja)",
+                "tradeable": true
             }
         ],
-        "method": "extract"
+        "method": "extract",
+        "tradeable": false
     },
     {
         "id": 67372,
@@ -598,10 +650,12 @@
                     67372
                 ],
                 "name": "Polyluminescent Undulating Refractor (Orange)",
-                "name_es": "Refractor ondeante poliluminiscente (naranja)"
+                "name_es": "Refractor ondeante poliluminiscente (naranja)",
+                "tradeable": true
             }
         ],
-        "method": "upgrade"
+        "method": "upgrade",
+        "tradeable": true
     },
     {
         "id": 79675,
@@ -621,10 +675,12 @@
                     86312
                 ],
                 "name": "Polyluminescent Undulating Infusion (Teal)",
-                "name_es": "Infusión ondeante poliluminiscente (azul verdosa)"
+                "name_es": "Infusión ondeante poliluminiscente (azul verdosa)",
+                "tradeable": true
             }
         ],
-        "method": "extract"
+        "method": "extract",
+        "tradeable": false
     },
     {
         "id": 79647,
@@ -637,10 +693,12 @@
                     79647
                 ],
                 "name": "Polyluminescent Undulating Refractor (Teal)",
-                "name_es": "Refractor ondeante poliluminiscente (azul verdoso)"
+                "name_es": "Refractor ondeante poliluminiscente (azul verdoso)",
+                "tradeable": true
             }
         ],
-        "method": "upgrade"
+        "method": "upgrade",
+        "tradeable": true
     },
     {
         "id": 101176,
@@ -658,10 +716,12 @@
                     101302
                 ],
                 "name": "Wurm's Blessing Enrichment",
-                "name_es": "Enriquecimiento de bendiciones de la Sierpe"
+                "name_es": "Enriquecimiento de bendiciones de la Sierpe",
+                "tradeable": false
             }
         ],
-        "method": "choice"
+        "method": "choice",
+        "tradeable": false
     },
     {
         "id": 104392,
@@ -674,10 +734,12 @@
                     104435
                 ],
                 "name": "Forest Wisp Infusion",
-                "name_es": "Infusión de llama del bosque"
+                "name_es": "Infusión de llama del bosque",
+                "tradeable": false
             }
         ],
-        "method": "extract"
+        "method": "extract",
+        "tradeable": false
     },
     {
         "id": 110179,
@@ -689,15 +751,19 @@
                 "ids": [
                     109921,
                     109938,
+                    109940,
+                    109972,
                     110071,
                     110136,
                     110187,
                     110235
                 ],
                 "name": "Volatile Ascension",
-                "name_es": "Ascensión volátil"
+                "name_es": "Ascensión volátil",
+                "tradeable": false
             }
         ],
-        "method": "choice"
+        "method": "choice",
+        "tradeable": true
     }
 ]

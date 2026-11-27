@@ -1,109 +1,173 @@
-.mat-tab-group {
-  display: inline-block;
-  margin: 16px;
-}
+ .mat-tab-group {
+   display: block;
+   width: 100%;
+   max-width: 100%;
+   margin: 0;
+   box-sizing: border-box;
+ }
 
-h2 {
-  text-align: center;
-}
+ h2 {
+   text-align: center;
+ }
 
-.daily-menu {
-  padding: 0;
-  margin: auto;
-  max-width: 2100px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-around;
-  align-content: flex-start;
-  align-items: flex-start;
-}
+ .daily-menu {
+   padding: 0;
+   margin: 0 auto;
+   width: 100%;
+   max-width: 2100px;
+   display: flex;
+   flex-direction: row;
+   flex-wrap: nowrap;
+   justify-content: space-around;
+   align-content: flex-start;
+   align-items: flex-start;
+   box-sizing: border-box;
+ }
 
-::ng-deep.mat-tab-label,
-::ng-deep.mat-tab-label-content {
-  /*min-width: 1!important;*/
-  padding: 3px !important;
-  margin: 3px !important;
-  font-size: large;
-}
+ ::ng-deep.mat-tab-label,
+ ::ng-deep.mat-tab-label-content {
+   /*min-width: 1!important;*/
+   padding: 3px !important;
+   margin: 3px !important;
+   font-size: large;
+ }
 
-/* Evita la barra vertical que aparece durante
+ /* Evita la barra vertical que aparece durante
    la animacion al cambiar de pestaña */
-::ng-deep .mat-tab-body-content {
-  overflow-y: hidden !important;
-  overflow-x: hidden !important;
-}
+ ::ng-deep .mat-tab-body-content {
+   overflow-y: hidden !important;
+   overflow-x: hidden !important;
+ }
 
-/* Opciones del menu */
-::ng-deep .mat-list-base .mat-list-option {
-  text-align: center;
-  height: 60px !important;
-  font-size: 18px !important;
-  background: #e5e4e7 !important;
-  /* Tarjeta mas estrecha */
-  width: 85% !important;
-  max-width: 500px !important;
-  margin: 7px auto !important;
-  box-sizing: border-box !important;
-  border: 1px solid #b4b9b9;
-  border-radius: 9px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-  /* Sin movimiento */
-  transform: none !important;
-  transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
-}
+ /* Opciones del menu */
+ ::ng-deep .mat-list-base .mat-list-option {
+   text-align: center;
+   height: 60px !important;
+   font-size: 18px !important;
+   background: #e5e4e7 !important;
+   /* Tarjeta mas estrecha */
+   width: 85% !important;
+   max-width: 500px !important;
+   margin: 7px auto !important;
+   box-sizing: border-box !important;
+   border: 1px solid #b4b9b9;
+   border-radius: 9px;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+   /* Sin movimiento */
+   transform: none !important;
+   transition:
+     background-color 0.2s ease,
+     border-color 0.2s ease,
+     box-shadow 0.2s ease;
+ }
 
-/* Contenido */
-::ng-deep .mat-list-base .mat-list-option .mat-list-item-content {
-  width: 100% !important;
-  box-sizing: border-box !important;
-  justify-content: center !important;
-  text-align: center;
-}
+ /* Contenido */
+ ::ng-deep .mat-list-base .mat-list-option .mat-list-item-content {
+   width: 100% !important;
+   box-sizing: border-box !important;
+   justify-content: center !important;
+   text-align: center;
+ }
 
-/* Hover */
-::ng-deep .mat-list-base .mat-list-option:hover {
-  background: #d5d8d8 !important;
-  border-color: #9fa5a5;
-  transform: none !important;
-  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.18);
-}
+ /* Hover */
+ ::ng-deep .mat-list-base .mat-list-option:hover {
+   background: #d5d8d8 !important;
+   border-color: #9fa5a5;
+   transform: none !important;
+   box-shadow: 0 3px 7px rgba(0, 0, 0, 0.18);
+ }
 
-/* Seleccionada */
-::ng-deep .mat-list-base .mat-list-option.mat-list-option-selected {
-  background: #b0babe !important;
-  border-color: #8e999d;
-  color: #263238;
-}
+ /* Seleccionada */
+ ::ng-deep .mat-list-base .mat-list-option.mat-list-option-selected {
+   background: #b0babe !important;
+   border-color: #8e999d;
+   color: #263238;
+ }
 
-/* Hover seleccionada */
-::ng-deep .mat-list-base .mat-list-option.mat-list-option-selected:hover {
-  background: #bac3c6 !important;
-  transform: none !important;
-}
+ /* Hover seleccionada */
+ ::ng-deep .mat-list-base .mat-list-option.mat-list-option-selected:hover {
+   background: #bac3c6 !important;
+   transform: none !important;
+ }
 
-/* Evitar scroll horizontal */
-::ng-deep .mat-selection-list {
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-  overflow-x: hidden !important;
-}
+ /* Evitar scroll horizontal */
+ ::ng-deep .mat-selection-list {
+   width: 100%;
+   max-width: 100%;
+   box-sizing: border-box;
+   overflow-x: hidden !important;
+ }
 
-@media (max-width: 600px) {
-  ::ng-deep .mat-list-base .mat-list-option {
-    width: 92% !important;
-    height: 55px !important;
-    font-size: 16px !important;
-  }
+ /* Ajustes para moviles */
+ @media (max-width: 600px) {
 
-  ::ng-deep .mat-tab-label,
-  ::ng-deep .mat-tab-label-content {
-    font-size: 12px !important;
-    padding: 2px 5px !important;
-    margin: 2px !important;
-  }
-}
+   :host {
+     display: block;
+     width: 100%;
+     max-width: 100%;
+     min-width: 0;
+     box-sizing: border-box;
+     overflow-x: hidden;
+   }
+
+   .component-title {
+     font-size: 22px;
+     margin: 10px 0;
+   }
+
+   .daily-menu {
+     display: block;
+     width: 100%;
+     max-width: 100%;
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+   }
+
+   .mat-tab-group {
+     width: 100%;
+     max-width: 100%;
+     margin: 0;
+     box-sizing: border-box;
+   }
+
+   ::ng-deep .mat-tab-header {
+     max-width: 100%;
+   }
+
+   ::ng-deep .mat-tab-label-container {
+     min-width: 0;
+   }
+
+   ::ng-deep .mat-tab-label {
+     min-width: 0 !important;
+     padding: 0 5px !important;
+     margin: 0 !important;
+   }
+
+   ::ng-deep .mat-tab-label-content {
+     font-size: 11px !important;
+   }
+
+   ::ng-deep .mat-tab-body-wrapper,
+   ::ng-deep .mat-tab-body-content {
+     max-width: 100%;
+     box-sizing: border-box;
+     overflow-x: hidden !important;
+   }
+
+   ::ng-deep .mat-selection-list {
+     width: 100%;
+     max-width: 100%;
+     padding: 0;
+     box-sizing: border-box;
+   }
+
+   ::ng-deep .mat-list-base .mat-list-option {
+     width: 92% !important;
+     max-width: 500px !important;
+     height: 55px !important;
+     font-size: 16px !important;
+   }
+
+ }

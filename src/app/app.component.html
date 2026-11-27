@@ -54,7 +54,6 @@
 
 <!-- Para que quede siempre arriba al hacer scroll -->
 
-
 <mat-sidenav-container class="sidenav-container" *ngIf="isSmallScreen | async; else desktopView">
   <mat-sidenav #sidenav mode="over" class="mobile-sidenav" (closedStart)="onSidenavClose()">
     <nav>
@@ -193,15 +192,19 @@
         <button mat-icon-button (click)="sidenav.toggle()">
           <mat-icon>menu</mat-icon>
         </button>
-        <span style="color: #369;">Menú</span>
+        <span class="menu-title">Menú</span>
+        <span class="active-account">
+          {{ selectedAccount?.gw2Name || 'No account selected' }}
+        </span>
       </mat-toolbar>
 
       <div class="search-container">
         <div class="search" color="primary">
           <mat-form-field class="example-form-field">
             <input matInput type="text" placeholder="Buscar en Wiki" [(ngModel)]="value">
-            <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Borrar" (click)="value=''">
-              <mat-icon>x</mat-icon>
+            <button mat-icon-button class="clear-search-button" *ngIf="value" matSuffix aria-label="Borrar"
+              (click)="value=''">
+              <mat-icon>close</mat-icon>
             </button>
           </mat-form-field>
           <a href="https://wiki-en.guildwars2.com/index.php?title=Special%3ASearch&search={{value}}&go=Go"

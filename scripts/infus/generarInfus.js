@@ -5,6 +5,7 @@ const path = require("path");
 const scripts = [
     "get-infus-enrichments.js",
     "export-infusions.js",
+    "compare-infusions.js",
     "copiarAssets.js"
 ];
 

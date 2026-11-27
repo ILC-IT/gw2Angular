@@ -1,9 +1,12 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { HomesteadService } from "../../service/homestead.service";
-import { Huerto, Glifos } from "./homestead";
+import { Huerto, glyphs, GlifosTP, GLIFO, ItemConPrecios } from "./homestead";
+import { CommercePrice } from "../../component/legendary/legendary";
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { ActivatedRoute, Router } from '@angular/router';
+import { HeroService } from 'src/app/service/hero.service';
+import { LegendaryService } from 'src/app/service/legendary.service';
 
 @Component({
   selector: 'app-homestead',
@@ -12,17 +15,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 
 export class HomesteadComponent implements OnInit, AfterViewInit {
-
-  // GLIFOS
-  GLIFO: Glifos[] = [
-    { category: "Harvesting", name: '-' },
-    { category: "Logging", name: '-' },
-    { category: "Mining", name: '-' },
-  ];
-
-  // Tabla glifos
-  displayedColumnsGlyphs: string[] = ['category', 'name'];
-  dataSourceGlyphs = this.GLIFO;
 
   // Huerto
   alcachofa: Huerto = {
@@ -770,12 +762,35 @@ export class HomesteadComponent implements OnInit, AfterViewInit {
     this.semillaDeSesamoCultivado
   ];
 
-  idsHuerto: string = "";
-
   // Tabla huerto
+  idsHuerto: string = "";
   displayedColumnsMaterialesHuerto: string[] = ['icon', 'tengo', 'nombre', 'precioTpCompraS', 'precioTpVentaS'];
   dataSourceMaterialesHuerto = new MatTableDataSource(this.materialesHuerto);
   @ViewChild("sort1", { static: false }) sort1!: MatSort;
+
+  // Tabla glifos
+  displayedColumnsGlyphs: string[] = ['category', 'nombre'];
+  dataSourceGlyphs = GLIFO;
+
+  // Tabla glifosTP
+  isExpandedRow = (index: number, glifo: GlifosTP) => true;
+  expandedGlyphs: GlifosTP[] = [];
+  toggleGlyph(glifo: GlifosTP) {
+    const index = this.expandedGlyphs.indexOf(glifo);
+
+    if (index === -1) {
+      this.expandedGlyphs.push(glifo);
+    } else {
+      this.expandedGlyphs.splice(index, 1);
+    }
+  }
+  isGlyphExpanded(glifo: GlifosTP): boolean {
+    return this.expandedGlyphs.includes(glifo);
+  }
+  idsGlyphs: string = "";
+  displayedColumnsGlyphsTP: string[] = ['icon', 'nombre', 'description', 'enlace', 'precioTpCompraS', 'precioTpVentaS'];
+  dataSourceGlyphsTP = new MatTableDataSource(glyphs);
+  @ViewChild("sort2", { static: false }) sort2!: MatSort;
 
   // Para las rutas a las pestañas de homestead
   selectedTabIndex: number = 0;
@@ -786,7 +801,7 @@ export class HomesteadComponent implements OnInit, AfterViewInit {
   };
   /////////////////////////////////////////////////////////
 
-  constructor(private homesteadService: HomesteadService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private homesteadService: HomesteadService, private heroService: HeroService, private legendaryService: LegendaryService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     // Para hacer el routing a las pestañas de la tabla
@@ -796,14 +811,18 @@ export class HomesteadComponent implements OnInit, AfterViewInit {
         this.selectedTabIndex = this.getTabIndex(tab);
       }
     });
+
     this.getAccGlyphs();
+    this.getInfoGlyphs();
     this.getMaterialesHuertoTengo();
-    this.getMaterialesHuertoPrices();
+    this.cargarTodosLosPrecios();
   }
 
   ngAfterViewInit() {
     this.sort1.disableClear = true; //para que solo haga ascendente o descendente
     this.dataSourceMaterialesHuerto.sort = this.sort1;
+    this.sort2.disableClear = true; //para que solo haga ascendente o descendente
+    this.dataSourceGlyphsTP.sort = this.sort2;
   }
 
   // devuelve el index de la pestaña de la tabla
@@ -826,14 +845,17 @@ export class HomesteadComponent implements OnInit, AfterViewInit {
     this.homesteadService.getAccGlyphs().subscribe((glifo: any) => {
       for (let i = 0; i < glifo.length; i++) {
         if (glifo[i].includes("harvesting")) {
-          this.GLIFO[0].name = this.capitalizeFirstLetter(glifo[i].split("_harvesting")[0]);
+          GLIFO[0].category = "Cosecha";
+          GLIFO[0].nombre = this.capitalizeFirstLetter(glifo[i].split("_harvesting")[0]);
         } else if (glifo[i].includes("logging")) {
-          this.GLIFO[1].name = this.capitalizeFirstLetter(glifo[i].split("_logging")[0]);
+          GLIFO[1].category = "Tala";
+          GLIFO[1].nombre = this.capitalizeFirstLetter(glifo[i].split("_logging")[0]);
         } else if (glifo[i].includes("mining")) {
-          this.GLIFO[2].name = this.capitalizeFirstLetter(glifo[i].split("_mining")[0]);
+          GLIFO[2].category = "Minería";
+          GLIFO[2].nombre = this.capitalizeFirstLetter(glifo[i].split("_mining")[0]);
         }
       }
-      this.dataSourceGlyphs = this.GLIFO;
+      this.dataSourceGlyphs = GLIFO;
     })
   }
 
@@ -841,8 +863,45 @@ export class HomesteadComponent implements OnInit, AfterViewInit {
     return cadena.charAt(0).toUpperCase() + cadena.slice(1);
   }
 
+  getInfoGlyphs() {
+    this.idsGlyphs = glyphs.map(g => g.id).join(',');
+
+    this.heroService.getItems(this.idsGlyphs).subscribe((items: any[]) => {
+
+      for (const glifo of glyphs) {
+
+        const itemApi = items.find(item => item.id === glifo.id);
+
+        if (itemApi) {
+          // Actualizo el nombre si es diferente
+          if (glifo.nombre !== itemApi.name) {
+            glifo.nombre = itemApi.name;
+          }
+          glifo.icon = itemApi.icon;
+          glifo.description = this.limpiarDescripcion(itemApi.description);
+        }
+        glifo.enlace = this.generarEnlace(glifo.id, glifo.nombre);
+      }
+
+      this.dataSourceGlyphsTP.data = [...glyphs];
+
+    });
+  }
+
+  generarEnlace(id: number, nombre: string): string {
+    const nombreLimpio = nombre
+      .replace(/[()]/g, '')
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/ñ/gi, 'n')
+      .trim()
+      .replace(/\s+/g, '-');
+
+    return `https://www.gw2bltc.com/es/item/${id}-${nombreLimpio}`;
+  }
+
   getMaterialesHuertoTengo() {
-    this.homesteadService.getMaterials().subscribe((materials: any) => {
+    this.heroService.getMaterials().subscribe((materials: any) => {
       for (let j = 0; j < this.materialesHuerto.length; j++) {
         for (let i = 0; i < materials.length; i++) {
           if (materials[i].id === this.materialesHuerto[j].id) {
@@ -851,88 +910,92 @@ export class HomesteadComponent implements OnInit, AfterViewInit {
           }
         }
       }
-      this.dataSourceMaterialesHuerto = new MatTableDataSource(this.materialesHuerto);
-      this.dataSourceMaterialesHuerto.sort = this.sort1;
+
+      this.dataSourceMaterialesHuerto.data = [...this.materialesHuerto];
     })
   }
 
-  getMaterialesHuertoPrices() {
-    // Saco los ids de los materiales separados por comas
+  cargarTodosLosPrecios(): void {
+    // Unir todos los IDs en una unica lista
     this.idsHuerto = this.materialesHuerto.map(m => m.id).join(',');
+    this.idsGlyphs = glyphs.map(g => g.id).join(',');
 
-    //consulto precios en el bazar
-    this.homesteadService.getCommercePrices(this.idsHuerto).subscribe((prices: any) => {
-      for (let j = 0; j < this.materialesHuerto.length; j++) {
-        for (let i = 0; i < prices.length; i++) {
-          if (prices[i].id == this.materialesHuerto[j].id) {
-            this.materialesHuerto[j].precioTpCompra = prices[i].buys.unit_price;
-            this.materialesHuerto[j].precioTpVenta = prices[i].sells.unit_price;
-            this.materialesHuerto[j].precioTpCompraS = this.getPriceSplit(this.materialesHuerto[j].precioTpCompra);
-            this.materialesHuerto[j].precioTpVentaS = this.getPriceSplit(this.materialesHuerto[j].precioTpVenta);
-            this.materialesHuerto[j].precioOrdenableTpCompra = this.padPrecio(this.materialesHuerto[j].precioTpCompraS);
-            this.materialesHuerto[j].precioOrdenableTpVenta = this.padPrecio(this.materialesHuerto[j].precioTpVentaS);
-            break;
-          }
-        }
+    const todosLosIds = [
+      this.idsHuerto,
+      this.idsGlyphs
+    ]
+      .join(",")
+      .split(",")
+      .filter(id => id !== "");
+
+    // Eliminar IDs duplicados
+    const idsUnicos = [...new Set(todosLosIds)];
+
+    this.legendaryService.getCommercePrices(idsUnicos.join(",")).subscribe({
+      next: prices => {
+        const pricesMap = new Map<number, CommercePrice>(
+          prices.map(price => [price.id, price])
+        );
+
+        this.actualizarPrecios(this.materialesHuerto, pricesMap, this.dataSourceMaterialesHuerto);
+        this.actualizarPrecios(glyphs, pricesMap, this.dataSourceGlyphsTP);
+      },
+      error: error => {
+        console.error('Error al consultar los precios de heredad:', error);
       }
-      this.dataSourceMaterialesHuerto = new MatTableDataSource(this.materialesHuerto);
-      this.dataSourceMaterialesHuerto.sort = this.sort1;
-    })
+    });
   }
 
-  getPriceSplit(cantidad: number) {
-    // Le paso el numero y me devuelve una string en oro, plata, cobre
-    // let sss = (""+cantidad).split('').map(Number); // array de numeros
-    let sss = ("" + cantidad).split(''); // array de char
-    // console.log(sss)
-    let cobre = "";
-    let plata = "";
-    let oro = "";
-    let resFinal = "";
+  actualizarPrecios<T extends ItemConPrecios>(
+    elementos: T[],
+    pricesMap: Map<number, CommercePrice>,
+    dataSource: MatTableDataSource<T>
+  ): void {
 
-    if (sss.length === 1) {
-      cobre = sss[0] + "c"; // 1 cifra
-      resFinal = cobre;
-    } else if (sss.length === 2) {
-      cobre = sss[0] + sss[1] + "c"; // 2 cifras
-      resFinal = cobre;
-    } else if (sss.length === 3) { // 3 cifras
-      cobre = sss[1] + sss[2] + "c";
-      plata = sss[0] + "s";
-      resFinal = plata + " " + cobre;
-    } else if (sss.length === 4) { // 4 cifras
-      cobre = sss[2] + sss[3] + "c";
-      plata = sss[0] + sss[1] + "s";
-      resFinal = plata + " " + cobre;
-    } else if (sss.length > 4) { // >= 5 cifras
-      cobre = sss[sss.length - 2] + sss[sss.length - 1] + "c";
-      plata = sss[sss.length - 4] + sss[sss.length - 3] + "s";
-      for (let i = (sss.length - 5); i >= 0; i--) {
-        oro = sss[i] + oro;
+    elementos.forEach(elemento => {
+
+      const price = pricesMap.get(elemento.id);
+
+      if (!price) {
+        this.limpiarPrecios(elemento);
+        return;
       }
-      oro = oro + "g";
-      resFinal = oro + " " + plata + " " + cobre;
-    }
-    // console.log(resFinal);
-    return resFinal
+
+      // Precio compra
+      elemento.precioTpCompra = price.buys.unit_price;
+      elemento.precioTpCompraS = this.legendaryService.getPriceSplit(elemento.precioTpCompra);
+      elemento.precioTpCompraSF = this.legendaryService.formatearValorOro(elemento.precioTpCompraS);
+      elemento.precioOrdenableTpCompra = this.legendaryService.padPrecio(elemento.precioTpCompraS);
+
+      // Precio venta
+      elemento.precioTpVenta = price.sells.unit_price;
+      elemento.precioTpVentaS = this.legendaryService.getPriceSplit(elemento.precioTpVenta);
+      elemento.precioTpVentaSF = this.legendaryService.formatearValorOro(elemento.precioTpVentaS);
+      elemento.precioOrdenableTpVenta = this.legendaryService.padPrecio(elemento.precioTpVentaS);
+
+    });
+
+    // Actualizar tabla
+    dataSource.data = [...elementos];
   }
 
-  padPrecio(precioStr: string | null | undefined): string {
-    // convierte la cadena del precio en [5 dígitos]g [2 dígitos]s [2 dígitos]c. Si por ej. es 99g 8p 5c lo convierte en 00099g 08p 05c para ordenar bien
-    if (!precioStr || typeof precioStr !== 'string') {
-      // Si no hay precio, lo mandamos al fondo del ordenamiento
-      return '00000g 00s 00c';
-    }
+  limpiarPrecios(elemento: ItemConPrecios): void {
+    elemento.precioTpCompra = 0;
+    elemento.precioTpCompraS = '-';
+    elemento.precioTpCompraSF = '-';
+    elemento.precioOrdenableTpCompra = this.legendaryService.padPrecio('');
 
-    const oroMatch = precioStr.match(/(\d+)g/);
-    const plataMatch = precioStr.match(/(\d+)s/);
-    const cobreMatch = precioStr.match(/(\d+)c/);
+    elemento.precioTpVenta = 0;
+    elemento.precioTpVentaS = '-';
+    elemento.precioTpVentaSF = '-';
+    elemento.precioOrdenableTpVenta = this.legendaryService.padPrecio('');
+  }
 
-    const g = oroMatch ? oroMatch[1].padStart(5, '0') : '00000';
-    const s = plataMatch ? plataMatch[1].padStart(2, '0') : '00';
-    const c = cobreMatch ? cobreMatch[1].padStart(2, '0') : '00';
-
-    return `${g}g ${s}s ${c}c`;
+  limpiarDescripcion(description: string): string {
+    return description.replace(
+      /^Haz doble clic para vincular este glifo a tu cuenta\.\s*/i,
+      ''
+    ).trim();
   }
 
 }

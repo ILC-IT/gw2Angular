@@ -17,7 +17,8 @@ h3 {
 }
 
 body {
-    margin: 2em;
+    /* margin: 2em; */
+    margin: 0;
 }
 
 body,
@@ -61,7 +62,6 @@ table:not(.tabla-sin-bordes) .mat-cell:last-child {
     text-align: center;
     margin: 20px 0 28px;
     color: #37474f;
-    font-size: 24px;
     font-weight: 500;
     letter-spacing: 0.5px;
     position: relative;
@@ -78,6 +78,14 @@ table:not(.tabla-sin-bordes) .mat-cell:last-child {
     background: #607d8b;
     border-radius: 3px;
     transform: translateX(-50%);
+}
+
+h2.component-title {
+    font-size: 24px;
+}
+
+h3.component-title {
+    font-size: 18px;
 }
 
 /* KP */
@@ -160,5 +168,43 @@ table:not(.tabla-sin-bordes) .mat-cell:last-child {
     .component-title::after {
         width: 45px;
         height: 2px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Titulos mas pequeños */
+    h2.component-title {
+        font-size: 16px;
+        margin: 12px 0 18px;
+        padding-bottom: 7px;
+    }
+
+    .component-title::after {
+        width: 40px;
+        height: 2px;
+    }
+
+    /* Letra de pestañas mas pequeña y estrechas verticalmente y caben horizontalmente */
+    .example-stretched-tabs .mat-tab-labels {
+        width: 100%;
+        display: flex;
+    }
+
+    .example-stretched-tabs .mat-tab-label {
+        min-width: max-content !important;
+        height: 34px !important;
+        min-height: 34px !important;
+        padding: 0 8px !important;
+        flex: 1 1 auto !important;
+        justify-content: center;
+        white-space: nowrap !important;
+        font-size: 11px !important;
+    }
+
+    .example-stretched-tabs .mat-tab-label-content {
+        white-space: nowrap !important;
+        font-size: 11px !important;
+        line-height: 1.1;
     }
 }

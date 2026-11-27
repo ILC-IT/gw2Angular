@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { ApiKeyService } from '../../service/api-key.service';
 import { ApiAccount } from '../../service/key';
@@ -8,10 +8,9 @@ import { ApiAccount } from '../../service/key';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
 
-  title = 'GW2 Angular';
-  value: string = '';
+  value: string = ''; // Para el buscador de la wiki
 
   @ViewChild('diariasTrigger') diariasTrigger!: MatMenuTrigger;
   @ViewChild('heroesTrigger') heroesTrigger!: MatMenuTrigger;
@@ -23,10 +22,19 @@ export class DashboardComponent implements OnInit {
 
   private openMenuTimeout: any;
   private closeMenuTimeout: any;
+  private activeTrigger: MatMenuTrigger | null = null;
 
   openMenu(trigger: MatMenuTrigger) {
+    clearTimeout(this.openMenuTimeout);
     clearTimeout(this.closeMenuTimeout);
+
     this.openMenuTimeout = setTimeout(() => {
+      // Si hay otro menu abierto, cerrarlo
+      if (this.activeTrigger && this.activeTrigger !== trigger) {
+        this.activeTrigger.closeMenu();
+      }
+
+      this.activeTrigger = trigger;
       trigger.openMenu();
     }, 50); // Ajustar el tiempo segun sea necesario
   }
@@ -37,9 +45,15 @@ export class DashboardComponent implements OnInit {
 
   closeMenu(trigger: MatMenuTrigger) {
     clearTimeout(this.openMenuTimeout);
+    clearTimeout(this.closeMenuTimeout);
+
     this.closeMenuTimeout = setTimeout(() => {
       trigger.closeMenu();
-    }, 50); // Ajustar el tiempo segun sea necesario
+
+      if (this.activeTrigger === trigger) {
+        this.activeTrigger = null;
+      }
+    }, 150); // Ajustar el tiempo segun sea necesario
   }
 
   @Input() account: any = {
@@ -63,6 +77,16 @@ export class DashboardComponent implements OnInit {
     this.apiKeyService.getCurrentAccount$().subscribe(account => {
       this.selectedAccount = account ?? this.accounts[0];
     });
+  }
+
+  ngOnDestroy(): void {
+    clearTimeout(this.openMenuTimeout);
+    clearTimeout(this.closeMenuTimeout);
+
+    if (this.activeTrigger) {
+      this.activeTrigger.closeMenu();
+      this.activeTrigger = null;
+    }
   }
 
   onAccountChange(account: ApiAccount) {

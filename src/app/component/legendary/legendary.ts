@@ -7,14 +7,19 @@ export interface t6 {
     icon: string;
     precioTpCompra: number;
     precioTpCompraS: string;
+    precioTpCompraSF: string;
     precioTpVenta: number;
     precioTpVentaS: string;
+    precioTpVentaSF: string;
     precioStackCompra: number;
     precioStackCompraS: string;
+    precioStackCompraSF: string;
     precioStackVenta: number;
     precioStackVentaS: string;
+    precioStackVentaSF: string;
     precioStackVenta90: number;
     precioStackVentaS90: string;
+    precioStackVentaSF90: string;
 };
 
 export interface legendarios {
@@ -58,6 +63,7 @@ export interface cartera {
     id: number;
     nombre: string;
     tengo: number;
+    tengoFormated?: string;
     icon: string;
 }
 
@@ -68,14 +74,19 @@ export interface preciosVarios {
     icon: string;
     precioTpCompra: number;
     precioTpCompraS: string;
+    precioTpCompraSF: string;
     precioTpVenta: number;
     precioTpVentaS: string;
+    precioTpVentaSF: string;
     precioStackCompra: number;
     precioStackCompraS: string;
+    precioStackCompraSF: string;
     precioStackVenta: number;
     precioStackVentaS: string;
+    precioStackVentaSF: string;
     precioStackVenta90: number;
     precioStackVentaS90: string;
+    precioStackVentaSF90: string;
 };
 
 export interface ColorRule {
@@ -747,6 +758,7 @@ export const magiaLiberada = [
     {
         idWallet: 32,
         tengoEnCartera: 0,
+        tengoEnCarteraFormated: "",
         icon: "https://wiki.guildwars2.com/images/f/f5/Unbound_Magic.png"
     }
 ];
@@ -755,6 +767,7 @@ export const magiaVolatil = [
     {
         idWallet: 45,
         tengoEnCartera: 0,
+        tengoEnCarteraFormated: "",
         icon: "https://wiki.guildwars2.com/images/5/54/Volatile_Magic.png"
     }
 ];
@@ -763,6 +776,7 @@ export const esquirlaEspiritual = [
     {
         idWallet: 23,
         tengoEnCartera: 0,
+        tengoEnCarteraFormated: "",
         icon: "https://wiki.guildwars2.com/images/6/63/Spirit_Shard.png"
     }
 ];
@@ -2230,7 +2244,7 @@ export const legendaryWeaponsOther = [
         modo: "PvE",
         expansion: "VoE"
     },
-        {
+    {
         nombre: "Jornal Estelar",
         id: 110020,
         idWardrobe: 14230,
@@ -2358,3 +2372,8 @@ export const legendaryAquaticHeadgear = [
         expansion: "VoE"
     }
 ];
+
+const idsLW1 = `${legendaryWeapons1.map(w => w.id).join(",")},${legendaryWeapons1.map(w => w.preId).join(",")}`;
+const idsLW3 = `${legendaryWeapons3.map(w => w.id).join(",")},${legendaryWeapons3.map(w => w.preId).join(",")}`;
+const idsGenOther = `${legendaryWeaponsGenOther.map(w => w.id).join(",")},${legendaryWeaponsGenOther.filter(w => w.preId !== 0).map(w => w.preId).join(",")}`;
+export const idsLegendaryWeapons = `${idsLW1},${idsLW3},${idsGenOther}`;

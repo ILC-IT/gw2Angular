@@ -1,0 +1,2267 @@
+[
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      5906.45,
+      13312.5
+    ],
+    "data": {
+      "chat_link": "[&BNkEAAA=]",
+      "tooltip": "Punto de Ruta de Bahía Salto Aciago"
+    },
+    "id": 1241,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      5964.92,
+      14727
+    ],
+    "data": {
+      "chat_link": "[&BNoEAAA=]",
+      "tooltip": "Punto de Ruta de Frontera"
+    },
+    "id": 1242,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      6837.57,
+      12668.7
+    ],
+    "data": {
+      "chat_link": "[&BNsEAAA=]",
+      "tooltip": "Punto de Ruta de Fuerte"
+    },
+    "id": 1243,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      6893.79,
+      11773.3
+    ],
+    "data": {
+      "chat_link": "[&BNwEAAA=]",
+      "tooltip": "Punto de Ruta de Ciudadela"
+    },
+    "id": 1244,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      7667.17,
+      13456.6
+    ],
+    "data": {
+      "chat_link": "[&BN0EAAA=]",
+      "tooltip": "Punto de Ruta de Colinas Shadaran"
+    },
+    "id": 1245,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      7787.86,
+      14733.3
+    ],
+    "data": {
+      "chat_link": "[&BN4EAAA=]",
+      "tooltip": "Punto de Ruta de Frontera"
+    },
+    "id": 1246,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      7844.21,
+      13519
+    ],
+    "data": {
+      "chat_link": "[&BC8FAAA=]",
+      "tooltip": "Bastión de Shadaran"
+    },
+    "id": 1327,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      6891.58,
+      12928.3
+    ],
+    "data": {
+      "chat_link": "[&BDAFAAA=]",
+      "tooltip": "Bastión de "
+    },
+    "id": 1328,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      6919.7,
+      11885.8
+    ],
+    "data": {
+      "chat_link": "[&BDEFAAA=]",
+      "tooltip": "Encrucijada de la Garra del Titán"
+    },
+    "id": 1329,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      5957.61,
+      13592.9
+    ],
+    "data": {
+      "chat_link": "[&BDIFAAA=]",
+      "tooltip": "Bastión de Salto Aciago"
+    },
+    "id": 1330,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      7878.89,
+      12798.6
+    ],
+    "data": {
+      "chat_link": "[&BDMFAAA=]",
+      "tooltip": "Molino del Refugio Neblinoso"
+    },
+    "id": 1331,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      6579.18,
+      13721.9
+    ],
+    "data": {
+      "chat_link": "[&BDQFAAA=]",
+      "tooltip": "Hondonada de la batalla"
+    },
+    "id": 1332,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      7889.93,
+      11971.5
+    ],
+    "data": {
+      "chat_link": "[&BDUFAAA=]",
+      "tooltip": "Campamento de Relinchoébano"
+    },
+    "id": 1333,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      6320.27,
+      12697
+    ],
+    "data": {
+      "chat_link": "[&BDYFAAA=]",
+      "tooltip": "Torre de Colina Soleada"
+    },
+    "id": 1334,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      7450.4,
+      12775
+    ],
+    "data": {
+      "chat_link": "[&BDcFAAA=]",
+      "tooltip": "Torre de Cumbrepeñasco"
+    },
+    "id": 1335,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      6116.12,
+      14087.4
+    ],
+    "data": {
+      "chat_link": "[&BDgFAAA=]",
+      "tooltip": "Taller Valleazul"
+    },
+    "id": 1336,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      6883,
+      14675.1
+    ],
+    "data": {
+      "chat_link": "[&BDkFAAA=]",
+      "tooltip": "Huerto del Héroe"
+    },
+    "id": 1337,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      7845.09,
+      14120.2
+    ],
+    "data": {
+      "chat_link": "[&BDoFAAA=]",
+      "tooltip": "Aldea de Aguarroja"
+    },
+    "id": 1338,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      5859.24,
+      11913.4
+    ],
+    "data": {
+      "chat_link": "[&BDsFAAA=]",
+      "tooltip": "Campamento de Neuskrittia"
+    },
+    "id": 1339,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      6031.53,
+      12832.4
+    ],
+    "data": {
+      "chat_link": "[&BDwFAAA=]",
+      "tooltip": "Cantera de Salto de Fe"
+    },
+    "id": 1340,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      6595.64,
+      14041.2
+    ],
+    "data": {
+      "chat_link": "[&BD0FAAA=]",
+      "tooltip": "Torre de Zarzazul"
+    },
+    "id": 1341,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      7374.78,
+      14003.7
+    ],
+    "data": {
+      "chat_link": "[&BD4FAAA=]",
+      "tooltip": "Torre de Lagorrojo"
+    },
+    "id": 1342,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      7963.66,
+      13270.2
+    ],
+    "data": {
+      "chat_link": "[&BJoFAAA=]"
+    },
+    "id": 1434,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "vista",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      7891.62,
+      13926.3
+    ],
+    "data": {
+      "chat_link": "[&BJsFAAA=]"
+    },
+    "id": 1435,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "vista",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      6913.52,
+      13261.7
+    ],
+    "data": {
+      "chat_link": "[&BJwFAAA=]"
+    },
+    "id": 1436,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "vista",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      6808.54,
+      12110
+    ],
+    "data": {
+      "chat_link": "[&BJ0FAAA=]"
+    },
+    "id": 1437,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "vista",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      6890.08,
+      12977.3
+    ],
+    "data": {
+      "chat_link": "[&BJ4FAAA=]"
+    },
+    "id": 1438,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "vista",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      7117.15,
+      14482.1
+    ],
+    "data": {
+      "chat_link": "[&BJ8FAAA=]"
+    },
+    "id": 1439,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "vista",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      6927.21,
+      14164.6
+    ],
+    "data": {
+      "chat_link": "[&BKAFAAA=]"
+    },
+    "id": 1440,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "vista",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      6629.58,
+      14623.4
+    ],
+    "data": {
+      "chat_link": "[&BKEFAAA=]"
+    },
+    "id": 1441,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "vista",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      6273.5,
+      12727.3
+    ],
+    "data": {
+      "chat_link": "[&BKIFAAA=]"
+    },
+    "id": 1442,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "vista",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      5928.18,
+      13654.1
+    ],
+    "data": {
+      "chat_link": "[&BKMFAAA=]"
+    },
+    "id": 1443,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "vista",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      7501.56,
+      12435.1
+    ],
+    "data": {
+      "chat_link": "[&BBUJAAA=]",
+      "tooltip": "Punto de ruta de emergencia"
+    },
+    "id": 2325,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      7667.17,
+      13456.6
+    ],
+    "data": {
+      "chat_link": "[&BCEJAAA=]",
+      "tooltip": "Punto de ruta de Emergencia A de Colinas Shadaran"
+    },
+    "id": 2337,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      7192.3,
+      14032.3
+    ],
+    "data": {
+      "chat_link": "[&BCIJAAA=]",
+      "tooltip": "Punto de ruta de emergencia"
+    },
+    "id": 2338,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      6307.62,
+      12369.5
+    ],
+    "data": {
+      "chat_link": "[&BCcJAAA=]",
+      "tooltip": "Punto de ruta de emergencia"
+    },
+    "id": 2343,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      6529.68,
+      14001.2
+    ],
+    "data": {
+      "chat_link": "[&BCkJAAA=]",
+      "tooltip": "Punto de ruta de emergencia"
+    },
+    "id": 2345,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      6837.57,
+      12668.7
+    ],
+    "data": {
+      "chat_link": "[&BCsJAAA=]",
+      "tooltip": "Punto de ruta de Emergencia A de Fuerte"
+    },
+    "id": 2347,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      5906.45,
+      13312.5
+    ],
+    "data": {
+      "chat_link": "[&BC4JAAA=]",
+      "tooltip": "Punto de ruta de Emergencia A de Bahía Salto Aciago"
+    },
+    "id": 2350,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      6154.81,
+      13403.1
+    ],
+    "data": {
+      "chat_link": "[&BJoOAAA=]",
+      "tooltip": "Punto de ruta de Emergencia B de Bahía Salto Aciago"
+    },
+    "id": 3738,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      6846.15,
+      12566.2
+    ],
+    "data": {
+      "chat_link": "[&BKAOAAA=]",
+      "tooltip": "Punto de ruta de Emergencia B de Fuerte"
+    },
+    "id": 3744,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      7821.08,
+      13511.9
+    ],
+    "data": {
+      "chat_link": "[&BKYOAAA=]",
+      "tooltip": "Punto de ruta de Emergencia B de Colinas Shadaran"
+    },
+    "id": 3750,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      7012.83,
+      12739
+    ],
+    "data": {
+      "chat_link": "[&BKgOAAA=]",
+      "tooltip": "Punto de ruta de Emergencia C de Fuerte"
+    },
+    "id": 3752,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      6078.33,
+      13192.6
+    ],
+    "data": {
+      "chat_link": "[&BKkOAAA=]",
+      "tooltip": "Punto de ruta de Emergencia C de Bahía Salto Aciago"
+    },
+    "id": 3753,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      7547.89,
+      13311.2
+    ],
+    "data": {
+      "chat_link": "[&BK0OAAA=]",
+      "tooltip": "Punto de ruta de Emergencia C de Colinas Shadaran"
+    },
+    "id": 3757,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      9490.45,
+      10752.5
+    ],
+    "data": {
+      "chat_link": "[&BDsQAAA=]",
+      "tooltip": "Punto de ruta de Emergencia A de Sótano Achicharrante"
+    },
+    "id": 4155,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      9857.5,
+      10167.3
+    ],
+    "data": {
+      "chat_link": "[&BDwQAAA=]"
+    },
+    "id": 4156,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "vista",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      10503.7,
+      9325.83
+    ],
+    "data": {
+      "chat_link": "[&BD0QAAA=]",
+      "tooltip": "Laboratorio de Hamm"
+    },
+    "id": 4157,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      13797.6,
+      13983.4
+    ],
+    "data": {
+      "chat_link": "[&BD4QAAA=]"
+    },
+    "id": 4158,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "vista",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      13488.3,
+      12057
+    ],
+    "data": {
+      "chat_link": "[&BD8QAAA=]",
+      "tooltip": "Torre del Refugio Forestal"
+    },
+    "id": 4159,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      9541.61,
+      11032.9
+    ],
+    "data": {
+      "chat_link": "[&BEAQAAA=]",
+      "tooltip": "Sótano Achicharrante"
+    },
+    "id": 4160,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      14005.6,
+      12028.7
+    ],
+    "data": {
+      "chat_link": "[&BEEQAAA=]",
+      "tooltip": "Punto de Ruta de Fuerte"
+    },
+    "id": 4161,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      13441.5,
+      12087.3
+    ],
+    "data": {
+      "chat_link": "[&BEIQAAA=]"
+    },
+    "id": 4162,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "vista",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      14005.6,
+      12028.7
+    ],
+    "data": {
+      "chat_link": "[&BEMQAAA=]",
+      "tooltip": "Punto de ruta de Emergencia A de Fuerte"
+    },
+    "id": 4163,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      14285.2,
+      13842.1
+    ],
+    "data": {
+      "chat_link": "[&BEQQAAA=]"
+    },
+    "id": 4164,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "vista",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      9700.12,
+      11527.4
+    ],
+    "data": {
+      "chat_link": "[&BEUQAAA=]",
+      "tooltip": "Campamento de McLain"
+    },
+    "id": 4165,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      13284.1,
+      13447.4
+    ],
+    "data": {
+      "chat_link": "[&BEYQAAA=]",
+      "tooltip": "Taller de Vallerrojo"
+    },
+    "id": 4166,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      11547.7,
+      10710.2
+    ],
+    "data": {
+      "chat_link": "[&BEcQAAA=]"
+    },
+    "id": 4167,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "vista",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      14087.7,
+      11245.8
+    ],
+    "data": {
+      "chat_link": "[&BEgQAAA=]",
+      "tooltip": "Encrucijada Isleta Espiritual"
+    },
+    "id": 4168,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      11405.1,
+      10951.9
+    ],
+    "data": {
+      "chat_link": "[&BEkQAAA=]",
+      "tooltip": "Punto de ruta de Emergencia B de Palacio del Águila Pescadora"
+    },
+    "id": 4169,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      14669.6,
+      11795.1
+    ],
+    "data": {
+      "chat_link": "[&BEoQAAA=]",
+      "tooltip": "Punto de ruta de emergencia"
+    },
+    "id": 4170,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      11131.9,
+      10751.2
+    ],
+    "data": {
+      "chat_link": "[&BEsQAAA=]",
+      "tooltip": "Punto de ruta de Emergencia C de Palacio del Águila Pescadora"
+    },
+    "id": 4171,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      11462.9,
+      10238.6
+    ],
+    "data": {
+      "chat_link": "[&BEwQAAA=]",
+      "tooltip": "Refugio de Roy"
+    },
+    "id": 4172,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      11473.9,
+      9411.5
+    ],
+    "data": {
+      "chat_link": "[&BE0QAAA=]",
+      "tooltip": "Peñasco Colmillofuego"
+    },
+    "id": 4173,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      11251.2,
+      10896.6
+    ],
+    "data": {
+      "chat_link": "[&BE4QAAA=]",
+      "tooltip": "Punto de Ruta de Palacio del Águila Pescadora"
+    },
+    "id": 4174,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      13747.2,
+      13081.9
+    ],
+    "data": {
+      "chat_link": "[&BE8QAAA=]",
+      "tooltip": "Hondonada de la Batalla"
+    },
+    "id": 4175,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      10511.2,
+      11604.6
+    ],
+    "data": {
+      "chat_link": "[&BFAQAAA=]"
+    },
+    "id": 4176,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "vista",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      13199.5,
+      12192.4
+    ],
+    "data": {
+      "chat_link": "[&BFEQAAA=]",
+      "tooltip": "Cantera de Sabiduría de los Dioses"
+    },
+    "id": 4177,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      10113.7,
+      11441.2
+    ],
+    "data": {
+      "chat_link": "[&BFIQAAA=]",
+      "tooltip": "Punto de Ruta de Emergencia de Puesto Avanzado Abrasado"
+    },
+    "id": 4178,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      14542.8,
+      13363.7
+    ],
+    "data": {
+      "chat_link": "[&BFMQAAA=]",
+      "tooltip": "Torre de Lagoverde"
+    },
+    "id": 4179,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      13246.3,
+      12552.6
+    ],
+    "data": {
+      "chat_link": "[&BFQQAAA=]",
+      "tooltip": "Punto de ruta de Emergencia C de Bahía de la Ascensión"
+    },
+    "id": 4180,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      10497.5,
+      10701.7
+    ],
+    "data": {
+      "chat_link": "[&BFUQAAA=]"
+    },
+    "id": 4181,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "vista",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      10421.6,
+      10108.7
+    ],
+    "data": {
+      "chat_link": "[&BFYQAAA=]",
+      "tooltip": "Punto de Ruta de Muralla Estoica"
+    },
+    "id": 4182,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      15012.2,
+      12879
+    ],
+    "data": {
+      "chat_link": "[&BFcQAAA=]",
+      "tooltip": "Bastión Askalion"
+    },
+    "id": 4183,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      13763.6,
+      13401.2
+    ],
+    "data": {
+      "chat_link": "[&BFgQAAA=]",
+      "tooltip": "Torre de Zarzarroja"
+    },
+    "id": 4184,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      15057.9,
+      11331.5
+    ],
+    "data": {
+      "chat_link": "[&BFkQAAA=]",
+      "tooltip": "Campamento de Crincastaña"
+    },
+    "id": 4185,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      10213.6,
+      12063.4
+    ],
+    "data": {
+      "chat_link": "[&BFoQAAA=]"
+    },
+    "id": 4186,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "vista",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      11475.6,
+      11366.3
+    ],
+    "data": {
+      "chat_link": "[&BFsQAAA=]"
+    },
+    "id": 4187,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "vista",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      10392.5,
+      9550.04
+    ],
+    "data": {
+      "chat_link": "[&BFwQAAA=]"
+    },
+    "id": 4188,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "vista",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      11251.2,
+      10896.6
+    ],
+    "data": {
+      "chat_link": "[&BF0QAAA=]",
+      "tooltip": "Punto de ruta de Emergencia A de Palacio del Águila Pescadora"
+    },
+    "id": 4189,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      10163.2,
+      11161.9
+    ],
+    "data": {
+      "chat_link": "[&BF4QAAA=]",
+      "tooltip": "Oasis Central"
+    },
+    "id": 4190,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      9738.81,
+      10843.1
+    ],
+    "data": {
+      "chat_link": "[&BF8QAAA=]",
+      "tooltip": "Punto de ruta de Emergencia B de Sótano Achicharrante"
+    },
+    "id": 4191,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      13322.8,
+      12763.1
+    ],
+    "data": {
+      "chat_link": "[&BGAQAAA=]",
+      "tooltip": "Punto de ruta de Emergencia B de Bahía de la Ascensión"
+    },
+    "id": 4192,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      10596.8,
+      10179
+    ],
+    "data": {
+      "chat_link": "[&BGEQAAA=]",
+      "tooltip": "Punto de ruta de Emergencia C de Muralla Estoica"
+    },
+    "id": 4193,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      9548.92,
+      12167
+    ],
+    "data": {
+      "chat_link": "[&BGIQAAA=]",
+      "tooltip": "Punto de Ruta de Frontera"
+    },
+    "id": 4194,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      10776.3,
+      11472.3
+    ],
+    "data": {
+      "chat_link": "[&BGMQAAA=]",
+      "tooltip": "Punto de Ruta de Emergencia de Depósito de Palancamanijas"
+    },
+    "id": 4195,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      11371.9,
+      12173.3
+    ],
+    "data": {
+      "chat_link": "[&BGQQAAA=]",
+      "tooltip": "Punto de Ruta de Frontera"
+    },
+    "id": 4196,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      11034.4,
+      10215
+    ],
+    "data": {
+      "chat_link": "[&BGUQAAA=]",
+      "tooltip": "Necrópolis Eterna"
+    },
+    "id": 4197,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      10477.8,
+      9213.31
+    ],
+    "data": {
+      "chat_link": "[&BGYQAAA=]",
+      "tooltip": "Punto de Ruta de Ciudadela"
+    },
+    "id": 4198,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      13027.2,
+      11273.4
+    ],
+    "data": {
+      "chat_link": "[&BGcQAAA=]",
+      "tooltip": "Campamento de Chitterogg"
+    },
+    "id": 4199,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      11429.1,
+      11560.2
+    ],
+    "data": {
+      "chat_link": "[&BGgQAAA=]",
+      "tooltip": "Hacienda de Bauer"
+    },
+    "id": 4200,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      10467,
+      12115.1
+    ],
+    "data": {
+      "chat_link": "[&BGkQAAA=]",
+      "tooltip": "Pozo del Murmullo de Polvo"
+    },
+    "id": 4201,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      14180.8,
+      12099
+    ],
+    "data": {
+      "chat_link": "[&BGoQAAA=]",
+      "tooltip": "Punto de ruta de Emergencia C de Fuerte"
+    },
+    "id": 4202,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      14059.6,
+      12288.3
+    ],
+    "data": {
+      "chat_link": "[&BGsQAAA=]",
+      "tooltip": "Bastión de "
+    },
+    "id": 4203,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      14835.2,
+      12816.6
+    ],
+    "data": {
+      "chat_link": "[&BGwQAAA=]",
+      "tooltip": "Punto de Ruta de Colinas Askalion"
+    },
+    "id": 4204,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      14061.8,
+      11133.3
+    ],
+    "data": {
+      "chat_link": "[&BG0QAAA=]",
+      "tooltip": "Punto de Ruta de Ciudadela"
+    },
+    "id": 4205,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      11428.2,
+      10959
+    ],
+    "data": {
+      "chat_link": "[&BG4QAAA=]",
+      "tooltip": "Palacio del Águila Pescadora"
+    },
+    "id": 4206,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      10430.1,
+      10006.2
+    ],
+    "data": {
+      "chat_link": "[&BG8QAAA=]",
+      "tooltip": "Punto de ruta de Emergencia B de Muralla Estoica"
+    },
+    "id": 4207,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      9615.53,
+      10272.4
+    ],
+    "data": {
+      "chat_link": "[&BHAQAAA=]",
+      "tooltip": "Escondrijo de Boettiger"
+    },
+    "id": 4208,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      13976.5,
+      11470
+    ],
+    "data": {
+      "chat_link": "[&BHEQAAA=]"
+    },
+    "id": 4209,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "vista",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      14715.9,
+      12671.2
+    ],
+    "data": {
+      "chat_link": "[&BHIQAAA=]",
+      "tooltip": "Punto de ruta de Emergencia C de Colinas Askalion"
+    },
+    "id": 4210,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      13096.2,
+      13014.1
+    ],
+    "data": {
+      "chat_link": "[&BHMQAAA=]"
+    },
+    "id": 4211,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "vista",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      10958.8,
+      11443.7
+    ],
+    "data": {
+      "chat_link": "[&BHQQAAA=]",
+      "tooltip": "Depósito de Palancamanijas"
+    },
+    "id": 4212,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      10475.6,
+      10368.3
+    ],
+    "data": {
+      "chat_link": "[&BHUQAAA=]",
+      "tooltip": "Muralla Estoica"
+    },
+    "id": 4213,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      14360.3,
+      13392.3
+    ],
+    "data": {
+      "chat_link": "[&BHYQAAA=]",
+      "tooltip": "Punto de ruta de emergencia"
+    },
+    "id": 4214,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      13132.9,
+      14087
+    ],
+    "data": {
+      "chat_link": "[&BHcQAAA=]",
+      "tooltip": "Punto de Ruta de Frontera"
+    },
+    "id": 4215,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      10421.6,
+      10108.7
+    ],
+    "data": {
+      "chat_link": "[&BHgQAAA=]",
+      "tooltip": "Punto de ruta de Emergencia A de Muralla Estoica"
+    },
+    "id": 4216,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      10701.2,
+      11922.1
+    ],
+    "data": {
+      "chat_link": "[&BHkQAAA=]"
+    },
+    "id": 4217,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "vista",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      10179.6,
+      11481.2
+    ],
+    "data": {
+      "chat_link": "[&BHoQAAA=]",
+      "tooltip": "Puesto Avanzado Abrasado"
+    },
+    "id": 4218,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      14095.2,
+      13524.6
+    ],
+    "data": {
+      "chat_link": "[&BHsQAAA=]"
+    },
+    "id": 4219,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "vista",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      14955.9,
+      14093.3
+    ],
+    "data": {
+      "chat_link": "[&BHwQAAA=]",
+      "tooltip": "Punto de Ruta de Frontera"
+    },
+    "id": 4220,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      13074.5,
+      12672.5
+    ],
+    "data": {
+      "chat_link": "[&BH0QAAA=]",
+      "tooltip": "Punto de Ruta de Bahía de la Ascensión"
+    },
+    "id": 4221,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      13697.7,
+      13361.2
+    ],
+    "data": {
+      "chat_link": "[&BH4QAAA=]",
+      "tooltip": "Punto de ruta de emergencia"
+    },
+    "id": 4222,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      9512.18,
+      11094.1
+    ],
+    "data": {
+      "chat_link": "[&BH8QAAA=]"
+    },
+    "id": 4223,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "vista",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      15059.6,
+      13286.3
+    ],
+    "data": {
+      "chat_link": "[&BIAQAAA=]"
+    },
+    "id": 4224,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "vista",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      13074.5,
+      12672.5
+    ],
+    "data": {
+      "chat_link": "[&BIEQAAA=]",
+      "tooltip": "Punto de ruta de Emergencia A de Bahía de la Ascensión"
+    },
+    "id": 4225,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      9904.28,
+      10137
+    ],
+    "data": {
+      "chat_link": "[&BIIQAAA=]",
+      "tooltip": "Academia O'del"
+    },
+    "id": 4226,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      11085.6,
+      9875.07
+    ],
+    "data": {
+      "chat_link": "[&BIMQAAA=]",
+      "tooltip": "Punto de Ruta de Emergencia de Necrópolis Eterna"
+    },
+    "id": 4227,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      9443.24,
+      9353.38
+    ],
+    "data": {
+      "chat_link": "[&BIQQAAA=]",
+      "tooltip": "Fisura Tikitecki"
+    },
+    "id": 4228,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      14058.1,
+      12337.3
+    ],
+    "data": {
+      "chat_link": "[&BIUQAAA=]"
+    },
+    "id": 4229,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "vista",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      14618.4,
+      12135
+    ],
+    "data": {
+      "chat_link": "[&BIYQAAA=]",
+      "tooltip": "Torre del Alba"
+    },
+    "id": 4230,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      9891.62,
+      9809.54
+    ],
+    "data": {
+      "chat_link": "[&BIcQAAA=]",
+      "tooltip": "Punto de Ruta de Emergencia de Academia O'del"
+    },
+    "id": 4231,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      14081.5,
+      12621.7
+    ],
+    "data": {
+      "chat_link": "[&BIgQAAA=]"
+    },
+    "id": 4232,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "vista",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      13475.6,
+      11729.5
+    ],
+    "data": {
+      "chat_link": "[&BIkQAAA=]",
+      "tooltip": "Punto de ruta de emergencia"
+    },
+    "id": 4233,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      10474.1,
+      10417.3
+    ],
+    "data": {
+      "chat_link": "[&BIoQAAA=]"
+    },
+    "id": 4234,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "vista",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      15131.7,
+      12630.2
+    ],
+    "data": {
+      "chat_link": "[&BIsQAAA=]"
+    },
+    "id": 4235,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "vista",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      9490.45,
+      10752.5
+    ],
+    "data": {
+      "chat_link": "[&BIwQAAA=]",
+      "tooltip": "Punto de Ruta de Sótano Achicharrante"
+    },
+    "id": 4236,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      15013.1,
+      13480.2
+    ],
+    "data": {
+      "chat_link": "[&BI0QAAA=]",
+      "tooltip": "Aldea de Aguaverde"
+    },
+    "id": 4237,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      14051,
+      14035.1
+    ],
+    "data": {
+      "chat_link": "[&BI4QAAA=]",
+      "tooltip": "Huerto del Campeón"
+    },
+    "id": 4238,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      9662.33,
+      10632.6
+    ],
+    "data": {
+      "chat_link": "[&BI8QAAA=]",
+      "tooltip": "Punto de ruta de Emergencia C de Sótano Achicharrante"
+    },
+    "id": 4239,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      13125.6,
+      12952.9
+    ],
+    "data": {
+      "chat_link": "[&BJAQAAA=]",
+      "tooltip": "Bastión de la Ascensión"
+    },
+    "id": 4240,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      15046.9,
+      12158.6
+    ],
+    "data": {
+      "chat_link": "[&BJEQAAA=]",
+      "tooltip": "Molino de la Arboleda de las Estrellas"
+    },
+    "id": 4241,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "landmark",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      14989.1,
+      12871.9
+    ],
+    "data": {
+      "chat_link": "[&BJIQAAA=]",
+      "tooltip": "Punto de ruta de Emergencia B de Colinas Askalion"
+    },
+    "id": 4242,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      14835.2,
+      12816.6
+    ],
+    "data": {
+      "chat_link": "[&BJMQAAA=]",
+      "tooltip": "Punto de ruta de Emergencia A de Colinas Askalion"
+    },
+    "id": 4243,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  },
+  {
+    "continent": "Mundo contra Mundo",
+    "coordinates": [
+      14014.1,
+      11926.2
+    ],
+    "data": {
+      "chat_link": "[&BJQQAAA=]",
+      "tooltip": "Punto de ruta de Emergencia B de Fuerte"
+    },
+    "id": 4244,
+    "map": " - Tierras Fronterizas calcinadas",
+    "type": "waypoint",
+    "maps": [
+      " - Tierras Fronterizas calcinadas"
+    ]
+  }
+]

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ApiAccount, Gw2Permission, Gw2TokenInfo, InvalidImportAccount, VALIDATE_GW2_ACCOUNT_NAME, ValidImportAccount } from '../../service/key';
+import { ApiAccount, Gw2TokenInfo, InvalidImportAccount, VALIDATE_GW2_ACCOUNT_NAME, ValidImportAccount } from '../../service/key';
 import { ApiKeyService } from '../../service/api-key.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { ApiKeyService } from '../../service/api-key.service';
 })
 export class KeyFormComponent implements OnInit {
 
-  form: FormGroup;
+  form!: FormGroup;
   accounts: ApiAccount[] = [];
   currentAccount: ApiAccount | null = null;
   editingIndex: number | null = null;
@@ -27,19 +27,28 @@ export class KeyFormComponent implements OnInit {
   isImporting = false;
 
   constructor(private fb: FormBuilder, private apiKeyService: ApiKeyService) {
+    this.initForm();
+  }
+
+  @ViewChild('importOptions') importOptions!: ElementRef;
+
+  initForm() {
     this.form = this.fb.group({
       name: [
         '',
         [
           Validators.required,
-          Validators.maxLength(20)
+          Validators.maxLength(20),
+          Validators.pattern(/^[^<>"']*$/),
+          Validators.pattern(/^(?!.*src).*$/i)
         ]
       ],
       gw2Name: [
         '',
         [
           Validators.required,
-          Validators.pattern(/^[^.]+\.[0-9]{4}$/)
+          Validators.pattern(/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+\.[0-9]{4}$/)
+          // Validators.pattern(/^[\p{L}\s]+\.[0-9]{4}$/u) permite letras de cualquier idioma
         ]
       ],
       key: [
@@ -51,7 +60,10 @@ export class KeyFormComponent implements OnInit {
         ]
       ],
       kp: [
-        ''
+        '',
+        [
+          Validators.pattern(/^[a-zA-Z0-9]{3,17}$/)
+        ]
       ]
     });
   }
@@ -363,6 +375,20 @@ export class KeyFormComponent implements OnInit {
 
     const file = input.files[0];
 
+    // Comprobar extension
+    if (!file.name.toLowerCase().endsWith('.json')) {
+      this.errorMessage = 'Solo se permiten archivos JSON.';
+      input.value = '';
+      return;
+    }
+
+    // Limitar tamaño del archivo a 256 KB
+    if (file.size > 256 * 1024) {
+      this.errorMessage = 'El archivo no puede superar 256 KB.';
+      input.value = '';
+      return;
+    }
+
     // Indicar inmediatamente que estamos procesando el archivo
     this.isImporting = true;
 
@@ -419,6 +445,14 @@ export class KeyFormComponent implements OnInit {
 
         // 6. Mostrar el resultado
         this.showImportOptions = true;
+        
+        // Mover la vista al resumen de importacion de cuentas
+        setTimeout(() => {
+          this.importOptions?.nativeElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }, 100);
 
       } catch (error) {
         console.error('Error durante la importación:', error);
